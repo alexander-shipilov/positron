@@ -1,0 +1,7 @@
+@import "scss/mixins";
+@import "ui/FieldSet/FieldSet";
+
+.form {
+    @include form-layout;
+    overflow: visible;
+}

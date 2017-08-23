@@ -1,0 +1,157 @@
+@import "scss/constants/material-colors";
+@import "scss/mixins";
+@import "ui/Input/Input";
+
+$slider: ".slider";
+
+$slider-appearance: (
+    handle-size: 12px,
+    label-font-size: 12px,
+    label-line-height: 16px,
+    bar-line-height: 2px,
+    bar-opacity: 0.6,
+    handle-outline-size: 24px,
+    handle-outline-transition: (margin, opacity .2s ease),
+    handle-outline-opacity: .2,
+    value-box-shadow: (0 0 3px $material-black-faint),
+    value-max-width: 100px
+);
+
+$slider-disabled-appearance: map_merge($slider-appearance, (
+));
+
+$slider-error-appearance: map_merge($slider-appearance, (
+));
+
+$slider-focus-appearance: map_merge($slider-appearance, (
+));
+
+$slider-read-only-appearance: map_merge($slider-appearance, (
+));
+
+$slider-appearances: init-input-appearances(
+        $slider-appearance,
+        $slider-disabled-appearance,
+        $slider-error-appearance,
+        $slider-focus-appearance,
+        $slider-read-only-appearance
+);
+
+@function slider-appearance() {
+    @return input-appearance($slider-appearances);
+}
+
+@function slider-appearance-prop($prop) {
+    @return input-appearance-prop($prop, $slider-appearances);
+}
+
+.slider {
+    $line-height: input-appearance-prop(line-height);
+    $label-line-height: slider-appearance-prop(label-line-height);
+    $padding: slider-appearance-prop(handle-size) / 2;
+    $bar-line-height: slider-appearance-prop(bar-line-height);
+
+    position: relative;
+    overflow: visible;
+    display: inline-block;
+    width: 100%;
+    height: $line-height;
+
+    &__bar {
+        @include absolute($padding, ($line-height + $label-line-height) / 2, $padding, $height: 0);
+        overflow: visible;
+
+        &:before {
+            content: "";
+            @include absolute(-$padding, -$bar-line-height / 2, -$padding, $height: $bar-line-height);
+            opacity: slider-appearance-prop(bar-opacity);
+
+            @include input-for-each {
+                background: input-appearance-prop(border-color);
+            }
+        }
+    }
+
+    &__handle {
+        @include flex(column);
+        overflow: visible;
+        text-align: center;
+        border: none;
+        padding: 0;
+        outline: 0;
+
+        @include input-for-each {
+            $size: slider-appearance-prop(handle-size);
+
+            @include absolute(0, 0, $width: $size, $height: $size);
+            margin: -$size / 2;
+            border-radius: $size / 2;
+
+            background: input-appearance-prop(border-color);
+        }
+
+        @include input-for-some("disabled", "read-only") {
+            pointer-events: none;
+        }
+
+        &:before {
+            content: "";
+            opacity: 0;
+            z-index: -1;
+
+            @include input-for-each {
+                $bound: -(slider-appearance-prop(handle-outline-size) - slider-appearance-prop(handle-size)) / 2;
+
+                @include absolute($bound, $bound, $bound, $bound);
+                border-radius: slider-appearance-prop(handle-outline-size) / 2;
+
+                background: input-appearance-prop(border-color);
+            }
+
+            @include input-focus {
+                opacity: slider-appearance-prop(handle-outline-opacity)
+            }
+        }
+    }
+
+    &__value {
+        display: none;
+        text-overflow: ellipsis;
+        text-align: center;
+        min-width: 32px;
+
+        @include input-for-each {
+            @include absolute($top: slider-appearance-prop(handle-outline-size));
+            @include input-border();
+            @include input-color();
+            @include input-padding();
+            @include input-typography($line-height: 28px);
+
+            box-shadow: slider-appearance-prop(value-box-shadow);
+
+            max-width: slider-appearance-prop(value-max-width);
+        }
+
+        .slider__handle:hover & {
+            display: inline-block;
+        }
+
+        @include input-focus {
+            display: inline-block;
+        }
+    }
+
+    &__label {
+        @include absolute($top: 0, $width: slider-appearance-prop(handle-size));
+        font-size: slider-appearance-prop(label-font-size);
+        line-height: slider-appearance-prop(label-line-height);
+        text-align: center;
+
+        &_min {
+            left: 0;
+        }
+        &_max {
+            right: 0;
+        }
+    }
+}

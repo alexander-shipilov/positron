@@ -1,0 +1,29 @@
+@import "../constants/screen.scss";
+
+@mixin with-screen-max($size, $only: "screen") {
+    $size: $size + "-max";
+
+    @if(map_has_key($screen, $size)) {
+        $width: map_get($screen, $size);
+
+        @media only #{ $only } and (max-width: #{ $width }) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no size could be retrieved from `#{ $size }`.";
+    }
+}
+
+@mixin with-screen-min($size, $only: "screen") {
+    $size: $size + "-min";
+
+    @if(map_has_key($screen, $size)) {
+        $width: map_get($screen, $size);
+
+        @media only #{ $only } and (min-width: #{ $width }) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no size could be retrieved from `#{ $size }`.";
+    }
+}

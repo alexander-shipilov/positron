@@ -1,0 +1,17 @@
+@import "scss/ionicons";
+
+.toggle.radio-button {
+    .toggle__label {
+        @include ion-icon("android-radio-button-off");
+
+        &:before {
+            line-height: 29px;
+        }
+    }
+
+    &.toggle_checked {
+        .toggle__label {
+            @include ion-icon("android-radio-button-on");
+        }
+    }
+}

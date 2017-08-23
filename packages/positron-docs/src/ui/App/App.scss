@@ -1,0 +1,132 @@
+@import "scss/constants/material-colors";
+@import "scss/ionicons";
+@import "scss/mixins";
+@import "../AppMenu/AppMenu";
+
+$app-header-size: 56px;
+$app-menu-size: 210px;
+$app-logo-width: 150px;
+$app-logo-height: 24px;
+
+@mixin app-content {
+    transition: margin-left 0.2s ease-in;
+
+    @include with-screen-min(medium) {
+        margin-left: $app-menu-size;
+    }
+}
+
+.app {
+    @include flex(column, justify, $justify-content: flex-start);
+    @include with-accent() {
+        background: mix(get-accent-color(), $material-grey-600, 16%);
+    }
+
+    min-height: 100%;
+
+    &_expanded {
+        overflow: hidden;
+    }
+
+    &__accent-selector {
+        z-index: 1;
+    }
+
+    &__footer {
+        flex: 1;
+        padding: 56px;
+        text-align: center;
+        font-size: 20px;
+
+        @include app-content;
+        @include with-accent() {
+            background: mix(get-accent-color(), $material-black-dark, 32%);
+        }
+
+        a {
+            color: #fff;
+        }
+    }
+
+    &__header {
+        position: relative;
+        height: $app-header-size;
+        padding: 0 10px;
+        color: white;
+        box-shadow: 0 0 10px $material-black-faint;
+
+        @include flex(row);
+        @include with-accent() {
+            background: get-accent-color();
+        }
+    }
+
+    &__logo {
+        display: inline-block;
+        width: $app-logo-width;
+        height: $app-logo-height;
+        z-index: 1;
+
+        @include with-accent() {
+            fill: mix(get-accent-color(), $material-white-full, 16%);
+        }
+
+        @include with-screen-min(medium) {
+            margin-left: ($app-menu-size - $app-logo-width) / 2 - 10px;
+        }
+    }
+
+    &__main {
+        @include app-content;
+
+        &:after {
+            .app_expanded & {
+                content: "";
+                @include fixed(0, 0, 0, 0);
+                background: $material-black-faint;
+
+                @include with-screen-min(medium) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &__menu {
+        @include absolute(0, $app-header-size, 0, 0);
+        overflow: auto;
+    }
+
+    &__side-bar {
+        @include fixed(0, 0, $bottom: 0, $width: $app-menu-size);
+
+        box-shadow: 0 0 10px $material-black-light;
+        transition: transform 0.2s ease-in;
+
+        @include with-accent() {
+            background: mix(get-accent-color(), $material-black-dark, 8%);
+        }
+
+        @include with-screen-max(small) {
+            transform: translateX(-100%);
+            box-shadow: none;
+        }
+
+        .app_expanded & {
+            transform: translateX(0);
+        }
+    }
+
+    &__title {
+        flex: 1;
+    }
+
+    &__toggle {
+        padding: 0 8px;
+        z-index: 1;
+
+        @include with-screen-min(medium) {
+            display: none;
+        }
+    }
+}

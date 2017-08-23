@@ -1,0 +1,50 @@
+@import "scss/ionicons";
+@import "scss/mixins";
+@import "ui/Input/Input";
+
+.list {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: stretch;
+
+    @include input-typography;
+    @include input-state-colors;
+
+    &__input {
+        @include hidden
+    }
+
+    &__option {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        min-height: input-appearance-prop(line-height);
+        padding: 0 8px 0 input-appearance-prop(line-height);
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:before {
+            @include absolute(8px, 0);
+            font-size: 20px;
+        }
+
+        @include ion-icon("android-radio-button-off");
+
+        &_selected {
+            @include ion-icon("android-radio-button-on");
+        }
+
+        .list_multiple & {
+            @include ion-icon("android-checkbox-outline-blank");
+
+            &_selected {
+                @include ion-icon("android-checkbox-outline");
+            }
+        }
+    }
+}

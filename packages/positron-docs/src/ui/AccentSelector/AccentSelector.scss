@@ -1,0 +1,37 @@
+@import "scss/constants/material-colors";
+@import "scss/mixins";
+
+$accent-selector_appearance: (
+    size: 16px,
+    gap: 8px
+) !default;
+
+.accent-selector {
+    $size: map_get($accent-selector_appearance, "size");
+    $gap: map_get($accent-selector_appearance, "gap");
+
+    position: relative;
+    display: inline-block;
+
+    &__accents {
+        display: inline-block;
+        width: $size * 4 + $gap * 5;
+        padding: $gap / 2;
+        background: white;
+        box-shadow: 0 0 10px $material-black-light;
+    }
+
+    &__accent {
+        display: inline-block;
+        width: $size;
+        height: $size;
+        margin: $gap / 2;
+        border: none;
+        cursor: pointer;
+
+        &_expand {
+            border: 1px solid #fff;
+            margin: $gap;
+        }
+    }
+}

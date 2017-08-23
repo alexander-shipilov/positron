@@ -1,0 +1,45 @@
+@import "../constants/accents";
+@import "scss/func";
+
+$accent-selector: ".accent";
+
+@function get-accent-color() {
+    $current: #{ & };
+    $accent-color: null;
+
+    @if ($current == null) {
+       @error ("@accent: null $current");
+    }
+
+    $current: simple_selectors($current);
+
+    @each $accent, $color in $accents {
+        $selector: #{ modifier($accent-selector, $accent) };
+
+        @if (index($current, $selector) != null) {
+            $accent-color: $color;
+        }
+    }
+
+    @return $accent-color;
+}
+
+
+@mixin with-accent {
+    @each $accent, $color in $accents {
+        $current: #{ & };
+
+        @if ($current == null) {
+            @error ("@accent: null $current");
+        }
+
+        @at-root {
+            $selector: modifier($accent-selector, #{ $accent });
+
+            #{ selector_append($selector, $current) },
+            #{ selector_nest($selector, $current) } {
+                @content;
+            }
+        }
+    }
+}

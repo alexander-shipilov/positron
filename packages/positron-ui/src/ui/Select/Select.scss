@@ -1,0 +1,53 @@
+@import "scss/constants/material-colors";
+@import "scss/ionicons";
+@import "scss/mixins";
+@import "ui/Input/Input";
+
+.select {
+    position: relative;
+
+    &__drop-button {
+        @include ion-icon("chevron-down");
+        @include absolute($top: 0, $right: 0);
+        pointer-events: none;
+
+        @include input-for-each {
+            $line-height: input-appearance-prop(line-height);
+
+            width: $line-height;
+            height: $line-height;
+        }
+
+        &:before {
+            @include absolute(calc(50% - 8px), calc(50% - 8px));
+            font-size: 16px;
+        }
+    }
+
+    &__list.list {
+        @include input-for-each {
+            @include input-border();
+        }
+
+        margin-top: -1px;
+
+        .list__option {
+            &:hover {
+                background: $material-grey-50;
+            }
+
+            &:before {
+                content: none;
+            }
+
+            &_selected, &_selected:hover {
+                @include input-for-each {
+                    @include input-selection-color();
+                }
+
+                @include ion-icon("android-done");
+            }
+        }
+
+    }
+}

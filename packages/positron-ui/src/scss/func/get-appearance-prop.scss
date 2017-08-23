@@ -1,0 +1,7 @@
+@import "./get-appearance";
+
+@function get-appearance-prop($prop, $appearances) {
+    $appearance: get-appearance($appearances);
+
+    @return if($appearance != null, map_get($appearance, $prop), null);
+}

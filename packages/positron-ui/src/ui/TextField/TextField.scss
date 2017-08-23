@@ -1,0 +1,23 @@
+@import "ui/Input/Input";
+
+.text-field {
+    position: relative;
+    width: 100%;
+    height: input-appearance-prop(line-height) + 2 * input-appearance-prop(border-width);
+
+    @include input-state-borders;
+
+    &__input {
+        @include input-typography;
+        @include input-padding;
+        border: 0;
+        width: 100%;
+
+        @include input-state-colors;
+
+        &::placeholder {
+            @include input-typography;
+            color: input-appearance-prop("placeholder-color");
+        }
+    }
+}

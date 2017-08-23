@@ -1,0 +1,17 @@
+{
+    "plugins": [
+        [
+            "root-import",
+            {
+                "rootPathPrefix": "/",
+                "rootPathSuffix": "src/"
+            }
+        ]
+    ],
+    "presets": [
+        "es2015",
+        "flow",
+        "react",
+        "stage-1"
+    ]
+}

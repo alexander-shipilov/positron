@@ -1,0 +1,7 @@
+@import "scss/mixins";
+
+.field-set {
+    @include form-layout;
+
+    width: 100%;
+}

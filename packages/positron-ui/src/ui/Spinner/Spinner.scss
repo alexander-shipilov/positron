@@ -1,0 +1,61 @@
+$spinner-background-color: #ccc !default;
+$spinner-color: #07d !default;
+$spinner-rotation-time: 1s !default;
+$spinner-size: (
+    x-small: 16px,
+    small: 24px,
+    medium: 32px,
+    large: 48px,
+    x-large: 64px,
+    xx-large: 128px
+) !default;
+
+@keyframes spinner-animation {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@mixin spinner-size($size) {
+    &:before {
+        width: $size;
+        height: $size;
+        margin-left: -$size / 2;
+        margin-top: -$size / 2;
+    }
+}
+
+.spinner {
+    &:before {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        border-radius: 50%;
+        border: 1px solid $spinner-background-color;
+        border-top-color: $spinner-color;
+        animation: spinner-animation $spinner-rotation-time linear infinite;
+    }
+
+    &_size {
+        @each $name, $size in $spinner-size {
+            &_#{$name} {
+                @include spinner-size($size)
+            }
+        }
+    }
+
+    &_align {
+        &_left:before {
+            left: 0;
+        }
+
+        &_center:before {
+            left: 50%;
+        }
+
+        &_right:before {
+            right: 0;
+        }
+    }
+}

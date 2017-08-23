@@ -1,0 +1,17 @@
+@import "scss/ionicons";
+
+.check-box {
+    .toggle__label {
+        @include ion-icon("android-checkbox-outline-blank");
+
+        &:before {
+            line-height: 29px;
+        }
+    }
+
+    &.toggle_checked {
+        .toggle__label {
+            @include ion-icon("android-checkbox-outline");
+        }
+    }
+}

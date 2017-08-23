@@ -1,0 +1,19 @@
+@import "mixins/font-icon";
+@import "fonts/ionicons";
+
+@mixin ion-icon($icon-name) {
+    @if map-has-key($ionicons-icons, $icon-name) {
+        @include font-icon($ionicons-font-family, map-get($ionicons-icons, $icon-name));
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$icon-name}`. "
+        + "Please make sure it is defined in `#{$ionicons-font-family}`.";
+    }
+}
+
+.icon_ion {
+    @include font-icon-props($ionicons-font-family);
+
+    &.icon {
+        @include font-icons($ionicons-icons);
+    }
+}

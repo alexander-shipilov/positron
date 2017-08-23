@@ -1,0 +1,11 @@
+@import "scss/mixins";
+
+.drop-container {
+    position: absolute;
+    visibility: hidden;
+}
+
+.drop {
+    overflow: auto;
+    display: inline-block;
+}

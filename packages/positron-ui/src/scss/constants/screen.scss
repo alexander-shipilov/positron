@@ -1,0 +1,42 @@
+$screen-xx-small-min: 0;
+$screen-xx-small-max: 320px;
+
+$screen-x-small-min: $screen-xx-small-max + 1px;
+$screen-x-small-max: 480px;
+
+$screen-small-min: $screen-x-small-max + 1px;
+$screen-small-max: 768px;
+
+$screen-medium-min: $screen-small-max + 1px;
+$screen-medium-max: 991px;
+
+$screen-large-min: $screen-medium-max + 1px;
+$screen-large-max: 1200px;
+
+$screen-x-large-min: $screen-large-max + 1px;
+$screen-x-large-max: 2000px;
+
+$screen-xx-large-min: $screen-x-large-max + 1px;
+$screen-xx-large-max: 3000px;
+
+$screen-xxx-large-min: $screen-xx-large-max + 1px;
+$screen-xxx-large-max: 5000px;
+
+$screen: (
+    xx-small-min: $screen-xx-small-min,
+    xx-small-max: $screen-xx-small-max,
+    x-small-min: $screen-x-small-min,
+    x-small-max: $screen-x-small-max,
+    small-min: $screen-small-min,
+    small-max: $screen-small-max,
+    medium-min: $screen-medium-min,
+    medium-max: $screen-medium-max,
+    large-min: $screen-large-min,
+    large-max: $screen-large-max,
+    x-large-min: $screen-x-large-min,
+    x-large-max: $screen-x-large-max,
+    xx-large-min: $screen-xx-large-min,
+    xx-large-max: $screen-xx-large-max,
+    xxx-large-min: $screen-xxx-large-min,
+    xxx-large-max: $screen-xxx-large-max,
+) !default;
