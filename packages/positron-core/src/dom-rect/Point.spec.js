@@ -1,17 +1,54 @@
 import { InvariableObject } from "../invariable";
+import { mockElement, mockEvent, mockParent } from "./_mock";
 import { Point } from "./Point";
 
 const { NEGATIVE_INFINITY, POSITIVE_INFINITY } = Number;
 
 describe("Point", () => {
-    it("is an InvariableObject", () => {
+    it("implements InvariableObject", () => {
         expect(InvariableObject.isImplementedBy(Point)).toBeTruthy();
+    });
+
+    describe(".fromElement", () => {
+        it("creates a new point from the given element", () => {
+            const elementRect = mockElement.getBoundingClientRect();
+
+            expect(Point.fromElement(mockElement).valueOf()).toEqual({ left: elementRect.left, top: elementRect.top });
+        });
+
+        it("should return relative point if passed secon param", () => {
+            const elementRect = mockElement.getBoundingClientRect();
+            const parentRect = mockParent.getBoundingClientRect();
+
+            expect(Point.fromElement(mockElement, mockParent).valueOf())
+                .toEqual({ left: elementRect.left - parentRect.left, top: elementRect.top - parentRect.top });
+        });
+    });
+
+    describe(".fromClientEvent", () => {
+        it("creates a new point from the given event client coordinates", () => {
+            expect(Point.fromClientEvent(mockEvent).valueOf())
+                .toEqual({ left: mockEvent.clientX, top: mockEvent.clientY });
+        });
+    });
+
+    describe(".fromScreenEvent", () => {
+        it("creates a new point from the given event client coordinates", () => {
+            expect(Point.fromScreenEvent(mockEvent).valueOf())
+                .toEqual({ left: mockEvent.screenX, top: mockEvent.screenY });
+        });
     });
 
     describe("#constructor", () => {
         it("creates new Point with passed coordinates", () => {
             expect(new Point().valueOf()).toEqual({});
-            expect(new Point({ left: void 0, top: null }).valueOf()).toEqual({});
+            expect(new Point({ left: null }).valueOf()).toEqual({});
+            expect(new Point({ left: void 0 }).valueOf()).toEqual({});
+            expect(new Point({ top: null }).valueOf()).toEqual({});
+            expect(new Point({ top: void 0 }).valueOf()).toEqual({});
+
+            expect(new Point({ left: 0 }).valueOf()).toEqual({ left: 0 });
+            expect(new Point({ top: 0 }).valueOf()).toEqual({ top: 0 });
             expect(new Point({ left: 0, top: 0 }).valueOf()).toEqual({ left: 0, top: 0 });
         });
 

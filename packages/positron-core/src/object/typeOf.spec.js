@@ -14,4 +14,10 @@ describe("typeOf", () => {
         expect(typeOf(/a/)).toBe("regexp");
         expect(typeOf("")).toBe("string");
     });
+
+    it("should return `object` for classes by `new`", () => {
+        class Foo {
+        }
+        expect(typeOf(new Foo())).toBe("object");
+    });
 });

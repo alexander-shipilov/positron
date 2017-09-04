@@ -16,11 +16,13 @@ function copyProps(target, source) {
         ...Object.getOwnPropertyNames(source),
         ...Object.getOwnPropertySymbols(source)
     ];
+
     props.forEach((prop) => {
         if (!PROPS_TO_SKIP.hasOwnProperty(prop)) {
             Object.defineProperty(target, prop, Object.getOwnPropertyDescriptor(source, prop));
         }
     });
+
     return target;
 }
 

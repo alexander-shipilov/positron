@@ -19,22 +19,6 @@ function clearTimer(target, id) {
 }
 
 export class TimerOwner {
-    initTimerOwner() {
-        this.define({ timers: {} });
-    }
-
-    isTimerStarted(timerId) {
-        return this.timers.hasOwnProperty(timerId);
-    }
-
-    setTimeout(...args) {
-        return setTimer(this, TYPE_TIMEOUT, ...args);
-    }
-
-    setInterval(...args) {
-        return setTimer(this, TYPE_INTERVAL, ...args);
-    }
-
     clearTimer(id) {
         clearTimer(this, id);
     }
@@ -43,5 +27,21 @@ export class TimerOwner {
         Object.keys(this.timers).forEach((id) => {
             clearTimer(this, id);
         });
+    }
+
+    initTimerOwner() {
+        this.define({ timers: {} });
+    }
+
+    isTimerStarted(timerId) {
+        return this.timers.hasOwnProperty(timerId);
+    }
+
+    setInterval(...args) {
+        return setTimer(this, TYPE_INTERVAL, ...args);
+    }
+
+    setTimeout(...args) {
+        return setTimer(this, TYPE_TIMEOUT, ...args);
     }
 }

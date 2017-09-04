@@ -1,6 +1,6 @@
-import { ExternalPropTypes } from "/ui/External";
-import { createPropsFilter } from "positron-core/prop-types";
+import { createPropsFilter } from "positron-core/src/prop-types";
 import PropTypes from "prop-types";
+import { ExternalPropTypes } from "../External";
 
 export const DropPropTypes = Object.assign({}, ExternalPropTypes, {
     to: PropTypes.instanceOf(HTMLElement).isRequired,

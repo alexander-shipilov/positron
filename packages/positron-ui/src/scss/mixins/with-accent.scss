@@ -1,5 +1,5 @@
 @import "../constants/accents";
-@import "scss/func";
+@import "../func/modifier";
 
 $accent-selector: ".accent";
 
@@ -8,7 +8,7 @@ $accent-selector: ".accent";
     $accent-color: null;
 
     @if ($current == null) {
-       @error ("@accent: null $current");
+        @error ("@accent: null $current");
     }
 
     $current: simple_selectors($current);
@@ -23,7 +23,6 @@ $accent-selector: ".accent";
 
     @return $accent-color;
 }
-
 
 @mixin with-accent {
     @each $accent, $color in $accents {

@@ -32,8 +32,6 @@ $outline-offset: 2px;
             background: map_get($input-disabled-appearance, border-color);
         }
 
-
-
         &:focus {
             &:after {
                 position: absolute;

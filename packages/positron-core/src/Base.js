@@ -1,11 +1,12 @@
-import { getName, implement, isImplementationOf } from "./func";
+import { implement, isImplementationOf } from "./func";
 import { map, pick, valueOf } from "./object";
+import { warning } from "./console";
 
 function toString(entity, name, ...mods) {
     return "[" + [entity, name, ...(mods.length ? ["<" + mods.join(", ") + ">"] : mods)].join(" ") + "]";
 }
 
-function define(target, props, writable = true) {
+function define(target, props, writable) {
     return Object.defineProperties(target, map(props, (value) => ({ value, writable })));
 }
 
@@ -15,7 +16,9 @@ function define(target, props, writable = true) {
  */
 export class Base {
     constructor(...props) {
-        this.init(...props);
+        if (props.length) {
+            this.assign(...props);
+        }
     }
 
     static define(props, writable = true) {
@@ -43,11 +46,11 @@ export class Base {
     }
 
     static toString(...mods) {
-        return toString("class", this.name, ...(this.mixins || []).map(getName), ...mods);
+        return toString("class", this.name, ...mods);
     }
 
-    init(...props) {
-        this.assign(...props);
+    static warning(message) {
+        return warning(this + ": " + message);
     }
 
     assign(...props) {
@@ -72,5 +75,9 @@ export class Base {
 
     valueOf() {
         return Object.assign({}, this);
+    }
+
+    warning(message) {
+        return warning(this + ": " + message);
     }
 }

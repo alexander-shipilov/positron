@@ -1,8 +1,8 @@
-import { BemClassifier } from "/ui/BemClassifier";
-import { Element } from "/ui/Element";
-import { warning } from "positron-core/console";
-import { Component as CoreComponent } from "positron-core/react";
-import { uid } from "positron-core/string";
+import { warning } from "positron-core/src/console";
+import { Component as CoreComponent } from "positron-core/src/react";
+import { uid } from "positron-core/src/string";
+import { BemClassifier } from "../BemClassifier";
+import { Element } from "../Element";
 
 import { ComponentPropTypes } from "./ComponentPropTypes";
 import { ComponentRenderer } from "./ComponentRenderer";

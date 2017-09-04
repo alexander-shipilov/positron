@@ -1,5 +1,5 @@
-@import "scss/constants/material-colors";
-@import "scss/mixins";
+@import "~positron-ui/src/scss/constants/material-colors";
+@import "~positron-ui/src/scss/mixins";
 
 .app-menu {
     &__group {
@@ -61,10 +61,14 @@
 
         &_active {
             @include with-accent() {
-                color: mix(get-accent-color(), $material-white, 32%);
+                color: mix(get-accent-color(), $material-grey-500, 32%);
             }
 
             .app-menu-item_level_1 > & {
+                @include with-accent() {
+                    color: mix(get-accent-color(), $material-white, 32%);
+                }
+
                 &:after {
                     content: "";
                     @include absolute(0, 8px, $width: 3px, $height: 24px);
@@ -81,7 +85,7 @@
         font-size: 16px;
         line-height: 20px;
     }
-    
+
     &_level_2 {
         font-size: 13px;
         line-height: 16px;

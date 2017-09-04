@@ -10,7 +10,6 @@ body {
     max-width: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-size-adjust: none;
     user-select: none;
     position: relative;
     overflow-x: hidden;
@@ -36,7 +35,6 @@ input, textarea, select {
     -webkit-appearance: none;
     border-radius: 0;
     opacity: 1;
-
 }
 
 input[type=search] {
@@ -73,12 +71,7 @@ fieldset {
 }
 
 a {
-    color: #000;
     text-decoration: none;
-}
-
-a * {
-    pointer-events: none;
 }
 
 * {

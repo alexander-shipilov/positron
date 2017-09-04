@@ -134,8 +134,8 @@ describe("TypedInvariableArray", () => {
             let target;
 
             class Foo extends InvariableObject {
-                init(...args) {
-                    super.init({ foos: [] }, ...args);
+                constructor(...args) {
+                    super({ foos: [] }, ...args);
                 }
             }
 

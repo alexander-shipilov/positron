@@ -1,6 +1,6 @@
-import { ComponentRenderer } from "/ui/Component";
-import { filterElementProps } from "/ui/Element";
 import React from "react";
+import { ComponentRenderer } from "../Component";
+import { filterElementProps } from "../Element";
 
 export class AccentRenderer extends ComponentRenderer {
     static render(accent) {

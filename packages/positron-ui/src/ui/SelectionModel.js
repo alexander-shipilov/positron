@@ -1,25 +1,28 @@
-import { Model } from "positron-core/dataflow";
-import { InvariableArray } from "positron-core/invariable";
+import { InvariableArray, InvariableObject } from "positron-core/src/invariable";
 
-export class SelectionModel extends Model {
+export class SelectionModel extends InvariableObject {
     get lead() {
         const { selection } = this;
 
         return selection.length ? selection[selection.length - 1] : null;
     }
 
-    init(...props) {
-        super.init({ multiple: false, anchor: null, items: [], selected: [] }, ...props);
+    constructor(...props) {
+        super({ multiple: false, anchor: null, items: [], selected: [] }, ...props);
+    }
+
+    add(item) {
+
+    }
+
+    contains(item) {
+        return this.indexOf(item) !== -1;
     }
 
     indexOf(item) {
         const { items } = this;
 
-        return this.items.indexOf(item);
-    }
-
-    contains(item) {
-        return this.indexOf(item) !== -1;
+        return items.indexOf(item);
     }
 
     isSelected(item) {
@@ -35,15 +38,11 @@ export class SelectionModel extends Model {
             { selected: selected.assign({ length: 1, 0: item }), anchor: item });
     }
 
-    toggle(item) {
-
-    }
-
-    add(item) {
-
-    }
-
     selectTo(item) {
+
+    }
+
+    toggle(item) {
 
     }
 

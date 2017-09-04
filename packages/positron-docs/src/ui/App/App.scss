@@ -1,7 +1,5 @@
-@import "scss/constants/material-colors";
-@import "scss/ionicons";
-@import "scss/mixins";
-@import "../AppMenu/AppMenu";
+@import "~positron-ui/src/scss/constants/material-colors";
+@import "~positron-ui/src/scss/mixins";
 
 $app-header-size: 56px;
 $app-menu-size: 210px;
@@ -122,6 +120,7 @@ $app-logo-height: 24px;
     }
 
     &__toggle {
+        font-size: 32px;
         padding: 0 8px;
         z-index: 1;
 

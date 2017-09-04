@@ -1,5 +1,4 @@
-import { warning } from "../console";
-import { PropTypes } from "../prop-types";
+import PropTypes from "prop-types";
 import { Publisher } from "./Publisher";
 
 export class Action extends Publisher {
@@ -7,8 +6,8 @@ export class Action extends Publisher {
         return this._argTypes.concat();
     }
 
-    init(...argTypes) {
-        super.init();
+    constructor(...argTypes) {
+        super();
 
         this.define({ _argTypes: argTypes }, false);
     }
@@ -17,11 +16,7 @@ export class Action extends Publisher {
         const { _argTypes: argTypes } = this;
 
         if (argTypes.length) {
-            const error = PropTypes.checkPropTypes(argTypes, args, "arg", this.constructor.name);
-
-            if (error) {
-                warning(error.message);
-            }
+            PropTypes.checkPropTypes(argTypes, args, "arg", this.constructor.name);
         }
 
         return super.trigger(...args);

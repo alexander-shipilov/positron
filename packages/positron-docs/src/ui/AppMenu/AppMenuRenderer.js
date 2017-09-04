@@ -1,5 +1,5 @@
-import { ComponentRenderer } from "/ui/Component";
-import { filterElementProps } from "/ui/Element";
+import { ComponentRenderer } from "positron-ui/src/ui/Component";
+import { filterElementProps } from "positron-ui/src/ui/Element";
 import React from "react";
 import { AppMenuItem } from "./AppMenuItem";
 

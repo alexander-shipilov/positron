@@ -1,5 +1,5 @@
-import { Component } from "/ui/Component";
-import { DropOwner } from "/ui/Drop";
+import { Component } from "positron-ui/src/ui/Component";
+import { DropOwner } from "positron-ui/src/ui/Drop";
 
 import "./AccentSelector.scss";
 import { AccentSelectorPropTypes } from "./AccentSelectorPropTypes";
@@ -22,10 +22,18 @@ export class AccentSelector extends Component.implement(DropOwner) {
         this.isVisibleDrop(this.state) ? this.hideDrop() : this.showDrop(this.props);
     };
 
-    init(...args) {
-        super.init(...args);
+    hideDrop() {
+        super.hideDrop(DROP_ID);
+    }
+
+    constructor(...args) {
+        super(...args);
 
         this.initDrop();
+    }
+
+    isVisibleDrop(state) {
+        return super.isVisibleDrop(state, DROP_ID);
     }
 
     showDrop(props) {
@@ -39,14 +47,6 @@ export class AccentSelector extends Component.implement(DropOwner) {
             hideOnScroll: true,
             accent, accents
         });
-    }
-
-    hideDrop() {
-        super.hideDrop(DROP_ID);
-    }
-
-    isVisibleDrop(state) {
-        return super.isVisibleDrop(state, DROP_ID);
     }
 }
 

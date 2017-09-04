@@ -1,5 +1,5 @@
 import React from "react";
-import { filterInputButtonProps } from "/ui/Element";
+import { filterInputButtonProps } from "../Element";
 
 export const ButtonRenderer = {
     render(button) {

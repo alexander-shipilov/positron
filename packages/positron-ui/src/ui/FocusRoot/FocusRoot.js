@@ -1,5 +1,5 @@
 import { Component } from "/Component";
-import { TAB } from "positron-core/constants/key-codes";
+import { TAB } from "positron-core/src/constants/key-codes";
 
 import "./FocusRoot.scss";
 import { FocusRootPropTypes } from "./FocusRootPropTypes";
@@ -56,11 +56,17 @@ function findNext(root, target, forward) {
 }
 
 export class FocusRoot extends Component {
-    init(...args) {
-        super.init(...args);
+    onKeyDown = (event) => {
+        if (event.keyCode === TAB) {
+            const next = findNext(this.refs.root, event.target, !event.shiftKey);
 
-        this.onKeyDown = this.onKeyDown.bind(this);
-    }
+            if (next) {
+                event.stopPropagation();
+                event.preventDefault();
+                next.focus();
+            }
+        }
+    };
 
     componentDidMount() {
         const { autoFocus } = this.props;
@@ -73,18 +79,6 @@ export class FocusRoot extends Component {
                     input.focus();
                 }
             }, 200);
-        }
-    }
-
-    onKeyDown(event) {
-        if (event.keyCode === TAB) {
-            const next = findNext(this.refs.root, event.target, !event.shiftKey);
-
-            if (next) {
-                event.stopPropagation();
-                event.preventDefault();
-                next.focus();
-            }
         }
     }
 }

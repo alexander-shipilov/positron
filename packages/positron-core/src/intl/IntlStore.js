@@ -1,13 +1,16 @@
 import { Store } from "../dataflow/Store";
 import { IntlFormatter } from "./IntlFormatter";
-import { mapKeys } from "../object";
 
 export class IntlStore extends Store.of(IntlFormatter) {
     setLocale(locale) {
-        this.setState({ locale });
+        return this.setState({ locale });
     }
 
-    setMessages(messages, prefix = "") {
-        this.setState({ messages: prefix === "" ? messages : mapKeys(messages, (value, key) => prefix + key) });
+    setMessages(messages) {
+        return this.setState({ messages: this.state.messages.assign(messages) });
+    }
+
+    setLocaleMessages(locale, messages) {
+        return this.setMessages({ [locale]: messages });
     }
 }

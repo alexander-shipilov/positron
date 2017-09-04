@@ -1,5 +1,5 @@
-import { filterElementProps } from "/ui/Element";
 import React from "react";
+import { filterElementProps } from "../Element";
 
 export const InputRenderer = {
     render(input) {

@@ -1,6 +1,6 @@
-import { filterFormElementProps } from "/ui/FormElement";
-import { Input, filterInputProps } from "/Input";
+import { filterInputProps, Input } from "/Input";
 import React from "react";
+import { filterFormElementProps } from "../FormElement";
 
 export const ListRenderer = {
     getOptionValue(option, index) {

@@ -1,6 +1,6 @@
-import { createPropsFilter, isClass } from "positron-core/prop-types";
+import { createPropsFilter, isClass } from "positron-core/src/prop-types";
+import { ElementPropTypes } from "positron-ui/src/ui/Element";
 import PropTypes from "prop-types";
-import { ElementPropTypes } from "/ui/Element";
 import { DocViewRenderer } from "./DocViewRenderer";
 
 export const DocViewPropTypes = Object.assign({}, ElementPropTypes, {

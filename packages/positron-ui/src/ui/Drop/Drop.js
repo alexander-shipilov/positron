@@ -1,9 +1,9 @@
-import { Component } from "/ui/Component";
-import { External } from "/ui/External";
-import { alignTo, containsOrSelf, parseAligns } from "positron-core/dom";
-import { Bounds, BoundedRect, Rect } from "positron-core/dom-rect";
+import { alignTo, containsOrSelf, parseAligns } from "positron-core/src/dom";
+import { Rect } from "positron-core/src/dom-rect";
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
+import { Component } from "../Component";
+import { External } from "../External";
 
 import "./Drop.scss";
 import { DropPropTypes } from "./DropPropTypes";
@@ -11,13 +11,66 @@ import { DropRenderer } from "./DropRenderer";
 
 
 export class Drop extends Component.implement(External) {
-    init(...args) {
-        super.init(...args);
-        this.initExternal();
+    static mount(id, props) {
+        const Drop = this;
+        const container = this.mountContainer(id);
 
-        this.onParentScroll = this.onParentScroll.bind(this);
-        this.onWindowResize = this.onWindowResize.bind(this);
-        this.onDocumentMouseDown = this.onDocumentMouseDown.bind(this);
+        render(<Drop { ...props } { ...{ key: id, id, container } } />, container);
+    }
+
+    static mountContainer(id) {
+        let container = document.getElementById(id);
+        if (!container) {
+            container = document.body.appendChild(document.createElement("div"));
+            container = Object.assign(container, { id, className: "drop-container" });
+        }
+
+        return container;
+    }
+
+    static unmount(id) {
+        const container = document.getElementById(id);
+
+        if (container) {
+            unmountComponentAtNode(container);
+            container.parentNode.removeChild(container);
+        }
+    }
+
+    onDocumentMouseDown = ({ target }) => {
+        const { props: { to, hideOnMouseDown }, drop } = this;
+
+        if (hideOnMouseDown && !containsOrSelf(drop, target) && !containsOrSelf(to, target)) {
+            this.hide();
+        }
+    };
+
+    onParentScroll = () => {
+        this.props.hideOnScroll ? this.hide() : this.align();
+    };
+
+    onWindowResize = () => {
+        this.props.hideOnResize ? this.hide() : this.align();
+    };
+
+    constructor(...args) {
+        super(...args);
+        this.initExternal();
+    }
+
+    addEventListeners() {
+        this.addEventListener(document, "mousedown touchstart", this.onDocumentMouseDown);
+        this.addEventListener(window, "resize", this.onWindowResize);
+        this.addScrollListeners();
+    }
+
+    addScrollListeners() {
+        let parent = this.props.to.parentNode;
+
+        while (parent) {
+            this.addEventListener(parent, "scroll", this.onParentScroll);
+            parent = parent.parentNode;
+        }
     }
 
     align() {
@@ -41,43 +94,6 @@ export class Drop extends Component.implement(External) {
         Object.assign(container.style, rect.toStyle(), { visibility: "visible" });
     }
 
-    hide() {
-        const { owner, id } = this.props;
-
-        owner.hideDrop(id);
-    }
-
-    onWindowResize() {
-        this.props.hideOnResize ? this.hide() : this.align();
-    }
-
-    onParentScroll() {
-        this.props.hideOnScroll ? this.hide() : this.align();
-    }
-
-    onDocumentMouseDown({ target }) {
-        const { props: { to, hideOnMouseDown }, drop } = this;
-
-        if (hideOnMouseDown && !containsOrSelf(drop, target) && !containsOrSelf(to, target)) {
-            this.hide();
-        }
-    }
-
-    addScrollListeners() {
-        let parent = this.props.to.parentNode;
-
-        while (parent) {
-            this.addEventListener(parent, "scroll", this.onParentScroll);
-            parent = parent.parentNode;
-        }
-    }
-
-    addEventListeners() {
-        this.addEventListener(document, "mousedown touchstart", this.onDocumentMouseDown);
-        this.addEventListener(window, "resize", this.onWindowResize);
-        this.addScrollListeners();
-    }
-
     componentDidMount() {
         const { owner } = this.props;
 
@@ -87,39 +103,19 @@ export class Drop extends Component.implement(External) {
         owner.dropDidMount(this);
     }
 
+    componentDidUpdate() {
+        this.align();
+    }
+
     componentWillUnmount() {
         super.componentWillUnmount();
         this.props.owner.dropWillUnmount(this);
     }
 
-    componentDidUpdate() {
-        this.align();
-    }
+    hide() {
+        const { owner, id } = this.props;
 
-    static mountContainer(id) {
-        let container = document.getElementById(id);
-        if (!container) {
-            container = document.body.appendChild(document.createElement("div"));
-            container = Object.assign(container, { id, className: "drop-container" });
-        }
-
-        return container;
-    }
-
-    static mount(id, props) {
-        const Drop = this;
-        const container = this.mountContainer(id);
-
-        render(<Drop { ...props } { ...{ key: id, id, container } } />, container);
-    }
-
-    static unmount(id) {
-        const container = document.getElementById(id);
-
-        if (container) {
-            unmountComponentAtNode(container);
-            container.parentNode.removeChild(container);
-        }
+        owner.hideDrop(id);
     }
 }
 

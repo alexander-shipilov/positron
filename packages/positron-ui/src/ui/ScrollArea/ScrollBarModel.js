@@ -1,4 +1,4 @@
-import { InvariableObject } from "positron-core/invariable";
+import { InvariableObject } from "positron-core/src/invariable";
 
 export class ScrollBarModel extends InvariableObject {
     get relativePos() {

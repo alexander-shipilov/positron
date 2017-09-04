@@ -1,5 +1,5 @@
 import { CheckBox } from "/CheckBox";
-import { Input, filterInputProps } from "/Input";
+import { filterInputProps, Input } from "/Input";
 import React from "react";
 
 export const CheckBoxGroupRenderer = {

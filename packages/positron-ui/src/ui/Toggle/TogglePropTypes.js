@@ -1,7 +1,7 @@
-import { FormElementPropTypes } from "/ui/FormElement";
 import { InputPropTypes } from "/Input";
-import { createPropsFilter } from "positron-core/prop-types";
+import { createPropsFilter } from "positron-core/src/prop-types";
 import PropTypes from "prop-types";
+import { FormElementPropTypes } from "../FormElement";
 
 export const TogglePropTypes = Object.assign({}, InputPropTypes, FormElementPropTypes, {
     type: PropTypes.oneOf(["checkbox", "radio"]),

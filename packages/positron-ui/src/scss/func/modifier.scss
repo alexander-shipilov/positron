@@ -3,7 +3,7 @@
         @error ("modifier: null $selector");
     }
 
-    @if($modifier != null and $modifier != "") {
+    @if ($modifier != null and $modifier != "") {
         $selector: selector_append($selector, "_" + $modifier);
 
         @if ($value != null and $value != "") {

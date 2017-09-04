@@ -1,6 +1,6 @@
 import { Component } from "/Component";
-import { MouseDownRepeaterOwner } from "/ui/MouseDownRepeaterOwner";
 import { findDOMNode } from "react-dom";
+import { MouseDownRepeaterOwner } from "../MouseDownRepeaterOwner";
 
 import "./RepeatButton.scss";
 import { RepeatButtonPropTypes } from "./RepeatButtonPropTypes";
@@ -8,8 +8,9 @@ import { RepeatButtonRenderer } from "./RepeatButtonRenderer";
 
 /** @extends MouseDownRepeaterOwner */
 export class RepeatButton extends Component.implement(MouseDownRepeaterOwner) {
-    init(...args) {
-        super.init(...args);
+    constructor(...args) {
+        super(...args);
+
         this.initMouseDownRepeaterOwner();
     }
 

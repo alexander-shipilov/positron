@@ -1,11 +1,11 @@
-import { toKebabCase } from "positron-core/string";
+import { toKebabCase } from "positron-core/src/string";
 
 function lcfirst(str) {
     return str.charAt(0).toLowerCase() + str.substr(1);
 }
 
 const source = ({ localName, propTypesName, propTypesLocal, rendererName, rendererLocal, cssLocal }) => (
-    `import { Component } from "/ui/Component";
+    `import { Component } from "../Component";
 
 import "${ cssLocal }";
 import { ${ propTypesName } } from "${ propTypesLocal }";
@@ -21,9 +21,9 @@ ${ localName }.initPropTypes(${ propTypesName }).initDefaultProps({
 );
 
 const propTypes = ({ propTypesName, filterPropsName, rendererName, rendererLocal }) => (
-    `import { createPropsFilter, isClass } from "positron-core/prop-types";
+    `import { createPropsFilter, isClass } from "positron-core/src/prop-types";
 import PropTypes from "prop-types";
-import { ElementPropTypes } from "/ui/Element";
+import { ElementPropTypes } from "../Element";
 import { ${ rendererName } } from "${ rendererLocal }";
 
 export const ${ propTypesName } = Object.assign({}, ElementPropTypes, {
@@ -35,8 +35,8 @@ export const ${ filterPropsName } = createPropsFilter(${ propTypesName });
 );
 
 const renderer = ({ filterPropsName, rendererName, varName }) => (
-    `import { ComponentRenderer } from "/ui/Component";
-import { filterElementProps } from "/ui/Element";
+    `import { ComponentRenderer } from "../Component";
+import { filterElementProps } from "../Element";
 import React from "react";
 
 export class ${ rendererName } extends ComponentRenderer {

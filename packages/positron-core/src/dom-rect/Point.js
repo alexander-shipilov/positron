@@ -2,7 +2,8 @@
 
 import { InvariableObject } from "../invariable";
 import { isDefined } from "../object";
-import { add, Coord, sub, toStyle, validate } from "./utils";
+import type { Coord } from "./_utils";
+import { add, sub, toStyle, validate } from "./_utils";
 
 export interface PointProps {
     left?: Coord,
@@ -65,19 +66,14 @@ export class Point extends InvariableObject {
         return this.pick("left", "top");
     }
 
-    static fromElement(el: ?HTMLElement, toEl: ?HTMLElement): Point {
-        let props;
+    static fromElement(el: Element, toEl: ?Element): Point {
+        const { left, top } = el.getBoundingClientRect();
+        const props = { left, top };
 
-        el = el || document.body;
-        if (el) {
-            const { left, top } = el.getBoundingClientRect();
+        if (toEl) {
+            const rel = toEl.getBoundingClientRect();
 
-            props = { left, top };
-            if (toEl) {
-                const rel = el.getBoundingClientRect();
-
-                Object.assign(props, { left: left - rel.left, top: top - rel.top });
-            }
+            Object.assign(props, { left: left - rel.left, top: top - rel.top });
         }
 
         return this.from(props);

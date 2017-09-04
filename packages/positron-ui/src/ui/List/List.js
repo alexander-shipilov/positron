@@ -1,31 +1,28 @@
 import { Component } from "/Component";
-import { FormElement } from "/ui/FormElement";
+import { FormElement } from "../FormElement";
 
 import "./List.scss";
 import { ListPropTypes } from "./ListPropTypes";
 import { ListRenderer } from "./ListRenderer";
 
 export class List extends Component.implement(FormElement) {
-    init(...args) {
-        super.init(...args);
-        this.initFormElement();
-        this.lastSelected = null;
+    onItemMouseDown = (event) => {
+        const { currentTarget, shiftKey, ctrlKey } = event;
+        const value = currentTarget.getAttribute("data-value");
 
-        this.onSelectChange = this.onSelectChange.bind(this);
-        this.onItemMouseDown = this.onItemMouseDown.bind(this);
-    }
+        // event.preventDefault();
+        if (shiftKey) {
+            this.selectOptionsRange(value);
+        } else if (ctrlKey) {
+            this.toggleOption(value);
+            this.lastSelected = value;
+        } else {
+            this.selectOption(value);
+            this.lastSelected = value;
+        }
+    };
 
-    getOptionValue(option, index) {
-        return this.props.renderer.getOptionValue(option, index);
-    }
-
-    isSelected(optionValue) {
-        const { value, multiple } = this.props;
-
-        return multiple ? value.indexOf(optionValue) !== -1 : value === optionValue;
-    }
-
-    onSelectChange() {
+    onSelectChange = () => {
         const { input } = this.refs;
         const { multiple } = this.props;
 
@@ -38,24 +35,30 @@ export class List extends Component.implement(FormElement) {
         });
 
         this.onChange(multiple ? values : values[0]);
+    };
+
+    constructor(...args) {
+        super(...args);
+
+        this.lastSelected = null;
+        this.initFormElement();
     }
+
+    getOptionValue(option, index) {
+        return this.props.renderer.getOptionValue(option, index);
+    }
+
+    isSelected(optionValue) {
+        const { value, multiple } = this.props;
+
+        return multiple ? value.indexOf(optionValue) !== -1 : value === optionValue;
+    }
+
 
     selectOption(optionValue) {
         const { multiple } = this.props;
 
         this.onChange(multiple ? [].concat(optionValue) : optionValue);
-    }
-
-    toggleOption(optionValue) {
-        const { multiple, value } = this.props;
-        let nextValue = optionValue;
-
-        if (multiple) {
-            nextValue = value.indexOf(optionValue) === -1 ? value.concat(optionValue)
-                : value.filter((value) => value !== optionValue);
-        }
-
-        this.onChange(nextValue);
     }
 
     selectOptionsRange(toValue) {
@@ -73,20 +76,16 @@ export class List extends Component.implement(FormElement) {
         this.onChange(nextValue);
     }
 
-    onItemMouseDown(event) {
-        const { currentTarget, shiftKey, ctrlKey } = event;
-        const value = currentTarget.getAttribute("data-value");
+    toggleOption(optionValue) {
+        const { multiple, value } = this.props;
+        let nextValue = optionValue;
 
-        // event.preventDefault();
-        if (shiftKey) {
-            this.selectOptionsRange(value);
-        } else if (ctrlKey) {
-            this.toggleOption(value);
-            this.lastSelected = value;
-        } else {
-            this.selectOption(value);
-            this.lastSelected = value;
+        if (multiple) {
+            nextValue = value.indexOf(optionValue) === -1 ? value.concat(optionValue)
+                : value.filter((value) => value !== optionValue);
         }
+
+        this.onChange(nextValue);
     }
 }
 

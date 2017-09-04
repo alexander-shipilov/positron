@@ -1,5 +1,4 @@
-import { createPropsFilter } from "positron-core/prop-types";
-import PropTypes from "prop-types";
+import { createPropsFilter } from "positron-core/src/prop-types";
 import { ImageElementPropTypes } from "./_ImageElement";
 import { InputPropTypes } from "./Input";
 

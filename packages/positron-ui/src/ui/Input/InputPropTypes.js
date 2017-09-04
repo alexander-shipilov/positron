@@ -1,6 +1,6 @@
-import { ElementPropTypes } from "/ui/Element";
-import { createPropsFilter } from "positron-core/prop-types";
+import { createPropsFilter } from "positron-core/src/prop-types";
 import PropTypes from "prop-types";
+import { ElementPropTypes } from "../Element";
 
 export const InputPropTypes = Object.assign({}, ElementPropTypes, {
     error: PropTypes.bool,

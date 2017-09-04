@@ -108,7 +108,7 @@ describe("InvariableObject", () => {
             expect(bar.assign({ foo }).foo).toBe(foo);
         });
 
-        it("#assign should reset property if passed value is null or undefined", () => {
+        it("#assign should reset property to undefined if passed value is null or undefined", () => {
             let next;
 
             next = bar.assign({ foo: null });
@@ -270,22 +270,20 @@ describe("InvariableObject", () => {
         });
     });
 
-    describe("#reset", () => {
-        it("returns a version created by new operator", () => {
-            const target = new InvariableObject({ foo: 1 });
-
-            expect(target.reset()).toBe(target);
-            expect(target.assign({ bar: 2 }).reset()).toBe(target);
-        });
-    });
-
     describe("#valueOf", () => {
-        it("should return all props", () => {
+        it("returns all defined props", () => {
             const target = new InvariableObject({ foo: 1 });
 
             expect(target.valueOf()).toEqual({ foo: 1 });
             expect(target.assign({ foo: 1, bar: 2 }).valueOf()).toEqual({ foo: 1, bar: 2 });
             expect(target.assign({ foo: 3 }).assign({ foo: 1, bar: 2 }).valueOf()).toEqual({ foo: 1, bar: 2 });
+            expect(target.assign({ foo: void 0 }).valueOf()).toEqual({});
+        });
+
+        it("should omit undefined props", () => {
+            const target = new InvariableObject({ foo: 1 });
+
+            expect(target.assign({ foo: void 0, bar: 1 }).valueOf()).not.toHaveProperty("foo");
         });
     });
 });

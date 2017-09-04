@@ -4,7 +4,7 @@ type HorizontalSide = "left" | "right" | "center";
 type VerticalSide = "top" | "bottom" | "center";
 
 export type AlignSide = HorizontalSide | VerticalSide;
-export type AlignTargetSide = HorizontalSide | VerticalSide | "vertical" | "horizontal";
+export type AlignTargetSide = AlignSide | "vertical" | "horizontal";
 
 export type AlignProps = {
     left?: HorizontalSide,

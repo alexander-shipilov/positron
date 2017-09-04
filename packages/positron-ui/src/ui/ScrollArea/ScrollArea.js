@@ -1,5 +1,5 @@
-import { OVERFLOW_AUTO } from "positron-core/constants/overflows";
 import { Component } from "/Component";
+import { OVERFLOW_AUTO } from "positron-core/src/constants/overflows";
 
 import "./ScrollArea.scss";
 import { ScrollAreaModel } from "./ScrollAreaModel";
@@ -9,17 +9,25 @@ import { ScrollAreaRenderer } from "./ScrollAreaRenderer";
 let scrollSize;
 
 export class ScrollArea extends Component {
-    init(...args) {
-        super.init(...args);
+    onBarScroll = (orientation, scrollPos) => {
+        this.setScroll(orientation, scrollPos);
+    };
+
+    onScroll = () => {
+        this.setScrollState();
+    };
+
+    onWindowResize = () => {
+        this.setTimeout(this.onScroll, 300);
+    };
+
+    constructor(...args) {
+        super(...args);
 
         this.initState({
             scroll: new ScrollAreaModel(),
             scrollSize: scrollSize
         });
-
-        this.onScroll = this.onScroll.bind(this);
-        this.onBarScroll = this.onBarScroll.bind(this);
-        this.onWindowResize = this.onWindowResize.bind(this);
     }
 
     componentDidMount() {
@@ -47,18 +55,6 @@ export class ScrollArea extends Component {
             scrollSize,
             scroll: scrollState.assign(ScrollAreaModel.getScrollState(inner))
         });
-    }
-
-    onScroll() {
-        this.setScrollState();
-    }
-
-    onBarScroll(orientation, scrollPos) {
-        this.setScroll(orientation, scrollPos);
-    }
-
-    onWindowResize() {
-        this.setTimeout(this.onScroll, 300);
     }
 }
 

@@ -1,19 +1,15 @@
 const webpack = require("webpack");
 const path = require("path");
 
-const root = path.resolve(__dirname, "../");
-const src = path.resolve(root, "docs/src");
-const build = path.resolve(root, "docs/build");
-
 module.exports = {
     entry: [
         "webpack/hot/only-dev-server",
         "./node_modules/babel-polyfill",
-        path.resolve(__dirname, "src/app.js")
+        path.resolve("./src/app.js")
     ],
 
     devServer: {
-        contentBase: [src, path.resolve("src")],
+        contentBase: ["./src"],
         disableHostCheck: true,
         hot: true,
         host: "0.0.0.0",
@@ -25,7 +21,7 @@ module.exports = {
     devtool: "eval",
 
     output: {
-        path: build,
+        path: path.resolve("./build"),
         filename: "app.js"
     },
 

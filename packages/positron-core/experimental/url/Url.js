@@ -99,7 +99,7 @@ export class Url extends InvariableObject {
     path: ?UrlPath;
     searchParams: ?UrlSearchParams;
 
-    get hostname(): ?string {
+    get hostname(): string | void {
         return this._hostname;
     }
 
@@ -107,7 +107,7 @@ export class Url extends InvariableObject {
         this.define({ _hostname: hostname === null || hostname === void 0 ? void 0 : String(hostname) });
     }
 
-    get port(): ?number {
+    get port(): number | void {
         return this._port;
     }
 
@@ -120,7 +120,7 @@ export class Url extends InvariableObject {
     get host(): ?string {
         const { hostname, port } = this;
 
-        return hostname === void 0 ? void 0 : hostname + (port === void 0 ? "" : ":" + port);
+        return hostname === null || hostname === void 0 ? void 0 : hostname + (port === void 0 ? "" : ":" + port);
     }
 
     get username(): ?string {

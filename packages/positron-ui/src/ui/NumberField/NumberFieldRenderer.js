@@ -1,6 +1,6 @@
 import { RepeatButton } from "/RepeatButton";
-import { TextField, filterTextFieldProps } from "/TextField";
-import { isDefined } from "positron-core/object";
+import { filterTextFieldProps, TextField } from "/TextField";
+import { isDefined } from "positron-core/src/object";
 import React from "react";
 
 export const NumberFieldRenderer = {

@@ -1,5 +1,5 @@
-import { ORIENTATION_HORIZONTAL, ORIENTATION_VERTICAL } from "positron-core/constants/orientations";
-import { OVERFLOW_HIDDEN, OVERFLOW_SCROLL } from "positron-core/constants/overflows";
+import { ORIENTATION_HORIZONTAL, ORIENTATION_VERTICAL } from "positron-core/src/constants/orientations";
+import { OVERFLOW_HIDDEN, OVERFLOW_SCROLL } from "positron-core/src/constants/overflows";
 import React from "react";
 
 import { ScrollBar } from "./ScrollBar";
@@ -10,7 +10,7 @@ export const ScrollAreaRenderer = {
 
         return (
             <div className={ scrollArea.element("content") }>
-                {children}
+                { children }
             </div>
         );
     },
@@ -26,7 +26,7 @@ export const ScrollAreaRenderer = {
 
         return (
             <div ref="inner" className={ scrollArea.element("inner") } style={ style } onScroll={ onScroll }>
-                {this.renderContent(scrollArea)}
+                { this.renderContent(scrollArea) }
             </div>
         );
     },
@@ -57,9 +57,9 @@ export const ScrollAreaRenderer = {
 
         return (
             <div className={ className } onMouseEnter={ onScroll }>
-                {this.renderInner(scrollArea)}
-                {this.renderScrollBar(scrollArea, ORIENTATION_VERTICAL, overflowY)}
-                {this.renderScrollBar(scrollArea, ORIENTATION_HORIZONTAL, overflowX)}
+                { this.renderInner(scrollArea) }
+                { this.renderScrollBar(scrollArea, ORIENTATION_VERTICAL, overflowY) }
+                { this.renderScrollBar(scrollArea, ORIENTATION_HORIZONTAL, overflowX) }
             </div>
         );
     }

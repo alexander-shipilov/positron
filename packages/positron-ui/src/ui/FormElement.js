@@ -1,4 +1,4 @@
-import { createPropsFilter } from "positron-core/prop-types";
+import { createPropsFilter } from "positron-core/src/prop-types";
 import PropTypes from "prop-types";
 import { ElementPropTypes } from "./Element";
 
@@ -10,15 +10,20 @@ export class FormElement {
         this.onInputBlur = this.onInputBlur.bind(this);
     }
 
-    setFocused(focus) {
-        this.setState({ focus: !!focus });
-    }
-
     onChange(value) {
         const { name, onChange } = this.props;
 
         if (onChange) {
             onChange(value, name);
+        }
+    }
+
+    onInputBlur(...args) {
+        const { onBlur } = this.props;
+
+        this.setFocused(false);
+        if (onBlur) {
+            onBlur(...args);
         }
     }
 
@@ -31,13 +36,8 @@ export class FormElement {
         }
     }
 
-    onInputBlur(...args) {
-        const { onBlur } = this.props;
-
-        this.setFocused(false);
-        if (onBlur) {
-            onBlur(...args);
-        }
+    setFocused(focus) {
+        this.setState({ focus: !!focus });
     }
 }
 

@@ -1,5 +1,5 @@
 import { InputPropTypes } from "/Input";
-import { isArrayLike, createPropsFilter } from "positron-core/prop-types";
+import { createPropsFilter, isArrayLike } from "positron-core/src/prop-types";
 
 export const CheckBoxGroupPropTypes = Object.assign({}, InputPropTypes, {
     options: isArrayLike,

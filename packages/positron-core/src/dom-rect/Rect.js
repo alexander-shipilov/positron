@@ -1,9 +1,10 @@
 // @flow
 
 import { compact, isDefined } from "../object";
+import type { Coord } from "./_utils";
+import { add, half, toStyle, validate } from "./_utils";
 import type { PointProps, PointStyle } from "./Point";
 import { Point } from "./Point";
-import { add, Coord, half, toStyle, validate } from "./utils";
 
 export interface RectProps extends PointProps {
     width?: Coord,
@@ -13,6 +14,42 @@ export interface RectProps extends PointProps {
 export interface RectStyle extends PointStyle {
     width: string,
     height: string
+}
+
+function contains(position, size, targetPosition, targetSize) {
+    let isContain = true;
+
+    if (position !== void 0 && targetPosition !== void 0) {
+        isContain = targetPosition >= position;
+
+        if (isContain && size !== void 0) {
+            isContain = targetPosition <= position + size;
+
+            if (isContain && targetSize !== void 0) {
+                isContain = targetPosition + targetSize <= position + size;
+            }
+        }
+    }
+
+    return isContain;
+}
+
+function constrain(position, size, targetPosition, targetSize) {
+    if (position !== void 0 && targetPosition !== void 0) {
+        targetPosition = Math.max(targetPosition, position);
+
+        if (size !== void 0) {
+            targetPosition = Math.min(targetPosition, position + size);
+
+            if (targetSize !== void 0) {
+                targetSize = Math.min(targetSize, position + size - targetPosition);
+            }
+        }
+    } else if (targetSize !== void 0 && size !== void 0) {
+        targetSize = Math.min(targetSize, size);
+    }
+
+    return { position: targetPosition, size: targetSize };
 }
 
 export class Rect extends Point {
@@ -59,67 +96,17 @@ export class Rect extends Point {
     }
 
     contains(...props: RectLike[]): boolean {
-        const { left, top, width, height } = new Rect(...props);
+        const rect = new Rect(...props);
 
-        let contains = true;
-
-        if (contains && left !== void 0 && this.left !== void 0) {
-            contains = left >= this.left;
-
-            if (contains && this.width !== void 0) {
-                contains = left <= this.left + this.width;
-
-                if (contains && width !== void 0) {
-                    contains = left + width <= this.left + this.width;
-                }
-            }
-        }
-
-        if (contains && top !== void 0 && this.top !== void 0) {
-            contains = top >= this.top;
-
-            if (contains && this.height !== void 0) {
-                contains = top <= this.top + this.height;
-
-                if (contains && height !== void 0) {
-                    contains = top + height <= this.top + this.height;
-                }
-            }
-        }
-
-        return contains;
+        return contains(this.left, this.width, rect.left, rect.width)
+            && contains(this.top, this.height, rect.top, rect.height);
     }
 
     constrain(...props: RectLike[]): Rect {
-        let { left, top, width, height } = new Rect(...props);
+        const rect = new Rect(...props);
 
-        if (left !== void 0 && this.left !== void 0) {
-            left = Math.max(left, this.left);
-
-            if (this.width !== void 0) {
-                left = Math.min(left, this.left + this.width);
-
-                if (width !== void 0) {
-                    width = Math.min(width, this.left + this.width - left);
-                }
-            }
-        } else if (width !== void 0 && this.width !== void 0) {
-            width = Math.min(width, this.width);
-        }
-
-        if (top !== void 0 && this.top !== void 0) {
-            top = Math.max(top, this.top);
-
-            if (this.height !== void 0) {
-                top = Math.min(top, this.top + this.height);
-
-                if (height !== void 0) {
-                    height = Math.min(height, this.top + this.height - top);
-                }
-            }
-        } else if (height !== void 0 && this.height !== void 0) {
-            height = Math.min(height, this.height);
-        }
+        const { position: left, size: width } = constrain(this.left, this.width, rect.left, rect.width);
+        const { position: top, size: height } = constrain(this.top, this.height, rect.top, rect.height);
 
         return Rect.from({ left, top, width, height });
     }
@@ -134,21 +121,15 @@ export class Rect extends Point {
         return this.pick("left", "top", "width", "height");
     }
 
-    static fromElement(el: ?HTMLElement, toEl: ?HTMLElement): Rect {
-        const point = super.fromElement(el, toEl);
-        const size = {};
+    static fromElement(el: Element, toEl: ?Element): Rect {
+        const { width, height } = el.getBoundingClientRect();
 
-        el = el || document.body;
-        if (el) {
-            const { width, height } = el.getBoundingClientRect();
-
-            Object.assign(size, { width, height });
-        }
-
-        return new this(point, size);
+        return new this(super.fromElement(el, toEl), { width, height });
     }
 
-    static centerOf(rect: Rect) {
+    static centerOf(...props: RectLike[]): Rect {
+        const rect = new this(...props);
+
         return rect.moveBy({ left: half(rect.width), top: half(rect.height) }).resizeTo({ width: 0, height: 0 });
     }
 }

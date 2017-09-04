@@ -1,7 +1,7 @@
-import { Input, filterInputProps } from "/Input";
-import { filterTextElementProps } from "/ui/TextElement";
-import { nvl } from "positron-core/object";
+import { filterInputProps, Input } from "/Input";
+import { nvl } from "positron-core/src/object";
 import React from "react";
+import { filterTextElementProps } from "../TextElement";
 
 export const TextFieldRenderer = {
     renderInput(textField) {

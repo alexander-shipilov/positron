@@ -5,7 +5,8 @@ export class Publisher extends Base {
         return this._listeners.concat();
     }
 
-    init() {
+    constructor() {
+        super();
         this.define({ _listeners: [] });
     }
 
@@ -19,8 +20,8 @@ export class Publisher extends Base {
         return this.unlisten.bind(this, handler);
     }
 
-    trigger(...data) {
-        return Promise.all(this._listeners.map((listener) => Promise.resolve(listener(...data)))).then(() => void 0);
+    trigger(data) {
+        return Promise.all(this._listeners.map((listener) => Promise.resolve(listener(data)))).then(() => data);
     }
 
     unlisten(handler) {

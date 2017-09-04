@@ -1,11 +1,8 @@
-import { createPropsFilter } from "positron-core/prop-types";
+import { addEventListener } from "positron-core/src/dom-event";
+import { createPropsFilter } from "positron-core/src/prop-types";
 import PropTypes from "prop-types";
-import { addEventListener } from "positron-core/dom-event";
 
 export class Element {
-    initElement() {
-    }
-
     addEventListener(...args) {
         return this.addUnmountListener(addEventListener(...args));
     }
@@ -20,6 +17,18 @@ export class Element {
         return listener;
     }
 
+    componentWillUnmount() {
+        const { onUnmount } = this;
+
+        if (onUnmount) {
+            this.onUnmount = null;
+            onUnmount.forEach((removeListener) => removeListener());
+        }
+    }
+
+    initElement() {
+    }
+
     removeEventListeners(listeners) {
         listeners.forEach((removeListener) => {
             const index = this.onUnmount.indexOf(removeListener);
@@ -29,15 +38,6 @@ export class Element {
                 removeListener();
             }
         });
-    }
-
-    componentWillUnmount() {
-        const { onUnmount } = this;
-
-        if (onUnmount) {
-            this.onUnmount = null;
-            onUnmount.forEach((removeListener) => removeListener());
-        }
     }
 }
 

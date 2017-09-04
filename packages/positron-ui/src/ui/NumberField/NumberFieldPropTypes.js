@@ -1,5 +1,5 @@
-import { PropTypes, createPropsFilter } from "positron-core/prop-types";
-import { filterTextElementProps } from "/ui/TextElement";
+import { createPropsFilter, PropTypes } from "positron-core/src/prop-types";
+import { filterTextElementProps } from "../TextElement";
 
 export const NumberFieldPropTypes = Object.assign({}, filterTextElementProps, {
     min: PropTypes.number,

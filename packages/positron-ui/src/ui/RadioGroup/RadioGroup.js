@@ -1,13 +1,17 @@
 import { Component } from "/Component";
-import { FormElement } from "/ui/FormElement";
+import { FormElement } from "../FormElement";
 
 import "./RadioGroup.scss";
 import { RadioGroupPropTypes } from "./RadioGroupPropTypes";
 import { RadioGroupRenderer } from "./RadioGroupRenderer";
 
 export class RadioGroup extends Component.implement(FormElement) {
-    init(...args) {
-        super.init(...args);
+    onRadioChange = (checked, name) => {
+        this.onChange(checked ? name : "");
+    };
+
+    constructor(...args) {
+        super(...args);
         this.initFormElement();
 
         this.onRadioChange = this.onRadioChange.bind(this);
@@ -21,10 +25,6 @@ export class RadioGroup extends Component.implement(FormElement) {
         const { value } = this.props;
 
         return value === optionValue;
-    }
-
-    onRadioChange(checked, name) {
-        this.onChange(checked ? name : "");
     }
 }
 

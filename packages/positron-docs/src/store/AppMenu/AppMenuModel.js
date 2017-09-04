@@ -1,17 +1,17 @@
-import { InvariableObject, TypedInvariableArray } from "positron-core/invariable";
-import { toKebabCase } from "positron-core/string";
+import { InvariableObject, TypedInvariableArray } from "positron-core/src/invariable";
+import { toKebabCase } from "positron-core/src/string";
 
 export class AppMenuEntry extends InvariableObject {
-    get ref() {
-        return this.href || toKebabCase(this.title);
-    }
-
     get expandable() {
         return this.entries !== void 0 && this.entries.length > 0;
     }
 
-    init(...data) {
-        super.init({ title: "", icon: "", href: "", expanded: true }, ...data);
+    get ref() {
+        return this.href || toKebabCase(this.title);
+    }
+
+    constructor(...data) {
+        super({ title: "", icon: "", href: "", expanded: true }, ...data);
     }
 }
 

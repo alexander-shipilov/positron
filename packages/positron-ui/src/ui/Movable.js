@@ -1,25 +1,55 @@
 // @flow
 
-import { DIRECTION_BOTH, DIRECTION_HORIZONTAL, DIRECTION_VERTICAL } from "positron-core/constants/directions";
-import { translateStyle } from "positron-core/dom";
-import { Point, Rect } from "positron-core/dom-rect";
+import { DIRECTION_BOTH, DIRECTION_HORIZONTAL, DIRECTION_VERTICAL } from "positron-core/src/constants/directions";
+import { translateStyle } from "positron-core/src/dom";
+import { Point, Rect } from "positron-core/src/dom-rect";
 import { findDOMNode } from "react-dom";
 import { EventTarget } from "./EventTarget";
 
 export class Movable extends EventTarget {
-    initMovable() {
+    static getMoveGhost(target) {
+        const ghost = Object.assign(document.createElement("div"), { innerHTML: target.outerHTML }).childNodes[0];
+        const rect = Rect.fromElement(target).moveTo({ left: 0, width: 0 });
+
+        ghost.classList.add("move-ghost");
+
+        Object.assign(ghost.style, rect.toStyle(), {
+            position: "absolute",
+            pointerEvents: "none",
+            transition: "none",
+            transform: "none",
+            WebkitTransform: "none"
+        });
+
+        return ghost;
+    }
+
+    endMove(props) {
+        const { ghost } = props;
+
+        this.onMoveEnd(props);
+
+        if (ghost) {
+            ghost.parentNode.removeChild(ghost);
+        }
+    }
+
+    endMoveToEvent(props, event) {
+        this.moveToEvent(props, event);
+        this.removeEventListeners(props.listeners);
+        this.endMove(props);
     }
 
     getMoveArea({ target }): HTMLElement {
         return target.offsetParent;
     }
 
-    getMoveDirection() {
-        return DIRECTION_BOTH;
-    }
-
     getMoveConstraint() {
         return null;
+    }
+
+    getMoveDirection() {
+        return DIRECTION_BOTH;
     }
 
     getMoveGhost(): ?HTMLElement {
@@ -34,10 +64,21 @@ export class Movable extends EventTarget {
         return findDOMNode(this);
     }
 
+    initMovable() {
+    }
+
     move(props, { left, top }) {
         const { ghost, target } = props;
 
         Object.assign((ghost || target).style, translateStyle(left, top));
+    }
+
+    moveToElement(props, toElement) {
+        this.moveToPoint(props, Point.fromElement(toElement));
+    }
+
+    moveToEvent(props, event) {
+        this.moveToPoint(props, Point.fromClientEvent(event));
     }
 
     moveToPoint(props, point) {
@@ -61,39 +102,6 @@ export class Movable extends EventTarget {
 
         this.move(props, point);
         this.onMove(props);
-    }
-
-    moveToElement(props, toElement) {
-        this.moveToPoint(props, Point.fromElement(toElement));
-    }
-
-    moveToEvent(props, event) {
-        this.moveToPoint(props, Point.fromClientEvent(event));
-    }
-
-    endMove(props) {
-        const { ghost } = props;
-
-        this.onMoveEnd(props);
-
-        if (ghost) {
-            ghost.parentNode.removeChild(ghost);
-        }
-    }
-
-    endMoveToEvent(props, event) {
-        this.moveToEvent(props, event);
-        this.removeEventListeners(props.listeners);
-        this.endMove(props);
-    }
-
-    startMoveToEvent(props, event) {
-        props.listeners = [
-            this.addEventListener(window, "mousemove", this.moveToEvent.bind(this, props), true),
-            this.addEventListener(window, "mouseup", this.endMoveToEvent.bind(this, props), true)
-        ];
-
-        this.moveToEvent(props, event);
     }
 
     onMove(props) {
@@ -132,20 +140,12 @@ export class Movable extends EventTarget {
         this.startMoveToEvent(props, event);
     }
 
-    static getMoveGhost(target) {
-        const ghost = Object.assign(document.createElement("div"), { innerHTML: target.outerHTML }).childNodes[0];
-        const rect = Rect.fromElement(target).moveTo({ left: 0, width: 0 });
+    startMoveToEvent(props, event) {
+        props.listeners = [
+            this.addEventListener(window, "mousemove", this.moveToEvent.bind(this, props), true),
+            this.addEventListener(window, "mouseup", this.endMoveToEvent.bind(this, props), true)
+        ];
 
-        ghost.classList.add("move-ghost");
-
-        Object.assign(ghost.style, rect.toStyle(), {
-            position: "absolute",
-            pointerEvents: "none",
-            transition: "none",
-            transform: "none",
-            WebkitTransform: "none"
-        });
-
-        return ghost;
+        this.moveToEvent(props, event);
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from "/ui/Component";
+import { Component } from "../Component";
 
 import "./Icon.scss";
 import { IconPropTypes } from "./IconPropTypes";

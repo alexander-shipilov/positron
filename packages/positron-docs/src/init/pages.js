@@ -1,3 +1,4 @@
+import { connect } from "positron-core/src/dataflow";
 import { Installation } from "../pages/Installation";
 import { intl } from "./intl";
 
@@ -9,7 +10,7 @@ export default [
             {
                 title: "Installation",
                 icon: "android-download",
-                component: Installation.connect({ intl: intl.store })
+                component: connect(Installation, { intl: intl.store })
             }
         ]
     },

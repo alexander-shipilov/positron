@@ -1,4 +1,4 @@
-import { Store } from "positron-core/dataflow";
+import { Store } from "positron-core/src/dataflow";
 import { AppMenuModel } from "./AppMenuModel";
 
 export class AppMenuStore extends Store.of(AppMenuModel) {

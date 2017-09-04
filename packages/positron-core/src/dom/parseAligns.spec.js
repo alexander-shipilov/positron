@@ -9,6 +9,12 @@ describe("parseAligns", () => {
     });
 
     it("should throw if invalid aligns passed", () => {
-        expect(() => parseAligns("aa")).toThrow();
+        function expectInvalidAlignToThrow(...aligns) {
+            aligns.forEach((align) => {
+                expect(() => parseAligns(align)).toThrow();
+            });
+        }
+
+        expectInvalidAlignToThrow("aa", "lh", "lv", "rh", "rv", "th", "tv", "bh", "bv");
     });
 });

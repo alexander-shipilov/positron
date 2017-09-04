@@ -1,5 +1,6 @@
 import { Base } from "../Base";
-import { assign, clone, forEach, getAncestorOf, isEqual, map, pick, toJSON } from "../object";
+import { empty } from "../func/empty";
+import { assign, clone, filter, forEach, getAncestorOf, isDefined, isEqual, map, toJSON, valueOf } from "../object";
 
 function isChanged(next, current) {
     return Object.keys(next).length !== 0 || !isEqual(next, current);
@@ -7,8 +8,16 @@ function isChanged(next, current) {
 
 export class InvariableObject extends Base {
     static assign(target, source) {
-        if (source !== null && source !== void 0 && source !== target && !(source instanceof this)) {
+        if (source !== target && isDefined(source) && !(source instanceof this)) {
             source = target ? target.assign(source) : this.from(source);
+        }
+
+        return source;
+    }
+
+    static set(target, source) {
+        if (source !== target && isDefined(source) && !(source instanceof this)) {
+            source = target ? target.set(source) : this.from(source);
         }
 
         return source;
@@ -31,7 +40,7 @@ export class InvariableObject extends Base {
             set(nextValue) {
                 const currValue = this[prop];
 
-                nextValue = Type.assign(currValue, nextValue);
+                nextValue = Type.set(currValue, nextValue);
                 if (currValue !== nextValue) {
                     this.define({ [prop]: nextValue });
                 }
@@ -49,14 +58,12 @@ export class InvariableObject extends Base {
         return this;
     }
 
-    static getInvariableProperties(target) {
-        const { invariableProps } = this;
+    constructor(...props) {
+        super();
 
-        return target && invariableProps ? pick(target, ...Object.keys(invariableProps)) : void 0;
-    }
-
-    init(...props) {
-        this.setProps(...props);
+        if (props.length) {
+            this.setProps(...props);
+        }
     }
 
     setProps(...props) {
@@ -72,12 +79,14 @@ export class InvariableObject extends Base {
         return isEqual(this, next) ? this : !ancestor || isChanged(next, ancestor) ? next : ancestor;
     }
 
-    isEqual(target) {
-        return target instanceof this.constructor && isEqual(this, target);
+    set(props) {
+        props = Object.assign(map(this.valueOf(), empty), valueOf(props));
+
+        return this.assign(props);
     }
 
-    reset() {
-        return getAncestorOf(this) || this;
+    isEqual(target) {
+        return target instanceof this.constructor && isEqual(this, target);
     }
 
     toJSON() {
@@ -85,6 +94,10 @@ export class InvariableObject extends Base {
     }
 
     valueOf() {
-        return Object.assign({}, getAncestorOf(this), this, this.constructor.getInvariableProperties(this));
+        const { invariableProps } = this.constructor;
+        const value = Object.assign({}, getAncestorOf(this), this,
+            invariableProps && Object.keys(invariableProps).map((key) => this[key]));
+
+        return filter(value, (value) => value !== void 0);
     }
 }

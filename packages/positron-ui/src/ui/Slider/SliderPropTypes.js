@@ -1,7 +1,7 @@
-import { FormElement } from "/ui/FormElement";
-import { isDefined } from "positron-core/object";
-import { createPropsFilter } from "positron-core/prop-types";
+import { isDefined } from "positron-core/src/object";
+import { createPropsFilter } from "positron-core/src/prop-types";
 import PropTypes from "prop-types";
+import { FormElement } from "../FormElement";
 
 export function sliderValueType(props, propName, componentName, ...rest) {
     let error = PropTypes.number(props, propName, componentName, ...rest);

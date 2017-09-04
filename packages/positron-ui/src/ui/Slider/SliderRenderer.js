@@ -1,6 +1,6 @@
-import { Input, filterInputProps } from "/Input";
-import { clamp, round } from "positron-core/math";
-import { isDefined, nvl } from "positron-core/object";
+import { filterInputProps, Input } from "/Input";
+import { clamp, round } from "positron-core/src/math";
+import { isDefined, nvl } from "positron-core/src/object";
 import React from "react";
 
 export const SliderRenderer = {

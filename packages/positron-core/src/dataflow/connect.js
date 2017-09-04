@@ -1,27 +1,64 @@
-import { getName } from "../func";
+import React from "react";
+import { isImplementationOf } from "../func";
 import { every, forEach, map } from "../object";
-import { Component as ReactComponent, React } from "../react";
+import { Component } from "../react";
 import { Store } from "./Store";
 
-function toString(stores) {
-    return "connect("
-        + Object.keys(stores).map((prop) => prop + ": " + getName(stores[prop].constructor)).join(", ") + ")";
+function toString(props) {
+    const string = Object.keys(props).map((key) => `${ key }: ${ props[key] }`).join(", ");
+
+    return string ? `{ ${ string } }` : "{}";
 }
 
 function onStoreChange(target, prop, data) {
-    const listeners = target.listeners;
-
-    if (listeners && listeners.hasOwnProperty(prop)) {
+    if (target.connected) {
         target.setState({ [prop]: data });
     }
 }
 
-export function connect(Component, stores, ...props) {
+export class ConnectedComponent extends Component {
+    static get connectedStores() {
+        return {};
+    }
+
+    static get connectedProps() {
+        return {};
+    }
+
+    static toString(...args) {
+        const { connectedStores, connectedProps } = this;
+
+        return super.toString(toString(connectedStores), toString(connectedProps), ...args);
+    }
+
+    componentWillMount() {
+        const { connectedStores, connectedProps } = this.constructor;
+
+        this.define({ connected: true });
+        forEach(connectedStores, (store, prop) => {
+            this.addUnmountListener(store.addListener(onStoreChange.bind(null, this, prop)));
+        });
+
+        this.setState(Object.assign({},
+            connectedProps,
+            this.props,
+            this.state,
+            map(connectedStores, ({ state }) => state)
+        ));
+    }
+
+    componentWillUnmount() {
+        this.define({ connected: void 0 });
+        super.componentWillUnmount();
+    }
+}
+
+function createConnectedComponent(Component) {
     const connectedStores = {};
     const connectedProps = {};
 
-    function connectProps(stores, ...props) {
-        if (!every(stores, (store) => store instanceof Store)) {
+    function connect(stores, ...props) {
+        if (stores !== null && stores !== void 0 && !every(stores, (store) => store instanceof Store)) {
             throw new TypeError("Store expected");
         }
 
@@ -29,42 +66,31 @@ export function connect(Component, stores, ...props) {
         Object.assign(connectedProps, ...props);
     }
 
-    connectProps(stores, ...props);
-
-    return class extends ReactComponent {
-        static get name() {
-            return Component.name;
+    return class Connected extends ConnectedComponent {
+        static get connectedStores() {
+            return connectedStores;
         }
 
-        static toString(...args) {
-            return super.toString(toString(connectedStores), ...args);
+        static get connectedProps() {
+            return connectedProps;
         }
 
         static connect(stores, ...props) {
-            connectProps(stores, ...props);
+            connect(stores, ...props);
 
             return this;
-        }
-
-        componentWillReceiveProps(nextProps) {
-            this.setState(nextProps);
-        }
-
-        componentWillMount() {
-            this.listeners = map(connectedStores,
-                (store, prop) => store.addListener(onStoreChange.bind(null, this, prop)));
-
-            this.setState(Object.assign({}, this.props, connectedProps,
-                this.state, map(connectedStores, (store) => store.state)));
-        }
-
-        componentWillUnmount() {
-            forEach(this.listeners, (listener) => listener());
-            this.listeners = null;
         }
 
         render() {
             return React.createElement(Component, this.state);
         }
     };
+}
+
+export function connect(Component, stores, ...props) {
+    if (!isImplementationOf(Component, ConnectedComponent)) {
+        Component = createConnectedComponent(Component);
+    }
+
+    return Component.connect(stores, ...props);
 }

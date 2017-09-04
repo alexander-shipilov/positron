@@ -1,4 +1,4 @@
-import { Component } from "/ui/Component";
+import { Component } from "positron-ui/src/ui/Component";
 
 import "./App.scss";
 import { AppPropTypes } from "./AppPropTypes";
@@ -24,6 +24,12 @@ export class App extends Component {
             setExpanded.trigger(false);
         }
     };
+
+    componentWillMount() {
+        const { intlActions: { setLocale }, params: { locale } } = this.props;
+
+        setLocale.trigger(locale);
+    }
 
     componentWillReceiveProps({ location: nextLocation, params: nextParams }) {
         const { location, params } = this.props;

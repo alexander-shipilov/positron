@@ -95,13 +95,30 @@ describe("InvariableArray", () => {
         });
     });
 
-    describe("#reset", () => {
-        it("returns a version created by new operator", () => {
+    describe("#isEqual", () => {
+        it("compares an array with the passed value", () => {
             const arr = new InvariableArray(1, 2, 3);
 
-            expect(arr.reset()).toBe(arr);
-            expect(arr.push(4).reset()).toBe(arr);
-            expect(arr.shift().push(4).reset()).toBe(arr);
+            expect(arr.isEqual(new InvariableArray(1, 2, 3))).toBeTruthy();
+            expect(arr.isEqual(arr.push(4).pop())).toBeTruthy();
+        });
+    });
+
+    describe("#toJSON", () => {
+        it("returns an array of items converted to JSON", () => {
+            const arr = new InvariableArray(1, 2, 3);
+
+            expect(arr.toJSON()).toEqual([1, 2, 3]);
+            expect(arr.push(4).toJSON()).toEqual([1, 2, 3, 4]);
+        });
+    });
+
+    describe("#toString", () => {
+        it("returns a string representing the array and its elements", () => {
+            const arr = new InvariableArray(1, 2, 3);
+
+            expect(arr.toString()).toBe("1,2,3");
+            expect(arr.push(4).toString()).toBe("1,2,3,4");
         });
     });
 
@@ -117,7 +134,7 @@ describe("InvariableArray", () => {
     });
 
     describe("#concat", () => {
-        it("merge two or more arrays", () => {
+        it("merges two or more arrays", () => {
             const arr = new InvariableArray(1, 2, 3);
 
             expect(arr.concat(4)).toBeInstanceOf(InvariableArray);
@@ -135,6 +152,12 @@ describe("InvariableArray", () => {
 
             expect(arr.shift().concat(arr.pop())).not.toBe(arr);
             expect(arr.shift().concat(arr.pop()).valueOf()).toEqual([2, 3, 1, 2]);
+        });
+
+        it("should return the current instance if passed only empty arrays", () => {
+            const arr = new InvariableArray(1, 2, 3);
+
+            expect(arr.concat([], [])).toBe(arr);
         });
     });
 
@@ -428,8 +451,13 @@ describe("InvariableArray", () => {
         });
 
         it("should return the current instance if array was not modified", () => {
-            const arr = new InvariableArray(1, 2, 3);
+            let arr;
 
+            arr = new InvariableArray();
+            expect(arr.splice(1, 0)).toBe(arr);
+            expect(arr.splice(1, 1, 2)).toBe(arr);
+
+            arr = new InvariableArray(1, 2, 3);
             expect(arr.splice(1, 0)).toBe(arr);
             expect(arr.splice(1, 1, 2)).toBe(arr);
         });

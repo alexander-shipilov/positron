@@ -1,10 +1,12 @@
-import { Component } from "positron-core/react";
+import { Component } from "positron-core/src/react";
 import React from "react";
 import { hashHistory, IndexRedirect, Route, Router } from "react-router";
 import { intl, menu, settings } from "./init";
 import { App } from "./ui/App/App";
+import { connect } from "positron-core/src/dataflow";
 
-const AppView = App.connect(
+const AppView = connect(
+    App,
     {
         intl: intl.store,
         menu: menu.store,
@@ -18,36 +20,36 @@ const AppView = App.connect(
 );
 
 class AppRoutes extends Component {
-    renderRoute(item, index) {
-        const { ref, component } = item;
-
-        return (
-            <Route key={ index } path={ ref } { ...{ component } }>
-                { this.renderRoutes(item.entries) }
-            </Route>
-        );
-    }
-
-    renderRoutes(items) {
-        return items && items.length
-            ? [<IndexRedirect key="index" to={ items[0].ref } />, ...items.map(this.renderRoute, this)]
-            : null;
-    }
-
     render() {
-        const { items } = this.props;
+        const { routes } = this.props;
 
         return (
             <Router history={ hashHistory }>
                 <Route path="/" component={ AppView }>
                     <IndexRedirect to="en-US" />
                     <Route path=":locale">
-                        { this.renderRoutes(items) }
+                        { this.renderRoutes(routes) }
                     </Route>
                 </Route>
             </Router>
         );
     }
+
+    renderRoute(routes, index) {
+        const { ref, component } = routes;
+
+        return (
+            <Route key={ index } path={ ref } { ...{ component } }>
+                { this.renderRoutes(routes.entries) }
+            </Route>
+        );
+    }
+
+    renderRoutes(routes) {
+        return routes && routes.length
+            ? [<IndexRedirect key="index" to={ routes[0].ref } />, ...routes.map(this.renderRoute, this)]
+            : null;
+    }
 }
 
-export default AppRoutes.connect({ items: menu.store });
+export default connect(AppRoutes, { routes: menu.store });

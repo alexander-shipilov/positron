@@ -5,18 +5,6 @@ import { ModalPropTypes } from "./ModalPropTypes";
 import { ModalRenderer } from "./ModalRenderer";
 
 export class Modal extends Component {
-    constructor(...args) {
-        super(...args);
-
-        this.close = this.close.bind(this);
-    }
-
-    close() {
-        const { id } = this.props;
-
-        this.constructor.remove(id);
-    }
-
     static remove(id) {
         let container;
 
@@ -43,6 +31,18 @@ export class Modal extends Component {
         }
 
         return render(<Modal key="modal" { ...{ id, props } }>{ component }</Modal>, container);
+    }
+
+    constructor(...args) {
+        super(...args);
+
+        this.close = this.close.bind(this);
+    }
+
+    close() {
+        const { id } = this.props;
+
+        this.constructor.remove(id);
     }
 }
 

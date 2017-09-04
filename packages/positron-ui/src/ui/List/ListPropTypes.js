@@ -1,5 +1,5 @@
 import { InputPropTypes } from "/Input";
-import { isArrayLike, createPropsFilter } from "positron-core/prop-types";
+import { createPropsFilter, isArrayLike } from "positron-core/src/prop-types";
 import PropTypes from "prop-types";
 
 const ListAnyValueType = PropTypes.any;

@@ -1,4 +1,4 @@
-import { createPropsFilter, isClass } from "positron-core/prop-types";
+import { createPropsFilter, isClass } from "positron-core/src/prop-types";
 import PropTypes from "prop-types";
 import { AppMenuActions, AppMenuModel } from "../../store/AppMenu";
 import { AppSettingsActions, AppSettingsModel } from "../../store/AppSettings";

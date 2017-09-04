@@ -1,9 +1,15 @@
 // @flow
 
-import { AlignProps, BoundedRect, Bounds, Rect } from "../dom-rect";
+import type { AlignProps } from "../dom-rect";
+import { BoundedRect, Bounds, Rect } from "../dom-rect";
 
-export function alignTo(el: HTMLElement, toEl: HTMLElement, ...props: AlignProps[]): Bounds[] {
-    const { offsetParent: parent } = el;
+export function alignTo(el: HTMLElement, toEl: Element, ...props: AlignProps[]): Bounds[] {
+    const parent = el.offsetParent;
+    let bounds = [];
 
-    return props.map((props) => BoundedRect.fromElement(toEl, parent).align(Rect.fromElement(el, parent), props));
+    if (parent === null || parent === void 0 || parent instanceof Element) {
+        bounds = props.map((props) => BoundedRect.fromElement(toEl, parent).align(Rect.fromElement(el, parent), props));
+    }
+
+    return bounds;
 }

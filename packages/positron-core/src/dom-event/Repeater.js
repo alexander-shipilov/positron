@@ -30,10 +30,10 @@ function setRepeaterTimeout(repeater, timeout) {
 }
 
 export class Repeater extends Base {
-    init(...props) {
-        this.define({ _count: 0, _listeners: [], _timeout: null });
+    constructor(...props) {
+        super({ interval: 100 }, ...props);
 
-        super.init({ interval: 100 }, ...props);
+        this.define({ _count: 0, _listeners: [], _timeout: null });
     }
 
     onRepeat() {

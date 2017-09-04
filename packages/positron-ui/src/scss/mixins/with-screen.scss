@@ -1,9 +1,9 @@
-@import "../constants/screen.scss";
+@import "../constants/screen";
 
 @mixin with-screen-max($size, $only: "screen") {
     $size: $size + "-max";
 
-    @if(map_has_key($screen, $size)) {
+    @if (map_has_key($screen, $size)) {
         $width: map_get($screen, $size);
 
         @media only #{ $only } and (max-width: #{ $width }) {
@@ -17,7 +17,7 @@
 @mixin with-screen-min($size, $only: "screen") {
     $size: $size + "-min";
 
-    @if(map_has_key($screen, $size)) {
+    @if (map_has_key($screen, $size)) {
         $width: map_get($screen, $size);
 
         @media only #{ $only } and (min-width: #{ $width }) {

@@ -2,14 +2,26 @@ import { Children } from "react";
 import { Modal } from "./Modal";
 
 export class ModalOwner {
-    shouldModalRender() {
-        const { children } = this.props;
+    componentDidMount() {
+        this.updateModal();
+    }
 
-        return Children.count(children);
+    componentDidUpdate() {
+        this.updateModal();
+    }
+
+    componentWillUnmount() {
+        this.hideModal();
     }
 
     hideModal(modalId) {
         Modal.remove(modalId);
+    }
+
+    shouldModalRender() {
+        const { children } = this.props;
+
+        return Children.count(children);
     }
 
     showModal(props) {
@@ -24,17 +36,5 @@ export class ModalOwner {
         } else {
             this.hideModal();
         }
-    }
-
-    componentDidMount() {
-        this.updateModal();
-    }
-
-    componentDidUpdate() {
-        this.updateModal();
-    }
-
-    componentWillUnmount() {
-        this.hideModal();
     }
 }

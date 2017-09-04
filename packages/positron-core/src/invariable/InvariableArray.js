@@ -32,17 +32,15 @@ function isChanged(next, current) {
 }
 
 export class InvariableArray extends InvariableObject {
-    constructor(...items) {
-        super(new Array(...items));
-    }
-
     static from(data) {
         return new this().setProps(Array.from(data));
     }
 
-    init(items) {
-        defineLength(this, 0);
+    constructor(...items) {
+        items = new Array(...items);
 
+        super();
+        defineLength(this, 0);
         this.setProps(items, { length: items.length });
     }
 

@@ -1,7 +1,7 @@
-@import "scss/reset";
-@import "scss/constants/material-colors.scss";
-@import "fonts/Roboto";
-@import "scss/mixins";
+@import "~positron-ui/src/scss/reset";
+@import "~positron-ui/src/scss/constants/material-colors";
+@import "~positron-ui/src/scss/mixins";
+@import "./ionicons";
 
 #app {
     width: 100%;

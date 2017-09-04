@@ -1,5 +1,5 @@
-@import "scss/constants/material-colors";
-@import "scss/mixins";
+@import "~positron-ui/src/scss/constants/material-colors";
+@import "~positron-ui/src/scss/mixins";
 
 $doc-view-padding: 16px;
 
@@ -10,6 +10,7 @@ $doc-view-padding: 16px;
     box-shadow: 0 0 10px $material-black-light;
     margin: 96px 32px 32px 32px;
     max-width: 1000px;
+    transition: margin 0.2s ease-in;
 
     @include with-screen-max(x-small) {
         margin: 96px 0 32px 0;

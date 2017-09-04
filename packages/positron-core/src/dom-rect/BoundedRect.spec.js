@@ -1,7 +1,37 @@
+import { mockElement, mockParent } from "./_mock";
 import { BoundedRect } from "./BoundedRect";
 import { Rect } from "./Rect";
 
 describe("BoundedRect", () => {
+    describe(".fromElement", () => {
+        it("creates new bounds of the passed element relative to the second one", () => {
+            const elementRect = mockElement.getBoundingClientRect();
+            const parentRect = mockParent.getBoundingClientRect();
+
+            expect(BoundedRect.fromElement(mockElement, mockParent).valueOf()).toEqual({
+                left: elementRect.left - parentRect.left,
+                top: elementRect.top - parentRect.top,
+                right: parentRect.right - elementRect.right,
+                bottom: parentRect.bottom - elementRect.bottom,
+                width: elementRect.width,
+                height: elementRect.height
+            });
+        });
+
+        it("should return bounds relative to the body if the second param is omitted", () => {
+            const elementRect = mockElement.getBoundingClientRect();
+
+            expect(BoundedRect.fromElement(mockElement).valueOf()).toEqual({
+                left: elementRect.left,
+                top: elementRect.top,
+                right: -elementRect.right,
+                bottom: -elementRect.bottom,
+                width: elementRect.width,
+                height: elementRect.height
+            });
+        });
+    });
+
     describe("#align", () => {
         const bounds = BoundedRect.from({ left: 100, right: 100, top: 100, bottom: 100, width: 100, height: 100 });
         const rect = Rect.from({ width: 50, height: 50 });
@@ -38,5 +68,17 @@ describe("BoundedRect", () => {
     describe("#toStyle", () => {
         expect(BoundedRect.from({ left: 10, right: 10, top: 10, bottom: 10, width: 10, height: 10 }).toStyle())
             .toEqual({ left: "10px", right: "10px", top: "10px", bottom: "10px", width: "10px", height: "10px" });
+    });
+
+    describe("#valueOf", () => {
+        expect(BoundedRect.from({ left: 10 }).valueOf()).toEqual({ left: 10 });
+        expect(BoundedRect.from({ left: 10, right: 10 }).valueOf()).toEqual({ left: 10, right: 10 });
+        expect(BoundedRect.from({ left: 10, right: 10, top: 10 }).valueOf()).toEqual({ left: 10, right: 10, top: 10 });
+        expect(BoundedRect.from({ left: 10, right: 10, top: 10, bottom: 10 }).valueOf())
+            .toEqual({ left: 10, right: 10, top: 10, bottom: 10 });
+        expect(BoundedRect.from({ left: 10, right: 10, top: 10, bottom: 10, width: 10 }).valueOf())
+            .toEqual({ left: 10, right: 10, top: 10, bottom: 10, width: 10 });
+        expect(BoundedRect.from({ left: 10, right: 10, top: 10, bottom: 10, width: 10, height: 10 }).valueOf())
+            .toEqual({ left: 10, right: 10, top: 10, bottom: 10, width: 10, height: 10 });
     });
 });

@@ -1,14 +1,14 @@
 import { Component } from "/Component";
-import { TextElement } from "/ui/TextElement";
-import { FormElement } from "/ui/FormElement";
+import { FormElement } from "../FormElement";
+import { TextElement } from "../TextElement";
 
 import "./TextField.scss";
 import { TextFieldPropTypes } from "./TextFieldPropTypes";
 import { TextFieldRenderer } from "./TextFieldRenderer";
 
 export class TextField extends Component.implement(FormElement, TextElement) {
-    init(...args) {
-        super.init(...args);
+    constructor(...args) {
+        super(...args);
 
         this.initFormElement();
         this.initTextElement();

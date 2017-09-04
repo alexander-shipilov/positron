@@ -1,5 +1,5 @@
-import { ComponentRenderer } from "/ui/Component";
-import { filterElementProps } from "/ui/Element";
+import { ComponentRenderer } from "positron-ui/src/ui/Component";
+import { filterElementProps } from "positron-ui/src/ui/Element";
 import React from "react";
 
 export class DocViewRenderer extends ComponentRenderer {
@@ -15,15 +15,15 @@ export class DocViewRenderer extends ComponentRenderer {
         );
     }
 
-    static renderHeader(docView, header) {
-        return (
-            <header className={ docView.element("header") }>{ header }</header>
-        );
-    }
-
     static renderFooter(docView, footer) {
         return (
             <footer className={ docView.element("footer") }>{ footer }</footer>
+        );
+    }
+
+    static renderHeader(docView, header) {
+        return (
+            <header className={ docView.element("header") }>{ header }</header>
         );
     }
 }

@@ -1,5 +1,5 @@
-import { OVERFLOWS } from "positron-core/constants/overflows";
-import { createPropsFilter } from "positron-core/prop-types";
+import { OVERFLOWS } from "positron-core/src/constants/overflows";
+import { createPropsFilter } from "positron-core/src/prop-types";
 import PropTypes from "prop-types";
 
 export const ScrollAreaPropTypes = {

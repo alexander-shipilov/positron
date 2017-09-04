@@ -1,5 +1,5 @@
-import React from "react";
 import { Button, filterButtonProps } from "/Button";
+import React from "react";
 
 export const RepeatButtonRenderer = {
     render(repeatButton) {

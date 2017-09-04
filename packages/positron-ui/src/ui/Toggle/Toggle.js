@@ -1,27 +1,25 @@
 import { Component } from "/Component";
-import { FormElement } from "/ui/FormElement";
+import { FormElement } from "../FormElement";
 
 import "./Toggle.scss";
 import { TogglePropTypes } from "./TogglePropTypes";
 import { ToggleRenderer } from "./ToggleRenderer";
 
 export class Toggle extends Component.implement(FormElement) {
-    init(...args) {
-        super.init(...args);
-
-        this.initFormElement();
-        this.onInputChange = this.onInputChange.bind(this);
-        this.onLabelMouseDown = this.onLabelMouseDown.bind(this);
-    }
-
-    onInputChange(event) {
+    onInputChange = (event) => {
         const { target: { checked } } = event;
 
         this.onChange(checked);
-    }
+    };
 
-    onLabelMouseDown(event) {
+    onLabelMouseDown = (event) => {
         event.preventDefault();
+    };
+
+    constructor(...args) {
+        super(...args);
+
+        this.initFormElement();
     }
 }
 

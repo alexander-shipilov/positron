@@ -1,4 +1,4 @@
-import { Component } from "/ui/Component";
+import { Component } from "positron-ui/src/ui/Component";
 
 import "./DocView.scss";
 import { DocViewPropTypes } from "./DocViewPropTypes";

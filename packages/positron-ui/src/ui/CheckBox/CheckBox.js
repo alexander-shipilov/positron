@@ -1,5 +1,5 @@
 import { Component } from "/Component";
-import { FormElement } from "/ui/FormElement";
+import { FormElement } from "../FormElement";
 
 import "./CheckBox.scss";
 import { CheckBoxPropTypes } from "./CheckBoxPropTypes";

@@ -1,11 +1,11 @@
 // @flow
 
-import { isDefined } from "../object";
 import type { PointProps, PointStyle } from "./Point";
 import { Point } from "./Point";
 import type { RectLike } from "./Rect";
 import { Rect } from "./Rect";
-import { add, constrain, Coord, half, sub, toStyle, validate } from "./utils";
+import type { Coord } from "./_utils";
+import { half, sub, toStyle, validate } from "./_utils";
 
 export interface BoundsProps extends PointProps {
     right?: Coord,
@@ -17,13 +17,17 @@ export interface BoundsStyle extends PointStyle {
     bottom: string
 }
 
+function constrain(from: Coord, target: Coord): Coord {
+    return from === void 0 ? target : target === void 0 ? from : Math.max(from, target);
+}
+
 export class Bounds extends Point {
     set right(right: Coord) {
         if (!validate(right)) {
             throw this.getError("Invalid argument");
         }
 
-        this.define({ _right: right === void 0 || right === void 0 ? void 0 : +right });
+        this.define({ _right: right === null || right === void 0 ? void 0 : +right });
     }
 
     get right(): Coord {
@@ -35,7 +39,7 @@ export class Bounds extends Point {
             throw this.getError("Invalid argument");
         }
 
-        this.define({ _bottom: isDefined(bottom) ? +bottom : void 0 });
+        this.define({ _bottom: bottom === null || bottom === void 0 ? void 0 : +bottom });
     }
 
     get bottom(): Coord {
@@ -58,8 +62,8 @@ export class Bounds extends Point {
         return this.resizeTo({
             left: sub(this.left, left),
             top: sub(this.top, top),
-            right: add(this.right, right),
-            bottom: add(this.bottom, bottom)
+            right: sub(this.right, right),
+            bottom: sub(this.bottom, bottom)
         });
     }
 
@@ -81,7 +85,7 @@ export class Bounds extends Point {
     }
 
     constrain(...props: BoundsLike[]): Bounds {
-        let { left, top, right, bottom } = new Bounds(...props);
+        const { left, top, right, bottom } = new Bounds(...props);
 
         return new Bounds({
             left: constrain(this.left, left),
@@ -110,11 +114,20 @@ export class Bounds extends Point {
         });
     }
 
-    static fromElement(el: ?HTMLElement, toEl: ?HTMLElement): Bounds {
+    static fromElement(el: Element, toEl: ?Element): Bounds {
+        if (toEl === void 0 || toEl === null) {
+            toEl = document.body;
+        }
+
+        if (!toEl) {
+            throw this.getError("Element expected");
+        }
+
         return this.fromRect(Rect.fromElement(el), Rect.fromElement(toEl));
     }
 
-    static centerOf(rect: Rect) {
+    static centerOf(...props: RectLike[]): Bounds {
+        const rect = new Rect(...props);
         const left = half(rect.width);
         const top = half(rect.height);
 

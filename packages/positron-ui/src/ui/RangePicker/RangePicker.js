@@ -40,6 +40,8 @@ const getRangeStateFromProps = (props) => {
 
 
 export class RangePicker extends Component {
+    drag = (deltaX) => this.setDragState(deltaX);
+
     constructor(props, context) {
         super(props, context);
 
@@ -47,10 +49,6 @@ export class RangePicker extends Component {
         this.handleMouseDownTo = this.handleMouseDown.bind(this, DRAG_SIDE_TO);
         this.handleTouchStartFrom = this.handleTouchStart.bind(this, DRAG_SIDE_FROM);
         this.handleTouchStartTo = this.handleTouchStart.bind(this, DRAG_SIDE_TO);
-    }
-
-    initialState() {
-        return getRangeStateFromProps(this.props);
     }
 
     componentWillMount() {
@@ -68,6 +66,63 @@ export class RangePicker extends Component {
         if (changed) {
             this.setState(getRangeStateFromProps(nextProps));
         }
+    }
+
+    endDrag(deltaX) {
+        this.dragProps.unbind();
+
+        this.setDragState(deltaX, () => {
+            this.dragProps = null;
+            this.setState({ side: null });
+
+            if (this.props.onChange) {
+                this.props.onChange(this.state.value);
+            }
+        });
+    }
+
+    handleMouseDown(side, event) {
+        if (!this.dragProps) {
+            const startX = event.screenX;
+
+            event.preventDefault();
+            this.startDrag(side, {
+                "mousemove": this.handleMouseMove.bind(this, startX),
+                "mouseup": this.handleMouseUp.bind(this, startX)
+            });
+        }
+    };
+
+    handleMouseMove(startX, event) {
+        this.drag(event.screenX - startX);
+    }
+
+    handleMouseUp(startX, event) {
+        this.endDrag(event.screenX - startX);
+    }
+
+    handleTouchMove(startX, event) {
+        this.drag(event.changedTouches[0].screenX - startX);
+    };
+
+    handleTouchStart(side, event) {
+        if (!this.dragProps) {
+            const startX = event.changedTouches[0].screenX;
+
+            event.preventDefault();
+            this.startDrag(side, {
+                "touchmove": this.handleTouchMove.bind(this, startX),
+                "touchup touchend touchcancel": this.handleTouchUp.bind(this, startX)
+            });
+        }
+    };
+
+    handleTouchUp(startX, event) {
+        this.endDrag(event.changedTouches[0].screenX - startX);
+    };
+
+    initialState() {
+        return getRangeStateFromProps(this.props);
     }
 
     setDragState(deltaX, callback) {
@@ -117,61 +172,6 @@ export class RangePicker extends Component {
 
         this.setState({ side: side });
     }
-
-    drag = (deltaX) => this.setDragState(deltaX);
-
-    endDrag(deltaX) {
-        this.dragProps.unbind();
-
-        this.setDragState(deltaX, () => {
-            this.dragProps = null;
-            this.setState({ side: null });
-
-            if (this.props.onChange) {
-                this.props.onChange(this.state.value);
-            }
-        });
-    }
-
-    handleMouseMove(startX, event) {
-        this.drag(event.screenX - startX);
-    }
-
-    handleMouseUp(startX, event) {
-        this.endDrag(event.screenX - startX);
-    }
-
-    handleMouseDown(side, event) {
-        if (!this.dragProps) {
-            const startX = event.screenX;
-
-            event.preventDefault();
-            this.startDrag(side, {
-                "mousemove": this.handleMouseMove.bind(this, startX),
-                "mouseup": this.handleMouseUp.bind(this, startX)
-            });
-        }
-    };
-
-    handleTouchMove(startX, event) {
-        this.drag(event.changedTouches[0].screenX - startX);
-    };
-
-    handleTouchUp(startX, event) {
-        this.endDrag(event.changedTouches[0].screenX - startX);
-    };
-
-    handleTouchStart(side, event) {
-        if (!this.dragProps) {
-            const startX = event.changedTouches[0].screenX;
-
-            event.preventDefault();
-            this.startDrag(side, {
-                "touchmove": this.handleTouchMove.bind(this, startX),
-                "touchup touchend touchcancel": this.handleTouchUp.bind(this, startX)
-            });
-        }
-    };
 }
 
 RangePicker.initPropTypes(RangePickerPropTypes).initDefaultProps({

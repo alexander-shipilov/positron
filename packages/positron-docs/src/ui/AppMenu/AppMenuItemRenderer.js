@@ -1,9 +1,8 @@
-import { ComponentRenderer } from "/ui/Component";
-import { filterElementProps } from "/ui/Element";
-import { Icon } from "/ui/Icon";
+import { ComponentRenderer } from "positron-ui/src/ui/Component";
+import { filterElementProps } from "positron-ui/src/ui/Element";
+import { Icon } from "positron-ui/src/ui/Icon";
 import React from "react";
 import { Link } from "react-router";
-
 
 export class AppMenuItemRenderer extends ComponentRenderer {
     static render(appMenuItem) {
@@ -28,13 +27,6 @@ export class AppMenuItemRenderer extends ComponentRenderer {
         );
     }
 
-    static renderToggle(appMenuItem) {
-        return (
-            <Icon iconset="ion" glyph="chevron-down" className={ appMenuItem.element("toggle") }
-                onClick={ appMenuItem.onToggleClick } />
-        );
-    }
-
     static renderTitle(appMenuItem) {
         const { intl, item, parents } = appMenuItem.props;
         const href = [...parents, item].map((item) => item.ref).join("/");
@@ -45,6 +37,13 @@ export class AppMenuItemRenderer extends ComponentRenderer {
                 activeClassName={ appMenuItem.modifiers(className, { active: true }) }>
                 { item.icon ? this.renderIcon(appMenuItem) : null }{ item.title }
             </Link>
+        );
+    }
+
+    static renderToggle(appMenuItem) {
+        return (
+            <Icon iconset="ion" glyph="chevron-down" className={ appMenuItem.element("toggle") }
+                onClick={ appMenuItem.onToggleClick } />
         );
     }
 }

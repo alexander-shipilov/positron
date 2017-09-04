@@ -8,21 +8,20 @@ export class Store extends of(Publisher, { Type: InvariableObject }) {
         return this.types.Type;
     }
 
-    get Type() {
-        return this.constructor.Type;
-    }
-
     static of(Type) {
         return super.of({ Type });
     }
 
     static toString() {
-        return super.toString(this.Type);
+        return super.toString(this.Type.name);
     }
 
-    init(state) {
-        super.init();
+    get Type() {
+        return this.constructor.Type;
+    }
 
+    constructor(state) {
+        super();
         this.setState(state);
     }
 
@@ -44,20 +43,17 @@ export class Store extends of(Publisher, { Type: InvariableObject }) {
 
     setState(nextState) {
         const { Type } = this;
+        let promise;
 
+        nextState = Type.assign(this.state, nextState);
         if (this.state !== nextState) {
-            this.state = Type.assign(this.state, nextState);
-            this.trigger();
+            promise = Promise.resolve(this.state = nextState).then((state) => this.trigger(state));
         }
 
-        return this;
-    }
-
-    trigger() {
-        return Promise.resolve().then(() => super.trigger(this.state));
+        return promise || Promise.resolve(this.state);
     }
 
     toString() {
-        return super.toString(this.types.type);
+        return super.toString(this.Type.name);
     }
 }

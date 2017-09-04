@@ -4,14 +4,62 @@ import { Base } from "../Base";
 import { compact, forEach } from "../object";
 
 import type { AlignProps, AlignSide, AlignTargetSide } from "./AlignProps";
-import { Bounds, BoundsProps, BoundsStyle } from "./Bounds";
-import { Rect, RectProps, RectStyle } from "./Rect";
-import { add, Coord, sub, toStyle } from "./utils";
+import type { BoundsProps, BoundsStyle } from "./Bounds";
+import { Bounds } from "./Bounds";
+import type { RectProps, RectStyle } from "./Rect";
+import { Rect } from "./Rect";
+import type { Coord } from "./_utils";
+import { add, sub, toStyle } from "./_utils";
 
 export interface BoundedRectProps extends RectProps, BoundsProps {
 }
 
 export interface BoundedRectStyle extends RectStyle, BoundsStyle {
+}
+
+function alignSideToCenter(target, side, targetCenter, toCenter) {
+    const bounds = {};
+
+    if (side === "center") {
+        Object.assign(bounds, {
+            left: add(target.left, sub(targetCenter.left, toCenter.left)),
+            top: add(target.top, sub(targetCenter.top, toCenter.top)),
+            right: add(target.right, sub(targetCenter.right, toCenter.right)),
+            bottom: add(target.bottom, sub(targetCenter.bottom, toCenter.bottom))
+        });
+    } else {
+        bounds[side] = add(target[side], targetCenter[side]);
+    }
+
+    return bounds;
+}
+
+function alignCenterToSide(target, toSide, targetCenter, toCenter) {
+    const bounds = {};
+
+    if (toSide === "horizontal") {
+        bounds.left = add(target.left, sub(targetCenter.left, toCenter.left));
+        bounds.right = add(target.right, sub(targetCenter.right, toCenter.right));
+    } else if (toSide === "vertical") {
+        bounds.top = add(target.top, sub(targetCenter.top, toCenter.top));
+        bounds.bottom = add(target.bottom, sub(targetCenter.bottom, toCenter.bottom));
+    } else {
+        bounds[toSide] = sub(target[toSide], toCenter[toSide]);
+    }
+
+    return bounds;
+}
+
+function alignSideToSide(target, side, toSide) {
+    const bounds = {};
+
+    if (side !== toSide) {
+        bounds[side] = add(target[side], toSide === "left" || toSide === "right" ? target.width : target.height);
+    } else {
+        bounds[side] = target[side];
+    }
+
+    return bounds;
 }
 
 export class BoundedRect extends Base {
@@ -39,46 +87,32 @@ export class BoundedRect extends Base {
         return this.rect.height;
     }
 
-    init(...props: BoundedRectLike[]) {
+    constructor(...props: BoundedRectLike[]) {
         const { left, top, right, bottom, width, height } = compact(...props);
 
-        this.define({
+        super({
             bounds: new Bounds({ left, top, right, bottom }),
             rect: new Rect({ width, height })
         });
     }
 
-    align(rect: Rect, props: AlignProps): Bounds {
-        const center = Bounds.centerOf(this);
-        const rectCenter = Bounds.centerOf(rect);
-
+    align(to: Rect, props: AlignProps): Bounds {
+        const center = Bounds.centerOf(this.rect);
+        const toCenter = Bounds.centerOf(to);
         const bounds: Object = {};
 
         forEach(props, (toSide: AlignTargetSide, side: AlignSide) => {
-            if (side === "center" && toSide === "center") {
-                Object.assign(bounds, {
-                    left: add(this.left, sub(center.left, rectCenter.left)),
-                    top: add(this.top, sub(center.top, rectCenter.top)),
-                    right: add(this.right, sub(center.right, rectCenter.right)),
-                    bottom: add(this.bottom, sub(center.bottom, rectCenter.bottom))
-                });
+            let nextBounds;
+
+            if (toSide === "center") {
+                nextBounds = alignSideToCenter(this, side, center, toCenter);
             } else if (side === "center") {
-                if (toSide === "horizontal") {
-                    bounds.left = add(this.left, sub(center.left, rectCenter.left));
-                    bounds.right = add(this.right, sub(center.right, rectCenter.right));
-                } else if (toSide === "vertical") {
-                    bounds.top = add(this.top, sub(center.top, rectCenter.top));
-                    bounds.bottom = add(this.bottom, sub(center.bottom, rectCenter.bottom));
-                } else {
-                    bounds[toSide] = sub(this[toSide], rectCenter[toSide]);
-                }
-            } else if (toSide === "center") {
-                bounds[side] = add(this[side], center[side]);
-            } else if (side !== toSide) {
-                bounds[side] = add(this[side], toSide === "left" || toSide === "right" ? this.width : this.height);
+                nextBounds = alignCenterToSide(this, toSide, center, toCenter);
             } else {
-                bounds[side] = this[side];
+                nextBounds = alignSideToSide(this, side, toSide);
             }
+
+            Object.assign(bounds, nextBounds);
         });
 
         return new Bounds(bounds);
@@ -101,7 +135,7 @@ export class BoundedRect extends Base {
         return this.pick("left", "top", "right", "bottom", "width", "height");
     }
 
-    static fromElement(el: HTMLElement, toEl: HTMLElement): BoundedRect {
+    static fromElement(el: Element, toEl: Element): BoundedRect {
         return new BoundedRect(Rect.fromElement(el), Bounds.fromElement(el, toEl));
     }
 }

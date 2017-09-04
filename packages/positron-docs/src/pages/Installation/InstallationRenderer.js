@@ -1,16 +1,10 @@
-import { ComponentRenderer } from "/ui/Component/index";
-import { filterElementProps } from "/ui/Element/index";
+import { ComponentRenderer } from "positron-ui/src/ui/Component";
+import { filterElementProps } from "positron-ui/src/ui/Element";
 import React from "react";
-import { DocView } from "../../ui/DocView/index";
-import { Markdown } from "../../ui/Markdown/index";
+import { DocView } from "../../ui/DocView";
+import { Markdown } from "../../ui/Markdown";
 
 export class InstallationRenderer extends ComponentRenderer {
-    static renderHeader(installation) {
-        return (
-            <h1>{ installation.formatMessage("title") }</h1>
-        );
-    }
-
     static render(installation) {
         console.log(installation.props);
 
@@ -19,6 +13,12 @@ export class InstallationRenderer extends ComponentRenderer {
                 className={ installation.block() }>
                 <Markdown>{ installation.formatMessage("content") }</Markdown>
             </DocView>
+        );
+    }
+
+    static renderHeader(installation) {
+        return (
+            <h1>{ installation.formatMessage("title") }</h1>
         );
     }
 }

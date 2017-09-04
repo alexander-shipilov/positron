@@ -1,4 +1,4 @@
-import { Toggle, filterToggleProps } from "/Toggle";
+import { filterToggleProps, Toggle } from "/Toggle";
 import React from "react";
 
 export const CheckBoxRenderer = {

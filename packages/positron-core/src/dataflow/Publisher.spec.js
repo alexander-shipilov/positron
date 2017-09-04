@@ -2,31 +2,27 @@ import { Base } from "../Base";
 import { Publisher } from "./Publisher";
 
 describe("Publisher", () => {
+    let publisher;
+
     it("implements Base", () => {
         expect(Base.isImplementedBy(Publisher)).toBeTruthy();
     });
 
-    describe("#constructor", () => {
-        it("creates new Publisher", () => {
-            expect(new Publisher()).toBeInstanceOf(Publisher);
-        });
+    beforeEach(() => {
+        publisher = new Publisher();
     });
 
     describe("#listeners", () => {
         it("is an array of assigned listeners", () => {
-            expect(new Publisher().listeners).toBeInstanceOf(Array);
-            expect(new Publisher().listeners).toEqual([]);
+            expect(publisher.listeners).toBeInstanceOf(Array);
+            expect(publisher.listeners).toEqual([]);
         });
 
         it("should throw on attempt to assign", () => {
-            const publisher = new Publisher();
-
             expect(() => publisher.listeners = [() => void 0]).toThrow();
         });
 
         it("should not affect to Publisher", () => {
-            const publisher = new Publisher();
-
             publisher.listeners.push(1);
             expect(publisher.listeners).toEqual([]);
         });
@@ -34,7 +30,6 @@ describe("Publisher", () => {
 
     describe("#addListener", () => {
         it("adds the passed listener", () => {
-            const publisher = new Publisher();
             const first = () => void 0;
             const second = () => void 0;
 
@@ -46,7 +41,6 @@ describe("Publisher", () => {
         });
 
         it("should return a function to remove the passed listener", () => {
-            const publisher = new Publisher();
             const first = () => void 0;
             const removeFirst = publisher.addListener(first);
 
@@ -55,13 +49,17 @@ describe("Publisher", () => {
             removeFirst();
             expect(publisher.listeners).toEqual([]);
         });
+
+        it("should throw if passed arguments is not a function", () => {
+            expect(() => publisher.addListener(null)).toThrow("function expected");
+            expect(() => publisher.addListener({})).toThrow("function expected");
+        });
     });
 
     describe("#trigger", () => {
         it("calls all assigned listeners", () => {
             const first = jest.fn();
             const second = jest.fn();
-            const publisher = new Publisher();
 
             publisher.addListener(first);
             publisher.addListener(second);

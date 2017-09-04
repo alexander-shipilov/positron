@@ -1,4 +1,4 @@
-import { createPropsFilter } from "positron-core/prop-types";
+import { createPropsFilter } from "positron-core/src/prop-types";
 import { FormElementPropTypes } from "./_FormElement";
 import { ElementPropTypes } from "./Element";
 

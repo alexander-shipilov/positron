@@ -1,7 +1,8 @@
 // @flow
 
+export type { Coord } from "./_utils";
 export { Point } from "./Point";
-export type { Coord, PointLike, PointProps, PointStyle } from "./Point";
+export type { PointLike, PointProps, PointStyle } from "./Point";
 export { Rect } from "./Rect";
 export type { RectLike, RectProps, RectStyle } from "./Rect";
 export { Bounds } from "./Bounds";

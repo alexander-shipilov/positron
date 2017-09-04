@@ -1,10 +1,10 @@
 // @flow
 
-export function findScrollParents(element: HTMLElement): HTMLElement[] {
+export function findScrollParents(element: HTMLElement): Array<HTMLElement | Document> {
     const result = [];
     let parent = element.parentNode;
 
-    while (parent) {
+    while (parent instanceof HTMLElement) {
         if (parent.scrollWidth > parent.clientWidth || parent.scrollHeight > parent.clientHeight) {
             result.push(parent);
         }

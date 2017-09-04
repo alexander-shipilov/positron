@@ -1,5 +1,5 @@
-import { ComponentRenderer } from "/ui/Component";
 import React from "react";
+import { ComponentRenderer } from "../Component";
 
 export class SpriteRenderer extends ComponentRenderer {
     static render(sprite) {

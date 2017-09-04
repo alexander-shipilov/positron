@@ -1,5 +1,5 @@
-import { ElementPropTypes } from "/ui/Element";
-import { createPropsFilter, isClass } from "positron-core/prop-types";
+import { createPropsFilter, isClass } from "positron-core/src/prop-types";
+import { ElementPropTypes } from "positron-ui/src/ui/Element";
 import PropTypes from "prop-types";
 import { AppMenuActions, AppMenuEntry } from "../../store/AppMenu";
 import { AppMenuItemRenderer } from "./AppMenuItemRenderer";

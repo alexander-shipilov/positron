@@ -18,4 +18,8 @@ describe("toKebabCase", () => {
     it("should replace --", () => {
         expect(toKebabCase("__foo__bar__")).toBe("-foo-bar-");
     });
+
+    it("should convert non-alpha-numeric to -", () => {
+        expect(toKebabCase("/@#$%^")).toBe("-");
+    });
 });

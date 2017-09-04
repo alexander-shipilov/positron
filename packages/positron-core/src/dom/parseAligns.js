@@ -1,8 +1,8 @@
 // @flow
 
-import type { AlignProps } from "./dom-rect";
+import type { AlignProps, AlignTargetSide } from "../dom-rect";
 
-const ALIGNS = {
+const ALIGNS: { [string]: AlignTargetSide } = {
     "l": "left",
     "r": "right",
     "t": "top",
@@ -12,10 +12,10 @@ const ALIGNS = {
     "v": "vertical"
 };
 
-export function parseAligns(props: string): AlignProps {
+export function parseAligns(props: string): AlignProps[] {
     return props.split(/\s*\|\s*/).map((aligns) => {
         return Object.assign({}, ...aligns.split(/\s+/).map((align) => {
-            const match = align.match(/^[lcr]{2}|[tcbvh]{2}$/);
+            const match = align.match(/^[lrtbc]{2}|c[vh]$/);
 
             if (!match) {
                 throw new Error("Invalid align");

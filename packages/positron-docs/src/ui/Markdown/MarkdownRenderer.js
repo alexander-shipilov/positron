@@ -1,6 +1,6 @@
-import { ComponentRenderer } from "/ui/Component";
-import { filterElementProps } from "/ui/Element";
 import marked from "marked";
+import { ComponentRenderer } from "positron-ui/src/ui/Component";
+import { filterElementProps } from "positron-ui/src/ui/Element";
 import React from "react";
 
 export class MarkdownRenderer extends ComponentRenderer {

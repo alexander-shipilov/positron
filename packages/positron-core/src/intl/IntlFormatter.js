@@ -1,77 +1,92 @@
 import Intl from "intl";
 import cache from "intl-format-cache";
 import messageFormat from "intl-messageformat";
-import { InvariableObject } from "../invariable";
-import { nvl, valueOf } from "../object";
-import { IntlDefaults } from "./IntlDefaults";
+import { mapToObject } from "../array";
+
+import { warning } from "../console";
+import { InvariableObject, TypedInvariableObject } from "../invariable";
+import { valueOf } from "../object";
 import { IntlFormats } from "./IntlFormats";
 
 const getDateTimeFormat = cache(Intl.DateTimeFormat);
 const getNumberFormat = cache(Intl.NumberFormat);
 const getMessageFormat = cache(messageFormat);
 
+const defaults = require("./defaults.json");
+
+function extractParts(parts) {
+    return mapToObject(parts, ({ value }) => value, ({ type }) => type === "literal" ? void 0 : type);
+}
+
+function getFormatOptions(formatter, type, preset) {
+    let format = formatter.formats[type];
+
+    if (format) {
+        format = format[preset];
+
+        if (format) {
+            format = format.valueOf();
+        } else {
+            warning("invalid preset");
+        }
+    } else {
+        warning("invalid format type");
+    }
+
+    return format;
+}
+
 export class IntlFormatter extends InvariableObject {
-    init(...data) {
-        super.init({ formats: IntlDefaults, messages: {} }, ...data);
+    constructor(...data) {
+        super({ formats: defaults, messages: {} }, ...data);
     }
 
-    format(type, preset) {
-        let format = this.formats[type];
-
-        if (!format) {
-            throw this.getError("invalid format type");
-        }
-
-        if (preset) {
-            format = format[preset];
-            if (!format) {
-                throw this.getError(`invalid format ${ type } preset`);
-            }
-        }
-
-        return format.valueOf();
+    getDateFormat(preset) {
+        return getDateTimeFormat(this.locale, getFormatOptions(this, "date", preset));
     }
 
-    formatDate(value, preset = "short") {
-        return getDateTimeFormat(this.locale, this.format("date", preset)).format(value);
+    getMoneyFormat(currency, preset) {
+        return getNumberFormat(this.locale, Object.assign({}, getFormatOptions(this, "money", preset), { currency }));
     }
 
-    formatMessage(messageId, opts) {
+    getNumberFormat(preset) {
+        return getNumberFormat(this.locale, getFormatOptions(this, "number", preset));
+    }
+
+    formatDate(value, preset = "default") {
+        return this.getDateFormat(preset).format(value);
+    }
+
+    formatDateToParts(value, preset = "default") {
+        return extractParts(this.getDateFormat(preset).formatToParts(value));
+    }
+
+    formatMessage(message, opts) {
         const { messages, locale } = this;
-        let message = messages[messageId];
 
-        if (message !== void 0) {
-            if (message[locale] === void 0) {
-                throw this.getError(`message ${ message } has no locale ${ locale }`);
+        if (messages[locale] === void 0) {
+            warning(`no messages for locale '${ locale }'`);
+        } else {
+            const localeMessages = messages[locale];
+
+            if (localeMessages[message] !== void 0) {
+                message = getMessageFormat(localeMessages[message], locale).format(valueOf(opts));
             }
-
-            message = getMessageFormat(message[locale], locale).format(valueOf(opts));
         }
 
-        return nvl(message, messageId);
+        return message;
     }
 
-    formatMoney(value, currency) {
-        return getNumberFormat(this.locale, Object.assign(this.format("money"), { currency: currency })).format(value);
+    formatMoney(value, currency, preset = "default") {
+        return this.getMoneyFormat(currency, preset).format(value);
     }
 
-    formatNumber(value) {
-        return getNumberFormat(this.locale, this.format("number")).format(value);
-    }
-
-    formatTime(value, preset = "short") {
-        return getDateTimeFormat(this.locale, this.format("time", preset)).format(value);
-    }
-
-    valueOf() {
-        return Object.assign(super.valueOf(), {
-            formats: this.formats,
-            messages: this.messages
-        });
+    formatNumber(value, preset = "default") {
+        return this.getNumberFormat(preset).format(value);
     }
 }
 
 IntlFormatter.defineInvariableProperties({
     formats: IntlFormats,
-    messages: InvariableObject
+    messages: TypedInvariableObject
 });

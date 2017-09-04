@@ -1,4 +1,4 @@
-import { addEventListener } from "positron-core/dom-event";
+import { addEventListener } from "positron-core/src/dom-event";
 
 export class EventTarget {
     addEventListener(...args) {
@@ -15,6 +15,15 @@ export class EventTarget {
         return listener;
     }
 
+    componentWillUnmount() {
+        const { onUnmount } = this;
+
+        if (onUnmount) {
+            this.onUnmount = null;
+            onUnmount.forEach((removeListener) => removeListener());
+        }
+    }
+
     removeEventListeners(listeners) {
         listeners.forEach((removeListener) => {
             const index = this.onUnmount.indexOf(removeListener);
@@ -24,14 +33,5 @@ export class EventTarget {
                 removeListener();
             }
         });
-    }
-
-    componentWillUnmount() {
-        const { onUnmount } = this;
-
-        if (onUnmount) {
-            this.onUnmount = null;
-            onUnmount.forEach((removeListener) => removeListener());
-        }
     }
 }

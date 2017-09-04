@@ -1,4 +1,4 @@
-import { Store } from "positron-core/dataflow";
+import { Store } from "positron-core/src/dataflow";
 import { AppSettingsModel } from "./AppSettingsModel";
 
 export class AppSettingsStore extends Store.of(AppSettingsModel) {

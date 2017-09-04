@@ -7,8 +7,17 @@ import { FormPropTypes } from "./FormPropTypes";
 import { FormRenderer } from "./FormRenderer";
 
 export class Form extends Component.implement(DropOwner) {
-    init(...args) {
-        super.init(...args);
+    onSubmit = (event) => {
+        const { busy, onSubmit } = this.props;
+
+        event.preventDefault();
+        if (!busy && onSubmit) {
+            onSubmit(event);
+        }
+    };
+
+    constructor(...args) {
+        super(...args);
         this.initDrop();
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -30,6 +39,10 @@ export class Form extends Component.implement(DropOwner) {
         return field && refs && refs.hasOwnProperty(field) ? refs[field] : null;
     }
 
+    hideError() {
+        this.hideDrop("error");
+    }
+
     showError(error) {
         const { renderer, errorAlign } = this.props;
         const element = findDOMNode(this.getFieldComponent(error.field));
@@ -40,20 +53,6 @@ export class Form extends Component.implement(DropOwner) {
                 align: errorAlign,
                 hideOnMouseDown: true
             });
-        }
-    }
-
-    hideError() {
-        this.hideDrop("error");
-    }
-
-
-    onSubmit(event) {
-        const { busy, onSubmit } = this.props;
-
-        event.preventDefault();
-        if (!busy && onSubmit) {
-            onSubmit(event);
         }
     }
 }

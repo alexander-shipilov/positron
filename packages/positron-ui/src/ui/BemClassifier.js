@@ -1,6 +1,6 @@
-import { classnames } from "positron-core/dom";
-import { forEach } from "positron-core/object";
-import { toKebabCase } from "positron-core/string";
+import { classnames } from "positron-core/src/dom";
+import { forEach } from "positron-core/src/object";
+import { toKebabCase } from "positron-core/src/string";
 
 function getModifiers(className, modifiers) {
     const classNames = [];
@@ -21,12 +21,12 @@ function getModifiers(className, modifiers) {
 }
 
 export class BemClassifier {
-    get className() {
-        return this.constructor.className;
-    }
-
     static get className() {
         return toKebabCase(this.name);
+    }
+
+    get className() {
+        return this.constructor.className;
     }
 
     static bem(className, modifiers = null, ...other) {
@@ -49,12 +49,12 @@ export class BemClassifier {
         return this.constructor.bem(...args);
     }
 
-    element(...args) {
-        return this.constructor.element(...args);
-    }
-
     block(...args) {
         return this.constructor.block(...args);
+    }
+
+    element(...args) {
+        return this.constructor.element(...args);
     }
 
     modifiers(className, modifiers) {

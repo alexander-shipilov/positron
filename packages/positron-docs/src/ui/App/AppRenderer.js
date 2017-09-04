@@ -1,8 +1,8 @@
-import { Accent, filterAccentProps } from "/ui/Accent";
-import { ComponentRenderer } from "/ui/Component";
-import { Icon } from "/ui/Icon";
-import { Sprite } from "/ui/Sprite";
-import { ACCENT_COLORS } from "positron-core/constants/accents";
+import { ACCENT_COLORS } from "positron-core/src/constants/accents";
+import { Accent, filterAccentProps } from "positron-ui/src/ui/Accent";
+import { ComponentRenderer } from "positron-ui/src/ui/Component";
+import { Icon } from "positron-ui/src/ui/Icon";
+import { Sprite } from "positron-ui/src/ui/Sprite";
 import React from "react";
 import { AccentSelector } from "../AccentSelector";
 import { AppMenu } from "../AppMenu";
@@ -18,16 +18,6 @@ export class AppRenderer extends ComponentRenderer {
                 { this.renderFooter(app) }
                 { this.renderSideBar(app) }
             </Accent>
-        );
-    }
-
-    static renderMain(app) {
-        const { children } = app.props;
-
-        return (
-            <main className={ app.element("main") } onMouseDown={ app.onMainMouseClick }>
-                { children }
-            </main>
         );
     }
 
@@ -54,6 +44,16 @@ export class AppRenderer extends ComponentRenderer {
                 <AccentSelector accents={ ACCENT_COLORS } accent={ accent }
                     className={ app.element("accent-selector") } onSelect={ app.onAccentSelect } />
             </header>
+        );
+    }
+
+    static renderMain(app) {
+        const { children } = app.props;
+
+        return (
+            <main className={ app.element("main") } onMouseDown={ app.onMainMouseClick }>
+                { children }
+            </main>
         );
     }
 

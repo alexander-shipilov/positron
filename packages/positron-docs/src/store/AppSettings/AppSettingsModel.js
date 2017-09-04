@@ -1,5 +1,5 @@
-import { ACCENT_COLORS } from "positron-core/constants/accents";
-import { InvariableObject } from "positron-core/invariable";
+import { ACCENT_COLORS } from "positron-core/src/constants/accents";
+import { InvariableObject } from "positron-core/src/invariable";
 
 export class AppSettingsModel extends InvariableObject {
     get accent() {
@@ -14,8 +14,8 @@ export class AppSettingsModel extends InvariableObject {
         this.define({ _accent: accent || void 0 });
     }
 
-    init(...data) {
-        super.init({ accent: "light-blue", expanded: false }, ...data);
+    constructor(...data) {
+        super({ accent: "light-blue", expanded: false }, ...data);
     }
 
     valueOf() {

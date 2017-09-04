@@ -1,6 +1,6 @@
 import { InputPropTypes } from "/Input";
-import { TextElementPropTypes } from "/ui/TextElement";
-import { createPropsFilter } from "positron-core/prop-types";
+import { createPropsFilter } from "positron-core/src/prop-types";
+import { TextElementPropTypes } from "../TextElement";
 
 export const TextFieldPropTypes = Object.assign({}, InputPropTypes, TextElementPropTypes, {});
 

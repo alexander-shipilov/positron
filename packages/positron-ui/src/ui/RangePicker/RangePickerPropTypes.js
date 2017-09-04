@@ -1,4 +1,3 @@
-import { createPropsFilter } from "positron-core/prop-types";
 import PropTypes from "prop-types";
 
 export const DRAG_SIDE_FROM = 1;
