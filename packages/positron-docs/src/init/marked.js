@@ -10,7 +10,7 @@ marked.setOptions({
     smartLists: true,
     smartypants: false,
     renderer: new marked.Renderer(),
-    highlight(code) {
+    highlight(code, lang) {
         return prism.highlight(code, prism.languages.jsx);
     }
 });

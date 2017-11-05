@@ -1,3 +1,5 @@
+import { block, element, modifiers } from "positron-core/src/bem";
+
 export class ComponentRenderer {
     static ref(component, ref) {
         return (el) => {
@@ -5,15 +7,17 @@ export class ComponentRenderer {
         };
     }
 
-    static block(component, modifiers) {
-
+    static block(component, mods = null, ...other) {
+        return block(component.constructor.name, mods, component.props.className, ...other);
     }
 
-    static element(component, name, modifiers) {
-
+    static element(component, name, mods = null, ...other) {
+        return element(component.constructor.name, name, mods, ...other);
     }
 
-    static modifiers
+    static modifiers(component, mods) {
+        return modifiers(component.constructor.name, mods);
+    }
 
     static render(component) {
         throw component.getError("renderer#render: Should be implemented");

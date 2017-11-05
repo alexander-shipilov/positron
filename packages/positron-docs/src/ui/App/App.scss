@@ -53,6 +53,7 @@ $app-logo-height: 24px;
         color: white;
         box-shadow: 0 0 10px $material-black-faint;
 
+        @include app-content;
         @include flex(row);
         @include with-accent() {
             background: get-accent-color();
@@ -70,7 +71,15 @@ $app-logo-height: 24px;
         }
 
         @include with-screen-min(medium) {
-            margin-left: ($app-menu-size - $app-logo-width) / 2 - 10px;
+            @include fixed(($app-menu-size - $app-logo-width) / 2);
+        }
+
+        .app_expanded & {
+            @include fixed(($app-menu-size - $app-logo-width) / 2 + 16px);
+
+            @include with-screen-min(medium) {
+                @include fixed(($app-menu-size - $app-logo-width) / 2);
+            }
         }
     }
 
@@ -126,6 +135,10 @@ $app-logo-height: 24px;
 
         @include with-screen-min(medium) {
             display: none;
+        }
+
+        .app_expanded & {
+            @include fixed(10px);
         }
     }
 }

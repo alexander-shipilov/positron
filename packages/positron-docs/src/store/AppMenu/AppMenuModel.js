@@ -6,7 +6,7 @@ export class AppMenuEntry extends InvariableObject {
         return this.entries !== void 0 && this.entries.length > 0;
     }
 
-    get ref() {
+    get path() {
         return this.href || toKebabCase(this.title);
     }
 
@@ -18,7 +18,7 @@ export class AppMenuEntry extends InvariableObject {
 export class AppMenuEntries extends TypedInvariableArray.of(AppMenuEntry) {
 }
 
-AppMenuEntry.defineInvariableProperties({
+AppMenuEntry.of({
     entries: AppMenuEntries
 });
 

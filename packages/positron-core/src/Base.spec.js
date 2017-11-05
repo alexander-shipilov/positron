@@ -20,8 +20,9 @@ describe("Base", () => {
             class Foo extends Base {
             }
 
-            expect(Object.keys(Foo.define({ bar: 1, ted: 2 }))).toEqual([]);
-            expect(pick(Foo.define({ bar: 1, ted: 2 }), "bar", "ted")).toEqual({ bar: 1, ted: 2 });
+            Foo.define({ bar: 1, ted: 2 });
+            expect(Object.keys(Foo)).toEqual([]);
+            expect(pick(Foo, ["bar", "ted"])).toEqual({ bar: 1, ted: 2 });
         });
 
         it("supports the second arg which regulates props writability (true by default)", () => {
@@ -49,8 +50,9 @@ describe("Base", () => {
         it("defines not enumerable properties", () => {
             const foo = new Foo();
 
-            expect(Object.keys(foo.define({ bar: 1, ted: 2 }))).toEqual([]);
-            expect(foo.define({ bar: 1, ted: 2 }).pick("bar", "ted")).toEqual({ bar: 1, ted: 2 });
+            foo.define({ bar: 1, ted: 2 });
+            expect(Object.keys(foo)).toEqual([]);
+            expect(foo.pick(["bar", "ted"])).toEqual({ bar: 1, ted: 2 });
         });
 
         it("supports the second arg which regulates props writability (true by default)", () => {

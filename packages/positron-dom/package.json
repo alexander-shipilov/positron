@@ -1,0 +1,38 @@
+{
+  "name": "positron-dom",
+  "version": "0.0.39",
+  "description": "Dom utils",
+  "main": "./index.js",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "positron-core": "^0.0.39",
+    "positron-immutable": "^0.0.39"
+  },
+  "peerDependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "build": "npm run build-es && npm run build-js",
+    "build-es": "rimraf ./es && cross-env BABEL_ENV=es babel ./src --out-dir ./es --ignore spec.js,test.js",
+    "build-js": "cross-env BABEL_ENV=js rollup -c",
+    "eslint": "eslint ./src",
+    "flow": "flow",
+    "prepublish1": "npm run eslint && npm run test && npm run build",
+    "test": "jest --no-cache --runInBand",
+    "test-watch": "npm run test -- --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexander-shipilov/positron.git"
+  },
+  "keywords": [
+    "positron-ui",
+    "positron-core"
+  ],
+  "author": "Alexander Shipilov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexander-shipilov/positron/issues"
+  },
+  "homepage": "https://github.com/alexander-shipilov/positron#readme",
+  "false": {}
+}

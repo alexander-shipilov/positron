@@ -35,19 +35,19 @@ class AppRoutes extends Component {
         );
     }
 
-    renderRoute(routes, index) {
-        const { ref, component } = routes;
+    renderRoute(route, index) {
+        const { path, component } = route;
 
         return (
-            <Route key={ index } path={ ref } { ...{ component } }>
-                { this.renderRoutes(routes.entries) }
+            <Route key={ index } { ...{ path, component } }>
+                { this.renderRoutes(route.entries) }
             </Route>
         );
     }
 
     renderRoutes(routes) {
         return routes && routes.length
-            ? [<IndexRedirect key="index" to={ routes[0].ref } />, ...routes.map(this.renderRoute, this)]
+            ? [<IndexRedirect key="index" to={ routes[0].path } />, ...routes.map(this.renderRoute, this)]
             : null;
     }
 }

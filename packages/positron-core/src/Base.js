@@ -65,8 +65,8 @@ export class Base {
         return new Type(String(this) + ": " + desc);
     }
 
-    pick(...props) {
-        return pick(this, ...props);
+    pick(props) {
+        return pick(this, props);
     }
 
     toString(...mods) {

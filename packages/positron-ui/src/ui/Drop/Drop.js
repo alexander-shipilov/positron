@@ -80,8 +80,7 @@ export class Drop extends Component.implement(External) {
 
         Object.assign(container.style, { visibility: "hidden" }, Rect.from().toStyle());
 
-        rect = alignTo(container, to, ...aligns).shift()
-            .contourIn(Rect.fromElement(container.offsetParent));
+        rect = alignTo(container, to, ...aligns).shift();
 
         console.log(
             Rect.fromElement(container),

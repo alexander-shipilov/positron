@@ -9,7 +9,7 @@ import { ComponentRenderer } from "./ComponentRenderer";
 
 export class Component extends CoreComponent.implement(Element, BemClassifier) {
     get id() {
-        return this.hasOwnProperty("_id") ? this._id : this.define({ _id: uid("infinity") })._id;
+        return this.hasOwnProperty("_id") ? this._id : this.define({ _id: uid("component") })._id;
     }
 
     block(modifiers, ...other) {

@@ -1,5 +1,7 @@
-export function isImplementationOf(target, ...classes) {
-    return typeof target === "function" && classes.every((type) => {
+// @flow
+
+export function isImplementationOf(target: Function, ...types: Function[]): boolean {
+    return typeof target === "function" && types.every((type) => {
         return target === type
             || (typeof type === "function" && target.prototype instanceof type)
             || (target.mixins && target.mixins.indexOf(type) !== -1)

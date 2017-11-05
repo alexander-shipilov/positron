@@ -1,3 +1,13 @@
-export function pick(target, ...props) {
-    return Object.assign({}, ...props.map((prop) => target[prop] === void 0 ? null : { [prop]: target[prop] }));
+export function pick(target, props) {
+    const values = {};
+
+    props.forEach((prop) => {
+        const value = target[prop];
+
+        if (value !== void 0) {
+            values[prop] = value;
+        }
+    });
+
+    return values;
 }

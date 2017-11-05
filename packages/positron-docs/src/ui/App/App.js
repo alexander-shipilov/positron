@@ -31,8 +31,9 @@ export class App extends Component {
         setLocale.trigger(locale);
     }
 
-    componentWillReceiveProps({ location: nextLocation, params: nextParams }) {
+    componentWillReceiveProps(nextProps) {
         const { location, params } = this.props;
+        const { location: nextLocation, params: nextParams } = nextProps;
         const { settingsActions: { setExpanded }, intlActions: { setLocale } } = this.props;
 
         if (location.pathname !== nextLocation.pathname) {

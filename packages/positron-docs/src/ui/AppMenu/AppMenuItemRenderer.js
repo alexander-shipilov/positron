@@ -29,7 +29,7 @@ export class AppMenuItemRenderer extends ComponentRenderer {
 
     static renderTitle(appMenuItem) {
         const { intl, item, parents } = appMenuItem.props;
-        const href = [...parents, item].map((item) => item.ref).join("/");
+        const href = [...parents, item].map((item) => item.path).join("/");
         const className = appMenuItem.element("title");
 
         return (

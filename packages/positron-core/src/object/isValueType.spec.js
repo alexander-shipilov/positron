@@ -1,7 +1,7 @@
 import { isValueType } from "./isValueType";
 
 describe("isValueType", () => {
-    it("return true if the passed value is a string, a number or a boolean", () => {
+    it("returns true if the passed value is a string, a number or a boolean", () => {
         expect(isValueType("")).toBeTruthy();
         expect(isValueType(1)).toBeTruthy();
         expect(isValueType(true)).toBeTruthy();

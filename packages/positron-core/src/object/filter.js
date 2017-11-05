@@ -1,5 +1,5 @@
 export function filter(value, handler, context) {
-    const retValue = {};
+     const retValue = {};
 
     Object.keys(value).forEach((key) => {
         if (handler.call(context, value[key], key, value)) {

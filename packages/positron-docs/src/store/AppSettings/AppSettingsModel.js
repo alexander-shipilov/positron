@@ -19,6 +19,6 @@ export class AppSettingsModel extends InvariableObject {
     }
 
     valueOf() {
-        return Object.assign(super.valueOf(), this.pick("accent"));
+        return Object.assign(super.valueOf(), this.pick(["accent"]));
     }
 }

@@ -57,8 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
-# build
-build
-
 # development tools
 .idea
+package-lock.json
