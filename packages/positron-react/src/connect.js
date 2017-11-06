@@ -1,8 +1,7 @@
+import { every, forEach, isImplementationOf, map } from "positron-core";
+import { Store } from "positron-flow";
 import React from "react";
-import { isImplementationOf } from "../../positron-core/src/func/index";
-import { every, forEach, map } from "../../positron-core/src/object/index";
 import { Component } from "./index";
-import { Store } from "../../positron-flow/src/Store";
 
 function toString(props) {
     const string = Object.keys(props).map((key) => `${ key }: ${ props[key] }`).join(", ");

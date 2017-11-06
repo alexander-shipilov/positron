@@ -1,5 +1,5 @@
+import { Base } from "positron-core";
 import { isClass } from "./isClass";
-import { Base } from "../../positron-core/src/Base";
 
 describe("isClass", () => {
     class Foo extends Base {

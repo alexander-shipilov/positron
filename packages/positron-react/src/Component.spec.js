@@ -1,8 +1,8 @@
 import { mount, shallow } from "enzyme";
+import { Base } from "positron-core";
+import PropTypes from "prop-types";
 import React, { Component as ReactComponent } from "react";
 
-import { Base } from "../../positron-core/src/Base";
-import { PropTypes } from "../../positron-prop-types/src/index";
 import { Component } from "./Component";
 
 

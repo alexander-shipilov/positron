@@ -1,17 +1,15 @@
 import path from "path";
 import babel from "rollup-plugin-babel";
-import resolve from "rollup-plugin-node-resolve";
+import commonjs from "rollup-plugin-commonjs";
 
 export default {
-    input: path.resolve(__dirname, "./src/index.js"),
+    input: path.resolve(__dirname, "src/index.js"),
     output: {
-        file: path.resolve(__dirname, "./index.js"),
+        file: path.resolve(__dirname, "index.js"),
         format: "cjs"
     },
     plugins: [
-        resolve(),
-        babel({
-            exclude: "node_modules/**"
-        })
+        babel({ include: path.resolve(__dirname, "src/**") }),
+        commonjs({ include: path.resolve(__dirname, "node_modules/**") })
     ]
 };

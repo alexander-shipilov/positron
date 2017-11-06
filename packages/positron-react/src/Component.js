@@ -1,8 +1,6 @@
+import { Base, implement, toKebabCase, uid } from "positron-core";
+import { TypedImmutableObject } from "positron-immutable";
 import { PureComponent } from "react";
-import { Base } from "../../positron-core/src/Base";
-import { implement } from "../../positron-core/src/func/index";
-import { TypedInvariableObject } from "../../positron-core/src/invariable/index";
-import { toKebabCase, uid } from "../../positron-core/src/string/index";
 
 const lifeCycleProps = [
     "defaultProps",
@@ -80,7 +78,7 @@ export class Component extends implement(PureComponent, Base) {
     }
 
     static initMessages(messages) {
-        this.messages = TypedInvariableObject.assign(this.messages, messages);
+        this.messages = TypedImmutableObject.assign(this.messages, messages);
     }
 
     static initDefaultProps(...defaultProps) {

@@ -1,4 +1,4 @@
-import { filter } from "../../positron-core/src/object/index";
+import { filter } from "positron-core";
 
 export function createPropsFilter(PropTypes) {
     return (props) => filter(props, (prop, key) => {

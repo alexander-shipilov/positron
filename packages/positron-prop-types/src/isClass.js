@@ -1,4 +1,4 @@
-import { isImplementationOf } from "../../positron-core/src/func/index";
+import { isImplementationOf } from "positron-core";
 
 export function isClass(...types) {
     return (props, propName, componentName) => {

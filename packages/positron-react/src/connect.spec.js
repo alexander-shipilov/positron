@@ -1,9 +1,8 @@
 import { mount } from "enzyme";
+import { isImplementationOf, map } from "positron-core";
+import { Store } from "positron-flow";
 import React, { Component, PureComponent } from "react";
-import { isImplementationOf } from "../../positron-core/src/func/index";
-import { map } from "../../positron-core/src/object/index";
 import { connect, ConnectedComponent } from "./connect";
-import { Store } from "../../positron-flow/src/Store";
 
 describe("ConnectedComponent", () => {
     it("implements PureComponent", () => {
@@ -89,7 +88,7 @@ describe("connect", () => {
         describe(".toString", () => {
             it("returns a list of connected stores and props", () => {
                 expect(ConnectedFoo.toString())
-                    .toBe("[class Connected <{ data: [object Store <InvariableObject>] }, { baz: 3 }>]");
+                    .toBe("[class Connected <{ data: [object Store <ImmutableObject>] }, { baz: 3 }>]");
             });
         });
 

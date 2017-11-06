@@ -11,7 +11,17 @@ export function of(Target, types) {
         throw new TypeError("Function expected");
     }
 
+    function isValidType(type, key) {
+        console.log(getName(type), getName(types[key]), isImplementationOf(type, types[key]));
+
+        return typeof(type) === "function" && (!types.hasOwnProperty(key) || isImplementationOf(type, types[key]));
+    }
+
     return class extends Target {
+        static get name() {
+            return super.name;
+        }
+
         static get types() {
             return types;
         }
@@ -21,8 +31,8 @@ export function of(Target, types) {
         }
 
         static of(nextTypes) {
-            if (!every(nextTypes, (type, key) => !types.hasOwnProperty(key) || isImplementationOf(type, types[key]))) {
-                throw new Error("Expected " + toString(types));
+            if (!every(nextTypes, isValidType)) {
+                throw new Error("of: Expected " + toString(types) + ". " + toString(nextTypes) + " given");
             }
 
             return of(this, nextTypes);
