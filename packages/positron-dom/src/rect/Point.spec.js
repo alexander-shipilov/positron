@@ -1,4 +1,4 @@
-import { ImmutableObject } from "../../../positron-core/src/invariable/index";
+import { ImmutableObject } from "positron-immutable";
 import { mockElement, mockEvent, mockParent } from "./_mock";
 import { Point } from "./Point";
 

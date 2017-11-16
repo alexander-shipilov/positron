@@ -1,23 +1,34 @@
-import { containsOrSelf } from "../index";
-import { addEventListener } from "./addEventListener";
+import { containsOrSelf } from "../containsOrSelf";
+import { addEventListeners } from "./addEventListener";
 import { EventRepeater } from "./EventRepeater";
 
 export class MouseDownRepeater extends EventRepeater {
-    constructor(...props) {
-        super(...props);
+    onMouseDown = (event) => {
+        event.preventDefault();
 
-        this.onMouseDown = this.onMouseDown.bind(this);
-        this.onMouseUp = this.onMouseUp.bind(this);
-    }
-
-    onMouseDown(event) {
         this.start(event)
             .addEventListener(window, "mousemove", this.onMouseMove.bind(this, event.currentTarget), true)
             .addEventListener(window, "mouseup", this.onMouseUp, true);
-    }
+    };
 
-    onMouseMove(element, event) {
-        const containsCursor = containsOrSelf(element, event.target);
+    onTouchStart = (event) => {
+        event.preventDefault();
+
+        this.start(event)
+            .addEventListener(window, "touchmove", this.onTouchMove.bind(this, event.currentTarget), true)
+            .addEventListener(window, "touchup touchend touchcancel", this.onTouchUp, true);
+    };
+
+    onMouseUp = () => {
+        this.stop();
+    };
+
+    onTouchUp = () => {
+        this.stop();
+    };
+
+    onMove(element, target) {
+        const containsCursor = containsOrSelf(element, target);
 
         if (containsCursor) {
             this.resume();
@@ -26,11 +37,15 @@ export class MouseDownRepeater extends EventRepeater {
         }
     }
 
-    onMouseUp() {
-        this.stop();
+    onMouseMove(element, event) {
+        this.onMove(element, event.target);
+    }
+
+    onTouchMove(element, event) {
+        this.onMove(element, event.changedTouches[0].target);
     }
 
     addRepeatEventListener(element) {
-        return addEventListener(element, "mousedown", this.onMouseDown, true);
+        return addEventListeners(element, { mousedown: this.onMouseDown, touchstart: this.onTouchStart }, true);
     }
 }

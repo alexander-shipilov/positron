@@ -30,6 +30,10 @@ function setRepeaterTimeout(repeater, timeout) {
 }
 
 export class Repeater extends Base {
+    get isStarted() {
+        return this._timeout !== null;
+    }
+
     constructor(...props) {
         super({ interval: 100 }, ...props);
 
@@ -44,8 +48,10 @@ export class Repeater extends Base {
 
     pause() {
         if (this.onTimeout) {
-            this._timeout = null;
-            this.onTimeout();
+            if (this.isStarted) {
+                this._timeout = null;
+                this.onTimeout();
+            }
         }
 
         return this;
@@ -70,8 +76,12 @@ export class Repeater extends Base {
 
     stop() {
         if (this.onTimeout) {
+            const { isStarted } = this;
+
             clearRepeaterTimeout(this);
-            this.onTimeout();
+            if (isStarted) {
+                this.onTimeout();
+            }
 
             delete this.onTimeout;
         }

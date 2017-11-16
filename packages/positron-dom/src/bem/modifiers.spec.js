@@ -1,8 +1,6 @@
 import * as core from "positron-core";
 import { modifiers } from "./modifiers";
 
-jest.mock("positron-core");
-
 describe("modifiers", () => {
     let warning;
 

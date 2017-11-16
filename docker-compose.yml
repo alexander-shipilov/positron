@@ -1,0 +1,13 @@
+version: "2"
+services:
+  node:
+    container_name: positron
+    image: "node:8"
+    user: "node"
+    working_dir: /home/node/positron
+    tty: true
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - ./:/home/node/positron
+    command: "bash"
