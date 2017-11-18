@@ -1,4 +1,3 @@
-import { ImmutableObject } from "positron-immutable";
 import { Action } from "./Action";
 import { Publisher } from "./Publisher";
 import { Store } from "./Store";
@@ -8,16 +7,10 @@ describe("Store", () => {
         expect(Publisher.isImplementedBy(Store)).toBeTruthy();
     });
 
-    describe(".toString", () => {
-        it("returns type of Store", () => {
-           expect(Store.toString()).toBe("[class Store <ImmutableObject>]");
-        });
-    });
-
     describe("#state", () => {
         it("instance of InvariableObject", () => {
             expect(new Store().state).toBe(void 0);
-            expect(new Store({ foo: 1 }).state).toBeInstanceOf(ImmutableObject);
+            expect(new Store({ foo: 1 }).state).toBeInstanceOf(Object);
             expect(new Store({ foo: 1 }).state.valueOf()).toEqual({ foo: 1 });
         });
     });
@@ -67,15 +60,15 @@ describe("Store", () => {
             initialState = store.state;
         });
 
-        it("updates an internal state", () => {
-            store.setState({ foo: 2 });
-
-            expect(store.state !== initialState).toBeTruthy();
-            expect(store.state.valueOf()).toEqual({ foo: 2 });
+        it("returns a promise", () => {
+            expect(store.setState({ foo: 2 })).toBeInstanceOf(Promise);
         });
 
-        it("should return a promise", () => {
-            expect(store.setState({ foo: 2 })).toBeInstanceOf(Promise);
+        it("updates an internal state", () => {
+            return store.setState({ foo: 2 }).then(() => {
+                expect(store.state !== initialState).toBeTruthy();
+                expect(store.state.valueOf()).toEqual({ foo: 2 });
+            });
         });
 
         it("promise argument should be a next state", () => {
@@ -110,12 +103,6 @@ describe("Store", () => {
                 expect(state).toBe(initialState);
                 expect(listener).not.toHaveBeenCalled();
             });
-        });
-    });
-
-    describe("#toString", () => {
-        it("returns type of Store", () => {
-            expect(new Store().toString()).toBe("[object Store <ImmutableObject>]");
         });
     });
 });

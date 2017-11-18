@@ -1,6 +1,12 @@
 import { parseAligns } from "./parseAligns";
 
 describe("parseAligns", () => {
+    function expectInvalidAlignToThrow(aligns) {
+        aligns.forEach((align) => {
+            expect(() => parseAligns(align)).toThrow();
+        });
+    }
+
     it("parses align strings like `ll rr tb | ll rr bt`, which means:"
         + " (left to left AND right to right AND top to bottom)"
         + " OR (left to left AND right to right AND bottom to top)", () => {
@@ -9,12 +15,6 @@ describe("parseAligns", () => {
     });
 
     it("should throw if invalid aligns passed", () => {
-        function expectInvalidAlignToThrow(...aligns) {
-            aligns.forEach((align) => {
-                expect(() => parseAligns(align)).toThrow();
-            });
-        }
-
-        expectInvalidAlignToThrow("aa", "lh", "lv", "rh", "rv", "th", "tv", "bh", "bv");
+        expectInvalidAlignToThrow(["aa", "lh", "lv", "rh", "rv", "th", "tv", "bh", "bv"]);
     });
 });

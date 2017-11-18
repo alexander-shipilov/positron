@@ -1,7 +1,5 @@
-import { toJSON, valueOf } from "positron-core";
-import { assign, defineLength, isEqual } from "./array";
+import { assignToArray, clone, defineLength, getAncestorOf, isEqualArrays, toJSON, valueOf } from "positron-core";
 import { ImmutableObject } from "./ImmutableObject";
-import { clone, getAncestorOf } from "./object";
 
 const {
     concat,
@@ -46,18 +44,22 @@ export class ImmutableArray extends ImmutableObject {
     }
 
     setProps(...props) {
-        return assign(this, ...props);
+        return assignToArray(this, ...props);
     }
 
     assign(...props) {
         const ancestor = getAncestorOf(this);
         const next = clone(this).setProps(ancestor && this, ...props);
 
-        return isEqual(this, next) ? this : !ancestor || isChanged(next, ancestor) ? next : ancestor;
+        return isEqualArrays(this, next) ? this : !ancestor || isChanged(next, ancestor) ? next : ancestor;
+    }
+
+    set(props) {
+        return this.assign({ length: 0 }, props);
     }
 
     isEqual(target) {
-        return this === target || (target instanceof this.constructor && isEqual(this, target));
+        return this === target || (target instanceof this.constructor && isEqualArrays(this, target));
     }
 
     concat(...args) {

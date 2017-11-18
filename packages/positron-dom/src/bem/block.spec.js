@@ -1,19 +1,9 @@
-import * as core from "positron-core";
+import { warning } from "positron-core";
 import { block } from "./block";
 
 describe("block", () => {
-    let warning;
-
-    beforeAll(() => {
-        warning = jest.spyOn(core, "warning");
-    });
-
-    afterEach(() => {
+    beforeEach(() => {
         warning.mockReset();
-    });
-
-    afterAll(() => {
-        warning.mockRestore();
     });
 
     it("applies modifiers to the specified className", () => {

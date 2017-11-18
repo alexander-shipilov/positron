@@ -1,7 +1,6 @@
 // @flow
 
 import { ImmutableObject } from "positron-immutable";
-import { isDefined } from "positron-core";
 import type { Coord } from "./_utils";
 import { add, sub, toStyle, validate } from "./_utils";
 
@@ -21,7 +20,7 @@ export class Point extends ImmutableObject {
             throw this.getError("Invalid argument");
         }
 
-        this.define({ _left: isDefined(left) ? +left : void 0 });
+        this.define({ _left: left == null ? void 0 : +left });
     }
 
     get left(): Coord {
@@ -33,7 +32,7 @@ export class Point extends ImmutableObject {
             throw this.getError("Invalid argument");
         }
 
-        this.define({ _top: isDefined(top) ? +top : void 0 });
+        this.define({ _top: top == null ? void 0 : +top });
     }
 
     get top(): Coord {

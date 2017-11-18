@@ -1,21 +1,11 @@
-import * as core from "positron-core";
+import { warning } from "positron-core";
 import { IntlFormatter } from "./IntlFormatter";
 
 const date = new Date(2016, 11, 30, 13, 14, 15, 1617);
 
 describe("IntlFormatter", () => {
-    let warning;
-
-    beforeAll(() => {
-        warning = jest.spyOn(core, "warning");
-    });
-
-    afterEach(() => {
+    beforeEach(() => {
         warning.mockReset();
-    });
-
-    afterAll(() => {
-        warning.mockRestore();
     });
 
     function expectInvalidTypeToWarn(type, handler) {

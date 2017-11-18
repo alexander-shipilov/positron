@@ -1,5 +1,4 @@
-import { of, valueOf } from "positron-core";
-import { assign } from "./array";
+import { assignToArray, of, valueOf } from "positron-core";
 import { ImmutableArray } from "./ImmutableArray";
 import { ImmutableObject } from "./ImmutableObject";
 
@@ -18,7 +17,7 @@ export class TypedImmutableArray extends of(ImmutableArray, { Type: ImmutableObj
 
         sources.forEach((source) => {
             if (source !== void 0 && source !== null) {
-                const typedSource = assign([], valueOf(source)).map((value, index) => Type.assign(this[index], value));
+                const typedSource = assignToArray([], valueOf(source)).map((value, i) => Type.assign(this[i], value));
 
                 super.setProps(this, Object.assign(source, typedSource));
             }

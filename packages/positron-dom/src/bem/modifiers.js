@@ -1,35 +1,48 @@
-import classnames from "classnames";
-import { warning, forEach, toKebabCase } from "positron-core";
+import { forEach, toKebabCase, warning } from "positron-core";
+import { classNames } from "../classNames";
 
-export function modifiers(className, modifiers = null) {
-    const classNames = [];
+function modifier(className, modName, modValue) {
+    let modClass;
+
+    modName = toKebabCase(modName);
+
+    if (modName === "") {
+        warning("Invalid modifier");
+    } else if (modValue !== "" && modValue !== false && modValue != null) {
+        modName = className + "_" + modName;
+
+        if (modValue === true) {
+            modClass = modName;
+        } else {
+            modValue = toKebabCase(String(modValue));
+
+            if (modValue === "") {
+                warning("Invalid modifier value");
+            } else {
+                modClass = modName + "_" + modValue;
+            }
+        }
+    }
+
+    return modClass;
+}
+
+export function modifiers(className, modifiers) {
+    const classes = [];
 
     className = String(className);
+
     if (className === "") {
-        warning("invalid class");
-    } else if (modifiers !== null) {
-        forEach(modifiers, (value, modifier) => {
-            modifier = toKebabCase(modifier);
+        warning("Invalid class");
+    } else if (modifiers != null) {
+        forEach(modifiers, (modValue, modName) => {
+            const modClass = modifier(className, modName, modValue);
 
-            if (modifier === "") {
-                warning("invalid modifier");
-            } else if (value !== "" && value !== false && value !== null && value !== void 0) {
-                modifier = className + "_" + modifier;
-
-                if (value === true) {
-                    classNames.push(modifier);
-                } else {
-                    value = toKebabCase(String(value));
-
-                    if (value === "") {
-                        warning("invalid value");
-                    } else {
-                        classNames.push(modifier + "_" + value);
-                    }
-                }
+            if (modClass) {
+                classes.push(modClass);
             }
         });
     }
 
-    return classNames.length ? classnames(classNames) : "";
+    return classes.length ? classNames(classes) : "";
 }

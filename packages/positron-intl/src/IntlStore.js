@@ -1,8 +1,7 @@
-import { Store } from "positron-flow";
-import { TypedImmutableObject } from "positron-immutable";
+import { ImmutableStore } from "positron-immutable";
 import { IntlFormatter } from "./IntlFormatter";
 
-export class IntlStore extends Store.of(IntlFormatter) {
+export class IntlStore extends ImmutableStore.of(IntlFormatter) {
     setLocale(locale) {
         return this.setState({ locale });
     }
@@ -10,7 +9,7 @@ export class IntlStore extends Store.of(IntlFormatter) {
     setMessages(messages) {
         const { state } = this;
 
-        return this.setState({ messages: TypedImmutableObject.assign(state && state.messages, messages) });
+        return this.setState({ messages: IntlFormatter.types.messages.assign(state && state.messages, messages) });
     }
 
     setLocaleMessages(locale, messages) {

@@ -12,8 +12,6 @@ export function of(Target, types) {
     }
 
     function isValidType(type, key) {
-        console.log(getName(type), getName(types[key]), isImplementationOf(type, types[key]));
-
         return typeof(type) === "function" && (!types.hasOwnProperty(key) || isImplementationOf(type, types[key]));
     }
 

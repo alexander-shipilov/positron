@@ -1,19 +1,9 @@
-import * as core from "positron-core";
+import { warning } from "positron-core";
 import { element } from "./element";
 
 describe("element", () => {
-    let warning;
-
-    beforeAll(() => {
-        warning = jest.spyOn(core, "warning");
-    });
-
-    afterEach(() => {
+    beforeEach(() => {
         warning.mockReset();
-    });
-
-    afterAll(() => {
-        warning.mockRestore();
     });
 
     it("creates an element classNames", () => {

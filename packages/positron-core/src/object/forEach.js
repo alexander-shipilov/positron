@@ -1,5 +1,9 @@
-export function forEach(value, handler, context) {
-    Object.keys(value).forEach((key) => {
-        handler.call(context, value[key], key, value);
+// @flow
+
+export function forEach<T: Object>(target: T, handler: (value: any, key: string, target: T) => void, context?: any): T {
+    Object.keys(target).forEach((key) => {
+        handler.call(context, target[key], key, target);
     });
+
+    return target;
 }

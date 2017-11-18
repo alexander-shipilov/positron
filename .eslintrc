@@ -34,6 +34,13 @@
                 "max": 5
             }
         ],
+        "eqeqeq": [
+            "error",
+            "always",
+            {
+                "null": "ignore"
+            }
+        ],
         "max-len": [
             "error",
             {

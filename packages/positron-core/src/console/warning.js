@@ -6,8 +6,8 @@ export function warning(message: string, ...args: any[]) {
     if (process.env.NODE_ENV !== "production") {
         const { console } = global;
 
-         message = format("Warning: " + message, ...args);
-        if (console !== null && console !== void 0 && typeof console.error === "function") {
+        message = format("Warning: " + message, ...args);
+        if (console != null && typeof console.error === "function") {
             console.error(message);
         }
 

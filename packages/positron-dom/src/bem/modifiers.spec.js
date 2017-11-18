@@ -1,19 +1,9 @@
-import * as core from "positron-core";
+import { warning } from "positron-core";
 import { modifiers } from "./modifiers";
 
 describe("modifiers", () => {
-    let warning;
-
-    beforeAll(() => {
-        warning = jest.spyOn(core, "warning");
-    });
-
-    afterEach(() => {
+    beforeEach(() => {
         warning.mockReset();
-    });
-
-    afterAll(() => {
-        warning.mockRestore();
     });
 
     it("returns a list of classNames for passed modifiers", () => {
@@ -37,26 +27,26 @@ describe("modifiers", () => {
     it("should warn if the passed name is empty", () => {
         expect(modifiers("", { "foo": true })).toBe("");
         expect(warning).toHaveBeenCalledTimes(1);
-        expect(warning).toHaveBeenLastCalledWith("invalid class");
+        expect(warning).toHaveBeenLastCalledWith("Invalid class");
 
         expect(modifiers([], { "foo": true })).toBe("");
         expect(warning).toHaveBeenCalledTimes(2);
-        expect(warning).toHaveBeenLastCalledWith("invalid class");
+        expect(warning).toHaveBeenLastCalledWith("Invalid class");
     });
 
     it("should warn if the passed modifier is empty", () => {
         expect(modifiers("foo", { "": true })).toBe("");
         expect(warning).toHaveBeenCalled();
-        expect(warning).toHaveBeenCalledWith("invalid modifier");
+        expect(warning).toHaveBeenCalledWith("Invalid modifier");
     });
 
     it("should warn if the passed string value of modifier is empty", () => {
         expect(modifiers("foo", { "mod": " " })).toBe("");
         expect(warning).toHaveBeenCalledTimes(1);
-        expect(warning).toHaveBeenLastCalledWith("invalid value");
+        expect(warning).toHaveBeenLastCalledWith("Invalid modifier value");
 
         expect(modifiers("foo-bar", { ted: [] })).toBe("");
         expect(warning).toHaveBeenCalledTimes(2);
-        expect(warning).toHaveBeenLastCalledWith("invalid value");
+        expect(warning).toHaveBeenLastCalledWith("Invalid modifier value");
     });
 });

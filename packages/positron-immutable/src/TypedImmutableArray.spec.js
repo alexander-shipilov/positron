@@ -132,6 +132,7 @@ describe("TypedImmutableArray", () => {
     describe("ImmutableObject.of", () => {
         it("#should accept TypedImmutableArray", () => {
             let target;
+            let next;
 
             class Foo extends ImmutableObject {
                 constructor(...args) {
@@ -144,16 +145,19 @@ describe("TypedImmutableArray", () => {
             Foo.of({ foo: Foo, foos: Foos });
 
             target = new Foo().assign({ foos: [{ bar: 1 }] });
+            next = target.assign({ foo: { bar: 3 } });
 
             expect(target.foos).toBeInstanceOf(Foos);
             expect(target.foos.valueOf()).toEqual([{ bar: 1 }]);
-            expect(target.assign({ foo: { bar: 3 } })).not.toBe(target);
-            expect(target.assign({ foo: { bar: 3 } }).foos).toBe(target.foos);
+            expect(next).not.toBe(target);
+            expect(next.foos).toBe(target.foos);
 
             target = new Foo().assign({ foos: [{ bar: 1 }, { bar: 2 }] });
-            expect(target.assign({ foos: [{ bar: 3 }] })).not.toBe(target);
-            expect(target.assign({ foos: [{ bar: 3 }] }).foos.length).toEqual(2);
-            expect(target.assign({ foos: [{ bar: 3 }] }).foos[0].bar).toEqual(3);
+            next = target.assign({ foos: [{ bar: 3 }] });
+
+            expect(next).not.toBe(target);
+            expect(next.foos.length).toEqual(1);
+            expect(next.foos[0].bar).toEqual(3);
         });
     });
 });

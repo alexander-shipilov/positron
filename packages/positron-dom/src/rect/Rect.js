@@ -1,12 +1,12 @@
 // @flow
 
-import { compact, isDefined } from "positron-core";
+import { compact } from "positron-core";
 import type { Coord } from "./_utils";
 import { add, half, toStyle, validate } from "./_utils";
 import type { PointProps, PointStyle } from "./Point";
 import { Point } from "./Point";
 
-export interface RectProps extends PoinWWtProps {
+export interface RectProps extends PointProps {
     width?: Coord,
     height?: Coord
 }
@@ -58,7 +58,7 @@ export class Rect extends Point {
             throw this.getError("Invalid argument");
         }
 
-        this.define({ _width: isDefined(width) ? Math.max(+width, 0) : void 0 });
+        this.define({ _width: width == null ? void 0 : Math.max(+width, 0) });
     }
 
     get width(): Coord {
@@ -70,7 +70,7 @@ export class Rect extends Point {
             throw this.getError("Invalid argument");
         }
 
-        this.define({ _height: isDefined(height) ? Math.max(+height, 0) : void 0 });
+        this.define({ _height: height == null ? void 0 : Math.max(+height, 0) });
     }
 
     get height(): Coord {

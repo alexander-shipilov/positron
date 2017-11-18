@@ -1,4 +1,4 @@
-import { isArrayLike } from "positron-core";
+import { isArrayLike } from "../object/isArrayLike";
 
 const { every } = Array.prototype;
 const { is } = Object;

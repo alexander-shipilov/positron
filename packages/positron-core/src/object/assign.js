@@ -1,5 +1,6 @@
-import { forEach, valueOf } from "positron-core";
+import { forEach } from "./forEach";
 import { getAncestorOf } from "./getAncestorOf";
+import { valueOf } from "./valueOf";
 
 const { is } = Object;
 

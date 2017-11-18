@@ -1,5 +1,10 @@
+// @flow
+
 export {
-    arrayToObject
+    arrayToObject,
+    assign as assignToArray,
+    defineLength,
+    isEqual as isEqualArrays
 } from "./array";
 
 export {
@@ -23,15 +28,17 @@ export {
 } from "./math";
 
 export {
+    assign as assignToObject,
+    clone,
     compact,
     every,
     filter,
     forEach,
     isArray,
     isArrayLike,
-    isDefined,
-    isEmpty,
+    isEqual as isEqualObjects,
     isValueType,
+    getAncestorOf,
     map,
     mapKeys,
     nvl,

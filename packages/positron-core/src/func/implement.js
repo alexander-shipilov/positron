@@ -12,15 +12,14 @@ const PROPS_TO_SKIP = {
 };
 
 function copyProps(target, source) {
-    const props = [
-        ...Object.getOwnPropertyNames(source),
-        ...Object.getOwnPropertySymbols(source)
-    ];
-
-    props.forEach((prop) => {
+    Object.getOwnPropertyNames(source).forEach((prop) => {
         if (!PROPS_TO_SKIP.hasOwnProperty(prop)) {
             Object.defineProperty(target, prop, Object.getOwnPropertyDescriptor(source, prop));
         }
+    });
+
+    Object.getOwnPropertySymbols(source).forEach((symbol) => {
+        target[symbol] = source[symbol];
     });
 
     return target;

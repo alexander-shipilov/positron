@@ -1,11 +1,11 @@
 // @flow
 
-import { isArrayLike, valueOf } from "positron-core";
-import { assign as objectAssign } from "../object";
+import { assign as objectAssign, isArrayLike, valueOf } from "../object";
 import { defineLength } from "./defineLength";
 
 export interface ArrayLike<T> {
     [number]: T;
+
     length: number;
 }
 

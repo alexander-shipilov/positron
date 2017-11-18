@@ -1,30 +1,20 @@
-import { forEach, of } from "positron-core";
-import { ImmutableObject } from "positron-immutable";
+// @flow
+
+import { forEach, isEqualObjects } from "positron-core";
 import { Publisher } from "./Publisher";
 
-export class Store extends of(Publisher, { Type: ImmutableObject }) {
-    static get Type() {
-        return this.types.Type;
-    }
+export interface StoreState {
+}
 
-    static of(Type) {
-        return super.of({ Type });
-    }
+export class Store extends Publisher {
+    state: StoreState;
 
-    static toString() {
-        return super.toString(this.Type.name);
-    }
-
-    get Type() {
-        return this.constructor.Type;
-    }
-
-    constructor(state) {
+    constructor(state?: StoreState) {
         super();
         this.setState(state);
     }
 
-    listen(publisher, name) {
+    listen(publisher: Publisher, name: string): Store {
         const handler = this[name];
 
         if (typeof handler === "function") {
@@ -34,25 +24,36 @@ export class Store extends of(Publisher, { Type: ImmutableObject }) {
         return this;
     }
 
-    listenAll(actions) {
-        forEach(actions, (action, name) => this.listen(action, name));
+    listenAll(publishers: { [string]: Publisher }): Store {
+        forEach(publishers, this.listen, this);
 
         return this;
     }
 
-    setState(nextState) {
-        const { Type } = this;
-        let promise;
-
-        nextState = Type.assign(this.state, nextState);
-        if (this.state !== nextState) {
-            promise = Promise.resolve(this.state = nextState).then((state) => this.trigger(state));
+    trigger() {
+        if (!this._triggerPromise) {
+            this._triggerPromise = new Promise((resolve) => {
+                setTimeout(() => {
+                    delete this._triggerPromise;
+                    resolve(super.trigger(this.state));
+                });
+            });
         }
 
-        return promise || Promise.resolve(this.state);
+        return this._triggerPromise;
     }
 
-    toString() {
-        return super.toString(this.Type.name);
+    setState(nextState) {
+        const { state } = this;
+
+        if (nextState !== state) {
+            nextState = nextState == null ? nextState : Object.assign({}, state, nextState);
+
+            if (!isEqualObjects(nextState, state)) {
+                this.state = nextState;
+            }
+        }
+
+        return this.state === state ? Promise.resolve(this.state) : this.trigger();
     }
 }

@@ -1,13 +1,12 @@
-import { Base, empty, forEach, isDefined, map, toJSON, valueOf } from "positron-core";
-import { assign, clone, getAncestorOf, isEqual } from "./object";
+import { assignToObject, Base, clone, empty, forEach, getAncestorOf, isEqualObjects, map, toJSON } from "positron-core";
 
 function isChanged(next, current) {
-    return Object.keys(next).length !== 0 || !isEqual(next, current);
+    return Object.keys(next).length !== 0 || !isEqualObjects(next, current);
 }
 
 export class ImmutableObject extends Base {
     static assign(target, source) {
-        if (source !== target && isDefined(source) && !(source instanceof this)) {
+        if (source !== target && source != null && !(source instanceof this)) {
             source = target ? target.assign(source) : this.from(source);
         }
 
@@ -15,7 +14,7 @@ export class ImmutableObject extends Base {
     }
 
     static set(target, source) {
-        if (source !== target && isDefined(source) && !(source instanceof this)) {
+        if (source !== target && source != null && !(source instanceof this)) {
             source = target ? target.set(source) : this.from(source);
         }
 
@@ -58,22 +57,22 @@ export class ImmutableObject extends Base {
     }
 
     setProps(...props) {
-        return assign(this, ...props);
+        return assignToObject(this, ...props);
     }
 
     assign(...props) {
         const ancestor = getAncestorOf(this);
         const next = clone(this).setProps(ancestor && this, ...props);
 
-        return isEqual(this, next) ? this : !ancestor || isChanged(next, ancestor) ? next : ancestor;
+        return isEqualObjects(this, next) ? this : !ancestor || isChanged(next, ancestor) ? next : ancestor;
     }
 
     set(props) {
-        return this.assign(Object.assign(map(this.valueOf(), empty), valueOf(props)));
+        return this.assign(map(this.valueOf(), empty), props);
     }
 
     isEqual(target) {
-        return target instanceof this.constructor && isEqual(this, target);
+        return target instanceof this.constructor && isEqualObjects(this, target);
     }
 
     toJSON() {
