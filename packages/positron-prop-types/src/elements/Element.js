@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { PropsOwner } from "./PropsOwner";
+import { PropsOwner } from "../PropsOwner";
 
 export class Element extends PropsOwner {
     static propTypes = {

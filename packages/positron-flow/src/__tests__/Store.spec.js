@@ -1,6 +1,6 @@
-import { Action } from "./Action";
-import { Publisher } from "./Publisher";
-import { Store } from "./Store";
+import { Action } from "../Action";
+import { Publisher } from "../Publisher";
+import { Store } from "../Store";
 
 describe("Store", () => {
     it("implements Publisher", () => {

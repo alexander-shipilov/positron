@@ -1,9 +1,9 @@
 import { compact } from "positron-core";
 import PropTypes from "prop-types";
+
+import { PropsOwner } from "../PropsOwner";
 import { InputElement } from "./_InputElement";
 import { RequiredElement } from "./_RequiredElement";
-
-import { PropsOwner } from "./PropsOwner";
 
 export class InputFile extends PropsOwner {
     static propTypes = compact(

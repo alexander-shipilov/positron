@@ -1,5 +1,5 @@
 import { warning } from "positron-core";
-import { block } from "./block";
+import { block } from "../block";
 
 describe("block", () => {
     beforeEach(() => {

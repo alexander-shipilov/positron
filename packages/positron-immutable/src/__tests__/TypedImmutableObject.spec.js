@@ -1,5 +1,5 @@
-import { ImmutableObject } from "./ImmutableObject";
-import { TypedImmutableObject } from "./TypedImmutableObject";
+import { ImmutableObject } from "../ImmutableObject";
+import { TypedImmutableObject } from "../TypedImmutableObject";
 
 describe("TypedImmutableObject", () => {
     class Foo extends ImmutableObject {

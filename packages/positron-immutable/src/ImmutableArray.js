@@ -43,23 +43,11 @@ export class ImmutableArray extends ImmutableObject {
         this.setProps(items, { length: items.length });
     }
 
-    setProps(...props) {
-        return assignToArray(this, ...props);
-    }
-
     assign(...props) {
         const ancestor = getAncestorOf(this);
         const next = clone(this).setProps(ancestor && this, ...props);
 
         return isEqualArrays(this, next) ? this : !ancestor || isChanged(next, ancestor) ? next : ancestor;
-    }
-
-    set(props) {
-        return this.assign({ length: 0 }, props);
-    }
-
-    isEqual(target) {
-        return this === target || (target instanceof this.constructor && isEqualArrays(this, target));
     }
 
     concat(...args) {
@@ -76,6 +64,10 @@ export class ImmutableArray extends ImmutableObject {
         const next = filter.call(this, cb, thisArg);
 
         return this.length === next.length ? this : this.assign(next, { length: next.length });
+    }
+
+    isEqual(target) {
+        return this === target || (target instanceof this.constructor && isEqualArrays(this, target));
     }
 
     pop() {
@@ -96,6 +88,14 @@ export class ImmutableArray extends ImmutableObject {
 
     reverse() {
         return this.assign(reverse.call(Object.create(this)));
+    }
+
+    set(props) {
+        return this.assign({ length: 0 }, props);
+    }
+
+    setProps(...props) {
+        return assignToArray(this, ...props);
     }
 
     shift() {
@@ -132,6 +132,14 @@ export class ImmutableArray extends ImmutableObject {
         return next || this;
     }
 
+    toJSON() {
+        return this.valueOf().map(toJSON);
+    }
+
+    toString() {
+        return String(this.valueOf());
+    }
+
     unshift(...items) {
         let next;
 
@@ -142,14 +150,6 @@ export class ImmutableArray extends ImmutableObject {
         }
 
         return next || this;
-    }
-
-    toJSON() {
-        return this.valueOf().map(toJSON);
-    }
-
-    toString() {
-        return String(this.valueOf());
     }
 
     valueOf() {

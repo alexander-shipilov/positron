@@ -15,12 +15,6 @@ function define(target, props, writable) {
  * All prototype and static members of this class are inherited by all other classes.
  */
 export class Base {
-    constructor(...props) {
-        if (props.length) {
-            this.assign(...props);
-        }
-    }
-
     static define(props, writable = true) {
         return define(this, props, writable);
     }
@@ -51,6 +45,12 @@ export class Base {
 
     static warning(message) {
         return warning(this + ": " + message);
+    }
+
+    constructor(...props) {
+        if (props.length) {
+            this.assign(...props);
+        }
     }
 
     assign(...props) {

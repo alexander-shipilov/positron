@@ -16,7 +16,6 @@ export { InputText } from "./InputText";
 export { Label } from "./Label";
 export { Mod } from "./Mod";
 export { Progress } from "./Progress";
-export { PropsOwner } from "./PropsOwner";
 export { Script } from "./Script";
 export { Select } from "./Select";
 export { TableCell } from "./TableCell";

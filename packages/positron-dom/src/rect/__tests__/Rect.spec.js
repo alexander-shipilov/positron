@@ -1,6 +1,6 @@
-import { mockElement, mockParent } from "./_mock";
-import { Point } from "./Point";
-import { Rect } from "./Rect";
+import { mockElement, mockParent } from "./__mocks__";
+import { Point } from "../Point";
+import { Rect } from "../Rect";
 
 const { POSITIVE_INFINITY, NEGATIVE_INFINITY } = Number;
 

@@ -1,8 +1,8 @@
 import { compact } from "positron-core";
 import PropTypes from "prop-types";
+import { PropsOwner } from "../PropsOwner";
 import { ImageElement } from "./_ImageElement";
 import { Element } from "./Element";
-import { PropsOwner } from "./PropsOwner";
 
 export class Image extends PropsOwner {
     static propTypes = compact(

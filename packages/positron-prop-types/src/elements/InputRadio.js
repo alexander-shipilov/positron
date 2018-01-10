@@ -1,7 +1,7 @@
 import { compact } from "positron-core";
+import { PropsOwner } from "../PropsOwner";
 import { CheckedElement } from "./_CheckedElement";
 import { InputElement } from "./_InputElement";
-import { PropsOwner } from "./PropsOwner";
 
 export class InputRadio extends PropsOwner {
     static propTypes = compact(

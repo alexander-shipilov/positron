@@ -1,6 +1,6 @@
-import { ImmutableArray } from "./ImmutableArray";
-import { ImmutableObject } from "./ImmutableObject";
-import { TypedImmutableArray } from "./TypedImmutableArray";
+import { ImmutableArray } from "../ImmutableArray";
+import { ImmutableObject } from "../ImmutableObject";
+import { TypedImmutableArray } from "../TypedImmutableArray";
 
 describe("TypedImmutableArray", () => {
     class Foo extends ImmutableObject {

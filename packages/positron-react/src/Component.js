@@ -1,9 +1,17 @@
 import { Base, implement, toKebabCase, uid } from "positron-core";
-import { TypedImmutableObject } from "positron-immutable";
+import PropTypes from "prop-types";
 import { PureComponent } from "react";
+import { ComponentRenderer } from "./ComponentRenderer";
 
 
 export class Component extends implement(PureComponent, Base) {
+    static propTypes = {
+        renderer: PropTypes.instanceOf(ComponentRenderer).isRequired
+    };
+
+    static messages = {
+    };
+
     static get className() {
         return toKebabCase(this.name);
     }
@@ -14,10 +22,6 @@ export class Component extends implement(PureComponent, Base) {
 
     get id() {
         return this.hasOwnProperty("_id") ? this._id : this.define({ _id: uid("positron") })._id;
-    }
-
-    static initMessages(messages) {
-        this.messages = TypedImmutableObject.assign(this.messages, messages);
     }
 
     static toString(...args) {
@@ -55,6 +59,10 @@ export class Component extends implement(PureComponent, Base) {
         }
 
         return message;
+    }
+
+    render() {
+        this.props.renderer.render();
     }
 
     toString(...args) {

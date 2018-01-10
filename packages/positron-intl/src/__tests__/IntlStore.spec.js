@@ -1,4 +1,4 @@
-import { IntlStore } from "./IntlStore";
+import { IntlStore } from "../IntlStore";
 
 describe("IntlStore", () => {
     describe("#setLocale", () => {

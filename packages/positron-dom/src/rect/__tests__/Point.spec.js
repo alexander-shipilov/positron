@@ -1,6 +1,6 @@
 import { ImmutableObject } from "positron-immutable";
-import { mockElement, mockEvent, mockParent } from "./_mock";
-import { Point } from "./Point";
+import { mockElement, mockEvent, mockParent } from "./__mocks__";
+import { Point } from "../Point";
 
 const { NEGATIVE_INFINITY, POSITIVE_INFINITY } = Number;
 

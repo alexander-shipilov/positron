@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { Action } from "./Action";
-import { Publisher } from "./Publisher";
+import { Action } from "../Action";
+import { Publisher } from "../Publisher";
 
 describe("Action", () => {
     let error;

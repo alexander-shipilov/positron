@@ -35,6 +35,7 @@ export class Store extends Publisher {
             this._triggerPromise = new Promise((resolve) => {
                 setTimeout(() => {
                     delete this._triggerPromise;
+
                     resolve(super.trigger(this.state));
                 });
             });

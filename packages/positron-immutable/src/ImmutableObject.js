@@ -13,14 +13,6 @@ export class ImmutableObject extends Base {
         return source;
     }
 
-    static set(target, source) {
-        if (source !== target && source != null && !(source instanceof this)) {
-            source = target ? target.set(source) : this.from(source);
-        }
-
-        return source;
-    }
-
     static of(types) {
         forEach(types, (type, name) => {
             const prop = "_" + name;
@@ -48,16 +40,20 @@ export class ImmutableObject extends Base {
         return this.define({ types: Object.assign({}, this.types, types) });
     }
 
+    static set(target, source) {
+        if (source !== target && source != null && !(source instanceof this)) {
+            source = target ? target.set(source) : this.from(source);
+        }
+
+        return source;
+    }
+
     constructor(...props) {
         super();
 
         if (props.length) {
             this.setProps(...props);
         }
-    }
-
-    setProps(...props) {
-        return assignToObject(this, ...props);
     }
 
     assign(...props) {
@@ -67,20 +63,24 @@ export class ImmutableObject extends Base {
         return isEqualObjects(this, next) ? this : !ancestor || isChanged(next, ancestor) ? next : ancestor;
     }
 
-    set(props) {
-        return this.assign(map(this.valueOf(), empty), props);
-    }
-
     isEqual(target) {
         return target instanceof this.constructor && isEqualObjects(this, target);
     }
 
-    toJSON() {
-        return map(this.valueOf(), toJSON);
-    }
-
     keys() {
         return Object.keys(this.valueOf());
+    }
+
+    set(props) {
+        return this.assign(map(this.valueOf(), empty), props);
+    }
+
+    setProps(...props) {
+        return assignToObject(this, ...props);
+    }
+
+    toJSON() {
+        return map(this.valueOf(), toJSON);
     }
 
     valueOf() {

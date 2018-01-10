@@ -1,7 +1,7 @@
 import { compact } from "positron-core";
 import PropTypes from "prop-types";
+import { PropsOwner } from "../PropsOwner";
 import { InputButton } from "./InputButton";
-import { PropsOwner } from "./PropsOwner";
 
 export class InputSubmit extends PropsOwner {
     static propTypes = compact(

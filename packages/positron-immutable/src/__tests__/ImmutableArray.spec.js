@@ -1,6 +1,6 @@
 import { isArrayLike } from "positron-core";
-import { ImmutableArray } from "./ImmutableArray";
-import { ImmutableObject } from "./ImmutableObject";
+import { ImmutableArray } from "../ImmutableArray";
+import { ImmutableObject } from "../ImmutableObject";
 
 describe("ImmutableArray", () => {
     it("should implement ImmutableObject", () => {

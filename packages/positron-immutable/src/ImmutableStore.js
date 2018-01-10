@@ -7,16 +7,16 @@ export class ImmutableStore extends of(Store, { Type: ImmutableObject }) {
         return this.types.Type;
     }
 
+    get Type() {
+        return this.constructor.Type;
+    }
+
     static of(Type) {
         return super.of({ Type });
     }
 
     static toString() {
         return super.toString(this.Type.name);
-    }
-
-    get Type() {
-        return this.constructor.Type;
     }
 
     setState(nextState) {

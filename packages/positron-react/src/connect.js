@@ -1,7 +1,6 @@
-import { every, forEach, isImplementationOf, map } from "positron-core";
-import { Store } from "positron-flow";
+import { forEach, map, some } from "positron-core";
 import React from "react";
-import { Component } from "./index";
+import { Component } from "./Component";
 
 function toString(props) {
     const string = Object.keys(props).map((key) => `${ key }: ${ props[key] }`).join(", ");
@@ -52,20 +51,15 @@ export class ConnectedComponent extends Component {
     }
 }
 
-function createConnectedComponent(Component) {
+function createConnected(Component) {
     const connectedStores = {};
     const connectedProps = {};
 
-    function connect(stores, ...props) {
-        if (stores !== null && stores !== void 0 && !every(stores, (store) => store instanceof Store)) {
-            throw new TypeError("Store expected");
+    return class Connected extends ConnectedComponent {
+        static get name() {
+            return Component.name;
         }
 
-        Object.assign(connectedStores, stores);
-        Object.assign(connectedProps, ...props);
-    }
-
-    return class Connected extends ConnectedComponent {
         static get connectedStores() {
             return connectedStores;
         }
@@ -75,7 +69,12 @@ function createConnectedComponent(Component) {
         }
 
         static connect(stores, ...props) {
-            connect(stores, ...props);
+            if (stores != null && some(stores, (store) => typeof store.addListener !== "function")) {
+                throw this.getError("Invalid store");
+            }
+
+            Object.assign(connectedStores, stores);
+            Object.assign(connectedProps, ...props);
 
             return this;
         }
@@ -87,8 +86,8 @@ function createConnectedComponent(Component) {
 }
 
 export function connect(Component, stores, ...props) {
-    if (!isImplementationOf(Component, ConnectedComponent)) {
-        Component = createConnectedComponent(Component);
+    if (!ConnectedComponent.isImplementedBy(Component)) {
+        Component = createConnected(Component);
     }
 
     return Component.connect(stores, ...props);

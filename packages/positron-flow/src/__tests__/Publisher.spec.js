@@ -1,5 +1,5 @@
 import { Base } from "positron-core";
-import { Publisher } from "./Publisher";
+import { Publisher } from "../Publisher";
 
 describe("Publisher", () => {
     let publisher;

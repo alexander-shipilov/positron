@@ -1,7 +1,7 @@
 import { compact } from "positron-core";
 import PropTypes from "prop-types";
+import { PropsOwner } from "../PropsOwner";
 import { Element } from "./Element";
-import { PropsOwner } from "./PropsOwner";
 
 export class Mod extends PropsOwner {
     static propTypes = compact(

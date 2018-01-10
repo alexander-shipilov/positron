@@ -2,7 +2,8 @@
 
 export type ToObjectHandler = <T>(T, number, any[]) => any;
 
-export function arrayToObject<T>(array: T[], valueHandler: ToObjectHandler, keyHandler: ToObjectHandler): {[any]: any} {
+export function arrayToObject<T>(array: T[], valueHandler: ToObjectHandler,
+    keyHandler: ToObjectHandler): { [any]: any } {
     const retValue = {};
 
     array.forEach((item, index, target) => {

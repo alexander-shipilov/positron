@@ -1,6 +1,6 @@
-import { mockElement, mockParent } from "./_mock";
-import { BoundedRect } from "./BoundedRect";
-import { Rect } from "./Rect";
+import { mockElement, mockParent } from "./__mocks__";
+import { BoundedRect } from "../BoundedRect";
+import { Rect } from "../Rect";
 
 describe("BoundedRect", () => {
     describe(".fromElement", () => {

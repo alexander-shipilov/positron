@@ -1,4 +1,4 @@
-import { block, element, modifiers } from "positron-core/src/bem";
+import { block, element, modifiers } from "positron-dom";
 
 export class ComponentRenderer {
     static ref(component, ref) {

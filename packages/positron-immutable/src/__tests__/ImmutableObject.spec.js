@@ -1,5 +1,5 @@
 import { Base } from "positron-core";
-import { ImmutableObject } from "./ImmutableObject";
+import { ImmutableObject } from "../ImmutableObject";
 
 describe("ImmutableObject", () => {
     it("implements Base", () => {
@@ -230,7 +230,7 @@ describe("ImmutableObject", () => {
     describe("#keys", () => {
         it("returns all keys", () => {
             expect(new ImmutableObject({ foo: 1 }).keys()).toEqual(["foo"]);
-             expect(new ImmutableObject({ foo: 1 }).assign({ bar: 2 }).keys()).toEqual(["foo", "bar"]);
+            expect(new ImmutableObject({ foo: 1 }).assign({ bar: 2 }).keys()).toEqual(["foo", "bar"]);
         });
     });
 

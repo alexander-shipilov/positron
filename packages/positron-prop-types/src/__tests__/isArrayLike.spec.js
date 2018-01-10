@@ -1,5 +1,5 @@
 import { ImmutableArray } from "positron-immutable";
-import { isArrayLike } from "./isArrayLike";
+import { isArrayLike } from "../isArrayLike";
 
 describe("isArrayLike", () => {
     it("returns an error if the passed value is not an instance of Array or ImmutableArray", () => {

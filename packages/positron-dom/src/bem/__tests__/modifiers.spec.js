@@ -1,5 +1,5 @@
 import { warning } from "positron-core";
-import { modifiers } from "./modifiers";
+import { modifiers } from "../modifiers";
 
 describe("modifiers", () => {
     beforeEach(() => {
