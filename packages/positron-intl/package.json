@@ -1,15 +1,15 @@
 {
     "name": "positron-intl",
-    "version": "0.0.39",
+    "version": "0.1.0",
     "description": "Intl",
     "main": "./index.js",
     "dependencies": {
         "intl": "^1.2.5",
         "intl-format-cache": "^2.0.5",
         "intl-messageformat": "^2.1.0",
-        "positron-core": "^0.0.39",
-        "positron-flow": "^0.0.39",
-        "positron-immutable": "^0.0.39",
+        "positron-core": "^0.1.0",
+        "positron-flow": "^0.1.0",
+        "positron-immutable": "^0.1.0",
         "prop-types": "^15.6.0"
     },
     "devDependencies": {
@@ -22,7 +22,7 @@
     },
     "scripts": {
         "build": "npm run build-lib && npm run build-index",
-        "build-lib": "rimraf lib && babel ./src --out-dir ./lib --ignore spec.js,test.js",
+        "build-lib": "rimraf lib && babel ./src --out-dir ./lib --ignore __mocks__,__tests__",
         "build-index": "rimraf index.js && babel-node ../make-index.js ./src --root ./lib --out-file ./index.js",
         "eslint": "eslint ./src",
         "flow": "flow",

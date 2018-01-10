@@ -1,6 +1,6 @@
 {
     "name": "positron-core",
-    "version": "0.0.39",
+    "version": "0.1.0",
     "description": "Core library for positron-ui",
     "main": "./index.js",
     "devDependencies": {
@@ -13,7 +13,7 @@
     },
     "scripts": {
         "build": "npm run build-lib && npm run build-index",
-        "build-lib": "rimraf lib && babel ./src --out-dir ./lib --ignore spec.js,test.js",
+        "build-lib": "rimraf lib && babel ./src --out-dir ./lib --ignore __mocks__,__tests__",
         "build-index": "rimraf index.js && babel-node ../make-index.js ./src --root ./lib --out-file ./index.js",
         "eslint": "eslint ./src",
         "flow": "flow",
