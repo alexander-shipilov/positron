@@ -1,9 +1,15 @@
 // @flow
 
 export function contains(el: HTMLElement, childEl: HTMLElement): boolean {
-    return Boolean(el && childEl && (
-        typeof el.contains === "function"
-            ? el.contains(childEl)
-            : el.compareDocumentPosition(childEl) & 16
-    ));
+    let retValue = false;
+
+    if (el && childEl) {
+        if (typeof el.contains === "function") {
+            retValue = el.contains(childEl);
+        } else {
+            retValue = el.compareDocumentPosition(childEl) & 16 !== 0;
+        }
+    }
+
+    return retValue;
 }

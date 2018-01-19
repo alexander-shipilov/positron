@@ -1,12 +1,7 @@
-import { Base } from "positron-core";
 import { Publisher } from "../Publisher";
 
 describe("Publisher", () => {
     let publisher;
-
-    it("implements Base", () => {
-        expect(Base.isImplementedBy(Publisher)).toBeTruthy();
-    });
 
     beforeEach(() => {
         publisher = new Publisher();
@@ -70,6 +65,18 @@ describe("Publisher", () => {
                 expect(first).toHaveBeenCalled();
                 expect(second).toHaveBeenCalled();
             });
-         });
+        });
+
+
+        it("should pass all args to the specified listeners", () => {
+            const listener = jest.fn();
+
+            publisher.addListener(listener);
+
+            expect.assertions(1);
+            return publisher.trigger(1, 2, 3).then(() => {
+                expect(listener).toHaveBeenCalledWith(1, 2, 3);
+            });
+        });
     });
 });

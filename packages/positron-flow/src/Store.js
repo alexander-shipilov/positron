@@ -1,6 +1,6 @@
 // @flow
 
-import { forEach, isEqualObjects } from "positron-core";
+import { isEqualObjects } from "positron-core";
 import { Publisher } from "./Publisher";
 
 export interface StoreState {
@@ -11,50 +11,34 @@ export class Store extends Publisher {
 
     constructor(state?: StoreState) {
         super();
+
         this.setState(state);
     }
 
-    listen(publisher: Publisher, name: string): Store {
-        const handler = this[name];
-
-        if (typeof handler === "function") {
-            publisher.addListener(handler.bind(this));
-        }
-
-        return this;
-    }
-
-    listenAll(publishers: { [string]: Publisher }): Store {
-        forEach(publishers, this.listen, this);
-
-        return this;
-    }
-
     trigger() {
-        if (!this._triggerPromise) {
-            this._triggerPromise = new Promise((resolve) => {
-                setTimeout(() => {
-                    delete this._triggerPromise;
-
-                    resolve(super.trigger(this.state));
-                });
-            });
-        }
-
-        return this._triggerPromise;
+        return super.trigger(this.state);
     }
 
-    setState(nextState) {
+    assignState(nextState) {
         const { state } = this;
 
-        if (nextState !== state) {
-            nextState = nextState == null ? nextState : Object.assign({}, state, nextState);
-
-            if (!isEqualObjects(nextState, state)) {
-                this.state = nextState;
+        if (state !== nextState) {
+            if (nextState != null) {
+                nextState = Object.assign({}, state, nextState);
             }
         }
 
-        return this.state === state ? Promise.resolve(this.state) : this.trigger();
+        return isEqualObjects(nextState, state) ? state : nextState;
+    }
+
+    setState(nextState) {
+        nextState = this.assignState(nextState);
+
+        if (this.state !== nextState) {
+            this.state = nextState;
+            this.trigger();
+        }
+
+        return Promise.resolve(this.state);
     }
 }

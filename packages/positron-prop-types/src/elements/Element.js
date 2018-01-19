@@ -4,7 +4,6 @@ import { PropsOwner } from "../PropsOwner";
 export class Element extends PropsOwner {
     static propTypes = {
         children: PropTypes.node,
-        ref: PropTypes.func,
 
         accessKey: PropTypes.string,
         className: PropTypes.string,

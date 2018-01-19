@@ -19,3 +19,4 @@ export { some } from "./some";
 export { toJSON } from "./toJSON";
 export { typeOf } from "./typeOf";
 export { valueOf } from "./valueOf";
+export { values } from "./values";

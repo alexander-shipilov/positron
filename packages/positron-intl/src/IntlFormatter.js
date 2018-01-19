@@ -3,13 +3,13 @@ import cache from "intl-format-cache";
 import messageFormat from "intl-messageformat";
 import { arrayToObject, valueOf, warning } from "positron-core";
 import { ImmutableObject, TypedImmutableObject } from "positron-immutable";
+import { IntlDefaults } from "./IntlDefaults";
 import { IntlFormats } from "./IntlFormats";
+
 
 const getDateTimeFormat = cache(Intl.DateTimeFormat);
 const getNumberFormat = cache(Intl.NumberFormat);
 const getMessageFormat = cache(messageFormat);
-
-const defaults = require("./defaults.json");
 
 function extractParts(parts) {
     return arrayToObject(parts, ({ value }) => value, ({ type }) => type === "literal" ? void 0 : type);
@@ -35,7 +35,7 @@ function getFormatOptions(formatter, type, preset) {
 
 export class IntlFormatter extends ImmutableObject {
     constructor(...data) {
-        super({ formats: defaults, messages: {} }, ...data);
+        super({ formats: IntlDefaults, messages: {} }, ...data);
     }
 
     getDateFormat(preset) {

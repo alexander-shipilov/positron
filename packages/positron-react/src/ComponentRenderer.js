@@ -1,22 +1,23 @@
-import { block, element, modifiers } from "positron-dom";
+// @flow
+
+import type { Component as ReactComponent } from "react";
+import type { Component } from "./Component";
 
 export class ComponentRenderer {
-    static ref(component, ref) {
-        return (el) => {
-            component[ref] = el;
-        };
+    static ref(component: Component, name: string): HTMLElement | ReactComponent {
+        return component.ref(name);
     }
 
-    static block(component, mods = null, ...other) {
-        return block(component.constructor.name, mods, component.props.className, ...other);
+    static block(component: Component, mods: Object = null, ...other: string[]): string {
+        return component.block(mods = null, ...other);
     }
 
-    static element(component, name, mods = null, ...other) {
-        return element(component.constructor.name, name, mods, ...other);
+    static element(component: Component, name: string, mods: Object = null, ...other): string {
+        return component.element(name, mods, ...other);
     }
 
-    static modifiers(component, mods) {
-        return modifiers(component.constructor.name, mods);
+    static modifiers(component: Component, mods: Object): string {
+        return component.modifiers(mods);
     }
 
     static render(component) {

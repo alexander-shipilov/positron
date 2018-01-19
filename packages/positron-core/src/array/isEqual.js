@@ -8,6 +8,6 @@ export function isEqual(first, second) {
         throw new TypeError("Array-like expected");
     }
 
-    return first === second || (second !== null && second !== void 0
-        && first.length === second.length && every.call(first, (value, i) => is(value, second[i])));
+    return first === second
+        || (second != null && first.length === second.length && every.call(first, (value, i) => is(value, second[i])));
 }

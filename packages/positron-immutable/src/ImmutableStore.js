@@ -19,18 +19,14 @@ export class ImmutableStore extends of(Store, { Type: ImmutableObject }) {
         return super.toString(this.Type.name);
     }
 
-    setState(nextState) {
+    assignState(nextState) {
         const { state } = this;
 
-        if (nextState !== state) {
+        if (state !== nextState) {
             nextState = this.Type.assign(state, nextState);
-
-            if (nextState !== state) {
-                this.state = nextState;
-            }
         }
 
-        return this.state === state ? Promise.resolve(this.state) : this.trigger();
+        return nextState;
     }
 
     toString() {

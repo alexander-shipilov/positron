@@ -1,6 +1,26 @@
 import { forEach, toKebabCase, warning } from "positron-core";
 import { classNames } from "../classNames";
 
+function formatModifier(className, modName, modValue) {
+    let modClass;
+
+    modName = className + "_" + modName;
+
+    if (modValue === true) {
+        modClass = modName;
+    } else {
+        modValue = toKebabCase(String(modValue));
+
+        if (modValue === "") {
+            warning("Invalid modifier value");
+        } else {
+            modClass = modName + "_" + modValue;
+        }
+    }
+
+    return modClass;
+}
+
 function modifier(className, modName, modValue) {
     let modClass;
 
@@ -9,19 +29,7 @@ function modifier(className, modName, modValue) {
     if (modName === "") {
         warning("Invalid modifier");
     } else if (modValue !== "" && modValue !== false && modValue != null) {
-        modName = className + "_" + modName;
-
-        if (modValue === true) {
-            modClass = modName;
-        } else {
-            modValue = toKebabCase(String(modValue));
-
-            if (modValue === "") {
-                warning("Invalid modifier value");
-            } else {
-                modClass = modName + "_" + modValue;
-            }
-        }
+        modClass = formatModifier(className, modName, modValue);
     }
 
     return modClass;

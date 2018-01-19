@@ -1,8 +1,12 @@
 [ignore]
+.*/node_modules/.*
 .*/build/.*
+.*/lib/.*
+.*/tmp/.*
 .*/coverage/.*
+.*/__tests__/.*
+.*/__mocks__/.*
 .*\.spec\.js
 
 [options]
 all=false
-unsafe.enable_getters_and_setters=true

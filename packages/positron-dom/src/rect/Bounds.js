@@ -1,11 +1,11 @@
 // @flow
 
+import type { Coord } from "./_utils";
+import { half, sub, toStyle, validate } from "./_utils";
 import type { PointProps, PointStyle } from "./Point";
 import { Point } from "./Point";
 import type { RectLike } from "./Rect";
 import { Rect } from "./Rect";
-import type { Coord } from "./_utils";
-import { half, sub, toStyle, validate } from "./_utils";
 
 export interface BoundsProps extends PointProps {
     right?: Coord,
@@ -115,15 +115,17 @@ export class Bounds extends Point {
     }
 
     static fromElement(el: Element, toEl: ?Element): Bounds {
-        if (toEl === void 0 || toEl === null) {
-            toEl = document.body;
+        let toRect;
+
+        if (toEl == null) {
+            const { documentElement: { clientWidth, clientHeight } } = document;
+
+            toRect = Rect.from({ left: 0, top: 0, width: clientWidth, height: clientHeight });
+        } else {
+            toRect = Rect.fromElement(toEl);
         }
 
-        if (!toEl) {
-            throw this.getError("Element expected");
-        }
-
-        return this.fromRect(Rect.fromElement(el), Rect.fromElement(toEl));
+        return this.fromRect(Rect.fromElement(el), toRect);
     }
 
     static centerOf(...props: RectLike[]): Bounds {

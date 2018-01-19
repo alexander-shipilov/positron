@@ -1,4 +1,4 @@
-{
+export const IntlDefaults = {
     "date": {
         "default": {
             "year": "numeric",
@@ -41,4 +41,4 @@
     "number": {
         "default": {}
     }
-}
+};

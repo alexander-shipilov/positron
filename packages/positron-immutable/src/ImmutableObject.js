@@ -13,31 +13,35 @@ export class ImmutableObject extends Base {
         return source;
     }
 
-    static of(types) {
-        forEach(types, (type, name) => {
+    static of(nextTypes) {
+        const { types } = this;
+
+        forEach(nextTypes, (type, name) => {
             const prop = "_" + name;
 
             if (!ImmutableObject.isImplementedBy(type)) {
                 throw new TypeError("Invalid type " + String(type) + ". ImmutableObject expected.");
             }
 
-            Object.defineProperty(this.prototype, name, {
-                configurable: true,
-                get() {
-                    return this[prop];
-                },
-                set(nextValue) {
-                    const currValue = this[prop];
+            if (!types || !types.hasOwnProperty(type)) {
+                Object.defineProperty(this.prototype, name, {
+                    configurable: true,
+                    get() {
+                        return this[prop];
+                    },
+                    set(nextValue) {
+                        const currValue = this[prop];
 
-                    nextValue = type.set(currValue, nextValue);
-                    if (currValue !== nextValue) {
-                        this.define({ [prop]: nextValue });
+                        nextValue = type.set(currValue, nextValue);
+                        if (currValue !== nextValue) {
+                            this.define({ [prop]: nextValue });
+                        }
                     }
-                }
-            });
+                });
+            }
         });
 
-        return this.define({ types: Object.assign({}, this.types, types) });
+        return this.define({ types: Object.assign({}, this.types, nextTypes) });
     }
 
     static set(target, source) {

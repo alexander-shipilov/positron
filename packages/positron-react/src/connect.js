@@ -1,5 +1,5 @@
-import { forEach, map, some } from "positron-core";
-import React from "react";
+import { filter, forEach, map, some } from "positron-core";
+import { createElement } from "react";
 import { Component } from "./Component";
 
 function toString(props) {
@@ -14,13 +14,27 @@ function onStoreChange(target, prop, data) {
     }
 }
 
+function filterConnected(component, nextProps) {
+    const { connectedStores: stores, connectedProps: props } = component;
+
+    return filter(nextProps, (value, prop) => !stores.hasOwnProperty(prop) && !props.hasOwnProperty(prop));
+}
+
 export class ConnectedComponent extends Component {
+    static get connectedProps() {
+        return {};
+    }
+
     static get connectedStores() {
         return {};
     }
 
-    static get connectedProps() {
-        return {};
+    get connectedProps() {
+        return this.constructor.connectedProps;
+    }
+
+    get connectedStores() {
+        return this.constructor.connectedStores;
     }
 
     static toString(...args) {
@@ -38,15 +52,19 @@ export class ConnectedComponent extends Component {
         });
 
         this.setState(Object.assign({},
-            connectedProps,
             this.props,
-            this.state,
-            map(connectedStores, ({ state }) => state)
+            map(connectedStores, ({ state }) => state),
+            connectedProps
         ));
+    }
+
+    componentWillReceiveProps(props) {
+        this.setState(filterConnected(this, props));
     }
 
     componentWillUnmount() {
         this.define({ connected: void 0 });
+
         super.componentWillUnmount();
     }
 }
@@ -80,7 +98,7 @@ function createConnected(Component) {
         }
 
         render() {
-            return React.createElement(Component, this.state);
+            return createElement(Component, this.state);
         }
     };
 }

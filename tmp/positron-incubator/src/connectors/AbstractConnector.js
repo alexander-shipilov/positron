@@ -5,7 +5,7 @@ export class AbstractConnector extends Base {
         return Promise.resolve(value);
     }
 
-    destroy(value, params = null) {
+    delete(value, params = null) {
         return Promise.resolve(value);
     }
 

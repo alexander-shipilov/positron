@@ -46,8 +46,13 @@ export {
     some,
     toJSON,
     typeOf,
-    valueOf
+    valueOf,
+    values
 } from "./object";
+
+export {
+    PromiseQueue
+} from "./promise";
 
 export {
     capitalize,

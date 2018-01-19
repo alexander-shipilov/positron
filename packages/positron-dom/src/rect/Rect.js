@@ -16,18 +16,28 @@ export interface RectStyle extends PointStyle {
     height: string
 }
 
+function isBoth(val1, val2) {
+    return val1 != null && val2 != null;
+}
+
+function containsSize(position, size, targetPosition, targetSize) {
+    let isContain = targetPosition <= position + size;
+
+    if (isContain && targetSize !== void 0) {
+        isContain = targetPosition + targetSize <= position + size;
+    }
+
+    return isContain;
+}
+
 function contains(position, size, targetPosition, targetSize) {
     let isContain = true;
 
-    if (position !== void 0 && targetPosition !== void 0) {
+    if (isBoth(position, targetPosition)) {
         isContain = targetPosition >= position;
 
         if (isContain && size !== void 0) {
-            isContain = targetPosition <= position + size;
-
-            if (isContain && targetSize !== void 0) {
-                isContain = targetPosition + targetSize <= position + size;
-            }
+            isContain = containsSize(position, size, targetPosition, targetSize);
         }
     }
 
@@ -35,7 +45,7 @@ function contains(position, size, targetPosition, targetSize) {
 }
 
 function constrain(position, size, targetPosition, targetSize) {
-    if (position !== void 0 && targetPosition !== void 0) {
+    if (isBoth(position, targetPosition)) {
         targetPosition = Math.max(targetPosition, position);
 
         if (size !== void 0) {
@@ -45,7 +55,7 @@ function constrain(position, size, targetPosition, targetSize) {
                 targetSize = Math.min(targetSize, position + size - targetPosition);
             }
         }
-    } else if (targetSize !== void 0 && size !== void 0) {
+    } else if (isBoth(size, targetSize)) {
         targetSize = Math.min(targetSize, size);
     }
 
@@ -83,6 +93,12 @@ export class Rect extends Point {
 
     get bottom(): Coord {
         return add(this.top, this.height);
+    }
+
+    get square(): Coord {
+        const { width, height } = this;
+
+        return (width == null || height == null) ? void 0 : Number(width) * Number(height);
     }
 
     resizeTo(...props: RectLike[]): Rect {

@@ -1,11 +1,9 @@
-export function isArrayLike(value) {
-    let is = typeof value === "object" && value !== null;
+// @flow
 
-    if (is) {
-        const { length } = value;
+function isLength(length) {
+    return typeof length === "number" && length > -1 && length <= Number.MAX_SAFE_INTEGER && length % 1 === 0;
+}
 
-        is = typeof length === "number" && length > -1 && length <= Number.MAX_SAFE_INTEGER && length % 1 === 0;
-    }
-
-    return is;
+export function isArrayLike(value: any): boolean {
+    return value != null && typeof value === "object" && isLength(value.length);
 }

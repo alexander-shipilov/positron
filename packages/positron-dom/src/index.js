@@ -11,7 +11,8 @@ export { translateStyle } from "./translateStyle";
 export {
     block,
     element,
-    modifiers
+    modifiers,
+    BEMClassifier
 } from "./bem";
 
 export {
