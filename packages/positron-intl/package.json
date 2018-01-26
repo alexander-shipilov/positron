@@ -4,14 +4,14 @@
     "description": "Intl",
     "main": "./index.js",
     "dependencies": {
+        "intl": "^1.2.5",
+        "intl-format-cache": "^2.1.0",
+        "intl-messageformat": "^2.2.0",
         "positron-core": "^0.1.25",
         "positron-flow": "^0.1.25",
         "positron-immutable": "^0.1.25"
     },
     "peerDependencies": {
-        "intl": "^1.2.5",
-        "intl-format-cache": "^2.1.0",
-        "intl-messageformat": "^2.2.0",
         "prop-types": "^15.6.0"
     },
     "devDependencies": {
@@ -19,9 +19,6 @@
         "cross-env": "^5.1.3",
         "eslint": "^4.15.0",
         "flow-bin": "^0.63.1",
-        "intl": "^1.2.5",
-        "intl-format-cache": "^2.1.0",
-        "intl-messageformat": "^2.2.0",
         "jest": "^22.0.5",
         "prop-types": "^15.6.0",
         "rimraf": "^2.6.2"
