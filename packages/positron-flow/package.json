@@ -1,10 +1,10 @@
 {
     "name": "positron-flow",
-    "version": "0.1.25",
+    "version": "0.1.26",
     "description": "Core library for positron-ui",
     "main": "./index.js",
     "dependencies": {
-        "positron-core": "^0.1.25"
+        "positron-core": "^0.1.26"
     },
     "peerDependencies": {
         "prop-types": "^15.6.0"

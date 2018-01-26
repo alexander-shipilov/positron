@@ -1,11 +1,11 @@
 {
     "name": "positron-prop-types",
-    "version": "0.1.25",
+    "version": "0.1.26",
     "description": "Prop types",
     "main": "./index.js",
     "dependencies": {
-        "positron-core": "^0.1.25",
-        "positron-immutable": "^0.1.25"
+        "positron-core": "^0.1.26",
+        "positron-immutable": "^0.1.26"
     },
     "peerDependencies": {
         "prop-types": "^15.6.0"
