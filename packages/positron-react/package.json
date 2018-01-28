@@ -1,6 +1,6 @@
 {
   "name": "positron-react",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "description": "React",
   "main": "./index.js",
   "dependencies": {
