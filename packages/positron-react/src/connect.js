@@ -1,75 +1,10 @@
-import { filter, forEach, map, some } from "positron-core";
-import { createElement } from "react";
-import { Component } from "./Component";
+// @flow
 
-function toString(props) {
-    const string = Object.keys(props).map((key) => `${ key }: ${ props[key] }`).join(", ");
+import { some } from "positron-core";
+import * as React from "react";
+import { ConnectedComponent } from "./ConnectedComponent";
 
-    return string ? `{ ${ string } }` : "{}";
-}
-
-function onStoreChange(target, prop, data) {
-    if (target.connected) {
-        target.setState({ [prop]: data });
-    }
-}
-
-function filterConnected(component, nextProps) {
-    const { connectedStores: stores, connectedProps: props } = component;
-
-    return filter(nextProps, (value, prop) => !stores.hasOwnProperty(prop) && !props.hasOwnProperty(prop));
-}
-
-export class ConnectedComponent extends Component {
-    static get connectedProps() {
-        return {};
-    }
-
-    static get connectedStores() {
-        return {};
-    }
-
-    get connectedProps() {
-        return this.constructor.connectedProps;
-    }
-
-    get connectedStores() {
-        return this.constructor.connectedStores;
-    }
-
-    static toString(...args) {
-        const { connectedStores, connectedProps } = this;
-
-        return super.toString(toString(connectedStores), toString(connectedProps), ...args);
-    }
-
-    componentWillMount() {
-        const { connectedStores, connectedProps } = this.constructor;
-
-        this.define({ connected: true });
-        forEach(connectedStores, (store, prop) => {
-            this.addUnmountListener(store.addListener(onStoreChange.bind(null, this, prop)));
-        });
-
-        this.setState(Object.assign({},
-            this.props,
-            map(connectedStores, ({ state }) => state),
-            connectedProps
-        ));
-    }
-
-    componentWillReceiveProps(props) {
-        this.setState(filterConnected(this, props));
-    }
-
-    componentWillUnmount() {
-        this.define({ connected: void 0 });
-
-        super.componentWillUnmount();
-    }
-}
-
-function createConnected(Component) {
+function createConnected<P, S>(Component: React.Component<P, S>): ConnectedComponent<P, S> {
     const connectedStores = {};
     const connectedProps = {};
 
@@ -98,7 +33,7 @@ function createConnected(Component) {
         }
 
         render() {
-            return createElement(Component, this.state);
+            return React.createElement(Component, this.state);
         }
     };
 }

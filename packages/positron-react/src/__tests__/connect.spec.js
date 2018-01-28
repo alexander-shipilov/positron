@@ -2,7 +2,8 @@ import { mount } from "enzyme";
 import { isImplementationOf, map } from "positron-core";
 import { Store } from "positron-flow";
 import React, { Component, PureComponent } from "react";
-import { connect, ConnectedComponent } from "../connect";
+import { connect } from "../connect";
+import { ConnectedComponent } from "../ConnectedComponent";
 
 describe("ConnectedComponent", () => {
     it("implements PureComponent", () => {

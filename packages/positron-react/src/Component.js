@@ -1,40 +1,36 @@
+// @flow
+
 import { Base, forEach, implement, uid } from "positron-core";
-import { BEMClassifier } from "positron-dom";
-import { IntlFormatter, IntlOwner } from "positron-intl";
-import { isClass, PropsOwner } from "positron-prop-types";
-import PropTypes from "prop-types";
-import { PureComponent } from "react";
-import { ComponentRenderer } from "./ComponentRenderer";
+import { addEventListener } from "positron-dom";
+import * as React from "react";
 
-export class Component extends implement(PureComponent, Base, PropsOwner, IntlOwner, BEMClassifier) {
-    static propTypes = {
-        intl: PropTypes.instanceOf(IntlFormatter),
-        renderer: isClass(ComponentRenderer)
-    };
+export type ComponentReference<P: any, S: any> = (Element | React.Component<P, S>) => Element | React.Component<P, S>;
 
-    static messages = {};
-
-    get id() {
-        return this.hasOwnProperty("_id") ? this._id : this.define({ _id: uid("id") })._id;
-    }
-
-    get intl() {
-        return this.props.intl;
-    }
-
-    static toString(...args) {
+export class Component<P, S> extends implement(React.PureComponent, Base) {
+    static toString(...args: any[]): string {
         return Base.toString.call(this, ...args);
     }
 
-    block(mods = null, ...other) {
-        return super.block(mods, ...other, this.props.className);
+    props: P;
+
+    state: S;
+
+    references: {[string]: ComponentReference<any, any>};
+
+    get id(): string {
+        return this.hasOwnProperty("_id") ? this._id : this.define({ _id: uid("id") })._id;
     }
 
-    addDOMListener(...args) {
-        return this.addUnmountListener(addEventListener(...args));
+    addDOMListener(element: Element, event: string, handler: (Event) => void, capture?: boolean = false): () => void {
+        return this.addUnmountListener(addEventListener(element, event, handler, capture));
     }
 
-    addUnmountListener(listener) {
+    removeDOMListener(removeListener: () => void) {
+        this.removeUnmountListener(removeListener);
+        removeListener();
+    }
+
+    addUnmountListener(listener: (...any[]) => void) {
         if (!this.unmountListeners) {
             this.define({ unmountListeners: [] });
         }
@@ -44,7 +40,7 @@ export class Component extends implement(PureComponent, Base, PropsOwner, IntlOw
         return listener;
     }
 
-    removeUnmountListener(listener) {
+    removeUnmountListener(listener: (...any[]) => void) {
         if (this.unmountListeners) {
             this.unmountListeners = this.unmountListeners.filter((unmountListener) => unmountListener !== listener);
         }
@@ -67,7 +63,7 @@ export class Component extends implement(PureComponent, Base, PropsOwner, IntlOw
         }
     }
 
-    ref(name) {
+    ref(name: string): () => ComponentReference<any, any> {
         if (!this.references) {
             this.references = this.define({ references: {} });
         }
@@ -75,17 +71,7 @@ export class Component extends implement(PureComponent, Base, PropsOwner, IntlOw
         return this.references[name] = (el) => this[name] = el;
     }
 
-    render() {
-        const { renderer } = this.props;
-
-        if (!renderer) {
-            this.warning("requires renderer");
-        }
-
-        return renderer ? renderer.render(this) : null;
-    }
-
-    toString(...args) {
+    toString(...args: any[]): string {
         return Base.prototype.toString.call(this, ...args);
     }
 }
