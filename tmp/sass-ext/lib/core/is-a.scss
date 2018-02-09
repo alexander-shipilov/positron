@@ -1,0 +1,62 @@
+@import "./is-function";
+@import "./is-list";
+@import "./is-map";
+@import "./is-callable";
+
+@function --is-a-list($type, $value) {
+    $type-length: length($type);
+    $is-a: is-list($value);
+
+    @if ($is-a and $type-length != 0) {
+        $value-length: length($value);
+
+        $index: 1;
+        @while ($is-a and $index <= $type-length) {
+            $nth-value: if($index <= $value-length, nth($value, $index), null);
+            $is-a: is-a(nth($type, $index), $nth-value);
+            $index: $index + 1;
+        }
+    }
+
+    @return $is-a;
+}
+
+@function --is-a-map($type, $value) {
+    $type-length: length($type);
+    $is-a: is-map($value);
+
+    @if ($is-a and $type-length != 0) {
+        $value-length: length($value);
+
+        $index: 1;
+        @while ($is-a and $index <= $type-length) {
+            $nth-type: nth($type, $index);
+            $is-a: is-a(nth($nth-type, 2), map-get($value, nth($nth-type, 1)));
+            $index: $index + 1;
+        }
+    }
+
+    @return $is-a;
+}
+
+@function is-a($type, $value, $args...) {
+    $is-a: false;
+
+    @if (is-list($type)) {
+        $is-a: --is-a-list($type, $value);
+    } @else if (is-map($type)) {
+        $is-a: --is-a-map($type, $value);
+    } @else if ($type == "map") {
+        $is-a: is-map($value);
+    } @else if ($type == "list") {
+        $is-a: is-list($value);
+    } @else if ($type == "function") {
+        $is-a: is-function($value);
+    } @else if ($type == "callable") {
+        $is-a: is-callable($value);
+    } @else {
+        $is-a: type-of($value) == inspect($type);
+    }
+
+    @return $is-a;
+}

@@ -1,0 +1,11 @@
+.form-check-group {
+    &_inline {
+        .control-label {
+            display: block;
+        }
+
+        .checkbox-inline {
+            margin: 10px 20px 0 0;
+        }
+    }
+}

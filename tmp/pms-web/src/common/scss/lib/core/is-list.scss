@@ -1,0 +1,5 @@
+@function is-list($value, $other...) {
+    $type: type-of($value);
+
+    @return $type == "list" or $type == arglist;
+}

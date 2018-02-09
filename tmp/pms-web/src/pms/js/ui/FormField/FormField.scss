@@ -1,0 +1,23 @@
+@import "variables";
+
+.form-field {
+    margin-bottom: 16px;
+    color: $material-grey-600;
+
+    &__label {
+        line-height: 24px;
+        font-size: 12px;
+    }
+
+    &__help {
+        line-height: 24px;
+        font-size: 12px;
+        color: #ccc;
+    }
+
+    &__error.form-field {
+        &__help {
+            color: darkred;
+        }
+    }
+}

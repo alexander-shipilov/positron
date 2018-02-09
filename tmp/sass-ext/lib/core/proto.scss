@@ -1,0 +1,133 @@
+@import "./is-a";
+@import "./throw";
+@import "./to-string";
+
+/// Map of registered types
+/// @group core-types
+/// @access private
+$--protos: ();
+
+/// Registers new proto
+/// @group core-types
+/// @access private
+///
+/// @param {function} $validator
+/// @return {map} $type
+///
+@function proto($type: null, $super: null) {
+    $proto: unique-id();
+    $type-proto: ($proto: $type);
+
+    @if ($super) {
+        @if (map-has-key($--protos, $super)) {
+            $type-proto: map-merge($type-proto, new($super, $type));
+        } @else {
+            $error: throw("invalid super");
+        }
+    }
+
+    $--protos: map-merge($--protos, ($proto: $type-proto)) !global;
+
+    @return $proto;
+}
+
+/// Checks whether type was registered before
+/// @group core-types
+///
+/// @param {string} $proto
+/// @return {bool}
+///
+/// @example
+///
+///     $my-type: proto();
+///
+///     @debug is-proto($my-type); // true
+///     @debug is-proto(foo-bar); // false
+///
+@function is-proto($proto) {
+    @return map-has-key($--protos, $proto);
+}
+
+/// Determines whether the passed value is the given type
+/// @group core-types
+///
+/// @param {any} $target
+/// @param {string} $type-name
+/// @return {bool}
+///
+/// @example
+///
+///     $my-type: type();
+///     $my-instance = new($my-type, foo);
+///
+///     @debug instance-of($my-type, $my-instance); // true
+///
+@function instance-of($proto, $target) {
+    @return is-map($target) and is-proto($proto) and map-has-key($target, $proto);
+}
+
+/// Returns associated type-value of the passed target
+/// @group core-types
+///
+/// @param {any} $target
+/// @param {string} $proto
+/// @return {any | null}
+///
+/// @throw Type #{ $type-name } does not exist
+///
+/// @example
+///
+///     $type1: type(type1);
+///     $type2: type(type2);
+///
+///     $my-instance = map-merge(new($type1, foo), new($type2, bar));
+///
+///     @debug value-of($type1, $my-instance); // foo
+///     @debug value-of($type2, $my-instance); // bar
+///
+@function value-of($proto, $target) {
+    $value-of: null;
+
+    @if (instance-of($proto, $target)) {
+        $proto: map-get($--protos, $proto);
+        $value-of: map-get($target, nth(nth($proto, 1), 1));
+    }
+
+    @return $value-of;
+}
+
+/// Creates new instance of specified type with the passed type value
+/// @group core-types
+///
+/// @param {string} $proto
+/// @param {any} $value [null]
+/// @return {map}
+///
+/// @throw Type #{ $type-name } does not exist
+///
+/// @example
+///
+///     $my-type: type();
+///     $my-instance = new($my-type, foo);
+///
+///     @debug instance-of($my-instance, $my-type); // true
+///     @debug instance-of(some list, $my-type); // false
+///
+@function new($proto, $value: null) {
+    $new-value: null;
+
+    @if (is-proto($proto)) {
+        $prototype: map-get($--protos, $proto);
+        $type: value-of($proto, $prototype);
+
+        @if ($type == null or is-a($type, $value)) {
+            $new-value: map-merge($prototype, ($proto: $value));
+        } @else {
+            $error: throw("invalid type value. expected #{ to-string($type) }, given: #{ to-string($value) }");
+        }
+    } @else {
+        $error: throw("type #{ $proto } does not exist");
+    }
+
+    @return $new-value;
+}

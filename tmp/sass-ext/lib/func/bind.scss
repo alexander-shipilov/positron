@@ -1,0 +1,19 @@
+@import "../core/await";
+@import "../core/is-list";
+@import "./apply";
+
+@function --func-bound-function($func, $bound-args, $args...) {
+    @return func-apply($func, join($bound-args, $args));
+}
+
+@function func-bind($func, $args...) {
+    @if (is-list($func)) {
+        $args: join($func, $args);
+
+        @return func-bind($args...);
+    }
+
+    $bind: if($func == --func-bound-function, join(($func,), $args), (--func-bound-function, $func, $args));
+
+    @return if(await(func-bind, "function" $func), $bind, null);
+}

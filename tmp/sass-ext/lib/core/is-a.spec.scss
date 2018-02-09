@@ -1,0 +1,96 @@
+@import "../expect";
+@import "is-a";
+
+@function --is-a-arg-list($args...) {
+    @return $args;
+}
+
+@include describe(is-a) {
+    @include describe("is a function") {
+        @include it("should return true if the passed value is a function", (
+            is-a(function, call) true,
+            is-a(function, is-a) true,
+        ));
+    }
+
+    @include describe("is a callable") {
+        @include it("should return true if the passed value can be called with func-call", (
+            is-a(callable, call) true,
+            is-a(callable, is-a) true,
+            is-a(callable, (is-a, 1)) true,
+            is-a(callable, ((is-a, 1), 1)) true,
+        ));
+    }
+
+    @include describe("is a list") {
+        @include it("should return true if the passed value is a list / arglist", (
+            is-a(list, ()) true,
+            is-a(list, (1, 2, 3)) true,
+            is-a(list, --is-a-arg-list()) true,
+            is-a(list, --is-a-arg-list(1, 2, 3)) true,
+        ));
+    }
+
+    @include describe("is an arglist") {
+        @include it("should return true if the passed value is an arglist", (
+            is-a(arglist, --is-a-arg-list()) true,
+            is-a(arglist, --is-a-arg-list(1, 2, 3)) true,
+        ));
+
+        @include it("should return false if the passed value is a list", (
+            is-a(arglist, ()) false,
+            is-a(arglist, (1, 2, 3)) false,
+        ));
+    }
+
+    @include describe("is a map") {
+        @include it("should return true if the passed value is a map or an empty list or arglist", (
+            is-a(map, ()) true,
+            is-a(map, --is-a-arg-list()) true,
+            is-a(map, (foo: 1)) true,
+        ));
+    }
+
+    @include describe("is a string, number or boolean") {
+        @include it("should return true if the passed arg is a value of the specified type", (
+            is-a(string, "") true,
+            is-a(number, 1) true,
+            is-a(bool, true) true,
+            is-a(bool, false) true,
+        ));
+    }
+
+    @include describe("is null") {
+        @include it("should return true if the passed value is null", (
+            is-a("null", null) true,
+            is-a(null, null) true,
+        ));
+    }
+
+    @include describe("is a list of types") {
+        @include it("should return true if all items of the specfied value matches corresponding types", (
+            is-a((string,), ("",)) true,
+            is-a((string, number), ("", 1)) true,
+            is-a((string, number, list), ("", 1, ())) true,
+            is-a((string, number, (bool, function)), ("", 1, (true, is-a))) true,
+            is-a((null, null), ()) true,
+        ));
+
+        @include it("should return true if the passed types is empty and the given value is any list", (
+            is-a((), ()) true,
+            is-a((), (1, 2)) true,
+            is-a((), --is-a-arg-list()) true,
+            is-a((), --is-a-arg-list(1, 2, 3)) true,
+        ));
+    }
+
+    @include describe("is a map of types") {
+        @include it("should return true if all props of the specfied value matches corresponding types", (
+            is-a((foo: string,), (foo: "",)) true,
+            is-a((foo: string,), (foo: 1,)) false,
+
+            is-a((foo: string, bar: number), (foo: "", bar: 1)) true,
+            is-a((foo: string, bar: null), (foo: "")) true,
+        ));
+    }
+}

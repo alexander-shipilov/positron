@@ -1,0 +1,98 @@
+@import "mixins";
+@import "constants/material-colors";
+
+$panel-header-border: (width: 0 0 1px, style: solid, color: red) !default;
+
+$border-props: width style color radius image;
+
+@function positron-prop($prop, $value) {
+    @return $value;
+}
+
+@function positron-props-list-to-map($list, $props, $prefix: "") {
+    $map: ();
+
+    @if (type_of($list) != "list" or type_of($props) != "list") {
+        @error "positron-list-to-map: lists required";
+    }
+
+    @for $i from 1 through min(length($list), length($props)) {
+        $value: nth($list, $i);
+
+        @if ($value != null) {
+            $name: nth($props, $i);
+
+            $map: map_merge($map, (
+                #{ $name }: positron-prop(#{ if($prefix != "", "#{ $prefix }-", "") }#{ $name }, $value)
+            ));
+        }
+    }
+
+    @return $map;
+}
+
+@function positron-prop-border($border) {
+    $type: type_of($border);
+
+    @if ($type == "list") {
+        $border: positron-props-list-to-map($border, $border-props, border);
+    } @else if ($type != "map") {
+        $border: positron-prop-border(($border,));
+    }
+
+    @return $border;
+}
+
+
+@function positron-expand-sides($sides) {
+    $type: type_of($sides);
+
+    @if ($type == "list") {
+        $length: length($sides);
+
+        @if ($length == 0) {
+
+        }
+
+        @if ($length == 1) {
+            $sides: positron-expand-sides((nth($sides, 1), nth($sides, 1)));
+        } @else {
+
+        }
+    } @else {
+        $sides: positron-expand-sides()
+    }
+}
+
+@function positron-trbl($trbl) {
+    $type: type_of($trbl);
+
+    @if ($type == "list") {
+        $map: ();
+    } @else if ($type != "map") {
+        $trbl: positron-trbl(($trbl,));
+    }
+}
+
+@function positron-prop-border-width($border-width) {
+
+}
+
+.panel {
+    @include flex(column, stretch);
+    text-align: left;
+
+    &__content {
+        flex: 1 1 auto;
+    }
+}
+
+.panel-header {
+    @include flex(row, center);
+    min-height: 40px;
+    border-bottom: 1px solid $material-grey-300;
+
+    &__title {
+        flex: 1;
+    }
+}

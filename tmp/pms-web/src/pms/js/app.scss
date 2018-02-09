@@ -1,0 +1,26 @@
+@import "variables";
+@import "mixins";
+@import "reset";
+
+@import "ui/index";
+@import "lib.spec";
+
+@import "components/App/App";
+@import "components/Auth/Auth";
+@import "components/SignIn/SignIn";
+@import "components/SignUp/SignUp";
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 110%;
+    position: relative;
+    font-family: Roboto, sans-serif;
+}
+
+#app {
+    @include fixed(0, 0, 0, 0);
+    background: #ccc;
+}

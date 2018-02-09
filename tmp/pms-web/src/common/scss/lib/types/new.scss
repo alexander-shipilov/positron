@@ -1,0 +1,35 @@
+@import "../core/to-bool";
+@import "../core/throw";
+@import "../func/call";
+@import "./type-exists";
+@import "./type-check";
+
+/// Creates new instance of specified type with the passed type value
+/// @group core-types
+///
+/// @param {string} $type-name
+/// @param {any} $type-value [null]
+/// @param {map} $type-target [empty map]
+/// @return {map}
+///
+/// @throw Type #{ $type-name } does not exist
+///
+/// @example
+///
+///     $my-type: type();
+///     $my-instance = new($my-type, foo);
+///
+///     @debug instance-of($my-instance, $my-type); // true
+///     @debug instance-of(some list, $my-type); // false
+///
+@function new($type-id, $type-value: null) {
+    $value: null;
+
+    @if (not type-exists($type-id)) {
+        $value: ($type-id: $type-value);
+    } @else {
+        $error: throw("type #{ $type-id } does not exist");
+    }
+
+    @return $value;
+}

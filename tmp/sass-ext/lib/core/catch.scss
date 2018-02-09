@@ -1,0 +1,22 @@
+@import "../func/call";
+@import "./await";
+@import "./throw";
+
+
+@function --catch($func, $args...) {
+    $--last-thrown-error: null !global;
+
+    $--should-throw: false !global;
+    $result: func-call($func, $args...);
+    $--should-throw: true !global;
+
+    @return ($--last-thrown-error, if($--last-thrown-error, null, $result));
+}
+
+@function catch($func, $args...) {
+    @return if(await(catch, callable $func), nth(--catch($func, $args...), 1), null);
+}
+
+@function catch-and-return($func, $args...) {
+    @return if(await(catch-and-return, callable $func), nth(--catch($func, $args...), 2), null);
+}

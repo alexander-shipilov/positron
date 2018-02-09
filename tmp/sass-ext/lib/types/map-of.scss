@@ -1,0 +1,34 @@
+/// Map-of type
+/// @group core-types
+/// @access private
+$--map-of: type(map-of);
+
+/// Creates new typed Map
+/// @group core-types
+///
+/// @param {any} $type
+/// @return {map}
+///
+/// @example
+///     $type: map-of(string);
+///
+///     @debug instance-of((foo: bar), $type); // true
+///     @debug instance-of((foo: 1), $type); // false
+///     @debug instance-of(foo bar, $type); // false
+@function map-of($type) {
+    @return type($--map-of, $type);
+}
+
+/// Determines whether the passed type is a map-of type
+/// @group core-types
+///
+/// @param {any} $type
+/// @return {bool}
+///
+/// @example
+///     $type: map-of(string);
+///
+///     @debug is-map-of($type); // true
+@function is-map-of($type) {
+    @return instance-of($type, $--map-of);
+}

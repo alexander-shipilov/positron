@@ -1,0 +1,13 @@
+@import "./is-list";
+@import "./is-function";
+
+@function is-callable($value) {
+    $is-callable: is-function($value);
+
+    @while (not $is-callable and is-list($value) and length($value) != 0) {
+        $value: nth($value, 1);
+        $is-callable: is-function($value);
+    }
+
+    @return $is-callable;
+}

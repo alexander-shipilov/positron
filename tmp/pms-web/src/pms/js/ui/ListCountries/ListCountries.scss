@@ -1,0 +1,23 @@
+@import "mixins";
+
+.list-countries-option {
+    .list-option__label {
+        display: inline-block;
+        @include flex(row, center);
+    }
+
+    &__flag {
+    }
+
+    &__name {
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 0 10px;
+    }
+
+    &__phone-code {
+        color: #666;
+    }
+}

@@ -1,0 +1,28 @@
+@import "../core/is-list";
+@import "../expect";
+@import "./bind";
+@import "./call";
+
+@function --func-bind-spec-test($args...) {
+    @return $args;
+}
+
+@include describe(func-bind) {
+    @include it("returns a list which can be passed to func-call", (
+        is-list(func-bind(--func-bind-spec-test, 1, 2)) true,
+        func-call(func-bind(--func-bind-spec-test, 1, 2), 3, 4) (1, 2, 3, 4),
+    ));
+
+    @include it("should support chaining", (
+        func-call(func-bind(func-bind(--func-bind-spec-test, 1), 2)) (1, 2),
+        func-call(func-bind(func-bind(func-bind(--func-bind-spec-test, 1), 2), 3)) (1, 2, 3),
+    ));
+
+    @include it("shoud throw if passed arg is not a function", (
+        to-throw(func-bind, 1) true,
+    ));
+
+    @include it("should return --func-bound-function with passed params", (
+        func-bind(--func-bind-spec-test, 1, 2) (--func-bound-function, --func-bind-spec-test, (1, 2)),
+    ));
+}

@@ -1,0 +1,11 @@
+[ignore]
+.*/node_modules/.*
+.*/build/.*
+.*/tmp/.*
+.*/coverage/.*
+.*/__tests__/.*
+.*/__mocks__/.*
+.*\.spec\.js
+
+[options]
+all=false

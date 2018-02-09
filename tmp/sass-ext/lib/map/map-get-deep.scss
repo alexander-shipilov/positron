@@ -1,0 +1,28 @@
+@import "../core/await";
+@import "../core/to-string";
+@import "../core/throw";
+@import "../list/list-join-with";
+@import "../list/list-slice";
+@import "../string/str-split";
+
+@function --map-get-deep($map, $keys) {
+    $length: length($keys);
+    $value: null;
+
+    @if ($length != 0) {
+        $value: $map;
+        $index: 1;
+
+        @while (type-of($value) == "map" and $index <= $length) {
+            $key: nth($keys, $index);
+            $value: map-get($value, $key);
+            $index: $index + 1;
+        }
+    }
+
+    @return $value;
+}
+
+@function map-get-deep($map, $keys) {
+    @return if(await(map-get-deep, map $map, list $keys), --map-get-deep($map, $keys), null);
+}

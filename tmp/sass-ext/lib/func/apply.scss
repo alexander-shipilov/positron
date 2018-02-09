@@ -1,0 +1,6 @@
+@import "../core/await";
+@import "./call";
+
+@function func-apply($func, $args: ()) {
+    @return if(await(func-apply, callable $func, "list" $args), func-call($func, $args...), null);
+}

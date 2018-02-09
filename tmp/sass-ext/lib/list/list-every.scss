@@ -1,0 +1,6 @@
+@import "../core/await";
+@import "./--list-every";
+
+@function list-every($list, $func, $args...) {
+    @return if(await(list-every, "list" $list, "function" $func), --list-every($list, $func, $args...), null);
+}

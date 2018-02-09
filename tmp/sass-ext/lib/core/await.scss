@@ -1,0 +1,46 @@
+@import "../string/str-ends-with";
+@import "../string/str-starts-with";
+@import "../list/--list-every";
+@import "./is-function";
+@import "./is-list";
+@import "./is-a";
+@import "./throw";
+
+@function --await-value-of($type, $value, $optional) {
+    $is-valid: if($value == null and $optional, true, is-a($type, $value));
+
+    @return if($is-valid, null, "expected #{ $type }, #{ inspect($value) } given");
+}
+
+@function await($func, $args...) {
+    $error: null;
+
+    @each $type, $value in $args {
+        $optional: false;
+        $is-map: false;
+        $is-list: false;
+
+        @if (str-starts-with($type, "?")) {
+            $optional: true;
+            $type: str-slice($type, 2);
+        }
+
+        @if (str-ends-with($type, "[]")) {
+            $is-list: true;
+            $type: str-slice($type, -2);
+        }
+
+        @if (str-ends-with($type, "()")) {
+            $is-map: true;
+            $type: str-slice($type, -2);
+        }
+
+        $error: --await-value-of($type, $value, $optional);
+
+        @if ($error != null) {
+            @return throw($error) == null;
+        }
+    }
+
+    @return true;
+}

@@ -1,0 +1,32 @@
+@import "./is-list";
+@import "./is-map";
+@import "../types/types";
+
+
+
+@function --await-list-of($value, $list) {
+}
+
+@function --await-map-of($value, $type) {
+
+}
+
+@function --await-value($value, $type, $optional) {
+    $is-valid: true;
+
+    @if ($optional == false or $value != null) {
+        @if (is-list-of($type)) {
+
+        } else @if
+
+        @if(is-list($type)) {
+
+        }
+
+    }
+}
+
+
+@function await-value($value, $type, $nullable: false) {
+    @return if($value == null, $nullable == true, --await-value($value, $type));
+}

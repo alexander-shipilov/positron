@@ -1,0 +1,38 @@
+@keyframes bounce-delay {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+.spinner {
+    position: relative;
+    width: 80px;
+    height: 20px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 99;
+
+    &_center {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    &__bounce {
+        width: 20px;
+        height: 20px;
+        background-color: #666;
+        border-radius: 50%;
+        display: inline-block;
+        animation: bounce-delay 1.4s infinite ease-in-out both;
+
+        &:nth-child(1) { animation-delay: -0.32s; }
+        &:nth-child(2) { animation-delay: -0.16s; }
+    }
+}

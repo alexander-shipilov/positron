@@ -1,0 +1,38 @@
+@import "mixins";
+
+.form-select {
+    position: relative;
+
+    .form-control[readonly] {
+        background-color: #fff;
+    }
+
+    .form-control[disabled], fieldset[disabled] .form-control {
+        background-color: #eeeeee;
+    }
+
+    &_drop-visible {
+        pointer-events: none;
+    }
+
+    &__label {
+        @include absolute(0, 0, 0, 0);
+        padding: 6px 24px 6px 12px !important;
+        pointer-events: none;
+        overflow: hidden;
+
+        .list-option__label {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .form-input.has-feedback & {
+            padding-right: 32px;
+        }
+
+        .form-input.has-feedback.has-feedback-left {
+            padding-left: 32px;
+        }
+    }
+}

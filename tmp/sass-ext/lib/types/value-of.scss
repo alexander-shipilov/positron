@@ -1,0 +1,25 @@
+@import "../core/is-map";
+@import "./type-exists";
+
+/// Returns associated type-value of the passed target
+/// @group core-types
+///
+/// @param {any} $target
+/// @param {string} $type-id
+/// @return {any | null}
+///
+/// @throw Type #{ $type-name } does not exist
+///
+/// @example
+///
+///     $type1: type(type1);
+///     $type2: type(type2);
+///
+///     $my-instance = map-merge(new($type1, foo), new($type2, bar));
+///
+///     @debug value-of-type($my-instance, $type1); // foo
+///     @debug value-of-type($my-instance, $type2); // bar
+///
+@function value-of($target, $type-id) {
+    @return if(is-map($target) and type-exists($type-id), map-get($target, $type-id), null);
+}

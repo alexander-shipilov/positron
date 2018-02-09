@@ -1,0 +1,19 @@
+@import "./value-of";
+
+/// Determines whether the passed value is the given type
+/// @group core-types
+///
+/// @param {any} $target
+/// @param {string} $type-name
+/// @return {bool}
+///
+/// @example
+///
+///     $my-type: type();
+///     $my-instance = new($my-type, foo);
+///
+///     @debug instance-of($my-instance, $my-type); // true
+///
+@function instance-of($target, $type-id) {
+    @return value-of($target, $type-id) != null;
+}

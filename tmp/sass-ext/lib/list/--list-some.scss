@@ -1,0 +1,17 @@
+@import "../core/to-bool";
+
+@function --list-some($list, $func, $args...) {
+    $length: length($list);
+    $some: false;
+
+    @if ($length != 0) {
+        $index: 1;
+
+        @while ($some == false and $index <= $length) {
+            $some: to-bool(call($func, nth($list, $index), $index, $list, $args...));
+            $index: $index + 1;
+        }
+    }
+
+    @return $some;
+}

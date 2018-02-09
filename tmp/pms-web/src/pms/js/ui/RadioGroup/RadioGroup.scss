@@ -1,0 +1,11 @@
+.form-radio-group {
+    &_inline {
+        .control-label {
+            display: block;
+        }
+
+        .radio-inline {
+            margin: 10px 20px 0 0;
+        }
+    }
+}

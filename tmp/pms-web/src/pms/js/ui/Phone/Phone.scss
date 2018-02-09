@@ -1,0 +1,17 @@
+.form-phone {
+    &__code {
+        text-align: left;
+
+        .fa {
+            margin-right: 5px;
+            color: #999;
+        }
+
+        .label {
+        }
+
+        .caret {
+            margin-left: 5px;
+        }
+    }
+}

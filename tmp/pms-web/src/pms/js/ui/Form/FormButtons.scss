@@ -1,0 +1,9 @@
+@import "mixins";
+
+.form-buttons {
+    @include flex($align-items: center, $justify-content: space-around);
+
+    .btn {
+        margin: 0 10px;
+    }
+}

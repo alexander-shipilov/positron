@@ -1,0 +1,25 @@
+@import "../expect";
+@import "./map-every";
+
+@function --map-spec-true($args...) {
+    @return true;
+}
+
+@function --map-spec-false($args...) {
+    @return false;
+}
+
+@include describe(map-every) {
+     @include it("tests whether all elements in the map pass the test implemented by the provided function", (
+        map-every((foo: 1, bar: 2, ted: 3), --map-spec-true) true,
+    ));
+
+    @include it("shoud return true for empty maps", (
+        map-every((), --map-spec-true) true,
+        map-every((), --map-spec-false) true,
+    ));
+
+    @include it("shoud throw if passed arg is not a map", (
+        map-every((foo: 1, bar: 2, ted: 3), --map-spec-true) true,
+    ));
+}

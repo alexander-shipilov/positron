@@ -1,0 +1,958 @@
+.flag {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url(/images/flags.png) no-repeat;
+
+    &_ve {
+        background-position: -48px -336px;
+    }
+
+    &_ao {
+        background-position: -192px 0;
+    }
+
+    &_kh {
+        background-position: -336px -144px;
+    }
+
+    &_bh {
+        background-position: -144px -24px;
+    }
+
+    &_fi {
+        background-position: -48px -96px;
+    }
+
+    &_gs {
+        background-position: -96px -120px;
+    }
+
+    &_sl {
+        background-position: -24px -288px;
+    }
+
+    &_dj {
+        background-position: -120px -72px;
+    }
+
+    &_zm {
+        background-position: -288px -336px;
+    }
+
+    &_cn {
+        background-position: -288px -48px;
+    }
+
+    &_pg {
+        background-position: -216px -240px;
+    }
+
+    &_gq {
+        background-position: -48px -120px;
+    }
+
+    &_co {
+        background-position: -312px -48px;
+    }
+
+    &_cg {
+        background-position: -144px -48px;
+    }
+
+    &_wf {
+        background-position: -168px -336px;
+    }
+
+    &_mx {
+        background-position: -144px -216px;
+    }
+
+    &_bo {
+        background-position: -288px -24px;
+    }
+
+    &_lv {
+        background-position: 0 -192px;
+    }
+
+    &_vg {
+        background-position: -72px -336px;
+    }
+
+    &_la {
+        background-position: -168px -168px;
+    }
+
+    &_kr {
+        background-position: -72px -168px;
+    }
+
+    &_pe {
+        background-position: -168px -240px;
+    }
+
+    &_ps {
+        background-position: -360px -240px;
+    }
+
+    &_sc {
+        background-position: -240px -264px;
+    }
+
+    &_ai {
+        background-position: -96px 0;
+    }
+
+    &_so {
+        background-position: -96px -288px;
+    }
+
+    &_mt {
+        background-position: -48px -216px;
+    }
+
+    &_vu {
+        background-position: -144px -336px;
+    }
+
+    &_is {
+        background-position: -144px -144px;
+    }
+
+    &_et {
+        background-position: 0 -96px;
+    }
+
+    &_gw {
+        background-position: -168px -120px;
+    }
+
+    &_us {
+        background-position: -312px -312px;
+    }
+
+    &_eu {
+        background-position: -24px -96px;
+    }
+
+    &_sg {
+        background-position: -312px -264px;
+    }
+
+    &_zw {
+        background-position: -312px -336px;
+    }
+
+    &_bi {
+        background-position: -168px -24px;
+    }
+
+    &_mo {
+        background-position: -312px -192px;
+    }
+
+    &_aw {
+        background-position: -312px 0;
+    }
+
+    &_vn {
+        background-position: -120px -336px;
+    }
+
+    &_ki {
+        background-position: -360px -144px;
+    }
+
+    &_lt {
+        background-position: -336px -168px;
+    }
+
+    &_za {
+        background-position: -264px -336px;
+    }
+
+    &_ua {
+        background-position: -264px -312px;
+    }
+
+    &_md {
+        background-position: -96px -192px;
+    }
+
+    &_bm {
+        background-position: -240px -24px;
+    }
+
+    &_py {
+        background-position: -48px -264px;
+    }
+
+    &_st {
+        background-position: -168px -288px;
+    }
+
+    &_bn {
+        background-position: -264px -24px;
+    }
+
+    &_ru {
+        background-position: -144px -264px;
+    }
+
+    &_lc {
+        background-position: -216px -168px;
+    }
+
+    &_nz {
+        background-position: -96px -240px;
+    }
+
+    &_do {
+        background-position: -192px -72px;
+    }
+
+    &_va {
+        background-position: 0 -336px;
+    }
+
+    &_uy {
+        background-position: -336px -312px;
+    }
+
+    &_me {
+        background-position: -120px -192px;
+    }
+
+    &_mm {
+        background-position: -264px -192px;
+    }
+
+    &_gm {
+        background-position: 0 -120px;
+    }
+
+    &_ms {
+        background-position: -24px -216px;
+    }
+
+    &_ck {
+        background-position: -216px -48px;
+    }
+
+    &_kp {
+        background-position: -48px -168px;
+    }
+
+    &_tn {
+        background-position: -96px -312px;
+    }
+
+    &_ky {
+        background-position: -120px -168px;
+    }
+
+    &_tt {
+        background-position: -168px -312px;
+    }
+
+    &_no {
+        background-position: 0 -240px;
+    }
+
+    &_ar {
+        background-position: -216px 0;
+    }
+
+    &_ae {
+        background-position: -24px 0;
+    }
+
+    &_an {
+        background-position: -168px 0;
+    }
+
+    &_sr {
+        background-position: -120px -288px;
+    }
+
+    &_ie {
+        background-position: 0 -144px;
+    }
+
+    &_cl {
+        background-position: -240px -48px;
+    }
+
+    &_it {
+        background-position: -168px -144px;
+    }
+
+    &_pa {
+        background-position: -144px -240px;
+    }
+
+    &_gy {
+        background-position: -192px -120px;
+    }
+
+    &_mv {
+        background-position: -96px -216px;
+    }
+
+    &_jo {
+        background-position: -240px -144px;
+    }
+
+    &_nf {
+        background-position: -288px -216px;
+    }
+
+    &_vc {
+        background-position: -24px -336px;
+    }
+
+    &_bl {
+        background-position: -216px -24px;
+    }
+
+    &_cd {
+        background-position: -96px -48px;
+    }
+
+    &_gi {
+        background-position: -336px -96px;
+    }
+
+    &_np {
+        background-position: -24px -240px;
+    }
+
+    &_mn {
+        background-position: -288px -192px;
+    }
+
+    &_fm {
+        background-position: -120px -96px;
+    }
+
+    &_au {
+        background-position: -288px 0;
+    }
+
+    &_ma {
+        background-position: -48px -192px;
+    }
+
+    &_bf {
+        background-position: -96px -24px;
+    }
+
+    &_ne {
+        background-position: -264px -216px;
+    }
+
+    &_dm {
+        background-position: -168px -72px;
+    }
+
+    &_im {
+        background-position: -48px -144px;
+    }
+
+    &_cm {
+        background-position: -264px -48px;
+    }
+
+    &_ml {
+        background-position: -240px -192px;
+    }
+
+    &_sy {
+        background-position: -216px -288px;
+    }
+
+    &_sd {
+        background-position: -264px -264px;
+    }
+
+    &_al {
+        background-position: -120px 0;
+    }
+
+    &_bj {
+        background-position: -192px -24px;
+    }
+
+    &_ca {
+        background-position: -72px -48px;
+    }
+
+    &_ls {
+        background-position: -312px -168px;
+    }
+
+    &_kw {
+        background-position: -96px -168px;
+    }
+
+    &_ee {
+        background-position: -264px -72px;
+    }
+
+    &_ph {
+        background-position: -240px -240px;
+    }
+
+    &_ss {
+        background-position: -144px -288px;
+    }
+
+    &_de {
+        background-position: -96px -72px;
+    }
+
+    &_sv {
+        background-position: -192px -288px;
+    }
+
+    &_az {
+        background-position: -360px 0;
+    }
+
+    &_nc {
+        background-position: -240px -216px;
+    }
+
+    &_fr {
+        background-position: -168px -96px;
+    }
+
+    &_ni {
+        background-position: -336px -216px;
+    }
+
+    &_hk {
+        background-position: -216px -120px;
+    }
+
+    &_mu {
+        background-position: -72px -216px;
+    }
+
+    &_pr {
+        background-position: -336px -240px;
+    }
+
+    &_ro {
+        background-position: -96px -264px;
+    }
+
+    &_ic {
+        background-position: -336px -120px;
+    }
+
+    &_tr {
+        background-position: -144px -312px;
+    }
+
+    &_es {
+        background-position: -360px -72px;
+    }
+
+    &_ba {
+        background-position: 0 -24px;
+    }
+
+    &_sn {
+        background-position: -72px -288px;
+    }
+
+    &_il {
+        background-position: -24px -144px;
+    }
+
+    &_to {
+        background-position: -120px -312px;
+    }
+
+    &_uz {
+        background-position: -360px -312px;
+    }
+
+    &_sk {
+        background-position: 0 -288px;
+    }
+
+    &_bz {
+        background-position: -48px -48px;
+    }
+
+    &_gh {
+        background-position: -312px -96px;
+    }
+
+    &_nu {
+        background-position: -72px -240px;
+    }
+
+    &_id {
+        background-position: -360px -120px;
+    }
+
+    &_ge {
+        background-position: -264px -96px;
+    }
+
+    &_pl {
+        background-position: -288px -240px;
+    }
+
+    &_se {
+        background-position: -288px -264px;
+    }
+
+    &_th {
+        background-position: -360px -288px;
+    }
+
+    &_ec {
+        background-position: -240px -72px;
+    }
+
+    &_dz {
+        background-position: -216px -72px;
+    }
+
+    &_ws {
+        background-position: -192px -336px;
+    }
+
+    &_fo {
+        background-position: -144px -96px;
+    }
+
+    &_bw {
+        background-position: 0 -48px;
+    }
+
+    &_gt {
+        background-position: -120px -120px;
+    }
+
+    &_ga {
+        background-position: -192px -96px;
+    }
+
+    &_ci {
+        background-position: -192px -48px;
+    }
+
+    &_gr {
+        background-position: -72px -120px;
+    }
+
+    &_rw {
+        background-position: -168px -264px;
+    }
+
+    &_pw {
+        background-position: -24px -264px;
+    }
+
+    &_ye {
+        background-position: -216px -336px;
+    }
+
+    &_hu {
+        background-position: -312px -120px;
+    }
+
+    &_by {
+        background-position: -24px -48px;
+    }
+
+    &_eg {
+        background-position: -288px -72px;
+    }
+
+    &_my {
+        background-position: -168px -216px;
+    }
+
+    &_tk {
+        background-position: -24px -312px;
+    }
+
+    &_nr {
+        background-position: -48px -240px;
+    }
+
+    &_li {
+        background-position: -240px -168px;
+    }
+
+    &_as {
+        background-position: -240px 0;
+    }
+
+    &_tv {
+        background-position: -192px -312px;
+    }
+
+    &_tf {
+        background-position: -312px -288px;
+    }
+
+    &_bb {
+        background-position: -24px -24px;
+    }
+
+    &_mf {
+        background-position: -144px -192px;
+    }
+
+    &_ke {
+        background-position: -288px -144px;
+    }
+
+    &_td {
+        background-position: -288px -288px;
+    }
+
+    &_fj {
+        background-position: -72px -96px;
+    }
+
+    &_tz {
+        background-position: -240px -312px;
+    }
+
+    &_gu {
+        background-position: -144px -120px;
+    }
+
+    &_si {
+        background-position: -360px -264px;
+    }
+
+    &_bs {
+        background-position: -336px -24px;
+    }
+
+    &_ly {
+        background-position: -24px -192px;
+    }
+
+    &_tg {
+        background-position: -336px -288px;
+    }
+
+    &_mk {
+        background-position: -216px -192px;
+    }
+
+    &_mw {
+        background-position: -120px -216px;
+    }
+
+    &_sz {
+        background-position: -240px -288px;
+    }
+
+    &_yt {
+        background-position: -240px -336px;
+    }
+
+    &_sb {
+        background-position: -216px -264px;
+    }
+
+    &_ax {
+        background-position: -336px 0;
+    }
+
+    &_jp {
+        background-position: -264px -144px;
+    }
+
+    &_gd {
+        background-position: -240px -96px;
+    }
+
+    &_bg {
+        background-position: -120px -24px;
+    }
+
+    &_gb {
+        background-position: -216px -96px;
+    }
+
+    &_tj {
+        background-position: 0 -312px;
+    }
+
+    &_ng {
+        background-position: -312px -216px;
+    }
+
+    &_tm {
+        background-position: -72px -312px;
+    }
+
+    &_tl {
+        background-position: -48px -312px;
+    }
+
+    &_mg {
+        background-position: -168px -192px;
+    }
+
+    &_at {
+        background-position: -264px 0;
+    }
+
+    &_ch {
+        background-position: -168px -48px;
+    }
+
+    &_mc {
+        background-position: -72px -192px;
+    }
+
+    &_ug {
+        background-position: -288px -312px;
+    }
+
+    &_cv {
+        background-position: 0 -72px;
+    }
+
+    &_mz {
+        background-position: -192px -216px;
+    }
+
+    &_bt {
+        background-position: -360px -24px;
+    }
+
+    &_cz {
+        background-position: -72px -72px;
+    }
+
+    &_cy {
+        background-position: -48px -72px;
+    }
+
+    &_mr {
+        background-position: 0 -216px;
+    }
+
+    &_kg {
+        background-position: -312px -144px;
+    }
+
+    &_ht {
+        background-position: -288px -120px;
+    }
+
+    &_mh {
+        background-position: -192px -192px;
+    }
+
+    &_kn {
+        background-position: -24px -168px;
+    }
+
+    &_vi {
+        background-position: -96px -336px;
+    }
+
+    &_jm {
+        background-position: -216px -144px;
+    }
+
+    &_pk {
+        background-position: -264px -240px;
+    }
+
+    &_km {
+        background-position: 0 -168px;
+    }
+
+    &_om {
+        background-position: -120px -240px;
+    }
+
+    &_kz {
+        background-position: -144px -168px;
+    }
+
+    &_cu {
+        background-position: -360px -48px;
+    }
+
+    &_af {
+        background-position: -48px 0;
+    }
+
+    &_mq {
+        background-position: -360px -192px;
+    }
+
+    &_bd {
+        background-position: -48px -24px;
+    }
+
+    &_gn {
+        background-position: -24px -120px;
+    }
+
+    &_ad {
+        background-position: 0 0;
+    }
+
+    &_gg {
+        background-position: -288px -96px;
+    }
+
+    &_rs {
+        background-position: -120px -264px;
+    }
+
+    &_iq {
+        background-position: -96px -144px;
+    }
+
+    &_in {
+        background-position: -72px -144px;
+    }
+
+    &_cw {
+        background-position: -24px -72px;
+    }
+
+    &_pf {
+        background-position: -192px -240px;
+    }
+
+    &_be {
+        background-position: -72px -24px;
+    }
+
+    &_sa {
+        background-position: -192px -264px;
+    }
+
+    &_sm {
+        background-position: -48px -288px;
+    }
+
+    &_sh {
+        background-position: -336px -264px;
+    }
+
+    &_nl {
+        background-position: -360px -216px;
+    }
+
+    &_lu {
+        background-position: -360px -168px;
+    }
+
+    &_lk {
+        background-position: -264px -168px;
+    }
+
+    &_ir {
+        background-position: -120px -144px;
+    }
+
+    &_pt {
+        background-position: 0 -264px;
+    }
+
+    &_dk {
+        background-position: -144px -72px;
+    }
+
+    &_am {
+        background-position: -144px 0;
+    }
+
+    &_er {
+        background-position: -336px -72px;
+    }
+
+    &_br {
+        background-position: -312px -24px;
+    }
+
+    &_tw {
+        background-position: -216px -312px;
+    }
+
+    &_na {
+        background-position: -216px -216px;
+    }
+
+    &_qa {
+        background-position: -72px -264px;
+    }
+
+    &_je {
+        background-position: -192px -144px;
+    }
+
+    &_eh {
+        background-position: -312px -72px;
+    }
+
+    &_cr {
+        background-position: -336px -48px;
+    }
+
+    &_cf {
+        background-position: -120px -48px;
+    }
+
+    &_hr {
+        background-position: -264px -120px;
+    }
+
+    &_gl {
+        background-position: -360px -96px;
+    }
+
+    &_ag {
+        background-position: -72px 0;
+    }
+
+    &_hn {
+        background-position: -240px -120px;
+    }
+
+    &_mp {
+        background-position: -336px -192px;
+    }
+
+    &_lr {
+        background-position: -288px -168px;
+    }
+
+    &_pn {
+        background-position: -312px -240px;
+    }
+
+    &_lb {
+        background-position: -192px -168px;
+    }
+
+    &_tc {
+        background-position: -264px -288px;
+    }
+
+    &_fk {
+        background-position: -96px -96px;
+    }
+}

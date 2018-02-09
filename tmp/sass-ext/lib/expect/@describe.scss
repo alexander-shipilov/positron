@@ -1,0 +1,7 @@
+@mixin describe($message) {
+    @debug "-----------------------";
+    @debug $message;
+    @debug "-----------------------";
+
+    @content;
+}

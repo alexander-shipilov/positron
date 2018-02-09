@@ -1,0 +1,5 @@
+@function is-function($func) {
+    $type: type-of($func);
+
+    @return $type == "function" or ($type == "string" and function-exists($func));
+}

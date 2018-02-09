@@ -1,0 +1,13 @@
+@import "../core/await";
+
+@function map-map-values($map, $func, $args...) {
+    $next-map: ();
+
+    @if await(map, "map" $map, "function" $func) {
+        @each $key, $value in $map {
+            $next-map: map-merge($next-map, ($key: call($func, $value, $key, $map, $args...)));
+        }
+    }
+
+    @return $next-map;
+}

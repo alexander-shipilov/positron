@@ -1,0 +1,11 @@
+@import "../expect";
+@import "./str-ends-with";
+
+@include describe(str-ends-with) {
+    @include it("determines whether a string ends with the characters of a specified string", (
+        str-ends-with("abc", "c") true,
+        str-ends-with("abc", "") true,
+        str-ends-with("abc", "b") false,
+        str-ends-with("abc", "z") false
+    ));
+}

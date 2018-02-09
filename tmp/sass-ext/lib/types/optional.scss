@@ -1,0 +1,13 @@
+@import "./--type";
+@import "./instance-of";
+@import "./new";
+
+$--optional: --type('type');
+
+@function is-optional-type($type) {
+    @return instance-of($type, $--optional);
+}
+
+@function optional($type) {
+    @return if(is-optional-type($type), $type, new($--optional, $type));
+}

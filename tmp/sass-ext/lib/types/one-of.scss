@@ -1,0 +1,39 @@
+@import "./type";
+@import "./list-of";
+
+/// One-of type
+/// @group core-types
+/// @access private
+$--one-of: type(list-of("type"));
+
+/// Creates one-of type
+/// @group core-types
+///
+/// @param {any} $types...
+/// @return {map}
+///
+/// @example
+///
+///     $string-or-number: one-of(string, number);
+///
+///     @debug instance-of("", $string-or-number); // true
+///     @debug instance-of(1, $string-or-number); // true
+///     @debug instance-of(true, $string-or-number); // false
+///
+@function one-of($types...) {
+    @return type($--one-of, $types);
+}
+
+/// Determines whether the passed type is a one-of type
+/// @group core-types
+///
+/// @param {any} $type
+/// @return {bool}
+///
+/// @example
+///     $type: one-of(string, number);
+///
+///     @debug is-one-of-type($type); // true
+@function is-one-of-type($type) {
+    @return instance-of($type, $--one-of);
+}

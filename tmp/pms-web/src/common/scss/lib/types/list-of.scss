@@ -1,0 +1,52 @@
+@import "./type";
+@import "../core/is-list";
+
+/// List-of type
+/// @group core-types
+/// @access private
+$--list-of: type("type");
+
+/// Creates new typed List
+/// @group core-types
+///
+/// @param {any} $type
+/// @return {map}
+///
+/// @example
+///     $list-of-strings: list-of(string);
+///
+///     @debug instance-of(new($list-of-string, foo bar), $list-of-strings); // true
+///
+@function list-of($type) {
+    @return type($--list-of, $type);
+}
+
+/// Determines whether the passed type is a list-of type
+/// @group core-types
+///
+/// @param {type} $type
+/// @return {bool}
+///
+/// @example
+///     $type: list-of(string);
+///
+///     @debug is-list-of-type($type); // true
+///
+@function is-list-of-type($type) {
+    @return instance-of($type, $--list-of);
+}
+
+/// Determines whether the passed value matches list-of type
+/// @group core-types
+///
+/// @param {any} $type
+/// @return {bool}
+///
+/// @example
+///     $type: list-of(string);
+///
+///     @debug is-list-of-type($type); // true
+///
+@function is-list-of($value) {
+    $is-valid: is-list($value);
+}

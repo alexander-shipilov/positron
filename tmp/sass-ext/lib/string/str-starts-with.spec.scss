@@ -1,0 +1,11 @@
+@import "../expect";
+@import "./str-starts-with";
+
+@include describe(str-starts-with) {
+    @include it("determines whether a string begins with the characters of a specified string", (
+        str-starts-with("abc", "a") true,
+        str-starts-with("abc", "") true,
+        str-starts-with("abc", "b") false,
+        str-starts-with("abc", "z") false
+    ));
+}

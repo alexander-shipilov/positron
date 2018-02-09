@@ -1,0 +1,29 @@
+@mixin font-icon-props($font-family) {
+    font-family: $font-family;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none;
+    text-rendering: auto;
+    speak: none;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1;
+}
+
+@mixin font-icon-content($char) {
+    content: unquote("\"") + unquote(str-insert($char, "\\", 1)) + unquote("\"");
+}
+
+@mixin font-icon($font-family, $char) {
+    &:before {
+        @include font-icon-content($char);
+        @include font-icon-props($font-family);
+    }
+}
+
+@mixin font-icons($icons) {
+    @each $ico, $char in $icons {
+        &_#{$ico}:before {
+            @include font-icon-content($char);
+        }
+    }
+}

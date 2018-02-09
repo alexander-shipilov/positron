@@ -1,0 +1,18 @@
+@import "../list/list-map";
+@import "../map/map-map-values";
+@import "./is-list";
+@import "./is-map";
+
+@function to-string($value, $other...) {
+    $type: type-of($value);
+
+    @if (is-list($value)) {
+        $value: join((), list-map($value, to-string), comma, true);
+    } @else if (is-map($value)) {
+        $value: map-map-values($value, to-string);
+    } @else if($type == "string") {
+        $value: quote($value);
+    }
+
+    @return inspect($value);
+}

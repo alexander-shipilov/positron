@@ -1,0 +1,7 @@
+@import "variables";
+@import "mixins";
+
+.auth-page {
+    box-shadow: 0 0 5px 0 rgba(171, 171, 171, 0.66);
+    width: size(medium);
+}

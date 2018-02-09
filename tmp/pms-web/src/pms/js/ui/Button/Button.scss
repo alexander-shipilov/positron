@@ -1,0 +1,41 @@
+.button {
+    display: inline-block;
+    position: relative;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    padding: 0 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &_disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &:focus, &:hover {
+        &:after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 40px;
+            content: "";
+            background: #666;
+            opacity: .1;
+        }
+    }
+
+    .spinner {
+        height: auto;
+        width: 40px;
+
+        &__bounce {
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+        }
+    }
+}
