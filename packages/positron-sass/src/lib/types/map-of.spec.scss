@@ -1,0 +1,26 @@
+@import "../core/is-string";
+@import "../expect";
+@import "./is-type-of";
+@import "./map-of";
+@import "./type";
+
+@include describe(map-of) {
+    $map-of-strings: map-of(string);
+
+    @include it("creates new map-of type", (
+        is-type($map-of-strings) true,
+        value-of($map-of-strings) string,
+    ));
+
+    @include it("is-type-of", (
+        is-type-of($map-of-strings, (foo: foo, bar: bar)) true,
+        is-type-of($map-of-strings, ()) true,
+        is-type-of($map-of-strings, (foo: 1, bar: 2)) false,
+        is-type-of(map-of($map-of-strings), (foo: (foo: foo), bar: (bar: bar))) true,
+        is-type-of($map-of-strings, null) false,
+    ));
+
+    @include it("should throw if no type passed", (
+        to-throw((map-of, foo)) true,
+    ));
+}

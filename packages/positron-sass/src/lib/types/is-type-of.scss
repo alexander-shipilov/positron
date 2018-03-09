@@ -1,0 +1,117 @@
+@import "../core/is-function";
+@import "../core/is-list";
+@import "../core/is-map";
+@import "../core/is-callable";
+@import "../core/throw-type-error";
+@import "../list/--list-every";
+@import "../map/--map-every";
+
+@import "./type";
+
+/// List of available types
+/// @group types
+/// @access private
+$--is-type-of--types: (
+    "any",
+    "arglist",
+    "bool",
+    "callable",
+    "function",
+    "list",
+    "map",
+    "number",
+    "null",
+    "string",
+    "type"
+) !default;
+
+@function --is-type-of--is-type($value, $other...) {
+    @return $value == null
+        or index($--is-type-of--types, $value) != null
+        or is-type($value)
+        or (is-list($value) and --list-every($value, --is-type))
+        or (is-map($value) and --map-every($value, --is-type));
+}
+
+/// @group types
+/// @access private
+@function --is-type-of--is-list($type, $value, $other...) {
+    $type-length: length($type);
+    $is-type-of: is-list($value);
+
+    @if ($is-type-of and $type-length != 0) {
+        $value-length: length($value);
+
+        $index: 1;
+        @while ($is-type-of and $index <= $type-length) {
+            $nth-type: nth($type, $index);
+            $nth-value: if($index <= $value-length, nth($value, $index), null);
+            $is-type-of: is-type-of($nth-type, $nth-value);
+
+            @debug --is-type-of--is-list, to-string($nth-type), to-string($nth-value), $is-type-of;
+            $index: $index + 1;
+        }
+    }
+
+    @return $is-type-of;
+}
+
+/// @group types
+/// @access private
+@function --is-type-of--is-map($type, $value, $other...) {
+    $type-length: length($type);
+    $is-type-of: is-map($value);
+
+    @if ($is-type-of and $type-length != 0) {
+        $value-length: length($value);
+
+        $index: 1;
+        @while ($is-type-of and $index <= $type-length) {
+            $nth-type: nth($type, $index);
+            $is-type-of: is-type-of(nth($nth-type, 2), map-get($value, nth($nth-type, 1)));
+            $index: $index + 1;
+        }
+    }
+
+    @return $is-type-of;
+}
+
+@function is-type-of($type, $value, $other...) {
+    $is-type-of: null;
+
+    @debug is-type-of, to-string($type), to-string($value);
+
+    @if (--is-type-of--is-type($type)) {
+        @if ($type == "any") {
+            $is-type-of: true;
+        } @else if ($type == "type") {
+            $is-type-of: --is-type-of--is-type($value);
+        } @else if ($type == "map") {
+            $is-type-of: is-map($value);
+        } @else if ($type == "list") {
+            $is-type-of: is-list($value);
+        } @else if ($type == "function") {
+            $is-type-of: is-function($value);
+        } @else if ($type == "callable") {
+            $is-type-of: is-callable($value);
+        } @else if (is-type($type)) {
+            $is-type-of: type-check($type, $value);
+        } @else if (is-list($type)) {
+            @debug is-type-of, to-string($type), to-string($value), --is-type-of--is-list($type, $value);
+
+            $is-type-of: --is-type-of--is-list($type, $value);
+        } @else if (is-map($type)) {
+            $is-type-of: --is-type-of--is-map($type, $value);
+        } @else {
+            $is-type-of: type-of($value) == inspect($type);
+        }
+    } @else {
+        $error: throw-type-error(is-type-of type, "type", $type);
+    }
+
+    @return $is-type-of;
+}
+
+@function is-value-of($value, $type, $other...) {
+    @return is-type-of($type, $value);
+}

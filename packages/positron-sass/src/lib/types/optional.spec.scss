@@ -1,0 +1,25 @@
+@import "../core/is-string";
+@import "../expect";
+@import "./is-type-of";
+@import "./optional";
+@import "./type";
+
+@include describe(optional) {
+    $optional-string: optional(string);
+
+    @include it("creates new optional type", (
+        is-type($optional-string) true,
+        value-of($optional-string) string,
+    ));
+
+    @include it("is-type-of", (
+        is-type-of($optional-string, "foo") true,
+        is-type-of($optional-string, "") true,
+        is-type-of($optional-string, null) true,
+        is-type-of($optional-string, 1) false,
+    ));
+
+    @include it("should throw if not a type passed", (
+        to-throw((optional, foo)) true,
+    ));
+}

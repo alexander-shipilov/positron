@@ -1,8 +1,0 @@
-// @group map
-// @access private
-@import "../list/--list-every";
-@import "./--map-iterator";
-
-@function --map-every($map, $func, $args...) {
-    @return --list-every($map, --map-iterator, $func, $args...);
-}

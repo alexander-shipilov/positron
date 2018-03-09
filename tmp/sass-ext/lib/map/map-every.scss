@@ -1,6 +1,0 @@
-@import "../core/await";
-@import "./--map-every";
-
-@function map-every($map, $func, $args...) {
-    @return if(await(map-every, "map" $map, "function" $func), --map-every($map, $func, $args...), null);
-}

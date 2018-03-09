@@ -1,0 +1,27 @@
+@import "../core/is-string";
+@import "../core/to-string";
+@import "../expect";
+@import "./is-type-of";
+@import "./one-of";
+@import "./type";
+
+@include describe(one-of) {
+    $string-or-number: one-of((string, number));
+
+    @include it("creates new one-of type", (
+        is-type($string-or-number) true,
+        value-of($string-or-number) (string, number),
+        to-string($string-or-number) 'one of ["string", "number"]',
+    ));
+
+    @include it("is-type-of", (
+        is-type-of($string-or-number, "foo") true,
+        is-type-of($string-or-number, 1) true,
+        is-type-of($string-or-number, true) false,
+    ));
+
+    @include it("should throw if not a list of types passed", (
+        to-throw((one-of, foo)) true,
+        to-throw((one-of, (foo, ))) true,
+    ));
+}

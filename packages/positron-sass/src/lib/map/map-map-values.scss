@@ -1,0 +1,9 @@
+@import "../types/validate";
+
+@import "./--map-map-values";
+
+@function map-map-values($map, $func, $args...) {
+    $valid-args: validate((map: map $map, func: callable $func), map-map-keys);
+
+    @return if($valid-args, --map-map-values($map, $func, $args...), null);
+}

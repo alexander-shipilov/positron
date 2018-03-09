@@ -1,0 +1,10 @@
+$--show-passed: true;
+
+@import "./lib/core.spec";
+@import "./lib/func.spec";
+@import "./lib/list.spec";
+@import "./lib/map.spec";
+@import "./lib/parser.spec";
+@import "./lib/prototype.spec";
+@import "./lib/string.spec";
+@import "./lib/types.spec";

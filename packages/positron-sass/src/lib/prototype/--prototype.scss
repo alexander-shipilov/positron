@@ -1,0 +1,30 @@
+@import "../func/--call";
+@import "../core/is-callable";
+@import "../core/throw-type-error";
+@import "../core/to-string";
+
+@import "./$--prototypes";
+
+/// Registers new prototype with the given validator
+/// @group prototype
+/// @access private
+///
+/// @param {function} $validator
+/// @return {string} prototype id
+///
+@function --prototype($validator: null, $to-string: null, $other...) {
+    @if ($validator == null or is-callable($validator)) {
+        $prototype-id: unique-id();
+        $prototype: ($prototype-id: $validator);
+
+        @if ($to-string != null) {
+            $prototype: map-merge($prototype, ($--to-string: $to-string));
+        }
+
+        @return --set-prototype($prototype-id, $prototype);
+    } @else {
+        $error: throw-type-error(prototype validator, "callable", $validator);
+    }
+
+    @return null;
+}

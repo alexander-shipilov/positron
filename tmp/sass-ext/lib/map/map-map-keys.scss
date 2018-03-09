@@ -1,6 +1,0 @@
-@import "../core/await";
-@import "./--map-map-keys";
-
-@function map-map-keys($map, $func, $args...) {
-    @return if(await(map, map $map, function $func), --map-map-keys($map, $func, $args...), null);
-}

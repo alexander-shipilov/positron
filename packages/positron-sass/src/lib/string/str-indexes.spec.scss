@@ -1,0 +1,21 @@
+@import "../expect/@it";
+@import "./str-indexes";
+
+@include describe(str-indexes) {
+    @include it("returns a list with all or some indexes of the passed substring", (
+        str-indexes("abc", "a") (1,),
+        str-indexes("acac", "a") (1, 3),
+        str-indexes("aaa", "a") (1, 2, 3)
+    ));
+
+    @include it("should limit indexes by passed count", (
+        str-indexes("aaa", "a", 1) (1,),
+        str-indexes("aaa", "a", 2) (1, 2),
+        str-indexes("aaa", "a", -1) (3,),
+        str-indexes("aaa", "a", -2) (2, 3)
+    ));
+
+    @include it("should accept empty string", (
+        str-indexes("aaa", "") (1, 2, 3),
+    ));
+}

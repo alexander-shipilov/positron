@@ -1,0 +1,15 @@
+@import "../expect";
+@import "to-string";
+
+@include describe(to-string) {
+    @include it("returns a string presentation of the passed object", (
+        to-string(1) "1",
+        to-string("foo") "foo",
+        to-string("") "",
+        to-string(foo) quote(foo),
+        to-string(true) "true",
+        to-string(false) "false",
+        to-string((1, 2)) "[1, 2]",
+        to-string((foo: 1, bar: 2)) "(foo: 1, bar: 2)"
+    ));
+}

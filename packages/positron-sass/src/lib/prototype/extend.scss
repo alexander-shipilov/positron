@@ -1,0 +1,39 @@
+@import "../core/throw-type-error";
+
+@import "./$--prototypes";
+@import "./is-prototype";
+
+
+/// Extends the given prototype by specified properties
+/// @group prototype
+///
+/// @param {string} $prototype prototype id
+/// @param {map...} $props map of properties
+/// @return {string} prototype id
+///
+/// @example
+///
+///     $my-proto: prototype();
+///     $my-super-proto: extend(prototype(), new($my-proto, foo));
+///
+///     $my-instance = new($my-super-proto, bar);
+///
+///     @debug instance-of($my-instance, $my-proto); // true
+///     @debug value-of($my-instance); // bar
+///     @debug value-of($my-instance, $my-proto); // foo
+///
+@function extend($prototype, $props, $other...) {
+    $error: null;
+
+    @if (is-prototype($prototype)) {
+        @if (type-of($props) == "map") {
+            $prototype: --set-prototype($prototype, map-merge(--get-prototype($prototype), $props));
+        } @else {
+            $error: throw-type-error(extend props, "map", $props);
+        }
+    } @else {
+        $error: throw-type-error(extend prototype, "prototype", $prototype);
+    }
+
+    @return if($error == null, $prototype, null);
+}

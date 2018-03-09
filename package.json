@@ -1,52 +1,57 @@
 {
-    "description": "Positron monorepo",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/alexander-shipilov/positron.git"
-    },
-    "keywords": [
-        "ui",
-        "react",
-        "react-components"
-    ],
-    "author": "Alexander Shipilov",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/alexander-shipilov/positron/issues"
-    },
-    "homepage": "https://github.com/alexander-shipilov/positron#readme",
-    "dependencies": {},
-    "devDependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-core": "^6.26.0",
-        "babel-eslint": "^8.2.1",
-        "babel-jest": "^22.0.4",
-        "babel-plugin-external-helpers": "^6.22.0",
-        "babel-preset-env": "^1.6.1",
-        "babel-preset-flow": "^6.23.0",
-        "babel-preset-react": "^6.24.1",
-        "babel-preset-stage-2": "^6.24.1",
-        "commander": "^2.12.2",
-        "cross-env": "^5.1.3",
-        "eslint": "^4.15.0",
-        "eslint-config-google": "^0.9.1",
-        "eslint-plugin-babel": "^4.1.2",
-        "eslint-plugin-flowtype": "^2.41.0",
-        "eslint-plugin-react": "^7.5.1",
-        "flow-bin": "^0.63.1",
-        "jest": "^22.0.5",
-        "lerna": "^2.6.0",
-        "rimraf": "^2.6.2"
-    },
-    "scripts": {
-        "bootstrap": "lerna bootstrap --hoist",
-        "clean": "lerna clean",
-        "build": "lerna run build",
-        "eslint": "lerna run eslint",
-        "test": "lerna run test",
-        "publish": "npm run eslint && npm run test && lerna publish"
-    },
-    "workspaces": [
-        "packages/*"
-    ]
+  "description": "Positron monorepo",
+  "version": "0.1.28",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexander-shipilov/positron.git"
+  },
+  "keywords": [
+    "ui",
+    "react",
+    "react-components"
+  ],
+  "author": "Alexander Shipilov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexander-shipilov/positron/issues"
+  },
+  "homepage": "https://github.com/alexander-shipilov/positron#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.2.2",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "colors": "^1.1.2",
+    "commander": "^2.14.1",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.17.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-flowtype": "^2.44.0",
+    "eslint-plugin-react": "^7.6.1",
+    "flow-bin": "^0.65.0",
+    "jest": "^22.3.0",
+    "lerna": "^2.9.0",
+    "rimraf": "^2.6.2",
+    "semver": "^5.5.0"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap --hoist",
+    "clean": "lerna clean",
+    "build": "lerna run build",
+    "eslint": "lerna run eslint",
+    "test": "lerna run test",
+    "pkgcheck": "node ./utils/pkgcheck.js",
+    "pkgcheck:fix": "node ./utils/pkgcheck.js --fix",
+    "publish": "npm run eslint && npm run test && lerna publish"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

@@ -1,0 +1,26 @@
+@import "../types/validate";
+@import "./str-indexes";
+
+@function --str-split($string, $separator, $count: null) {
+    $parts: ();
+    $last-index: 1;
+    $substring-length: max(str-length($separator), 1);
+    $indexes: str-indexes($string, $separator, $count);
+
+    @each $index in $indexes {
+        $parts: append($parts, str-slice($string, $last-index, max($index - 1, $last-index)));
+        $last-index: $index + $substring-length;
+    }
+
+    @if ($last-index <= str-length($string)) {
+        $parts: append($parts, str-slice($string, $last-index));
+    }
+
+    @return $parts;
+}
+
+@function str-split($string, $separator, $other...) {
+    $valid-args: validate((string: string $string, separator: string $separator), str-split);
+
+    @return if($valid-args, --str-split($string, $separator), null);
+}

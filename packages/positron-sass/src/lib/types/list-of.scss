@@ -1,0 +1,47 @@
+@import "../list/--list-every";
+@import "../prototype";
+
+@import "./is-type-of";
+@import "./type";
+
+/// @group types
+/// @access private
+@function --list-of-validator($value, $type) {
+    @return is-list($value) and --list-every($value, (is-type-of, value-of($type)));
+}
+
+/// @group types
+/// @access private
+$--list-of-proto: extend(prototype(type), type(--list-of-validator)) !default;
+
+/// Create new "list of" type
+/// @group types
+///
+/// @param {type} $type
+/// @return {map}
+///
+/// @example
+///
+///     $list-of-string: list-of(string);
+///
+///     @debug is-type-of($list-of-string, ("foo", "bar")); // true
+///     @debug is-type-of($list-of-string, (1,)); // false
+///
+@function list-of($type, $other...) {
+    @return new($--list-of-proto, $type);
+}
+
+/// Checks whether the given value is "list of" type
+/// @group types
+///
+/// @param {any} $value
+/// @return {bool}
+///
+/// @example
+///
+///     @debug is-list-of(list-of(string)); // true
+///     @debug is-list-of(1); // false
+///
+@function is-list-of($value, $other...) {
+    @return instance-of($value, $--list-of-proto);
+}

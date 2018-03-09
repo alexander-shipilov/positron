@@ -1,0 +1,18 @@
+@import "../core/is-list";
+
+@import "./apply";
+
+@function --func-bind--bound-function($callable, $bound-args, $args...) {
+    @return func-apply($callable, join($bound-args, $args));
+}
+
+@function --func-bind($callable, $args...) {
+    @if (is-list($callable)) {
+        $args: join($callable, $args);
+
+        @return --func-bind($args...);
+    }
+
+    @return if($callable == --func-bind--bound-function,
+        join(($callable,), $args), (--func-bind--bound-function, $callable, $args));
+}

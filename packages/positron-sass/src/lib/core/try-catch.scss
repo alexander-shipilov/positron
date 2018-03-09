@@ -1,0 +1,9 @@
+@import "../types/validate";
+
+@import "./--try";
+
+@function try-catch($callable, $error: null, $other...) {
+    $valid-args: validate((callable: callable $callable), try-catch);
+
+    @return if($valid-args, nth(--try($callable), 1), null);
+}

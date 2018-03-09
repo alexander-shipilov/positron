@@ -1,0 +1,25 @@
+@import "../core/is-string";
+@import "../expect";
+@import "./is-type-of";
+@import "./list-of";
+@import "./type";
+
+@include describe(list-of) {
+     $list-of-strings: list-of(string);
+
+    @include it("creates new list-of type", (
+        is-type($list-of-strings) true,
+        value-of($list-of-strings) string,
+    ));
+
+    @include it("is-type-of", (
+        is-type-of($list-of-strings, foo bar) true,
+        is-type-of($list-of-strings, ()) true,
+        is-type-of($list-of-strings, 1 2) false,
+        is-type-of($list-of-strings, null) false,
+    ));
+
+    @include it("should throw if no type passed", (
+        to-throw((list-of, foo)) true,
+    ));
+}

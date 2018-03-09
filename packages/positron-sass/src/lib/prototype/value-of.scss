@@ -1,0 +1,26 @@
+@import "../core/nvl";
+@import "prototype-of";
+@import "./instance-of";
+
+/// Returns associated type-value of the passed target
+/// @group prototype
+///
+/// @param {any} $value
+/// @param {string} $prototype
+/// @return {any | null}
+///
+/// @throw Type #{ $type-name } does not exist
+///
+/// @example
+///
+///     $my-proto: prototype();
+///
+///     $my-instance = new($my-proto, foo);
+///
+///     @debug value-of($my-instance); // foo
+///
+@function value-of($value, $prototype: null, $other...) {
+    $prototype: nvl($prototype, prototype-of($value));
+
+    @return if(instance-of($value, $prototype), map-get($value, $prototype), null);
+}

@@ -1,0 +1,8 @@
+@import "../types/validate";
+@import "./--list-map";
+
+@function list-map($list, $func, $args...) {
+    $valid-args: validate((list: list $list, func: callable $func), list-map);
+
+    @return if($valid-args, --list-map($list, $func, $args...), null);
+}

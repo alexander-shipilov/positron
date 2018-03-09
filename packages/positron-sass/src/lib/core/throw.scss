@@ -1,0 +1,12 @@
+$--should-throw: true !default;
+$--last-thrown-error: null !default;
+
+@function throw($error, $type: "Error") {
+    $--last-thrown-error: $error !global;
+
+    @if ($error != null and $--should-throw) {
+        @error "#{ $type }: #{ $error }";
+    }
+
+    @return $error;
+}

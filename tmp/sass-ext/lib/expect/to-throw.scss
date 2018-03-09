@@ -1,5 +1,0 @@
-@import "../core";
-
-@function to-throw($func, $args...) {
-    @return if(await(to-throw, callable $func), catch($func, $args...) != null, null);
-}

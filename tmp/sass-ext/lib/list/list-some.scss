@@ -1,6 +1,0 @@
-@import "../core/await";
-@import "./--list-some";
-
-@function list-some($list, $func, $args...) {
-    @return if(await(list-some, "list" $list, "function" $func), --list-some($list, $func, $args...), null);
-}

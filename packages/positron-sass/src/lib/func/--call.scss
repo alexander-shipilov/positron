@@ -1,0 +1,11 @@
+@import "../core/is-list";
+
+@function --func-call($func, $args...) {
+    @if (is-list($func)) {
+        $args: join($func, $args);
+
+        @return --func-call($args...);
+    }
+
+    @return call($func, $args...);
+}

@@ -1,0 +1,41 @@
+@import "../core/throw-type-error";
+
+@import "./$--prototypes";
+@import "./is-prototype";
+@import "./value-of";
+
+
+/// Creates new instance of specified type with the passed type value
+/// @group prototype
+///
+/// @param {string} $prototype
+/// @param {any} $value [null]
+/// @return {map}
+///
+/// @example
+///
+///     $my-proto: prototype();
+///     $my-instance = new($my-proto, foo);
+///
+///     @debug instance-of($my-instance, $my-proto); // true
+///     @debug instance-of(some list, $my-proto); // false
+///
+@function new($prototype, $value: null, $other...) {
+    $new-value: null;
+    $error: null;
+
+    @if (is-prototype($prototype)) {
+        $proto: --get-prototype($prototype);
+        $proto-validator: value-of($proto, $prototype);
+
+        @if ($proto-validator == null or --func-call($proto-validator, $value)) {
+            $new-value: map-merge($proto, ($--prototype: $prototype, $prototype: $value));
+        } @else {
+            $error: throw-type-error(new value, "#{ $proto-validator }", $value);
+        }
+    } @else {
+        $error: throw-type-error(new prototype, "prototype", $prototype);
+    }
+
+    @return if($error == null, $new-value, null);
+}

@@ -1,0 +1,9 @@
+@import "../types/validate";
+
+@import "./--list-every";
+
+@function list-every($list, $func, $args...) {
+    $valid-args: validate((list: list $list, func: callable $func), list-every);
+
+    @return if($valid-args, --list-every($list, $func, $args...), null);
+}

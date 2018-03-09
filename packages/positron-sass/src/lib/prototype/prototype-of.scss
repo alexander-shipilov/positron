@@ -1,0 +1,18 @@
+@import "./$--prototype";
+
+/// Returns prototype id of the given value
+/// @group prototype
+///
+/// @param {any} $value
+/// @return {string} prototype id or null
+///
+/// @example
+///
+///     $my-proto: prototype();
+///     $my-value: new($my-proto);
+///
+///     @debug prototype-of($my-value) == $my-proto; // true
+///
+@function prototype-of($value, $other...) {
+    @return if(type-of($value) == map and map-has-key($value, $--prototype), map-get($value, $--prototype), null);
+}

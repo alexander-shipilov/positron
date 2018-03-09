@@ -1,0 +1,69 @@
+@import "../prototype";
+@import "../types/type";
+@import "../list/list-slice";
+
+/// @group expect
+/// @access private
+$--contexts: () !default;
+
+/// @group types
+/// @access private
+$--context-proto: extend(prototype(type), type((is-type-of, (type: string, children: list)))) !default;
+
+/// Create new "list of" type
+/// @group types
+///
+/// @param {type} $type
+/// @return {map}
+///
+/// @example
+///
+///     $context-string: context(string);
+///
+///     @debug is-type-of($context-string, ("foo", "bar")); // true
+///     @debug is-type-of($context-string, (1,)); // false
+///
+@function context($type, $other...) {
+    @return new($--context-proto, $type);
+}
+
+/// Checks whether the given value is "list of" type
+/// @group types
+///
+/// @param {any} $value
+/// @return {bool}
+///
+/// @example
+///
+///     @debug is-context(context(string)); // true
+///     @debug is-context(1); // false
+///
+
+
+
+@function --get-context() {
+    $length: length($--contexts);
+    $context: null;
+
+    @if ($length != 0) {
+        $context: nth($--contexts, $length);
+    }
+
+    @return $context;
+}
+
+@function --push-context($context) {
+    $--contexts: append($--contexts, $context) !global;
+
+    @return $context;
+}
+
+@function --pop-context() {
+    $context: --get-context();
+
+    @if ($context != 0) {
+        $--contexts: list-slice($--contexts, 1, -1) !global;
+    }
+
+    @return $context;
+}

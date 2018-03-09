@@ -1,0 +1,31 @@
+@import "../func/--call";
+@import "../list/--list-map";
+@import "../map/--map-map-values";
+
+@import "./is-callable";
+@import "./is-list";
+@import "./is-map";
+
+$--to-string: unique-id() !default;
+
+@function --has-to-string($map) {
+    @return map-has-key($map, $--to-string) and is-callable(map-get($map, $--to-string));
+}
+
+@function --call-to-string($value) {
+    @return --func-call(map-get($value, $--to-string), $value);
+}
+
+@function to-string($value, $other...) {
+    $type: type-of($value);
+
+    @if (is-map($value)) {
+        $value: if(--has-to-string($value), --call-to-string($value), --map-map-values($value, to-string));
+    } @else if (is-list($value)) {
+        $value: join((), --list-map($value, to-string), comma, true);
+    } @else if ($type == "string") {
+        $value: quote($value);
+    }
+
+    @return inspect($value);
+}

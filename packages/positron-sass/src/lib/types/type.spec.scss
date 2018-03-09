@@ -1,0 +1,31 @@
+@import "../core/is-string";
+@import "../expect";
+@import "../prototype";
+
+@import "./type";
+
+@include describe(type) {
+    $type: type(is-string);
+
+    @include it("creates new type with specified validator", (
+        type-of($type) "map",
+    ));
+
+    @include it("should throw if no validator passed or one is not callable", (
+        to-throw((type, null)) true,
+        to-throw((type, string)) true,
+    ));
+}
+
+@include describe(type-check) {
+    $type: type(is-string);
+
+    @include it("validates passed value to be a specified type", (
+        type-check($type, "foo") true,
+        type-check($type, null) false,
+    ));
+
+    @include it("should return false if not a type passed", (
+        type-check("ddd", null) false,
+    ));
+}

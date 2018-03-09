@@ -1,0 +1,17 @@
+@import "../expect";
+@import "./prototype";
+
+@include describe(prototype) {
+    $proto: prototype(string);
+
+    @include it("returns identifier of the created prototype", (
+        type-of($proto) string,
+        is-prototype($proto) true,
+    ));
+
+    @include it("should throw if passed value is not a type", (
+        to-throw((prototype, null)) false,
+        to-throw((prototype, 1)) true,
+        to-throw((prototype, "")) true,
+    ));
+}

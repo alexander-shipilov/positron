@@ -1,0 +1,23 @@
+@import "./is-list";
+@import "./is-string";
+@import "./throw";
+@import "./to-string";
+
+@function throw-type-error($name, $type, $value) {
+    $value-type: type-of($value);
+
+    @if (is-list($name) and length($name) == 2) {
+        $func: nth($name, 1);
+        $name: nth($name, 2);
+
+        $name: if(is-string($name) and str-slice($name, 1, 1) != "$", "$", "") + $name;
+        $name: "argument `#{ $name }` of `#{ $func }()`";
+    }
+
+    $print-value: to-string($value);
+    @if ($value-type != "null") {
+        $print-value: "#{ to-string($value-type) } #{ $print-value }";
+    }
+
+    @return throw("Expected #{ $name } to be a #{ to-string($type) }, instead #{ $print-value } given.", TypeError);
+}

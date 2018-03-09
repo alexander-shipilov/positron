@@ -1,0 +1,20 @@
+@import "../types/validate";
+
+@import "./--bind";
+
+/// Creates a new callable that, when called with func-call has a given sequence of arguments preceding any provided.
+/// @group func
+///
+/// @param { callable } $callable
+/// @param { list } $args...
+/// @return { callable }
+///
+/// @example
+///
+///     TBD
+///
+@function func-bind($callable, $args...) {
+    $valid-args: validate((callable: callable $callable), func-bind);
+
+    @return if($valid-args, --func-bind($callable, $args...), null);
+}

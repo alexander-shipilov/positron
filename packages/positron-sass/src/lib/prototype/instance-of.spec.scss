@@ -1,0 +1,19 @@
+@import "../expect";
+
+@import "./instance-of";
+@import "./new";
+@import "./prototype";
+
+@include describe(instance-of) {
+    $proto: prototype();
+    $value: new($proto);
+
+    @include it("checks whether passed value if the passed value is an instance of the given prototype", (
+        instance-of($value, $proto) true,
+        instance-of(1, $proto) false,
+    ));
+
+    @include it("should not throw no prototype passed", (
+        to-throw((instance-of, $value, null)) false,
+    ));
+}

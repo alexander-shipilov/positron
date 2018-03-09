@@ -1,0 +1,23 @@
+@import "../core/is-string";
+@import "../expect";
+
+@import "./new";
+@import "./instance-of";
+@import "./prototype";
+@import "./value-of";
+
+@include describe(new) {
+    $proto: prototype(string);
+    $value: new($proto, "foo");
+
+    @include it("creates new value of the given prototype", (
+        type-of($value) "map",
+        map-has-key($value, $proto) true,
+        map-get($value, $proto) foo,
+    ));
+
+    @include it("should throw if the passed value does not match specified type", (
+        to-throw((new, $proto, 1)) true,
+        to-throw((new, $proto, true)) true,
+    ));
+}

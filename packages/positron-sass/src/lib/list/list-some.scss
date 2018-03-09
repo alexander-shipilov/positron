@@ -1,0 +1,8 @@
+@import "../types/validate";
+@import "./--list-some";
+
+@function list-some($list, $func, $args...) {
+    $valid-args: validate((list: list $list, func: callable $func), list-some);
+
+    @return if($valid-args, --list-some($list, $func, $args...), null);
+}

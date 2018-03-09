@@ -1,0 +1,8 @@
+@import "../core";
+@import "../types";
+
+@function to-throw($callable, $error: null, $other...) {
+    $valid-args: validate((callable: callable $callable, error: optional(string) $error), to-throw);
+
+    @return if($valid-args, try-catch($callable) != null, null);
+}

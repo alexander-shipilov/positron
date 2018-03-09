@@ -1,0 +1,32 @@
+@import "../core/is-string";
+@import "../expect";
+
+@import "./extend";
+@import "./new";
+@import "./prototype";
+@import "./value-of";
+
+@include describe("extend") {
+    $proto1: prototype();
+    $proto2: extend(prototype(), new($proto1, "foo"));
+
+    $instance: new($proto2, "bar");
+
+    @include it("should nested proto should implement super", (
+        instance-of($instance, $proto1) true,
+        value-of($instance, $proto1) "foo",
+
+        instance-of($instance, $proto2) true,
+        value-of($instance, $proto2) "bar",
+    ));
+
+    @include it("should throw if passed value is not a prototype", (
+        to-throw((extend, "", null)) true,
+    ));
+
+    @include it("should throw if passed props is not a map", (
+        to-throw((extend, $proto1, null)) true,
+        to-throw((extend, $proto1, "")) true,
+        to-throw((extend, $proto1, ())) true,
+    ));
+}

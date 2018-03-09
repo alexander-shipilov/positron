@@ -1,0 +1,8 @@
+@import "../types/validate";
+@import "./--call";
+
+@function func-call($callable, $args...) {
+    $valid-args: validate((callable: callable $callable), func-call);
+
+    @return if($valid-args, --func-call($callable, $args...), null);
+}

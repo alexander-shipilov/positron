@@ -1,0 +1,33 @@
+@import "../func/--call";
+@import "../core/is-callable";
+@import "../core/throw-type-error";
+@import "../types/is-type-of";
+
+@import "./--prototype";
+
+/// Registers new prototype of the specified type
+/// @group prototype
+/// @access private
+///
+/// @param {type} $type: null
+/// @return {string} prototype id
+///
+/// @example
+///
+///     $my-proto: prototype(string);
+///     $my-instance: new($my-proto, "foo bar");
+///
+///     @debug value-of($my-instance); // "foo bar"
+///     @debug instance-of($my-instance, $my-proto); // true
+///
+///     $my-instance: new($my-proto, 1); // throws an error
+///
+@function prototype($type: null, $to-string: null, $other...) {
+    @if ($type == null or is-type-of(type, $type)) {
+        @return --prototype(if($type == null, null, (is-type-of, $type)), $to-string);
+    } @else {
+        $error: throw-type-error(prototype type, "type", $type);
+    }
+
+    @return null;
+}
