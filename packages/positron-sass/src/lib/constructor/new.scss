@@ -1,0 +1,42 @@
+@import "../core/throw";
+@import "../func/func-call";
+@import "../string/str-format";
+@import "../types/validate";
+@import "./--get-constructor-def";
+
+/// Creates new instance of the specified constructor
+/// @group constructor
+///
+/// @param {constructor} $constructor
+/// @param {any} $args...
+/// @return {map}
+///
+/// @example
+///
+///     $my-constructor: constructor(map);
+///     $my-instance = new($my-proto);
+///
+///     @debug instance-of($my-instance, $my-proto); // true
+///
+@function new($constructor, $args...) {
+    $valid-args: validate((constructor: constructor $constructor), new);
+
+    @if ($valid-args) {
+        $constructor-def: --get-constructor-def($constructor);
+        $instance: func-call(map-get($constructor-def, constructor), $constructor, $args...);
+
+        @if (type-of($instance) != map) {
+            @return throw(str-format("Expected %1 to return a map, instead returned %2",
+                $constructor, debug-value($instance)));
+        }
+
+        $super: map-get($constructor-def, $--constructor-prop);
+        @if ($super != null and $super != map-get($instance,  $--constructor-prop)) {
+            @return throw(str-format("%1 must call `super()`", $constructor))
+        }
+
+        @return map-merge($instance, (constructor: $constructor));
+    }
+
+    @return null;
+}

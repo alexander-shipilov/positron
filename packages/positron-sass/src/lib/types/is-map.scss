@@ -1,0 +1,5 @@
+@import "is-list";
+
+@function is-map($value, $other...) {
+    @return type-of($value) == "map" or (is-list($value) and length($value) == 0);
+}

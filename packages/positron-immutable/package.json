@@ -1,11 +1,11 @@
 {
     "name": "positron-immutable",
-    "version": "0.1.28",
+    "version": "0.1.29",
     "description": "Immutable",
     "main": "./index.js",
     "dependencies": {
-        "positron-core": "0.1.28",
-        "positron-flow": "0.1.28"
+        "positron-core": "^0.1.29",
+        "positron-flow": "^0.1.29"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",

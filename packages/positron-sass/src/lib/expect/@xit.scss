@@ -1,8 +1,0 @@
-@import "@describe";
-@import "expect";
-
-@mixin xit($description, $tests: null) {
-    $is-error: false;
-
-    @debug "[SKIPPED] #{ $description }";
-}

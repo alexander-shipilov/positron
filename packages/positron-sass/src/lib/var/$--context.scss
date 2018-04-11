@@ -1,0 +1,32 @@
+$--vanilla-global-contexts: (
+    (), // global context
+);
+
+@function --get-context-value($context, $name) {
+    $prop: if(map-has-key($context, $name), map-get($context, contexts), null);
+
+    @return if($prop == null, null, map-get($prop, value));
+}
+
+@function --set-context-value($context, $name, $value) {
+
+}
+
+@function --get-context() {
+    $context: $--vanilla-global-context;
+    $contexts: --get-context-value($--vanilla-global-context, contexts);
+
+    @if (length($contexts) != 0) {
+        $context: nth($contexts, length($contexts));
+    }
+
+    @return $context;
+}
+
+@function --set-context($context) {
+    $contexts: --get-context-value($--vanilla-global-context, contexts);
+
+    @if (length($contexts) != 0) {
+        $context: nth($contexts, length($contexts));
+    }
+}

@@ -1,0 +1,24 @@
+@import "../core/is-function";
+@import "../core/is-list";
+@import "../core/throw-type-error";
+
+@import "is-type-of";
+
+/// Unsafe validate()
+/// @group types
+/// @see validate
+@function validate--($args, $func: null) {
+    $error: null;
+
+    @each $arg, $type-value in $args {
+        $type: nth($type-value, 1);
+        $value: nth($type-value, 2);
+        $is-type-of: is-type-of($type, $value);
+
+        @if (not $is-type-of) {
+            @return throw-type-error(if($func == null, $arg, $func $arg), $type, $value) == null;
+        }
+    }
+
+    @return true;
+}

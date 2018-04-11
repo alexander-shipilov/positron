@@ -1,0 +1,15 @@
+/// Returns a validator of the given type
+/// @group types
+///
+/// @param {type} $value
+/// @return {callable}
+///
+/// @example
+///
+///     $string-type: type((is-type-of, string));
+///
+///     @debug type-validator($string-type); // (is-type-of, string)
+///
+@function type-check($type, $value, $other...) {
+    @return is-type($type) and to-bool(func-call--(map-get($type, validator), $type, $value));
+}

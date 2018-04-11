@@ -1,0 +1,44 @@
+@import "../core/normalize";
+@import "../core/to-string";
+@import "../core/try-catch";
+@import "../string/str-format";
+@import "../types/validate";
+@import "../types/optional";
+
+@import "./assert";
+
+
+// Expected the function to throw an error. But it didn't throw anything.
+// Expected the function to throw an error matching: "ted".
+// Expected the function to throw an error matching: "ted". But it didn't throw anything.
+
+@function assert-throws($callable, $match: null, $message: "") {
+    $is-valid: validate((callable: callable $callable, match: optional(string) $match), assert-throws);
+
+    @if ($is-valid) {
+        $error: try-catch($callable);
+        $assertion: $error != null;
+
+        @if ($assertion and $match != null) {
+            $assertion: str-index($error, $match) != null;
+        }
+
+        @if ($message == "") {
+            $message: "Expected the callable `#{ to-string($callable) }` to throw an error";
+
+            @if ($match != null) {
+                $message: "#{ $message } matching `#{ $match }`.";
+            }
+
+            @if ($error == null) {
+                $message: "#{ $message } But it didn't throw anything."
+            } @else if(not $assertion) {
+                $message: "#{ $message } Instead, it threw: #{ $error }"
+            }
+        }
+
+        @return assert($assertion, $message);
+    }
+
+    @return null;
+}

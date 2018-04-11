@@ -1,0 +1,36 @@
+@import "is-type-of";
+@import "map-of";
+@import "optional";
+@import "validate--";
+
+/// Validates function arguments
+/// @group types
+///
+/// @param { map-of(type any) } $args map of arguments to check
+/// @param { string } $func = null
+/// @return { bool }
+///
+/// @throws type error
+///
+/// @example
+///
+///     //
+///     // expect
+///     // $arg1: a map with shape (bar: string, ted: number | null)
+///     // $arg2: a list of strings
+///     //
+///     @function foo($arg1, $arg2...) {
+///         $valid: validate((arg1: (bar: string, ted: optional(number)) $arg1, arg2: list-of(string) $arg2), foo);
+///
+///         @if ($valid) {
+///             // do something
+///         } @else {
+///             @return null;
+///         }
+///     }
+///
+@function validate($args, $func: null, $other...) {
+    $valid-args: validate--((args: map-of(type any) $args, func: optional(string) $func), validate);
+
+    @return if($valid-args, validate--($args, $func), null);
+}

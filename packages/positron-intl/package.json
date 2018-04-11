@@ -1,15 +1,15 @@
 {
     "name": "positron-intl",
-    "version": "0.1.28",
+    "version": "0.1.29",
     "description": "Intl",
     "main": "./index.js",
     "dependencies": {
         "intl": "^1.2.5",
         "intl-format-cache": "^2.1.0",
         "intl-messageformat": "^2.2.0",
-        "positron-core": "0.1.28",
-        "positron-flow": "0.1.28",
-        "positron-immutable": "0.1.28"
+        "positron-core": "^0.1.29",
+        "positron-flow": "^0.1.29",
+        "positron-immutable": "^0.1.29"
     },
     "peerDependencies": {
         "prop-types": "^15.6.0"

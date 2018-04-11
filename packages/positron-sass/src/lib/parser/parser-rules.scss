@@ -1,9 +1,0 @@
-@import "../core";
-
-@function --parser-rules($rules) {
-
-}
-
-@function parser-rules($rules) {
-    @return if(validate((rules: map $rules), parser-rules), --, null);
-}

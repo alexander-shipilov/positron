@@ -1,0 +1,19 @@
+@import "../func/func-call";
+@import "./throw";
+
+@function --try($callable) {
+    $catch: $--throw--catch;
+    $--throw--catch: true !global;
+
+    $last-error: $--throw--last-error;
+    $--throw--last-error: null !global;
+
+    $result: func-call($callable);
+
+    $--throw--catch: $catch !global;
+
+    $error: $--throw--last-error;
+    $--throw--last-error: $last-error !global;
+
+    @return ($error, if($error, null, $result));
+}

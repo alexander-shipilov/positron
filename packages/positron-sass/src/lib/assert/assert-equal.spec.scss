@@ -1,0 +1,11 @@
+@import "./@assert";
+@import "./assert";
+
+@include assert("assert: throws if the passed assertion is `false`", (
+    (assert, false) throws "AssertionError: Assertion failed",
+    (assert, false, "Custom Error") throws "Custom Error",
+));
+
+@include assert("assert: returns null if the assertion id not `false`", (
+    assert(true) equal null,
+));

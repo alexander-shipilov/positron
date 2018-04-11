@@ -1,0 +1,15 @@
+@import "../func/func-check-args--";
+@import "func-args--";
+
+/// Returns list of passed arguments
+/// @group func
+///
+/// @return { arglist }
+///
+/// @example
+///
+///    @debug func-arglist(1, 2, 3) // (1, 2, 3)
+///
+@function func-arglist($args...) {
+    @return $args;
+}

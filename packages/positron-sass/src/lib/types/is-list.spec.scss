@@ -1,0 +1,21 @@
+@import "../assert";
+@import "is-list";
+
+@function --is-list--get-arglist($args...) {
+    @return $args;
+}
+
+@include assert("is-list: should return true if the passed value is a arglist, list or map", (
+    is-list(()) is-true,
+    is-list((foo: bar)) is-true,
+    is-list(list of values) is-true,
+    is-list(--is-list--get-arglist()) is-true,
+));
+
+@include assert("is-list: should return false if the passed value is not a list or arglist", (
+    is-list(null) is-false,
+    is-list(1) is-false,
+    is-list(true) is-false,
+    is-list("string") is-false,
+    is-list(string) is-false,
+));

@@ -1,0 +1,16 @@
+/// Returns constructor of the passed value
+/// @group constructor
+///
+/// @param {any} $value
+/// @return {string | null}
+///
+/// @example
+///
+///     $my-constructor: constructor(map);
+///
+///     @debug constructor-of(new($my-constructor)) == $my-constructor; // true
+///     @debug constructor-of(1); // null
+///
+@function constructor-of($value: null, $other...) {
+    @return if(type-of($value) == map, map-get($value, constructor), null);
+}

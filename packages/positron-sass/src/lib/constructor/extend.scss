@@ -1,0 +1,52 @@
+@import "../core/throw";
+@import "../string/str-format";
+@import "../types/validate";
+@import "./$--constructor-prop";
+@import "./--get-constructor-def";
+@import "./--set-constructor-def";
+
+/// Extends the given constructor by another one
+/// @group constructor
+///
+/// @param {string} $constructor constructor id
+/// @param {map...} $props map of properties
+/// @return {string} constructor id
+///
+/// @example
+///     @function foo($constructor, $foo) {
+///         @return (foo: $foo);
+///     }
+///
+///     $foo: constructor(foo);
+///
+///     @function foo-bar($constructor, $foo, $bar) {
+///         @return map-merge(super($constructor, $foo), (bar: $bar));
+///     }
+///
+///     $foo-bar: extend(constructor(foo-bar), $foo);
+///
+///     $my-instance = new($foo-bar, ted, baz);
+///
+///     @debug instance-of($my-instance, $foo); // true
+///     @debug instance-of($my-instance, $foo-bar); // true
+///
+@function extend($constructor, $super, $other...) {
+    $valid-args: validate((constructor: constructor $constructor, constructor: super $constructor), extend);
+
+    @if ($valid-args) {
+        $constructor-def: --get-constructor-def($constructor);
+
+        @if ($constructor == $constructor) {
+            @return throw(str-format("%1 cannot extend itself", $constructor));
+        }
+
+        @if (map-has-key($constructor-def, $--constructor-prop)) {
+            @return throw(str-format("%1 cannot extend %2. It already extends %3",
+                $constructor, $super, map-get($constructor-def, $--constructor-prop)));
+        }
+
+        @return --set-constructor-def($constructor, map-merge($constructor-def, ($--constructor-prop: $super)));
+    }
+
+    @return null;
+}

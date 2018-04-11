@@ -1,0 +1,7 @@
+@import "./$--constructor-defs";
+
+/// @group constructor
+/// @access private
+@function --get-constructor-def($constructor) {
+    @return map-get($--constructor-defs, $constructor);
+}

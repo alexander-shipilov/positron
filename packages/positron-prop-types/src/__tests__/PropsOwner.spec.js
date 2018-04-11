@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import { PropsOwner } from "../PropsOwner";
+import { Props } from "../Props";
 
-describe("PropsOwner", () => {
+describe("Props", () => {
     describe(".filterProps", () => {
-        class Foo extends PropsOwner {
+        class Foo extends Props {
             static propTypes = {
                 foo: PropTypes.number,
                 bar: PropTypes.number

@@ -1,0 +1,12 @@
+@import "./@assert";
+@import "./assert-equal";
+
+@include assert("assert-equal: throws if the passed arguments are not equal", (
+        (assert-equal, foo, bar) throws "AssertionError: Expected value to equal: bar. Received: foo",
+        (assert-equal, (1, 2), (1, 3)) throws "AssertionError: Expected value to equal: [1, 3]. Received: [1, 2]",
+        (assert-equal, foo, bar, "Custom Error") throws "AssertionError: Custom Error",
+));
+
+@include assert("assert-equal: returns null if the assertion passed", (
+    assert(true) equal null,
+));

@@ -1,0 +1,29 @@
+@import "../list/list-map--";
+@import "../map/map-map-values--";
+
+@import "is-list";
+
+/// Normalizes value
+/// @group core
+///
+/// @param {any} $value
+/// @return {any}
+///
+/// @examples
+///
+///     @debug normalize(foo bar); // [foo, bar]
+///     @debug normalize(foo); // "foo"
+///
+@function normalize($value, $other...) {
+    $type: type-of($value);
+
+    @if ($type == "string") {
+        $value: #{ quote($value) };
+    } @else if ($type == "map") {
+        $value: map-map-values--($value, normalize);
+    } @else if (is-list($value)) {
+        $value: join((), list-map--($value, normalize), comma, true);
+    }
+
+    @return $value;
+}

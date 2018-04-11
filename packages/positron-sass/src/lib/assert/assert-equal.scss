@@ -1,0 +1,11 @@
+@import "../core/normalize";
+@import "../core/to-string";
+@import "./assert";
+
+@function assert-equals($value, $expected, $message: "") {
+    @if ($message == "") {
+        $message: str-format("Expected value to equal: #{ to-string($expected) }. Received: #{ to-string($value) }");
+    }
+
+    @return assert(normalize($value) == normalize($expected), $message);
+}

@@ -1,0 +1,30 @@
+@import "../core/$--to-string";
+@import "../core/nvl";
+@import "../core/throw";
+@import "../func/func-call";
+@import "../string/str-format";
+@import "../types/validate";
+@import "./--set-constructor-def";
+
+/// Creates new constructor
+/// @group constructor
+///
+/// @param {callable} $constructor
+/// @param {string} $name [null]
+/// @return {constructor}
+///
+/// @example
+///
+@function constructor($constructor, $name: null, $other...) {
+    $valid-args: validate((constructor: callable $constructor, name: string $name), constructor);
+
+    @if ($valid-args) {
+        @return --set-constructor-def(unique-id(), (
+            constructor: $constructor,
+            constructor-name: $name,
+            $--to-string: (str-format, "<constructor %1>", nvl($name, $constructor))
+        ));
+    }
+
+    @return null;
+}

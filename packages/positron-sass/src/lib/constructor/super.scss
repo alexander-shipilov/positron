@@ -1,0 +1,45 @@
+@import "../core/throw";
+@import "../string/str-format";
+@import "../types/validate";
+@import "./--get-constructor-def";
+@import "./constructor-of";
+@import "./new";
+
+/// Calls super constructor
+/// @group constructor
+///
+/// @param {constructor} $constructor
+/// @param {any} $args...
+/// @return {map}
+///
+/// @example
+///
+///     @function foo($constructor, $foo) {
+///         @return (foo: $foo);
+///     }
+///
+///     $foo: constructor(foo);
+///
+///     @function foo-bar($constructor, $foo, $bar) {
+///         $this: super($constructor, $foo);
+///
+///         @return map-merge($this, (bar: $bar));
+///     }
+///
+///     $foo-bar: extend(constructor(foo-bar), $foo);
+///
+@function super($constructor, $args...) {
+    $valid-args: validate((constructor: constructor $constructor), super);
+
+    @if ($valid-args) {
+        $super: constructor-of(--get-constructor-def($constructor));
+
+        @if ($super == null) {
+            @return throw(str-format("Cannot call super constructor. %1 derives nothing.", $constructor));
+        }
+
+        @return new($super, $args...);
+    }
+
+    @return null;
+}

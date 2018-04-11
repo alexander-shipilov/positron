@@ -1,0 +1,29 @@
+@import "../core/throw-type-error";
+@import "./$--constructor-prop";
+@import "./is-constructor";
+@import "./--get-constructor-def";
+
+/// Determines whether the passed value is created by the given constructor
+/// @group constructor
+///
+/// @param {any} $value
+/// @param {constructor} $constructor
+/// @return {bool}
+///
+/// @example
+///
+///     $my-proto: constructor();
+///     $my-instance = new($my-proto, foo);
+///
+///     @debug instance-of($my-instance, $my-proto); // true
+///
+@function instance-of($value, $constructor, $other...) {
+    @if (not is-constructor($constructor)) {
+        @return throw-type-error(instance-of constructor, constructor, $constructor);
+    }
+
+    @return type-of($value) == "map" and (
+        map-get($value, $--constructor-prop) == $constructor
+        or instance-of(--get-constructor-def($constructor), $constructor)
+    );
+}

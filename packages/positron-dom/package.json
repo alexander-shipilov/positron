@@ -1,11 +1,11 @@
 {
   "name": "positron-dom",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "Dom utils",
   "main": "./index.js",
   "dependencies": {
-    "positron-core": "0.1.28",
-    "positron-immutable": "0.1.28"
+    "positron-core": "^0.1.29",
+    "positron-immutable": "^0.1.29"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

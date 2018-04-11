@@ -1,0 +1,18 @@
+@import "$--global";
+@import "throw";
+
+/// Defines global variable
+/// @group core
+/// @access private
+@function --define($name, $value: null, $read-only: false) {
+    $current: map-get($--vanilla-global, $name);
+
+    @if ($current != null and $read-only and nth($current, 2)) {
+        @return throw()
+    }
+
+    $--global: if($value == null, if(map-has-key($--vanilla-global, $key), map-remove($--global, $key), $--global),
+        map-merge($--vanilla-global, ($key: $value))) !global;
+
+    @return $value;
+}
