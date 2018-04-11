@@ -1,6 +1,6 @@
 {
   "name": "positron-dom",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "description": "Dom utils",
   "main": "./index.js",
   "dependencies": {

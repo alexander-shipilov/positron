@@ -1,11 +1,11 @@
 {
   "name": "positron-react",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "description": "React",
   "main": "./index.js",
   "dependencies": {
     "positron-core": "^0.1.29",
-    "positron-dom": "^0.1.29",
+    "positron-dom": "^0.1.30",
     "positron-flow": "^0.1.29"
   },
   "peerDependencies": {

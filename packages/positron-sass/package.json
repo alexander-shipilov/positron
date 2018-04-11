@@ -1,6 +1,6 @@
 {
     "name": "positron-sass",
-    "version": "0.1.29",
+    "version": "0.1.30",
     "description": "Sass helpers",
     "devDependencies": {
         "cross-env": "^5.1.3",
