@@ -1,0 +1,18 @@
+@import "../func/func-check-args--";
+@import "is-list-of--";
+
+/// Checks whether the passed value is a list of the given type
+/// @group types
+///
+/// @param { type } $type
+/// @param { optional(any) } $value [null]
+/// @return { bool }
+///
+///     @debug is-list-of(string, ("foo", "bar")); // true
+///     @debug is-list-of(string, (1,)); // false
+///
+@function is-list-of($type, $value: null, $other...) {
+    $valid-args: func-check-args--(is-list-of, (type: type $type));
+
+    @return if($valid-args, is-list-of--($type, $value), null);
+}

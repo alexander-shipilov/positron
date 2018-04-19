@@ -1,0 +1,41 @@
+@import "../constructor/constructor--";
+@import "../constructor/constructor-call-check";
+@import "../constructor/extend--";
+@import "../constructor/new--";
+@import "../constructor/super";
+@import "../core/$to-string";
+@import "../core/@void";
+@import "../core/const--";
+@import "../core/global";
+@import "../core/is-undefined";
+@import "../string/str-format--";
+@import "type--";
+@import "is-optional--";
+
+/// @group types
+/// @access private
+@function optional-constructor($type) {
+    @if (not constructor-call-check()) {
+        @return null;
+    }
+
+    @return map-merge(super((is-optional--, $type)), (
+        $to-string: (str-format--, "<optional %1>", $type)
+    ));
+}
+
+/// Unsafe optional()
+/// @group types
+/// @see optional
+@function optional--($type, $other...) {
+    @return new--(global(optional), $type);
+}
+
+/// @alias optional--
+@function opt--($args...) {
+    @return optional--($args...);
+}
+
+@if (is-undefined(optional)) {
+    @include void(const--(optional, extend--(constructor--(optional-constructor, optional), global(type))));
+}

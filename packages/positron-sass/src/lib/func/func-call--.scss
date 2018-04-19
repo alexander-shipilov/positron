@@ -1,10 +1,14 @@
-@import "../core/is-list";
+@import "../types/is-list";
 
-@function --func-call($func, $args...) {
-    @if (is-list($func)) {
+@function func-call--($func, $args...) {
+    @while (is-list($func)) {
         $args: join($func, $args);
 
-        @return --func-call($args...);
+        @return func-call--($args...);
+    }
+
+    @if (type-of($func) != function and function-exists(get-function)) {
+        $func: get-function($func);
     }
 
     @return call($func, $args...);

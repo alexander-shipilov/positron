@@ -1,25 +1,21 @@
-@import "../core/is-string";
-@import "../expect";
-@import "./is-type-of";
-@import "./list-of";
-@import "./type";
+@import "../assert";
+@import "is-type";
+@import "is-type-of";
+@import "list-of";
 
-@include describe(list-of) {
-     $list-of-strings: list-of(string);
+$list-of-strings: list-of(string);
 
-    @include it("creates new list-of type", (
-        is-type($list-of-strings) true,
-        value-of($list-of-strings) string,
-    ));
+@include assert("list-of: creates new list-of type", (
+    is-type($list-of-strings) is-true,
+));
 
-    @include it("is-type-of", (
-        is-type-of($list-of-strings, foo bar) true,
-        is-type-of($list-of-strings, ()) true,
-        is-type-of($list-of-strings, 1 2) false,
-        is-type-of($list-of-strings, null) false,
-    ));
+@include assert("list-of: should check", (
+    is-type-of($list-of-strings, ()) is-true,
+    is-type-of($list-of-strings, foo bar) is-true,
+    is-type-of($list-of-strings, 1 2) is-false,
+    is-type-of($list-of-strings, null) is-false,
+));
 
-    @include it("should throw if no type passed", (
-        to-throw((list-of, foo)) true,
-    ));
-}
+@include assert("list-of: should throw TypeError if invalid params passed", (
+    (list-of, 1) throws "TypeError: Expected argument `$type` of `list-of()` to be a type, instead received (number) 1",
+));

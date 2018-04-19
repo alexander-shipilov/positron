@@ -1,5 +1,5 @@
 $--vanilla-global-contexts: (
-    (), // global context
+    globa: (), // global context
 );
 
 @function --get-context-value($context, $name) {

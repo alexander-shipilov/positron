@@ -1,15 +1,5 @@
-@import "../core/is-callable";
-@import "../core/to-bool";
-@import "../func/--call";
-@import "../prototype/--prototype";
-@import "../prototype/instance-of";
-@import "../prototype/new";
-@import "../prototype/value-of";
-
-/// Prototype of type
-/// @group types
-/// @access private
-$--type-proto: --prototype("is-callable") !default;
+@import "../func/func-check-args--";
+@import "type--";
 
 /// Registers a custom type with specified validator
 /// @group types
@@ -30,37 +20,7 @@ $--type-proto: --prototype("is-callable") !default;
 ///     @debug is-type-of($id-type, 1); // false
 ///
 @function type($validator, $other...) {
-    @return new($--type-proto, $validator);
-}
+    $valid-args: func-check-args--(type, (type: callable $validator));
 
-/// Checks whether the passed value is registered type
-/// @group types
-///
-/// @param {any} $value
-/// @return {bool}
-///
-/// @example
-///
-///     $string-type: type((is-type-of, string));
-///
-///     @debug is-type($string-type); // true
-///
-@function is-type($value, $other...) {
-    @return instance-of($value, $--type-proto);
-}
-
-/// Returns a validator of the given type
-/// @group types
-///
-/// @param {type} $value
-/// @return {callable}
-///
-/// @example
-///
-///     $string-type: type((is-type-of, string));
-///
-///     @debug type-validator($string-type); // (is-type-of, string)
-///
-@function type-check($type, $value, $other...) {
-    @return is-type($type) and to-bool(--func-call(value-of($type, $--type-proto), $value, $type));
+    @return if($valid-args, type--($validator), null);
 }

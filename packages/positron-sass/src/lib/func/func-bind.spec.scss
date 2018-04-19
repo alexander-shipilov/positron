@@ -1,28 +1,20 @@
-@import "../core/is-list";
-@import "../expect";
-@import "./bind";
-@import "./call";
+@import "../assert";
+@import "../types/is-list";
+@import "func-bind";
+@import "func-call";
 
-@function --func-bind-spec-test($args...) {
+@function --func-bind--test($args...) {
     @return $args;
 }
 
-@include describe(func-bind) {
-    @include it("returns a list which can be passed to func-call", (
-        is-list(func-bind(--func-bind-spec-test, 1, 2)) true,
-        func-call(func-bind(--func-bind-spec-test, 1, 2), 3, 4) (1, 2, 3, 4),
-    ));
+@include assert("func-bind: returns a list which can be passed to func-call", (
+    is-list(func-bind(--func-bind--test, 1)) is-true,
+    func-bind(--func-bind--test, 1) equal (--func-bind--test, 1),
+    func-bind(func-bind(--func-bind--test, 1), 2) equal (--func-bind--test, 1, 2),
+    func-bind(func-bind(func-bind(--func-bind--test, 1), 2), 3) equal (--func-bind--test, 1, 2, 3),
+    func-call(func-bind(call, type-of, 1)) equal number,
+));
 
-    @include it("should support chaining", (
-        func-call(func-bind(func-bind(--func-bind-spec-test, 1), 2)) (1, 2),
-        func-call(func-bind(func-bind(func-bind(--func-bind-spec-test, 1), 2), 3)) (1, 2, 3),
-    ));
-
-    @include it("shoud throw if passed arg is not a function", (
-        to-throw((func-bind, 1)) true,
-    ));
-
-    @include it("should return --func-bound-function with passed params", (
-        func-bind(--func-bind-spec-test, 1, 2) (--func-bound-function, --func-bind-spec-test, (1, 2)),
-    ));
-}
+@include assert("func-bind: shoud throw if passed arg is not a callable", (
+    (func-bind, 1) throws "TypeError: Expected argument `$callable` of `func-bind()` to be a callable, instead received (number) 1",
+));

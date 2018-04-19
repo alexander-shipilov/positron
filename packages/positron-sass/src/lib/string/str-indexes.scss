@@ -1,4 +1,4 @@
-@import "../list/list-slice";
+@import "../list/list-slice--";
 @import "../core/to-string";
 
 @function str-indexes($string, $substring, $count: null) {
@@ -16,7 +16,7 @@
     }
 
     @if ($count != null) {
-        $indexes: if($count < 0, list-slice($indexes, $count), list-slice($indexes, 1, $count + 1));
+        $indexes: if($count < 0, list-slice--($indexes, $count), list-slice--($indexes, 1, $count + 1));
     }
 
     @return $indexes;

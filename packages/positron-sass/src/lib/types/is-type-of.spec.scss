@@ -1,132 +1,77 @@
-@import "../expect";
-@import "./is-type-of";
+@import "../assert";
+@import "../func/func-arglist";
+@import "is-type-of";
+@import "type";
 
-@function --is-type-of-arg-list($args...) {
-    @return $args;
-}
+$is-string: type("is-string");
 
-@include describe(is-type-of) {
-    @include describe("function") {
-        @include it("should return true if the passed value is a function", (
-            is-type-of(function, call) true,
-            is-type-of(function, is-type-of) true,
-        ));
-    }
+@include assert("is-type-of(type): returns true if the passed value is one of registered types", (
+    is-type-of(type, any) is-true,
+    is-type-of(type, arglist) is-true,
+    is-type-of(type, bool) is-true,
+    is-type-of(type, callable) is-true,
+    is-type-of(type, constructor) is-true,
+    is-type-of(type, list) is-true,
+    is-type-of(type, map) is-true,
+    is-type-of(type, number) is-true,
+    is-type-of(type, null) is-true,
+    is-type-of(type, string) is-true,
+    is-type-of(type, type) is-true,
+    is-type-of(type, unit) is-true,
+));
 
-    @include describe("callable") {
-        @include it("should return true if the passed value can be called with func-call", (
-            is-type-of(callable, call) true,
-            is-type-of(callable, is-type-of) true,
-            is-type-of(callable, (is-type-of, 1)) true,
-            is-type-of(callable, ((is-type-of, 1), 1)) true,
-        ));
-    }
+@include assert("is-type-of(<constructor *>): returns true if the passed value is an instance created by the given constructor", (
+    is-type-of(global(type), $is-string) is-true,
+    is-type-of(global(type), 1) is-false,
+));
 
-    @include describe("list") {
-        @include it("should return true if the passed value is a list / arglist", (
-            is-type-of(list, ()) true,
-            is-type-of(list, (1, 2, 3)) true,
-            is-type-of(list, --is-type-of-arg-list()) true,
-            is-type-of(list, --is-type-of-arg-list(1, 2, 3)) true,
-        ));
-    }
+@include assert("is-type-of(<type *>): returns true if the passed value is a value of the givent type", (
+    is-type-of($is-string, "") is-true,
+    is-type-of($is-string, 1) is-false,
+));
 
-    @include describe("arglist") {
-        @include it("should return true if the passed value is an arglist", (
-            is-type-of(arglist, --is-type-of-arg-list()) true,
-            is-type-of(arglist, --is-type-of-arg-list(1, 2, 3)) true,
-        ));
+@include assert("is-type-of(function): returns true if the passed value is a function", (
+    is-type-of(function, call) is-true,
+    is-type-of(function, is-type-of) is-true,
+    is-type-of(function, 1) is-false,
+));
 
-        @include it("should return false if the passed value is a list", (
-            is-type-of(arglist, ()) false,
-            is-type-of(arglist, (1, 2, 3)) false,
-        ));
-    }
+@include assert("is-type-of(callable): returns true if the passed value can be called with func-call", (
+    is-type-of(callable, call) is-true,
+    is-type-of(callable, is-type-of) is-true,
+    is-type-of(callable, (is-type-of, 1)) is-true,
+    is-type-of(callable, ((is-type-of, 1), 1)) is-true,
+));
 
-    @include describe("map") {
-        @include it("should return true if the passed value is a map or an empty list or arglist", (
-            is-type-of(map, ()) true,
-            is-type-of(map, --is-type-of-arg-list()) true,
-            is-type-of(map, (foo: 1)) true,
-        ));
-    }
+@include assert("is-type-of(list): returns true if the passed value is a list / arglist", (
+    is-type-of(list, ()) is-true,
+    is-type-of(list, (1, 2, 3)) is-true,
+    is-type-of(list, func-arglist()) is-true,
+    is-type-of(list, func-arglist(1, 2, 3)) is-true,
+));
 
-    @include describe("string, number, boolean") {
-        @include it("should return true if the passed arg is a value of the specified type", (
-            is-type-of(string, "") true,
-            is-type-of(number, 1) true,
-            is-type-of(bool, true) true,
-            is-type-of(bool, false) true,
-        ));
-    }
+@include assert("is-type-of(arglist): returns true if the passed value is an arglist", (
+    is-type-of(arglist, func-arglist()) is-true,
+    is-type-of(arglist, func-arglist(1, 2, 3)) is-true,
+    is-type-of(arglist, ()) is-false,
+    is-type-of(arglist, (1, 2, 3)) is-false,
+));
 
-    @include describe("null") {
-        @include it("should return true if the passed value is null", (
-            is-type-of("null", null) true,
-            is-type-of(null, null) true,
-        ));
-    }
+@include assert("is-type-of(map): returns true if the passed value is a map or an empty list or arglist", (
+    is-type-of(map, ()) is-true,
+    is-type-of(map, func-arglist()) is-true,
+    is-type-of(map, (foo: 1)) is-true,
+    is-type-of(map, (1,)) is-false,
+));
 
-    @include describe("type") {
-        $type: type("is-string");
+@include assert("is-type-of(map): returns true if the passed arg is a value of the specified type", (
+    is-type-of(string, "") is-true,
+    is-type-of(number, 1) is-true,
+    is-type-of(bool, true) is-true,
+    is-type-of(bool, false) is-true,
+));
 
-        @include it("should return true if the passed value is one internal types", (
-            is-type-of("type", "arglist") true,
-            is-type-of("type", "bool") true,
-            is-type-of("type", "function") true,
-            is-type-of("type", "list") true,
-            is-type-of("type", "map") true,
-            is-type-of("type", "number") true,
-            is-type-of("type", "null") true,
-            is-type-of("type", "string") true,
-        ));
-
-        @include it("should return true if the passed value is 'callable'", (
-            is-type-of("type", "callable") true,
-        ));
-
-        @include it("should return true if the passed value is 'type'", (
-            is-type-of("type", "type") true,
-        ));
-
-        @include it("should return true if the passed value is an instance of type", (
-            is-type-of("type", $type) true,
-        ));
-
-        @include it("should return true if the passed value is a list of types", (
-            is-type-of("type", ("string", "number", "type")) true,
-        ));
-
-        @include it("should return true if the passed value is a map of types", (
-            is-type-of("type", (foo: "string", bar: "number", ted: "type")) true,
-        ));
-    }
-
-    @include describe("list of types") {
-        @include it("should return true if all items of the specfied list matches corresponding types", (
-            is-type-of((string,), ("",)) true,
-            is-type-of((string, number), ("", 1)) true,
-            is-type-of((string, number, list), ("", 1, ())) true,
-            is-type-of((string, number, (bool, function)), ("", 1, (true, is-type-of))) true,
-            is-type-of((null, null), ()) true,
-        ));
-
-        @include it("should return true if the passed types is empty and the given value is any list", (
-            is-type-of((), ()) true,
-            is-type-of((), (1, 2)) true,
-            is-type-of((), --is-type-of-arg-list()) true,
-            is-type-of((), --is-type-of-arg-list(1, 2, 3)) true,
-        ));
-    }
-
-    @include describe("map of types") {
-        @include it("should return true if all props of the specfied map matches corresponding types", (
-            is-type-of((foo: string), (foo: "")) true,
-            is-type-of((foo: string), (foo: 1)) false,
-            is-type-of((foo: string), (foo: "", bar: 2)) true,
-
-            is-type-of((foo: string, bar: number), (foo: "", bar: 1)) true,
-            is-type-of((foo: string, bar: null), (foo: "")) true,
-        ));
-    }
-}
+@include assert("is-type-of(null): returns true if the passed value is null", (
+    is-type-of("null", null) is-true,
+    is-type-of(null, null) is-true,
+));

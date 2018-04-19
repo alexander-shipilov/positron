@@ -1,0 +1,15 @@
+@import "../assert";
+@import "--spec--/--test-costructor";
+
+@function --constructor-test($map) {
+    @return $map;
+}
+
+@include assert("constructor: returns an identifier of created constructor", (
+    type-of(constructor(--test-constructor)) == "string",
+));
+
+@include assert("constructor: should throw TypeError if invalid arguments passed", (
+    (constructor, null) throws "TypeError: Expected argument `$func` of `constructor()` to be a callable, instead received null",
+    (constructor, --test-constructor, 1) throws "TypeError: Expected argument `$name` of `constructor()` to be a <optional string>, instead received (number) 1",
+))

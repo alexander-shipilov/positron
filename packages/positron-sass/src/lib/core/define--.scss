@@ -1,18 +1,20 @@
+@import "../map/map-assign--";
 @import "$--global";
-@import "throw";
+@import "nvl";
 
-/// Defines global variable
+/// Unsafe define()
 /// @group core
-/// @access private
-@function --define($name, $value: null, $read-only: false) {
-    $current: map-get($--vanilla-global, $name);
+/// @see define
+@function define--($name, $descriptor) {
+    $current-descriptor: map-get($--vanilla-global, $name);
 
-    @if ($current != null and $read-only and nth($current, 2)) {
-        @return throw()
+    @if ($current-descriptor == null or map-get($current-descriptor, configurable)) {
+        $descriptor: map-assign--((writable: false, configurable: false), $current-descriptor, $descriptor);
+
+        $--vanilla-global: map-merge($--vanilla-global, ($name: $descriptor)) !global;
+    } @else {
+        $descriptor: $current-descriptor;
     }
 
-    $--global: if($value == null, if(map-has-key($--vanilla-global, $key), map-remove($--global, $key), $--global),
-        map-merge($--vanilla-global, ($key: $value))) !global;
-
-    @return $value;
+    @return $descriptor;
 }

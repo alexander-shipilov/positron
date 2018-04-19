@@ -1,9 +1,13 @@
-@import "../types/validate";
+@import "func-check-args";
+@import "../types/optional";
+@import "func-call--";
 
-@import "./--call";
+@function func-apply($callable, $args: null, $other...) {
+    $valid-args: func-check-args--(func-apply, (callable: callable $callable, args: optional(list) $args));
 
-@function func-apply($callable, $args: (), $other...) {
-    $valid-args: validate((callable: callable $callable), func-apply);
+    @if ($args == null) {
+        $args: ();
+    }
 
-    @return if($valid-args, --func-call($callable, $args...), null);
+    @return if($valid-args, func-call--($callable, $args...), null);
 }

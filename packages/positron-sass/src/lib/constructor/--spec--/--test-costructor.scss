@@ -1,0 +1,15 @@
+@import "../constructor";
+@import "../extend";
+@import "../object";
+@import "../super";
+
+@function --test-constructor() {
+    @return super();
+}
+
+@function --test-constructor2() {
+    @return super();
+}
+
+$--test-constructor: extend(constructor(--test-constructor, test), global(object));
+$--test-constructor2: extend(constructor(--test-constructor2, test2), $--test-constructor);

@@ -1,0 +1,18 @@
+@import "../func/func-check-args--";
+@import "is-map-of--";
+
+/// Checks whether the passed value is a map of the given type
+/// @group types
+///
+/// @param { type } $type
+/// @param { optional(any) } $value [null]
+/// @return { bool }
+///
+///     @debug is-map-of(string, ("foo", "bar")); // true
+///     @debug is-map-of(string, (1,)); // false
+///
+@function is-map-of($type, $value: null, $other...) {
+    $valid-args: func-check-args--(is-map-of, (type: type $type));
+
+    @return if($valid-args, is-map-of--($type, $value), null);
+}

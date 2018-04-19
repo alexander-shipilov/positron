@@ -4,6 +4,7 @@ export { alignTo } from "./alignTo";
 export { classNames } from "./classNames";
 export { contains } from "./contains";
 export { containsOrSelf } from "./containsOrSelf";
+export { parseAlign } from "./parseAlign";
 export { parseAligns } from "./parseAligns";
 export { findScrollParents } from "./findScrollParents";
 export { translateStyle } from "./translateStyle";

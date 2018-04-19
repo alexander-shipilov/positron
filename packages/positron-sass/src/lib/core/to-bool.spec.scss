@@ -1,32 +1,20 @@
-@import "../expect";
+@import "../assert";
 @import "to-bool";
 
-@include describe(to-bool) {
-    @include it("should cast null value to false", (
-        to-bool(null) false,
-    ));
+@include assert("to-bool: returns false if the given value is false, null, an empty string or zero", (
+    to-bool(false) is-false,
+    to-bool(null) is-false,
+    to-bool("") is-false,
+    to-bool(0) is-false,
+));
 
-    @include it("should cast an empty string to false", (
-        to-bool("") false,
-    ));
-
-    @include it("should cast non-empty strings to true", (
-        to-bool("foo") true,
-        to-bool(" ") true
-    ));
-
-    @include it("should cast a zero number to false", (
-        to-bool(0) false,
-    ));
-
-    @include it("should cast non-zero numbers to true", (
-        to-bool(1) true,
-        to-bool(-1) true
-    ));
-
-    @include it("should cast any list or map to true", (
-        to-bool(()) true,
-        to-bool((1, 2, 3)) true,
-        to-bool((foo: 1)) true
-    ))
-}
+@include assert("to-bool: returns true if the given value is true, not empty string, not zero or a list or map", (
+    to-bool(true) is-true,
+    to-bool(foo) is-true,
+    to-bool(" ") is-true,
+    to-bool(-1) is-true,
+    to-bool(1) is-true,
+    to-bool(()) is-true,
+    to-bool((1, 2, 3)) is-true,
+    to-bool((foo: 1)) is-true,
+));

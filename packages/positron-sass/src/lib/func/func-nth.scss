@@ -1,0 +1,18 @@
+@import "../func/func-check-args--";
+@import "func-nth--";
+
+/// Returns callable which returns its nth-argument
+/// @group func
+///
+/// @param { number } $index [1]
+/// @return { callable }
+///
+/// @example
+///
+///     @debug func-call(func-nth(3), foo, bar, baz) // baz
+///
+@function func-nth($index: 1, $other...) {
+    $valid-args: func-check-args--(func-nth, (index: number $index));
+
+    @return if($valid-args, func-nth--($index), null);
+}

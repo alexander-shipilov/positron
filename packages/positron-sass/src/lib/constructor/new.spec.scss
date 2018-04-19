@@ -1,23 +1,26 @@
-@import "../core/is-string";
-@import "../expect";
+@import "../assert";
+@import "../func/func-const";
+@import "--spec--/--test-costructor";
+@import "instance-of";
+@import "new";
+@import "object";
 
-@import "./new";
-@import "./instance-of";
-@import "./prototype";
-@import "./value-of";
+$object: global(object);
 
-@include describe(new) {
-    $proto: prototype(string);
-    $value: new($proto, "foo");
+@include assert("new: creates a new instance of the given constructor", (
+    type-of(new($--test-constructor)) == "map",
+    instance-of(new($--test-constructor), $--test-constructor) is-true,
+));
 
-    @include it("creates new value of the given prototype", (
-        type-of($value) "map",
-        map-has-key($value, $proto) true,
-        map-get($value, $proto) foo,
-    ));
+@include assert("new: should throw if constructor returned no map", (
+    (new, constructor((func-const, null), map-test)) throws "Error: Expected <constructor map-test> to return a map, instead returned null",
+    (new, constructor((func-const, (1,)), map-test)) throws "Error: Expected <constructor map-test> to return a map, instead returned [1,]",
+));
 
-    @include it("should throw if the passed value does not match specified type", (
-        to-throw((new, $proto, 1)) true,
-        to-throw((new, $proto, true)) true,
-    ));
-}
+@include assert("new: should throw if super was not called", (
+    (new, extend(constructor((func-const, ()), super-test), $--test-constructor)) throws "Error: <constructor super-test> is derived constructor. Call `super()` in <constructor super-test>",
+));
+
+@include assert("new: should throw TypeError if invalid arguments passed", (
+    (new, null) throws "TypeError: Expected argument `$constructor` of `new()` to be a constructor, instead received null",
+));

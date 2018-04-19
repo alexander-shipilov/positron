@@ -1,15 +1,19 @@
-/// Returns a validator of the given type
+@import "../func/func-check-args--";
+@import "is-valid--";
+
+/// Validate the passed value against the given validator
 /// @group types
 ///
-/// @param {type} $value
-/// @return {callable}
+/// @param { callable } $validator
+/// @param { optional(any) } $value
+/// @return { bool }
 ///
 /// @example
 ///
-///     $string-type: type((is-type-of, string));
+///     @debug is-valid(is-string, ""); // true
 ///
-///     @debug type-validator($string-type); // (is-type-of, string)
-///
-@function type-check($type, $value, $other...) {
-    @return is-type($type) and to-bool(func-call--(map-get($type, validator), $type, $value));
+@function is-valid($validator, $value, $other...) {
+    $valid-args: func-check-args--(is-valid, (type: callable $validator));
+
+    @return if($valid-args, is-valid--($validator, $value), null);
 }

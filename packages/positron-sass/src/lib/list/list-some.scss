@@ -1,8 +1,23 @@
-@import "../types/validate";
-@import "./--list-some";
+@import "../func/func-check-args--";
+@import "list-some--";
 
-@function list-some($list, $func, $args...) {
-    $valid-args: validate((list: list $list, func: callable $func), list-some);
+/// Tests whether at least one element in the list passes the test implemented by the provided <callable>
+/// @group list
+///
+/// @param { list } $list
+/// @param { callable } $callback Function to test for each element, taking three arguments:
+///     - $value    The current element being processed in the array.
+///     - $index    The index of the current element being processed in the array.
+///     - $list     The list
+/// @return { bool } true if the callback function returns a truthy value for any array element; otherwise, false.
+///
+/// @example
+///
+///     @debug list-some((1, 2, 3, ""), is-string) // true
+///     @debug list-some((1, 2, 3, 4px), (is-number, px) // true
+///
+@function list-some($list, $callback, $other...) {
+    $valid-args: func-check-args--(list-some, (list: list $list, callback: callable $callback));
 
-    @return if($valid-args, --list-some($list, $func, $args...), null);
+    @return if($valid-args, list-some--($list, $callback), null);
 }

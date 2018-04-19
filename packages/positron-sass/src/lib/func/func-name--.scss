@@ -1,8 +1,8 @@
-@import "../core/is-list";
+@import "../types/is-list";
 
-/// Unsafe version of func-name
+/// Unsafe func-name()
 /// @group func
-/// @access private
-@function func-name-($func) {
-    @return if(is-list($func), nth($func, 1), $func);
+/// @see func-name
+@function func-name--($func, $other...) {
+    @return if(is-list($func), func-name--(nth($func, 1)), $func);
 }

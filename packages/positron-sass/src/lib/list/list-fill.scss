@@ -1,4 +1,4 @@
-@function list-fill($list, $value, $length) {
+@function list-fill($list, $value, $length, $index: null) {
     $type: type-of($value);
     $list: ();
 

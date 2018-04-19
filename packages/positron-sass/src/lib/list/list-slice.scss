@@ -1,31 +1,30 @@
-@function --list-slice--real-index($list, $index) {
-    $length: length($list);
+@import "../func/func-check-args--";
+@import "../types/optional--";
+@import "list-slice--";
 
-    @if ($index == null) {
-        $index: $length + 1;
-    } @else {
-        @if ($index < 0) {
-            $index: $length + $index + 1;
-        }
+/// Returns a copy of a portion of a list into a new list object selected from `$begin` to `$end` (`$end` not included).
+/// @group list
+///
+/// @param { list } $list
+///
+/// @param { number } $begin [null] Index at which to begin extraction.
+///     A negative index can be used, indicating an offset from the end of the sequence. slice(-2)
+///     extracts the last two elements in the sequence.
+///     If `$begin` is null (or omitted), `list-slice()` begins from index 1.
+///     If `$begin` is greater than the length of the sequence, an empty list is returned.
+/// @param { number } $end [null] Index before which to end extraction.
+///     `list-slice()` extracts up to but **not including** end.
+///     A negative index can be used, indicating an offset from the end of the sequence.
+///     If `$end` is omitted, slice extracts through the end of the sequence (`length($list)`).
+///     If `$end` is greater than the length of the sequence, slice extracts through to the end of the sequence.
+/// @return { list }
+///
+/// @example
+///
+///     @debug list-slice((1, 2, 3, 4), 2, -1) // (2, 3) extracts the second element through the second-to-last element in the sequence.
+///
+@function list-slice($list, $begin: null, $end: null, $other...) {
+    $is-valid: func-check-args--(list-slice, (list: list $list, from: opt--(number) $begin, to: opt--(number) $end));
 
-        $index: max(min($index, $length + 1), 1);
-    }
-
-    @return $index;
-}
-
-@function list-slice($list, $index-from, $index-to: null) {
-    $length: length($list);
-    $next-list: ();
-
-    @if ($length != 0) {
-        $index-from: --list-slice--real-index($list, $index-from);
-        $index-to: --list-slice--real-index($list, $index-to);
-
-        @for $i from $index-from to $index-to {
-            $next-list: append($next-list, nth($list, $i))
-        }
-    }
-
-    @return $next-list;
+    @return if($is-valid, list-slice--($list, $begin, $end), null);
 }

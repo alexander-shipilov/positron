@@ -1,22 +1,22 @@
-@import "../core/is-function";
-@import "../core/is-list";
 @import "../core/throw-type-error";
-
-@import "is-type-of";
+@import "../types/is-function";
+@import "../types/is-list";
+@import "../types/is-type-of";
 
 /// Unsafe validate()
 /// @group types
 /// @see validate
-@function validate--($args, $func: null) {
+@function func-check-args--($func, $args: null, $other...) {
     $error: null;
 
     @each $arg, $type-value in $args {
         $type: nth($type-value, 1);
-        $value: nth($type-value, 2);
+        $value: if(length($type-value) > 1, nth($type-value, 2), null);
+
         $is-type-of: is-type-of($type, $value);
 
-        @if (not $is-type-of) {
-            @return throw-type-error(if($func == null, $arg, $func $arg), $type, $value) == null;
+        @if(not $is-type-of) {
+            @return throw-type-error($func $arg, $type, $value) != null;
         }
     }
 

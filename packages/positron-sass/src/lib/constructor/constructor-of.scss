@@ -1,3 +1,7 @@
+@import "$--constructor-prop";
+@import "--get-constructor-def";
+@import "is-constructor";
+
 /// Returns constructor of the passed value
 /// @group constructor
 ///
@@ -12,5 +16,6 @@
 ///     @debug constructor-of(1); // null
 ///
 @function constructor-of($value: null, $other...) {
-    @return if(type-of($value) == map, map-get($value, constructor), null);
+    @return if(type-of($value) == map, map-get($value, $--constructor-prop),
+        if(is-constructor($value), constructor-of(--get-constructor-def($value)), null));
 }

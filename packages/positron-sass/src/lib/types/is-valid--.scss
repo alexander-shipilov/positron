@@ -1,18 +1,9 @@
 @import "../core/to-bool";
 @import "../func/func-call--";
 
-/// Returns a validator of the given type
+/// Unsafe is-valid()
 /// @group types
-///
-/// @param {type} $value
-/// @return {callable}
-///
-/// @example
-///
-///     $string-type: type((is-type-of, string));
-///
-///     @debug type-check($string-type); // (is-type-of, string)
-///
-@function type-check($this, $value, $other...) {
-    @return to-bool(func-call--(map-get($this, validator), $type, $value));
+/// @see is-valid
+@function is-valid--($validator, $value, $other...) {
+    @return to-bool(func-call--($validator, $value));
 }

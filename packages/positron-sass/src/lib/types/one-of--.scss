@@ -1,0 +1,37 @@
+@import "../constructor/constructor--";
+@import "../constructor/constructor-call-check";
+@import "../constructor/extend--";
+@import "../constructor/new--";
+@import "../constructor/super";
+@import "../core/@void";
+@import "../core/$to-string";
+@import "../core/const--";
+@import "../core/global";
+@import "../core/is-undefined";
+@import "../list/list-join-with";
+@import "../string/str-format--";
+@import "type--";
+@import "is-one-of--";
+
+/// @group types
+/// @access private
+@function one-of-constructor($types) {
+    @if (not constructor-call-check()) {
+        @return null;
+    }
+
+    @return map-merge(super((is-one-of--, $types)), (
+        $to-string: (str-format--, "<one-of %1>", list-join-with($types, ", "))
+    ));
+}
+
+/// Unsafe one-of()
+/// @group types
+/// @see one-of
+@function one-of--($type, $other...) {
+    @return new--(global(one-of), $type);
+}
+
+@if (is-undefined(one-of)) {
+    @include void(const--(one-of, extend--(constructor--(one-of-constructor, one-of), global(type))));
+}

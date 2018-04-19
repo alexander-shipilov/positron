@@ -1,19 +1,21 @@
-@import "../expect";
+@import "../assert";
+@import "--spec--/--test-costructor";
+@import "instance-of";
+@import "new";
 
-@import "./instance-of";
-@import "./new";
-@import "./prototype";
+@include assert("instance-of: checks whether passed value is an instance of the given constructor", (
+    instance-of(new($--test-constructor), $--test-constructor) is-true,
+    instance-of(new($--test-constructor2), $--test-constructor2) is-true,
+    instance-of(new($--test-constructor2), $--test-constructor) is-true,
+    instance-of(1, $--test-constructor) is-false,
+    instance-of(null, $--test-constructor) is-false,
+));
 
-@include describe(instance-of) {
-    $proto: prototype();
-    $value: new($proto);
+@include assert("instance-of: should return true if the passed value is derived constructor of the given one", (
+    instance-of($--test-constructor2, $--test-constructor) is-true,
+    instance-of($--test-constructor, $--test-constructor2) is-false,
+));
 
-    @include it("checks whether passed value if the passed value is an instance of the given prototype", (
-        instance-of($value, $proto) true,
-        instance-of(1, $proto) false,
-    ));
-
-    @include it("should not throw no prototype passed", (
-        to-throw((instance-of, $value, null)) false,
-    ));
-}
+@include assert("instance-of: should throw TypeError if invalid arguments passed", (
+    (instance-of, null, null) throws "TypeError: Expected argument `$constructor` of `instance-of()` to be a constructor, instead received null",
+));

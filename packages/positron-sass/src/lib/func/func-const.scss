@@ -3,6 +3,6 @@
 ///
 /// @param { any } $value
 /// @return { any }
-@function func-constant($value: null) {
+@function func-const($value: null, $other...) {
     @return $value;
 }

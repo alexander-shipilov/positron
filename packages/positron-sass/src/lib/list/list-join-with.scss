@@ -1,18 +1,8 @@
-@import "../types/validate";
-
-@function --list-join-with($list, $with) {
-    $length: length($list);
-    $string: "";
-
-    @if ($length != 0) {
-        @for $index from 1 through $length {
-            $string: $string + $with + nth($list, $index);
-        }
-    }
-}
+@import "../func/func-check-args--";
+@import "list-join-with--";
 
 @function list-join-with($list, $with: "", $other...) {
-    $valid-args: validate((list: list $list, with: string $with), list-join-with);
+    $valid-args: func-check-args--(list-join-with, (list: list $list, with: string $with));
 
-    @return if($valid-args, --list-join-with($list, $with), null);
+    @return if($valid-args, list-join-with--($list, $with), null);
 }

@@ -1,6 +1,6 @@
 @import "../func/func-call--";
 
-@function --list-map($list, $func, $args...) {
+@function list-map--($list, $func, $args...) {
     $next-list: ();
     $length: length($list);
 

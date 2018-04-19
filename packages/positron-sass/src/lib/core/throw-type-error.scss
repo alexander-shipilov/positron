@@ -1,7 +1,8 @@
-@import "./is-list";
-@import "./is-string";
-@import "./throw";
-@import "./to-string";
+@import "../debug/debug-value";
+@import "../types/is-list";
+@import "../types/is-string";
+@import "throw";
+@import "to-string";
 
 @function throw-type-error($name, $type, $value) {
     $value-type: type-of($value);
@@ -14,10 +15,5 @@
         $name: "argument `#{ $name }` of `#{ $func }()`";
     }
 
-    $print-value: to-string($value);
-    @if ($value-type != "null") {
-        $print-value: "#{ to-string($value-type) } #{ $print-value }";
-    }
-
-    @return throw("Expected #{ $name } to be a #{ to-string($type) }, instead #{ $print-value } given.", TypeError);
+    @return throw("Expected #{ $name } to be a #{ to-string($type) }, instead received #{ debug-value($value) }", TypeError);
 }

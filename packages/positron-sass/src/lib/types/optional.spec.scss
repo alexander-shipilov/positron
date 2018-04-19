@@ -1,25 +1,21 @@
-@import "../core/is-string";
-@import "../expect";
-@import "./is-type-of";
-@import "./optional";
-@import "./type";
+@import "../assert";
+@import "is-type";
+@import "is-type-of";
+@import "optional";
 
-@include describe(optional) {
-    $optional-string: optional(string);
+$optional-string: optional(string);
 
-    @include it("creates new optional type", (
-        is-type($optional-string) true,
-        value-of($optional-string) string,
-    ));
+@include assert("optional: creates a new optional type", (
+    is-type($optional-string) is-true,
+));
 
-    @include it("is-type-of", (
-        is-type-of($optional-string, "foo") true,
-        is-type-of($optional-string, "") true,
-        is-type-of($optional-string, null) true,
-        is-type-of($optional-string, 1) false,
-    ));
+@include assert("optional: is-type-of", (
+    is-type-of($optional-string, null) is-true,
+    is-type-of($optional-string, "foo") is-true,
+    is-type-of($optional-string, "") is-true,
+    is-type-of($optional-string, 1) is-false,
+));
 
-    @include it("should throw if not a type passed", (
-        to-throw((optional, foo)) true,
-    ));
-}
+@include assert("optional: should throw TypeError if invalid params passed", (
+    (optional, 1) throws "TypeError: Expected argument `$type` of `optional()` to be a type, instead received (number) 1",
+));

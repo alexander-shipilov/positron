@@ -1,16 +1,12 @@
-@import "../expect";
-@import "../func/constant";
+@import "../assert";
+@import "../func/func-const";
+@import "throw";
+@import "try-catch";
 
-@import "./throw";
-@import "./try-catch";
+@include assert("try-catch: invokes the given callable and returns a thrown error", (
+    try-catch((throw, "error")) equal "Error: error",
+));
 
-
-@include describe(try-catch) {
-    @include it("invokes the given callable and returns a thrown error", (
-        try-catch((throw, "error")) "error",
-    ));
-
-    @include it("should return null if exception was not thrown during passed function invocation", (
-        try-catch((func-constant, arg)) null,
-    ));
-}
+@include assert("try-catch: should return null if exception was not thrown during passed function invocation", (
+    try-catch((func-const, arg)) is-null,
+));

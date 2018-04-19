@@ -3,6 +3,6 @@
 
 // @group map
 // @access private
-@function --map-every($map, $func, $args...) {
-    @return list-every--($map, --map-iterator, $func, $args...);
+@function map-every--($map, $func, $args...) {
+    @return list-every--($map, (--map-iterator, $func), $args...);
 }

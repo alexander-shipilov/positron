@@ -1,26 +1,6 @@
-@import "../core/to-string";
-@import "../list/--list-some";
-@import "../prototype";
-
-@import "./is-type-of";
-@import "./type";
-@import "./list-of";
-
-/// @group types
-/// @access private
-@function --one-of--validator($value, $type) {
-    @return --list-some(value-of($type), (is-value-of, $value));
-}
-
-/// @group types
-/// @access private
-@function --one-of--to-string($value) {
-    @return "one of #{ to-string(value-of($value)) }";
-}
-
-/// @group types
-/// @access private
-$--one-of--proto: extend(prototype(list-of(type), --one-of--to-string), type(--one-of--validator)) !default;
+@import "../func/func-check-args--";
+@import "list-of--";
+@import "one-of--";
 
 /// Create new "one of" type
 /// @group types
@@ -30,27 +10,10 @@ $--one-of--proto: extend(prototype(list-of(type), --one-of--to-string), type(--o
 ///
 /// @example
 ///
-///     $string-or-number: one-of((string, number));
+///     @debug is-type-of(one-of((string, number)), "foo"); // true
 ///
-///     @debug is-type-of($string-or-number, "foo"); // true
-///     @debug is-type-of($string-or-number, 1); // true
-///     @debug is-type-of($string-or-number, true); // false
-///
-@function one-of($type) {
-    @return new($--one-of--proto, $type);
-}
+@function one-of($types, $other...) {
+    $valid-args: func-check-args--(one-of, (types: list-of--(type) $types));
 
-/// Checks whether the given value is "one of" type
-/// @group types
-///
-/// @param {any} $value
-/// @return {bool}
-///
-/// @example
-///
-///     @debug is-one-of(one-of((string, number))); // true
-///     @debug is-one-of(1); // false
-///
-@function is-one-of($value, $other...) {
-    @return instance-of($value, $--one-of--proto);
+    @return if($valid-args, one-of--($types), null);
 }

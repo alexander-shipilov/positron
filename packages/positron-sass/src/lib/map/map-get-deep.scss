@@ -1,12 +1,7 @@
-@import "../core/to-string";
-@import "../core/throw";
-@import "../list/list-join-with";
-@import "../list/list-slice";
-@import "../string/str-split";
+@import "../func/func-check-args--";
 @import "../types/list-of";
-@import "../types/validate";
 
-@function --map-get-deep($map, $keys) {
+@function map-get-deep--($map, $keys, $other...) {
     $length: length($keys);
     $value: null;
 
@@ -14,7 +9,7 @@
         $value: $map;
         $index: 1;
 
-        @while (type-of($value) == "map" and $index <= $length) {
+        @while ($index <= $length and type-of($value) == "map") {
             $key: nth($keys, $index);
             $value: map-get($value, $key);
             $index: $index + 1;
@@ -24,8 +19,8 @@
     @return $value;
 }
 
-@function map-get-deep($map, $keys) {
-    $valid-args: validate((map: map $map, keys: list-of(string) $keys), map-every);
+@function map-get-deep($map, $keys, $other...) {
+    $valid-args: func-check-args--(map-get-deep, (map: map $map, keys: list-of(string) $keys));
 
-    @return if($valid-args, --map-get-deep($map, $keys), null);
+    @return if($valid-args, map-get-deep--($map, $keys), null);
 }

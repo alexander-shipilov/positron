@@ -1,12 +1,23 @@
-@import "./@assert";
-@import "./assert-equal";
+@import "../func/func-const";
+@import "@assert";
+@import "assert-throws";
+@import "assert-is-true";
 
-@include assert("assert-equal: throws if the passed arguments are not equal", (
-        (assert-equal, foo, bar) throws "AssertionError: Expected value to equal: bar. Received: foo",
-        (assert-equal, (1, 2), (1, 3)) throws "AssertionError: Expected value to equal: [1, 3]. Received: [1, 2]",
-        (assert-equal, foo, bar, "Custom Error") throws "AssertionError: Custom Error",
+@include assert("assert-throws: throws if the passed callable does not throw", (
+    (assert-throws, func-const) throws "AssertionError: Expected `func-const()` to throw an error. But it didn't throw anything.",
 ));
 
-@include assert("assert-equal: returns null if the assertion passed", (
-    assert(true) equal null,
+@include assert("assert-throws: throws if the passed callable throws an error that does not match the passed matcher", (
+    (assert-throws, (throw, "error"), "foo") throws "AssertionError: Expected `throw(error)` to throw an error matching `foo`. Instead, it threw: `Error: error`",
+));
+
+@include assert("assert-throws: returns `true` if the assertion passed", (
+    assert-throws((throw, "error")) is-true,
+    assert-throws((throw, "error"), "error") is-true,
+    assert-throws((throw, "error"), "Error: error") is-true,
+));
+
+@include assert("assert-throws: should throw TypeError if invalid arguments passed", (
+    (assert-throws, 1) throws "TypeError: Expected argument `$callable` of `assert-throws()` to be a callable, instead received (number) 1",
+    (assert-throws, (throw, "foo"), 1) throws "TypeError: Expected argument `$match` of `assert-throws()` to be a <optional string>, instead received (number) 1",
 ));

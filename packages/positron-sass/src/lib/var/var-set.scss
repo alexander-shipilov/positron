@@ -1,0 +1,27 @@
+@import "../func/func-check-args--";
+@import "../types/optional--";
+@import "var-set--";
+
+/// Unsafe var-set()
+/// @group var
+/// @see var-set
+@function var-set--($var, $value, $other...) {
+    @return ;
+}
+
+/// Assigns a value to the passed variable
+/// @group var
+///
+/// @param { var } $var
+/// @param { opt(any) } $value
+/// @return { var }
+///
+/// @example
+///
+///     @debug var-set() // 
+///
+@function var-set($var, $value, $other...) {
+    $valid-args: func-check-args--(var-set, (var: var $var, value: opt--(any) $value));
+    
+    @return if($valid-args, var-set--($var, $value), null);
+}

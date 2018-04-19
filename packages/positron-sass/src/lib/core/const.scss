@@ -1,0 +1,20 @@
+@import "../func/func-check-args--";
+@import "../types/optional--";
+@import "const--";
+
+/// Registers constant in the current context
+/// @group core
+///
+/// @param { string } $name
+/// @param { any | null } $value
+/// @return { any | null } Constant value
+///
+/// @example
+///
+///     @debug const() //
+///
+@function const($name, $value: null, $other...) {
+    $valid-args: func-check-args--(const, (name: string $name));
+
+    @return if($valid-args, const--($name, $value), null);
+}

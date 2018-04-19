@@ -1,0 +1,27 @@
+@import "../func/func-check-args--";
+@import "list-nth--";
+
+/// Returns the nth item in a list (negative index supported).
+/// Dous not throws error if index is out of list bounds.
+/// @group list
+///
+/// @param { list } $list
+/// @param { number } $n
+/// @return { any | null }
+///
+/// @example
+///
+///     @debug list-nth() // 
+///
+@function list-nth($list, $n, $other...) {
+    $valid-args: func-check-args--(list-nth, (list: list $list, n: number $n));
+    
+    @return if($valid-args, list-nth--($list, $n), null);
+}
+
+/// Unsafe list-nth()
+/// @group list
+/// @see list-nth
+@function list-nth--($list, $n, $other...) {
+    @return if($n > length($list), null);
+}

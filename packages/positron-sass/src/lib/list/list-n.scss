@@ -1,0 +1,24 @@
+@import "../func/func-check-args--";
+@import "list-n--";
+
+/// Calculates an index.
+/// Returns 0 if calculated index is less than 1
+/// Returns length + 1 if calculated index greater than list length
+/// @group list
+///
+/// @param { list } $list
+/// @param { number } $n
+/// @return { number }
+///
+/// @example
+///
+///     @debug list-n((1, 2, 3), -1) // 3
+///     @debug list-n((1, 2, 3), -10) // 0
+///     @debug list-n((1, 2), 10) // 3
+///
+@function list-n($list, $n, $other...) {
+    $valid-args: func-check-args--(list-n, (list: list $list, index: number $n));
+    
+    @return if($valid-args, list-n--($list, $n), null);
+}
+

@@ -1,17 +1,18 @@
-@import "../expect";
-@import "./call";
+@import "../assert";
+@import "func-call";
 
-@function --func-call-spec-test($args...) {
+@function --func-call--test($args...) {
     @return $args;
 }
 
-@include describe(func-call) {
-    @include it("calls specified function with specified params", (
-        func-call(--func-call-spec-test, 1, 2) (1, 2),
-    ));
+@include assert("func-call: calls the given callable with specified params", (
+    func-call(--func-call--test) equal (),
+    func-call(--func-call--test, 1) equal (1,),
+    func-call((--func-call--test, 1), 2) equal (1, 2),
+    func-call(((--func-call--test, 1), 2), 3) equal (1, 2, 3),
+    func-call(((--func-call--test, 1), 2), 3, 4) equal (1, 2, 3, 4),
+));
 
-    @include it("should support a list of function with arguments", (
-        func-call((--func-call-spec-test, 1, 2), 3, 4) (1, 2, 3, 4),
-        func-call(((--func-call-spec-test, 1, 2), 3, 4), 5, 6) (1, 2, 3, 4, 5, 6),
-    ));
-}
+@include assert("func-call: should throw TypeError if invalid params passed", (
+    (func-call, 1) throws "TypeError: Expected argument `$callable` of `func-call()` to be a callable, instead received (number) 1",
+));

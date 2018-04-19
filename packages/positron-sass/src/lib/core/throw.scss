@@ -1,12 +1,21 @@
-$--should-throw: true !default;
-$--last-thrown-error: null !default;
+/// Exception should be caught
+/// @group core
+/// @access private
+$--throw--catch: false !default;
+
+/// Last thrown error
+/// @group core
+/// @access private
+$--throw--last-error: null !default;
 
 @function throw($error, $type: "Error") {
-    $--last-thrown-error: $error !global;
+    $--throw--last-error: "#{ $type }: #{ $error }" !global;
 
-    @if ($error != null and $--should-throw) {
-        @error "#{ $type }: #{ $error }";
+    @if (not $--throw--catch) {
+        @error $--throw--last-error;
+    } @else {
+        // @warn $--throw--last-error;
     }
 
-    @return $error;
+    @return null;
 }

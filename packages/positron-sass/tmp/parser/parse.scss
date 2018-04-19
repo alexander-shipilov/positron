@@ -1,9 +1,9 @@
-@import "../core";
-@import "../map/map-map-values";
-@import "../map/map-get-deep";
-@import "../list/list-map";
-@import "../string/str-split";
-@import "../func/func-check-args--";
+@import "../../src/lib/core";
+@import "../../src/lib/map/map-map-values";
+@import "../../src/lib/map/map-get-deep";
+@import "../../src/lib/list/list-map";
+@import "../../src/lib/string/str-split";
+@import "../../src/lib/func/func-check-args--";
 
 $parse-identifier: unique-id();
 $parse-rule: unique-id();

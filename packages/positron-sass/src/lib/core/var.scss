@@ -1,0 +1,20 @@
+@import "../func/func-check-args--";
+@import "../types/optional--";
+@import "var--";
+
+/// Returns variable defined in current context
+/// @group core
+///
+/// @param { string } $name
+/// @param { optional(any) } $default
+/// @return { optional(any) }
+///
+/// @example
+///
+///     @debug var() //
+///
+@function var($name, $default: null, $other...) {
+    $valid-args: func-check-args--(var, (name: string $name));
+
+    @return if($valid-args, var--($name, $default), null);
+}

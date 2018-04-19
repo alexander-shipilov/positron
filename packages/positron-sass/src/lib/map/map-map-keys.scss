@@ -1,9 +1,9 @@
-@import "../types/validate";
+@import "../func/func-check-args--";
 
-@import "./--map-map-keys";
+@import "map-map-keys--";
 
 @function map-map-keys($map, $func, $args...) {
-    $valid-args: validate((map: map $map, func: callable $func), map-map-keys);
+    $valid-args: func-check-args--(map-map-keys, (map: map $map, func: callable $func));
 
-    @return if($valid-args, --map-map-keys($map, $func, $args...), null);
+    @return if($valid-args, map-map-keys--($map, $func, $args...), null);
 }

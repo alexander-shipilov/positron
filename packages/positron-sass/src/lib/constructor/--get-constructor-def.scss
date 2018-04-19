@@ -1,7 +1,7 @@
-@import "./$--constructor-defs";
+@import "$--constructor-defs";
 
 /// @group constructor
 /// @access private
 @function --get-constructor-def($constructor) {
-    @return map-get($--constructor-defs, $constructor);
+    @return if(type-of($constructor) == "string", map-get($--constructor-defs, $constructor), null);
 }

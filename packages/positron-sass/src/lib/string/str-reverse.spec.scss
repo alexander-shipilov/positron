@@ -1,9 +1,7 @@
-@import "../expect";
-@import "./str-reverse";
+@import "../assert";
+@import "str-reverse";
 
-@include describe(str-reverse) {
-    @include it("returns a new reversed string", (
-        str-reverse("abc") "cba",
-        str-reverse("") ""
-    ));
-}
+@include assert("str-reverse: returns a new reversed string", (
+    str-reverse("abc") equal "cba",
+    str-reverse("") equal "",
+));

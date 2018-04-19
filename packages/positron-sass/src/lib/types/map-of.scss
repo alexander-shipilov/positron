@@ -1,29 +1,7 @@
-@import "../core/to-string";
-@import "../map/--map-every";
-@import "../prototype";
+@import "../func/func-check-args--";
+@import "map-of--";
 
-@import "./is-type-of";
-@import "./type";
-
-/// @group types
-/// @access private
-@function --map-of--validator($value, $type) {
-    @debug --map-of--validator, to-string(value-of($type)), to-string($value);
-
-    @return is-map($value) and --map-every($value, (is-type-of, value-of($type)));
-}
-
-/// @group types
-/// @access private
-@function --map-of--to-string($value) {
-    @return "map of #{ to-string(value-of($value, $--map-of--proto)) }";
-}
-
-/// @group types
-/// @access private
-$--map-of--proto: extend(prototype(type, --map-of--to-string), type(--map-of--validator)) !default;
-
-/// Create new "map of" type
+/// Creates new "map of" type
 /// @group types
 ///
 /// @param {type} $type
@@ -31,26 +9,11 @@ $--map-of--proto: extend(prototype(type, --map-of--to-string), type(--map-of--va
 ///
 /// @example
 ///
-///     $map-of-string: map-of(string);
+///     @debug is-type-of(map-of(string), ("foo", "bar")); // true
+///     @debug is-type-of(map-of(string), (1,)); // false
 ///
-///     @debug is-type-of($map-of-string, (foo: "foo", bar: "bar")); // true
-///     @debug is-type-of($map-of-string, (1,)); // false
-///
-@function map-of($type) {
-    @return new($--map-of--proto, $type);
-}
+@function map-of($type, $other...) {
+    $valid-args: func-check-args--(map-of, (type: type $type));
 
-/// Checks whether the given value is "list of" type
-/// @group types
-///
-/// @param {any} $value
-/// @return {bool}
-///
-/// @example
-///
-///     @debug is-map-of(map-of(string)); // true
-///     @debug is-map-of(1); // false
-///
-@function is-map-of($value, $other...) {
-    @return instance-of($value, $--map-of--proto);
+    @return if($valid-args, map-of--($type), null);
 }

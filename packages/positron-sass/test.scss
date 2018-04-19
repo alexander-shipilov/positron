@@ -1,0 +1,36 @@
+@function void($foo, $bar, $ted) {
+    @return $foo, $bar, $ted;
+}
+
+@function func-call($func, $args...) {
+    @while (type-of($func) == list or type-of($func) == arglist) {
+        $args: join($func, $args);
+
+        @return func-call($args...);
+    }
+
+    @return call(get-function($func), $args...);
+}
+
+@function bind($func, $args...) {
+    @while (type-of($func) == list or type-of($func) == arglist) {
+        $args: join($func, $args);
+
+        @return bind($args...);
+    }
+
+    @return join(($func,), $args);
+}
+
+@debug type-of(get-function(get-function));
+@debug nth((1, 2, 3), 3.1);
+@debug func-call(bind((void, 1), ted, $ted: 2));
+
+
+@class foo {
+    $foo: const(string "");
+
+    @function bar($var) {
+        $this: this(name);
+    }
+}

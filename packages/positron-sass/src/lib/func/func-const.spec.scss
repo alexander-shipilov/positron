@@ -1,6 +1,6 @@
 @import "../assert";
-@import "func-constant";
+@import "func-const";
 
-@include assert("func-constant: returns a passed argument", (
-    func-constant(123) equal 123,
+@include assert("func-const: returns a passed argument", (
+    func-const(123) equal 123,
 ));

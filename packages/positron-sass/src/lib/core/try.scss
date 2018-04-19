@@ -1,6 +1,5 @@
-@import "../types/validate";
-
-@import "./--try";
+@import "../func/func-check-args--";
+@import "try--";
 
 /// Tries to invoke the given callable and returns result of execution or null if exception was thrown.
 /// @group core
@@ -24,7 +23,7 @@
 ///     try((foo, true)); // null
 ///
 @function try($callable, $other...) {
-    $valid-args: validate((callable: callable $callable), try);
+    $valid-args: func-check-args--(try, (callable: callable $callable));
 
-    @return if($valid-args, nth(--try($callable), 2), null);
+    @return if($valid-args, try--($callable), null);
 }

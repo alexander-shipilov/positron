@@ -1,4 +1,5 @@
-@import "./bind";
-@import "./call";
-@import "./constant";
-@import "./not";
+@import "func-bind";
+@import "func-call";
+@import "func-check-args";
+@import "func-const";
+@import "func-not";

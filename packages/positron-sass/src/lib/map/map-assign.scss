@@ -1,0 +1,21 @@
+@import "../func/func-check-args--";
+@import "../types/list-of--";
+@import "../types/optional--";
+@import "map-assign--";
+
+/// Copies the values of all enumerable properties from one or more source maps to a target map
+/// @group map
+///
+/// @param { map } $map
+/// @param { list-of(opt(map)) } $sources
+/// @return { map }
+///
+/// @example
+///
+///     @debug map-assign--() //
+///
+@function map-assign--($map, $sources...) {
+    $valid-args: func-check-args--(map-assign--, (map: map $map, sources: list-of--(opt--(map)) $sources));
+
+    @return if($valid-args, map-assign--($map, $sources), null);
+}

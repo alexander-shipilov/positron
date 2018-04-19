@@ -1,7 +1,10 @@
 @import "../core/to-bool";
 @import "../func/func-call--";
 
-@function --list-every($list, $func, $args...) {
+/// Unsafe list-every()
+/// @group list
+/// @see list-every
+@function list-every--($list, $func, $other...) {
     $length: length($list);
     $every: true;
 
@@ -9,7 +12,7 @@
         $index: 1;
 
         @while ($every == true and $index <= $length) {
-            $every: to-bool(func-call--($func, nth($list, $index), $index, $list, $args...));
+            $every: to-bool(func-call--($func, nth($list, $index), $index, $list, $other...));
             $index: $index + 1;
         }
     }

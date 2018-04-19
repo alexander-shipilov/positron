@@ -1,4 +1,4 @@
-@import "../expect";
+@import "../../src/lib/expect";
 @import "parse";
 
 @include describe(parse) {

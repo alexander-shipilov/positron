@@ -1,7 +1,7 @@
 @import "../list/list-slice";
-@import "./str-reverse";
-@import "./str-indexes";
-@import "./str-split";
+@import "str-reverse";
+@import "str-indexes";
+@import "str-split";
 
 @function str-replace($string, $substring, $replacement, $count: null) {
     $length: length($string);

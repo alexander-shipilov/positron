@@ -1,22 +1,23 @@
-@import "../func/func-constant";
-@import "./@assert";
-@import "./assert-throws";
+@import "../func/func-const";
+@import "@assert";
+@import "assert";
+@import "assert-does-not-throw";
+@import "assert-is-true";
+@import "assert-throws";
 
-@include assert("assert-throws: throws if the passed callable does not throw", (
-    (assert-throws, func-constant) throws "AssertionError: Expected `func-constant()` to throw an error. But it didn't throw anything.",
+@include assert("assert-does-not-throw: throws if the passed callable throws", (
+    (assert-does-not-throw, (throw, "foo")) throws "AssertionError: Expected `throw(foo)` not to throw an error. Instead, it threw: `Error: foo`",
 ));
 
-@include assert("assert-throws: throws if the passed callable throws an error that does not match the passed matcher", (
-    (assert-throws, (throw, "error"), "foo") throws "AssertionError: Expected `throw(error)` to throw an error matching `foo`. Instead, it threw: `Error: error`",
+@include assert("assert-does-not-throw: throws if the passed callable throws an error that matches the passed matcher", (
+    (assert-does-not-throw, (throw, "error"), "error") throws "AssertionError: Expected `throw(error)` not to throw an error matching `error`. Instead, it threw: `Error: error`",
 ));
 
-@include assert("assert-throws: returns null if the assertion passed", (
-    assert-throws((throw, "error")) is-null,
-    assert-throws((throw, "error"), "error") is-null,
-    assert-throws((throw, "error"), "Error: error") is-null,
+@include assert("assert-does-not-throw: returns true if the assertion passed", (
+    assert-does-not-throw(func-const) is-true,
 ));
 
-@include assert("assert-throws: should throw TypeError if invalid arguments passed", (
-    (assert-throws, 1) throws "TypeError: Expected argument `$callable` of `assert-throws()` to be a callable, instead received (number) 1",
-    (assert-throws, (throw, "foo"), 1) throws "TypeError: Expected argument `$match` of `assert-throws()` to be a string or null, instead received (number) 1",
+@include assert("assert-does-not-throw: should throw TypeError if invalid arguments passed", (
+    (assert-does-not-throw, 1) throws "TypeError: Expected argument `$callable` of `assert-does-not-throw()` to be a callable, instead received (number) 1",
+    (assert-does-not-throw, (throw, "foo"), 1) throws "TypeError: Expected argument `$match` of `assert-does-not-throw()` to be a <optional string>, instead received (number) 1",
 ));

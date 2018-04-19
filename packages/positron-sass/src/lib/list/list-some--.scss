@@ -1,7 +1,10 @@
 @import "../core/to-bool";
 @import "../func/func-call--";
 
-@function --list-some($list, $func, $args...) {
+/// Unsafe `list-some()`
+/// @group list
+/// @see list-some
+@function list-some--($list, $callback, $args...) {
     $length: length($list);
     $some: false;
 
@@ -9,7 +12,7 @@
         $index: 1;
 
         @while ($some == false and $index <= $length) {
-            $some: to-bool(func-call--($func, nth($list, $index), $index, $list, $args...));
+            $some: to-bool(func-call--($callback, nth($list, $index), $index, $list, $args...));
             $index: $index + 1;
         }
     }

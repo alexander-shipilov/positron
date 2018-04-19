@@ -1,25 +1,19 @@
-@import "../expect";
-@import "./apply";
+@import "../assert";
+@import "func-apply";
 
 @function --func-apply-spec-test($args...) {
     @return $args;
 }
 
-@include describe(func-apply) {
-    @include it("should call specified function with the passed params list", (
-        func-apply(--func-apply-spec-test, (1, 2)) (1, 2),
-    ));
+@include assert("func-apply: calls specified callable with the passed params list", (
+    func-apply(--func-apply-spec-test) equal (),
+    func-apply(--func-apply-spec-test, null) equal (),
+    func-apply(--func-apply-spec-test, (1, 2)) equal (1, 2),
+    func-apply((--func-apply-spec-test, 1, 2), (3, 4)) equal (1, 2, 3, 4),
+    func-apply(((--func-apply-spec-test, 1, 2), 3, 4), (5, 6)) equal (1, 2, 3, 4, 5, 6),
+));
 
-    @include it("should support a list of function with arguments", (
-        func-apply((--func-apply-spec-test, 1, 2), (3, 4)) (1, 2, 3, 4),
-        func-apply(((--func-apply-spec-test, 1, 2), 3, 4), (5, 6)) (1, 2, 3, 4, 5, 6),
-    ));
-
-    @include it("should throw if passed params is not a list", (
-        to-throw((func-apply, --func-apply-spec-test, 1)) true,
-    ));
-
-    @include it("should not throw if params omitted", (
-        to-throw((func-apply, --func-apply-spec-test)) false,
-    ));
-}
+@include assert("func-apply: should throw TypeError if invalid params passed", (
+    (func-apply, 1) throws "TypeError: Expected argument `$callable` of `func-apply()` to be a callable, instead received (number) 1",
+    (func-apply, --func-apply-spec-test, 1) throws "TypeError: Expected argument `$args` of `func-apply()` to be a <optional list>, instead received (number) 1",
+));

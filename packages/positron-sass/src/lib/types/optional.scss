@@ -1,25 +1,5 @@
-@import "../prototype";
-
-@import "./is-type-of";
-@import "./type";
-
-/// @group types
-/// @access private
-@function --optional--validator($value, $optional-type) {
-    @debug --optional--validator, to-string(value-of($optional-type, $--optional--proto)), to-string($value);
-
-    @return $value == null or is-type-of(value-of($optional-type, $--optional--proto), $value);
-}
-
-/// @group types
-/// @access private
-@function --optional--to-string($value) {
-    @return "#{ to-string(value-of($value, $--optional--proto)) } or null";
-}
-
-/// @group types
-/// @access private
-$--optional--proto: extend(prototype(type, --optional--to-string), type(--optional--validator)) !default;
+@import "../func/func-check-args--";
+@import "optional--";
 
 /// Create new optional type
 /// @group types
@@ -29,27 +9,17 @@ $--optional--proto: extend(prototype(type, --optional--to-string), type(--option
 ///
 /// @example
 ///
-///     $optional-string: optional(string);
+///     @debug is-type-of(optional(string), "foo"); // true
+///     @debug is-type-of(optional(string), null); // true
+///     @debug is-type-of(optional(string), 1); // false
 ///
-///     @debug is-type-of($optional-string, "foo"); // true
-///     @debug is-type-of($optional-string, null); // true
-///     @debug is-type-of($optional-string, 1); // false
-///
-@function optional($type) {
-    @return new($--optional--proto, $type);
+@function optional($type, $other...) {
+    $valid-args: func-check-args--(optional, (type: type $type));
+
+    @return if($valid-args, optional--($type), null);
 }
 
-/// Checks whether the given value is optional type
-/// @group types
-///
-/// @param {any} $value
-/// @return {bool}
-///
-/// @example
-///
-///     @debug is-optional(optional(string)); // true
-///     @debug is-optional(1); // false
-///
-@function is-optional($value, $other...) {
-    @return instance-of($value, $--optional--proto);
+/// @alias optional
+@function opt($args...) {
+    @return optional($args...);
 }

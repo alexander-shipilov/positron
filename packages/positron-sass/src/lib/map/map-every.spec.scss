@@ -1,25 +1,22 @@
-@import "../expect";
-@import "./map-every";
+@import "../assert";
+@import "map-every";
 
-@function --map-spec-true($args...) {
+@function --map-every--true($args...) {
     @return true;
 }
 
-@function --map-spec-false($args...) {
+@function --map-every--false($args...) {
     @return false;
 }
 
-@include describe(map-every) {
-     @include it("checks whether all elements in the map pass the test implemented by the provided callable", (
-        map-every((foo: 1, bar: 2, ted: 3), --map-spec-true) true,
-    ));
+@include assert("map-every: checks whether all elements in the map pass the test implemented by the provided callable", (
+    map-every((), --map-every--true) is-true,
+    map-every((), --map-every--false) is-true,
+    map-every((foo: 1, bar: 2, ted: 3), --map-every--true) is-true,
+));
 
-    @include it("should return true for empty maps", (
-        map-every((), --map-spec-true) true,
-        map-every((), --map-spec-false) true,
-    ));
-
-    @include it("should throw if passed arg is not a map", (
-        // tbd
-    ));
-}
+@include assert("map-every: should throw TypeError if invalid params passed", (
+    (map-every, 1, --map-every--false) throws "TypeError: Expected argument `$map` of `map-every()` to be a map, instead received (number) 1",
+    (map-every, (1,), --map-every--false) throws "TypeError: Expected argument `$map` of `map-every()` to be a map, instead received (list) [1,]",
+    (map-every, (foo: 1), null) throws "TypeError: Expected argument `$func` of `map-every()` to be a callable, instead received null",
+));

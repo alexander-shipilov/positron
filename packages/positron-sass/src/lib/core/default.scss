@@ -1,0 +1,36 @@
+@import "../func/func-check-args--";
+@import "../constructor/constructor--";
+@import "../constructor/extend--";
+@import "../constructor/new--";
+@import "../constructor/super";
+@import "const--";
+@import "var--";
+
+@function --default-constructor($value) {
+
+}
+
+/// Creates default value
+/// @group core
+///
+/// @param { any } $value
+/// @return { default }
+///
+/// @example
+///
+///    @debug default() //
+///
+@function default($value, $other...) {
+    $constructor: const--(
+        $default: extend--(constructor--(--default-constructor, var--(object)))
+    );
+
+    @return new--(const--(default, $constructor), $value);
+}
+
+/// Unsafe default()
+/// @group core
+/// @see default
+@function default--($value, $other...) {
+
+}

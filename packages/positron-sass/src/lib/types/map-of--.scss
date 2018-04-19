@@ -1,0 +1,37 @@
+@import "../constructor/constructor--";
+@import "../constructor/constructor-call-check";
+@import "../constructor/extend--";
+@import "../constructor/new--";
+@import "../constructor/super";
+@import "../core/@void";
+@import "../core/$to-string";
+@import "../core/const--";
+@import "../core/global";
+@import "../core/is-undefined";
+@import "../string/str-format--";
+@import "type--";
+@import "is-map-of--";
+
+/// @group types
+/// @access private
+@function map-of-constructor($type) {
+    @if (not constructor-call-check()) {
+        @return null;
+    }
+
+    @return map-merge(super((is-map-of--, $type)), (
+        type: $type,
+        $to-string: (str-format--, "<map-of %1>", $type)
+    ));
+}
+
+/// Unsafe map-of()
+/// @group types
+/// @see map-of
+@function map-of--($type, $other...) {
+    @return new--(global(map-of), $type);
+}
+
+@if (is-undefined(map-of)) {
+    @include void(const--(map-of, extend--(constructor--(map-of-constructor, map-of), global(type))));
+}

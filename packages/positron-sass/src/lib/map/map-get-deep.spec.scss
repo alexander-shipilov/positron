@@ -1,22 +1,26 @@
-@import "../expect";
-@import "./map-get-deep";
+@import "../assert";
+@import "map-get-deep";
 
-@include describe(map-get-deep) {
-    $map: (
-        foo: (bar: (ted: 1)),
-        baz: null
-    );
+$map-get-deep--map: (
+    foo: (bar: (ted: 1)),
+    baz: null
+);
 
-    @include it("deeply finds the value in a map associated with given keys", (
-        map-get-deep($map, (foo,)) (bar: (ted: 1)),
-        map-get-deep($map, foo bar) (ted: 1),
-        map-get-deep($map, foo bar ted) 1,
-        map-get-deep($map, (baz,)) null
-    ));
+@include assert("map-get-deep: deeply finds the value in a map associated with given keys", (
+    map-get-deep($map-get-deep--map, (foo,)) equal (bar: (ted: 1)),
+    map-get-deep($map-get-deep--map, foo bar) equal (ted: 1),
+    map-get-deep($map-get-deep--map, foo bar ted) equal 1,
+    map-get-deep($map-get-deep--map, (baz,)) is-null,
+));
 
-    @include it("should return a null if value is not found", (
-        map-get-deep($map, (zak,)) null,
-        map-get-deep($map, foo baz) null,
-        map-get-deep($map, baz quuz) null
-    ));
-}
+@include assert("map-get-deep: should return a null if value is not found", (
+    map-get-deep($map-get-deep--map, (zak,)) is-null,
+    map-get-deep($map-get-deep--map, foo baz) is-null,
+    map-get-deep($map-get-deep--map, baz quuz) is-null,
+));
+
+@include assert("map-get-deep: should throw TypeError if invalid params passed", (
+    (map-get-deep, 1, (zak,)) throws 'TypeError: Expected argument `$map` of `map-get-deep()` to be a map, instead received (number) 1',
+    (map-get-deep, (1,), (zak,)) throws 'TypeError: Expected argument `$map` of `map-get-deep()` to be a map, instead received (list) [1,]',
+    (map-get-deep, $map-get-deep--map, 1) throws 'TypeError: Expected argument `$keys` of `map-get-deep()` to be a <list-of string>, instead received (number) 1',
+));

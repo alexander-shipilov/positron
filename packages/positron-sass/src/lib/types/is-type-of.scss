@@ -1,37 +1,16 @@
-@import "../core/is-function";
-@import "../core/is-list";
-@import "../core/is-map";
-@import "../core/is-callable";
+@import "../constructor/is-constructor";
+@import "../constructor/instance-of--";
 @import "../core/throw-type-error";
-@import "../list/--list-every";
-@import "../map/--map-every";
-
-@import "./type";
-
-/// List of available types
-/// @group types
-/// @access private
-$--is-type-of--types: (
-    "any",
-    "arglist",
-    "bool",
-    "callable",
-    "function",
-    "list",
-    "map",
-    "number",
-    "null",
-    "string",
-    "type"
-) !default;
-
-@function --is-type-of--is-type($value, $other...) {
-    @return $value == null
-        or index($--is-type-of--types, $value) != null
-        or is-type($value)
-        or (is-list($value) and --list-every($value, --is-type))
-        or (is-map($value) and --map-every($value, --is-type));
-}
+@import "../func/func-call--";
+@import "../list/list-every--";
+@import "../map/map-every--";
+@import "is-callable";
+@import "is-function";
+@import "is-list";
+@import "is-map";
+@import "is-type";
+@import "is-valid--";
+@import "type--";
 
 /// @group types
 /// @access private
@@ -46,9 +25,8 @@ $--is-type-of--types: (
         @while ($is-type-of and $index <= $type-length) {
             $nth-type: nth($type, $index);
             $nth-value: if($index <= $value-length, nth($value, $index), null);
-            $is-type-of: is-type-of($nth-type, $nth-value);
+            $is-type-of: func-call--(is-type-of, $nth-type, $nth-value);
 
-            @debug --is-type-of--is-list, to-string($nth-type), to-string($nth-value), $is-type-of;
             $index: $index + 1;
         }
     }
@@ -68,7 +46,7 @@ $--is-type-of--types: (
         $index: 1;
         @while ($is-type-of and $index <= $type-length) {
             $nth-type: nth($type, $index);
-            $is-type-of: is-type-of(nth($nth-type, 2), map-get($value, nth($nth-type, 1)));
+            $is-type-of: func-call--(is-type-of, nth($nth-type, 2), map-get($value, nth($nth-type, 1)));
             $index: $index + 1;
         }
     }
@@ -79,39 +57,35 @@ $--is-type-of--types: (
 @function is-type-of($type, $value, $other...) {
     $is-type-of: null;
 
-    @debug is-type-of, to-string($type), to-string($value);
+    @if (not is-type($type)) {
+        @return throw-type-error(is-type-of type, "type", $type);
+    }
 
-    @if (--is-type-of--is-type($type)) {
-        @if ($type == "any") {
-            $is-type-of: true;
-        } @else if ($type == "type") {
-            $is-type-of: --is-type-of--is-type($value);
-        } @else if ($type == "map") {
-            $is-type-of: is-map($value);
-        } @else if ($type == "list") {
-            $is-type-of: is-list($value);
-        } @else if ($type == "function") {
-            $is-type-of: is-function($value);
-        } @else if ($type == "callable") {
-            $is-type-of: is-callable($value);
-        } @else if (is-type($type)) {
-            $is-type-of: type-check($type, $value);
-        } @else if (is-list($type)) {
-            @debug is-type-of, to-string($type), to-string($value), --is-type-of--is-list($type, $value);
-
-            $is-type-of: --is-type-of--is-list($type, $value);
-        } @else if (is-map($type)) {
-            $is-type-of: --is-type-of--is-map($type, $value);
-        } @else {
-            $is-type-of: type-of($value) == inspect($type);
-        }
+    @if ($type == "any") {
+        $is-type-of: $value != null;
+    } @else if ($type == "type") {
+        $is-type-of: is-type($value);
+    } @else if ($type == "map") {
+        $is-type-of: is-map($value);
+    } @else if ($type == "list") {
+        $is-type-of: is-list($value);
+    } @else if ($type == "function") {
+        $is-type-of: is-function($value);
+    } @else if ($type == "callable") {
+        $is-type-of: is-callable($value);
+    } @else if ($type == "constructor") {
+        $is-type-of: is-constructor($value);
+    } @else if(is-constructor($type)) {
+        $is-type-of: instance-of--($value, $type);
+    } @else if (instance-of--($type, global(type))) {
+        $is-type-of: is-valid--(map-get($type, validator), $value);
+    } @else if (is-map($type)) {
+        $is-type-of: --is-type-of--is-map($type, $value);
+    } @else if (is-list($type)) {
+        $is-type-of: --is-type-of--is-list($type, $value);
     } @else {
-        $error: throw-type-error(is-type-of type, "type", $type);
+        $is-type-of: type-of($value) == inspect($type);
     }
 
     @return $is-type-of;
-}
-
-@function is-value-of($value, $type, $other...) {
-    @return is-type-of($type, $value);
 }
