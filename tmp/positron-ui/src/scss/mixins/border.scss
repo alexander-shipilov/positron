@@ -1,7 +1,0 @@
-@mixin border($width, $style, $color, $radius: null) {
-    border: $width $style $color;
-
-    @if ($radius != null) {
-        border-radius: $radius;
-    }
-}

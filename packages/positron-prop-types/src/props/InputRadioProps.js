@@ -5,8 +5,8 @@ import { RequiredElementProps } from "./RequiredElementProps";
 
 export class InputRadioProps extends PropsOwner {
     static propTypes = {
-        ...InputElementProps.propTypes,
-        ...CheckedElementProps.propTypes,
-        ...RequiredElementProps.propTypes
+      ...InputElementProps.propTypes,
+      ...CheckedElementProps.propTypes,
+      ...RequiredElementProps.propTypes
     };
 }

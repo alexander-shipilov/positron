@@ -1,8 +1,0 @@
-@import "func-arglist";
-
-/// Unsafe func-nth()
-/// @group func
-/// @see func-nth
-@function func-nth--($index, $other...) {
-    @return nth(func-arglist(), $index);
-}

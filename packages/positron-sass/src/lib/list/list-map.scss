@@ -1,8 +1,0 @@
-@import "../func/func-check-args--";
-@import "list-map--";
-
-@function list-map($list, $func, $args...) {
-    $valid-args: func-check-args--(list-map, (list: list $list, func: callable $func));
-
-    @return if($valid-args, list-map--($list, $func, $args...), null);
-}

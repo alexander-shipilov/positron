@@ -1,8 +1,0 @@
-@import "../func/func-check-args--";
-@import "map-every--";
-
-@function map-every($map, $func, $args...) {
-    $valid-args: func-check-args--(map-every, (map: map $map, func: callable $func));
-
-    @return if($valid-args, map-every--($map, $func, $args...), null);
-}

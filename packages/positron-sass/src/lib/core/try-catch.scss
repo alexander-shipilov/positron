@@ -1,8 +1,0 @@
-@import "../func/func-check-args--";
-@import "try-catch--";
-
-@function try-catch($callable, $other...) {
-    $valid-args: func-check-args--(try-catch, (callable: callable $callable));
-
-    @return if($valid-args, try-catch--($callable), null);
-}

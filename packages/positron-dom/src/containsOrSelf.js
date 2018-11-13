@@ -3,11 +3,11 @@
 import { contains } from "./contains";
 
 export function containsOrSelf(el: HTMLElement, childEl: HTMLElement): boolean {
-    let retValue = false;
+  let retValue = false;
 
-    if (el && childEl) {
-        retValue = el === childEl || contains(el, childEl);
-    }
+  if (el && childEl) {
+    retValue = el === childEl || contains(el, childEl);
+  }
 
-    return retValue;
+  return retValue;
 }

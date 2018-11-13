@@ -1,16 +1,27 @@
 {
+    "env": {
+        "production": {
+            "ignore": [
+                "__mocks__",
+                "__tests__",
+                "*.test.js"
+            ]
+        }
+    },
     "presets": [
         [
             "env",
             {
                 "targets": {
-                    "node": "current",
-                    "browsers": "last 2 versions"
+                    "node": "current"
                 }
             }
         ],
         "stage-2",
         "flow",
         "react"
+    ],
+    "plugins": [
+        "transform-export-extensions"
     ]
 }

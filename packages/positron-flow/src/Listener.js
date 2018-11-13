@@ -14,58 +14,58 @@ export class Listener<T> extends Base {
     _unlisten: PublisherListenerRemover;
 
     get publisher(): Publisher {
-        return this._publisher;
+      return this._publisher;
     }
 
     get handler(): PublisherListener<T> {
-        return this._handler;
+      return this._handler;
     }
 
     get disabled() {
-        return this._unlisten === void 0;
+      return this._unlisten === void 0;
     }
 
     constructor(publisher: Publisher, handler: PublisherListener<T>) {
-        super();
+      super();
 
-        if (!(publisher instanceof Publisher)) {
-            throw this.getError("publisher: Publisher expected");
-        }
+      if (!(publisher instanceof Publisher)) {
+        throw this.getError("publisher: Publisher expected");
+      }
 
-        if (typeof handler !== "function") {
-            throw this.getError("handler: function expected");
-        }
+      if (typeof handler !== "function") {
+        throw this.getError("handler: function expected");
+      }
 
-        this.define({ _publisher: publisher, _handler: handler, _queue: new PromiseQueue() })
-            .enable();
+      this.define({ _publisher: publisher, _handler: handler, _queue: new PromiseQueue() })
+          .enable();
     }
 
     enable(): Listener<T> {
-        const { handler, publisher } = this;
+      const { handler, publisher } = this;
 
-        if (this.disabled) {
-            this._unlisten = publisher.addListener((...args) => this._queue.resolve(handler(...args)));
-        }
+      if (this.disabled) {
+        this._unlisten = publisher.addListener((...args) => this._queue.resolve(handler(...args)));
+      }
 
-        return this;
+      return this;
     }
 
     disable(): Listener<T> {
-        const { _unlisten: unlisten } = this;
+      const { _unlisten: unlisten } = this;
 
-        if (!this.disabled) {
-            this._unlisten = void 0;
-            unlisten();
-        }
+      if (!this.disabled) {
+        this._unlisten = void 0;
+        unlisten();
+      }
 
-        return this;
+      return this;
     }
 
     then<U>(onResolve: ?PublisherListener<U>, onReject: ?PublisherListener<any>): Listener<U> {
-        return this.define({ _queue: this._queue.then(onResolve, onReject) });
+      return this.define({ _queue: this._queue.then(onResolve, onReject) });
     }
 
     catch(onReject: ?PublisherListener<any>): Listener<T> {
-        return this.define({ _queue: this._queue.catch(onReject) });
+      return this.define({ _queue: this._queue.catch(onReject) });
     }
 }

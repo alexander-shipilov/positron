@@ -1,9 +1,9 @@
 module.exports = {
-    rootDir: "./src",
+  rootDir: "./src",
 
-    testRegex: "\\.spec\\.js$",
-    testEnvironment: "jsdom",
-    transform: {
-        "\\.js$": "babel-jest"
-    }
+  testRegex: "\\.spec\\.js$",
+  testEnvironment: "jsdom",
+  transform: {
+    "\\.js$": "babel-jest"
+  }
 };

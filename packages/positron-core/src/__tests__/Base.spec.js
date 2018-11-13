@@ -2,92 +2,92 @@ import { Base } from "../Base";
 import { pick } from "../object/pick";
 
 describe("Base", () => {
-    class Foo extends Base {
-    }
+  class Foo extends Base {
+  }
 
-    describe(".toString", () => {
-        it("returns string presentation like [class <ClassName>]", () => {
-            expect(Base.toString()).toBe("[class Base]");
-            expect(Base.toString(1, 2, 3)).toBe("[class Base <1, 2, 3>]");
+  describe(".toString", () => {
+    it("returns string presentation like [class <ClassName>]", () => {
+      expect(Base.toString()).toBe("[class Base]");
+      expect(Base.toString(1, 2, 3)).toBe("[class Base <1, 2, 3>]");
 
-            expect(Foo.toString()).toBe("[class Foo]");
-            expect(Foo.toString(1, 2, 3)).toBe("[class Foo <1, 2, 3>]");
-        });
+      expect(Foo.toString()).toBe("[class Foo]");
+      expect(Foo.toString(1, 2, 3)).toBe("[class Foo <1, 2, 3>]");
+    });
+  });
+
+  describe(".define", () => {
+    it("defines static not enumerable properties", () => {
+      class Foo extends Base {
+      }
+
+      Foo.define({ bar: 1, ted: 2 });
+      expect(Object.keys(Foo)).toEqual([]);
+      expect(pick(Foo, ["bar", "ted"])).toEqual({ bar: 1, ted: 2 });
     });
 
-    describe(".define", () => {
-        it("defines static not enumerable properties", () => {
-            class Foo extends Base {
-            }
+    it("supports the second arg which regulates props writability (true by default)", () => {
+      class Foo extends Base {
+      }
 
-            Foo.define({ bar: 1, ted: 2 });
-            expect(Object.keys(Foo)).toEqual([]);
-            expect(pick(Foo, ["bar", "ted"])).toEqual({ bar: 1, ted: 2 });
-        });
+      expect(() => Foo.define({ bar: 1 }, false).bar = 2).toThrow("Cannot assign to read only property 'bar'");
+    });
+  });
 
-        it("supports the second arg which regulates props writability (true by default)", () => {
-            class Foo extends Base {
-            }
+  describe(".getError", () => {
+    it("returns an error", () => {
+      const error = Base.getError("foo bar");
 
-            expect(() => Foo.define({ bar: 1 }, false).bar = 2).toThrow("Cannot assign to read only property 'bar'");
-        });
+      expect(error).toBeInstanceOf(Error);
+      expect(error.message).toBe(Base.toString() + ": foo bar");
     });
 
-    describe(".getError", () => {
-        it("returns an error", () => {
-            const error = Base.getError("foo bar");
+    it("supports error type", () => {
+      expect(Base.getError("foo bar", TypeError)).toBeInstanceOf(TypeError);
+    });
+  });
 
-            expect(error).toBeInstanceOf(Error);
-            expect(error.message).toBe(Base.toString() + ": foo bar");
-        });
+  describe("#define", () => {
+    it("defines not enumerable properties", () => {
+      const foo = new Foo();
 
-        it("supports error type", () => {
-            expect(Base.getError("foo bar", TypeError)).toBeInstanceOf(TypeError);
-        });
+      foo.define({ bar: 1, ted: 2 });
+      expect(Object.keys(foo)).toEqual([]);
+      expect(foo.pick(["bar", "ted"])).toEqual({ bar: 1, ted: 2 });
     });
 
-    describe("#define", () => {
-        it("defines not enumerable properties", () => {
-            const foo = new Foo();
+    it("supports the second arg which regulates props writability (true by default)", () => {
+      const foo = new Foo();
 
-            foo.define({ bar: 1, ted: 2 });
-            expect(Object.keys(foo)).toEqual([]);
-            expect(foo.pick(["bar", "ted"])).toEqual({ bar: 1, ted: 2 });
-        });
+      expect(() => foo.define({ bar: 1 }, false).bar = 2).toThrow("Cannot assign to read only property 'bar'");
+    });
+  });
 
-        it("supports the second arg which regulates props writability (true by default)", () => {
-            const foo = new Foo();
+  describe("#getError", () => {
+    const base = new Base();
 
-            expect(() => foo.define({ bar: 1 }, false).bar = 2).toThrow("Cannot assign to read only property 'bar'");
-        });
+    it("returns an error", () => {
+      const error = base.getError("foo bar");
+
+      expect(error).toBeInstanceOf(Error);
+      expect(error.message).toBe(base.toString() + ": foo bar");
     });
 
-    describe("#getError", () => {
-        const base = new Base();
-
-        it("returns an error", () => {
-            const error = base.getError("foo bar");
-
-            expect(error).toBeInstanceOf(Error);
-            expect(error.message).toBe(base.toString() + ": foo bar");
-        });
-
-        it("supports error type", () => {
-            expect(base.getError("foo bar", TypeError)).toBeInstanceOf(TypeError);
-        });
+    it("supports error type", () => {
+      expect(base.getError("foo bar", TypeError)).toBeInstanceOf(TypeError);
     });
+  });
 
-    describe("#toString", () => {
-        it("returns string presentation like [object <ClassName>]", () => {
-            const base = new Base();
-            const foo = new Foo();
+  describe("#toString", () => {
+    it("returns string presentation like [object <ClassName>]", () => {
+      const base = new Base();
+      const foo = new Foo();
 
-            expect(base.toString()).toBe("[object Base]");
-            expect(base.toString(1, 2, 3)).toBe("[object Base <1, 2, 3>]");
+      expect(base.toString()).toBe("[object Base]");
+      expect(base.toString(1, 2, 3)).toBe("[object Base <1, 2, 3>]");
 
-            expect(foo.toString()).toBe("[object Foo]");
-            expect(foo.toString(1, 2, 3)).toBe("[object Foo <1, 2, 3>]");
-        });
+      expect(foo.toString()).toBe("[object Foo]");
+      expect(foo.toString(1, 2, 3)).toBe("[object Foo <1, 2, 3>]");
     });
+  });
 });
 

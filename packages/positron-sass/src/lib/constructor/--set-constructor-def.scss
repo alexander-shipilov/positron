@@ -1,9 +1,0 @@
-@import "$--constructor-defs";
-
-/// @group constructor
-/// @access private
-@function --set-constructor-def($constructor, $constructor-def) {
-    $--constructor-defs: map-merge($--constructor-defs, ($constructor: $constructor-def)) !global;
-
-    @return $constructor;
-}

@@ -1,66 +1,71 @@
 // @flow
 
 export {
-    arrayToObject,
-    assign as assignToArray,
-    defineLength,
-    isEqual as isEqualArrays
+  arrayToObject,
+  isEqualArrays
 } from "./array";
 
 export {
-    warning
+  warning
 } from "./console";
 
 export {
-    empty,
-    getName,
-    implement,
-    isImplementationOf,
-    of
+  empty,
+  getName,
+  implement,
+  isImplementationOf,
+  of,
+  Typed,
+  SYMBOL_TYPES,
+  SYMBOL_ALL
+} from "./func";
+
+export type {
+  IAggregation,
+  ITyped,
+  Type,
+  Types
 } from "./func";
 
 export {
-    ceil,
-    clamp,
-    floor,
-    randomInt,
-    round
+  ceil,
+  clamp,
+  floor,
+  randomInt,
+  round
 } from "./math";
 
 export {
-    assign as assignToObject,
-    clone,
-    compact,
-    every,
-    filter,
-    forEach,
-    isArray,
-    isArrayLike,
-    isEqual as isEqualObjects,
-    isValueType,
-    getAncestorOf,
-    map,
-    mapKeys,
-    nvl,
-    pick,
-    some,
-    toJSON,
-    typeOf,
-    valueOf,
-    values
+  compact,
+  every,
+  filter,
+  forEach,
+  isArray,
+  isArrayLike,
+  isEqualObjects,
+  isValueType,
+  map,
+  mapKeys,
+  nvl,
+  pick,
+  some,
+  toJSON,
+  typeOf,
+  valueOf,
+  values
 } from "./object";
 
 export {
-    PromiseQueue
+  PromiseQueue
 } from "./promise";
 
 export {
-    capitalize,
-    format,
-    toKebabCase,
-    uid
+  capitalize,
+  format,
+  toKebabCase,
+  uid
 } from "./string";
 
 export {
-    Base
+  Base
 } from "./Base";

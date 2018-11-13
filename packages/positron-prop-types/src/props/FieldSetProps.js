@@ -4,7 +4,7 @@ import { FormElementProps } from "./FormElementProps";
 
 export class FieldSetProps extends PropsOwner {
     static propTypes = {
-        ...ElementProps.propTypes,
-        ...FormElementProps.propTypes
+      ...ElementProps.propTypes,
+      ...FormElementProps.propTypes
     };
 }

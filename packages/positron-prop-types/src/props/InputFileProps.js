@@ -5,11 +5,11 @@ import { RequiredElementProps } from "./RequiredElementProps";
 
 export class InputFileProps extends PropsOwner {
     static propTypes = {
-        ...InputElementProps.propTypes,
-        ...RequiredElementProps.propTypes,
+      ...InputElementProps.propTypes,
+      ...RequiredElementProps.propTypes,
 
-        accept: PropTypes.string,
-        capture: PropTypes.bool,
-        multiple: PropTypes.bool
+      accept: PropTypes.string,
+      capture: PropTypes.bool,
+      multiple: PropTypes.bool
     };
 }

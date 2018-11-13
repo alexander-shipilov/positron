@@ -1,1 +1,0 @@
-export { AppCopyright } from "./AppCopyright";

@@ -4,12 +4,12 @@ import { InputButtonProps } from "./InputButtonProps";
 
 export class InputSubmitProps extends PropsOwner {
     static propTypes = {
-        ...InputButtonProps.propTypes,
+      ...InputButtonProps.propTypes,
 
-        formAction: PropTypes.string,
-        formEncType: PropTypes.string,
-        formMethod: PropTypes.string,
-        formNoValidate: PropTypes.bool,
-        formTarget: PropTypes.string
+      formAction: PropTypes.string,
+      formEncType: PropTypes.string,
+      formMethod: PropTypes.string,
+      formNoValidate: PropTypes.bool,
+      formTarget: PropTypes.string
     };
 }

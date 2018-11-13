@@ -1,9 +1,0 @@
-@import "../func/func-check-args--";
-
-@import "map-map-keys--";
-
-@function map-map-keys($map, $func, $args...) {
-    $valid-args: func-check-args--(map-map-keys, (map: map $map, func: callable $func));
-
-    @return if($valid-args, map-map-keys--($map, $func, $args...), null);
-}

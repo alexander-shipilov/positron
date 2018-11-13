@@ -3,6 +3,6 @@ import { PropsOwner } from "../PropsOwner";
 
 export class RequiredElementProps extends PropsOwner {
     static propTypes = {
-        required: PropTypes.bool
+      required: PropTypes.bool
     };
 }

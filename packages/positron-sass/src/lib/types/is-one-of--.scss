@@ -1,9 +1,0 @@
-@import "../list/list-some--";
-@import "is-value-of";
-
-/// Unsafe is-one-of()
-/// @group types
-/// @see is-one-of
-@function is-one-of--($types, $value, $other...) {
-    @return list-some--($types, (is-value-of, $value));
-}

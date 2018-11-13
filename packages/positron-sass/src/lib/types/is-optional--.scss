@@ -1,8 +1,0 @@
-@import "is-type-of";
-
-/// Unsafe is-optional()
-/// @group types
-/// @see is-optional
-@function is-optional--($type, $value: null, $other...) {
-    @return $value == null or is-type-of($type, $value);
-}

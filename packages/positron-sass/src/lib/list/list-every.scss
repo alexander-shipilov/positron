@@ -1,8 +1,0 @@
-@import "../func/func-check-args--";
-@import "list-every--";
-
-@function list-every($list, $func, $other...) {
-    $valid-args: func-check-args--(list-every, (list: list $list, func: callable $func));
-
-    @return if($valid-args, list-every--($list, $func), null);
-}

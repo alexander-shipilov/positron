@@ -1,17 +1,17 @@
 export function classNames(...args) {
-    const classes = [];
+  const classes = [];
 
-    for (let i = 0, l = args.length; i < l; i++) {
-        let arg = args[i];
+  for (let i = 0, l = args.length; i < l; i++) {
+    let arg = args[i];
 
-        if (typeof arg === "object") {
-            arg = classNames(...(Array.isArray(arg) ? arg : Object.keys(arg).filter((key) => arg[key])));
-        }
-
-        if (arg) {
-            classes.push(arg);
-        }
+    if (typeof arg === "object") {
+      arg = classNames(...(Array.isArray(arg) ? arg : Object.keys(arg).filter((key) => arg[key])));
     }
 
-    return classes.join(" ");
+    if (arg) {
+      classes.push(arg);
+    }
+  }
+
+  return classes.join(" ");
 }

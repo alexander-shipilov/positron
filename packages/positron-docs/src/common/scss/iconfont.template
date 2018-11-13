@@ -1,0 +1,23 @@
+// DO NOT EDIT. AUTOMATICALLY GENERATED.
+// Use gulp <project-name>-icons to build this file
+
+@font-face {
+    font-family: "<%= fontName %>";
+    src: url("/fonts/<%= fontName %>.woff") format('woff'),
+         url("/fonts/<%= fontName %>.ttf") format('truetype');
+}
+
+$icon-map:(<% _.each(glyphs, function(glyph) { %>
+    "<%= glyph.fileName %>": "<%= glyph.codePoint %>",<% }); %>
+);
+
+%icon-props {
+    font-family: "<%= fontName %>", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none;
+    text-rendering: auto;
+    speak: none;
+    line-height: 1;
+    -moz-osx-font-smoothing: grayscale;
+}

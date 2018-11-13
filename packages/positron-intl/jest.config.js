@@ -1,7 +1,7 @@
 module.exports = {
-    rootDir: "./src",
-    testRegex: "\\.spec\\.js$",
-    transform: {
-        "\\.js$": "babel-jest"
-    }
+  rootDir: "./src",
+  testRegex: "\\.spec\\.js$",
+  transform: {
+    "\\.js$": "babel-jest"
+  }
 };

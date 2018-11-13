@@ -1,83 +1,94 @@
+// @flow
+
+import { warning } from "./console";
 import { implement, isImplementationOf } from "./func";
 import { map, pick, valueOf } from "./object";
-import { warning } from "./console";
 
-function toString(entity, name, ...mods) {
-    return "[" + [entity, name, ...(mods.length ? ["<" + mods.join(", ") + ">"] : mods)].join(" ") + "]";
+export interface IStringLike {
+    toString(): string
 }
 
-function define(target, props, writable) {
-    return Object.defineProperties(target, map(props, (value) => ({ value, writable })));
+export type StringLike = string | IStringLike;
+
+export interface BaseProps {
+}
+
+function toString(entity: StringLike, name: StringLike, ...mods: StringLike[]): string {
+  return "[" + [entity, name, ...(mods.length ? ["<" + mods.join(", ") + ">"] : mods)].join(" ") + "]";
+}
+
+function define<T: any, P: BaseProps>(target: T, props: P, writable: boolean): T & P {
+  return Object.defineProperties(target, map(props, (value) => ({ value, writable })));
 }
 
 /**
  * The root of all classes.
- * All prototype and static members of this class are inherited by all other classes.
  */
-export class Base {
-    static define(props, writable = true) {
-        return define(this, props, writable);
-    }
+export class Base<P: BaseProps> implements BaseProps {
+  static define<T: BaseProps>(props: T, writable: boolean = true): Class<Base<P & T>> {
+    return define(this, props, writable);
+  }
 
-    static from(props) {
-        return new this(props);
-    }
+  static from<T: BaseProps>(props: T): Base<any> {
+    return new this(props);
+  }
 
-    static getError(desc, Type = Error) {
-        return new Type(String(this) + ": " + desc);
-    }
+  static getError(desc: string, Type: Class<Error> = Error): Error {
+    return new Type(String(this) + ": " + desc);
+  }
 
-    static implement(...mixins) {
-        return implement(this, ...mixins);
-    }
+  static implement<M: Class<any>>(...mixins: M[]): Class<Base<P>> & M {
+    return implement(this, ...mixins);
+  }
 
-    static isImplementationOf(...classes) {
-        return isImplementationOf(this, ...classes);
-    }
+  static isImplementationOf(...classes: any[]): boolean {
+    return isImplementationOf(this, ...classes);
+  }
 
-    static isImplementedBy(value) {
-        return isImplementationOf(value, this);
-    }
+  static isImplementedBy(value: any): boolean {
+    return isImplementationOf(value, this);
+  }
 
-    static toString(...mods) {
-        return toString("class", this.name, ...mods);
-    }
+  static toString(...mods: string[]): string {
+    return toString("class", this.name, ...mods);
+  }
 
-    static warning(message) {
-        return warning(this + ": " + message);
-    }
+  static warning(message: string) {
+    warning(String(this) + ": " + message);
+  }
 
-    constructor(...props) {
-        if (props.length) {
-            this.assign(...props);
-        }
+  constructor<T: BaseProps>(...props: T[]) {
+    if (props.length) {
+      this.assign(...props);
     }
+  }
 
-    assign(...props) {
-        return Object.assign(this, ...props.map(valueOf));
-    }
+  assign<T: BaseProps>(...props: T[]): Base<P & T> {
+    return Object.assign(this, ...props.map(valueOf));
+  }
 
-    define(props, writable = true) {
-        return define(this, props, writable);
-    }
+  define<T: BaseProps>(props: T, writable: boolean = true): Base<P & T> {
+    return define(this, props, writable);
+  }
 
-    getError(desc, Type = Error) {
-        return new Type(String(this) + ": " + desc);
-    }
+  getError(desc: string, Type: Class<Error> = Error): Error {
+    return new Type(String(this) + ": " + desc);
+  }
 
-    pick(props) {
-        return pick(this, props);
-    }
+  pick(props: string[]): { [string]: any } {
+    return pick(this, props);
+  }
 
-    toString(...mods) {
-        return toString("object", this.constructor.name, ...mods);
-    }
+  toString(...mods: StringLike[]): string {
+    return toString("object", this.constructor.name, ...mods);
+  }
 
-    valueOf() {
-        return Object.assign({}, this);
-    }
+  valueOf(): P {
+    // $FlowFixMe
+    return Object.assign({}, this);
+  }
 
-    warning(message) {
-        return warning(this + ": " + message);
-    }
+  warning(message: string) {
+    warning(String(this) + ": " + message);
+  }
 }

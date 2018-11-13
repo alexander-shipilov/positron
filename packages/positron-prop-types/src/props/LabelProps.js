@@ -4,9 +4,9 @@ import { ElementProps } from "./ElementProps";
 
 export class LabelProps extends PropsOwner {
     static propTypes = {
-        ...ElementProps.propTypes,
+      ...ElementProps.propTypes,
 
-        form: PropTypes.string,
-        htmlFor: PropTypes.string
+      form: PropTypes.string,
+      htmlFor: PropTypes.string
     };
 }

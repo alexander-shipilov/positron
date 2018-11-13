@@ -5,9 +5,9 @@ import { TableCellProps } from "./TableCellProps";
 
 export class TableHeaderCellProps extends PropsOwner {
     static propTypes = {
-        ...ElementProps.propTypes,
-        ...TableCellProps.propTypes,
+      ...ElementProps.propTypes,
+      ...TableCellProps.propTypes,
 
-        scope: PropTypes.string
+      scope: PropTypes.string
     };
 }

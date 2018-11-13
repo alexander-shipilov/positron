@@ -6,7 +6,7 @@ const BASE_TYPES = ["Array", "Boolean", "Date", "Error", "Function", "Number", "
 const types = arrayToObject(BASE_TYPES, (name) => name.toLowerCase(), (name) => toString.call(new global[name]()));
 
 export function typeOf(value) {
-    const t = typeof value;
+  const t = typeof value;
 
-    return value === null ? "null" : t === "object" ? types[toString.call(value)] || t : t;
+  return value === null ? "null" : t === "object" ? types[toString.call(value)] || t : t;
 }

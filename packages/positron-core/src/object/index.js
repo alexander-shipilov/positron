@@ -1,15 +1,13 @@
 // @flow
 
-export { assign } from "./assign";
-export { clone } from "./clone";
 export { compact } from "./compact";
 export { every } from "./every";
 export { filter } from "./filter";
 export { forEach } from "./forEach";
-export { getAncestorOf } from "./getAncestorOf";
 export { isArray } from "./isArray";
 export { isArrayLike } from "./isArrayLike";
-export { isEqual } from "./isEqual";
+export type { ArrayLike } from "./isArrayLike";
+export { isEqualObjects } from "./isEqualObjects";
 export { isValueType } from "./isValueType";
 export { map } from "./map";
 export { mapKeys } from "./mapKeys";

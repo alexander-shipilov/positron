@@ -5,43 +5,43 @@ import * as React from "react";
 import { ConnectedComponent } from "./ConnectedComponent";
 
 function createConnected<P, S>(Component: React.Component<P, S>): ConnectedComponent<P, S> {
-    const connectedStores = {};
-    const connectedProps = {};
+  const connectedStores = {};
+  const connectedProps = {};
 
-    return class Connected extends ConnectedComponent {
-        static get name() {
-            return Component.name;
-        }
+  return class Connected extends ConnectedComponent {
+    static get name() {
+      return Component.name;
+    }
 
-        static get connectedStores() {
-            return connectedStores;
-        }
+    static get connectedStores() {
+      return connectedStores;
+    }
 
-        static get connectedProps() {
-            return connectedProps;
-        }
+    static get connectedProps() {
+      return connectedProps;
+    }
 
-        static connect(stores, ...props) {
-            if (stores != null && some(stores, (store) => typeof store.addListener !== "function")) {
-                throw this.getError("Invalid store");
-            }
+    static connect(stores, ...props) {
+      if (stores != null && some(stores, (store) => typeof store.addListener !== "function")) {
+        throw this.getError("Invalid store");
+      }
 
-            Object.assign(connectedStores, stores);
-            Object.assign(connectedProps, ...props);
+      Object.assign(connectedStores, stores);
+      Object.assign(connectedProps, ...props);
 
-            return this;
-        }
+      return this;
+    }
 
-        render() {
-            return React.createElement(Component, this.state);
-        }
-    };
+    render() {
+      return React.createElement(Component, this.state);
+    }
+  };
 }
 
 export function connect(Component, stores, ...props) {
-    if (!ConnectedComponent.isImplementedBy(Component)) {
-        Component = createConnected(Component);
-    }
+  if (!ConnectedComponent.isImplementedBy(Component)) {
+    Component = createConnected(Component);
+  }
 
-    return Component.connect(stores, ...props);
+  return Component.connect(stores, ...props);
 }

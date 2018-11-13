@@ -4,8 +4,8 @@ import { ElementProps } from "./ElementProps";
 
 export class ProgressProps extends PropsOwner {
     static propTypes = {
-        ...ElementProps.propTypes,
-        max: PropTypes.number,
-        value: PropTypes.number
+      ...ElementProps.propTypes,
+      max: PropTypes.number,
+      value: PropTypes.number
     };
 }

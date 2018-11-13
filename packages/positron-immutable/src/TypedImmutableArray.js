@@ -1,28 +1,23 @@
-import { assignToArray, of, valueOf } from "positron-core";
+import { SYMBOL_ALL, SYMBOL_TYPES, valueOf } from "positron-core";
+import { assign } from "./array";
 import { ImmutableArray } from "./ImmutableArray";
-import { ImmutableObject } from "./ImmutableObject";
 
+export class TypedImmutableArray extends ImmutableArray {
+  static of(type) {
+    return super.of({ [SYMBOL_ALL]: type });
+  }
 
-export class TypedImmutableArray extends of(ImmutableArray, { Type: ImmutableObject }) {
-    static get Type() {
-        return this.types.Type;
-    }
+  setProps(...sources) {
+    const type = this.constructor[SYMBOL_TYPES][SYMBOL_ALL];
 
-    static of(Type) {
-        return super.of({ Type });
-    }
+    sources.forEach((source) => {
+      if (source != null) {
+        const immutable = assign([], valueOf(source)).map((value, i) => type.assign(this[i], value));
 
-    setProps(...sources) {
-        const { Type } = this.constructor;
+        super.setProps(this, Object.assign(source, immutable));
+      }
+    });
 
-        sources.forEach((source) => {
-            if (source !== void 0 && source !== null) {
-                const typedSource = assignToArray([], valueOf(source)).map((value, i) => Type.assign(this[i], value));
-
-                super.setProps(this, Object.assign(source, typedSource));
-            }
-        });
-
-        return this;
-    }
+    return this;
+  }
 }

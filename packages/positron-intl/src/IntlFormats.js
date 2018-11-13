@@ -7,7 +7,7 @@ export class IntlFormats extends ImmutableObject {
 }
 
 IntlFormats.of({
-    date: TypedImmutableObject.of(IntlFormatDateTime),
-    money: TypedImmutableObject.of(IntlFormatMoney),
-    number: TypedImmutableObject.of(IntlFormatNumber)
+  date: TypedImmutableObject.of(IntlFormatDateTime),
+  money: TypedImmutableObject.of(IntlFormatMoney),
+  number: TypedImmutableObject.of(IntlFormatNumber)
 });

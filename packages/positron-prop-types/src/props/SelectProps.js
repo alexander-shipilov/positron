@@ -5,10 +5,10 @@ import { RequiredElementProps } from "./RequiredElementProps";
 
 export class SelectProps extends PropsOwner {
     static propTypes = {
-        ...InputElementProps.propTypes,
-        ...RequiredElementProps.propTypes,
+      ...InputElementProps.propTypes,
+      ...RequiredElementProps.propTypes,
 
-        multiple: PropTypes.bool,
-        size: PropTypes.number
+      multiple: PropTypes.bool,
+      size: PropTypes.number
     };
 }

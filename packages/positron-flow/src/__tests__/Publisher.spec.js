@@ -1,82 +1,82 @@
 import { Publisher } from "../Publisher";
 
 describe("Publisher", () => {
-    let publisher;
+  let publisher;
 
-    beforeEach(() => {
-        publisher = new Publisher();
+  beforeEach(() => {
+    publisher = new Publisher();
+  });
+
+  describe("#listeners", () => {
+    it("is an array of assigned listeners", () => {
+      expect(publisher.listeners).toBeInstanceOf(Array);
+      expect(publisher.listeners).toEqual([]);
     });
 
-    describe("#listeners", () => {
-        it("is an array of assigned listeners", () => {
-            expect(publisher.listeners).toBeInstanceOf(Array);
-            expect(publisher.listeners).toEqual([]);
-        });
-
-        it("should throw on attempt to assign", () => {
-            expect(() => publisher.listeners = [() => void 0]).toThrow();
-        });
-
-        it("should not affect to Publisher", () => {
-            publisher.listeners.push(1);
-            expect(publisher.listeners).toEqual([]);
-        });
+    it("should throw on attempt to assign", () => {
+      expect(() => publisher.listeners = [() => void 0]).toThrow();
     });
 
-    describe("#addListener", () => {
-        it("adds the passed listener", () => {
-            const first = () => void 0;
-            const second = () => void 0;
+    it("should not affect to Publisher", () => {
+      publisher.listeners.push(1);
+      expect(publisher.listeners).toEqual([]);
+    });
+  });
 
-            publisher.addListener(first);
-            expect(publisher.listeners).toEqual([first]);
+  describe("#addListener", () => {
+    it("adds the passed listener", () => {
+      const first = () => void 0;
+      const second = () => void 0;
 
-            publisher.addListener(second);
-            expect(publisher.listeners).toEqual([first, second]);
-        });
+      publisher.addListener(first);
+      expect(publisher.listeners).toEqual([first]);
 
-        it("should return a function to remove the passed listener", () => {
-            const first = () => void 0;
-            const removeFirst = publisher.addListener(first);
-
-            expect(removeFirst).toBeInstanceOf(Function);
-
-            removeFirst();
-            expect(publisher.listeners).toEqual([]);
-        });
-
-        it("should throw if passed arguments is not a function", () => {
-            expect(() => publisher.addListener(null)).toThrow("function expected");
-            expect(() => publisher.addListener({})).toThrow("function expected");
-        });
+      publisher.addListener(second);
+      expect(publisher.listeners).toEqual([first, second]);
     });
 
-    describe("#trigger", () => {
-        it("calls all assigned listeners", () => {
-            const first = jest.fn();
-            const second = jest.fn();
+    it("should return a function to remove the passed listener", () => {
+      const first = () => void 0;
+      const removeFirst = publisher.addListener(first);
 
-            publisher.addListener(first);
-            publisher.addListener(second);
+      expect(removeFirst).toBeInstanceOf(Function);
 
-            expect.assertions(3);
-            return publisher.trigger().then((result) => {
-                expect(result).toBe(void 0);
-                expect(first).toHaveBeenCalled();
-                expect(second).toHaveBeenCalled();
-            });
-        });
-
-
-        it("should pass all args to the specified listeners", () => {
-            const listener = jest.fn();
-
-            publisher.addListener(listener);
-
-            expect.assertions(1);
-            return publisher.trigger(1, 2, 3).then(() => {
-                expect(listener).toHaveBeenCalledWith(1, 2, 3);
-            });
-        });
+      removeFirst();
+      expect(publisher.listeners).toEqual([]);
     });
+
+    it("should throw if passed arguments is not a function", () => {
+      expect(() => publisher.addListener(null)).toThrow("function expected");
+      expect(() => publisher.addListener({})).toThrow("function expected");
+    });
+  });
+
+  describe("#trigger", () => {
+    it("calls all assigned listeners", () => {
+      const first = jest.fn();
+      const second = jest.fn();
+
+      publisher.addListener(first);
+      publisher.addListener(second);
+
+      expect.assertions(3);
+      return publisher.trigger().then((result) => {
+        expect(result).toBe(void 0);
+        expect(first).toHaveBeenCalled();
+        expect(second).toHaveBeenCalled();
+      });
+    });
+
+
+    it("should pass all args to the specified listeners", () => {
+      const listener = jest.fn();
+
+      publisher.addListener(listener);
+
+      expect.assertions(1);
+      return publisher.trigger(1, 2, 3).then(() => {
+        expect(listener).toHaveBeenCalledWith(1, 2, 3);
+      });
+    });
+  });
 });

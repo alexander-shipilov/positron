@@ -1,9 +1,0 @@
-@import "../core/to-bool";
-@import "../func/func-call--";
-
-/// Unsafe is-valid()
-/// @group types
-/// @see is-valid
-@function is-valid--($validator, $value, $other...) {
-    @return to-bool(func-call--($validator, $value));
-}

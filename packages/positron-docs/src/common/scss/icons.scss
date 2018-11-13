@@ -1,0 +1,68 @@
+@import "iconfont";
+
+.icon {
+    @extend %icon-props;
+    text-align: center;
+    position: relative;
+
+    @each $key, $value in $icon-map {
+        &_#{$key}:after {
+            content: unquote("\"") + unquote(str-insert($value, "\\", 1)) + unquote("\"");
+        }
+    }
+}
+
+@mixin --icon-content($key) {
+    @if map-has-key($icon-map, $key) {
+        @extend %icon-props;
+        content: unquote("\"") + unquote(str-insert(map-get($icon-map, $key), "\\", 1)) + unquote("\"");
+    }
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$key}`. "
+        + "Please make sure it is defined in `$icon-map` map.";
+    }
+}
+
+@mixin --with-icon($icon, $size, $position: left, $gap: 8px, $place: after) {
+    position: relative;
+    padding-#{ $position }: $size + $gap;
+
+    &:#{ $place } {
+        @include --icon-content($icon);
+
+        position: absolute;
+        #{ $position }: 0;
+        #{ if($position == left or $position == right, top, left) }: calc(50% - #{ $size / 2 });
+        font-size: $size;
+    }
+}
+
+@mixin --icon($icon, $size, $place: after) {
+    display: inline-block;
+    position: relative;
+
+    &:#{ $place } {
+        @include --icon-content($icon);
+
+        position: absolute;
+        left: calc(50% - #{ $size / 2 });
+        top: calc(50% - #{ $size / 2 });
+        font-size: $size;
+    }
+}
+
+@mixin icon-after($args...) {
+    @include --icon($args..., $place: after);
+}
+
+@mixin icon-before($args...) {
+    @include --icon($args..., $place: before);
+}
+
+@mixin with-icon-after($args...) {
+    @include --with-icon($args..., $place: "after");
+}
+
+@mixin with-icon-before($args...) {
+    @include --with-icon($args..., $place: "before");
+}

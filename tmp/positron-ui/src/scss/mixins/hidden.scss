@@ -1,7 +1,0 @@
-@mixin hidden {
-    position: fixed;
-    width: 0 !important;
-    height: 0 !important;
-    left: -1000px;
-    top: -1000px;
-}

@@ -1,8 +1,0 @@
-@import "func-check-args--";
-@import "func-call--";
-
-@function func-call($callable, $args...) {
-    $valid-args: func-check-args--(func-call, (callable: callable $callable));
-
-    @return if($valid-args, func-call--($callable, $args...), null);
-}

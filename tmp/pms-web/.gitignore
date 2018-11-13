@@ -1,8 +1,0 @@
-/design
-/dest
-node_modules
-.idea
-webapp/npm-debug.log
-Thumbs.db
-npm-debug.log
-/*.log

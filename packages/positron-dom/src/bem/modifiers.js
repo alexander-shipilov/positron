@@ -2,55 +2,55 @@ import { forEach, toKebabCase, warning } from "positron-core";
 import { classNames } from "../classNames";
 
 function formatModifier(className, modName, modValue) {
-    let modClass;
+  let modClass;
 
-    modName = className + "_" + modName;
+  modName = className + "_" + modName;
 
-    if (modValue === true) {
-        modClass = modName;
+  if (modValue === true) {
+    modClass = modName;
+  } else {
+    modValue = toKebabCase(String(modValue));
+
+    if (modValue === "") {
+      warning("Invalid modifier value");
     } else {
-        modValue = toKebabCase(String(modValue));
-
-        if (modValue === "") {
-            warning("Invalid modifier value");
-        } else {
-            modClass = modName + "_" + modValue;
-        }
+      modClass = modName + "_" + modValue;
     }
+  }
 
-    return modClass;
+  return modClass;
 }
 
 function modifier(className, modName, modValue) {
-    let modClass;
+  let modClass;
 
-    modName = toKebabCase(modName);
+  modName = toKebabCase(modName);
 
-    if (modName === "") {
-        warning("Invalid modifier");
-    } else if (modValue !== "" && modValue !== false && modValue != null) {
-        modClass = formatModifier(className, modName, modValue);
-    }
+  if (modName === "") {
+    warning("Invalid modifier");
+  } else if (modValue !== "" && modValue !== false && modValue != null) {
+    modClass = formatModifier(className, modName, modValue);
+  }
 
-    return modClass;
+  return modClass;
 }
 
 export function modifiers(className, modifiers) {
-    const classes = [];
+  const classes = [];
 
-    className = String(className);
+  className = String(className);
 
-    if (className === "") {
-        warning("Invalid class");
-    } else if (modifiers != null) {
-        forEach(modifiers, (modValue, modName) => {
-            const modClass = modifier(className, modName, modValue);
+  if (className === "") {
+    warning("Invalid class");
+  } else if (modifiers != null) {
+    forEach(modifiers, (modValue, modName) => {
+      const modClass = modifier(className, modName, modValue);
 
-            if (modClass) {
-                classes.push(modClass);
-            }
-        });
-    }
+      if (modClass) {
+        classes.push(modClass);
+      }
+    });
+  }
 
-    return classes.length ? classNames(classes) : "";
+  return classes.length ? classNames(classes) : "";
 }

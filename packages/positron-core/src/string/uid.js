@@ -7,18 +7,18 @@ let uidCount = MAX_UID;
 let uidPrefix = "";
 
 function randomInt(min, max) {
-    return min + Math.round(Math.random() * (max - min));
+  return min + Math.round(Math.random() * (max - min));
 }
 
 function init() {
-    uidPrefix = Date.now().toString(BASE);
-    uidCount = MIN_UID + randomInt(0, MIN_UID / BASE);
+  uidPrefix = Date.now().toString(BASE);
+  uidCount = MIN_UID + randomInt(0, MIN_UID / BASE);
 }
 
 export function uid(prefix = "") {
-    if (uidCount >= MAX_UID) {
-        init();
-    }
+  if (uidCount >= MAX_UID) {
+    init();
+  }
 
-    return prefix + uidPrefix + (uidCount++).toString(BASE);
+  return prefix + uidPrefix + (uidCount++).toString(BASE);
 }

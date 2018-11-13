@@ -1,9 +1,0 @@
-@import "../list/list-every--";
-@import "is-type-of";
-
-/// Unsafe is-list()
-/// @group types
-/// @see is-list
-@function is-list-of--($type, $value: null, $other...) {
-    @return is-list($value) and list-every--($value, (is-type-of, $type));
-}

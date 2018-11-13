@@ -1,6 +1,0 @@
-@import "mixins";
-
-.form-fields {
-    @include flex(row, $flex-wrap: wrap);
-    border: none;
-}

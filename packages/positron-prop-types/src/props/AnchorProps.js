@@ -4,13 +4,13 @@ import { ElementProps } from "./ElementProps";
 
 export class AnchorProps extends PropsOwner {
     static propTypes = {
-        ...ElementProps.propTypes,
-        download: PropTypes.bool,
-        href: PropTypes.string,
-        hrefLang: PropTypes.string,
-        rel: PropTypes.string,
-        target: PropTypes.string,
-        type: PropTypes.string
+      ...ElementProps.propTypes,
+      download: PropTypes.bool,
+      href: PropTypes.string,
+      hrefLang: PropTypes.string,
+      rel: PropTypes.string,
+      target: PropTypes.string,
+      type: PropTypes.string
     };
 }
 

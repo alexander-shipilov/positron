@@ -1,8 +1,0 @@
-@import "../../src/lib/expect";
-@import "parse";
-
-@include describe(parse) {
-    @include it("should throw if called with invalid params", (
-        to-throw((parse, null, null, null)) true,
-    ))
-}

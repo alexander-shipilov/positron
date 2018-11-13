@@ -4,9 +4,9 @@ import { SizableElementProps } from "./SizableElementProps";
 
 export class ImageElementProps extends PropsOwner {
     static propTypes = {
-        ...SizableElementProps.propTypes,
+      ...SizableElementProps.propTypes,
 
-        src: PropTypes.string,
-        useMap: PropTypes.string
+      src: PropTypes.string,
+      useMap: PropTypes.string
     };
 }

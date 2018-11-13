@@ -4,10 +4,10 @@ import { ElementProps } from "./ElementProps";
 
 export class TableCellProps extends PropsOwner {
     static propTypes = {
-        ...ElementProps.propTypes,
+      ...ElementProps.propTypes,
 
-        colSpan: PropTypes.number,
-        headers: PropTypes.string,
-        rowSpan: PropTypes.number
+      colSpan: PropTypes.number,
+      headers: PropTypes.string,
+      rowSpan: PropTypes.number
     };
 }

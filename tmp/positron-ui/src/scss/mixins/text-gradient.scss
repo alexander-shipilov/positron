@@ -1,6 +1,0 @@
-@mixin text-gradient($from, $to) {
-    color: #{$to};
-    background: -webkit-linear-gradient(#{$from}, #{$to});
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}

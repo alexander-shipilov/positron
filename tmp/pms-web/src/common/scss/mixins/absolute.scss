@@ -1,5 +1,0 @@
-@import "./position";
-
-@mixin absolute($left: null, $top: null, $right: null, $bottom: null, $width: null, $height: null) {
-    @include position(absolute, $left, $top, $right, $bottom, $width, $height);
-}

@@ -1,9 +1,0 @@
-@import "../map/map-every--";
-@import "is-type-of";
-
-/// Unsafe is-map()
-/// @group types
-/// @see is-map
-@function is-map-of--($type, $value: null, $other...) {
-    @return is-map($value) and map-every--($value, (is-type-of, $type));
-}

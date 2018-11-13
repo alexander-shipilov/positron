@@ -1,9 +1,0 @@
-@import "../../src/lib/core";
-
-@function --parser-rules($rules) {
-
-}
-
-@function parser-rules($rules) {
-    $valid-args: func-check-args--(parser-rules, (rules: map $rules));
-}

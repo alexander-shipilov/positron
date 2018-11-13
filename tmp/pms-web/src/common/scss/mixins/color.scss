@@ -1,9 +1,0 @@
-@mixin color($color, $background-color) {
-    color: $color;
-    background-color: $background-color;
-
-    &:-webkit-autofill {
-        -webkit-text-fill-color: $color !important;
-        -webkit-box-shadow: 0 0 0 1000px $background-color inset;
-    }
-}

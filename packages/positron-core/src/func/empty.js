@@ -1,5 +1,5 @@
 // @flow
 
-export function empty() {
-    // empty function
+export function empty(): void {
+  // empty function
 }

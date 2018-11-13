@@ -4,8 +4,8 @@ import { ElementProps } from "./ElementProps";
 
 export class TableColProps extends PropsOwner {
     static propTypes = {
-        ...ElementProps.propTypes,
+      ...ElementProps.propTypes,
 
-        span: PropTypes.number
+      span: PropTypes.number
     };
 }

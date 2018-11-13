@@ -1,6 +1,0 @@
-@import "../assert";
-@import "func-check-args";
-
-@include assert("func-check-args: should TypeError throw if invalid params passed", (
-    (func-check-args, null) throws "TypeError: Expected argument `$func` of `func-check-args()` to be a string, instead received null",
-));

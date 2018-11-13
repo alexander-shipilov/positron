@@ -1,9 +1,0 @@
-@import "nvl";
-@import "value-of";
-
-/// Unsafe var()
-/// @group core
-/// @see var
-@function var--($name, $default, $other...) {
-    @return nvl(map-get($--vanilla-global, value-of($name)), $default);
-}

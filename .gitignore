@@ -62,3 +62,4 @@ typings/
 
 /packages/*/index.js
 /packages/*/lib/
+/tmp

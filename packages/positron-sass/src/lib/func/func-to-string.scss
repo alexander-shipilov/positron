@@ -1,8 +1,0 @@
-@import "func-check-args--";
-@import "func-to-string--";
-
-@function func-to-string($callable, $other...) {
-    $valid-args: func-check-args--(func-to-string, (callable: callable $callable));
-
-    @return if($valid-args, func-to-string--($callable), null);
-}

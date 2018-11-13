@@ -1,8 +1,0 @@
-@import "../func/func-check-args--";
-@import "list-join-with--";
-
-@function list-join-with($list, $with: "", $other...) {
-    $valid-args: func-check-args--(list-join-with, (list: list $list, with: string $with));
-
-    @return if($valid-args, list-join-with--($list, $with), null);
-}

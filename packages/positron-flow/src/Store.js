@@ -10,35 +10,35 @@ export class Store extends Publisher {
     state: StoreState;
 
     constructor(state?: StoreState) {
-        super();
+      super();
 
-        this.setState(state);
+      this.setState(state);
     }
 
-    trigger() {
-        return super.trigger(this.state);
+    trigger(): Promise<any> {
+      return super.trigger(this.state);
     }
 
     assignState(nextState) {
-        const { state } = this;
+      const { state } = this;
 
-        if (state !== nextState) {
-            if (nextState != null) {
-                nextState = Object.assign({}, state, nextState);
-            }
+      if (state !== nextState) {
+        if (nextState != null) {
+          nextState = { ...state, ...nextState };
         }
+      }
 
-        return isEqualObjects(nextState, state) ? state : nextState;
+      return isEqualObjects(nextState, state) ? state : nextState;
     }
 
     setState(nextState) {
-        nextState = this.assignState(nextState);
+      nextState = this.assignState(nextState);
 
-        if (this.state !== nextState) {
-            this.state = nextState;
-            this.trigger();
-        }
+      if (this.state !== nextState) {
+        this.state = nextState;
+        this.trigger();
+      }
 
-        return Promise.resolve(this.state);
+      return Promise.resolve(this.state);
     }
 }

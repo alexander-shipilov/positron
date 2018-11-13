@@ -1,9 +1,0 @@
-@import "mixins";
-
-.generic-form {
-    @include flex(column, stretch);
-
-    &__main {
-        flex: 1;
-    }
-}

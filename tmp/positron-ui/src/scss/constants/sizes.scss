@@ -1,6 +1,0 @@
-@import "../func/make-sizes";
-
-$padding: 10px !default;
-$gap: 5px !default;
-
-$sizes: make-sizes(32px, $gap, $padding);

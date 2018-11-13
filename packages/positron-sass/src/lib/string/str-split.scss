@@ -1,8 +1,0 @@
-@import "../func/func-check-args--";
-@import "str-split--";
-
-@function str-split($string, $separator, $other...) {
-    $valid-args: func-check-args--(str-split, (string: string $string, separator: string $separator));
-
-    @return if($valid-args, str-split--($string, $separator), null);
-}

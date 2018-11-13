@@ -4,9 +4,9 @@ import { ElementProps } from "./ElementProps";
 
 export class ModProps extends PropsOwner {
     static propTypes = {
-        ...ElementProps.propTypes,
+      ...ElementProps.propTypes,
 
-        cite: PropTypes.string,
-        dateTime: PropTypes.string
+      cite: PropTypes.string,
+      dateTime: PropTypes.string
     };
 }

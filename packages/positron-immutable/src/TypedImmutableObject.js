@@ -1,24 +1,21 @@
-import { map, of, valueOf } from "positron-core";
+import { map, SYMBOL_ALL, SYMBOL_TYPES } from "positron-core";
 import { ImmutableObject } from "./ImmutableObject";
+import { valueOf } from "./object";
 
-export class TypedImmutableObject extends of(ImmutableObject, { Type: ImmutableObject }) {
-    static get Type() {
-        return this.types.Type;
-    }
+export class TypedImmutableObject extends ImmutableObject {
+  static of(type) {
+    return super.of({ [SYMBOL_ALL]: type });
+  }
 
-    static of(Type) {
-        return super.of({ Type });
-    }
+  setProps(...sources) {
+    const type = this.constructor[SYMBOL_TYPES][SYMBOL_ALL];
 
-    setProps(...sources) {
-        const { Type } = this.constructor;
+    sources.forEach((source) => {
+      if (source != null) {
+        super.setProps(this, map(valueOf(source), (value, prop) => type.assign(this[prop], value)));
+      }
+    });
 
-        sources.forEach((source) => {
-            if (source !== void 0 && source !== null) {
-                super.setProps(this, map(valueOf(source), (value, prop) => Type.assign(this[prop], value)));
-            }
-        });
-
-        return this;
-    }
+    return this;
+  }
 }

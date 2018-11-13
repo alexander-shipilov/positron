@@ -5,18 +5,18 @@ import { FormElementProps } from "./FormElementProps";
 
 export class InputElementProps extends PropsOwner {
     static propTypes = {
-        ...ElementProps.propTypes,
-        ...FormElementProps.propTypes,
+      ...ElementProps.propTypes,
+      ...FormElementProps.propTypes,
 
-        autoFocus: PropTypes.bool,
-        autoComplete: PropTypes.string,
-        type: PropTypes.string,
-        value: PropTypes.any,
+      autoFocus: PropTypes.bool,
+      autoComplete: PropTypes.string,
+      type: PropTypes.string,
+      value: PropTypes.any,
 
-        onChange: PropTypes.func,
-        onInput: PropTypes.func,
-        onInvalid: PropTypes.func,
-        onSubmit: PropTypes.func
+      onChange: PropTypes.func,
+      onInput: PropTypes.func,
+      onInvalid: PropTypes.func,
+      onSubmit: PropTypes.func
     };
 }
 
