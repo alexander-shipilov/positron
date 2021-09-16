@@ -60,6 +60,6 @@ typings/
 # development tools
 .idea
 
-/packages/*/index.js
-/packages/*/lib/
+/tmp/packages/*/index.js
+/tmp/packages/*/lib/
 /tmp

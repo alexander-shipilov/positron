@@ -1,1 +1,0 @@
-export { IntlContext } from "./IntlContext";
