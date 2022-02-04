@@ -1,5 +1,5 @@
 import { expectTypeOf } from "expect-type";
-import { ArrayType } from "../ArrayType";
+import { ArrayType } from "./ArrayType";
 
 describe("ArrayType<T>", () => {
   it("should be a type of the given array / tuple type", () => {

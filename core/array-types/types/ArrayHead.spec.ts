@@ -1,5 +1,5 @@
 import { expectTypeOf } from "expect-type";
-import { ArrayHead } from "../ArrayHead";
+import { ArrayHead } from "./ArrayHead";
 
 describe("ArrayHead<T>", () => {
   it("should return tuple type of the given tuple head", () => {

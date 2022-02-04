@@ -1,4 +1,4 @@
-import { Primitive } from "@positron/utility-types";
+import { Literal } from "@positron/utility-types";
 
 import { ArrayFirst } from "./ArrayFirst";
 import { ArrayTail } from "./ArrayTail";
@@ -14,12 +14,12 @@ import { ArrayType } from "./ArrayType";
  *  // types T = "foo-bar"
  * ```
  */
-export type ArrayJoin<A extends string[], S extends Primitive> = A extends []
-  ? ""
-  : A extends [string]
-  ? `${ArrayType<A>}`
-  : A extends [string, string, ...string[]]
-  ? // @ts-expect-error Type 'unknown' is not assignable to type 'string'.
-    // https://github.com/microsoft/TypeScript/issues/45281
-    `${ArrayFirst<A>}${S}${ArrayJoin<ArrayTail<A>, S>}`
+export type ArrayJoin<A, S> = S extends Literal
+  ? A extends []
+    ? ""
+    : A extends [Literal]
+    ? `${ArrayType<A>}`
+    : A extends [Literal, ...Literal[]]
+    ? `${ArrayFirst<A>}${S}${ArrayJoin<ArrayTail<A>, S>}`
+    : never
   : never;

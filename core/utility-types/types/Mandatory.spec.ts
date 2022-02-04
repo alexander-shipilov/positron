@@ -1,5 +1,5 @@
 import { expectTypeOf } from "expect-type";
-import { Mandatory } from "../Mandatory";
+import { Mandatory } from "./Mandatory";
 
 describe("Mandatory<T>", () => {
   it("should exclude `undefined` from `T`", () => {

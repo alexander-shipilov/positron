@@ -1,5 +1,5 @@
 import { expectTypeOf } from "expect-type";
-import { ArrayFirst } from "../ArrayFirst";
+import { ArrayFirst } from "./ArrayFirst";
 
 describe("ArrayFirst<T>", () => {
   it("should be the first type of the given tuple type", () => {

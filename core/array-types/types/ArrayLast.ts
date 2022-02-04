@@ -27,8 +27,8 @@
  *  // type T2 = string
  * ```
  */
-export type ArrayLast<T> = T extends [...unknown[], infer U]
-  ? U
+export type ArrayLast<T> = T extends [...unknown[], infer E]
+  ? E
   : T extends Array<infer E>
   ? E
   : never;

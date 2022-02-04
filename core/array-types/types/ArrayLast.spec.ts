@@ -1,5 +1,5 @@
 import { expectTypeOf } from "expect-type";
-import { ArrayLast } from "../ArrayLast";
+import { ArrayLast } from "./ArrayLast";
 
 describe("ArrayLast<T>", () => {
   it("should be the last type of the given tuple type", () => {
