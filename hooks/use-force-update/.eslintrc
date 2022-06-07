@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": [
+    "@positron/eslint-config"
+  ],
+  "parserOptions": {
+    "project": [
+      "./tsconfig.json"
+    ]
+  }
+}

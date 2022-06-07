@@ -1,9 +1,9 @@
 #!/bin/sh
 
 directories=(
+  './config'
   './core'
-  './react'
-  './react-hooks'
+  './hooks'
 )
 
-find $directories -name 'package.json' -exec ncu $@ --packageFile {} \;
+find ${directories[@]} -name 'package.json' -exec ncu $@ --packageFile {} \;

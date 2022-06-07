@@ -1,0 +1,31 @@
+{
+  "private": false,
+  "name": "@positron/use-is-mounted-ref",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
+  "repository": "git@github.com:alexander-shipilov/positron.git",
+  "scripts": {},
+  "peerDependencies": {
+    "react": "~18.1.0"
+  },
+  "devDependencies": {
+    "@positron/eslint-config": "workspace:*",
+    "@types/jest": "^27.4.1",
+    "@types/react": "~18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "~26.2.2",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-tsdoc": "0.2.16",
+    "expect-type": "^0.13.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "react": "~18.1.0",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.4"
+  }
+}

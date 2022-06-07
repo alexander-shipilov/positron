@@ -4,7 +4,6 @@
  */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
-
   /**
    * (Required) This specifies the version of the Rush engine to be used in this repo.
    * Rush's "version selector" feature ensures that the globally installed tool will
@@ -17,7 +16,6 @@
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
   "rushVersion": "5.56.0",
-
   /**
    * The next field selects which package manager should be installed and determines its version.
    * Rush installs its own local copy of the package manager to ensure that your build process
@@ -26,8 +24,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "6.28.0",
-
+  "pnpmVersion": "7.1.7",
   // "npmVersion": "6.14.15",
   // "yarnVersion": "1.9.4",
 
@@ -63,7 +60,6 @@
      * It is strongly recommended to set strictPeerDependencies=true.
      */
     "strictPeerDependencies": true,
-
     /**
      * Configures the strategy used to select versions during installation.
      *
@@ -112,7 +108,6 @@
      */
     "useWorkspaces": true
   },
-
   /**
    * Older releases of the Node.js engine may be missing features required by your system.
    * Other releases may have bugs.  In particular, the "latest" version will not be a
@@ -124,8 +119,7 @@
    * LTS schedule: https://nodejs.org/en/about/releases/
    * LTS versions: https://nodejs.org/en/download/releases/
    */
-  "nodeSupportedVersionRange": ">=12.13.0 <13.0.0 || >=14.15.0 <15.0.0",
-
+  "nodeSupportedVersionRange": ">=12.13.0 <13.0.0 || >=14.15.0 <17.0.0",
   /**
    * Odd-numbered major versions of Node.js are experimental.  Even-numbered releases
    * spend six months in a stabilization period before the first Long Term Support (LTS) version.
@@ -177,7 +171,6 @@
    */
   "projectFolderMinDepth": 2,
   "projectFolderMaxDepth": 2,
-
   /**
    * Today the npmjs.com registry enforces fairly strict naming rules for packages, but in the early
    * days there was no standard and hardly any enforcement.  A few large legacy projects are still using
@@ -273,7 +266,6 @@
      */
     // "changeLogUpdateCommitMessage": "Update changelogs [skip ci]"
   },
-
   "repository": {
     /**
      * The URL of this Git repository, used by "rush change" to determine the base branch for your PR.
@@ -304,7 +296,6 @@
      */
     // "defaultRemote": "origin"
   },
-
   /**
    * Event hooks are customized script actions that Rush executes when specific events occur
    */
@@ -315,23 +306,19 @@
     "preRushInstall": [
       // "common/scripts/pre-rush-install.js"
     ],
-
     /**
      * The list of shell commands to run after the Rush installation finishes
      */
     "postRushInstall": [],
-
     /**
      * The list of shell commands to run before the Rush build command starts
      */
     "preRushBuild": [],
-
     /**
      * The list of shell commands to run after the Rush build command finishes
      */
     "postRushBuild": []
   },
-
   /**
    * Installation variants allow you to maintain a parallel set of configuration files that can be
    * used to build the entire monorepo with an alternate set of dependencies.  For example, suppose
@@ -362,7 +349,6 @@
     //   "description": "Build this repo using the previous release of the SDK"
     // }
   ],
-
   /**
    * Rush can collect anonymous telemetry about everyday developer activity such as
    * success/failure of installs, builds, and other operations.  You can use this to identify
@@ -390,12 +376,45 @@
    */
   "projects": [
     {
+      "packageName": "@positron/eslint-config",
+      "projectFolder": "config/eslint",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@positron/element",
+      "projectFolder": "components/element"
+    },
+    {
+      "packageName": "@positron/use-async-callback",
+      "projectFolder": "hooks/use-async-callback"
+    },
+    {
+      "packageName": "@positron/use-constant",
+      "projectFolder": "hooks/use-constant"
+    },
+    {
+      "packageName": "@positron/use-force-update",
+      "projectFolder": "hooks/use-force-update"
+    },
+    {
+      "packageName": "@positron/use-is-mounted-ref",
+      "projectFolder": "hooks/use-is-mounted-ref"
+    },
+    {
       "packageName": "@positron/array-types",
-      "projectFolder": "core/array-types"
+      "projectFolder": "types/array"
+    },
+    {
+      "packageName": "@positron/react-types",
+      "projectFolder": "types/react"
     },
     {
       "packageName": "@positron/utility-types",
-      "projectFolder": "core/utility-types"
+      "projectFolder": "types/utility"
+    },
+    {
+      "packageName": "@positron/observer",
+      "projectFolder": "utils/observer"
     }
   ]
 }
