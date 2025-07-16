@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "extends": [
+    "@positron/eslint-config"
+  ],
+  "overrides": [
+    {
+      "files": ["*Test.ts"],
+      "rules": {
+        "jest/no-export": 0
+      }
+    }
+  ],
+  "parserOptions": {
+    "project": [
+      "./tsconfig.json"
+    ]
+  }
+}

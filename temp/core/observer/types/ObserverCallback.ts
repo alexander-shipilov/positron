@@ -1,0 +1,10 @@
+import type { ObserverInterface } from "./Observer.interface";
+import type { ObserverRecord } from "./ObserverRecord";
+
+/**
+ * Callback function to call when observer event occurred
+ */
+export type ObserverCallback<
+  Record extends ObserverRecord<unknown>,
+  Observer extends ObserverInterface<unknown, unknown, Record>,
+> = (records: Record[], observer: Observer) => void;

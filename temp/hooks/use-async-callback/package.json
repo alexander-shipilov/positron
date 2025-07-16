@@ -1,0 +1,27 @@
+{
+  "private": false,
+  "name": "@positron/use-async-callback",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
+  "repository": "git@github.com:alexander-shipilov/positron.git",
+  "scripts": {},
+  "dependencies": {
+    "@positron/use-is-mounted-ref": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "~18.2.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "~30.0.2",
+    "@positron/eslint-config": "workspace:*",
+    "@types/jest": "^30.0.0",
+    "@types/react": "~19.1.8",
+    "eslint": "^9.29.0",
+    "expect-type": "^1.2.1",
+    "jest": "^30.0.2",
+    "react": "~19.1.0",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3"
+  }
+}

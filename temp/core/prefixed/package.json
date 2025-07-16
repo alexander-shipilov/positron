@@ -1,0 +1,29 @@
+{
+  "private": false,
+  "name": "@positron/prefixed",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
+  "repository": "git@github.com:alexander-shipilov/positron.git",
+  "scripts": {
+    "test": "jest",
+    "test:coreage": "jest --coverage"
+  },
+  "dependencies": {
+    "@positron/lang": "workspace:*",
+    "@positron/spec": "workspace:*"
+  },
+  "devDependencies": {
+    "@jest/globals": "~30.0.2",
+    "@positron/eslint-config": "workspace:*",
+    "@types/jest": "^30.0.0",
+    "eslint": "^9.29.0",
+    "expect-type": "^1.2.1",
+    "jest": "~30.0.2",
+    "ts-jest": "~29.4.0",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
