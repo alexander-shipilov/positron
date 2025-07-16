@@ -15,7 +15,7 @@
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.56.0",
+  "rushVersion": "5.110.1",
   /**
    * The next field selects which package manager should be installed and determines its version.
    * Rush installs its own local copy of the package manager to ensure that your build process
@@ -24,7 +24,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "7.1.7",
+  "pnpmVersion": "9.15.4",
   // "npmVersion": "6.14.15",
   // "yarnVersion": "1.9.4",
 
@@ -59,7 +59,7 @@
      * The default value is false to avoid legacy compatibility issues.
      * It is strongly recommended to set strictPeerDependencies=true.
      */
-    "strictPeerDependencies": true,
+    "strictPeerDependencies": false,
     /**
      * Configures the strategy used to select versions during installation.
      *
@@ -119,7 +119,7 @@
    * LTS schedule: https://nodejs.org/en/about/releases/
    * LTS versions: https://nodejs.org/en/download/releases/
    */
-  "nodeSupportedVersionRange": ">=12.13.0 <13.0.0 || >=14.15.0 <17.0.0",
+  "nodeSupportedVersionRange": ">=18.0.0",
   /**
    * Odd-numbered major versions of Node.js are experimental.  Even-numbered releases
    * spend six months in a stabilization period before the first Long Term Support (LTS) version.
@@ -375,46 +375,37 @@
    * 3. It's useful to have a centralized inventory of all projects and their important metadata.
    */
   "projects": [
+    /** Dev */
     {
+      "projectFolder": "dev/eslint-config",
       "packageName": "@positron/eslint-config",
-      "projectFolder": "config/eslint",
       "shouldPublish": false
     },
     {
-      "packageName": "@positron/element",
-      "projectFolder": "components/element"
+      "projectFolder": "dev/node-rig",
+      "packageName": "@positron/node-rig",
+      "shouldPublish": false
+    },
+    /** Lang  */
+    {
+      "packageName": "@positron/lang-type",
+      "projectFolder": "lang/lang-type",
     },
     {
-      "packageName": "@positron/use-async-callback",
-      "projectFolder": "hooks/use-async-callback"
+      "packageName": "@positron/lang-core",
+      "projectFolder": "lang/lang-core",
     },
     {
-      "packageName": "@positron/use-constant",
-      "projectFolder": "hooks/use-constant"
+      "packageName": "@positron/lang-assert",
+      "projectFolder": "lang/lang-assert",
     },
     {
-      "packageName": "@positron/use-force-update",
-      "projectFolder": "hooks/use-force-update"
+      "packageName": "@positron/lang-array",
+      "projectFolder": "lang/lang-array",
     },
     {
-      "packageName": "@positron/use-is-mounted-ref",
-      "projectFolder": "hooks/use-is-mounted-ref"
-    },
-    {
-      "packageName": "@positron/array-types",
-      "projectFolder": "types/array"
-    },
-    {
-      "packageName": "@positron/react-types",
-      "projectFolder": "types/react"
-    },
-    {
-      "packageName": "@positron/utility-types",
-      "projectFolder": "types/utility"
-    },
-    {
-      "packageName": "@positron/observer",
-      "projectFolder": "utils/observer"
+      "packageName": "@positron/lang-nominal",
+      "projectFolder": "lang/lang-nominal",
     }
   ]
 }

@@ -34,6 +34,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+vendor/
 
 # Optional npm cache directory
 .npm
@@ -51,7 +52,7 @@ jspm_packages/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+scripts/env.sh
 
 # next.js build output
 .next
@@ -70,3 +71,6 @@ common/autoinstallers/*/.npmrc
 
 # IDE
 .idea
+
+# Yarn
+.yarn/*
