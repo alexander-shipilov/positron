@@ -9,3 +9,6 @@ lib
 
 # don't lint nyc coverage output
 coverage
+
+# don't lint temporary files
+temp

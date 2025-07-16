@@ -76,4 +76,4 @@ common/autoinstallers/*/.npmrc
 .yarn/*
 
 # Temporary files
-temp
+temp/
