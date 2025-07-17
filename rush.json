@@ -386,7 +386,7 @@
       "packageName": "@positron/node-rig",
       "shouldPublish": false
     },
-    /** Lang  */
+    /** lang-* */
     {
       "packageName": "@positron/lang-type",
       "projectFolder": "lang/lang-type",
@@ -396,16 +396,21 @@
       "projectFolder": "lang/lang-core",
     },
     {
-      "packageName": "@positron/lang-assert",
-      "projectFolder": "lang/lang-assert",
-    },
-    {
       "packageName": "@positron/lang-array",
       "projectFolder": "lang/lang-array",
     },
     {
       "packageName": "@positron/lang-nominal",
       "projectFolder": "lang/lang-nominal",
+    },
+    /** react-* */
+    {
+      "packageName": "@positron/react-core",
+      "projectFolder": "react/react-core",
+    },
+    {
+      "packageName": "@positron/react-bem",
+      "projectFolder": "react/react-bem",
     }
-  ]
+  ],
 }

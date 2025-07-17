@@ -53,24 +53,30 @@ export default [
       "perfectionist/sort-imports": [
         "error",
         {
-          customGroups: {
-            type: {
-              react: ["^react$", "^react-.+"],
+          customGroups: [
+            {
+              elementNamePattern: ["^react$", "^react-.+"],
+              groupName: "react-type",
+              selector: "type",
             },
-            value: {
-              react: ["^react$", "^react-.+"],
-              resources: ["\\.svg$", "\\.md$"],
+            {
+              elementNamePattern: ["^react$", "^react-.+"],
+              groupName: "react",
             },
-          },
+            {
+              elementNamePattern: ["\\.svg$", "\\.md$"],
+              groupName: "resources",
+            },
+          ],
           groups: [
-            ["react"],
-            ["type"],
+            "react-type",
+            "react",
+            "type",
             ["builtin", "external"],
             ["parent-type", "sibling-type", "index-type"],
             ["parent", "sibling", "index"],
+            ["style", "resources"],
             "side-effect",
-            "style",
-            "resources",
             "object",
             "unknown",
           ],

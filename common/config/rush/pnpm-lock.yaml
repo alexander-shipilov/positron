@@ -141,37 +141,6 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  ../../lang/lang-assert:
-    dependencies:
-      '@positron/lang-core':
-        specifier: workspace:*
-        version: link:../lang-core
-    devDependencies:
-      '@jest/globals':
-        specifier: ~30.0.4
-        version: 30.0.4
-      '@positron/node-rig':
-        specifier: workspace:*
-        version: link:../../dev/node-rig
-      '@rushstack/heft':
-        specifier: ~0.74.0
-        version: 0.74.0(@types/node@24.0.14)
-      eslint:
-        specifier: ^9.31.0
-        version: 9.31.0
-      expect-type:
-        specifier: ^1.2.2
-        version: 1.2.2
-      jest:
-        specifier: ~30.0.4
-        version: 30.0.4(@types/node@24.0.14)
-      ts-jest:
-        specifier: ~29.4.0
-        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
   ../../lang/lang-core:
     dependencies:
       '@positron/lang-type':
@@ -254,6 +223,86 @@ importers:
       jest:
         specifier: ~30.0.4
         version: 30.0.4(@types/node@24.0.14)
+      ts-jest:
+        specifier: ~29.4.0
+        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+  ../../react/react-bem:
+    dependencies:
+      '@positron/lang-core':
+        specifier: workspace:*
+        version: link:../../lang/lang-core
+      '@positron/react-core':
+        specifier: workspace:*
+        version: link:../react-core
+    devDependencies:
+      '@jest/globals':
+        specifier: ~30.0.4
+        version: 30.0.4
+      '@positron/node-rig':
+        specifier: workspace:*
+        version: link:../../dev/node-rig
+      '@rushstack/heft':
+        specifier: ~0.74.0
+        version: 0.74.0(@types/node@24.0.14)
+      '@types/react':
+        specifier: ~19.1.8
+        version: 19.1.8
+      eslint:
+        specifier: ^9.31.0
+        version: 9.31.0
+      expect-type:
+        specifier: ^1.2.2
+        version: 1.2.2
+      jest:
+        specifier: ~30.0.4
+        version: 30.0.4(@types/node@24.0.14)
+      react:
+        specifier: ~19.1.0
+        version: 19.1.0
+      ts-jest:
+        specifier: ~29.4.0
+        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+  ../../react/react-core:
+    dependencies:
+      '@positron/lang-core':
+        specifier: workspace:*
+        version: link:../../lang/lang-core
+      '@positron/lang-nominal':
+        specifier: workspace:*
+        version: link:../../lang/lang-nominal
+    devDependencies:
+      '@jest/globals':
+        specifier: ~30.0.4
+        version: 30.0.4
+      '@positron/node-rig':
+        specifier: workspace:*
+        version: link:../../dev/node-rig
+      '@rushstack/heft':
+        specifier: ~0.74.0
+        version: 0.74.0(@types/node@24.0.14)
+      '@types/react':
+        specifier: ~19.1.8
+        version: 19.1.8
+      eslint:
+        specifier: ^9.31.0
+        version: 9.31.0
+      expect-type:
+        specifier: ^1.2.2
+        version: 1.2.2
+      jest:
+        specifier: ~30.0.4
+        version: 30.0.4(@types/node@24.0.14)
+      react:
+        specifier: ~19.1.0
+        version: 19.1.0
       ts-jest:
         specifier: ~29.4.0
         version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
@@ -952,6 +1001,9 @@ packages:
   '@types/prettier@2.7.3':
     resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
 
+  '@types/react@19.1.8':
+    resolution: {integrity: sha512-AwAfQ2Wa5bCx9WP8nZL2uMZWod7J7/JSplxbTmBQ5ms6QpqNYm672H0Vu9ZVKVngQ+ii4R/byguVEUZQyeg44g==}
+
   '@types/stack-utils@2.0.3':
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
 
@@ -1443,6 +1495,9 @@ packages:
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
+
+  csstype@3.1.3:
+    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
   data-view-buffer@1.0.2:
     resolution: {integrity: sha512-EmKO5V3OLXh1rtK2wgXRansaK1/mtVdTUEiEI0W8RkvgT05kfxaH29PliLnpLP73yYO6142Q72QNa8Wx/A5CqQ==}
@@ -2701,6 +2756,10 @@ packages:
 
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
+
+  react@19.1.0:
+    resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
+    engines: {node: '>=0.10.0'}
 
   reflect.getprototypeof@1.0.10:
     resolution: {integrity: sha512-00o4I+DVrefhv+nX0ulyi3biSHCPDe+yLv5o/p6d/UVlirijB8E16FtfwSAi4g3tcqrQ4lRAqQSoFEZJehYEcw==}
@@ -4269,6 +4328,10 @@ snapshots:
 
   '@types/prettier@2.7.3': {}
 
+  '@types/react@19.1.8':
+    dependencies:
+      csstype: 3.1.3
+
   '@types/stack-utils@2.0.3': {}
 
   '@types/tapable@1.0.6': {}
@@ -4882,6 +4945,8 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  csstype@3.1.3: {}
 
   data-view-buffer@1.0.2:
     dependencies:
@@ -6650,6 +6715,8 @@ snapshots:
   react-is@16.13.1: {}
 
   react-is@18.3.1: {}
+
+  react@19.1.0: {}
 
   reflect.getprototypeof@1.0.10:
     dependencies:

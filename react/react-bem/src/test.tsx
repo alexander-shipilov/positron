@@ -12,13 +12,19 @@ import type { Modifier } from "./modifier";
 
 type CmpVal = { prop1: string; prop2: number };
 
-type DeepFlatten<T> = {
-  [K in keyof T]: T[K] extends object
-    ? {
-        [P in keyof T[K] as `${K & string}-${P & string}`]: T[K][P];
-      }[keyof T[K]]
-    : T[K];
-};
+type Flatten<T> = T extends object
+  ? {
+      [K in keyof T]: T[K] extends object
+        ? { [P in keyof T[K] as `${K & string}-${P & string}`]: T[K][P] }
+        : { [P in K]: T[K] };
+    }[keyof T] extends infer U
+    ? { [P in keyof U]: U[P] }
+    : never
+  : T;
+
+type T1 = Flatten<{ foo: { a: 1, b: 2 }, bar: { a: 1 } }>
+
+declare const t: T1;
 
 type DescribedKey<TProps> = PropertyKeyOf<TProps, PropertyName>;
 
@@ -60,7 +66,9 @@ type Props = {
   value: string;
 };
 
-declare const p1: DeepFlatten<PickDescribed<Props>>;
+declare const p1: Flatten<PickDescribed<Props>>;
+
+p1.
 
 type PickDescribedProps<TProps> = {
   [Key in keyof PickDescribed<TProps>]: TProps[Key] extends DescriptorClass<
