@@ -77,20 +77,3 @@ common/autoinstallers/*/.npmrc
 
 # Temporary files
 temp/
-/core/react/.gitignore
-/core/react/config/heft.json
-/core/react/config/typescript.json
-/core/react/fixtures/mocks/component/MockComponent.tsx
-/core/react/fixtures/mocks/component/MockComponentForwardRef.tsx
-/core/react/fixtures/mocks/component/MockComponentMemo.ts
-/core/react/fixtures/mocks/component/MockComponentProps.ts
-/core/react/fixtures/mocks/component/index.ts
-/core/react/package.json
-/core/react/specs/component/ReactComponent.spec.ts
-/core/react/specs/component/ReactComponentProps.spec.ts
-/core/react/specs/dom/ReactDOMAttributes.spec.ts
-/core/react/specs/dom/ReactDOMElement.spec.ts
-/core/react/specs/dom/ReactDOMFactory.spec.ts
-/core/react/specs/dom/ReactDOMFactoryElement.spec.ts
-/core/react/specs/dom/ReactDOMFactoryProps.spec.ts
-/core/react/tsconfig.json
