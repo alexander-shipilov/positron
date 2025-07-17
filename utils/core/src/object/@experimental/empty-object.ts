@@ -81,5 +81,6 @@ declare const $never: unique symbol;
  */
 declare class _EmptyObject {
   private readonly [$never]?;
+
   private constructor();
 }

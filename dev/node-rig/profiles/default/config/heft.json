@@ -3,7 +3,6 @@
  */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/heft/v0/heft.schema.json",
-
   /**
    * Optionally specifies another JSON config file that this file extends from. This provides a way for standard
    * settings to be shared across multiple projects.
@@ -11,8 +10,14 @@
   // "extends": "base-project/config/heft.json",
   "phasesByName": {
     "build": {
-      "cleanFiles": [{ "includeGlobs": ["dist", "lib"] }],
-
+      "cleanFiles": [
+        {
+          "includeGlobs": [
+            "dist",
+            "lib"
+          ]
+        }
+      ],
       "tasksByName": {
         "typescript": {
           "taskPlugin": {
@@ -20,22 +25,27 @@
           }
         },
         "lint": {
-          "taskDependencies": ["typescript"],
+          "taskDependencies": [
+            "typescript"
+          ],
           "taskPlugin": {
             "pluginPackage": "@rushstack/heft-lint-plugin"
           }
         },
         "api-extractor": {
-          "taskDependencies": ["typescript"],
+          "taskDependencies": [
+            "typescript"
+          ],
           "taskPlugin": {
             "pluginPackage": "@rushstack/heft-api-extractor-plugin"
           }
         }
       }
     },
-
     "test": {
-      "phaseDependencies": ["build"],
+      "phaseDependencies": [
+        "build"
+      ],
       "tasksByName": {
         "jest": {
           "taskPlugin": {

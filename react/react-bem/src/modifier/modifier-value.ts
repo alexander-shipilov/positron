@@ -1,5 +1,4 @@
-import type { PropertyName } from "@positron/core";
-import type { Nullish } from "@positron/core";
+import type { Nullish, PropertyName } from "@positron/core";
 
 /**
  * The {@link ModifierValue} type represents a type of value stored by the

@@ -3,7 +3,6 @@
  */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/heft/v0/typescript.schema.json",
-
   /**
    * If provided, emit these module kinds in addition to the modules specified in the tsconfig.
    * Note that this option only applies to the main tsconfig.json configuration.
@@ -21,7 +20,6 @@
     //    "outFolderName": "lib-amd"
     // }
   ],
-
   /**
    * If true, emit CommonJS module output to the folder specified in the tsconfig "outDir" compiler option with the .cjs extension alongside (or instead of, if TSConfig specifies CommonJS) the default compilation output.
    */
@@ -45,7 +43,9 @@
     /**
      * File extensions that should be copied from the src folder to the destination folder(s).
      */
-    "fileExtensions": [".json"]
+    "fileExtensions": [
+      ".json"
+    ]
 
     /**
      * Glob patterns that should be explicitly included.

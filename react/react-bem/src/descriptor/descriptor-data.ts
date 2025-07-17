@@ -1,5 +1,4 @@
-import type { EmptyObject } from "@positron/core";
-import type { UnknownObject } from "@positron/core";
+import type { EmptyObject, UnknownObject } from "@positron/core";
 
 import type { DescriptorValue } from "./descriptor-value";
 

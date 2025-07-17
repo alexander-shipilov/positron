@@ -1,16 +1,16 @@
 import React from "react";
 
 import type { EmptyObject } from "@positron/core";
-import type { ReactNode } from "@positron/react-core";
-import type { ReactComponent } from "@positron/react-core";
+import type { ReactComponent, ReactNode } from "@positron/react-core";
 import { assert } from "@positron/core";
 
 import type { Composed } from "./composed";
-import type { DescriptorExtract } from "./descriptor";
-import type { DescriptorOmit } from "./descriptor";
-import type { DescriptorPick } from "./descriptor";
-import type { Element } from "./element";
-import type { ElementKeyOf } from "./element";
+import type {
+  DescriptorExtract,
+  DescriptorOmit,
+  DescriptorPick,
+} from "./descriptor";
+import type { Element, ElementKeyOf } from "./element";
 import type { Modifier } from "./modifier";
 
 export type ElementProps = { format: string; value: string };

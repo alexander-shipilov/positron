@@ -1,10 +1,11 @@
 /**
- * The {@link StringLike} type represents a type which can be used within literal
- * templates.
+ * The {@link StringLike} type represents a type which can be used within
+ * literal templates.
  *
  * @example
  * ```ts
- *  type Template<T extends StringLikeValue, U extends StringLikeValue> = `${T}-${U}`;
+ *  type Template<T extends StringLikeValue, U extends StringLikeValue> =
+ *   `${T}-${U}`;
  *
  *  type Foo = Template<"foo", 1>
  *  // type Foo = "foo-1"

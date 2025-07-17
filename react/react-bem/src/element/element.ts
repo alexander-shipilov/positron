@@ -1,7 +1,6 @@
 import type { EmptyObject } from "@positron/core";
 
-import type { Descriptor } from "../descriptor";
-import type { DescriptorOwner } from "../descriptor";
+import type { Descriptor, DescriptorOwner } from "../descriptor";
 
 import type { ElementData } from "./element-data";
 import type { ElementType } from "./element-type";

@@ -1,7 +1,6 @@
 import type { PropertyName } from "@positron/core";
 
-import type { Prefix } from "../prefix";
-import type { PrefixSeparator } from "../prefix";
+import type { Prefix, PrefixSeparator } from "../prefix";
 
 /**
  * @public

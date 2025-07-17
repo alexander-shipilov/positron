@@ -1,5 +1,4 @@
-import type { ClassNameProp } from "@positron/react-core";
-import type { ClassName } from "@positron/react-core";
+import type { ClassName, ClassNameProp } from "@positron/react-core";
 
 import type { DescriptorData } from "../descriptor";
 

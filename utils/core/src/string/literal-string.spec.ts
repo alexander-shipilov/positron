@@ -1,5 +1,4 @@
-import { it } from "@jest/globals";
-import { describe } from "@jest/globals";
+import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
 import type { LiteralString } from "./literal-string";

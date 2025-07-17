@@ -1,6 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -20,12 +19,12 @@
     "rootDir": "./../../../../../src/",
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext",
+    "target": "esnext"
   },
   "include": [
     "./../../../../../src/"
   ],
   "exclude": [
-    "./../../../../../lib/",
+    "./../../../../../lib/"
   ]
 }
