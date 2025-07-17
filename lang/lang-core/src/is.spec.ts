@@ -2,7 +2,7 @@ import { describe, expect, it } from "@jest/globals";
 
 import type { TypeGuard } from "./type-guard";
 
-import { tests, values } from "./is.fixtures";
+import { tests, values } from "./@fixtures/is";
 
 describe.each([...tests].map(([func, type]) => [func.name, func, type]))(
   `%s(value)`,
