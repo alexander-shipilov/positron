@@ -411,6 +411,11 @@
     {
       "packageName": "@positron/react-bem",
       "projectFolder": "react/react-bem",
+    },
+    /** utils */
+    {
+      "packageName": "@positron/prefixed",
+      "projectFolder": "utils/prefixed",
     }
   ],
 }

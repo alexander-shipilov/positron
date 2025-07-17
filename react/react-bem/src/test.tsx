@@ -2,6 +2,7 @@ import type {
   EmptyObject,
   PropertyKeyOf,
   PropertyName,
+  UnknownObject,
 } from "@positron/lang-core";
 import type { ReactComponent } from "@positron/react-core";
 
@@ -11,20 +12,6 @@ import type { Element } from "./element";
 import type { Modifier } from "./modifier";
 
 type CmpVal = { prop1: string; prop2: number };
-
-type Flatten<T> = T extends object
-  ? {
-      [K in keyof T]: T[K] extends object
-        ? { [P in keyof T[K] as `${K & string}-${P & string}`]: T[K][P] }
-        : { [P in K]: T[K] };
-    }[keyof T] extends infer U
-    ? { [P in keyof U]: U[P] }
-    : never
-  : T;
-
-type T1 = Flatten<{ foo: { a: 1, b: 2 }, bar: { a: 1 } }>
-
-declare const t: T1;
 
 type DescribedKey<TProps> = PropertyKeyOf<TProps, PropertyName>;
 
@@ -38,6 +25,16 @@ type DescriptorKeyOf<TValue> = DescribedKey<DescriptorOf<TValue>>;
 type DescriptorOf<TValue> =
   TValue extends DescriptorClass<infer Props> ? Props : never;
 
+type Flatten<T> = UnionToIntersection<
+  {
+    [K in keyof T]: {
+      [P in keyof T[K] as `${K & string}-${P & string}`]: T[K][P];
+    };
+  }[keyof T] extends infer U
+    ? { [P in keyof U]: U[P] }
+    : EmptyObject
+>;
+
 type ModVal = "bar" | "foo";
 
 type OmitDescriptors<TProps> = {
@@ -46,11 +43,11 @@ type OmitDescriptors<TProps> = {
     : TProps[K];
 };
 
-type PickDescribed<TProps> = {
+type PickDescribed<TProps> = Flatten<{
   [Key in DescribedKey<TProps> as TProps[Key] extends DescriptorClass
     ? Key
     : never]: DescriptorOf<TProps[Key]>;
-};
+}>;
 
 type Prefixed<TPrefix extends PropertyName, TProps> = {
   [Key in DescribedKey<TProps> as `${TPrefix}-${Key}`]: TProps[Key];
@@ -66,9 +63,13 @@ type Props = {
   value: string;
 };
 
-declare const p1: Flatten<PickDescribed<Props>>;
+type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
+  x: infer I,
+) => void
+  ? I
+  : never;
 
-p1.
+declare const p1: PickDescribed<Props>;
 
 type PickDescribedProps<TProps> = {
   [Key in keyof PickDescribed<TProps>]: TProps[Key] extends DescriptorClass<

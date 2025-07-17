@@ -12,13 +12,13 @@ import {
 } from "../__fixtures__";
 
 describe("ReactComponent<TProps>", () => {
-  test("`ReactComponent` should match any function components", () => {
+  it("`ReactComponent` should match any function components", () => {
     expectTypeOf(MockComponentNoArgs).toExtend<ReactComponent>();
     expectTypeOf<typeof MockComponent>().toExtend<ReactComponent>();
     expectTypeOf(MockComponentMemo).toExtend<ReactComponent>();
   });
 
-  test("`ReactComponent<TProps>` should match function components with `TProps` argument", () => {
+  it("`ReactComponent<TProps>` should match function components with `TProps` argument", () => {
     expectTypeOf(MockComponentNoArgs).toExtend<ReactComponent<EmptyObject>>();
     expectTypeOf(MockComponent).toExtend<ReactComponent<MockComponentProps>>();
     expectTypeOf(MockComponentMemo).toExtend<
@@ -26,7 +26,7 @@ describe("ReactComponent<TProps>", () => {
     >();
   });
 
-  test("should not match non-component functions", () => {
+  it("should not match non-component functions", () => {
     expectTypeOf<() => EmptyObject>().not.toExtend<ReactComponent>();
   });
 });
