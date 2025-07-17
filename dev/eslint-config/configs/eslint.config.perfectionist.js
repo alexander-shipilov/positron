@@ -89,7 +89,7 @@ export default [
             "object",
             "unknown",
           ],
-          internalPatter: ["^@/", "^@positron/"],
+          internalPattern: ["^@/", "^@positron/"],
           newlinesBetween: "always",
         },
       ],

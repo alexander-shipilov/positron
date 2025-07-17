@@ -1,6 +1,7 @@
-import type { PropertyName } from "@positron/core";
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
+
+import type { PropertyName } from "@positron/core";
 
 import type { Prefix } from "./prefix";
 

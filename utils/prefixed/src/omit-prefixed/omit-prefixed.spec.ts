@@ -1,6 +1,7 @@
-import type { EmptyObject } from "@positron/core";
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
+
+import type { EmptyObject } from "@positron/core";
 
 import type { OmitPrefixed } from "./omit-prefixed";
 

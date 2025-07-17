@@ -1,5 +1,6 @@
-import type { EmptyObject } from "@positron/core";
 import { expectTypeOf } from "expect-type";
+
+import type { EmptyObject } from "@positron/core";
 
 import type { MockComponentProps } from "../@fixtures";
 import {
