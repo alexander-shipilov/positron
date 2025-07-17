@@ -1,4 +1,5 @@
 import type { Descriptor } from "./descriptor";
+import type { DescriptorData } from "./descriptor-data";
 import type { DescriptorOwner } from "./descriptor-owner";
 import type { DescriptorType } from "./descriptor-type";
 
@@ -11,7 +12,7 @@ import type { DescriptorType } from "./descriptor-type";
 export type DescriptorDataOf<TValue> =
   TValue extends DescriptorOwner<
     unknown,
-    Descriptor<DescriptorType, infer Data>
+    Descriptor<DescriptorType, infer Data extends DescriptorData>
   >
     ? Data
     : never;

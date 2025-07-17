@@ -5,14 +5,14 @@ import type { DescriptorDataOf } from "./descriptor-data-of";
 import type { DescriptorType } from "./descriptor-type";
 
 /**
- * The {@link PickDescriptors} type return an object containing descriptors
+ * The {@link DescriptorPick} type return an object containing descriptors
  * for the specified `TProps`
  *
  * @typeParam TProps - Properties to collect descriptors' data.
  *
  * @public
  */
-export type PickDescriptors<
+export type DescriptorPick<
   TProps,
   TType extends DescriptorType = DescriptorType,
 > = {

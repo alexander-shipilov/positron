@@ -1,10 +1,9 @@
-import type { EmptyObject } from "@positron/core";
+import type { EmptyObject, UnknownObject } from "@positron/core";
 
-import type { Descriptor } from "../descriptor";
 import type { DescriptorOwner } from "../descriptor";
 
 import type { ComposedData } from "./composed-data";
-import type { ComposedType } from "./composed-type";
+import type { ComposedDescriptor } from "./composed-descriptor";
 import type { ComposedValue } from "./composed-value";
 
 /**
@@ -17,11 +16,10 @@ import type { ComposedValue } from "./composed-value";
  */
 export type Composed<
   TValue extends ComposedValue,
-  TDescriptorProps = EmptyObject,
+  TDescriptorProps extends UnknownObject = EmptyObject,
 > = DescriptorOwner<
   TValue,
-  Descriptor<
-    ComposedType,
+  ComposedDescriptor<
     ComposedData<TValue, TDescriptorProps> //
   >
 >;

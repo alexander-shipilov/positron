@@ -1,3 +1,8 @@
+import type { EmptyObject } from "@positron/core";
+import type { UnknownObject } from "@positron/core";
+
+import type { DescriptorValue } from "./descriptor-value";
+
 /**
  * Type {@link DescriptorData} represents properties stored in descriptor.
  *
@@ -5,7 +10,10 @@
  *
  * @public
  */
-export type DescriptorData<TValue, TProps> = {
+export type DescriptorData<
+  TValue extends DescriptorValue = DescriptorValue,
+  TProps extends UnknownObject = EmptyObject,
+> = {
   /**
    * Descriptor properties.
    */

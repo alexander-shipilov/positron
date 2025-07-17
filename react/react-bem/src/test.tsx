@@ -6,17 +6,17 @@ import type { ReactComponent } from "@positron/react-core";
 import { assert } from "@positron/core";
 
 import type { Composed } from "./composed";
-import type { ExtractDescriptors } from "./descriptor";
-import type { DescriptorKeyOf } from "./descriptor";
-import type { OmitDescriptors } from "./descriptor";
-import type { PickDescriptors } from "./descriptor";
+import type { DescriptorExtract } from "./descriptor";
+import type { DescriptorOmit } from "./descriptor";
+import type { DescriptorPick } from "./descriptor";
 import type { Element } from "./element";
+import type { ElementKeyOf } from "./element";
 import type { Modifier } from "./modifier";
 
 export type ElementProps = { format: string; value: string };
 
 export type FactoryRender<TProps> = (
-  ...args: ExtractDescriptors<TProps>
+  ...args: DescriptorExtract<TProps>
 ) => Promise<ReactNode> | ReactNode;
 
 export type FooComposedValue = { prop1: string; prop2: number };
@@ -34,7 +34,7 @@ export type FooProps<TElementProps = EmptyObject> = {
 
 export class Factory<TProps, TDefaults = EmptyObject> {
   protected elements = new Map<
-    DescriptorKeyOf<TProps>,
+    ElementKeyOf<TProps>,
     [ReactComponent, unknown]
   >();
 
@@ -46,15 +46,15 @@ export class Factory<TProps, TDefaults = EmptyObject> {
     const { render } = this;
 
     return () => {
-      const props = {} as OmitDescriptors<TProps>;
-      const descs = {} as PickDescriptors<TProps>;
+      const props = {} as DescriptorOmit<TProps>;
+      const descs = {} as DescriptorPick<TProps>;
 
       return render(props, descs);
     };
   }
 
   public element<
-    TName extends Exclude<DescriptorKeyOf<TProps>, keyof TDefaults>,
+    TName extends Exclude<ElementKeyOf<TProps>, keyof TDefaults>,
     TElementProps,
     TElementDefaults extends Partial<TElementProps>,
   >(
@@ -70,7 +70,7 @@ export class Factory<TProps, TDefaults = EmptyObject> {
 
 export function FooFactory<TElementProps extends ElementProps>() {
   return new Factory(function Foo(
-    ...[{ value }, { composed, element }]: ExtractDescriptors<
+    ...[{ value }, { composed, element }]: DescriptorExtract<
       FooProps<TElementProps>
     >
   ): ReactNode {

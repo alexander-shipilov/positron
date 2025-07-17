@@ -1,3 +1,4 @@
+import type { DescriptorData } from "./descriptor-data";
 import type { DescriptorType } from "./descriptor-type";
 
 /**
@@ -15,7 +16,7 @@ declare const type: unique symbol;
  */
 export declare class Descriptor<
   TType extends DescriptorType = DescriptorType,
-  TData = unknown,
+  TData extends DescriptorData = DescriptorData,
 > {
   /**
    * Properties of descriptor.
