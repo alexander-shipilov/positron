@@ -1,5 +1,4 @@
 import type { Any } from "@positron/core";
-
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 

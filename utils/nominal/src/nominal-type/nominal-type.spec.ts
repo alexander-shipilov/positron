@@ -1,9 +1,9 @@
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
-import type { NominalType } from "./nominal-type";
-
 import { type IntegerType, type IntegerType2 } from "../@fixtures/nominal";
+
+import type { NominalType } from "./nominal-type";
 
 describe("NominalType<T, U>", () => {
   it("`NominalType<T, U1>` should be equal `NominalType<T, U2>`", () => {

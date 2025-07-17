@@ -2,6 +2,7 @@
   "private": false,
   "name": "@positron/react-core",
   "version": "0.0.1",
+  "type": "module",
   "license": "MIT",
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
   "repository": "git@github.com:alexander-shipilov/positron.git",

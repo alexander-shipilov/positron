@@ -1,15 +1,14 @@
 import type { EmptyObject } from "@positron/core";
-
 import { expectTypeOf } from "expect-type";
 
-import type { MockComponentProps } from "../__fixtures__";
-import type { ReactComponent } from "./react-component";
-
+import type { MockComponentProps } from "../@fixtures";
 import {
   MockComponent,
   MockComponentMemo,
   MockComponentNoArgs,
-} from "../__fixtures__";
+} from "../@fixtures";
+
+import type { ReactComponent } from "./react-component";
 
 describe("ReactComponent<TProps>", () => {
   it("`ReactComponent` should match any function components", () => {

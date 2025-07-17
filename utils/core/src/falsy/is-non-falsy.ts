@@ -1,5 +1,4 @@
 import type { NonFalsy } from "./non-falsy";
-
 import { isFalsy } from "./is-falsy";
 
 /**

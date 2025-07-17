@@ -1,8 +1,8 @@
 import { isFunctionType, isObjectType } from "@positron/core-types";
 
-import type { Reference } from "./reference";
-
 import { typeOf } from "../type-of";
+
+import type { Reference } from "./reference";
 
 /**
  * The {@link isReference} function determines whether the passed

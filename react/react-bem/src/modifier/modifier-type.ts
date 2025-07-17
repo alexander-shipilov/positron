@@ -1,7 +1,7 @@
 /**
  * @internal
  */
-declare const ModifierType: unique symbol;
+export const ModifierType = Symbol("modifier");
 
 /**
  * The {@link ComposedType} represents a type of modifier property descriptor.

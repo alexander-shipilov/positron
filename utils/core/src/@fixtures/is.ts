@@ -12,7 +12,6 @@ import {
 } from "@positron/core-types";
 
 import type { TypeGuard } from "../type-guard";
-
 import { isBigint } from "../bigint";
 import { isBoolean } from "../boolean";
 import { isFunction } from "../function";

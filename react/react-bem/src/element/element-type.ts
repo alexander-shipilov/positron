@@ -1,7 +1,7 @@
 /**
  * @internal
  */
-declare const ElementType: unique symbol;
+export const ElementType = Symbol("element");
 
 /**
  * The {@link ElementType} represents a type of element property descriptor.

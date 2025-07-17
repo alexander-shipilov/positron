@@ -8,6 +8,7 @@ import type {
   NaturalType,
   Positive,
 } from "../@fixtures/nominal";
+
 import type { Nominal } from "./nominal";
 
 describe("Nominal<T, U>", () => {

@@ -5,9 +5,9 @@ import {
   isStringType,
 } from "@positron/core-types";
 
-import type { BigintLike } from "./bigint-like";
-
 import { typeOf } from "../type-of";
+
+import type { BigintLike } from "./bigint-like";
 
 /**
  * The {@link isBigintLike} function is a type-guard function that determines

@@ -1,7 +1,9 @@
 import type { EmptyObject } from "@positron/core";
 
 import type { Descriptor } from "../descriptor";
-import type { ElementProps } from "./element-props";
+import type { DescriptorOwner } from "../descriptor";
+
+import type { ElementData } from "./element-data";
 import type { ElementType } from "./element-type";
 import type { ElementValue } from "./element-value";
 
@@ -19,8 +21,10 @@ export type Element<
   TValue extends ElementValue,
   TComponentProps = EmptyObject,
   TDescriptorProps = EmptyObject,
-> = Descriptor<
+> = DescriptorOwner<
   TValue,
-  ElementProps<TComponentProps> & TDescriptorProps,
-  ElementType //
+  Descriptor<
+    ElementType,
+    ElementData<TValue, TComponentProps, TDescriptorProps>
+  >
 >;

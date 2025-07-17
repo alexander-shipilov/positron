@@ -1,96 +1,89 @@
-import type {
-  EmptyObject,
-  PropertyKeyOf,
-  PropertyName,
-} from "@positron/lang-core";
+import React from "react";
+
+import type { EmptyObject } from "@positron/core";
+import type { ReactNode } from "@positron/react-core";
 import type { ReactComponent } from "@positron/react-core";
+import { assert } from "@positron/core";
 
 import type { Composed } from "./composed";
-import type { Descriptor, DescriptorClass } from "./descriptor";
+import type { ExtractDescriptors } from "./descriptor";
+import type { DescriptorKeyOf } from "./descriptor";
+import type { OmitDescriptors } from "./descriptor";
+import type { PickDescriptors } from "./descriptor";
 import type { Element } from "./element";
 import type { Modifier } from "./modifier";
 
-type CmpVal = { prop1: string; prop2: number };
+export type ElementProps = { format: string; value: string };
 
-type DescribedKey<TProps> = PropertyKeyOf<TProps, PropertyName>;
+export type FactoryRender<TProps> = (
+  ...args: ExtractDescriptors<TProps>
+) => Promise<ReactNode> | ReactNode;
 
-type DescribedKeyOf<
-  TPrefix extends string,
-  TValue,
-> = `${TPrefix}-${DescriptorKeyOf<TValue>}`;
+export type FooComposedValue = { prop1: string; prop2: number };
 
-type DescriptorKeyOf<TValue> = DescribedKey<DescriptorOf<TValue>>;
+export type FooElementProps = { className?: string; value: string };
 
-type DescriptorOf<TValue> =
-  TValue extends DescriptorClass<infer Props> ? Props : never;
+export type FooModifierValue = "bar" | "foo";
 
-type Flatten<T> = UnionToIntersection<
-  {
-    [K in keyof T]: {
-      [P in keyof T[K] as `${K & string}-${P & string}`]: T[K][P];
+export type FooProps<TElementProps = EmptyObject> = {
+  composed: Composed<FooComposedValue>;
+  element: Element<string, FooElementProps, TElementProps>;
+  modifier: Modifier<() => FooModifierValue, { ted: string }>;
+  value?: string;
+};
+
+export class Factory<TProps, TDefaults = EmptyObject> {
+  protected elements = new Map<
+    DescriptorKeyOf<TProps>,
+    [ReactComponent, unknown]
+  >();
+
+  constructor(protected readonly render: FactoryRender<TProps>) {
+    assert(render.name, "Named function expected");
+  }
+
+  public create(): ReactComponent {
+    const { render } = this;
+
+    return () => {
+      const props = {} as OmitDescriptors<TProps>;
+      const descs = {} as PickDescriptors<TProps>;
+
+      return render(props, descs);
     };
-  }[keyof T] extends infer U
-    ? { [P in keyof U]: U[P] }
-    : EmptyObject
->;
+  }
 
-type ModVal = "bar" | "foo";
+  public element<
+    TName extends Exclude<DescriptorKeyOf<TProps>, keyof TDefaults>,
+    TElementProps,
+    TElementDefaults extends Partial<TElementProps>,
+  >(
+    name: TName,
+    Component: ReactComponent<TElementProps>,
+    defaults?: NoInfer<TElementDefaults>,
+  ): Factory<TProps, Record<TName, TElementDefaults> & TDefaults> {
+    this.elements.set(name, [Component, defaults]);
 
-type OmitDescriptors<TProps> = {
-  [K in keyof TProps]: TProps[K] extends Descriptor<infer Value>
-    ? Value
-    : TProps[K];
-};
+    return this;
+  }
+}
 
-type PickDescribed<TProps> = Flatten<{
-  [Key in DescribedKey<TProps> as TProps[Key] extends DescriptorClass
-    ? Key
-    : never]: DescriptorOf<TProps[Key]>;
-}>;
+export function FooFactory<TElementProps extends ElementProps>() {
+  return new Factory(function Foo(
+    ...[{ value }, { composed, element }]: ExtractDescriptors<
+      FooProps<TElementProps>
+    >
+  ): ReactNode {
+    return (
+      <element.Component
+        {...element.props}
+        className={element.className}
+        value={value ?? composed.value.prop1}
+      />
+    );
+  });
+}
 
-type Prefixed<TPrefix extends PropertyName, TProps> = {
-  [Key in DescribedKey<TProps> as `${TPrefix}-${Key}`]: TProps[Key];
-};
+const Foo = FooFactory<ElementProps>();
 
-type PrefixedDescriptorProps<TValue> =
-  TValue extends DescriptorClass<infer Props> ? Props : never;
-
-type Props = {
-  cmp: Composed<CmpVal>;
-  el: Element<string, { value: string }>;
-  mod: Modifier<ModVal, { ted: string }>;
-  value: string;
-};
-
-type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
-  x: infer I,
-) => void
-  ? I
-  : never;
-
-declare const p1: PickDescribed<Props>;
-
-type PickDescribedProps<TProps> = {
-  [Key in keyof PickDescribed<TProps>]: TProps[Key] extends DescriptorClass<
-    infer Props
-  >
-    ? Props
-    : EmptyObject;
-};
-
-type PickDescriptors<TProps> = {
-  [Key in keyof PickDescribed<TProps>]: TProps[Key] extends Descriptor<
-    infer Value,
-    infer Props
-  >
-    ? Props & { value: Value }
-    : never;
-};
-
-declare const p2: PickDescriptors<Props>;
-
-declare const p3: OmitDescriptors<Props>;
-
-type Block<TParent, TProps> = TProps & {
-  Component: ReactComponent<TParent>;
-};
+Foo.element("element", (props: ElementProps) => void props, {}); //

@@ -19,6 +19,7 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@positron/core": "workspace:*",
+    "@positron/prefixed": "workspace:*",
     "@positron/react-core": "workspace:*"
   },
   "devDependencies": {

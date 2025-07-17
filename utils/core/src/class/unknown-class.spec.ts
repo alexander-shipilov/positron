@@ -2,6 +2,7 @@ import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
 import type { Any } from "../any";
+
 import type { UnknownClass } from "./unknown-class";
 
 describe("UnknownClass", () => {

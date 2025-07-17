@@ -6,3 +6,4 @@ export * from "./optional";
 export * from "./partial-optional";
 export * from "./pick";
 export * from "./required-non-optional";
+export * from "./union-to-intersection";

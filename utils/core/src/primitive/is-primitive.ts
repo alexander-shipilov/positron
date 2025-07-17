@@ -6,11 +6,11 @@ import {
   isStringType,
   isSymbolType,
   isUndefinedType,
-} from "@positron/lang-type";
-
-import type { Primitive } from "./primitive";
+} from "@positron/core-types";
 
 import { typeOf } from "../type-of";
+
+import type { Primitive } from "./primitive";
 
 /**
  * The {@link isPrimitive} function determines whether the passed

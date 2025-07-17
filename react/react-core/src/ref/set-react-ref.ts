@@ -1,5 +1,4 @@
 import type { Nullable } from "@positron/core";
-
 import { isFunction, isObject } from "@positron/core";
 
 import type { ReactRef } from "./react-ref";

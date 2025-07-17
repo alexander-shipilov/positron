@@ -1,4 +1,5 @@
 import type { UnknownObject } from "../object";
+
 import type { PropertyKeyOf } from "./property-key-of";
 import type { PropertyName } from "./property-name";
 

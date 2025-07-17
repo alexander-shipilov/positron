@@ -1,5 +1,4 @@
 import type { EmptyObject } from "@positron/core";
-
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 

@@ -1,13 +1,29 @@
-import type { EmptyObject } from "@positron/core";
-
-import type { DescriptorClass } from "./descriptor-class";
 import type { DescriptorType } from "./descriptor-type";
 
 /**
- *
+ * @internal
  */
-export type Descriptor<
-  TValue,
-  TProps = EmptyObject,
+declare const data: unique symbol;
+
+/**
+ * @internal
+ */
+declare const type: unique symbol;
+
+/**
+ * @internal
+ */
+export declare class Descriptor<
   TType extends DescriptorType = DescriptorType,
-> = DescriptorClass<TProps, TType> & TValue;
+  TData = unknown,
+> {
+  /**
+   * Properties of descriptor.
+   */
+  private readonly [data]: TData;
+
+  /**
+   * Type of descriptor.
+   */
+  private readonly [type]: TType;
+}

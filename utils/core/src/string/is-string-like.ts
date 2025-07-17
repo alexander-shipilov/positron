@@ -7,9 +7,9 @@ import {
   isUndefinedType,
 } from "@positron/core-types";
 
-import type { StringLike } from "./string-like";
-
 import { typeOf } from "../type-of";
+
+import type { StringLike } from "./string-like";
 
 /**
  * Function {@link isStringLike} checks if the passed {@link maybeStringLike}

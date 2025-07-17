@@ -2,6 +2,7 @@ import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
 import type { Integer, Natural, Positive } from "../@fixtures/nominal";
+
 import type { OmitNominal } from "./omit-nominal";
 
 describe("OmitNominal<T>", () => {

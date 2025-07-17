@@ -1,7 +1,7 @@
 /**
  * @internal
  */
-declare const ComposedType: unique symbol;
+export const ComposedType = Symbol("composed");
 
 /**
  * The {@link ComposedType} represents a type of composed property descriptor.

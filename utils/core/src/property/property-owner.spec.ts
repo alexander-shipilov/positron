@@ -4,6 +4,7 @@ import { expectTypeOf } from "expect-type";
 import type { Any } from "../any";
 import type { EmptyObject } from "../object";
 import type { Optional } from "../utility";
+
 import type { PropertyOwner } from "./property-owner";
 
 describe("PropertyOwner<K, V>", () => {

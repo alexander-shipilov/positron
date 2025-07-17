@@ -1,6 +1,6 @@
 import type { UnknownObject } from "../object";
-import type { PropertyKeyOf } from "./property-key-of";
 
+import type { PropertyKeyOf } from "./property-key-of";
 import { propertyNames } from "./property-names";
 import { propertySymbols } from "./property-symbols";
 

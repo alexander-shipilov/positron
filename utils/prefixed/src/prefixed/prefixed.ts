@@ -1,6 +1,7 @@
 import type { UnknownObject } from "@positron/core";
 
 import type { Prefix } from "../prefix";
+
 import type { PrefixedKey } from "./prefixed-key";
 
 /**

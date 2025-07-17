@@ -115,6 +115,9 @@ importers:
       '@positron/core':
         specifier: workspace:*
         version: link:../../utils/core
+      '@positron/prefixed':
+        specifier: workspace:*
+        version: link:../../utils/prefixed
       '@positron/react-core':
         specifier: workspace:*
         version: link:../react-core

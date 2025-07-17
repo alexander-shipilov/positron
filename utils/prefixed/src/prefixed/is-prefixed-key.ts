@@ -1,9 +1,9 @@
 import { isString } from "@positron/core";
 
 import type { Prefix } from "../prefix";
-import type { PrefixedKey } from "./prefixed-key";
-
 import { PREFIX_SEPARATOR } from "../prefix";
+
+import type { PrefixedKey } from "./prefixed-key";
 
 /**
  * @public

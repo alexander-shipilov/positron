@@ -1,8 +1,8 @@
 import { isObjectType } from "@positron/core-types";
 
-import type { UnknownObject } from "./unknown-object";
-
 import { typeOf } from "../type-of";
+
+import type { UnknownObject } from "./unknown-object";
 
 /**
  * The {@link isObject} function determines whether the passed

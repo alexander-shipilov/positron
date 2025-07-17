@@ -1,4 +1,4 @@
 export * from "./modifier";
-export * from "./modifier-props";
+export * from "./modifier-data";
 export * from "./modifier-type";
 export * from "./modifier-value";

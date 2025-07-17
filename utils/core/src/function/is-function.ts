@@ -1,8 +1,8 @@
 import { isFunctionType } from "@positron/core-types";
 
-import type { UnknownFunction } from "./unknown-function";
-
 import { typeOf } from "../type-of";
+
+import type { UnknownFunction } from "./unknown-function";
 
 /**
  * The {@link isFunction} function is a type-guard function that determines

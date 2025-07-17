@@ -1,11 +1,9 @@
 import type { UnknownObject } from "@positron/core";
-
 import { propertyKeys } from "@positron/core";
 
 import type { Prefix } from "../prefix";
 import type { UnprefixedKey } from "../prefixed";
 import type { PrefixedKey } from "../prefixed";
-
 import { isPrefixedKey } from "../prefixed";
 
 /**

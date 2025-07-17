@@ -1,3 +1,4 @@
+export * from "./class-name";
 export * from "./component";
 export * from "./dom";
 export * from "./events";

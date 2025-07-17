@@ -1,5 +1,4 @@
 import type { PropertyKeyOf } from "../property";
-
 import { hasOwnProperty } from "../property";
 
 /**

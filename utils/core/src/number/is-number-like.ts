@@ -5,9 +5,9 @@ import {
   isStringType,
 } from "@positron/core-types";
 
-import type { NumberLike } from "./number-like";
-
 import { typeOf } from "../type-of";
+
+import type { NumberLike } from "./number-like";
 
 /**
  * The {@link isNumberLike} function is a type-guard function that determines
