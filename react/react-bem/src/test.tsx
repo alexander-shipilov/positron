@@ -2,7 +2,6 @@ import type {
   EmptyObject,
   PropertyKeyOf,
   PropertyName,
-  UnknownObject,
 } from "@positron/lang-core";
 import type { ReactComponent } from "@positron/react-core";
 

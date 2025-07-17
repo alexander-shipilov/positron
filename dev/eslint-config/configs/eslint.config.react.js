@@ -8,5 +8,10 @@ export default [
       // We use `perfectionist` to sort all
       "react/jsx-sort-props": "off",
     },
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
   },
 ];

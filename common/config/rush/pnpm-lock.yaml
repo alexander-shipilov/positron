@@ -110,131 +110,11 @@ importers:
         specifier: ~29.4.0
         version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
 
-  ../../lang/lang-array:
-    dependencies:
-      '@positron/lang-core':
-        specifier: workspace:*
-        version: link:../lang-core
-    devDependencies:
-      '@jest/globals':
-        specifier: ~30.0.4
-        version: 30.0.4
-      '@positron/node-rig':
-        specifier: workspace:*
-        version: link:../../dev/node-rig
-      '@rushstack/heft':
-        specifier: ~0.74.0
-        version: 0.74.0(@types/node@24.0.14)
-      eslint:
-        specifier: ^9.31.0
-        version: 9.31.0
-      expect-type:
-        specifier: ^1.2.2
-        version: 1.2.2
-      jest:
-        specifier: ~30.0.4
-        version: 30.0.4(@types/node@24.0.14)
-      ts-jest:
-        specifier: ~29.4.0
-        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
-  ../../lang/lang-core:
-    dependencies:
-      '@positron/lang-type':
-        specifier: workspace:*
-        version: link:../lang-type
-    devDependencies:
-      '@jest/globals':
-        specifier: ~30.0.4
-        version: 30.0.4
-      '@positron/node-rig':
-        specifier: workspace:*
-        version: link:../../dev/node-rig
-      '@rushstack/heft':
-        specifier: ~0.74.0
-        version: 0.74.0(@types/node@24.0.14)
-      eslint:
-        specifier: ^9.31.0
-        version: 9.31.0
-      expect-type:
-        specifier: ^1.2.2
-        version: 1.2.2
-      jest:
-        specifier: ~30.0.4
-        version: 30.0.4(@types/node@24.0.14)
-      ts-jest:
-        specifier: ~29.4.0
-        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
-  ../../lang/lang-nominal:
-    dependencies:
-      '@positron/lang-array':
-        specifier: workspace:*
-        version: link:../lang-array
-    devDependencies:
-      '@jest/globals':
-        specifier: ~30.0.4
-        version: 30.0.4
-      '@positron/node-rig':
-        specifier: workspace:*
-        version: link:../../dev/node-rig
-      '@rushstack/heft':
-        specifier: ~0.74.0
-        version: 0.74.0(@types/node@24.0.14)
-      eslint:
-        specifier: ^9.31.0
-        version: 9.31.0
-      expect-type:
-        specifier: ^1.2.2
-        version: 1.2.2
-      jest:
-        specifier: ~30.0.4
-        version: 30.0.4(@types/node@24.0.14)
-      ts-jest:
-        specifier: ~29.4.0
-        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
-  ../../lang/lang-type:
-    devDependencies:
-      '@jest/globals':
-        specifier: ~30.0.4
-        version: 30.0.4
-      '@positron/node-rig':
-        specifier: workspace:*
-        version: link:../../dev/node-rig
-      '@rushstack/heft':
-        specifier: ~0.74.0
-        version: 0.74.0(@types/node@24.0.14)
-      eslint:
-        specifier: ^9.31.0
-        version: 9.31.0
-      expect-type:
-        specifier: ^1.2.2
-        version: 1.2.2
-      jest:
-        specifier: ~30.0.4
-        version: 30.0.4(@types/node@24.0.14)
-      ts-jest:
-        specifier: ~29.4.0
-        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
   ../../react/react-bem:
     dependencies:
-      '@positron/lang-core':
+      '@positron/core':
         specifier: workspace:*
-        version: link:../../lang/lang-core
+        version: link:../../utils/core
       '@positron/react-core':
         specifier: workspace:*
         version: link:../react-core
@@ -272,12 +152,12 @@ importers:
 
   ../../react/react-core:
     dependencies:
-      '@positron/lang-core':
+      '@positron/core':
         specifier: workspace:*
-        version: link:../../lang/lang-core
-      '@positron/lang-nominal':
+        version: link:../../utils/core
+      '@positron/nominal':
         specifier: workspace:*
-        version: link:../../lang/lang-nominal
+        version: link:../../utils/nominal
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4
@@ -310,11 +190,131 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
+  ../../utils/array:
+    dependencies:
+      '@positron/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      '@jest/globals':
+        specifier: ~30.0.4
+        version: 30.0.4
+      '@positron/node-rig':
+        specifier: workspace:*
+        version: link:../../dev/node-rig
+      '@rushstack/heft':
+        specifier: ~0.74.0
+        version: 0.74.0(@types/node@24.0.14)
+      eslint:
+        specifier: ^9.31.0
+        version: 9.31.0
+      expect-type:
+        specifier: ^1.2.2
+        version: 1.2.2
+      jest:
+        specifier: ~30.0.4
+        version: 30.0.4(@types/node@24.0.14)
+      ts-jest:
+        specifier: ~29.4.0
+        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+  ../../utils/core:
+    dependencies:
+      '@positron/core-types':
+        specifier: workspace:*
+        version: link:../core-types
+    devDependencies:
+      '@jest/globals':
+        specifier: ~30.0.4
+        version: 30.0.4
+      '@positron/node-rig':
+        specifier: workspace:*
+        version: link:../../dev/node-rig
+      '@rushstack/heft':
+        specifier: ~0.74.0
+        version: 0.74.0(@types/node@24.0.14)
+      eslint:
+        specifier: ^9.31.0
+        version: 9.31.0
+      expect-type:
+        specifier: ^1.2.2
+        version: 1.2.2
+      jest:
+        specifier: ~30.0.4
+        version: 30.0.4(@types/node@24.0.14)
+      ts-jest:
+        specifier: ~29.4.0
+        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+  ../../utils/core-types:
+    devDependencies:
+      '@jest/globals':
+        specifier: ~30.0.4
+        version: 30.0.4
+      '@positron/node-rig':
+        specifier: workspace:*
+        version: link:../../dev/node-rig
+      '@rushstack/heft':
+        specifier: ~0.74.0
+        version: 0.74.0(@types/node@24.0.14)
+      eslint:
+        specifier: ^9.31.0
+        version: 9.31.0
+      expect-type:
+        specifier: ^1.2.2
+        version: 1.2.2
+      jest:
+        specifier: ~30.0.4
+        version: 30.0.4(@types/node@24.0.14)
+      ts-jest:
+        specifier: ~29.4.0
+        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+  ../../utils/nominal:
+    dependencies:
+      '@positron/array':
+        specifier: workspace:*
+        version: link:../array
+    devDependencies:
+      '@jest/globals':
+        specifier: ~30.0.4
+        version: 30.0.4
+      '@positron/node-rig':
+        specifier: workspace:*
+        version: link:../../dev/node-rig
+      '@rushstack/heft':
+        specifier: ~0.74.0
+        version: 0.74.0(@types/node@24.0.14)
+      eslint:
+        specifier: ^9.31.0
+        version: 9.31.0
+      expect-type:
+        specifier: ^1.2.2
+        version: 1.2.2
+      jest:
+        specifier: ~30.0.4
+        version: 30.0.4(@types/node@24.0.14)
+      ts-jest:
+        specifier: ~29.4.0
+        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
   ../../utils/prefixed:
     dependencies:
-      '@positron/lang-core':
+      '@positron/core':
         specifier: workspace:*
-        version: link:../../lang/lang-core
+        version: link:../core
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4

@@ -1,4 +1,4 @@
-import { isFunction } from "@positron/lang-core";
+import { isFunction } from "@positron/core";
 
 import type { ReactComponent } from "./react-component";
 

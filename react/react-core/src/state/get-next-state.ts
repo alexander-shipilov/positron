@@ -1,6 +1,6 @@
 import type React from "react";
 
-import { isFunction } from "@positron/lang-core";
+import { isFunction } from "@positron/core";
 
 /**
  * The {@link getNextState} returns next state

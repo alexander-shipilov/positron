@@ -1,6 +1,6 @@
-import type { UnknownObject } from "@positron/lang-core";
+import type { UnknownObject } from "@positron/core";
 
-import { propertyKeys } from "@positron/lang-core";
+import { propertyKeys } from "@positron/core";
 
 import type { Prefix } from "../prefix";
 import type { UnprefixedKey } from "../prefixed";

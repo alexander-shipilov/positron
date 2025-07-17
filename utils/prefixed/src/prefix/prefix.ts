@@ -1,4 +1,4 @@
-import type { PropertyName } from "@positron/lang-core";
+import type { PropertyName } from "@positron/core";
 
 /**
  * @public

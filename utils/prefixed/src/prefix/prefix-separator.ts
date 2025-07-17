@@ -6,4 +6,4 @@ export type PrefixSeparator = "-";
 /**
  * @public
  */
-export const PrefixSeparator: PrefixSeparator = "-";
+export const PREFIX_SEPARATOR: PrefixSeparator = "-";

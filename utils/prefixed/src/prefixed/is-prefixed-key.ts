@@ -1,9 +1,9 @@
-import { isString } from "@positron/lang-core";
+import { isString } from "@positron/core";
 
 import type { Prefix } from "../prefix";
 import type { PrefixedKey } from "./prefixed-key";
 
-import { PrefixSeparator } from "../prefix";
+import { PREFIX_SEPARATOR } from "../prefix";
 
 /**
  * @public
@@ -30,6 +30,6 @@ export function isPrefixedKey<TPrefix extends Prefix>(
   return (
     isString(key) &&
     key.length > prefix.length &&
-    key.startsWith(`${prefix}${PrefixSeparator}`)
+    key.startsWith(`${prefix}${PREFIX_SEPARATOR}`)
   );
 }

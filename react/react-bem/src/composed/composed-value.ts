@@ -1,3 +1,3 @@
-import type { UnknownObject } from "@positron/lang-core";
+import type { UnknownObject } from "@positron/core";
 
 export type ComposedValue = UnknownObject;

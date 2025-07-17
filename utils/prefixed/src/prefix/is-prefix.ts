@@ -1,4 +1,4 @@
-import { isString } from "@positron/lang-core";
+import { isString } from "@positron/core";
 
 import type { Prefix } from "./prefix";
 

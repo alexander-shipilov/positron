@@ -1,4 +1,4 @@
-import type { EmptyObject } from "@positron/lang-core";
+import type { EmptyObject } from "@positron/core";
 
 import type { Descriptor } from "../descriptor";
 import type { ElementProps } from "./element-props";

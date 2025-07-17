@@ -1,4 +1,4 @@
-import type { PropertyName } from "@positron/lang-core";
+import type { PropertyName } from "@positron/core";
 
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
