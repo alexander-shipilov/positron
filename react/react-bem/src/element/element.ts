@@ -1,9 +1,8 @@
+import type { Nullish } from "@positron/core";
 import type { EmptyObject } from "@positron/core";
 
-import type { Descriptor, DescriptorOwner } from "../descriptor";
-
-import type { ElementData } from "./element-data";
-import type { ElementType } from "./element-type";
+import type { ElementComponent } from "./element-component";
+import type { ElementDescriptor } from "./element-descriptor";
 import type { ElementValue } from "./element-value";
 
 /**
@@ -18,12 +17,5 @@ import type { ElementValue } from "./element-value";
  */
 export type Element<
   TValue extends ElementValue,
-  TComponentProps = EmptyObject,
-  TDescriptorProps = EmptyObject,
-> = DescriptorOwner<
-  TValue,
-  Descriptor<
-    ElementType,
-    ElementData<TValue, TComponentProps, TDescriptorProps>
-  >
->;
+  TComponent extends Nullish<ElementComponent> = Nullish<ElementComponent>,
+> = ElementDescriptor<TValue, TComponent, EmptyObject>;

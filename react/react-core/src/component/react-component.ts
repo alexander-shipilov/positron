@@ -1,4 +1,5 @@
-import type { FunctionComponent } from "react";
+import type { ReactComponentProps } from "./react-component-props";
+import type { ReactComponentReturn } from "./react-component-return";
 
 /**
  * The {@link ReactComponent} type represents supported components.
@@ -10,4 +11,21 @@ import type { FunctionComponent } from "react";
  *
  * @public
  */
-export type ReactComponent<TProps = never> = FunctionComponent<TProps>;
+export interface ReactComponent<TProps extends ReactComponentProps = never> {
+  (props: TProps): ReactComponentReturn;
+
+  /**
+   * Used in debugging messages. You might want to set it explicitly if you
+   * want to display a different name for debugging purposes.
+   *
+   * @example
+   * ```tsx
+   *  const MyComponent: FC = () => {
+   *    return <div>Hello!</div>
+   *  }
+   *
+   *  MyComponent.displayName = 'MyAwesomeComponent'
+   * ```
+   */
+  displayName?: string | undefined;
+}

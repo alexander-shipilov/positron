@@ -1,4 +1,4 @@
-import type { DescriptorPick } from "./descriptor-pick";
+import type { DescriptorKeyOf } from "./descriptor-key-of";
 
 /**
  * The {@link DescriptorOmit} type return the passed `TProps` without
@@ -8,4 +8,4 @@ import type { DescriptorPick } from "./descriptor-pick";
  *
  * @public
  */
-export type DescriptorOmit<TProps> = Omit<TProps, keyof DescriptorPick<TProps>>;
+export type DescriptorOmit<TProps> = Omit<TProps, DescriptorKeyOf<TProps>>;

@@ -1,9 +1,4 @@
-import type { EmptyObject } from "@positron/core";
-
-import type { Descriptor, DescriptorOwner } from "../descriptor";
-
-import type { ModifierData } from "./modifier-data";
-import type { ModifierType } from "./modifier-type";
+import type { ModifierDescriptor } from "./modifier-descriptor";
 import type { ModifierValue } from "./modifier-value";
 
 /**
@@ -14,13 +9,4 @@ import type { ModifierValue } from "./modifier-value";
  *
  * @public
  */
-export type Modifier<
-  TValue extends ModifierValue,
-  TDescriptorProps = EmptyObject,
-> = DescriptorOwner<
-  TValue,
-  Descriptor<
-    ModifierType,
-    ModifierData<TValue, TDescriptorProps> //
-  >
->;
+export type Modifier<TValue extends ModifierValue> = ModifierDescriptor<TValue>;

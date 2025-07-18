@@ -1,5 +1,18 @@
-import type { DescriptorPick } from "../descriptor";
+import type { PropertyNameOf } from "@positron/core";
 
-import type { ModifierType } from "./modifier-type";
+import type { ModifierDescriptor } from "./modifier-descriptor";
+import type { ModifierPropsOf } from "./modifier-props-of";
 
-export type ModifierPick<TProps> = DescriptorPick<TProps, ModifierType>;
+/**
+ * The {@link ModifierPick} type return an object containing modifier
+ * descriptors for the specified `TProps`
+ *
+ * @typeParam TProps - Properties to collect modifier descriptors' data from.
+ *
+ * @public
+ */
+export type ModifierPick<TProps> = {
+  [Key in PropertyNameOf<TProps> as TProps[Key] extends ModifierDescriptor
+    ? Key
+    : never]: ModifierPropsOf<TProps[Key]>;
+};

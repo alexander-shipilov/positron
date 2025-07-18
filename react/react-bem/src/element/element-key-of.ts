@@ -1,3 +1,5 @@
+import type { PropertyNameOf } from "@positron/core";
+
 import type { ElementPick } from "./element-pick";
 
-export type ElementKeyOf<TProps> = keyof ElementPick<TProps>;
+export type ElementKeyOf<TProps> = PropertyNameOf<ElementPick<TProps>>;

@@ -1,3 +1,5 @@
+import type { PropertyNameOf } from "@positron/core";
+
 import type { ModifierPick } from "./modifier-pick";
 
-export type ModifierKeyOf<TProps> = keyof ModifierPick<TProps>;
+export type ModifierKeyOf<TProps> = PropertyNameOf<ModifierPick<TProps>>;

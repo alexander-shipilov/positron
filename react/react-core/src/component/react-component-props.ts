@@ -1,9 +1,9 @@
-import type { ReactComponent } from "./react-component";
+import type { UnknownObject } from "@positron/core";
 
 /**
+ * The {@link ReactComponentProps} represents a properties accepted by the
+ * {@link ReactComponent}.
+ *
  * @public
- * Type {@link ReactComponentProps} infers component props from the passed
- *   `TComponent`
  */
-export type ReactComponentProps<TComponent extends ReactComponent> =
-  TComponent extends ReactComponent<infer TProps> ? TProps : never;
+export type ReactComponentProps = UnknownObject;

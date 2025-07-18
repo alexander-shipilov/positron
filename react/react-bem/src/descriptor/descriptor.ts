@@ -1,30 +1,18 @@
-import type { DescriptorData } from "./descriptor-data";
-import type { DescriptorType } from "./descriptor-type";
+import type { DescriptorProps } from "./descriptor-props";
 
 /**
  * @internal
  */
-declare const data: unique symbol;
-
-/**
- * @internal
- */
-declare const type: unique symbol;
+declare const props: unique symbol;
 
 /**
  * @internal
  */
 export declare class Descriptor<
-  TType extends DescriptorType = DescriptorType,
-  TData extends DescriptorData = DescriptorData,
+  TProps extends DescriptorProps = DescriptorProps,
 > {
   /**
    * Properties of descriptor.
    */
-  private readonly [data]: TData;
-
-  /**
-   * Type of descriptor.
-   */
-  private readonly [type]: TType;
+  private readonly [props]: TProps;
 }

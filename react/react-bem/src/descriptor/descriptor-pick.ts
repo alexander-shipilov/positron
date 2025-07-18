@@ -1,8 +1,7 @@
 import type { PropertyNameOf } from "@positron/core";
 
 import type { Descriptor } from "./descriptor";
-import type { DescriptorDataOf } from "./descriptor-data-of";
-import type { DescriptorType } from "./descriptor-type";
+import type { DescriptorPropsOf } from "./descriptor-props-of";
 
 /**
  * The {@link DescriptorPick} type return an object containing descriptors
@@ -12,11 +11,8 @@ import type { DescriptorType } from "./descriptor-type";
  *
  * @public
  */
-export type DescriptorPick<
-  TProps,
-  TType extends DescriptorType = DescriptorType,
-> = {
-  [Key in PropertyNameOf<TProps> as TProps[Key] extends Descriptor<TType>
+export type DescriptorPick<TProps> = {
+  [Key in PropertyNameOf<TProps> as TProps[Key] extends Descriptor
     ? Key
-    : never]: DescriptorDataOf<TProps[Key]>;
+    : never]: DescriptorPropsOf<TProps[Key]>;
 };
