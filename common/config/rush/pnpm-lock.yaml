@@ -115,6 +115,9 @@ importers:
       '@positron/core':
         specifier: workspace:*
         version: link:../../utils/core
+      '@positron/nominal':
+        specifier: workspace:*
+        version: link:../../utils/nominal
       '@positron/prefixed':
         specifier: workspace:*
         version: link:../../utils/prefixed
@@ -225,37 +228,6 @@ importers:
         version: 5.8.3
 
   ../../utils/core:
-    dependencies:
-      '@positron/core-types':
-        specifier: workspace:*
-        version: link:../core-types
-    devDependencies:
-      '@jest/globals':
-        specifier: ~30.0.4
-        version: 30.0.4
-      '@positron/node-rig':
-        specifier: workspace:*
-        version: link:../../dev/node-rig
-      '@rushstack/heft':
-        specifier: ~0.74.0
-        version: 0.74.0(@types/node@24.0.14)
-      eslint:
-        specifier: ^9.31.0
-        version: 9.31.0
-      expect-type:
-        specifier: ^1.2.2
-        version: 1.2.2
-      jest:
-        specifier: ~30.0.4
-        version: 30.0.4(@types/node@24.0.14)
-      ts-jest:
-        specifier: ~29.4.0
-        version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
-  ../../utils/core-types:
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4

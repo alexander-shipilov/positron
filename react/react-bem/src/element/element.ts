@@ -1,8 +1,7 @@
-import type { Nullish } from "@positron/core";
 import type { EmptyObject } from "@positron/core";
+import type { ReactComponent } from "@positron/react-core/src";
 
-import type { ElementComponent } from "./element-component";
-import type { ElementDescriptor } from "./element-descriptor";
+import type { ElementOwner } from "./element-owner";
 import type { ElementValue } from "./element-value";
 
 /**
@@ -17,5 +16,5 @@ import type { ElementValue } from "./element-value";
  */
 export type Element<
   TValue extends ElementValue,
-  TComponent extends Nullish<ElementComponent> = Nullish<ElementComponent>,
-> = ElementDescriptor<TValue, TComponent, EmptyObject>;
+  TComponent extends ReactComponent = ReactComponent,
+> = ElementOwner<TValue, TComponent, EmptyObject>;

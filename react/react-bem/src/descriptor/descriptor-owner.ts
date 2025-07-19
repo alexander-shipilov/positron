@@ -1,6 +1,6 @@
-import type { Descriptor } from "./descriptor";
+import type { DescriptorClass } from "./descriptor-class";
 
 export type DescriptorOwner<
   TValue,
-  TDescriptor extends Descriptor,
+  TDescriptor extends DescriptorClass,
 > = TDescriptor & TValue;

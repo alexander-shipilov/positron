@@ -6,9 +6,9 @@
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
   "repository": "git@github.com:alexander-shipilov/positron.git",
   "type": "module",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
   "files": [
-    "lib"
+    "./lib/*"
   ],
   "scripts": {
     "_phase:build": "heft run --only build -- --clean",
@@ -16,9 +16,8 @@
     "build": "heft build --clean",
     "test": "heft test --clean"
   },
-  "types": "lib/index.d.ts",
+  "types": "./lib/index.d.ts",
   "dependencies": {
-    "@positron/core-types": "workspace:*"
   },
   "devDependencies": {
     "@jest/globals": "~30.0.4",
@@ -31,10 +30,7 @@
     "typescript": "^5.8.3"
   },
   "exports": {
-    ".": {
-      "types": "./lib/index.d.ts",
-      "default": "./lib/index.js"
-    },
+    ".":  "./lib/index.js",
     "./package.json": "./package.json"
   }
 }

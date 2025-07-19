@@ -1,16 +1,9 @@
-import type { UnknownObject } from "@positron/core";
-import type { PropertyName } from "@positron/core/src";
+import type { PropertyName, UnknownObject } from "@positron/core";
 import type { ReactComponentReturn } from "@positron/react-core";
-import type { ReactComponent } from "@positron/react-core";
 
-import type { DescriptorProps } from "../descriptor";
+import type { Descriptor } from "../descriptor";
 
 export type FactoryRender<
-  TBlockProps extends UnknownObject,
   TProps extends UnknownObject,
-  TDescriptors extends Record<PropertyName, DescriptorProps>,
-> = (
-  Component: ReactComponent<TBlockProps>,
-  props: TProps,
-  descriptors: TDescriptors,
-) => ReactComponentReturn;
+  TDescriptors extends Record<PropertyName, Descriptor>,
+> = (props: TProps, descriptors: TDescriptors) => ReactComponentReturn;

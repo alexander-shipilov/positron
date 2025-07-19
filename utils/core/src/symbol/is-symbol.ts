@@ -1,5 +1,4 @@
-import { isSymbolType } from "@positron/core-types";
-
+import { isSymbolType } from "../symbol-type";
 import { typeOf } from "../type-of";
 
 /**

@@ -1,60 +1,40 @@
-import type { UnknownObject } from "@positron/core";
-import type { Nullish } from "@positron/core";
-import type { PropertyName } from "@positron/core";
-import type { ReactComponent } from "@positron/react-core";
+import type { Optional } from "@positron/core";
+import type {
+  ReactComponent,
+  ReactComponentReturn,
+} from "@positron/react-core";
 import { assert } from "@positron/core";
 
-import type { DescriptorProps } from "../descriptor";
+import type { FactoryComponentProps } from "./factory-component-props";
+import type { FactoryConfig } from "./factory-config";
 
-import type { FactoryRender } from "./factory-render";
-
-export class Factory<
-  TBlockProps extends UnknownObject,
-  TProps extends UnknownObject,
-  TDescriptors extends Record<PropertyName, DescriptorProps>,
-> {
-  public static create<
-    TBlockProps extends UnknownObject,
-    TProps extends UnknownObject,
-    TDescriptors extends Record<PropertyName, DescriptorProps>,
-  >(
-    render: FactoryRender<TBlockProps, TProps, TDescriptors>,
-  ): <UBlockProps extends TBlockProps>(
-    Component: ReactComponent<UBlockProps>,
-  ) => Factory<UBlockProps, TProps, TDescriptors> {
-    return <UBlockProps extends TBlockProps>(
-      Component: ReactComponent<UBlockProps>,
-    ) => new Factory(render).block(Component);
-  }
-
+export class Factory<TConfig extends FactoryConfig> {
   /**
-   *
    * @param render
-   * @param Block
    */
-  protected constructor(
-    protected readonly render: FactoryRender<TBlockProps, TProps, TDescriptors>,
-    protected readonly Block: Nullish<ReactComponent<TBlockProps>> = null,
+  constructor(
+    protected readonly render: (props: TConfig) => ReactComponentReturn,
   ) {
     assert(render.name, "Named function expected");
   }
 
-  /**
-   *
-   * @param Component
-   */
-  public block<UBlockProps extends TBlockProps>(
-    Component: ReactComponent<UBlockProps>,
-  ): Factory<UBlockProps, TProps, TDescriptors> {
-    return new Factory(
-      this.render as FactoryRender<UBlockProps, TProps, TDescriptors>,
-      Component,
-    );
+  public compose<TComponent extends TConfig["Component"]>(
+    Component: TComponent,
+  ) {
+    type CurrConfig = TCurrConfig;
+
+    type NextConfig = FactoryConfig<
+      Optional<TComponent>,
+      CurrConfig["props"],
+      CurrConfig["descriptors"]
+    >;
+
+    return new Factory<TConfig, NextConfig>(this.render);
   }
 
-  public component(): ReactComponent {
-    return () => {
-      return null;
+  public create(): ReactComponent<FactoryComponentProps<TConfig, TCurrConfig>> {
+    return (props: FactoryComponentProps<TConfig, TCurrConfig>) => {
+      return void props;
     };
   }
 }

@@ -1,13 +1,10 @@
-import {
-  isBigintType,
-  isBooleanType,
-  isNullType,
-  isNumberType,
-  isStringType,
-  isUndefinedType,
-} from "@positron/core-types";
-
+import { isBigintType } from "../bigint-type";
+import { isBooleanType } from "../boolean-type";
+import { isNullType } from "../null-type";
+import { isNumberType } from "../number-type";
+import { isStringType } from "../string-type";
 import { typeOf } from "../type-of";
+import { isUndefinedType } from "../undefined-type";
 
 import type { StringLike } from "./string-like";
 

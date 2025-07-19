@@ -1,5 +1,4 @@
-import { isFunctionType } from "@positron/core-types";
-
+import { isFunctionType } from "../function-type";
 import { typeOf } from "../type-of";
 
 import type { UnknownFunction } from "./unknown-function";

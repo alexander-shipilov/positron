@@ -396,10 +396,6 @@
       "projectFolder": "utils/core",
     },
     {
-      "packageName": "@positron/core-types",
-      "projectFolder": "utils/core-types",
-    },
-    {
       "packageName": "@positron/nominal",
       "projectFolder": "utils/nominal",
     },

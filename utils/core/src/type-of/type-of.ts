@@ -1,4 +1,4 @@
-import { NullType } from "@positron/core-types";
+import { NULL_TYPE } from "../null-type";
 
 /**
  * The {@link typeOf} function returns the type the passed {@link value}.
@@ -8,5 +8,5 @@ import { NullType } from "@positron/core-types";
  * @public
  */
 export function typeOf(value: unknown): string {
-  return value === null ? NullType : typeof value;
+  return value === null ? NULL_TYPE : typeof value;
 }

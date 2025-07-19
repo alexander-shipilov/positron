@@ -1,5 +1,4 @@
-import { isObjectType } from "@positron/core-types";
-
+import { isObjectType } from "../object-type";
 import { typeOf } from "../type-of";
 
 import type { UnknownObject } from "./unknown-object";

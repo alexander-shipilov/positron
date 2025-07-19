@@ -1,4 +1,5 @@
 export * from "./class-name";
+export * from "./class-name-component";
 export * from "./class-name-prop";
 export * from "./class-name-props";
 export * from "./get-class-name";

@@ -1,5 +1,5 @@
-import { isFunctionType, isObjectType } from "@positron/core-types";
-
+import { isFunctionType } from "../function-type";
+import { isObjectType } from "../object-type";
 import { typeOf } from "../type-of";
 
 import type { Reference } from "./reference";

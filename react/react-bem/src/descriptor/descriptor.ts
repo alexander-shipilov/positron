@@ -1,18 +1,24 @@
-import type { DescriptorProps } from "./descriptor-props";
+import type { DescriptorType } from "./descriptor-type";
+import type { DescriptorValue } from "./descriptor-value";
 
 /**
- * @internal
+ * Type {@link Descriptor} represents properties stored in descriptor.
+ *
+ * @typeParam TProps - Props to store
+ *
+ * @public
  */
-declare const props: unique symbol;
-
-/**
- * @internal
- */
-export declare class Descriptor<
-  TProps extends DescriptorProps = DescriptorProps,
+export interface Descriptor<
+  TType extends DescriptorType = DescriptorType,
+  TValue extends DescriptorValue = DescriptorValue,
 > {
   /**
-   * Properties of descriptor.
+   * Descriptor type.
    */
-  private readonly [props]: TProps;
+  type: TType;
+
+  /**
+   * Descriptor value.
+   */
+  value: TValue;
 }

@@ -1,5 +1,6 @@
-import { isNumberType, isStringType, isSymbolType } from "@positron/core-types";
-
+import { isNumberType } from "../number-type";
+import { isStringType } from "../string-type";
+import { isSymbolType } from "../symbol-type";
 import { typeOf } from "../type-of";
 
 /**

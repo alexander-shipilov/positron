@@ -1,7 +1,11 @@
-import type { DescriptorKeyOf } from "./descriptor-key-of";
-import type { DescriptorPick } from "./descriptor-pick";
+import type { Descriptor } from "./descriptor";
+import type { DescriptorClass } from "./descriptor-class";
 
-export type DescriptorOf<
-  TProps,
-  TKey extends DescriptorKeyOf<TProps> = DescriptorKeyOf<TProps>,
-> = DescriptorPick<TProps>[TKey];
+/**
+ * The {@link DescriptorOf} type return descriptor data for the passed
+ * `TValue`.
+ *
+ * @typeParam TValue - The value to get descriptor props.
+ */
+export type DescriptorOf<TValue> =
+  TValue extends DescriptorClass<infer Data extends Descriptor> ? Data : never;

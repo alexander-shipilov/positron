@@ -1,40 +1,66 @@
 import React from "react";
 
-import type { ReactNode } from "@positron/react-core";
-import { ReactNever } from "@positron/react-core/src";
+import type { ReactComponent, ReactNode } from "@positron/react-core";
 
 import type { Block } from "./block";
-import type { BlockExtract } from "./block";
-import type { DescriptorExtract } from "./descriptor";
+import type { Composite } from "./composite";
 import type { Element } from "./element";
-import type { ElementComponent } from "./element";
+import type { FactoryConfig } from "./factory/factory-config";
 import type { Modifier } from "./modifier";
-import type { Object } from "./object";
 import { Factory } from "./factory/factory";
 
-export type ElementProps = { format?: string; value: string };
+export type ComponentProps1 = {
+  bar?: string;
+  children?: ReactNode;
+  foo?: number;
+};
 
-export type FactoryRender<TProps> = (
-  ...args: DescriptorExtract<TProps>
-) => Promise<ReactNode> | ReactNode;
+export type ComponentProps2 = {
+  children?: ReactNode;
+  foo?: number;
+};
 
 export type FooComponentProps = { children?: ReactNode };
 
-export type FooElementProps = { className?: string; value: string };
+export type FooData = {
+  prop1: string;
+  prop2: number;
+};
 
-export type FooModifierValue = "bar" | "foo";
+export type FooElementProps = {
+  test: number;
+  value: number;
+};
 
-export type FooObjectValue = { prop1: string; prop2: number };
+export type FooElementProps1 = {
+  format?: string;
+  test: number;
+  value: number;
+};
 
-/**
- *
- */
-export type FooProps = Block<
+export type FooModifier = "bar" | "foo";
+
+type FooProps = Block<
   FooComponentProps,
   {
-    element: Element<string, ElementComponent<FooElementProps>>;
-    modifier: Modifier<() => FooModifierValue>;
-    object: Object<FooObjectValue>;
+    /**
+     * Property tha should be rendered as an element.
+     */
+    child: Element<string, ReactComponent<FooElementProps>>;
+
+    /**
+     * Composite property.
+     */
+    data: Composite<FooData>;
+
+    /**
+     * Modifier
+     */
+    modifier: Modifier<() => FooModifier>;
+
+    /**
+     * Value.
+     */
     value: string;
   }
 >;
@@ -43,18 +69,22 @@ export type FooProps = Block<
  *
  * @constructor
  */
-export const FooFactory = Factory.create(function Foo(
-  ...[Component, { value }, { element }]: BlockExtract<FooProps>
-): ReactNode {
+export const FooFactory = new Factory(function Foo({
+  Component,
+  composites: { data },
+  elements: { child },
+  modifiers: { modifier },
+  props: { value, ...componentProps },
+}: FactoryConfig<FooProps>): ReactNode {
+  console.log(modifier.value);
+
   return (
-    <Component>
-      <element.Component {...element.props} value={value} />
+    <Component {...componentProps}>
+      <child.Component
+        {...child.props}
+        test={data.value.prop2}
+        value={parseFloat(value)}
+      />
     </Component>
   );
 });
-
-export function FooParent({ children }: FooComponentProps) {
-  return children;
-}
-
-FooFactory(ReactNever).component();

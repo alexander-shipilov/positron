@@ -1,5 +1,4 @@
-import { isBigintType } from "@positron/core-types";
-
+import { isBigintType } from "../bigint-type";
 import { typeOf } from "../type-of";
 
 /**

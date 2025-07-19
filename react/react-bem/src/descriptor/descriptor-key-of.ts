@@ -1,5 +1,5 @@
 import type { PropertyNameOf } from "@positron/core";
 
-import type { DescriptorPick } from "./descriptor-pick";
+import type { PickDescriptors } from "./pick-descriptors";
 
-export type DescriptorKeyOf<TProps> = PropertyNameOf<DescriptorPick<TProps>>;
+export type DescriptorKeyOf<TProps> = PropertyNameOf<PickDescriptors<TProps>>;

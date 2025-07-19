@@ -1,10 +1,7 @@
-import {
-  isBigintType,
-  isBooleanType,
-  isNumberType,
-  isStringType,
-} from "@positron/core-types";
-
+import { isBigintType } from "../bigint-type";
+import { isBooleanType } from "../boolean-type";
+import { isNumberType } from "../number-type";
+import { isStringType } from "../string-type";
 import { typeOf } from "../type-of";
 
 import type { NumberLike } from "./number-like";

@@ -1,13 +1,13 @@
 import { describe, expect, it } from "@jest/globals";
 
 import type { TypeGuard } from "./type-guard";
-import { tests, values } from "./@fixtures/is";
+import { isTypeTests, typesValues } from "./@fixtures/types";
 
-describe.each([...tests].map(([func, type]) => [func.name, func, type]))(
+describe.each([...isTypeTests].map(([func, type]) => [func.name, func, type]))(
   `%s(value)`,
   (_, func, type) => {
     it.each(
-      [...values.entries()].map(([value, valueType]) => [
+      [...typesValues.entries()].map(([value, valueType]) => [
         valueType === type,
         value,
       ]),

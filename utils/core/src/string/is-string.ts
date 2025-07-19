@@ -1,5 +1,4 @@
-import { isStringType } from "@positron/core-types";
-
+import { isStringType } from "../string-type";
 import { typeOf } from "../type-of";
 
 /**

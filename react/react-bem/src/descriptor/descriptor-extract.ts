@@ -1,10 +1,10 @@
-import type { DescriptorOmit } from "./descriptor-omit";
-import type { DescriptorPick } from "./descriptor-pick";
+import type { OmitDescriptors } from "./omit-descriptors";
+import type { PickDescriptors } from "./pick-descriptors";
 
 /**
  * The {@link DescriptorExtract} type returns a tuple of props and descriptors.
  */
 export type DescriptorExtract<TProps> = [
-  DescriptorOmit<TProps>,
-  DescriptorPick<TProps>,
+  OmitDescriptors<TProps>,
+  PickDescriptors<TProps>,
 ];

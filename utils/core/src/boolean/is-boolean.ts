@@ -1,5 +1,4 @@
-import { isBooleanType } from "@positron/core-types";
-
+import { isBooleanType } from "../boolean-type";
 import { typeOf } from "../type-of";
 
 /**
