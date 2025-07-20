@@ -1,4 +1,6 @@
-import type { CompositeOwner } from "./composite-owner";
+import type { Described } from "../descriptor";
+
+import type { CompositeDescriptor } from "./composite-descriptor";
 import type { CompositeValue } from "./composite-value";
 
 /**
@@ -9,4 +11,7 @@ import type { CompositeValue } from "./composite-value";
  *
  * @public
  */
-export type Composite<TValue extends CompositeValue> = CompositeOwner<TValue>;
+export type Composite<TValue extends CompositeValue> = Described<
+  TValue,
+  CompositeDescriptor<TValue>
+>;

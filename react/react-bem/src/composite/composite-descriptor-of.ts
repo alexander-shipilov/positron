@@ -1,4 +1,4 @@
-import type { DescriptorClass } from "../descriptor";
+import type { DescriptorNominal } from "../descriptor";
 
 import type { CompositeDescriptor } from "./composite-descriptor";
 
@@ -9,6 +9,6 @@ import type { CompositeDescriptor } from "./composite-descriptor";
  * @typeParam TValue - The value to get descriptor props.
  */
 export type CompositeDescriptorOf<TValue> =
-  TValue extends DescriptorClass<infer Descriptor extends CompositeDescriptor>
+  TValue extends DescriptorNominal<infer Descriptor extends CompositeDescriptor>
     ? Descriptor
     : never;

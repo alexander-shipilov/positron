@@ -1,4 +1,4 @@
-import type { UnknownObject } from "../object";
+import type { AnyObject } from "../object";
 
 import type { PropertyKeyOf } from "./property-key-of";
 import { propertyNames } from "./property-names";
@@ -15,7 +15,7 @@ import { propertySymbols } from "./property-symbols";
  *
  * @public
  */
-export function propertyKeys<TValue extends UnknownObject>(
+export function propertyKeys<TValue extends AnyObject>(
   object: TValue,
 ): PropertyKeyOf<TValue>[] {
   return [...propertyNames(object), ...propertySymbols(object)];

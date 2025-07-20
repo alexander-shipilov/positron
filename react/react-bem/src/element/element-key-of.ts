@@ -1,5 +1,8 @@
-import type { PropertyNameOf } from "@positron/core";
+import type { ReactProps } from "@positron/react-core";
+import type { ReactPropsKeyOf } from "@positron/react-core";
 
-import type { PickElements } from "./pick-elements";
+import type { ElementDescriptorsOf } from "./element-descriptors-of";
 
-export type ElementKeyOf<TProps> = PropertyNameOf<PickElements<TProps>>;
+export type ElementKeyOf<TProps extends ReactProps> = ReactPropsKeyOf<
+  ElementDescriptorsOf<TProps>
+>;

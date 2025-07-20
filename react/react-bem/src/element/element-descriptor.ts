@@ -1,5 +1,5 @@
-import type { UnknownObject } from "@positron/core";
-import type { ReactComponent } from "@positron/react-core/src";
+import type { ReactComponent } from "@positron/react-core";
+import type { ReactProps } from "@positron/react-core";
 
 import type { Descriptor } from "../descriptor";
 
@@ -18,9 +18,9 @@ import type { ElementValue } from "./element-value";
  */
 export interface ElementDescriptor<
   TValue extends ElementValue = ElementValue,
+  TProps extends ReactProps = ReactProps,
   TComponent extends ReactComponent = ReactComponent,
-  TProps extends UnknownObject = UnknownObject,
-> extends Descriptor<ElementType, TValue> {
+> extends Descriptor<ElementType> {
   /**
    * Element class name.
    */
@@ -32,7 +32,12 @@ export interface ElementDescriptor<
   Component: TComponent;
 
   /**
-   * Component props.
+   * Properties required to render element
    */
-  props: TProps;
+  props: Partial<TProps>;
+
+  /**
+   * Element value.
+   */
+  value: TValue;
 }

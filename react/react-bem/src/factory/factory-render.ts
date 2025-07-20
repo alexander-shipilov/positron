@@ -1,9 +1,13 @@
-import type { PropertyName, UnknownObject } from "@positron/core";
 import type { ReactComponentReturn } from "@positron/react-core";
+import type { ReactProps } from "@positron/react-core";
 
-import type { Descriptor } from "../descriptor";
+import type { BlockConfigsOf } from "../block";
 
-export type FactoryRender<
-  TProps extends UnknownObject,
-  TDescriptors extends Record<PropertyName, Descriptor>,
-> = (props: TProps, descriptors: TDescriptors) => ReactComponentReturn;
+/**
+ * The {@link FactoryRender} represents a function to render component.
+ *
+ * @public
+ */
+export type FactoryRender<TProps extends ReactProps> = (
+  config: BlockConfigsOf<TProps>,
+) => ReactComponentReturn;

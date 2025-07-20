@@ -112,6 +112,9 @@ importers:
 
   ../../react/react-bem:
     dependencies:
+      '@positron/array':
+        specifier: workspace:*
+        version: link:../../utils/array
       '@positron/core':
         specifier: workspace:*
         version: link:../../utils/core

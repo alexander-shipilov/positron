@@ -1,11 +1,11 @@
 import React from "react";
 
-import type { ReactComponent, ReactNode } from "@positron/react-core";
+import type { ReactNode } from "@positron/react-core";
 
 import type { Block } from "./block";
+import type { BlockConfigsOf } from "./block";
 import type { Composite } from "./composite";
 import type { Element } from "./element";
-import type { FactoryConfig } from "./factory/factory-config";
 import type { Modifier } from "./modifier";
 import { Factory } from "./factory/factory";
 
@@ -33,7 +33,7 @@ export type FooElementProps = {
 };
 
 export type FooElementProps1 = {
-  format?: string;
+  format: string;
   test: number;
   value: number;
 };
@@ -46,7 +46,7 @@ type FooProps = Block<
     /**
      * Property tha should be rendered as an element.
      */
-    child: Element<string, ReactComponent<FooElementProps>>;
+    child: Element<string, FooElementProps1>;
 
     /**
      * Composite property.
@@ -69,22 +69,26 @@ type FooProps = Block<
  *
  * @constructor
  */
-export const FooFactory = new Factory(function Foo({
-  Component,
+export const FooFactory = Factory.create(function Foo({
+  Block,
   composites: { data },
   elements: { child },
   modifiers: { modifier },
-  props: { value, ...componentProps },
-}: FactoryConfig<FooProps>): ReactNode {
-  console.log(modifier.value);
+  props: { value, ...blockProps },
+}: BlockConfigsOf<FooProps>) {
+  console.log(modifier);
 
   return (
-    <Component {...componentProps}>
+    <Block {...blockProps}>
       <child.Component
         {...child.props}
-        test={data.value.prop2}
+        test={data.prop2}
         value={parseFloat(value)}
       />
-    </Component>
+    </Block>
   );
 });
+
+const factory = FooFactory();
+
+void factory;

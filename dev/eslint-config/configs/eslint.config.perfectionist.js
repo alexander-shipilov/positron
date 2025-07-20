@@ -153,6 +153,7 @@ export default [
         "error",
         {
           groups: unionGroups,
+          ignoreCase: true,
         },
       ],
 

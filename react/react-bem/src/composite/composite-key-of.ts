@@ -1,5 +1,8 @@
-import type { PropertyNameOf } from "@positron/core";
+import type { ReactProps } from "@positron/react-core";
+import type { ReactPropsKeyOf } from "@positron/react-core";
 
-import type { PickComposites } from "./pick-composites";
+import type { CompositeDescriptorsOf } from "./composite-descriptors-of";
 
-export type CompositeKeyOf<TProps> = PropertyNameOf<PickComposites<TProps>>;
+export type CompositeKeyOf<TProps extends ReactProps> = ReactPropsKeyOf<
+  CompositeDescriptorsOf<TProps>
+>;

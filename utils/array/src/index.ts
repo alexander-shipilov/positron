@@ -5,3 +5,4 @@ export * from "./array-reverse";
 export * from "./array-tail";
 export * from "./array-type";
 export * from "./array-unique";
+export * from "./array-unique-tail";

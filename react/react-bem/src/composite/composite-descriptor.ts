@@ -11,6 +11,11 @@ import type { CompositeValue } from "./composite-value";
  *
  * @public
  */
-export type CompositeDescriptor<
+export interface CompositeDescriptor<
   TValue extends CompositeValue = CompositeValue,
-> = Descriptor<CompositeType, TValue>;
+> extends Descriptor<CompositeType> {
+  /**
+   * Composite value.
+   */
+  value: TValue;
+}

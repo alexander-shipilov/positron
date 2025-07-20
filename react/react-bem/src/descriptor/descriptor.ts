@@ -1,5 +1,4 @@
 import type { DescriptorType } from "./descriptor-type";
-import type { DescriptorValue } from "./descriptor-value";
 
 /**
  * Type {@link Descriptor} represents properties stored in descriptor.
@@ -8,17 +7,9 @@ import type { DescriptorValue } from "./descriptor-value";
  *
  * @public
  */
-export interface Descriptor<
-  TType extends DescriptorType = DescriptorType,
-  TValue extends DescriptorValue = DescriptorValue,
-> {
+export interface Descriptor<TType extends DescriptorType = DescriptorType> {
   /**
    * Descriptor type.
    */
   type: TType;
-
-  /**
-   * Descriptor value.
-   */
-  value: TValue;
 }

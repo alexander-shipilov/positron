@@ -1,7 +1,7 @@
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
-import { type IntegerType, type IntegerType2 } from "../@fixtures/nominal";
+import type { IntegerType, IntegerType2 } from "../@fixtures/nominal";
 
 import type { NominalType } from "./nominal-type";
 

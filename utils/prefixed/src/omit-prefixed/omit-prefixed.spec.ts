@@ -1,7 +1,7 @@
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
-import type { EmptyObject } from "@positron/core";
+import type { AnyObject } from "@positron/core";
 
 import type { OmitPrefixed } from "./omit-prefixed";
 
@@ -10,7 +10,7 @@ describe(`OmitPrefixed<P, T>`, () => {
 
   it("should omit properties from `T` which are prefixed by `P`", () => {
     type T = { "foo-bar": unknown };
-    expectTypeOf<OmitPrefixed<P, T>>().toEqualTypeOf<EmptyObject>();
+    expectTypeOf<OmitPrefixed<P, T>>().toEqualTypeOf<AnyObject>();
   });
 
   it("should preserve properties from `T` which are not prefixed by `P`", () => {

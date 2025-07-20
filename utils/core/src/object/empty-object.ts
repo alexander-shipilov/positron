@@ -1,12 +1,19 @@
+import type { AnyObject } from "./any-object";
+import type { TypedObject } from "./typed-object";
+
 /**
- * The {@link EmptyObject} literal type is a specific type that represents
- * a strictly empty plain object. This type replaces `{}` literal.
+ * The {@link EmptyObject} type represents.
+ *
+ * @typeParam TKey - Optional key
  *
  * @public
  */
-export type EmptyObject = Record<never, unknown>;
+export type EmptyObject<TKey extends PropertyKey = PropertyKey> = TypedObject<
+  never,
+  TKey
+>;
 
 /**
- * The {@link EmptyObject} represents an empty object.
+ * The {@link AnyObject} represents an empty object.
  */
-export const EmptyObject: EmptyObject = Object.freeze({});
+export const EMPTY_OBJECT: AnyObject = Object.freeze({});

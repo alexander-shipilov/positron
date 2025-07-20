@@ -16,6 +16,6 @@ describe("STRING_TYPE", () => {
   });
 
   it("should be `typeof <string>`", () => {
-    expect(typeof {}).toBe(STRING_TYPE);
+    expect(typeof "").toBe(STRING_TYPE);
   });
 });

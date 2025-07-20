@@ -1,4 +1,4 @@
-import type { EmptyObject } from "@positron/core/src";
+import type { ReactProps } from "@positron/react-core";
 
 /**
  * The {@link CompositeValue} type represents a type of value stored by the
@@ -6,4 +6,4 @@ import type { EmptyObject } from "@positron/core/src";
  *
  * @public
  */
-export type CompositeValue = EmptyObject;
+export type CompositeValue = ReactProps;

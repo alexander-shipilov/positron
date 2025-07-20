@@ -1,3 +1,5 @@
+import type { AnyObject } from "../object";
+
 import type { PropertyKeyOf } from "./property-key-of";
 import type { PropertySymbol } from "./property-symbol";
 
@@ -35,7 +37,7 @@ const isEnumerableProperty = (() => (target: unknown, key: PropertyKey) => {
  *
  * @public
  */
-export function propertySymbols<TValue>(
+export function propertySymbols<TValue extends AnyObject>(
   object: TValue,
 ): PropertyKeyOf<TValue, PropertySymbol>[] {
   return Object.getOwnPropertySymbols(object).filter((symbol) =>

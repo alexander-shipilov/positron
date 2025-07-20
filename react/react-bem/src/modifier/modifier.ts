@@ -1,4 +1,6 @@
-import type { ModifierOwner } from "./modifier-owner";
+import type { Described } from "../descriptor";
+
+import type { ModifierDescriptor } from "./modifier-descriptor";
 import type { ModifierValue } from "./modifier-value";
 
 /**
@@ -9,4 +11,7 @@ import type { ModifierValue } from "./modifier-value";
  *
  * @public
  */
-export type Modifier<TValue extends ModifierValue> = ModifierOwner<TValue>;
+export type Modifier<TValue extends ModifierValue> = Described<
+  TValue,
+  ModifierDescriptor<TValue>
+>;

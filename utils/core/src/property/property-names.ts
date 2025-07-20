@@ -1,4 +1,4 @@
-import type { UnknownObject } from "../object";
+import type { AnyObject } from "../object";
 
 import type { PropertyKeyOf } from "./property-key-of";
 import type { PropertyName } from "./property-name";
@@ -15,8 +15,8 @@ import type { PropertyName } from "./property-name";
  *
  * @public
  */
-export function propertyNames<TObject extends UnknownObject>(
+export function propertyNames<TObject extends AnyObject>(
   object: TObject,
 ): PropertyKeyOf<TObject, PropertyName>[] {
-  return Object.keys(object);
+  return Object.keys(object) as PropertyKeyOf<TObject, PropertyName>[];
 }

@@ -2,7 +2,7 @@ import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
 import type { Any } from "../any";
-import type { EmptyObject } from "../object";
+import type { AnyObject } from "../object";
 import type { Optional } from "../utility";
 
 import type { PropertyOwner } from "./property-owner";
@@ -51,14 +51,14 @@ describe("PropertyOwner<K, V>", () => {
     type K1 = "key";
     type V1 = never;
 
-    expectTypeOf<PropertyOwner<K1, V1>>().toEqualTypeOf<EmptyObject>();
+    expectTypeOf<PropertyOwner<K1, V1>>().toEqualTypeOf<AnyObject>();
 
     type K2 = never;
     type V2 = "value";
-    expectTypeOf<PropertyOwner<K2, V2>>().toEqualTypeOf<EmptyObject>();
+    expectTypeOf<PropertyOwner<K2, V2>>().toEqualTypeOf<AnyObject>();
 
     type K3 = never;
     type V3 = never;
-    expectTypeOf<PropertyOwner<K3, V3>>().toEqualTypeOf<EmptyObject>();
+    expectTypeOf<PropertyOwner<K3, V3>>().toEqualTypeOf<AnyObject>();
   });
 });

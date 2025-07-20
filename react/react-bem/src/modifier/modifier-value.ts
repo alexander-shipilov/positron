@@ -1,11 +1,9 @@
-import type { Nullish, PropertyName } from "@positron/core";
+import type { ModifierValueType } from "./modifier-value-type";
 
 /**
- * The {@link ModifierValue} type represents a type of value stored by the
+ * The {@link ModifierValue} type represents a value that can be described by
  * modifier descriptor.
  *
  * @public
  */
-export type ModifierValue<TValue extends PropertyName = PropertyName> =
-  | Nullish<TValue>
-  | ((props: never) => Nullish<TValue>);
+export type ModifierValue = ModifierValueType | (() => ModifierValueType);

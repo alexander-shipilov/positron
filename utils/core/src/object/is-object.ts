@@ -1,7 +1,7 @@
 import { isObjectType } from "../object-type";
 import { typeOf } from "../type-of";
 
-import type { UnknownObject } from "./unknown-object";
+import type { AnyObject } from "./any-object";
 
 /**
  * The {@link isObject} function determines whether the passed
@@ -14,6 +14,6 @@ import type { UnknownObject } from "./unknown-object";
  *
  * @public
  */
-export function isObject(maybeObject: unknown): maybeObject is UnknownObject {
+export function isObject(maybeObject: unknown): maybeObject is AnyObject {
   return isObjectType(typeOf(maybeObject));
 }

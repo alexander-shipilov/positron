@@ -1,4 +1,4 @@
-import type { DescriptorClass } from "../descriptor";
+import type { DescriptorNominal } from "../descriptor";
 
 import type { ModifierDescriptor } from "./modifier-descriptor";
 
@@ -9,6 +9,6 @@ import type { ModifierDescriptor } from "./modifier-descriptor";
  * @typeParam TValue - The value to get descriptor props.
  */
 export type ModifierDescriptorOf<TValue> =
-  TValue extends DescriptorClass<infer Descriptor extends ModifierDescriptor>
+  TValue extends DescriptorNominal<infer Descriptor extends ModifierDescriptor>
     ? Descriptor
     : never;

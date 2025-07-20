@@ -1,5 +1,5 @@
 /**
- * The {@link DescriptorType} represents a type of descriptor.
+ * The {@link DescriptorType} type represents a type of descriptor.
  *
  * @public
  */

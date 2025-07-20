@@ -1,4 +1,4 @@
-import { type NominalType as InternalNominalType } from "../@internal";
+import type { NominalType as InternalNominalType } from "../@internal";
 
 /**
  * The {@link NominalType} represents a type to describe {@link Nominal}.

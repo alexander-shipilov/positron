@@ -1,5 +1,5 @@
 import type { UnknownFunction } from "../function";
-import type { UnknownObject } from "../object";
+import type { AnyObject } from "../object";
 
 /**
  * The {@link Reference} type represents a reference type.
@@ -10,4 +10,4 @@ import type { UnknownObject } from "../object";
  *
  * @public
  */
-export type Reference = UnknownFunction | UnknownObject;
+export type Reference = AnyObject | UnknownFunction;

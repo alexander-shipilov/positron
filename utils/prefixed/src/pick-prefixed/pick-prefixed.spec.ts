@@ -1,7 +1,7 @@
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
-import type { EmptyObject } from "@positron/core";
+import type { AnyObject } from "@positron/core";
 
 import type { PickPrefixed } from "./pick-prefixed";
 
@@ -26,22 +26,22 @@ describe(`PickPrefixed<P, T>`, () => {
 
   it("should skip properties from `T` which are not prefixed by `P`", () => {
     type T1 = { foo: unknown };
-    expectTypeOf<PickPrefixed<P, T1>>().toEqualTypeOf<EmptyObject>();
+    expectTypeOf<PickPrefixed<P, T1>>().toEqualTypeOf<AnyObject>();
 
     type T2 = { bar: unknown };
-    expectTypeOf<PickPrefixed<P, T2>>().toEqualTypeOf<EmptyObject>();
+    expectTypeOf<PickPrefixed<P, T2>>().toEqualTypeOf<AnyObject>();
   });
 
   it("should skip symbols and indexes", () => {
     const foo = Symbol("");
 
     type T1 = { [foo]: unknown };
-    expectTypeOf<PickPrefixed<P, T1>>().toEqualTypeOf<EmptyObject>();
+    expectTypeOf<PickPrefixed<P, T1>>().toEqualTypeOf<AnyObject>();
 
     type T2 = { [index: number]: unknown };
-    expectTypeOf<PickPrefixed<P, T2>>().toEqualTypeOf<EmptyObject>();
+    expectTypeOf<PickPrefixed<P, T2>>().toEqualTypeOf<AnyObject>();
 
     type T3 = { [index: string]: unknown };
-    expectTypeOf<PickPrefixed<P, T3>>().toEqualTypeOf<EmptyObject>();
+    expectTypeOf<PickPrefixed<P, T3>>().toEqualTypeOf<AnyObject>();
   });
 });
