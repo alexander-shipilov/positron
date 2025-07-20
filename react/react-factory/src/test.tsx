@@ -92,7 +92,7 @@ export const FooFactory = Factory.create(function Foo([
 
 void FooFactory("Foo", ReactNever)
   .withElement("child", "", ReactNever)
-  .withModifier("modifier", null)
+  .withModifier("modifier", () => "foo")
   .withComposite("data", { prop1: "", prop2: 0 })
   .withClassNames({
     data: "sds",

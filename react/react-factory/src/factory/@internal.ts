@@ -1,10 +1,10 @@
 import type { ArrayType } from "@positron/array";
 import type { PartialOptional } from "@positron/core";
 import type {
+  ReactAnyProps,
+  ReactComponent,
   ReactProps,
   ReactPropsKey,
-  ReactAnyProps,
-  ReactComponent
 } from "@positron/react-core";
 
 import type { BlockDescriptorsOf } from "../block";

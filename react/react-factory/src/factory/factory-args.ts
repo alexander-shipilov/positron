@@ -5,6 +5,7 @@ import type { BlockConfigsOf } from "../block";
 import type { CompositeConfig } from "../composite";
 import type { ElementConfig } from "../element";
 import type { ModifierConfig } from "../modifier";
+import type { ModifierValueTypeOf } from "../modifier";
 
 /**
  * The {@link FactoryArgs} type creates factory function arguments.
@@ -40,5 +41,5 @@ type FactoryArgsElements_<TElements extends TypedObject<ElementConfig>> = {
  * @internal
  */
 type FactoryArgsModifiers_<TModifiers extends TypedObject<ModifierConfig>> = {
-  [K in keyof TModifiers]: TModifiers[K]["value"];
+  [K in keyof TModifiers]: ModifierValueTypeOf<TModifiers[K]["value"]>;
 };

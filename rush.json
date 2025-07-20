@@ -409,8 +409,8 @@
       "projectFolder": "react/react-core",
     },
     {
-      "packageName": "@positron/react-bem",
-      "projectFolder": "react/react-bem",
+      "packageName": "@positron/react-factory",
+      "projectFolder": "react/react-factory",
     }
   ],
 }

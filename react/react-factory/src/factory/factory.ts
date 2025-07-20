@@ -1,25 +1,25 @@
 import type {
-  ReactProps,
-  ReactPropsKeyOf,
-  ReactPropsKey,
+  ReactAnyProps,
   ReactComponent,
-  ReactAnyProps
+  ReactProps,
+  ReactPropsKey,
+  ReactPropsKeyOf,
 } from "@positron/react-core";
 import { assert } from "@positron/core";
 
 import type { Descriptor } from "../descriptor";
 import type { ModifierValueTypeOf } from "../modifier";
-import { modifier } from "../modifier";
 import { block } from "../block";
 import { composite } from "../composite";
 import { element } from "../element";
+import { modifier } from "../modifier";
 
 import type {
-  Elements,
+  ClassNames,
   ComponentProps,
-  Modifiers,
   Composites,
-  ClassNames
+  Elements,
+  Modifiers,
 } from "./@internal";
 import type { FactoryRender } from "./factory-render";
 
