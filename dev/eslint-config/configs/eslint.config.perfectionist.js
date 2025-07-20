@@ -28,13 +28,7 @@ const unionGroups = [
 export default [
   {
     ...perfectionist.configs["recommended-custom"],
-    settings: {
-      perfectionist: {
-        alphabet: alphabet,
-      },
-    },
-  },
-  {
+
     rules: {
       "@typescript-eslint/sort-type-constituents": "off",
 
@@ -164,12 +158,17 @@ export default [
         "error",
         {
           groups: unionGroups,
-          ignoreCase: true,
         },
       ],
 
       "sort-imports": "off",
       "sort-keys": "off",
+    },
+
+    settings: {
+      perfectionist: {
+        alphabet: alphabet,
+      },
     },
   },
 ];

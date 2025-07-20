@@ -5,7 +5,8 @@ import type { Descriptor } from "../descriptor";
 import type { BlockType } from "./block-type";
 
 /**
- * The {@link BlockConfig} represents a config for the passed `TDescriptor`.
+ * The {@link BlockConfig} represents a config for the passed
+ * `TDescriptor`.
  *
  * @typeParam TDescriptor - The block descriptor.
  */

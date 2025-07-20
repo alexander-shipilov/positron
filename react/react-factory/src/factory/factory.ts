@@ -8,7 +8,6 @@ import type {
 import { assert } from "@positron/core";
 
 import type { Descriptor } from "../descriptor";
-import type { ModifierValueTypeOf } from "../modifier";
 import { block } from "../block";
 import { composite } from "../composite";
 import { element } from "../element";
@@ -23,6 +22,9 @@ import type {
 } from "./@internal";
 import type { FactoryRender } from "./factory-render";
 
+/**
+ * Class to create components.
+ */
 export class Factory<
   TProps extends ReactProps,
   TDefaults extends [ReactPropsKey, Descriptor][],
@@ -43,33 +45,37 @@ export class Factory<
 
   /**
    * @param render
-   * @param descriptors
-   * @param classNames
+   * @param _descriptors
+   * @param _classNames
    */
   protected constructor(
     protected readonly render: FactoryRender<TProps>,
-    protected readonly descriptors: TDefaults,
-    protected readonly classNames?: ClassNames<TDefaults>,
+    protected readonly _descriptors: TDefaults,
+    protected readonly _classNames?: ClassNames<TDefaults>,
   ) {
     assert(render.name, "Named function expected");
   }
 
-  withClassNames(classNames: ClassNames<TDefaults>) {
-    return new Factory(this.render, this.descriptors, {
-      ...this.classNames,
+  classNames(classNames: ClassNames<TDefaults>) {
+    return new Factory(this.render, this._descriptors, {
+      ...this._classNames,
       ...classNames,
     });
   }
 
   /**
+   * The {@link composite} method initializes a composite object by default
+   * value.
    *
+   * @param key - The key
+   * @param value - Default value
    */
-  withComposite<
+  composite<
     TKey extends ReactPropsKeyOf<Composites<TProps, TDefaults>>,
     TValue extends Composites<TProps, TDefaults>[TKey]["value"],
   >(key: TKey, value: TValue) {
     return new Factory(this.render, [
-      ...this.descriptors,
+      ...this._descriptors,
       [key, composite(value)],
     ]);
   }
@@ -77,13 +83,13 @@ export class Factory<
   /**
    *
    */
-  withElement<
+  element<
     TKey extends ReactPropsKeyOf<Elements<TProps, TDefaults>>,
     TValue extends Elements<TProps, TDefaults>[TKey]["value"],
     TComponentProps extends Elements<TProps, TDefaults>[TKey]["props"],
   >(key: TKey, value: TValue, Component: ReactComponent<TComponentProps>) {
     return new Factory(this.render, [
-      ...this.descriptors,
+      ...this._descriptors,
       [key, element(value, Component)],
     ]);
   }
@@ -91,12 +97,12 @@ export class Factory<
   /**
    *
    */
-  withModifier<
+  modifier<
     TKey extends ReactPropsKeyOf<Modifiers<TProps, TDefaults>>,
     TValue extends Modifiers<TProps, TDefaults>[TKey]["value"],
-  >(key: TKey, value: ModifierValueTypeOf<TValue>) {
+  >(key: TKey, value: TValue) {
     return new Factory(this.render, [
-      ...this.descriptors,
+      ...this._descriptors,
       [key, modifier(value)],
     ]);
   }

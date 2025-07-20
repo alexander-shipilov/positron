@@ -91,10 +91,11 @@ export const FooFactory = Factory.create(function Foo([
 });
 
 void FooFactory("Foo", ReactNever)
-  .withElement("child", "", ReactNever)
-  .withModifier("modifier", () => "foo")
-  .withComposite("data", { prop1: "", prop2: 0 })
-  .withClassNames({
+  .element("child", "", ReactNever)
+  .modifier("modifier", () => "foo")
+  .composite("data", { prop1: "", prop2: 0 })
+  .classNames({
     data: "sds",
+    Foo: "1",
     modifier: "",
   });
