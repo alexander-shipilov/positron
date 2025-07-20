@@ -1,4 +1,4 @@
-import type { ReactProps } from "../props/react-props";
+import type { ReactProps } from "../react-props/react-props";
 
 /**
  * The {@link ReactVoid} component returns nothing.

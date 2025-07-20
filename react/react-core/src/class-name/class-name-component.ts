@@ -1,7 +1,7 @@
 import type { PartialOptional } from "@positron/core";
 
-import type { ReactComponent } from "../component";
-import type { ReactProps } from "../props";
+import type { ReactComponent } from "../react-component";
+import type { ReactProps } from "../react-props";
 
 import type { ClassNameProps } from "./class-name-props";
 

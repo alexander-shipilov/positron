@@ -1,4 +1,4 @@
-import type { ReactNode } from "../node";
+import type { ReactNode } from "../react-node";
 
 /**
  * The {@link ReactComponentReturn} represents a return value of the

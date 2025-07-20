@@ -1,4 +1,4 @@
-import type { ReactAnyProps } from "../props";
+import type { ReactAnyProps } from "../react-props";
 
 import type { ReactComponentReturn } from "./react-component-return";
 

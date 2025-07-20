@@ -1,4 +1,4 @@
-import type { ReactComponent } from "../component";
+import type { ReactComponent } from "../react-component";
 
 /**
  * The {@link ReactPropsOf} returns the properties of the passed

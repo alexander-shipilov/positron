@@ -1,6 +1,6 @@
 {
   "private": false,
-  "name": "@positron/react-bem",
+  "name": "@positron/react-factory",
   "version": "0.0.1",
   "license": "MIT",
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
