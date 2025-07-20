@@ -1,4 +1,5 @@
 export * from "./element";
+export * from "./element-config";
 export * from "./element-config-of";
 export * from "./element-configs-of";
 export * from "./element-descriptor";

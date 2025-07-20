@@ -1,10 +1,13 @@
 import React from "react";
 
+import type { Nullish } from "@positron/core/src";
 import type { ReactNode } from "@positron/react-core";
+import { ReactNever } from "@positron/react-core/src";
 
-import type { Block, BlockConfigsOf } from "./block";
+import type { Block } from "./block";
 import type { Composite } from "./composite";
 import type { Element } from "./element";
+import type { FactoryArgs } from "./factory/factory-args";
 import type { Modifier } from "./modifier";
 import { Factory } from "./factory/factory";
 
@@ -55,7 +58,7 @@ type FooProps = Block<
     /**
      * Modifier
      */
-    modifier: Modifier<() => FooModifier>;
+    modifier: Modifier<() => Nullish<FooModifier>>;
 
     /**
      * Value.
@@ -68,19 +71,18 @@ type FooProps = Block<
  *
  * @constructor
  */
-export const FooFactory = Factory.create(function Foo({
+export const FooFactory = Factory.create(function Foo([
   Block,
-  composites: { data },
-  elements: { child },
-  modifiers: { modifier },
-  props: { value, ...blockProps },
-}: BlockConfigsOf<FooProps>) {
+  { value, ...blockProps },
+  { child, data, modifier },
+]: FactoryArgs<FooProps>) {
   console.log(modifier);
 
   return (
     <Block {...blockProps}>
       <child.Component
         {...child.props}
+        format={"ddd"}
         test={data.prop2}
         value={parseFloat(value)}
       />
@@ -88,6 +90,11 @@ export const FooFactory = Factory.create(function Foo({
   );
 });
 
-const factory = FooFactory();
-
-void factory;
+void FooFactory("Foo", ReactNever)
+  .withElement("child", "", ReactNever)
+  .withModifier("modifier", null)
+  .withComposite("data", { prop1: "", prop2: 0 })
+  .withClassNames({
+    data: "sds",
+    modifier: "",
+  });

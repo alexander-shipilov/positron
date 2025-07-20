@@ -1,8 +1,9 @@
 import type { ReactComponent, ReactProps } from "@positron/react-core";
-import { EMPTY_OBJECT } from "@positron/core";
+import { EMPTY_OBJECT } from "@positron/core/src";
 
 import type { Described } from "../descriptor";
 
+import type { ElementConfig } from "./element-config";
 import type { ElementDescriptor } from "./element-descriptor";
 import type { ElementValue } from "./element-value";
 import { ELEMENT_TYPE } from "./element-type";
@@ -18,10 +19,7 @@ import { ELEMENT_TYPE } from "./element-type";
 export type Element<
   TValue extends ElementValue,
   TProps extends ReactProps,
-> = Described<
-  TValue,
-  ElementDescriptor<TValue, TProps, ReactComponent<TProps>>
->;
+> = Described<TValue, ElementDescriptor<TValue, TProps>>;
 
 /**
  * The {@link element} function creates block descriptor.
@@ -32,8 +30,9 @@ export type Element<
 export function element<TValue extends ElementValue, TProps extends ReactProps>(
   value: TValue,
   Component: ReactComponent<TProps>,
-): ElementDescriptor<TValue, TProps> {
+): ElementConfig<TValue, TProps> {
   return {
+    className: "",
     Component,
     props: EMPTY_OBJECT,
     type: ELEMENT_TYPE,

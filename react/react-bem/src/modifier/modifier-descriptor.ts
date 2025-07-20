@@ -2,7 +2,6 @@ import type { Descriptor } from "../descriptor";
 
 import type { ModifierType } from "./modifier-type";
 import type { ModifierValue } from "./modifier-value";
-import type { ModifierValueTypeOf } from "./modifier-value-type-of";
 
 /**
  * The {@link ModifierDescriptor} type represents a properties of the
@@ -23,5 +22,5 @@ export interface ModifierDescriptor<
   /**
    * Modifier value.
    */
-  value: ModifierValueTypeOf<TValue>;
+  value: TValue;
 }

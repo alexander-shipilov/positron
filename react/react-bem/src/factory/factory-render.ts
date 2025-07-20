@@ -1,12 +1,13 @@
-import type { ReactComponentReturn, ReactProps } from "@positron/react-core";
+import type { ReactComponentReturn } from "@positron/react-core";
+import type { ReactAnyProps } from "@positron/react-core/src";
 
-import type { BlockConfigsOf } from "../block";
+import type { FactoryArgs } from "./factory-args";
 
 /**
  * The {@link FactoryRender} represents a function to render component.
  *
  * @public
  */
-export type FactoryRender<TProps extends ReactProps> = (
-  config: BlockConfigsOf<TProps>,
+export type FactoryRender<TProps extends ReactAnyProps> = (
+  config: FactoryArgs<TProps>,
 ) => ReactComponentReturn;

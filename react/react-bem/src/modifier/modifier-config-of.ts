@@ -11,5 +11,5 @@ import type { ModifierDescriptor } from "./modifier-descriptor";
  */
 export type ModifierConfigOf<TValue> =
   TValue extends DescriptorNominal<infer Descriptor extends ModifierDescriptor>
-    ? ModifierConfig<Descriptor>
+    ? ModifierConfig<Descriptor["value"]>
     : never;

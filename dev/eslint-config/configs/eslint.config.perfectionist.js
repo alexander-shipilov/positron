@@ -1,8 +1,12 @@
 import perfectionist from "eslint-plugin-perfectionist";
+import { Alphabet } from "eslint-plugin-perfectionist/alphabet";
+
+const alphabet = Alphabet.generateRecommendedAlphabet() //
+  .placeAllWithCaseBeforeAllWithOtherCase("uppercase")
+  .getCharacters();
 
 const customGroups = {
   callbacks: "^on[A-Z]",
-  capitalized: "^[A-Z]",
 };
 
 const unionGroups = [
@@ -22,7 +26,14 @@ const unionGroups = [
 ];
 
 export default [
-  perfectionist.configs["recommended-natural"],
+  {
+    ...perfectionist.configs["recommended-custom"],
+    settings: {
+      perfectionist: {
+        alphabet: alphabet,
+      },
+    },
+  },
   {
     rules: {
       "@typescript-eslint/sort-type-constituents": "off",
@@ -137,7 +148,7 @@ export default [
         "error",
         {
           customGroups,
-          groups: ["capitalized", "unknown", "callbacks"],
+          groups: ["unknown", "callbacks"],
         },
       ],
 
@@ -145,7 +156,7 @@ export default [
         "error",
         {
           customGroups,
-          groups: ["capitalized", "unknown", "callbacks"],
+          groups: ["unknown", "callbacks"],
         },
       ],
 

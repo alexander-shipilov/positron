@@ -16,5 +16,5 @@ import type { BlockDescriptor } from "./block-descriptor";
  */
 export type BlockConfigOf<TValue extends ReactProps> =
   TValue extends DescriptorNominal<infer Descriptor extends BlockDescriptor>
-    ? BlockConfig<Descriptor>
+    ? BlockConfig<Descriptor["props"]>
     : never;

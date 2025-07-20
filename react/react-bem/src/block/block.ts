@@ -1,8 +1,9 @@
 import type { ReactComponent, ReactProps } from "@positron/react-core";
-import { EMPTY_OBJECT } from "@positron/core";
+import type { ReactAnyProps } from "@positron/react-core/src";
 
 import type { Described } from "../descriptor";
 
+import type { BlockConfig } from "./block-config";
 import type { BlockDescriptor } from "./block-descriptor";
 import type { BlockValue } from "./block-value";
 import { BLOCK_TYPE } from "./block-type";
@@ -18,22 +19,18 @@ import { BLOCK_TYPE } from "./block-type";
 export type Block<
   TComponentProps extends ReactProps,
   TProps extends BlockValue,
-> = Described<
-  TProps,
-  BlockDescriptor<TComponentProps, ReactComponent<TComponentProps>>
->;
+> = Described<TProps, BlockDescriptor<TComponentProps>>;
 
 /**
  * The {@link block} function creates block descriptor.
  *
  * @param Component - The default component to render block.
  */
-export function block<TProps extends ReactProps>(
+export function block<TProps extends ReactAnyProps>(
   Component: ReactComponent<TProps>,
-): BlockDescriptor<TProps> {
+): BlockConfig<TProps> {
   return {
     Component,
-    props: EMPTY_OBJECT,
     type: BLOCK_TYPE,
   };
 }

@@ -1,4 +1,4 @@
-import type { ReactComponent, ReactProps } from "@positron/react-core";
+import type { ReactProps } from "@positron/react-core";
 
 import type { Descriptor } from "../descriptor";
 
@@ -18,17 +18,11 @@ import type { ElementValue } from "./element-value";
 export interface ElementDescriptor<
   TValue extends ElementValue = ElementValue,
   TProps extends ReactProps = ReactProps,
-  TComponent extends ReactComponent = ReactComponent,
 > extends Descriptor<ElementType> {
   /**
    * Element class name.
    */
   className?: string;
-
-  /**
-   * Component to render element.
-   */
-  Component: TComponent;
 
   /**
    * Properties required to render element

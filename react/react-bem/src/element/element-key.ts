@@ -1,4 +1,5 @@
-import type { ReactAnyProps, ReactPropsKeyOf } from "@positron/react-core";
+import type { ReactPropsKeyOf } from "@positron/react-core";
+import type { ReactProps } from "@positron/react-core/src";
 
 import type { Descriptor, DescriptorNominal } from "../descriptor";
 
@@ -14,7 +15,7 @@ import type { ElementType } from "./element-type";
  * @internal
  */
 export type ElementKey<
-  TProps extends ReactAnyProps,
+  TProps extends ReactProps,
   TKey extends ReactPropsKeyOf<TProps>,
 > =
   TProps[TKey] extends DescriptorNominal<Descriptor<ElementType>>

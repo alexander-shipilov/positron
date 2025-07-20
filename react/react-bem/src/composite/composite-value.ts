@@ -1,4 +1,4 @@
-import type { ReactProps } from "@positron/react-core";
+import type { ReactAnyProps } from "@positron/react-core/src";
 
 /**
  * The {@link CompositeValue} type represents a type of value stored by the
@@ -6,4 +6,4 @@ import type { ReactProps } from "@positron/react-core";
  *
  * @public
  */
-export type CompositeValue = ReactProps;
+export type CompositeValue = ReactAnyProps;

@@ -1,8 +1,4 @@
-import type {
-  ReactAnyProps,
-  ReactComponent,
-  ReactProps,
-} from "@positron/react-core";
+import type { ReactAnyProps, ReactProps } from "@positron/react-core";
 
 import type { Descriptor } from "../descriptor";
 
@@ -16,19 +12,12 @@ import type { BlockType } from "./block-type";
  *
  * @public
  */
-export interface BlockDescriptor<
-  TProps extends ReactProps = ReactAnyProps,
-  TComponent extends ReactComponent<TProps> = ReactComponent<TProps>,
-> extends Descriptor<BlockType> {
+export interface BlockDescriptor<TProps extends ReactProps = ReactAnyProps>
+  extends Descriptor<BlockType> {
   /**
    * Block class name.
    */
   className?: string;
-
-  /**
-   * The component to render block.
-   */
-  Component: TComponent;
 
   /**
    * The properties required to render block.

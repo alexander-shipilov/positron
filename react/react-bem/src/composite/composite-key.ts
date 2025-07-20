@@ -1,4 +1,5 @@
-import type { ReactAnyProps, ReactPropsKeyOf } from "@positron/react-core";
+import type { ReactPropsKeyOf } from "@positron/react-core";
+import type { ReactProps } from "@positron/react-core/src";
 
 import type { DescriptorNominal } from "../descriptor";
 
@@ -14,6 +15,6 @@ import type { CompositeDescriptor } from "./composite-descriptor";
  * @internal
  */
 export type CompositeKey<
-  TProps extends ReactAnyProps,
+  TProps extends ReactProps,
   TKey extends ReactPropsKeyOf<TProps>,
 > = TProps[TKey] extends DescriptorNominal<CompositeDescriptor> ? TKey : never;

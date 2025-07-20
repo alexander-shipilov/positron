@@ -11,5 +11,5 @@ import type { CompositeDescriptor } from "./composite-descriptor";
  */
 export type CompositeConfigOf<TValue> =
   TValue extends DescriptorNominal<infer Descriptor extends CompositeDescriptor>
-    ? CompositeConfig<Descriptor>
+    ? CompositeConfig<Descriptor["value"]>
     : never;

@@ -1,5 +1,9 @@
-import type { CompositeDescriptor } from "./composite-descriptor";
+import type { Descriptor } from "../descriptor";
 
-export type CompositeConfig<
-  TDescriptor extends CompositeDescriptor = CompositeDescriptor,
-> = TDescriptor["value"];
+import type { CompositeType } from "./composite-type";
+import type { CompositeValue } from "./composite-value";
+
+export interface CompositeConfig<TValue extends CompositeValue = CompositeValue>
+  extends Descriptor<CompositeType> {
+  value: TValue;
+}

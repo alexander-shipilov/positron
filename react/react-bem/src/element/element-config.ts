@@ -1,0 +1,19 @@
+import type { Optional } from "@positron/core/src";
+import type { ReactProps } from "@positron/react-core/src";
+import type { ReactComponent } from "@positron/react-core/src";
+import type { ReactAnyProps } from "@positron/react-core/src";
+
+import type { Descriptor } from "../descriptor";
+
+import type { ElementType } from "./element-type";
+import type { ElementValue } from "./element-value";
+
+export interface ElementConfig<
+  TValue extends ElementValue = ElementValue,
+  TProps extends ReactProps = ReactProps,
+> extends Descriptor<ElementType> {
+  className: Optional<string>;
+  Component: ReactComponent<TProps>;
+  props: ReactAnyProps;
+  value: TValue;
+}

@@ -1,9 +1,16 @@
-import type { BlockDescriptor } from "./block-descriptor";
+import type { ReactComponent } from "@positron/react-core/src";
+import type { ReactProps } from "@positron/react-core/src";
+
+import type { Descriptor } from "../descriptor";
+
+import type { BlockType } from "./block-type";
 
 /**
  * The {@link BlockConfig} represents a config for the passed `TDescriptor`.
  *
  * @typeParam TDescriptor - The block descriptor.
  */
-export type BlockConfig<TDescriptor extends BlockDescriptor> =
-  TDescriptor["Component"];
+export interface BlockConfig<TProps extends ReactProps>
+  extends Descriptor<BlockType> {
+  Component: ReactComponent<TProps>;
+}
