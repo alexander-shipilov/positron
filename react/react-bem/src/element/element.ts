@@ -1,5 +1,5 @@
 import type { ReactComponent, ReactProps } from "@positron/react-core";
-import { EMPTY_OBJECT } from "@positron/core/src";
+import { EMPTY_OBJECT } from "@positron/core";
 
 import type { Described } from "../descriptor";
 

@@ -6,7 +6,7 @@ import type { MockComponentProps } from "../@fixtures";
 import {
   MockComponent,
   MockComponentMemo,
-  MockComponentNoArgs,
+  MockComponentNoArgs
 } from "../@fixtures";
 
 import type { ReactComponent } from "./react-component";

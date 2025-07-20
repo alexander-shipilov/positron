@@ -1,4 +1,4 @@
-import type { ReactAnyProps } from "@positron/react-core/src";
+import type { ReactAnyProps } from "@positron/react-core";
 
 /**
  * The {@link CompositeValue} type represents a type of value stored by the

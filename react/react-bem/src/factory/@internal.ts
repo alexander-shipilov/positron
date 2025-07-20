@@ -1,9 +1,11 @@
-import type { ArrayType } from "@positron/array/src";
-import type { PartialOptional } from "@positron/core/src";
-import type { ReactProps } from "@positron/react-core/src";
-import type { ReactPropsKey } from "@positron/react-core/src";
-import type { ReactAnyProps } from "@positron/react-core/src";
-import type { ReactComponent } from "@positron/react-core/src";
+import type { ArrayType } from "@positron/array";
+import type { PartialOptional } from "@positron/core";
+import type {
+  ReactProps,
+  ReactPropsKey,
+  ReactAnyProps,
+  ReactComponent
+} from "@positron/react-core";
 
 import type { BlockDescriptorsOf } from "../block";
 

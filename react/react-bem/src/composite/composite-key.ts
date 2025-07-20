@@ -1,5 +1,4 @@
-import type { ReactPropsKeyOf } from "@positron/react-core";
-import type { ReactProps } from "@positron/react-core/src";
+import type { ReactPropsKeyOf, ReactProps } from "@positron/react-core";
 
 import type { DescriptorNominal } from "../descriptor";
 

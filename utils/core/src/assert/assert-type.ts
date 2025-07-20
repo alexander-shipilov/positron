@@ -1,6 +1,6 @@
 import type { ErrorLike } from "../error";
-import type { TypeGuard } from "../type-guard";
 import { error } from "../error";
+import type { TypeGuard } from "../type-guard";
 import { never } from "../never";
 
 import { AssertError } from "./assert-error";

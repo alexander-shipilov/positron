@@ -1,8 +1,8 @@
 import React from "react";
 
-import type { Nullish } from "@positron/core/src";
+import type { Nullish } from "@positron/core";
 import type { ReactNode } from "@positron/react-core";
-import { ReactNever } from "@positron/react-core/src";
+import { ReactNever } from "@positron/react-core";
 
 import type { Block } from "./block";
 import type { Composite } from "./composite";

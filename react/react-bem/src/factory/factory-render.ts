@@ -1,5 +1,4 @@
-import type { ReactComponentReturn } from "@positron/react-core";
-import type { ReactAnyProps } from "@positron/react-core/src";
+import type { ReactComponentReturn, ReactAnyProps } from "@positron/react-core";
 
 import type { FactoryArgs } from "./factory-args";
 

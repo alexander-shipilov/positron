@@ -1,6 +1,6 @@
 import type { ErrorLike } from "../error";
-import type { NonFalsy } from "../falsy";
 import { error } from "../error";
+import type { NonFalsy } from "../falsy";
 import { isNonFalsy } from "../falsy";
 import { never } from "../never";
 

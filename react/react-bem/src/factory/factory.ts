@@ -1,22 +1,26 @@
-import type { ReactProps } from "@positron/react-core/src";
-import type { ReactPropsKeyOf } from "@positron/react-core/src";
-import type { ReactPropsKey } from "@positron/react-core/src";
-import type { ReactComponent } from "@positron/react-core/src";
-import type { ReactAnyProps } from "@positron/react-core/src";
+import type {
+  ReactProps,
+  ReactPropsKeyOf,
+  ReactPropsKey,
+  ReactComponent,
+  ReactAnyProps
+} from "@positron/react-core";
 import { assert } from "@positron/core";
 
 import type { Descriptor } from "../descriptor";
 import type { ModifierValueTypeOf } from "../modifier";
+import { modifier } from "../modifier";
 import { block } from "../block";
 import { composite } from "../composite";
 import { element } from "../element";
-import { modifier } from "../modifier";
 
-import type { Elements } from "./@internal";
-import type { ComponentProps } from "./@internal";
-import type { Modifiers } from "./@internal";
-import type { Composites } from "./@internal";
-import type { ClassNames } from "./@internal";
+import type {
+  Elements,
+  ComponentProps,
+  Modifiers,
+  Composites,
+  ClassNames
+} from "./@internal";
 import type { FactoryRender } from "./factory-render";
 
 export class Factory<
