@@ -1,5 +1,4 @@
-import type { ReactPropsKeyOf } from "@positron/react-core";
-import type { ReactProps } from "@positron/react-core";
+import type { ReactProps, ReactPropsKeyOf } from "@positron/react-core";
 
 import type { CompositeConfigOf } from "./composite-config-of";
 import type { CompositeKey } from "./composite-key";

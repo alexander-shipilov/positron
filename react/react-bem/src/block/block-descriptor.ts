@@ -1,6 +1,8 @@
-import type { ReactComponent } from "@positron/react-core";
-import type { ReactProps } from "@positron/react-core";
-import type { ReactAnyProps } from "@positron/react-core";
+import type {
+  ReactAnyProps,
+  ReactComponent,
+  ReactProps,
+} from "@positron/react-core";
 
 import type { Descriptor } from "../descriptor";
 

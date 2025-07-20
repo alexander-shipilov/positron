@@ -2,8 +2,7 @@ import React from "react";
 
 import type { ReactNode } from "@positron/react-core";
 
-import type { Block } from "./block";
-import type { BlockConfigsOf } from "./block";
+import type { Block, BlockConfigsOf } from "./block";
 import type { Composite } from "./composite";
 import type { Element } from "./element";
 import type { Modifier } from "./modifier";

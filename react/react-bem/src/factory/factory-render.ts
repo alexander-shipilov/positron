@@ -1,5 +1,4 @@
-import type { ReactComponentReturn } from "@positron/react-core";
-import type { ReactProps } from "@positron/react-core";
+import type { ReactComponentReturn, ReactProps } from "@positron/react-core";
 
 import type { BlockConfigsOf } from "../block";
 
