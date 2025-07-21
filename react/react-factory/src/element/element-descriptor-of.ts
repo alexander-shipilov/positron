@@ -1,6 +1,5 @@
-import type { DescriptorNominal } from "../descriptor";
-
-import type { ElementDescriptor } from "./element-descriptor";
+import type { DescribedNominal } from "../descriptor2";
+import type { ElementDescriptor } from "../element-descriptor/element-descriptor";
 
 /**
  * The {@link ElementDescriptorOf} type return descriptor for the passed
@@ -10,6 +9,6 @@ import type { ElementDescriptor } from "./element-descriptor";
  * @typeParam TValue - The value to get descriptor props.
  */
 export type ElementDescriptorOf<TValue> =
-  TValue extends DescriptorNominal<infer Descriptor extends ElementDescriptor>
+  TValue extends DescribedNominal<infer Descriptor extends ElementDescriptor>
     ? Descriptor
     : never;

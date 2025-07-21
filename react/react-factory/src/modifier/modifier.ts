@@ -1,4 +1,4 @@
-import type { Described } from "../descriptor";
+import type { Described } from "../descriptor2";
 
 import type { ModifierConfig } from "./modifier-config";
 import type { ModifierDescriptor } from "./modifier-descriptor";
@@ -27,7 +27,7 @@ export function modifier<TValue extends ModifierValue>(
   value: TValue,
 ): ModifierConfig<TValue> {
   return {
+    data: value,
     type: MODIFIER_TYPE,
-    value,
-  };
+  } as const;
 }

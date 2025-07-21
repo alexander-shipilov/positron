@@ -1,4 +1,4 @@
-import type { DescriptorNominal } from "../descriptor";
+import type { DescribedNominal } from "../descriptor2";
 
 import type { ModifierConfig } from "./modifier-config";
 import type { ModifierDescriptor } from "./modifier-descriptor";
@@ -10,6 +10,6 @@ import type { ModifierDescriptor } from "./modifier-descriptor";
  * @internal
  */
 export type ModifierConfigOf<TValue> =
-  TValue extends DescriptorNominal<infer Descriptor extends ModifierDescriptor>
+  TValue extends DescribedNominal<infer Descriptor extends ModifierDescriptor>
     ? ModifierConfig<Descriptor["value"]>
     : never;

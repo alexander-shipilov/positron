@@ -1,4 +1,4 @@
-import { hasOwnProperty } from "../property";
+import { isOwnPropertyOf } from "../property";
 
 /**
  * Function {@link omit} TBD
@@ -11,7 +11,7 @@ export function omit<TValue, TKey extends PropertyKey>(
 ): Omit<TValue, TKey> {
   return keys.reduce(
     (current, key) => {
-      if (hasOwnProperty(current, key)) {
+      if (isOwnPropertyOf(current, key)) {
         delete current[key];
       }
 

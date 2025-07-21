@@ -1,5 +1,5 @@
 import type { NominalType } from "./nominal-type";
-import type { Nominal as NominalClass } from "./nominal.class";
+import type { NominalClass } from "./nominal.class";
 
 /**
  * The {@link Nominal} class contains nominal types information.

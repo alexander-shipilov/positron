@@ -1,5 +1,5 @@
 import type { PropertyKeyOf } from "../property";
-import { hasOwnProperty } from "../property";
+import { isOwnPropertyOf } from "../property";
 
 /**
  * Function {@link pick} TBD
@@ -12,7 +12,7 @@ export function pick<TValue, TKey extends PropertyKeyOf<TValue>>(
 ): Pick<TValue, TKey> {
   return keys.reduce(
     (current, key) => {
-      if (hasOwnProperty(value, key)) {
+      if (isOwnPropertyOf(value, key)) {
         current[key] = value[key];
       }
 

@@ -18,6 +18,7 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
+    "@positron/core": "workspace:*",
     "@positron/array": "workspace:*"
   },
   "devDependencies": {

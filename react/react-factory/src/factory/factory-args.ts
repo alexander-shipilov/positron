@@ -2,7 +2,7 @@ import type { TypedObject } from "@positron/core";
 import type { ReactAnyProps } from "@positron/react-core";
 
 import type { BlockConfigsOf } from "../block";
-import type { CompositeConfig } from "../composite";
+import type { CompositeConfig } from "../composite2";
 import type { ElementConfig } from "../element";
 import type { ModifierConfig } from "../modifier";
 import type { ModifierValueTypeOf } from "../modifier";

@@ -1,7 +1,7 @@
 /**
  * @internal
  */
-export const MODIFIER_TYPE = Symbol("modifier");
+export const MODIFIER_TYPE = "modifier" as const;
 
 /**
  * The {@link ObjectType} represents a type of modifier property descriptor.

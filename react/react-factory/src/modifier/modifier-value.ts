@@ -6,4 +6,6 @@ import type { ModifierValueType } from "./modifier-value-type";
  *
  * @public
  */
-export type ModifierValue = ModifierValueType | (() => ModifierValueType);
+export type ModifierValue =
+  | ModifierValueType
+  | ((props: never) => ModifierValueType);

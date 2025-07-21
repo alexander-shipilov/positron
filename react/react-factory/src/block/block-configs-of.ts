@@ -1,7 +1,7 @@
 import type { ReactAnyProps } from "@positron/react-core";
 
-import type { CompositeConfigsOf } from "../composite";
-import type { NonDescribedOf } from "../descriptor";
+import type { CompositeConfigsOf } from "../composite2";
+import type { DescribedTargetOf } from "../descriptor2";
 import type { ElementConfigsOf } from "../element";
 import type { ModifierConfigsOf } from "../modifier";
 
@@ -16,5 +16,5 @@ export type BlockConfigsOf<TProps extends ReactAnyProps> = {
   composites: CompositeConfigsOf<TProps>;
   elements: ElementConfigsOf<TProps>;
   modifiers: ModifierConfigsOf<TProps>;
-  props: NonDescribedOf<TProps>;
+  props: DescribedTargetOf<TProps>;
 };

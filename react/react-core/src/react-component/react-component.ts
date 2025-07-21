@@ -1,5 +1,3 @@
-import type { ReactAnyProps } from "../react-props";
-
 import type { ReactComponentReturn } from "./react-component-return";
 
 /**
@@ -12,7 +10,7 @@ import type { ReactComponentReturn } from "./react-component-return";
  *
  * @public
  */
-export interface ReactComponent<TProps extends ReactAnyProps = never> {
+export interface ReactComponent<TProps = object> {
   (props: TProps): ReactComponentReturn;
 
   /**

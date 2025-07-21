@@ -1,4 +1,4 @@
-import type { Descriptor } from "../descriptor";
+import type { Descriptor } from "../descriptor2";
 
 import type { ModifierType } from "./modifier-type";
 import type { ModifierValue } from "./modifier-value";
@@ -17,10 +17,10 @@ export interface ModifierDescriptor<
   /**
    * Modifier class name.
    */
-  className?: string;
+  readonly className?: string;
 
   /**
    * Modifier value.
    */
-  value: TValue;
+  readonly data: TValue;
 }

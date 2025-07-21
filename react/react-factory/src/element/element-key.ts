@@ -1,8 +1,7 @@
 import type { ReactProps, ReactPropsKeyOf } from "@positron/react-core";
 
-import type { Descriptor, DescriptorNominal } from "../descriptor";
-
-import type { ElementType } from "./element-type";
+import type { Descriptor, DescribedNominal } from "../descriptor2";
+import type { ElementDescriptorType } from "../element-descriptor/element-descriptor-type";
 
 /**
  * The {@link ElementKey} return the passed `TKey` if the property keyed by
@@ -17,6 +16,6 @@ export type ElementKey<
   TProps extends ReactProps,
   TKey extends ReactPropsKeyOf<TProps>,
 > =
-  TProps[TKey] extends DescriptorNominal<Descriptor<ElementType>>
+  TProps[TKey] extends DescribedNominal<Descriptor<ElementDescriptorType>>
     ? TKey
     : never;

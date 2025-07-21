@@ -5,17 +5,16 @@ import type {
   ReactProps,
 } from "@positron/react-core";
 
-import type { Descriptor } from "../descriptor";
-
-import type { ElementType } from "./element-type";
-import type { ElementValue } from "./element-value";
+import type { Descriptor } from "../descriptor2";
+import type { ElementDescriptorType } from "../element-descriptor/element-descriptor-type";
+import type { ElementDescriptorValue } from "../element-descriptor/element-descriptor-value";
 
 export interface ElementConfig<
-  TValue extends ElementValue = ElementValue,
+  TValue extends ElementDescriptorValue = ElementDescriptorValue,
   TProps extends ReactProps = ReactProps,
-> extends Descriptor<ElementType> {
-  className: Optional<string>;
-  Component: ReactComponent<TProps>;
-  props: ReactAnyProps;
-  value: TValue;
+> extends Descriptor<ElementDescriptorType> {
+  readonly className: Optional<string>;
+  readonly Component: ReactComponent<TProps>;
+  readonly props: ReactAnyProps;
+  readonly data: TValue;
 }

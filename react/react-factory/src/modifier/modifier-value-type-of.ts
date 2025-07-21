@@ -9,5 +9,8 @@ import type { ModifierValueType } from "./modifier-value-type";
  *
  * @public
  */
-export type ModifierValueTypeOf<TValue> =
-  TValue extends (() => infer Value extends ModifierValueType) ? Value : TValue;
+export type ModifierValueTypeOf<TValue> = TValue extends ((
+  props: never,
+) => infer Value extends ModifierValueType)
+  ? Value
+  : TValue;

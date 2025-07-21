@@ -1,15 +1,34 @@
+import type { DescriptorData } from "./descriptor-data";
 import type { DescriptorType } from "./descriptor-type";
 
 /**
- * Type {@link Descriptor} represents properties stored in descriptor.
+ * The {@link Descriptor} type represents properties stored in descriptor.
  *
  * @typeParam TProps - Props to store
  *
  * @public
  */
-export interface Descriptor<TType extends DescriptorType = DescriptorType> {
+export interface Descriptor<
+  TType extends DescriptorType = DescriptorType,
+  TData extends DescriptorData = DescriptorData,
+> {
   /**
-   * Descriptor type.
+   * The {@link type} property stores descriptor type.
    */
-  type: TType;
+  readonly type: TType;
+
+  /**
+   * The {@link type} property stores descriptor data.
+   */
+  readonly data: TData;
+}
+
+/**
+ * The {@link descriptor} function creates descriptor.
+ */
+export function descriptor<
+  TType extends DescriptorType,
+  TData extends DescriptorData,
+>(type: TType, data: TData): Descriptor<TType, TData> {
+  return { data, type };
 }

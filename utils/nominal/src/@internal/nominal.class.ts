@@ -3,6 +3,14 @@ import type { ArrayReverse } from "@positron/array";
 import type { NominalType } from "./nominal-type";
 
 /**
+ * @internal
+ */
+export type NominalClass<TTarget, TTypes extends NominalType[]> = Nominal<
+  TTarget,
+  TTypes
+>;
+
+/**
  * The {@link tag} constant represents a property key to store nominal
  * types information.
  *
@@ -15,7 +23,7 @@ declare const tag: unique symbol;
  *
  * @internal
  */
-export declare class Nominal<TTarget, TTypes extends NominalType[]> {
+declare class Nominal<TTarget, TTypes extends NominalType[]> {
   private readonly [tag]: [
     TTarget,
     NominalType,

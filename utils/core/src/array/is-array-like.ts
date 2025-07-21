@@ -1,5 +1,5 @@
 import { isNumber } from "../number";
-import { hasProperty } from "../property";
+import { isPropertyOf } from "../property";
 
 /**
  * Function {@link isArrayLike} determines if the passed `value` is the
@@ -12,5 +12,5 @@ import { hasProperty } from "../property";
 export function isArrayLike<TValue = unknown>(
   value: ArrayLike<unknown> | TValue,
 ): value is ArrayLike<unknown> {
-  return hasProperty(value, "length") && isNumber(value.length);
+  return isPropertyOf(value, "length") && isNumber(value.length);
 }

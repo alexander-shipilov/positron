@@ -1,4 +1,3 @@
-/* eslint-disable perfectionist/sort-maps */
 import type { TypeGuard } from "../type-guard";
 import { isBigint } from "../bigint";
 import { BIGINT_TYPE } from "../bigint-type";

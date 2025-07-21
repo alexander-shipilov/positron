@@ -1,7 +1,7 @@
 import type { ReactProps } from "@positron/react-core";
 
-import type { CompositeDescriptorsOf } from "../composite";
-import type { NonDescribedOf } from "../descriptor";
+import type { CompositeDescriptorsOf } from "../composite2";
+import type { DescribedTargetOf } from "../descriptor2";
 import type { ElementDescriptorsOf } from "../element";
 import type { ModifierDescriptorsOf } from "../modifier";
 
@@ -20,5 +20,5 @@ export type BlockDescriptorsOf<TProps extends ReactProps> = {
   composites: CompositeDescriptorsOf<TProps>;
   elements: ElementDescriptorsOf<TProps>;
   modifiers: ModifierDescriptorsOf<TProps>;
-  props: NonDescribedOf<TProps>;
+  props: DescribedTargetOf<TProps>;
 };

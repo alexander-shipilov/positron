@@ -1,8 +1,7 @@
 import type { ReactAnyProps, ReactProps } from "@positron/react-core";
 
-import type { Descriptor } from "../descriptor";
-
-import type { BlockType } from "./block-type";
+import type { BlockDescriptorType } from "../block-descriptor/block-descriptor-type";
+import type { Descriptor } from "../descriptor2";
 
 /**
  * The {@link BlockDescriptor} type represents a descriptor of the
@@ -13,14 +12,14 @@ import type { BlockType } from "./block-type";
  * @public
  */
 export interface BlockDescriptor<TProps extends ReactProps = ReactAnyProps>
-  extends Descriptor<BlockType> {
+  extends Descriptor<BlockDescriptorType> {
   /**
    * Block class name.
    */
-  className?: string;
+  readonly className?: string;
 
   /**
    * The properties required to render block.
    */
-  props: Partial<TProps>;
+  readonly props: Partial<TProps>;
 }

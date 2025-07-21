@@ -17,7 +17,7 @@ export interface SetLike<TItem> {
    * @param value - The value to test for presence in the {@link SetLike}
    *   object.
    */
-  has(value: unknown): value is TItem;
+  has(value: TItem): boolean;
 
   /**
    * The {@link values} method of the {@link SetLike} object returns a new

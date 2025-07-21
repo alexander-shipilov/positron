@@ -110,23 +110,14 @@ importers:
         specifier: ~29.4.0
         version: 29.4.0(@babel/core@7.27.4)(@jest/transform@30.0.4)(@jest/types@30.0.1)(babel-jest@30.0.4(@babel/core@7.27.4))(jest-util@30.0.2)(jest@30.0.4(@types/node@24.0.14))(typescript@5.8.3)
 
-  ../../react/react-bem:
+  ../../react/react-core:
     dependencies:
-      '@positron/array':
-        specifier: workspace:*
-        version: link:../../utils/array
       '@positron/core':
         specifier: workspace:*
         version: link:../../utils/core
       '@positron/nominal':
         specifier: workspace:*
         version: link:../../utils/nominal
-      '@positron/prefixed':
-        specifier: workspace:*
-        version: link:../../utils/prefixed
-      '@positron/react-core':
-        specifier: workspace:*
-        version: link:../react-core
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4
@@ -159,14 +150,23 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  ../../react/react-core:
+  ../../react/react-factory:
     dependencies:
+      '@positron/array':
+        specifier: workspace:*
+        version: link:../../utils/array
       '@positron/core':
         specifier: workspace:*
         version: link:../../utils/core
       '@positron/nominal':
         specifier: workspace:*
         version: link:../../utils/nominal
+      '@positron/prefixed':
+        specifier: workspace:*
+        version: link:../../utils/prefixed
+      '@positron/react-core':
+        specifier: workspace:*
+        version: link:../react-core
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4
@@ -262,6 +262,9 @@ importers:
       '@positron/array':
         specifier: workspace:*
         version: link:../array
+      '@positron/core':
+        specifier: workspace:*
+        version: link:../core
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4

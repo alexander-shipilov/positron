@@ -10,31 +10,31 @@ import type { ArrayType } from "../array-type";
  *  // [1, 2, 3]
  * ```
  *
- * @typeParam TArray - The array / tuple type to unique items from.
+ * @typeParam TArray - The array / tuple type to get unique items from.
  *
  * @public
  */
 export type ArrayUnique<TArray extends readonly unknown[]> =
   Readonly<TArray> extends TArray
-    ? Readonly<_ArrayUnique<[...TArray]>>
-    : _ArrayUnique<[...TArray]>;
+    ? Readonly<ArrayUnique_<[...TArray]>>
+    : ArrayUnique_<[...TArray]>;
 
 /**
  * @internal
  */
-type _ArrayUnique<
+type ArrayUnique_<
   TArray extends unknown[],
   TUnique extends unknown[] = [],
 > = TArray extends [infer First, ...infer Tail extends unknown[]]
-  ? _ArrayUnique<Tail, _ArrayUniqueItem<[...TUnique, First]>>
+  ? ArrayUnique_<Tail, ArrayUniqueItem_<[...TUnique, First]>>
   : TArray extends [...infer Head extends unknown[], infer Last]
-    ? _ArrayUniqueItem<[..._ArrayUnique<Head, TUnique>, Last]>
-    : _ArrayUniqueItem<[...TUnique, ArrayType<TArray>]> | TUnique;
+    ? ArrayUniqueItem_<[...ArrayUnique_<Head, TUnique>, Last]>
+    : ArrayUniqueItem_<[...TUnique, ArrayType<TArray>]> | TUnique;
 
 /**
  * @internal
  */
-type _ArrayUniqueItem<TUnique extends unknown[]> = TUnique extends [
+type ArrayUniqueItem_<TUnique extends unknown[]> = TUnique extends [
   ...infer Head,
   infer Last,
 ]

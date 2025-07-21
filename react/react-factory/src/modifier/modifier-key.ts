@@ -1,6 +1,6 @@
 import type { ReactProps, ReactPropsKeyOf } from "@positron/react-core";
 
-import type { DescriptorNominal } from "../descriptor";
+import type { DescribedNominal } from "../descriptor2";
 
 import type { ModifierDescriptor } from "./modifier-descriptor";
 
@@ -16,4 +16,4 @@ import type { ModifierDescriptor } from "./modifier-descriptor";
 export type ModifierKey<
   TProps extends ReactProps,
   TKey extends ReactPropsKeyOf<TProps>,
-> = TProps[TKey] extends DescriptorNominal<ModifierDescriptor> ? TKey : never;
+> = TProps[TKey] extends DescribedNominal<ModifierDescriptor> ? TKey : never;

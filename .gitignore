@@ -77,3 +77,6 @@ common/autoinstallers/*/.npmrc
 
 # Temporary files
 temp/
+
+*/*/lib
+*/*/index.js

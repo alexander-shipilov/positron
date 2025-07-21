@@ -1,6 +1,8 @@
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
+import type { UnknownRecord } from "@positron/core/src";
+
 import type {
   Integer,
   IntegerType,
@@ -13,20 +15,24 @@ import type { Nominal } from "./nominal";
 
 describe("Nominal<T, U>", () => {
   it("`Nominal<T, ...>` should extend `T`", () => {
+    expectTypeOf<Nominal<string>>().toExtend<string>();
+    expectTypeOf<Nominal<[]>>().toExtend<[]>();
+    expectTypeOf<Nominal<UnknownRecord>>().toExtend<UnknownRecord>();
+
     expectTypeOf<Integer>().toExtend<number>();
     expectTypeOf<Natural>().toExtend<number>();
     expectTypeOf<Natural>().toExtend<Integer>();
     expectTypeOf<Natural>().toExtend<Natural>();
   });
 
-  it("`Nominal<T, U>` should extend `Nominal<T>`", () => {
-    expectTypeOf<Integer>().toExtend<Nominal<number>>();
-    expectTypeOf<Natural>().toExtend<Nominal<number>>();
-  });
-
   it("`Nominal<T, U>` should extend `Nominal`", () => {
     expectTypeOf<Integer>().toExtend<Nominal>();
     expectTypeOf<Natural>().toExtend<Nominal>();
+  });
+
+  it("`Nominal<T, U>` should extend `Nominal<T>`", () => {
+    expectTypeOf<Integer>().toExtend<Nominal<number>>();
+    expectTypeOf<Natural>().toExtend<Nominal<number>>();
   });
 
   it("`Nominal<Nominal<T, ...>, ...>` should extend `Nominal<T>`", () => {

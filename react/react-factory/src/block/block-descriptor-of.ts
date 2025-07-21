@@ -1,6 +1,6 @@
 import type { ReactProps } from "@positron/react-core";
 
-import type { DescriptorNominal } from "../descriptor";
+import type { DescribedNominal } from "../descriptor2";
 
 import type { BlockDescriptor } from "./block-descriptor";
 
@@ -13,6 +13,6 @@ import type { BlockDescriptor } from "./block-descriptor";
  * @internal
  */
 export type BlockDescriptorOf<TProps extends ReactProps> =
-  TProps extends DescriptorNominal<infer Descriptor extends BlockDescriptor>
+  TProps extends DescribedNominal<infer Descriptor extends BlockDescriptor>
     ? Descriptor
     : never;

@@ -1,5 +1,5 @@
 import { isFunction } from "../index";
-import { hasProperty } from "../property";
+import { isPropertyOf } from "../property";
 
 /**
  * Checks if the `passed` value is an {@link Iterable} object
@@ -8,6 +8,6 @@ import { hasProperty } from "../property";
  */
 export function isIterable(value: unknown): value is Iterable<unknown> {
   return (
-    hasProperty(value, Symbol.iterator) && isFunction(value[Symbol.iterator])
+    isPropertyOf(value, Symbol.iterator) && isFunction(value[Symbol.iterator])
   );
 }

@@ -4,9 +4,9 @@ import type { Nullish } from "@positron/core";
 import type { ReactNode } from "@positron/react-core";
 import { ReactNever } from "@positron/react-core";
 
-import type { Block } from "./block";
-import type { Composite } from "./composite";
-import type { Element } from "./element";
+import type { BlockDescriptorTarget } from "./block";
+import type { CompositeDescriptor } from "./composite2";
+import type { ElementDescriptor } from "./element";
 import type { FactoryArgs } from "./factory/factory-args";
 import type { Modifier } from "./modifier";
 import { Factory } from "./factory/factory";
@@ -42,23 +42,23 @@ export type FooElementProps1 = {
 
 export type FooModifier = "bar" | "foo";
 
-type FooProps = Block<
+type FooProps = BlockDescriptorTarget<
   FooComponentProps,
   {
     /**
      * Property tha should be rendered as an element.
      */
-    child: Element<string, FooElementProps1>;
+    child: ElementDescriptor<string, FooElementProps1>;
 
     /**
      * Composite property.
      */
-    data: Composite<FooData>;
+    data: CompositeDescriptor<FooData>;
 
     /**
      * Modifier
      */
-    modifier: Modifier<() => Nullish<FooModifier>>;
+    modifier: Modifier<(data: unknown) => Nullish<FooModifier>>;
 
     /**
      * Value.
@@ -90,12 +90,11 @@ export const FooFactory = Factory.create(function Foo([
   );
 });
 
-void FooFactory("Foo", ReactNever)
-  .element("child", "", ReactNever)
-  .modifier("modifier", () => "foo")
+const Foo = FooFactory()
+  .compose("Foo", ReactNever)
   .composite("data", { prop1: "", prop2: 0 })
-  .classNames({
-    data: "sds",
-    Foo: "1",
-    modifier: "",
-  });
+  .element("child", "", ReactNever)
+  .modifier("modifier", (data): FooModifier => (data ? "foo" : "bar"))
+  .component();
+
+void (<Foo value={""} />);
