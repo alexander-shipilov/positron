@@ -1,7 +1,7 @@
 import type { ReactProps, ReactPropsKeyOf } from "@positron/react-core";
 
-import type { CompositeDescriptor } from "../composite/composite-descriptor";
 import type { DescribedNominal } from "../descriptor2";
+import type { ValueDescriptor } from "../value/value-descriptor";
 
 /**
  * The {@link CompositeKey} return the passed `TKey` if the property keyed by
@@ -15,4 +15,4 @@ import type { DescribedNominal } from "../descriptor2";
 export type CompositeKey<
   TProps extends ReactProps,
   TKey extends ReactPropsKeyOf<TProps>,
-> = TProps[TKey] extends DescribedNominal<CompositeDescriptor> ? TKey : never;
+> = TProps[TKey] extends DescribedNominal<ValueDescriptor> ? TKey : never;

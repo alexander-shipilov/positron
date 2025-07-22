@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@jest/globals": "~30.0.4",
-    "@positron/node-rig": "workspace:*",
+    "@positron/common-rig": "workspace:*",
     "@rushstack/heft": "~0.74.0",
     "eslint": "^9.31.0",
     "expect-type": "^1.2.2",

@@ -1,4 +1,4 @@
-import type { UnknownFunction } from "../function";
+import type { AnyFunction } from "../function";
 import type { AnyObject } from "../object";
 
 /**
@@ -10,4 +10,4 @@ import type { AnyObject } from "../object";
  *
  * @public
  */
-export type Reference = AnyObject | UnknownFunction;
+export type Reference = AnyFunction | AnyObject;

@@ -11,7 +11,7 @@ export function omit<TValue, TKey extends PropertyKey>(
 ): Omit<TValue, TKey> {
   return keys.reduce(
     (current, key) => {
-      if (isOwnPropertyOf(current, key)) {
+      if (isOwnPropertyOf(key, current)) {
         delete current[key];
       }
 

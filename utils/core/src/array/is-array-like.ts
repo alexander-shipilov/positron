@@ -12,5 +12,5 @@ import { isPropertyOf } from "../property";
 export function isArrayLike<TValue = unknown>(
   value: ArrayLike<unknown> | TValue,
 ): value is ArrayLike<unknown> {
-  return isPropertyOf(value, "length") && isNumber(value.length);
+  return isPropertyOf("length", value) && isNumber(value.length);
 }

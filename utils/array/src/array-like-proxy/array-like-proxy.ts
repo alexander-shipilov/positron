@@ -1,5 +1,5 @@
 import type { PropertyKeyOf } from "@positron/core/src";
-import { hasOwnProperty } from "@positron/core";
+import { isOwnPropertyOf } from "@positron/core/src";
 
 /**
  * The {@link ArrayLikeProxy} class creates a proxy to the given array-like.
@@ -58,5 +58,5 @@ function isArrayLikeProperty<TValues extends ArrayLike<unknown>>(
   values: TValues,
   key: PropertyKey,
 ): key is PropertyKeyOf<TValues> {
-  return key === "length" || hasOwnProperty(values, key);
+  return key === "length" || isOwnPropertyOf(key, values);
 }

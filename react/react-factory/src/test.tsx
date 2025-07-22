@@ -4,12 +4,12 @@ import type { Nullish } from "@positron/core";
 import type { ReactNode } from "@positron/react-core";
 import { ReactNever } from "@positron/react-core";
 
-import type { BlockDescriptorTarget } from "./block";
-import type { CompositeDescriptor } from "./composite2";
-import type { ElementDescriptor } from "./element";
-import type { FactoryArgs } from "./factory/factory-args";
-import type { Modifier } from "./modifier";
-import { Factory } from "./factory/factory";
+import type { BlockDescriptorTarget } from "./block2";
+import type { ValueDescriptor } from "./composite2";
+import type { ElementDescriptor } from "./element2";
+import type { FactoryArgs } from "./factory2/factory-args";
+import type { Modifier } from "./modifier2";
+import { Factory } from "./factory2/factory";
 
 export type ComponentProps1 = {
   bar?: string;
@@ -53,7 +53,7 @@ type FooProps = BlockDescriptorTarget<
     /**
      * Composite property.
      */
-    data: CompositeDescriptor<FooData>;
+    data: ValueDescriptor<FooData>;
 
     /**
      * Modifier

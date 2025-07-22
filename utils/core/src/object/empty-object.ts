@@ -1,6 +1,13 @@
-import type { AnyObject } from "./any-object";
+import type { TypedObject } from "./typed-object";
 
 /**
- * The {@link AnyObject} represents an empty object.
+ * The {@link EmptyObject} type represents.
+ *
+ * @typeParam TKey - Optional key
+ *
+ * @public
  */
-export const EMPTY_OBJECT: Readonly<AnyObject> = Object.freeze({});
+export type EmptyObject<TKey extends PropertyKey = PropertyKey> = TypedObject<
+  never,
+  TKey
+>;

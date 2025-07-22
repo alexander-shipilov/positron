@@ -12,7 +12,7 @@ export function pick<TValue, TKey extends PropertyKeyOf<TValue>>(
 ): Pick<TValue, TKey> {
   return keys.reduce(
     (current, key) => {
-      if (isOwnPropertyOf(value, key)) {
+      if (isOwnPropertyOf(key, value)) {
         current[key] = value[key];
       }
 

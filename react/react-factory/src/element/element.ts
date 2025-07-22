@@ -1,44 +1,28 @@
-import type { ReactComponent, ReactProps } from "@positron/react-core";
-import { EMPTY_OBJECT } from "@positron/core";
+import type { Described } from "../described";
+import type { DescriptorMeta } from "../descriptor";
 
-import type { Described } from "../descriptor2";
-import type { ElementDescriptor } from "../element-descriptor/element-descriptor";
-import type { ElementDescriptorValue } from "../element-descriptor/element-descriptor-value";
-import { ELEMENT_TYPE } from "../element-descriptor/element-descriptor-type";
-
-import type { ElementConfig } from "./element-config";
+import type { ElementDescriptor } from "./element-descriptor";
+import type { ElementMeta } from "./element-meta";
+import type { ElementProps } from "./element-props";
+import type { ElementTarget } from "./element-target";
 
 /**
- * The {@link ElementDescriptor} type creates element descriptor.
+ * The {@link Element} type adds an element descriptor to the specified
+ * `TValue`. An element is a part of a component that is itself a component. To
+ * create an element, you must specify which properties should be passed to its
+ * component for rendering.
  *
- * @typeParam TValue - The value of descriptor
- * @typeParam TProps - The properties of component that implements element.
+ * @example
+ * ```ts
+ *  type PanelProps = {
+ *    title: Element<ReactNode, { children: ReactNode }>;
+ *  };
+ * ```
  *
  * @public
  */
 export type Element<
-  TValue extends ElementDescriptorValue,
-  TProps extends ReactProps,
-> = Described<TValue, Element<TValue, TProps>>;
-
-/**
- * The {@link element} function creates block descriptor.
- *
- * @param value - The default value
- * @param Component - The default component to render block.
- */
-export function element<
-  TValue extends ElementDescriptorValue,
-  TProps extends ReactProps,
->(
-  value: TValue,
-  Component: ReactComponent<TProps>,
-): ElementConfig<TValue, TProps> {
-  return {
-    className: "",
-    Component,
-    data: value,
-    props: EMPTY_OBJECT,
-    type: ELEMENT_TYPE,
-  } as const;
-}
+  TTarget extends ElementTarget,
+  TProps extends ElementProps,
+  TMeta extends DescriptorMeta = never,
+> = Described<TTarget, ElementDescriptor<TProps, ElementMeta & TMeta>>;

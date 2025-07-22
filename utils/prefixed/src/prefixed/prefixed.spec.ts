@@ -17,6 +17,14 @@ describe(`Prefixed<P, T>`, () => {
     }>();
   });
 
+  it("should return `T` if `T` has no enumerable properties", () => {
+    type T1 = string;
+    expectTypeOf<Prefixed<P, T1>>().toEqualTypeOf<T1>();
+
+    type T2 = object;
+    expectTypeOf<Prefixed<P, T2>>().toEqualTypeOf<T2>();
+  });
+
   it("should return `never` if `T` is `never`", () => {
     expectTypeOf<Prefixed<P, never>>().toBeNever();
   });

@@ -79,4 +79,3 @@ common/autoinstallers/*/.npmrc
 temp/
 
 */*/lib
-*/*/index.js

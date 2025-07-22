@@ -7,7 +7,7 @@
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
   "repository": "git@github.com:alexander-shipilov/positron.git",
   "type": "module",
-  "main": "eslint.config.js",
+  "main": "./index.js",
   "scripts": {
     "_phase:build": "",
     "build": ""
@@ -46,6 +46,11 @@
     "typescript"
   ],
   "exports": {
-    ".": "./eslint.config.js"
+    "default": "./index.js",
+    "core": "./eslint.config.core.js",
+    "jest": "./eslint.config.jest.js",
+    "perfectionist": "./eslint.config.perfectionist.js",
+    "prettier": "./eslint.config.prettier.js",
+    "react": "./eslint.config.react.js"
   }
 }

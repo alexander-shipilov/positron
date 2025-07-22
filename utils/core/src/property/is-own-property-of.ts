@@ -25,16 +25,16 @@ const hasOwn = isFunction(Object.hasOwn)
  * ```ts
  *  const target = { foo: 1 }
  *
- *  hasOwnProperty(target, 'foo') // true
+ *  isOwnPropertyOf('foo', target) // true
  *  // `target` has own key `foo`
  *
- *  hasOwnProperty(target, 'bar') // false
+ *  isOwnPropertyOf('bar', target) // false
  *  // `target` has no own key `bar`
  *
- *  hasOwnProperty(target, 'toString') // false
+ *  isOwnPropertyOf('toString', target) // false
  *  // key `toString` is inherited from `Object.prototype`
  *
- *  hasOwnProperty(null, 'foo') // false
+ *  isOwnPropertyOf('foo', null) // false
  *  // `null` does not have properties at all
  * ```
  *
@@ -48,8 +48,8 @@ const hasOwn = isFunction(Object.hasOwn)
  * @public
  */
 export function isOwnPropertyOf<TKey extends PropertyKey>(
-  target: unknown,
   key: TKey,
+  target: unknown,
 ): target is PropertyOwner<TKey> {
   return isObject(target) && hasOwn(target, key);
 }

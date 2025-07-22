@@ -2,6 +2,6 @@
 
 export directories=(
   '../dev'
-  '../lang'
+  '../utils'
   '../react'
 )

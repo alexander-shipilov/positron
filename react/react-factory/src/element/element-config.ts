@@ -1,20 +1,41 @@
-import type { Optional } from "@positron/core";
-import type {
-  ReactAnyProps,
-  ReactComponent,
-  ReactProps,
-} from "@positron/react-core";
+import type { AnyObject } from "@positron/core/src";
+import type { ReactComponent } from "@positron/react-core/src";
 
-import type { Descriptor } from "../descriptor2";
-import type { ElementDescriptorType } from "../element-descriptor/element-descriptor-type";
-import type { ElementDescriptorValue } from "../element-descriptor/element-descriptor-value";
+import type { ElementMeta } from "./element-meta";
+import type { ElementProps } from "./element-props";
+import type { ElementValue } from "./element-value";
 
+/**
+ * The {@link ElementConfig} describes the configuration object used to render
+ * the element.
+ *
+ * @public
+ */
 export interface ElementConfig<
-  TValue extends ElementDescriptorValue = ElementDescriptorValue,
-  TProps extends ReactProps = ReactProps,
-> extends Descriptor<ElementDescriptorType> {
-  readonly className: Optional<string>;
+  TValue extends ElementValue,
+  TProps extends ElementProps,
+  TMeta extends ElementMeta,
+> {
+  /**
+   * The {@link Component} property contains a component to render the element.
+   */
   readonly Component: ReactComponent<TProps>;
-  readonly props: ReactAnyProps;
-  readonly data: TValue;
+
+  /**
+   * The {@link meta} property contains additional metadata about the element
+   * (className, etc.). You can specify any metadata by passing the appropriate
+   * parameter to the {@link Element} type.
+   */
+  readonly meta: TMeta;
+
+  /**
+   * The {@link props} property contains properties that should be passed to
+   * the component.
+   */
+  readonly props: AnyObject;
+
+  /**
+   * The {@link props} property contains a value of element.
+   */
+  readonly value: TValue;
 }

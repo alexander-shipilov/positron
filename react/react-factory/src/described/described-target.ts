@@ -4,4 +4,6 @@
  *
  * @public
  */
-export type DescribedTarget = unknown;
+export type DescribedTarget<TValue = unknown, TProps = never> =
+  | TValue
+  | ((props: TProps) => TValue);

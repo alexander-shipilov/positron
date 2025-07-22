@@ -1,15 +1,15 @@
-import type { DescribedNominal } from "../descriptor2";
+import type { DescribedValueOf } from "../described";
+import type { DescriptorMeta } from "../descriptor";
 
+import type { Modifier } from "./modifier";
 import type { ModifierConfig } from "./modifier-config";
-import type { ModifierDescriptor } from "./modifier-descriptor";
+import type { ModifierMeta } from "./modifier-meta";
+import type { ModifierTarget } from "./modifier-target";
 
-/**
- * The {@link ModifierConfigOf} returns the config for the passed `TModifier`
- * descriptor.
- *
- * @internal
- */
-export type ModifierConfigOf<TValue> =
-  TValue extends DescribedNominal<infer Descriptor extends ModifierDescriptor>
-    ? ModifierConfig<Descriptor["value"]>
+export type ModifierConfigOf<TTarget> =
+  TTarget extends Modifier<
+    infer Target extends ModifierTarget,
+    infer Meta extends DescriptorMeta
+  >
+    ? ModifierConfig<DescribedValueOf<Target>, Meta & ModifierMeta>
     : never;
