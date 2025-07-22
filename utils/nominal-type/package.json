@@ -1,6 +1,6 @@
 {
   "private": false,
-  "name": "@positron/react-factory",
+  "name": "@positron/nominal-type",
   "version": "0.0.1",
   "license": "MIT",
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
@@ -20,19 +20,15 @@
   "dependencies": {
     "@positron/array": "workspace:*",
     "@positron/core": "workspace:*",
-    "@positron/nominal-type": "workspace:*",
-    "@positron/prefixed": "workspace:*",
-    "@positron/react-core": "workspace:*"
+    "@positron/meta-type": "workspace:*"
   },
   "devDependencies": {
     "@jest/globals": "~30.0.4",
     "@positron/common-rig": "workspace:*",
     "@rushstack/heft": "~0.74.0",
-    "@types/react": "~19.1.8",
     "eslint": "^9.31.0",
     "expect-type": "^1.2.2",
     "jest": "~30.0.4",
-    "react": "~19.1.0",
     "ts-jest": "~29.4.0",
     "typescript": "^5.8.3"
   },
