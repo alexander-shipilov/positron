@@ -1,33 +1,22 @@
-import type { Described } from "../descriptor2";
+import type { Described } from "../described";
+import type { DescriptorMeta } from "../descriptor";
 
-import type { ModifierConfig } from "./modifier-config";
 import type { ModifierDescriptor } from "./modifier-descriptor";
-import type { ModifierValue } from "./modifier-value";
-import { MODIFIER_TYPE } from "./modifier-type";
+import type { ModifierMeta } from "./modifier-meta";
+import type { ModifierTarget } from "./modifier-target";
 
 /**
- * The {@link Modifier} type creates modifier descriptor.
+ * The {@link Modifier} type adds a modifier descriptor to the specified
+ * `TValue`.
  *
- * @typeParam TValue - The value of descriptor
- * @typeParam TDescriptorProps - The props of descriptor
+ *  type PanelProps = {
+ *    status: Modifier<"disabled" | "enabled">;
+ *  };
+ * ```
  *
  * @public
  */
-export type Modifier<TValue extends ModifierValue> = Described<
-  TValue,
-  ModifierDescriptor<TValue>
->;
-
-/**
- * The {@link modifier} function creates modifier descriptor.
- *
- * @param value - The default value
- */
-export function modifier<TValue extends ModifierValue>(
-  value: TValue,
-): ModifierConfig<TValue> {
-  return {
-    data: value,
-    type: MODIFIER_TYPE,
-  } as const;
-}
+export type Modifier<
+  TTarget extends ModifierTarget,
+  TMeta extends DescriptorMeta = never,
+> = Described<TTarget, ModifierDescriptor<ModifierMeta & TMeta>>;

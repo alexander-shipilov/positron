@@ -1,11 +1,3 @@
-import type { ModifierValueType } from "./modifier-value-type";
+import type { Nullish } from "@positron/core/src";
 
-/**
- * The {@link ModifierValue} type represents a value that can be described by
- * modifier descriptor.
- *
- * @public
- */
-export type ModifierValue =
-  | ModifierValueType
-  | ((props: never) => ModifierValueType);
+export type ModifierValue = Nullish<string>;

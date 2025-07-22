@@ -10,7 +10,7 @@ import type { ReactComponentReturn } from "./react-component-return";
  *
  * @public
  */
-export interface ReactComponent<TProps = object> {
+export interface ReactComponent<TProps = never> {
   (props: TProps): ReactComponentReturn;
 
   /**

@@ -8,6 +8,6 @@ import { isPropertyOf } from "../property";
  */
 export function isIterable(value: unknown): value is Iterable<unknown> {
   return (
-    isPropertyOf(value, Symbol.iterator) && isFunction(value[Symbol.iterator])
+    isPropertyOf(Symbol.iterator, value) && isFunction(value[Symbol.iterator])
   );
 }

@@ -1,5 +1,5 @@
-import type { CompositeDescriptor } from "../composite/composite-descriptor";
 import type { DescribedNominal } from "../descriptor2";
+import type { ValueDescriptor } from "../value/value-descriptor";
 
 import type { CompositeConfig } from "./composite-config";
 
@@ -10,6 +10,6 @@ import type { CompositeConfig } from "./composite-config";
  * @internal
  */
 export type CompositeConfigOf<TValue> =
-  TValue extends DescribedNominal<infer Descriptor extends CompositeDescriptor>
+  TValue extends DescribedNominal<infer Descriptor extends ValueDescriptor>
     ? CompositeConfig<Descriptor["value"]>
     : never;

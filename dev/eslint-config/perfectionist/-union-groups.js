@@ -1,0 +1,15 @@
+export default [
+  "keyword",
+  "operator",
+  "literal",
+  "named",
+  "object",
+  "tuple",
+  "import",
+  "function",
+  "conditional",
+  "intersection",
+  "union",
+  "nullish",
+  "unknown",
+];

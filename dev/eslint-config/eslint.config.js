@@ -1,30 +1,11 @@
-import js from "@eslint/js";
-import globals from "globals";
-import ts from "typescript-eslint";
+import core from "./eslint.config.core.js";
+import jest from "./eslint.config.jest.js";
+import perfectionist from "./eslint.config.perfectionist.js";
+import prettier from "./eslint.config.prettier.js";
 
-import * as configs from "./configs/index.js";
-
-export default ts.config(
-  js.configs.recommended,
-  ...ts.configs.recommendedTypeChecked,
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.es2021,
-      },
-      parserOptions: {
-        ecmaVersion: "latest",
-        projectService: true,
-        sourceType: "module",
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
-  ...configs.javascript,
-  ...configs.typescript,
-  ...configs.react,
-  ...configs.jest,
-  ...configs.prettier,
-  ...configs.perfectionist,
-);
+export default [
+  ...core, //
+  ...jest,
+  ...prettier,
+  ...perfectionist,
+];

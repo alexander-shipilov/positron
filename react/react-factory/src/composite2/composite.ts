@@ -1,5 +1,5 @@
-import type { CompositeTarget } from "../composite/composite-target";
 import type { Described } from "../descriptor2";
+import type { ValueTarget } from "../value/value-target";
 
 /**
  * The {@link Composite} type creates composite descriptor.
@@ -9,7 +9,7 @@ import type { Described } from "../descriptor2";
  *
  * @public
  */
-export type Composite<TValue extends CompositeTarget> = Described<
+export type Composite<TValue extends ValueTarget> = Described<
   TValue,
   Composite<TValue>
 >;

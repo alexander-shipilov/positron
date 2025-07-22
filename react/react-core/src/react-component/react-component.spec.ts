@@ -1,6 +1,6 @@
 import { expectTypeOf } from "expect-type";
 
-import type { EmptyObject } from "@positron/core";
+import type { AnyObject } from "@positron/core/src";
 
 import type { MockComponentProps } from "../@fixtures";
 import {
@@ -14,12 +14,12 @@ import type { ReactComponent } from "./react-component";
 describe("ReactComponent<TProps>", () => {
   it("`ReactComponent` should match any function components", () => {
     expectTypeOf(MockComponentNoArgs).toExtend<ReactComponent>();
-    expectTypeOf<typeof MockComponent>().toExtend<ReactComponent>();
+    expectTypeOf(MockComponent).toExtend<ReactComponent>();
     expectTypeOf(MockComponentMemo).toExtend<ReactComponent>();
   });
 
   it("`ReactComponent<TProps>` should match function components with `TProps` argument", () => {
-    expectTypeOf(MockComponentNoArgs).toExtend<ReactComponent<EmptyObject>>();
+    expectTypeOf(MockComponentNoArgs).toExtend<ReactComponent<AnyObject>>();
     expectTypeOf(MockComponent).toExtend<ReactComponent<MockComponentProps>>();
     expectTypeOf(MockComponentMemo).toExtend<
       ReactComponent<MockComponentProps>
@@ -27,6 +27,6 @@ describe("ReactComponent<TProps>", () => {
   });
 
   it("should not match non-component functions", () => {
-    expectTypeOf<() => EmptyObject>().not.toExtend<ReactComponent>();
+    expectTypeOf<() => AnyObject>().not.toExtend<ReactComponent>();
   });
 });

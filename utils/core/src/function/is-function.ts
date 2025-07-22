@@ -1,7 +1,7 @@
 import { isFunctionType } from "../function-type";
 import { typeOf } from "../type-of";
 
-import type { UnknownFunction } from "./unknown-function";
+import type { AnyFunction } from "./any-function";
 
 /**
  * The {@link isFunction} function is a type-guard function that determines
@@ -40,6 +40,6 @@ import type { UnknownFunction } from "./unknown-function";
  */
 export function isFunction(
   maybeFunction: unknown,
-): maybeFunction is UnknownFunction {
+): maybeFunction is AnyFunction {
   return isFunctionType(typeOf(maybeFunction));
 }

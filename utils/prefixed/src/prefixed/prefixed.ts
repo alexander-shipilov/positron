@@ -1,5 +1,3 @@
-import type { UnknownObject } from "@positron/core";
-
 import type { Prefix } from "../prefix";
 
 import type { PrefixedKey } from "./prefixed-key";
@@ -18,6 +16,6 @@ import type { PrefixedKey } from "./prefixed-key";
  * @param TProps - Type to add prefix to
  * @param TPrefix - String type of prefix
  */
-export type Prefixed<TPrefix extends Prefix, TProps extends UnknownObject> = {
+export type Prefixed<TPrefix extends Prefix, TProps> = {
   [TKey in keyof TProps as PrefixedKey<TPrefix, TKey>]: TProps[TKey];
 };

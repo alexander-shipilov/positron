@@ -20,5 +20,5 @@ import { isPropertyOf } from "../property";
  * @returns `true` if the `value` has property `next` which is a function.
  */
 export function isIterator(value: unknown): value is Iterator<unknown> {
-  return isPropertyOf(value, "next") && isFunction(value.next);
+  return isPropertyOf("next", value) && isFunction(value.next);
 }

@@ -1,26 +1,16 @@
-import type { Descriptor } from "../descriptor2";
+import type { Descriptor } from "../core";
 
-import type { ModifierType } from "./modifier-type";
-import type { ModifierValue } from "./modifier-value";
+import type { ModifierDescriptorData } from "./modifier-descriptor-data";
+import type { ModifierDescriptorType } from "./modifier-descriptor-type";
+import type { ModifierMeta } from "./modifier-meta";
 
 /**
- * The {@link ModifierDescriptor} type represents a properties of the
- * {@link Modifier} descriptor.
- *
- * @typeParam TDescriptorProps - The props of descriptor
+ * The {@link ModifierDescriptor} type represents a descriptor of the
+ * {@link Modifier} property.
  *
  * @public
  */
-export interface ModifierDescriptor<
-  TValue extends ModifierValue = ModifierValue,
-> extends Descriptor<ModifierType> {
-  /**
-   * Modifier class name.
-   */
-  readonly className?: string;
-
-  /**
-   * Modifier value.
-   */
-  readonly data: TValue;
-}
+export type ModifierDescriptor<TMeta extends ModifierMeta> = Descriptor<
+  ModifierDescriptorType,
+  ModifierDescriptorData<TMeta>
+>;

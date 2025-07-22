@@ -21,7 +21,6 @@ export * from "./object";
 export * from "./object-type";
 export * from "./primitive";
 export * from "./property";
-export * from "./record";
 export * from "./reference";
 export * from "./set";
 export * from "./string";
