@@ -76,7 +76,7 @@ describe("ArrayUnique<T>", () => {
         readonly [1, 2] | readonly [1, 3] | readonly [2, 3] | readonly [2]
       >();
 
-      type T5 = [number, string | 1, 2];
+      type T5 = [number, 1 | string, 2];
       expectTypeOf<ArrayUnique<T5>>().toEqualTypeOf<
         [number, string] | [number]
       >();
@@ -97,9 +97,9 @@ describe("ArrayUnique<T>", () => {
       "",
     () => {
       type T1 = [...1[]];
-      expectTypeOf<ArrayUnique<T1>>().toEqualTypeOf<[] | [1]>();
+      expectTypeOf<ArrayUnique<T1>>().toEqualTypeOf<[1] | []>();
       expectTypeOf<ArrayUnique<Readonly<T1>>>().toEqualTypeOf<
-        readonly [] | readonly [1]
+        readonly [1] | readonly []
       >();
 
       type T2 = [...1[], 1];

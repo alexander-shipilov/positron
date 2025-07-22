@@ -23,4 +23,4 @@ import type { PropertySymbol } from "./property-symbol";
 export type PropertySymbolOf<
   TValue,
   TKey extends PropertySymbol = PropertySymbol,
-> = TKey & keyof TValue;
+> = keyof TValue & TKey;

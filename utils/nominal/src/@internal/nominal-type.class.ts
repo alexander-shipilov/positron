@@ -12,5 +12,5 @@ declare const tag: unique symbol;
  * @internal
  */
 export declare class NominalType<TType extends symbol, TName extends string> {
-  private readonly [tag]: [TName | string, TType];
+  private readonly [tag]: [string | TName, TType];
 }

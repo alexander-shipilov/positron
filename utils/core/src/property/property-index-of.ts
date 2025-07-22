@@ -23,4 +23,4 @@ import type { PropertyIndex } from "./property-index";
 export type PropertyIndexOf<
   TValue,
   TKey extends PropertyIndex = PropertyIndex,
-> = TKey & keyof TValue;
+> = keyof TValue & TKey;

@@ -13,14 +13,14 @@ export interface Descriptor<
   TData extends DescriptorData = DescriptorData,
 > {
   /**
-   * The {@link type} property stores descriptor type.
-   */
-  readonly type: TType;
-
-  /**
    * The {@link type} property stores descriptor data.
    */
   readonly data: TData;
+
+  /**
+   * The {@link type} property stores descriptor type.
+   */
+  readonly type: TType;
 }
 
 /**

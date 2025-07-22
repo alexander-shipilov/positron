@@ -28,6 +28,6 @@ describe("ArrayType<T>", () => {
   });
 
   it("should not be `never` if at least one of the arrays in union type is not []", () => {
-    expectTypeOf<ArrayType<[] | [1]>>().toEqualTypeOf<1>();
+    expectTypeOf<ArrayType<[1] | []>>().toEqualTypeOf<1>();
   });
 });

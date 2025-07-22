@@ -21,4 +21,4 @@
 export type PropertyKeyOf<
   TValue,
   TKey extends PropertyKey = PropertyKey,
-> = TKey & keyof TValue;
+> = keyof TValue & TKey;

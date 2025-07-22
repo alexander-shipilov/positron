@@ -23,4 +23,4 @@ import type { PropertyName } from "./property-name";
 export type PropertyNameOf<
   TValue,
   TKey extends PropertyName = PropertyName,
-> = TKey & keyof TValue;
+> = keyof TValue & TKey;

@@ -15,6 +15,6 @@ export interface ElementConfig<
 > extends Descriptor<ElementDescriptorType> {
   readonly className: Optional<string>;
   readonly Component: ReactComponent<TProps>;
-  readonly props: ReactAnyProps;
   readonly data: TValue;
+  readonly props: ReactAnyProps;
 }
