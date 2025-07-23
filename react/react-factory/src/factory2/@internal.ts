@@ -4,14 +4,14 @@ import type {
   LiteralPropertyKey,
   NonNullish,
   Optional,
-  PropertyOwner
+  PropertyOwner,
 } from "@positron/core";
 import type { Prefixed, PrefixedKey } from "@positron/prefixed";
 import type {
   ReactAnyProps,
   ReactComponent,
   ReactProps,
-  ReactPropsKey
+  ReactPropsKey,
 } from "@positron/react-core";
 import type { ReactPropsOf } from "@positron/react-core";
 

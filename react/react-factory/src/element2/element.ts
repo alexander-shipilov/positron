@@ -3,9 +3,7 @@ import { EMPTY_OBJECT } from "@positron/core";
 
 import type { Described } from "../descriptor2";
 import type { ElementDescriptor } from "../element/element-descriptor";
-import type {
-  ElementDescriptorValue
-} from "../element/element-descriptor-value";
+import type { ElementDescriptorValue } from "../element/element-descriptor-value";
 import { ELEMENT_TYPE } from "../element/element-descriptor-type";
 
 import type { ElementConfig } from "./element-config";

@@ -1,8 +1,6 @@
 import type { ReactAnyProps, ReactProps } from "@positron/react-core";
 
-import type {
-  BlockDescriptorType
-} from "../block-descriptor/block-descriptor-type";
+import type { BlockDescriptorType } from "../block-descriptor/block-descriptor-type";
 import type { Descriptor } from "../descriptor2";
 
 /**

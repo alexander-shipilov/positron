@@ -8,7 +8,7 @@ import type {
   IntegerType,
   Natural,
   NaturalType,
-  Positive
+  Positive,
 } from "../@fixtures/nominal";
 
 import type { Nominal } from "./nominal";
