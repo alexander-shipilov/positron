@@ -1,15 +1,15 @@
 /**
- * The {@link BigintType} string literal type represents a name of the
- * `bigint` type.
+ * The {@link BIGINT_TYPE} constant represents the name of the `bigint` type
+ * that the `typeof` operator returns.
  *
  * @public
  */
-export type BigintType = "bigint";
+export const BIGINT_TYPE = "bigint";
 
 /**
- * The {@link BIGINT_TYPE} string constant represents a name of the `bigint`
- * type.
+ * The {@link BigintType} literal string type represents the name of the
+ * `bigint` type that the `typeof` operator returns.
  *
  * @public
  */
-export const BIGINT_TYPE: BigintType = "bigint";
+export type BigintType = typeof BIGINT_TYPE;
