@@ -1,14 +1,14 @@
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
-import type { UnknownObject } from "@positron/core/src";
+import type { UnknownObject } from "@positron/core";
 
 import type {
   Integer,
   IntegerType,
   Natural,
   NaturalType,
-  Positive,
+  Positive
 } from "../@fixtures/nominal";
 
 import type { Nominal } from "./nominal";

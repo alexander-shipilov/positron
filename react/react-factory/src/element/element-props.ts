@@ -1,3 +1,3 @@
-import type { AnyObject } from "@positron/core/src";
+import type { AnyObject } from "@positron/core";
 
 export type ElementProps = AnyObject;

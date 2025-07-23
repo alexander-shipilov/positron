@@ -1,9 +1,11 @@
 import type { ReactComponent } from "@positron/react-core";
-import type { ReactAnyProps } from "@positron/react-core/src";
+import type { ReactAnyProps } from "@positron/react-core";
 
-import type { BlockDescriptorType } from "../block-descriptor/block-descriptor-type";
-import type { Descriptor } from "../descriptor2";
+import type {
+  BlockDescriptorType
+} from "../block-descriptor/block-descriptor-type";
 import { BLOCK_TYPE } from "../block-descriptor/block-descriptor-type";
+import type { Descriptor } from "../descriptor2";
 
 import type { BlockDescriptor } from "./block-descriptor";
 

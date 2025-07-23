@@ -1,3 +1,3 @@
-import type { UnknownObject } from "@positron/core/src";
+import type { UnknownObject } from "@positron/core";
 
 export type DescriptorMeta = UnknownObject;

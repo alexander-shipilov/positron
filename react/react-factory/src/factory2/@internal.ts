@@ -1,27 +1,25 @@
 import type { ArrayType } from "@positron/array";
 import type { PartialOptional } from "@positron/core";
-import type { NonNullish } from "@positron/core/src";
-import type { PropertyOwner } from "@positron/core/src";
-import type { Optional } from "@positron/core/src";
-import type { LiteralPropertyKey } from "@positron/core/src";
-import type { Prefixed } from "@positron/prefixed/src";
-import type { PrefixedKey } from "@positron/prefixed/src";
+import type {
+  LiteralPropertyKey,
+  NonNullish,
+  Optional,
+  PropertyOwner
+} from "@positron/core";
+import type { Prefixed, PrefixedKey } from "@positron/prefixed";
 import type {
   ReactAnyProps,
   ReactComponent,
   ReactProps,
-  ReactPropsKey,
+  ReactPropsKey
 } from "@positron/react-core";
-import type { ReactPropsOf } from "@positron/react-core/src";
+import type { ReactPropsOf } from "@positron/react-core";
 
-import type { BlockDescriptorsOf } from "../block2";
-import type { BlockConfig } from "../block2";
+import type { BlockConfig, BlockDescriptorsOf } from "../block2";
 import type { CompositeConfig } from "../composite2";
-import type { Descriptor } from "../descriptor2";
-import type { DescribedTargetOf } from "../descriptor2";
+import type { DescribedTargetOf, Descriptor } from "../descriptor2";
 import type { ElementConfig } from "../element2";
-import type { ModifierConfig } from "../modifier2";
-import type { ModifierValueTypeOf } from "../modifier2";
+import type { ModifierConfig, ModifierValueTypeOf } from "../modifier2";
 
 /**
  * @internal

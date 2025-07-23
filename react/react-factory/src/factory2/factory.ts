@@ -3,28 +3,28 @@ import type {
   ReactComponent,
   ReactProps,
   ReactPropsKey,
-  ReactPropsKeyOf,
+  ReactPropsKeyOf
 } from "@positron/react-core";
-import type { ReactComponentReturn } from "@positron/react-core/src";
+import type { ReactComponentReturn } from "@positron/react-core";
 import { assert } from "@positron/core";
 
 import type { BlockConfig } from "../block2";
+import { block } from "../block2";
 import type { CompositeConfig } from "../composite2";
+import { composite } from "../composite2";
 import type { Descriptor } from "../descriptor2";
 import type { ElementConfig } from "../element2";
-import type { ModifierConfig } from "../modifier2";
-import { block } from "../block2";
-import { composite } from "../composite2";
 import { element } from "../element2";
+import type { ModifierConfig } from "../modifier2";
 import { modifier } from "../modifier2";
 
 import type {
   BlockComponentProps,
+  ComponentProps,
   Composites,
   Elements,
-  Modifiers,
+  Modifiers
 } from "./@internal";
-import type { ComponentProps } from "./@internal";
 import type { FactoryRender } from "./factory-render";
 
 /**

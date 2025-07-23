@@ -1,4 +1,4 @@
-import type { TypedObject } from "@positron/core/src";
+import type { TypedObject } from "@positron/core";
 
 export type Metadata<
   TTag extends PropertyKey = PropertyKey,

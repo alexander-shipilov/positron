@@ -1,3 +1,4 @@
-import positron from "@positron/common-rig/profiles/default/eslint.config.base.js";
+import positron
+  from "@positron/common-rig/profiles/default/eslint.config.base.js";
 
 export default positron;

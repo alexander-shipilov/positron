@@ -1,6 +1,6 @@
 import type { Metatype } from "utils/metatype/src/non-metatype";
 
-import type { NominalSymbol } from "@positron/nominal-symbol/src";
+import type { NominalSymbol } from "@positron/nominal-symbol";
 
 import type { NominalType } from "../nominal-type";
 

@@ -1,4 +1,4 @@
-import { NominalSymbol } from "@positron/nominal-symbol/src";
+import { NominalSymbol } from "@positron/nominal-symbol";
 
 /**
  * @internal

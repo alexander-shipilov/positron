@@ -1,7 +1,7 @@
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
-import type { Any } from "@positron/core/src";
+import type { Any } from "@positron/core";
 
 import type { Metatype } from "../metatype";
 

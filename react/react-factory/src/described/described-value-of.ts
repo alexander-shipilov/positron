@@ -1,4 +1,4 @@
-import type { AnyFunction } from "@positron/core/src";
+import type { AnyFunction } from "@positron/core";
 
 /**
  * The {@link DescribedValueOf} type returns a type of the passed descriptor
