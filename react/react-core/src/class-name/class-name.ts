@@ -1,4 +1,4 @@
-import type { Nominal, NominalType } from "@positron/nominal-type";
+import type { Nominal, NominalType } from "@positron/nominal";
 
 /**
  * Type {@link ClassName} describes a defined value of `className` property.

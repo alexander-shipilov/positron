@@ -115,9 +115,9 @@ importers:
       '@positron/core':
         specifier: workspace:*
         version: link:../../utils/core
-      '@positron/nominal-type':
+      '@positron/nominal':
         specifier: workspace:*
-        version: link:../../utils/nominal-type
+        version: link:../../utils/nominal
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4
@@ -158,9 +158,9 @@ importers:
       '@positron/core':
         specifier: workspace:*
         version: link:../../utils/core
-      '@positron/nominal-type':
+      '@positron/nominal':
         specifier: workspace:*
-        version: link:../../utils/nominal-type
+        version: link:../../utils/nominal
       '@positron/prefixed':
         specifier: workspace:*
         version: link:../../utils/prefixed
@@ -257,14 +257,14 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  ../../utils/meta-type:
+  ../../utils/metatype:
     dependencies:
       '@positron/core':
         specifier: workspace:*
         version: link:../core
-      '@positron/meta-type-symbol':
+      '@positron/metatype-symbol':
         specifier: workspace:*
-        version: link:../meta-type-symbol
+        version: link:../metatype-symbol
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4
@@ -291,7 +291,7 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  ../../utils/meta-type-symbol:
+  ../../utils/metatype-symbol:
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4
@@ -318,7 +318,7 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  ../../utils/nominal-type:
+  ../../utils/nominal:
     dependencies:
       '@positron/array':
         specifier: workspace:*
@@ -326,9 +326,12 @@ importers:
       '@positron/core':
         specifier: workspace:*
         version: link:../core
-      '@positron/meta-type':
+      '@positron/metatype':
         specifier: workspace:*
-        version: link:../meta-type
+        version: link:../metatype
+      '@positron/nominal-symbol':
+        specifier: workspace:*
+        version: link:../nominal-symbol
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4
@@ -355,7 +358,7 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  ../../utils/nominal-type-symbol:
+  ../../utils/nominal-symbol:
     devDependencies:
       '@jest/globals':
         specifier: ~30.0.4

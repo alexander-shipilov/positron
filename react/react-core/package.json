@@ -19,7 +19,7 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@positron/core": "workspace:*",
-    "@positron/nominal-type": "workspace:*"
+    "@positron/nominal": "workspace:*"
   },
   "devDependencies": {
     "@jest/globals": "~30.0.4",
