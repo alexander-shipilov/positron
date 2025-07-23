@@ -5,5 +5,5 @@
  * @public
  */
 export type DescribedTarget<TValue = unknown, TProps = never> =
-  | TValue
-  | ((props: TProps) => TValue);
+  | ((props: TProps) => TValue)
+  | TValue;

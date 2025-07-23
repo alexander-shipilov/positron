@@ -5,8 +5,8 @@ import type { TypeGuard } from "./type-guard";
 
 describe("TypeGuard<TExpected, TValue>", () => {
   it(
-    "should describe a function which accepts `TValue` and checks that the " +
-      "passed arg matches `TExpected`",
+    "should describe a function which accepts `TValue` and checks that" +
+      " the passed arg matches `TExpected`",
     () => {
       expectTypeOf<(value: unknown) => value is number>().toEqualTypeOf<
         TypeGuard<number>

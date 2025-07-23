@@ -1,7 +1,8 @@
 import type { ArrayType } from "@positron/array";
 
-import type { Nominal as InternalNominal } from "../@internal";
 import type { NominalType } from "../nominal-type";
+
+import type { NominalInternal } from "./nominal-internal";
 
 /**
  * The {@link Nominal} type returns a nominal type from passed type `TType`
@@ -41,12 +42,12 @@ export type Nominal<
   TTarget = unknown,
   TType extends NominalType = NominalType,
 > = NominalType extends TType
-  ? InternalNominal<TTarget>
-  : TTarget extends InternalNominal<infer Parent, infer ParentType>
-    ? InternalNominal<
+  ? NominalInternal<TTarget>
+  : TTarget extends NominalInternal<infer Parent, infer ParentType>
+    ? NominalInternal<
         Parent,
         TType extends ArrayType<ParentType>
           ? ParentType
           : [TType, ...ParentType]
       >
-    : InternalNominal<TTarget, [TType]>;
+    : NominalInternal<TTarget, [TType]>;

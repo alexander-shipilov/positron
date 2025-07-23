@@ -20,32 +20,32 @@ import { UNDEFINED_TYPE } from "../undefined-type";
 
 // noinspection JSPrimitiveTypeWrapperUsage
 export const typesValues = new Map<unknown, string>([
-  [42n, BIGINT_TYPE],
-
-  [false, BOOLEAN_TYPE],
-  [true, BOOLEAN_TYPE],
+  ["", STRING_TYPE],
 
   [() => void 0, FUNCTION_TYPE],
-  [Object, FUNCTION_TYPE],
-  [class {}, FUNCTION_TYPE],
-
-  [null, NULL_TYPE],
-
-  [42, NUMBER_TYPE],
-  [NaN, NUMBER_TYPE],
   [+Infinity, NUMBER_TYPE],
-  [-Infinity, NUMBER_TYPE],
 
-  [{}, OBJECT_TYPE],
+  [-Infinity, NUMBER_TYPE],
+  [42, NUMBER_TYPE],
+  [42n, BIGINT_TYPE],
+
   [[], OBJECT_TYPE],
+
+  [`template${1}`, STRING_TYPE],
+  [{}, OBJECT_TYPE],
+  [class {}, FUNCTION_TYPE],
+  [false, BOOLEAN_TYPE],
+
+  [NaN, NUMBER_TYPE],
   [new Boolean(), OBJECT_TYPE],
   [new Number(), OBJECT_TYPE],
   [new String(), OBJECT_TYPE],
+  [null, NULL_TYPE],
 
-  ["", STRING_TYPE],
-  [`template${1}`, STRING_TYPE],
-
+  [Object, FUNCTION_TYPE],
   [Symbol(), SYMBOL_TYPE],
+
+  [true, BOOLEAN_TYPE],
 
   [undefined, UNDEFINED_TYPE],
 ]);

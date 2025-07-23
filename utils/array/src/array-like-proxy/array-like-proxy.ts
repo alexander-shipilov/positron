@@ -1,5 +1,5 @@
-import type { PropertyKeyOf } from "@positron/core/src";
-import { isOwnPropertyOf } from "@positron/core/src";
+import type { PropertyKeyOf } from "@positron/core";
+import { isOwnPropertyOf } from "@positron/core";
 
 /**
  * The {@link ArrayLikeProxy} class creates a proxy to the given array-like.

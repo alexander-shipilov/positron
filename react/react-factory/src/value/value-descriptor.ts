@@ -1,5 +1,4 @@
-import type { Descriptor } from "../core";
-import type { ValueMeta } from "../core";
+import type { Descriptor, ValueMeta } from "../core";
 
 import type { ValueDescriptorData } from "./value-descriptor-data";
 import type { ValueDescriptorType } from "./value-descriptor-type";

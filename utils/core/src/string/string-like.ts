@@ -15,7 +15,7 @@
 export type StringLike =
   | bigint //
   | boolean
+  | null
   | number
   | string
-  | null
   | undefined;

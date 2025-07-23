@@ -1,7 +1,7 @@
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
-import type { Nullish } from "@positron/core/src";
+import type { Nullish } from "@positron/core";
 
 import type { DescribedTarget } from "../described";
 

@@ -1,5 +1,4 @@
-import type { Descriptor } from "../core";
-import type { MetadataMeta } from "../core";
+import type { Descriptor, MetadataMeta } from "../core";
 
 import type { MetadataDescriptorData } from "./metadata-descriptor-data";
 import type { MetadataDescriptorType } from "./metadata-descriptor-type";

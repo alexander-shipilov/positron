@@ -62,7 +62,7 @@ describe("ArrayUniqueTail<T>", () => {
         readonly [1, 2] | readonly [1, 3] | readonly [2, 3] | readonly [2]
       >();
 
-      type T5 = [number, string | 1, 2];
+      type T5 = [number, 1 | string, 2];
       expectTypeOf<ArrayUniqueTail<T5>>().toEqualTypeOf<
         [number, 1, 2] | [number, string, 2]
       >();
@@ -82,9 +82,9 @@ describe("ArrayUniqueTail<T>", () => {
       "1 | 2, ...(2 | 3)[]    -->  [1] | [2] | [1, 2] | [1, 3] | [2, 3]",
     () => {
       type T1 = [...1[]];
-      expectTypeOf<ArrayUniqueTail<T1>>().toEqualTypeOf<[] | [1]>();
+      expectTypeOf<ArrayUniqueTail<T1>>().toEqualTypeOf<[1] | []>();
       expectTypeOf<ArrayUniqueTail<Readonly<T1>>>().toEqualTypeOf<
-        readonly [] | readonly [1]
+        readonly [1] | readonly []
       >();
 
       type T2 = [...1[], 1];

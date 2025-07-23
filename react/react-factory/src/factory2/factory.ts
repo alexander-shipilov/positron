@@ -5,7 +5,7 @@ import type {
   ReactPropsKey,
   ReactPropsKeyOf,
 } from "@positron/react-core";
-import type { ReactComponentReturn } from "@positron/react-core/src";
+import type { ReactComponentReturn } from "@positron/react-core";
 import { assert } from "@positron/core";
 
 import type { BlockConfig } from "../block2";
@@ -20,11 +20,11 @@ import { modifier } from "../modifier2";
 
 import type {
   BlockComponentProps,
+  ComponentProps,
   Composites,
   Elements,
   Modifiers,
 } from "./@internal";
-import type { ComponentProps } from "./@internal";
 import type { FactoryRender } from "./factory-render";
 
 /**

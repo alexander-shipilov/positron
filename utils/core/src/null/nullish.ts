@@ -11,4 +11,4 @@
  *
  * @public
  */
-export type Nullish<TType> = TType | null;
+export type Nullish<TType> = null | TType;

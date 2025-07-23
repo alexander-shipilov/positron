@@ -1,5 +1,5 @@
-import type { AnyObject } from "@positron/core/src";
-import type { ReactComponent } from "@positron/react-core/src";
+import type { AnyObject } from "@positron/core";
+import type { ReactComponent } from "@positron/react-core";
 
 import type { BlockMeta } from "./block-meta";
 import type { BlockProps } from "./block-props";

@@ -1,10 +1,10 @@
 export default [
   "keyword",
-  "operator",
   "literal",
   "named",
-  "object",
   "tuple",
+  "operator",
+  "object",
   "import",
   "function",
   "conditional",

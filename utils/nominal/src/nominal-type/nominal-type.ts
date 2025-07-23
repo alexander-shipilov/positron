@@ -1,4 +1,4 @@
-import type { NominalType as InternalNominalType } from "../@internal";
+import type { NominalTypeInternal } from "./nominal-type-internal";
 
 /**
  * The {@link NominalType} represents a type to describe {@link Nominal}.
@@ -20,6 +20,6 @@ export type NominalType<
   TType extends symbol = symbol,
   TName extends string = string,
 > =
-  TType extends InternalNominalType<infer Type>
-    ? InternalNominalType<Type, TName>
-    : InternalNominalType<TType, TName>;
+  TType extends NominalTypeInternal<infer Type>
+    ? NominalTypeInternal<Type, TName>
+    : NominalTypeInternal<TType, TName>;

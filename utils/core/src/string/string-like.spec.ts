@@ -17,9 +17,9 @@ describe("StringLike", () => {
       expectTypeOf<StringLike>().toEqualTypeOf<
         | bigint //
         | boolean
+        | null
         | number
         | string
-        | null
         | undefined
       >();
     },

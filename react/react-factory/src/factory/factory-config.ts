@@ -1,4 +1,4 @@
-import type { TypedObject } from "@positron/core/src";
+import type { TypedObject } from "@positron/core";
 
 import type { Descriptor } from "../descriptor";
 

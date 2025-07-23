@@ -1,4 +1,4 @@
-import type { UnknownObject } from "@positron/core/src";
+import type { UnknownObject } from "@positron/core";
 
 /**
  * Type {@link MetadataMeta} represents a metadata type that can be added to the

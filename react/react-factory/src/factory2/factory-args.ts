@@ -4,8 +4,7 @@ import type { ReactAnyProps } from "@positron/react-core";
 import type { BlockConfigsOf } from "../block2";
 import type { CompositeConfig } from "../composite2";
 import type { ElementConfig } from "../element2";
-import type { ModifierConfig } from "../modifier2";
-import type { ModifierValueTypeOf } from "../modifier2";
+import type { ModifierConfig, ModifierValueTypeOf } from "../modifier2";
 
 /**
  * The {@link FactoryArgs} type creates factory function arguments.

@@ -1,6 +1,6 @@
 import { expectTypeOf } from "expect-type";
 
-import type { AnyObject } from "@positron/core/src";
+import type { AnyObject } from "@positron/core";
 
 import type { MockComponentProps } from "../@fixtures";
 import {

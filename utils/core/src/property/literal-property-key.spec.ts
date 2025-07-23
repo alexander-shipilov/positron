@@ -11,12 +11,12 @@ describe("LiteralPropertyKey<T>", () => {
     expectTypeOf<LiteralPropertyKey<number | string>>().toBeNever();
     expectTypeOf<LiteralPropertyKey<string>>().toBeNever();
 
-    expectTypeOf<LiteralPropertyKey<$ | string | 1>>().toEqualTypeOf<$ | 1>();
-    expectTypeOf<LiteralPropertyKey<symbol | "a" | 1>>().toEqualTypeOf<
+    expectTypeOf<LiteralPropertyKey<$ | 1 | string>>().toEqualTypeOf<$ | 1>();
+    expectTypeOf<LiteralPropertyKey<"a" | 1 | symbol>>().toEqualTypeOf<
       "a" | 1
     >();
-    expectTypeOf<LiteralPropertyKey<$ | number | "a">>().toEqualTypeOf<
-      $ | "a"
+    expectTypeOf<LiteralPropertyKey<"a" | $ | number>>().toEqualTypeOf<
+      "a" | $
     >();
   });
 });
