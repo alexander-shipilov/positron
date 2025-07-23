@@ -8,6 +8,7 @@ export * from "./boolean-type";
 export * from "./class";
 export * from "./collection";
 export * from "./error";
+export * from "./exception";
 export * from "./falsy";
 export * from "./function";
 export * from "./function-type";
