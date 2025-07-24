@@ -1,4 +1,4 @@
-import type { ArrayType } from "@positron/array/src";
+import type { ArrayType } from "@positron/array";
 
 import type { NominalType } from "../nominal-type";
 

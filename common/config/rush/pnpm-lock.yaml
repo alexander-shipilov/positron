@@ -332,9 +332,6 @@ importers:
       '@positron/core':
         specifier: workspace:*
         version: link:../core
-      '@positron/meta':
-        specifier: workspace:*
-        version: link:../meta
       '@positron/nominal-symbols':
         specifier: workspace:*
         version: link:../nominal-symbols

@@ -1,4 +1,4 @@
-import type { PropertyOwner } from "@positron/core/src";
+import type { PropertyOwner } from "@positron/core";
 
 import type { MetaType_ } from "./meta-type-";
 

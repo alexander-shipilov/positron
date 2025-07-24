@@ -1,10 +1,8 @@
-import type { ReactProps } from "../react-props/react-props";
-
 /**
  * The {@link ReactVoid} component returns nothing.
+ *
+ * @public
  */
-export function ReactVoid<TProps extends ReactProps = never>(
-  props: TProps,
-): undefined {
+export function ReactVoid<TProps = never>(props: TProps): undefined {
   return void props;
 }
