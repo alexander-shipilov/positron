@@ -1,11 +1,11 @@
-import js from "@eslint/js";
+import eslintjs from "@eslint/js";
+import importPlugin from "eslint-plugin-import";
 import globals from "globals";
-import ts from "typescript-eslint";
+import tseslint from "typescript-eslint";
 
-export default ts.config(
-  js.configs.recommended,
-  ...ts.configs.recommendedTypeChecked,
-
+export default tseslint.config(
+  eslintjs.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
   {
     languageOptions: {
       globals: {
@@ -21,7 +21,11 @@ export default ts.config(
     },
   },
   {
-    ...ts.configs.disableTypeChecked,
+    ...importPlugin.flatConfigs.recommended,
+    ...importPlugin.flatConfigs.typescript,
+  },
+  {
+    ...tseslint.configs.disableTypeChecked,
     files: ["**/*.{cjs,js,jsx,mjs}"],
   },
 
@@ -29,7 +33,19 @@ export default ts.config(
     {
       rules: {
         "@typescript-eslint/array-type": "error",
+        "@typescript-eslint/consistent-type-imports": [
+          "error",
+          {
+            fixStyle: "separate-type-imports",
+            prefer: "type-imports",
+          },
+        ],
         "@typescript-eslint/indent": "off",
+
+        "import/consistent-type-specifier-style": [
+          "error", //
+          "prefer-top-level",
+        ],
       },
     },
   ],

@@ -1,14 +1,15 @@
 /**
- * The {@link ObjectType} string literal type represents a name of the `object`
- * type.
+ * The {@link OBJECT_TYPE} constant represents the name of the `object` type
+ * that the `typeof` operator returns.
  *
  * @public
  */
-export type ObjectType = "object";
+export const OBJECT_TYPE = "object";
 
 /**
- * The {@link OBJECT_TYPE} constant represents a name of the `object` type.
+ * The {@link ObjectType} literal string type represents the name of the
+ * `object` type that the `typeof` operator returns.
  *
  * @public
  */
-export const OBJECT_TYPE: ObjectType = "object";
+export type ObjectType = typeof OBJECT_TYPE;

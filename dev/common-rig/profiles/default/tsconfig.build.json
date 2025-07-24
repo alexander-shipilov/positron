@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDecoratorMetadata": true,
+    "inlineSourceMap": true,
+    "outDir": "./../../../../../lib/",
+    "rootDir": "./../../../../../src/"
+  },
+  "include": [
+    "./../../../../../src/"
+  ]
+}

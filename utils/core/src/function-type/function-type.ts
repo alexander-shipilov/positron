@@ -1,14 +1,15 @@
 /**
- * The {@link FunctionType} literal string type represents a name of the
- * `function` type.
+ * The {@link FUNCTION_TYPE} constant represents the name of the `function` type
+ * that the `typeof` operator returns.
  *
  * @public
  */
-export type FunctionType = "function";
+export const FUNCTION_TYPE = "function";
 
 /**
- * The {@link FUNCTION_TYPE} constant represents a name of `function` type.
+ * The {@link FunctionType} literal string type represents the name of the
+ * `function` type that the `typeof` operator returns.
  *
  * @public
  */
-export const FUNCTION_TYPE: FunctionType = "function";
+export type FunctionType = typeof FUNCTION_TYPE;

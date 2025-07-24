@@ -4,7 +4,7 @@ import { error } from "../error";
 import { isNonFalsy } from "../falsy";
 import { never } from "../never";
 
-import { AssertError } from "./assert-error";
+import { AssertException } from "./assert-exception";
 
 /**
  * The {@link assert} function tests if the passed {@link value} is truthy.
@@ -12,11 +12,11 @@ import { AssertError } from "./assert-error";
  * If {@link value} is falsy, an `Error` is thrown.
  *
  * If the {@link message} parameter is omitted or `undefined`, a default
- * {@link AssertError} is assigned.
+ * {@link AssertException} is assigned.
  *
  * If the {@link message} parameter is an instance of `Error` or function
  * which returns an instance of `Error`, then it will be thrown instead of the
- * {@link AssertError}.
+ * {@link AssertException}.
  *
  * @example
  * ```ts
@@ -34,7 +34,7 @@ import { AssertError } from "./assert-error";
  *
  * @returns The passed value
  *
- * @throws {@link AssertError} if {@link message} is a string or omitted
+ * @throws {@link AssertException} if {@link message} is a string or omitted
  * @throws the passed {@link message} otherwise
  *
  * @public
@@ -43,5 +43,5 @@ export function assert<TValue>(
   value: TValue,
   message: ErrorLike = "Assertion failed",
 ): NonFalsy<TValue> {
-  return isNonFalsy(value) ? value : never(error(message, AssertError));
+  return isNonFalsy(value) ? value : never(error(message, AssertException));
 }

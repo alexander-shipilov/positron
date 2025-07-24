@@ -23,6 +23,7 @@ export default [
     rules: {
       "@typescript-eslint/adjacent-overload-signatures": "off",
       "@typescript-eslint/sort-type-constituents": "off",
+      "import/order": "off",
       "react/jsx-sort-props": "off",
       "sort-imports": "off",
       "sort-keys": "off",

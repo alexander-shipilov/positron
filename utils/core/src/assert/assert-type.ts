@@ -3,7 +3,7 @@ import type { TypeGuard } from "../type-guard";
 import { error } from "../error";
 import { never } from "../never";
 
-import { AssertError } from "./assert-error";
+import { AssertException } from "./assert-exception";
 
 /**
  * The {@link assertType} function tests if the passed {@link value} is match
@@ -20,7 +20,7 @@ import { AssertError } from "./assert-error";
  *
  * @returns The passed value
  *
- * @throws {@link AssertError} if {@link message} is a string or omitted
+ * @throws {@link AssertException} if {@link message} is a string or omitted
  * @throws {@link message} otherwise
  *
  * @public
@@ -30,5 +30,5 @@ export function assertType<TExpected, TValue = unknown>(
   value: TValue,
   message: ErrorLike = "Type assertion failed",
 ): TExpected {
-  return isType(value) ? value : never(error(message, AssertError));
+  return isType(value) ? value : never(error(message, AssertException));
 }

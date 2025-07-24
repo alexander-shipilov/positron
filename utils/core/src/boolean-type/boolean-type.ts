@@ -1,13 +1,15 @@
 /**
- * The {@link BooleanType} type represents a name of `boolean` type.
+ * The {@link BOOLEAN_TYPE} constant represents the name of the `boolean` type
+ * that the `typeof` operator returns.
  *
  * @public
  */
-export type BooleanType = "boolean";
+export const BOOLEAN_TYPE = "boolean";
 
 /**
- * The {@link BOOLEAN_TYPE} constant represents a name of `boolean` type.
+ * The {@link BooleanType} literal string type represents the name of the
+ * `boolean` type that the `typeof` operator returns.
  *
  * @public
  */
-export const BOOLEAN_TYPE: BooleanType = "boolean";
+export type BooleanType = typeof BOOLEAN_TYPE;

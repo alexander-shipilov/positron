@@ -4,18 +4,14 @@ import { expectTypeOf } from "expect-type";
 import type { ObjectType } from "./object-type";
 import { OBJECT_TYPE } from "./object-type";
 
-describe("ObjectType", () => {
-  it("should be 'object'", () => {
-    expectTypeOf<ObjectType>().toEqualTypeOf<"object">();
+describe("OBJECT_TYPE", () => {
+  it("should be `typeof <object>`", () => {
+    expect(typeof {}).toBe(OBJECT_TYPE);
   });
 });
 
-describe("OBJECT_TYPE", () => {
-  it("should be the `ObjectType` type`", () => {
-    expectTypeOf(OBJECT_TYPE).toEqualTypeOf<ObjectType>();
-  });
-
-  it("should be `typeof <object>`", () => {
-    expect(typeof {}).toBe(OBJECT_TYPE);
+describe("ObjectType", () => {
+  it("should be `typeof OBJECT_TYPE`", () => {
+    expectTypeOf<ObjectType>().toEqualTypeOf<typeof OBJECT_TYPE>();
   });
 });
