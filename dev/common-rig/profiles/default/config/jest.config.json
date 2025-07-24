@@ -1,6 +1,9 @@
 {
   "extends": "@rushstack/heft-jest-plugin/includes/jest-shared.config.json",
+  "collectCoverage": true,
+  "coverageDirectory": "<rootDir>/coverage",
+  "coverageReporters": ["clover", "json", "lcov", "text"],
   "testMatch": [
-    "<rootDir>/lib/**/*.spec.{cjs,js}"
+    "<rootDir>/lib/**/*.{spec,test}.{cjs,js}"
   ]
 }

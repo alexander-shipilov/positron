@@ -1,3 +1,2 @@
 export * from "./nominal";
-export * from "./nominal";
-export * from "./omit-nominal";
+export * from "./nominal-type";

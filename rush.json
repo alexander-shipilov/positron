@@ -397,20 +397,20 @@
       "projectFolder": "utils/core",
     },
     {
-      "packageName": "@positron/metatype",
-      "projectFolder": "utils/metatype",
+      "packageName": "@positron/meta",
+      "projectFolder": "utils/meta",
     },
     {
-      "packageName": "@positron/metatype-symbol",
-      "projectFolder": "utils/metatype-symbol",
+      "packageName": "@positron/meta-symbols",
+      "projectFolder": "utils/meta-symbols",
     },
     {
       "packageName": "@positron/nominal",
       "projectFolder": "utils/nominal",
     },
     {
-      "packageName": "@positron/nominal-symbol",
-      "projectFolder": "utils/nominal-symbol",
+      "packageName": "@positron/nominal-symbols",
+      "projectFolder": "utils/nominal-symbols",
     },
     {
       "packageName": "@positron/prefixed",

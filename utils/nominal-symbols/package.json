@@ -1,0 +1,35 @@
+{
+  "private": false,
+  "name": "@positron/nominal-symbols",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
+  "repository": "git@github.com:alexander-shipilov/positron.git",
+  "type": "module",
+  "main": "./lib/index.js",
+  "files": [
+    "./lib"
+  ],
+  "scripts": {
+    "_phase:build": "heft run --only build -- --clean",
+    "_phase:test": "heft run --only test -- --clean",
+    "build": "heft build --clean",
+    "test": "heft test --clean"
+  },
+  "types": "./lib/index.d.ts",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@jest/globals": "~30.0.5",
+    "@positron/common-rig": "workspace:*",
+    "@rushstack/heft": "~0.74.0",
+    "eslint": "^9.31.0",
+    "expect-type": "^1.2.2",
+    "jest": "~30.0.5",
+    "ts-jest": "~29.4.0",
+    "typescript": "^5.8.3"
+  },
+  "exports": {
+    ".": "./lib/index.js"
+  }
+}
