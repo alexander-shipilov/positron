@@ -15,9 +15,9 @@ type Value2 = 2;
 
 describe("MetaType<Type, T, V>", () => {
   type Type = unknown;
-  type Type1 = MetaType<unknown>;
-  type Type2 = MetaType<unknown, Tag1>;
-  type Type3 = MetaType<unknown, Tag1, Value1>;
+  type Type1 = MetaType<Type>;
+  type Type2 = MetaType<Type, Tag1>;
+  type Type3 = MetaType<Type, Tag1, Value1>;
 
   it("`MetaType<Type, T?, V?>` should extend `Type`, but not vise versa", () => {
     expectTypeOf<Type1>().toExtend<Type>();

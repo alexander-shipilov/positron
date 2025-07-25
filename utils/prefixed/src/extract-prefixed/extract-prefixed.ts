@@ -55,7 +55,7 @@ export type ExtractPrefixed<
  * @returns - Returns an array of props without `prefix`.
  *    Zero-indexed item contains props which have no the specified `prefix`
  *
- *  @public
+ * @public
  */
 export function extractPrefixed<
   TPrefix extends Prefix,

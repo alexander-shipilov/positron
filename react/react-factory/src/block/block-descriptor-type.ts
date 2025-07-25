@@ -1,5 +1,4 @@
 /**
- * @internal
  */
 export const BLOCK_DESCRIPTOR_TYPE = Symbol("element");
 
@@ -8,5 +7,7 @@ export const BLOCK_DESCRIPTOR_TYPE = Symbol("element");
  * {@link BlockDescriptor}.
  *
  * @public
+ *
+ * @internal
  */
 export type BlockDescriptorType = typeof BLOCK_DESCRIPTOR_TYPE;

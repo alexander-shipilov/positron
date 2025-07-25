@@ -2,7 +2,7 @@ import type { PropertyKeyOf } from "../property";
 import { isOwnPropertyOf } from "../property";
 
 /**
- * Function {@link pick} TBD
+ * The {@link pick} function TBD
  * @param value
  * @param keys
  */

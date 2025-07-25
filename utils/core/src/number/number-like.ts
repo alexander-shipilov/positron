@@ -1,5 +1,5 @@
 /**
- * Type {@link NumberLike} represents a type that can be converted to `bigint`.
+ * The {@link NumberLike} type represents a type that can be converted to `bigint`.
  *
  * @public
  */

@@ -3,8 +3,7 @@ import type { Prefix } from "../prefix";
 import type { PrefixedKey } from "./prefixed-key";
 
 /**
- * @public
- * Type {@link Prefixed} constructs a type by adding to the all string keys of
+ * The {@link Prefixed} type constructs a type by adding to the all string keys of
  *   `TProps` the prefix specified by `TPrefix` (string literal)
  *
  * @example
@@ -15,6 +14,8 @@ import type { PrefixedKey } from "./prefixed-key";
  *
  * @param TProps - Type to add prefix to
  * @param TPrefix - String type of prefix
+ *
+ * @public
  */
 export type Prefixed<TPrefix extends Prefix, TProps> = {
   [TKey in keyof TProps as PrefixedKey<TPrefix, TKey>]: TProps[TKey];

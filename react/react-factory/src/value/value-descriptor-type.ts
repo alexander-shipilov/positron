@@ -1,5 +1,4 @@
 /**
- * @internal
  */
 export const VALUE_DESCRIPTOR_TYPE = Symbol("value");
 
@@ -8,5 +7,7 @@ export const VALUE_DESCRIPTOR_TYPE = Symbol("value");
  * {@link ValueDescriptor}.
  *
  * @public
+ *
+ * @internal
  */
 export type ValueDescriptorType = typeof VALUE_DESCRIPTOR_TYPE;

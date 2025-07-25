@@ -1,7 +1,7 @@
 import type { Optional } from "./optional";
 
 /**
- * Type {@link PartialOptional} constructs a `Partial` type from the passed
+ * The {@link PartialOptional} type constructs a `Partial` type from the passed
  * `TType` and makes all property values {@link Optional | optional}
  *
  * @example

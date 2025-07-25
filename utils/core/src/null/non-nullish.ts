@@ -1,5 +1,5 @@
 /**
- * Type {@link NonNullish} excludes `null` from the passed type `TType`.
+ * The {@link NonNullish} type excludes `null` from the passed type `TType`.
  * This type is opposite to {@link Nullish}.
  *
  * @example

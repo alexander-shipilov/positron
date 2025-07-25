@@ -3,7 +3,7 @@ import type { IsNever } from "expect-type";
 import type { AnyObject } from "../object";
 
 /**
- * Type {@link PropertyOwner} constructs a type with the property `TKey`
+ * The {@link PropertyOwner} type constructs a type with the property `TKey`
  *
  * @example
  * ```ts

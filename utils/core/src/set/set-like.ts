@@ -6,7 +6,7 @@
  *  - A `has()` method that takes an element and returns a boolean.
  *  - A `keys()` method that returns an `iterator` of the elements in the set.
  *
- *  @public
+ * @public
  */
 export interface SetLike<TItem> {
   /**

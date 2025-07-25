@@ -1,5 +1,5 @@
 /**
- * Type {@link ValueMeta} represents a metadata type that can be added to the
+ * The {@link ValueMeta} type represents a metadata type that can be added to the
  * {@link ValueDescriptor}.
  *
  * @public

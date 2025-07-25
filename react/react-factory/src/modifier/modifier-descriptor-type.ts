@@ -1,5 +1,4 @@
 /**
- * @internal
  */
 export const MODIFIER_DESCRIPTOR_TYPE = Symbol("modifier");
 
@@ -8,5 +7,7 @@ export const MODIFIER_DESCRIPTOR_TYPE = Symbol("modifier");
  * {@link ModifierDescriptor}.
  *
  * @public
+ *
+ * @internal
  */
 export type ModifierDescriptorType = typeof MODIFIER_DESCRIPTOR_TYPE;

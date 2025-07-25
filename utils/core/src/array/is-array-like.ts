@@ -2,7 +2,7 @@ import { isNumber } from "../number";
 import { isPropertyOf } from "../property";
 
 /**
- * Function {@link isArrayLike} determines if the passed `value` is the
+ * The {@link isArrayLike} function determines if the passed `value` is the
  *   `ArrayLike`
  *
  * @param value - Value to check

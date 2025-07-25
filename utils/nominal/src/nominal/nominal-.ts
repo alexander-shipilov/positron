@@ -3,7 +3,6 @@ import { NominalSymbols } from "@positron/nominal-symbols";
 import type { NominalType } from "../nominal-type";
 
 /**
- * @internal
  */
 export type Nominal<
   TTarget,
@@ -12,6 +11,8 @@ export type Nominal<
 
 /**
  * @intrnal
+ *
+ * @internal
  */
 export declare class Nominal_<TTypes extends NominalType[]> {
   private readonly [NominalSymbols.type]: [
