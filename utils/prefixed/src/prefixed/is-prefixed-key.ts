@@ -6,7 +6,6 @@ import { PREFIX_SEPARATOR } from "../prefix";
 import type { PrefixedKey } from "./prefixed-key";
 
 /**
- * @public
  * Function {@link isPrefixedKey} checks if the passed `key` has the
  *   specified `prefix`
  *
@@ -22,6 +21,8 @@ import type { PrefixedKey } from "./prefixed-key";
  *
  * @param key - Property to check
  * @param prefix - Prefix to check
+ *
+ * @public
  */
 export function isPrefixedKey<TPrefix extends Prefix>(
   prefix: TPrefix,

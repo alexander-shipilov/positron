@@ -1,16 +1,16 @@
-import { isObject } from "@positron/core";
-import { isOwnPropertyOf } from "@positron/core";
+import { isObject, isOwnPropertyOf } from "@positron/core";
 
 import type { ClassNameProps } from "./class-name-props";
 import { CLASS_NAME_PROP } from "./class-name-prop";
 import { isClassName } from "./is-class-name";
 
 /**
- * @public
  * Function {@link isClassNameProps} checks if the passed `maybeClassNameProps`
  * is a properties with defined {@link ClassName}
  *
  * @param maybeClassNameProps - The value to check
+ *
+ * @public
  */
 export function isClassNameProps(
   maybeClassNameProps: unknown,

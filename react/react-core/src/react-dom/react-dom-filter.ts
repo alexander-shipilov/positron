@@ -3,7 +3,6 @@ import type { ReactDOMRequired } from "./react-dom-required";
 import type { ReactDOMTag } from "./react-dom-tag";
 
 /**
- * @public
  * Type {@link ReactDOMFilter} constructs a subset of {@link ReactDOM} filtered
  *   by the given `TProps`
  *
@@ -12,6 +11,8 @@ import type { ReactDOMTag } from "./react-dom-tag";
  *  type Input = ReactDOMFilter<{ value: string; maxLength: number }>>
  *  // { input: { ... }, textarea: { ... } }
  *s ```
+ *
+ * @public
  */
 export type ReactDOMFilter<TProps> = {
   [TTag in ReactDOMTag as MatchTag<TTag, TProps>]: ReactDOM[TTag];

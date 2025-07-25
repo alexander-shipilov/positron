@@ -1,11 +1,12 @@
 import type { Descriptor } from "../descriptor";
 
 /**
- * @internal
  */
 declare const descriptor: unique symbol;
 
 /**
+ * @internal
+ *
  * @internal
  */
 export type DescribedNominal<TDescriptor extends Descriptor = Descriptor> =

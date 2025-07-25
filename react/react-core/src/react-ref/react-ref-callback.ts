@@ -1,7 +1,8 @@
 import type React from "react";
 
 /**
- * @public
  * Ref callback
+ *
+ * @public
  */
 export type ReactRefCallback<TValue> = React.RefCallback<TValue>;

@@ -22,7 +22,6 @@ export type FactoryArgs<TProps extends ReactAnyProps> = [
 ];
 
 /**
- * @internal
  */
 type FactoryArgsComposites_<TComposites extends TypedObject<CompositeConfig>> =
   {
@@ -30,6 +29,8 @@ type FactoryArgsComposites_<TComposites extends TypedObject<CompositeConfig>> =
   };
 
 /**
+ * @internal
+ *
  * @internal
  */
 type FactoryArgsElements_<TElements extends TypedObject<ElementConfig>> = {

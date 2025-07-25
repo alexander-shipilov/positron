@@ -72,11 +72,12 @@ export type EmptyObject = _EmptyObject;
 export const EmptyObject: EmptyObject = Object.freeze({});
 
 /**
- * @internal
  */
 declare const $never: unique symbol;
 
 /**
+ * @internal
+ *
  * @internal
  */
 declare class _EmptyObject {

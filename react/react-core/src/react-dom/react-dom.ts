@@ -1,7 +1,8 @@
 import type React from "react";
 
 /**
- * @public
  * Type {@link ReactDOM} contains all DOM attributes
+ *
+ * @public
  */
 export type ReactDOM = React.JSX.IntrinsicElements;
