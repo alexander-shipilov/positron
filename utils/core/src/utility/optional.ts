@@ -1,5 +1,5 @@
 /**
- * Type {@link Optional} adds `undefined` to the passed `TType`
+ * The {@link Optional} type adds `undefined` to the passed `TType`
  *
  * @example
  * ```ts

@@ -1,7 +1,7 @@
 import type { Falsy } from "./falsy";
 
 /**
- * Type {@link NonFalsy} excludes {@link Falsy} types from the passed
+ * The {@link NonFalsy} type excludes {@link Falsy} types from the passed
  * `TValue`
  *
  * @typeParam TValue - Type to exclude falsy types

@@ -1,7 +1,7 @@
 import type React from "react";
 
 /**
- * Type {@link ReactDOM} contains all DOM attributes
+ * The {@link ReactDOM} type contains all DOM attributes
  *
  * @public
  */

@@ -3,7 +3,7 @@ import type { PropertyName } from "@positron/core";
 import type { Prefix, PrefixSeparator } from "../prefix";
 
 /**
- * Type {@link PrefixedKey} constructs a string type by adding the specified
+ * The {@link PrefixedKey} type constructs a string type by adding the specified
  *   `TPrefix` (string literal) to the given `TKey` (string literal)
  *
  * @example

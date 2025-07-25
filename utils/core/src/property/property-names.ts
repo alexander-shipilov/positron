@@ -4,7 +4,7 @@ import type { PropertyKeyOf } from "./property-key-of";
 import type { PropertyName } from "./property-name";
 
 /**
- * Function {@link propertyNames } returns an array of enumerable
+ * The {@link propertyNames } function returns an array of enumerable
  * string-keyed properties found directly in a given `object`.
  *
  * @param object - The object whose enumerable string-keyed properties are to be

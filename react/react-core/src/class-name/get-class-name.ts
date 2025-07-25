@@ -3,7 +3,7 @@ import { CLASS_NAME_PROP } from "./class-name-prop";
 import { isClassNameProps } from "./is-class-name-props";
 
 /**
- * Function {@link getClassName} returns the value of `className` property.
+ * The {@link getClassName} function returns the value of `className` property.
  *
  * @param props - Props to get `className`
  *

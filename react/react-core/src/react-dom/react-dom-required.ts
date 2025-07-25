@@ -4,7 +4,7 @@ import type { ReactDOM } from "./react-dom";
 import type { ReactDOMTag } from "./react-dom-tag";
 
 /**
- * Type {@link ReactDOMRequired} constructs required DOM attributes
+ * The {@link ReactDOMRequired} type constructs required DOM attributes
  *
  * @remarks
  * This type added to solve performance issues

@@ -1,5 +1,5 @@
 /**
- * Type {@link TypeGuard} represents a type-guard `function` to check values for
+ * The {@link TypeGuard} type represents a type-guard `function` to check values for
  * matching to the given type `TValue`
  *
  * @typeParam TExpected - The expected value

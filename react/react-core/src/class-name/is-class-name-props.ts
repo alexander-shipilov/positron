@@ -5,8 +5,8 @@ import { CLASS_NAME_PROP } from "./class-name-prop";
 import { isClassName } from "./is-class-name";
 
 /**
- * Function {@link isClassNameProps} checks if the passed `maybeClassNameProps`
- * is a properties with defined {@link ClassName}
+ * The {@link isClassNameProps} function checks if the passed
+ * `maybeClassNameProps` is a properties with defined {@link ClassName}
  *
  * @param maybeClassNameProps - The value to check
  *

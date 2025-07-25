@@ -3,7 +3,7 @@ import type { ReactDOMRequired } from "./react-dom-required";
 import type { ReactDOMTag } from "./react-dom-tag";
 
 /**
- * Type {@link ReactDOMFilter} constructs a subset of {@link ReactDOM} filtered
+ * The {@link ReactDOMFilter} type constructs a subset of {@link ReactDOM} filtered
  *   by the given `TProps`
  *
  * @example

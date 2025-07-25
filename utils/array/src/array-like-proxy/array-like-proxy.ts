@@ -23,6 +23,8 @@ import { isOwnPropertyOf } from "@positron/core";
  *    // ...
  *  }
  * ```
+ *
+ * @public
  */
 export class ArrayLikeProxy<TValue> implements ArrayLike<TValue> {
   /**

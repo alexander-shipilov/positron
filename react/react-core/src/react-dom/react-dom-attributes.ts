@@ -2,7 +2,7 @@ import type { ReactDOM } from "./react-dom";
 import type { ReactDOMTag } from "./react-dom-tag";
 
 /**
- * Type {@link ReactDOMAttributes} returns attributes for the specified `TTag`
+ * The {@link ReactDOMAttributes} type returns attributes for the specified `TTag`
  *
  * @public
  */

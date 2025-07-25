@@ -6,7 +6,7 @@ import { PREFIX_SEPARATOR } from "../prefix";
 import type { PrefixedKey } from "./prefixed-key";
 
 /**
- * Function {@link isPrefixedKey} checks if the passed `key` has the
+ * The {@link isPrefixedKey} function checks if the passed `key` has the
  *   specified `prefix`
  *
  * @example

@@ -3,7 +3,7 @@ import { isString } from "@positron/core";
 import type { Prefix } from "./prefix";
 
 /**
- * Function {@link isPrefixedKey} checks if the passed `maybePrefix` is a
+ * The {@link isPrefixedKey} function checks if the passed `maybePrefix` is a
  *   {@link Prefix}
  *
  * @example

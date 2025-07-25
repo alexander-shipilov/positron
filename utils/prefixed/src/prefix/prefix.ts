@@ -1,7 +1,7 @@
 import type { PropertyName } from "@positron/core";
 
 /**
- * Type {@link Prefix} describes a prefix
+ * The {@link Prefix} type describes a prefix
  *
  * @public
  */

@@ -10,6 +10,8 @@ import type { BlockConfigOf } from "./block-config-of";
 /**
  * The {@link BlockConfigsOf} type returns factory configuration for the
  * passed `TBlock`
+ *
+ * @public
  */
 export type BlockConfigsOf<TProps extends ReactAnyProps> = {
   Block: BlockConfigOf<TProps>;
