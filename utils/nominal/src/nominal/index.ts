@@ -1,1 +1,1 @@
-export * from "./nominal";
+export type * from "./nominal";

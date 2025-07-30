@@ -33,6 +33,7 @@ export default tseslint.config(
     {
       rules: {
         "@typescript-eslint/array-type": "error",
+        "@typescript-eslint/consistent-type-exports": "error",
         "@typescript-eslint/consistent-type-imports": [
           "error",
           {

@@ -1,2 +1,2 @@
-export * from "./class";
-export * from "./unknown-class";
+export type * from "./class";
+export type * from "./unknown-class";

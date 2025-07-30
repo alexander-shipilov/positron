@@ -5,6 +5,8 @@
  *
  * Each exception has a {@link Exception.name}, which is a short
  * "PascalCase"-style string identifying the error or abnormal condition.
+ *
+ * @public
  */
 export class Exception<TName extends string> extends Error {
   readonly #name: TName;

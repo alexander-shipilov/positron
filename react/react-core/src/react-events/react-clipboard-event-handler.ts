@@ -1,8 +1,9 @@
 import type React from "react";
 
 /**
- * @public
  * React change event
+ *
+ * @public
  */
 export type ReactClipboardEventHandler<TElement = Element> =
   React.ClipboardEventHandler<TElement>;

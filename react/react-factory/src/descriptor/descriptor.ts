@@ -25,6 +25,8 @@ export interface Descriptor<
 
 /**
  * The {@link descriptor} function creates descriptor.
+ *
+ * @public
  */
 export function descriptor<
   TType extends DescriptorType,

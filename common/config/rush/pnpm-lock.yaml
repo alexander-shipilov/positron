@@ -164,6 +164,9 @@ importers:
       '@positron/core':
         specifier: workspace:*
         version: link:../../utils/core
+      '@positron/meta':
+        specifier: workspace:*
+        version: link:../../utils/meta
       '@positron/nominal':
         specifier: workspace:*
         version: link:../../utils/nominal

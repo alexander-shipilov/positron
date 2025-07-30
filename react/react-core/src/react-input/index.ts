@@ -1,2 +1,2 @@
-export * from "./react-input-type";
-export * from "./react-input-value";
+export type * from "./react-input-type";
+export type * from "./react-input-value";

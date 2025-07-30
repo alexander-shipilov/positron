@@ -1,1 +1,1 @@
-export * from "./array-last";
+export type * from "./array-last";

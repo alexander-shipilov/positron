@@ -1,5 +1,4 @@
 /**
- * @internal
  */
 export const ELEMENT_DESCRIPTOR_TYPE = Symbol("element");
 
@@ -8,5 +7,7 @@ export const ELEMENT_DESCRIPTOR_TYPE = Symbol("element");
  * {@link ElementDescriptor}.
  *
  * @public
+ *
+ * @internal
  */
 export type ElementDescriptorType = typeof ELEMENT_DESCRIPTOR_TYPE;

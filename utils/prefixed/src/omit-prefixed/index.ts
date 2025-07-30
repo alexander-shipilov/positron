@@ -1,1 +1,1 @@
-export * from "./omit-prefixed";
+export type * from "./omit-prefixed";

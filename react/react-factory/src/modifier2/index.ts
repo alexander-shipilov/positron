@@ -1,12 +1,13 @@
+export type * from "./modifier-config";
+export type * from "./modifier-config-of";
+export type * from "./modifier-configs-of";
+export type * from "./modifier-descriptor";
+export type * from "./modifier-descriptor-of";
+export type * from "./modifier-descriptors-of";
+export type * from "./modifier-key";
+export type * from "./modifier-key-of";
+export type * from "./modifier-value";
+export type * from "./modifier-value-type-of";
+
 export * from "./modifier";
-export * from "./modifier-config";
-export * from "./modifier-config-of";
-export * from "./modifier-configs-of";
-export * from "./modifier-descriptor";
-export * from "./modifier-descriptor-of";
-export * from "./modifier-descriptors-of";
-export * from "./modifier-key";
-export * from "./modifier-key-of";
 export * from "./modifier-type";
-export * from "./modifier-value";
-export * from "./modifier-value-type-of";

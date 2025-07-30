@@ -1,5 +1,5 @@
 /**
- * Type {@link NonOptional} excludes `undefined` from the passed type `TType`.
+ * The {@link NonOptional} type excludes `undefined` from the passed type `TType`.
  * This type is opposite to {@link Optional}.
  *
  * @example

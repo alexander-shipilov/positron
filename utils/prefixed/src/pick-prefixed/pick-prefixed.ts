@@ -33,12 +33,13 @@ export type PickPrefixed<
 };
 
 /**
- * @public
  * The function {@link pickPrefixed} extracts props prefixed by `prefix` from
  *   the passed `props`
  *
  * @param prefix - The prefix
  * @param props - The props to pick
+ *
+ * @public
  */
 export function pickPrefixed<
   TPrefix extends Prefix,

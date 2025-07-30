@@ -6,7 +6,7 @@ import { isPropertyOf } from "../property";
  * an {@link Iterator} object.
  *
  * @remarks
- * Function {@link isIterator}:
+ * The {@link isIterator} function:
  *  - checks for the presence of the `next` property (not necessarily own)
  *    which should be a function
  *  - does not check `next` function return value (that should be

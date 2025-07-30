@@ -1,5 +1,6 @@
-export * from "./any-object";
-export * from "./empty-object";
+export type * from "./any-object";
+export type * from "./empty-object";
+export type * from "./typed-object";
+export type * from "./unknown-object";
+
 export * from "./is-object";
-export * from "./typed-object";
-export * from "./unknown-object";

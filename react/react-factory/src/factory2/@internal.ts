@@ -1,9 +1,9 @@
 import type { ArrayType } from "@positron/array";
-import type { PartialOptional } from "@positron/core";
 import type {
   LiteralPropertyKey,
   NonNullish,
   Optional,
+  PartialOptional,
   PropertyOwner,
 } from "@positron/core";
 import type { Prefixed, PrefixedKey } from "@positron/prefixed";
@@ -12,8 +12,8 @@ import type {
   ReactComponent,
   ReactProps,
   ReactPropsKey,
+  ReactPropsOf,
 } from "@positron/react-core";
-import type { ReactPropsOf } from "@positron/react-core";
 
 import type { BlockConfig, BlockDescriptorsOf } from "../block2";
 import type { CompositeConfig } from "../composite2";
@@ -22,7 +22,6 @@ import type { ElementConfig } from "../element2";
 import type { ModifierConfig, ModifierValueTypeOf } from "../modifier2";
 
 /**
- * @internal
  */
 export type BlockComponentProps<TProps extends ReactAnyProps> = ReactComponent<
   BlockDescriptorsOf<TProps>["Block"]["props"]
@@ -33,6 +32,8 @@ export type ClassNames<TDefaults extends [ReactPropsKey, unknown][]> =
 
 /**
  *
+ *
+ * @internal
  */
 export type ComponentProps<
   TProps extends ReactProps,
@@ -40,7 +41,6 @@ export type ComponentProps<
 > = ComponentPropsDescriptors_<DescribedTargetOf<TProps>, TDefaults>;
 
 /**
- * @internal
  */
 export type Composites<
   TProps extends ReactProps,
@@ -49,6 +49,8 @@ export type Composites<
 
 /**
  * @internal
+ *
+ * @internal
  */
 export type Elements<
   TProps extends ReactProps,
@@ -56,7 +58,6 @@ export type Elements<
 > = Entities<TProps, "elements", TExclude>;
 
 /**
- * @internal
  */
 export type Entities<
   TProps extends ReactProps,
@@ -68,6 +69,8 @@ export type Entities<
 >;
 
 /**
+ * @internal
+ *
  * @internal
  */
 export type Modifiers<

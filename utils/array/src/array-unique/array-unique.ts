@@ -20,7 +20,6 @@ export type ArrayUnique<TArray extends readonly unknown[]> =
     : ArrayUnique_<[...TArray]>;
 
 /**
- * @internal
  */
 type ArrayUnique_<
   TArray extends unknown[],
@@ -32,6 +31,8 @@ type ArrayUnique_<
     : ArrayUniqueItem_<[...TUnique, ArrayType<TArray>]> | TUnique;
 
 /**
+ * @internal
+ *
  * @internal
  */
 type ArrayUniqueItem_<TUnique extends unknown[]> = TUnique extends [

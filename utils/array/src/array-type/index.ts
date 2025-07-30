@@ -1,1 +1,1 @@
-export * from "./array-type";
+export type * from "./array-type";

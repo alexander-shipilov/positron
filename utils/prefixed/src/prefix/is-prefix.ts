@@ -3,8 +3,7 @@ import { isString } from "@positron/core";
 import type { Prefix } from "./prefix";
 
 /**
- * @public
- * Function {@link isPrefixedKey} checks if the passed `maybePrefix` is a
+ * The {@link isPrefixedKey} function checks if the passed `maybePrefix` is a
  *   {@link Prefix}
  *
  * @example
@@ -18,6 +17,8 @@ import type { Prefix } from "./prefix";
  *
  * @returns The boolean value `true` if the given `maybeNumber` is a
  *   `number`. Otherwise, `false
+ *
+ * @public
  */
 export function isPrefix(maybePrefix: unknown): maybePrefix is Prefix {
   return isString(maybePrefix);

@@ -1,2 +1,3 @@
+export type * from "./reference";
+
 export * from "./is-reference";
-export * from "./reference";

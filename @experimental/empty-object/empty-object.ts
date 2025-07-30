@@ -60,19 +60,18 @@
  *  // Inferred as `never`
  * ```
  *
- * @public
- *
  * @internal
  */
 export type EmptyObject = _EmptyObject;
 
 /**
  * The {@link EmptyObject} represents an empty object.
+ *
+ * @public
  */
 export const EmptyObject: EmptyObject = Object.freeze({});
 
 /**
- * @internal
  */
 declare const $never: unique symbol;
 

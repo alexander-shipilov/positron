@@ -9,8 +9,8 @@ import { isUndefinedType } from "../undefined-type";
 import type { StringLike } from "./string-like";
 
 /**
- * Function {@link isStringLike} checks if the passed {@link maybeStringLike}
- * is a {@link StringLike} value
+ * The {@link isStringLike} function checks if the passed {@link
+ * maybeStringLike} is a {@link StringLike} value
  *
  * @param maybeStringLike - The value to be checked.
  *

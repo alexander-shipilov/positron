@@ -1,7 +1,7 @@
 import { isOwnPropertyOf } from "../property";
 
 /**
- * Function {@link omit} TBD
+ * The {@link omit} function TBD
  * @param value
  * @param keys
  */

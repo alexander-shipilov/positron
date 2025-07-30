@@ -1,4 +1,4 @@
-import type { ReactDOMFilter } from "./react-dom-filter";
+import type { ReactDomPropsFor } from "./react-dom-props-for";
 
 /**
  * The {@link ReactDOMTagFilter} type returns all tags that can be used with
@@ -14,4 +14,4 @@ import type { ReactDOMFilter } from "./react-dom-filter";
  *
  * @public
  */
-export type ReactDOMTagFilter<TProps> = keyof ReactDOMFilter<TProps>;
+export type ReactDOMTagFilter<TProps> = keyof ReactDomPropsFor<TProps>;

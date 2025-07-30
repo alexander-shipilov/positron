@@ -1,1 +1,1 @@
-export * from "./meta-symbols";
+export type * from "./meta-symbols";

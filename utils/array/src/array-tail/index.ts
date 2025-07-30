@@ -1,1 +1,1 @@
-export * from "./array-tail";
+export type * from "./array-tail";

@@ -1,11 +1,11 @@
 import type {
   ReactAnyProps,
   ReactComponent,
+  ReactComponentReturn,
   ReactProps,
   ReactPropsKey,
   ReactPropsKeyOf,
 } from "@positron/react-core";
-import type { ReactComponentReturn } from "@positron/react-core";
 import { assert } from "@positron/core";
 
 import type { BlockConfig } from "../block2";
@@ -29,6 +29,8 @@ import type { FactoryRender } from "./factory-render";
 
 /**
  * Class to create components.
+ *
+ * @public
  */
 export class Factory<
   TProps extends ReactProps,
