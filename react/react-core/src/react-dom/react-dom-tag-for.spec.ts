@@ -1,15 +1,15 @@
 import { expectTypeOf } from "expect-type";
 
-import type { ReactDOMTagFilter } from "./react-dom-tag-filter";
+import type { ReactDomTagFor } from "./react-dom-tag-for";
 
-describe("ReactDOMTagFilter<TProps>", () => {
+describe("ReactDomTagFor<TProps>", () => {
   it("should return JSX tags filtered by the passed `TProps`", () => {
     expectTypeOf<
-      ReactDOMTagFilter<{ maxLength: number; value: string }>
+      ReactDomTagFor<{ maxLength: number; value: string }>
     >().toEqualTypeOf<"input" | "textarea">();
   });
 
   it("should return `never` if there is not tag matching the passed `TProps`", () => {
-    expectTypeOf<ReactDOMTagFilter<{ unknown: number }>>().toBeNever();
+    expectTypeOf<ReactDomTagFor<{ unknown: number }>>().toBeNever();
   });
 });

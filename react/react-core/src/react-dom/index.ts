@@ -2,6 +2,5 @@ export type * from "./react-dom";
 export type * from "./react-dom-element";
 export type * from "./react-dom-props";
 export type * from "./react-dom-props-for";
-export type * from "./react-dom-required";
 export type * from "./react-dom-tag";
-export type * from "./react-dom-tag-filter";
+export type * from "./react-dom-tag-for";
