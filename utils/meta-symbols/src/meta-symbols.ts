@@ -13,5 +13,8 @@ export declare class MetaSymbols {
    */
   declare static readonly meta: unique symbol;
 
+  /**
+   * @private
+   */
   private constructor();
 }

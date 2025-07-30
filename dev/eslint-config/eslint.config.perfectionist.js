@@ -2,6 +2,7 @@ import perfectionist from "eslint-plugin-perfectionist";
 
 import alphabet from "./perfectionist/-alphabet.js";
 import sortClasses from "./perfectionist/sort-classes.js";
+import sortExports from "./perfectionist/sort-exports.js";
 import sortImports from "./perfectionist/sort-imports.js";
 import sortIntersectionTypes from "./perfectionist/sort-intersection-types.js";
 import sortJsxProps from "./perfectionist/sort-jsx-props.js";
@@ -14,9 +15,9 @@ export default [
   {
     settings: {
       perfectionist: {
-        alphabet: alphabet,
-      },
-    },
+        alphabet: alphabet
+      }
+    }
   },
 
   {
@@ -26,14 +27,15 @@ export default [
       "import/order": "off",
       "react/jsx-sort-props": "off",
       "sort-imports": "off",
-      "sort-keys": "off",
-    },
+      "sort-keys": "off"
+    }
   },
 
   ...sortClasses,
+  ...sortExports,
   ...sortImports,
   ...sortIntersectionTypes,
   ...sortJsxProps,
   ...sortModules,
-  ...sortObjectTypes,
+  ...sortObjectTypes
 ];

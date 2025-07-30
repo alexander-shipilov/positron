@@ -1,1 +1,1 @@
-export * from "./set-like";
+export type * from "./set-like";

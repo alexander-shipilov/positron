@@ -1,1 +1,1 @@
-export * from "./react-node";
+export type * from "./react-node";

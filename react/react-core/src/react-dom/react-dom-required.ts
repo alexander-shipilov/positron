@@ -1,6 +1,6 @@
 import type { RequiredNonOptional } from "@positron/core";
 
-import type { ReactDOM } from "./react-dom";
+import type { ReactDom } from "./react-dom";
 import type { ReactDOMTag } from "./react-dom-tag";
 
 /**
@@ -12,5 +12,5 @@ import type { ReactDOMTag } from "./react-dom-tag";
  * @internal
  */
 export type ReactDOMRequired = {
-  [TTag in ReactDOMTag]: RequiredNonOptional<ReactDOM[TTag]>;
+  [TTag in ReactDOMTag]: RequiredNonOptional<ReactDom[TTag]>;
 };

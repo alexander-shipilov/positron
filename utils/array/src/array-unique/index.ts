@@ -1,1 +1,1 @@
-export * from "./array-unique";
+export type * from "./array-unique";

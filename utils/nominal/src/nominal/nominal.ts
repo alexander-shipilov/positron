@@ -34,7 +34,7 @@ import type { Nominal as Nominal_ } from "./nominal-";
  *
  *  const int2: Integer = 1;
  *  // TS2322: Type 'number' is not assignable to type
- *  // 'MetaType<number, [MetaTag<unique symbol, "Integer">, unknown]>'
+ *  // 'Metatype<number, [MetaTag<unique symbol, "Integer">, unknown]>'
  * ```
  *
  * @param TType - The type to make nominal type from

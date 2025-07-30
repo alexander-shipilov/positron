@@ -1,3 +1,4 @@
-export * from "./element-descriptor";
+export type * from "./element-descriptor";
+export type * from "./element-target";
+
 export * from "./element-descriptor-type";
-export * from "./element-target";

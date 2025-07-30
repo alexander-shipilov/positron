@@ -1,11 +1,11 @@
 import type React from "react";
 
-import type { ReactDOMAttributes } from "./react-dom-attributes";
+import type { ReactDomProps } from "./react-dom-props";
 import type { ReactDOMTag } from "./react-dom-tag";
 
 /**
- * The {@link ReactDOMElement} type constructs a union of `HTMLElements` which can
- *   be used with the specifier `TProps`
+ * The {@link ReactDomElement} type constructs a union of `HTMLElements` which
+ * can be used with the specifier `TProps`
  *
  * @example
  * ```ts
@@ -15,7 +15,7 @@ import type { ReactDOMTag } from "./react-dom-tag";
  *
  * @public
  */
-export type ReactDOMElement<TTag extends ReactDOMTag> =
-  ReactDOMAttributes<TTag> extends React.RefAttributes<infer TElement>
-    ? TElement
+export type ReactDomElement<TTag extends ReactDOMTag> =
+  ReactDomProps<TTag> extends React.RefAttributes<infer Element>
+    ? Element
     : never;

@@ -1,1 +1,1 @@
-export * from "./type-guard";
+export type * from "./type-guard";

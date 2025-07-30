@@ -20,6 +20,7 @@
   "dependencies": {
     "@positron/array": "workspace:*",
     "@positron/core": "workspace:*",
+    "@positron/meta": "workspace:*",
     "@positron/nominal": "workspace:*",
     "@positron/prefixed": "workspace:*",
     "@positron/react-core": "workspace:*"

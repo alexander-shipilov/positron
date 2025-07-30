@@ -1,4 +1,5 @@
+export type * from "./descriptor-data";
+export type * from "./descriptor-meta";
+export type * from "./descriptor-type";
+
 export * from "./descriptor";
-export * from "./descriptor-data";
-export * from "./descriptor-meta";
-export * from "./descriptor-type";
