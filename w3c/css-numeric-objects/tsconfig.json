@@ -1,0 +1,3 @@
+{
+  "extends": "./node_modules/@positron/common-rig/profiles/default/tsconfig.base.json"
+}

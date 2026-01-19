@@ -1,6 +1,6 @@
 /**
- * The {@link EmptyArray} constant represents an empty array.
+ * The {@link EMPTY_ARRAY} constant represents an empty array.
  *
  * @public
  */
-export const EmptyArray: readonly [] = Object.freeze([]);
+export const EMPTY_ARRAY: readonly [] = Object.freeze([]);

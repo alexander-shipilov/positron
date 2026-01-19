@@ -1,7 +1,8 @@
 import type React from "react";
 
 /**
- * Ref callback
+ * The {@link ReactRefCallback} type represents a function to set reference
+ * object value.
  *
  * @public
  */

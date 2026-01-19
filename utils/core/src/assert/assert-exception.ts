@@ -1,4 +1,10 @@
-import { NeverException } from "../never";
+import { Exception } from "../exception";
+
+/**
+ * The {@link ASSERT_EXCEPTION} constant represents a name of the
+ * {@link AssertException}
+ */
+export const ASSERT_EXCEPTION = "AssertException";
 
 /**
  * The {@link AssertException} class represents an error which is thrown by the
@@ -6,4 +12,8 @@ import { NeverException } from "../never";
  *
  * @public
  */
-export class AssertException extends NeverException {}
+export class AssertException extends Exception<typeof ASSERT_EXCEPTION> {
+  constructor(message?: string) {
+    super(ASSERT_EXCEPTION, message);
+  }
+}

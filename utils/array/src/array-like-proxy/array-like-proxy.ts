@@ -1,5 +1,18 @@
 import type { PropertyKeyOf } from "@positron/core";
-import { isOwnPropertyOf } from "@positron/core";
+import { isOwnPropertyOwner } from "@positron/core";
+
+/**
+ * @param values
+ * @param key
+ *
+ * @internal
+ */
+function isArrayLikeProperty<TValues extends ArrayLike<unknown>>(
+  values: TValues,
+  key: PropertyKey,
+): key is PropertyKeyOf<TValues> {
+  return key === "length" || isOwnPropertyOwner(values, key);
+}
 
 /**
  * The {@link ArrayLikeProxy} class creates a proxy to the given array-like.
@@ -48,17 +61,4 @@ export class ArrayLikeProxy<TValue> implements ArrayLike<TValue> {
           : target[key as keyof ArrayLikeProxy<TValue>],
     });
   }
-}
-
-/**
- * @param values
- * @param key
- *
- * @internal
- */
-function isArrayLikeProperty<TValues extends ArrayLike<unknown>>(
-  values: TValues,
-  key: PropertyKey,
-): key is PropertyKeyOf<TValues> {
-  return key === "length" || isOwnPropertyOf(key, values);
 }

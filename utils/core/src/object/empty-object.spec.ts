@@ -4,7 +4,7 @@ import { expectTypeOf } from "expect-type";
 import type { EmptyObject } from "./empty-object";
 
 describe("EmptyObject<K>", () => {
-  it("should be a `Record<PropertyKey, never>`", () => {
+  it("`EmptyObject` should be a `Record<PropertyKey, never>`", () => {
     expectTypeOf<EmptyObject>().toEqualTypeOf<Record<PropertyKey, never>>();
   });
 

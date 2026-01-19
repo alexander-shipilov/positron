@@ -15,7 +15,7 @@
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.155.1",
+  "rushVersion": "5.158.0",
   /**
    * The next field selects which package manager should be installed and determines its version.
    * Rush installs its own local copy of the package manager to ensure that your build process
@@ -24,7 +24,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "10.13.1",
+  "pnpmVersion": "10.17.0",
   // "pnpmVersion": "9.15.4",
   // "npmVersion": "6.14.15",
   // "yarnVersion": "1.9.4",
@@ -397,14 +397,6 @@
       "projectFolder": "utils/core",
     },
     {
-      "packageName": "@positron/meta",
-      "projectFolder": "utils/meta",
-    },
-    {
-      "packageName": "@positron/meta-symbols",
-      "projectFolder": "utils/meta-symbols",
-    },
-    {
       "packageName": "@positron/nominal",
       "projectFolder": "utils/nominal",
     },
@@ -422,8 +414,23 @@
       "projectFolder": "react/react-core",
     },
     {
-      "packageName": "@positron/react-factory",
-      "projectFolder": "react/react-factory",
+      "packageName": "@positron/react-descriptors",
+      "projectFolder": "react/react-descriptors",
+    },
+    /** w3c-* */
+    {
+      "packageName": "@positron/css-numeric-objects",
+      "projectFolder": "w3c/css-numeric-objects",
+    },
+    /** misc */
+    {
+      "packageName": "@positron/crazy-sequence",
+      "projectFolder": "misc/crazy"
+    },
+    /** tree */
+    {
+      "packageName": "@positron/tree-core",
+      "projectFolder": "tree/tree-core"
     }
   ],
 }

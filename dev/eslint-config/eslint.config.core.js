@@ -19,11 +19,25 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    rules: {
+      "@typescript-eslint/array-type": "error",
+      "@typescript-eslint/consistent-type-exports": "error",
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          fixStyle: "separate-type-imports",
+          prefer: "type-imports",
+        },
+      ],
+      "@typescript-eslint/indent": "off",
+    },
   },
+
   {
     ...importPlugin.flatConfigs.recommended,
     ...importPlugin.flatConfigs.typescript,
   },
+
   {
     ...tseslint.configs.disableTypeChecked,
     files: ["**/*.{cjs,js,jsx,mjs}"],
@@ -32,17 +46,6 @@ export default tseslint.config(
   [
     {
       rules: {
-        "@typescript-eslint/array-type": "error",
-        "@typescript-eslint/consistent-type-exports": "error",
-        "@typescript-eslint/consistent-type-imports": [
-          "error",
-          {
-            fixStyle: "separate-type-imports",
-            prefer: "type-imports",
-          },
-        ],
-        "@typescript-eslint/indent": "off",
-
         "import/consistent-type-specifier-style": [
           "error", //
           "prefer-top-level",

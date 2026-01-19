@@ -1,5 +1,5 @@
 export type * from "./react-dom";
-export type * from "./react-events";
+export type * from "./react-event";
 export type * from "./react-input";
 export type * from "./react-node";
 

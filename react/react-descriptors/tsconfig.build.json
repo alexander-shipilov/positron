@@ -1,0 +1,6 @@
+{
+  "extends": "./node_modules/@positron/common-rig/profiles/default/tsconfig.build.json",
+  "compilerOptions": {
+    "jsx": "react"
+  }
+}

@@ -3,7 +3,7 @@ import { rules } from "../utils/rules.js";
 const customGroups = [
   {
     elementNamePattern: ["^react$", "^react-.+"],
-    groupName: "react-type",
+    groupName: "type-react",
     selector: "type",
   },
   {
@@ -17,24 +17,24 @@ const customGroups = [
 ];
 
 const groups = [
-  "react-type",
+  "type-react",
   { newlinesBetween: 0 },
   "react",
-  "type",
+  "type-import",
   { newlinesBetween: 0 },
-  ["builtin", "external"],
-  ["internal-type"],
+  ["value-builtin", "value-external"],
+  ["type-internal"],
   { newlinesBetween: 0 },
-  ["internal"],
-  "parent-type",
+  ["value-internal"],
+  "type-parent",
   { newlinesBetween: 0 },
   "parent",
-  ["sibling-type", "index-type"],
+  ["type-sibling", "type-index"],
   { newlinesBetween: 0 },
-  ["sibling", "index"],
+  ["value-sibling", "value-index"],
   ["style", "resources"],
   "side-effect",
-  "object",
+  "ts-equals-import",
   "unknown",
 ];
 
@@ -45,7 +45,7 @@ export default rules({
       customGroups,
       groups,
       internalPattern: ["^@positron/"],
-      newlinesBetween: "always",
+      newlinesBetween: 1,
     },
   ],
 });

@@ -8,8 +8,14 @@ describe("never(message, Class)", () => {
     expect(() => never()).toThrow(new NeverException("Never exception"));
   });
 
-  it("should throw `new NeverError(message)` if `message` is string", () => {
+  it("should throw `new NeverError(message)` if `message` is a string", () => {
     expect(() => never("message")).toThrow(new NeverException("message"));
+  });
+
+  it("should throw an instance of `Class` if `message` is a string and the `Class` parameter is passed", () => {
+    expect(() => never("message", SyntaxError)).toThrow(
+      new SyntaxError("message"),
+    );
   });
 
   it("should throw `message` if `message` is an instance of `Error`", () => {

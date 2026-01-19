@@ -5,11 +5,6 @@ export default rules({
     "error",
     {
       groups: [
-        "export-enum",
-        "export-interface",
-        "export-type",
-        "export-class",
-        "export-function",
         "declare-enum",
         "declare-interface",
         "declare-type",
@@ -21,6 +16,11 @@ export default rules({
         "enum",
         "function",
         "unknown",
+        "export-enum",
+        "export-interface",
+        "export-type",
+        "export-class",
+        "export-function",
       ],
     },
   ],

@@ -1,5 +1,5 @@
-import { isFunction } from "../index";
-import { isPropertyOf } from "../property";
+import { isFunction } from "../function";
+import { isPropertyOwner } from "../property";
 
 /**
  * Predicate function {@link isIterator} checks if the passed `value` is
@@ -20,5 +20,5 @@ import { isPropertyOf } from "../property";
  * @returns `true` if the `value` has property `next` which is a function.
  */
 export function isIterator(value: unknown): value is Iterator<unknown> {
-  return isPropertyOf("next", value) && isFunction(value.next);
+  return isPropertyOwner(value, "next") && isFunction(value.next);
 }

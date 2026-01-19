@@ -10,25 +10,23 @@ import sortModules from "./perfectionist/sort-modules.js";
 import sortObjectTypes from "./perfectionist/sort-object-types.js";
 
 export default [
-  perfectionist.configs["recommended-custom"],
-
   {
-    settings: {
-      perfectionist: {
-        alphabet: alphabet
-      }
-    }
-  },
+    ...perfectionist.configs["recommended-custom"],
 
-  {
     rules: {
       "@typescript-eslint/adjacent-overload-signatures": "off",
       "@typescript-eslint/sort-type-constituents": "off",
       "import/order": "off",
       "react/jsx-sort-props": "off",
       "sort-imports": "off",
-      "sort-keys": "off"
-    }
+      "sort-keys": "off",
+    },
+
+    settings: {
+      perfectionist: {
+        alphabet: alphabet.getCharacters(),
+      },
+    },
   },
 
   ...sortClasses,
@@ -37,5 +35,5 @@ export default [
   ...sortIntersectionTypes,
   ...sortJsxProps,
   ...sortModules,
-  ...sortObjectTypes
+  ...sortObjectTypes,
 ];

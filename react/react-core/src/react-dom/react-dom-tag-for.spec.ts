@@ -1,3 +1,4 @@
+import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
 import type { ReactDomTagFor } from "./react-dom-tag-for";

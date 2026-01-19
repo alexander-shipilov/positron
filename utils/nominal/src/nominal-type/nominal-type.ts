@@ -1,24 +1,25 @@
-import type { NominalType as _NominalType } from "./nominal-type-";
+import type { NominalType as NominalType_ } from "./nominal-type-";
 
 /**
- * The `NominalType<TSymbol?, TName?>` type describes a key for storing
- * nominal types. Nominal types are only available at the typing level
- * and are not available at runtime.
+ * The {@link NominalType} type describes a symbol is used by the {@link
+ * Nominal} to describe nominal types.
  *
  * Each `NominalType` must be a unique symbol. This will eliminate possible
  * intersections in metadata in different subsystems using the `nominal`
  * package.
  *
  * Since it is not possible to declare a unique symbol at the typing level,
- * then to create a new nominal type, use the `declare` keyword as
- * described below:
+ * then to create a new nominal type, use the `declare` keyword as described
+ * below:
  *
  * ```ts
  *  declare const MyTypeSymbol: unique symbol;
+ *
  *  type MyType = NominalType<typeof MyTypeSymbol>;
  * ```
  *
- * A nominal type is the symbol with which it was created, but not vice versa:
+ * Each nominal type is the symbol with which it was created, but not vice
+ * versa. The following code demonstrates this:
  *
  * ```ts
  *  type T1 = typeof MyTypeSymbol extends MyType ? true : false;
@@ -28,15 +29,13 @@ import type { NominalType as _NominalType } from "./nominal-type-";
  *  // type T2 = false
  * ```
  *
- * The `TName` parameter is for debugging purposes (to make TypeScript messages
- * more meaningful) and has no effect. Two nominal types created with the same
- * symbol but with different names are equivalent to each other.
+ * *Unknown nominal type*
+ * If you omit the `TSymbol` parameter (which is equivalent to passing `symbol`
+ * as `TSymbol`: `NominalType<symbol>`), the result is an unknown nominal type.
+ * An unknown nominal type only serves to determine whether a value is a
+ * nominal type. Any known nominal type is an unknown nominal type, but not
+ * vice versa. The following code demonstrates this:
  *
- * *Unknown symbol*
- * If you omit the `TSymbol` parameter (which is equivalent to
- * `NominalType<symbol>`), the result is an `unknown` nominal type.
- * An `unknown` nominal type only serves to determine whether a value is a
- * nominal type. Any `known` nominal type is an `unknown`, but not vice versa.
  * ```ts
  *  type T3 = MyType extends NominalType ? true : false;
  *  // type T3 = true
@@ -45,8 +44,12 @@ import type { NominalType as _NominalType } from "./nominal-type-";
  *  // type T4 = false
  * ```
  *
- * @typeParam TSymbol - The symbol to init tag. Should be `unique symbol`
- * @typeParam TName - Optional type name, e.g. "identifier" or "token"
+ * @typeParam TSymbol - The unique symbol.
+ * @typeParam TName - Optional type name, e.g. "identifier" or "token". The
+ *   `TName` parameter is for debugging purposes only (to make TypeScript
+ *   messages more meaningful) and has no effect. Two nominal types created
+ *   with the same symbol but with different names are equivalent to each
+ *   other.
  *
  * @public
  */
@@ -54,6 +57,6 @@ export type NominalType<
   TSymbol extends symbol = symbol,
   TName extends string = string,
 > =
-  TSymbol extends _NominalType<infer Type>
-    ? _NominalType<Type, TName>
-    : _NominalType<TSymbol, TName>;
+  TSymbol extends NominalType_<infer Type>
+    ? NominalType_<Type, TName>
+    : NominalType_<TSymbol, TName>;

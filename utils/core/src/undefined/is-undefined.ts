@@ -1,3 +1,5 @@
+declare function expect<V>(v: V): void;
+
 /**
  * The {@link isUndefined} undefined determines whether the passed
  * {@link maybeUndefined} is an `undefined` literal.

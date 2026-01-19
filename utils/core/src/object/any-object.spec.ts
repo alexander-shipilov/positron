@@ -16,6 +16,10 @@ describe("AnyObject", () => {
     expectTypeOf<string>().toExtend<AnyObject>();
   });
 
+  it("`keyof EmptyObject` should be `never`", () => {
+    expectTypeOf<keyof AnyObject>().toBeNever();
+  });
+
   it("should not match nullables", () => {
     expectTypeOf<null>().not.toExtend<AnyObject>();
     expectTypeOf<undefined>().not.toExtend<AnyObject>();

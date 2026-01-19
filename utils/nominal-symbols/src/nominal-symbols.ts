@@ -12,5 +12,8 @@ export declare class NominalSymbols {
    */
   declare static readonly type: unique symbol;
 
+  /**
+   * @private
+   */
   private constructor();
 }
