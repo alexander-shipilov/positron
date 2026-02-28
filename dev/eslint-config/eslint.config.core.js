@@ -1,11 +1,12 @@
 import eslintjs from "@eslint/js";
 import importPlugin from "eslint-plugin-import";
+import { defineConfig } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
-export default tseslint.config(
+export default defineConfig(
   eslintjs.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
+  tseslint.configs.strictTypeChecked,
   {
     languageOptions: {
       globals: {
@@ -32,25 +33,20 @@ export default tseslint.config(
       "@typescript-eslint/indent": "off",
     },
   },
-
   {
     ...importPlugin.flatConfigs.recommended,
     ...importPlugin.flatConfigs.typescript,
   },
-
   {
     ...tseslint.configs.disableTypeChecked,
     files: ["**/*.{cjs,js,jsx,mjs}"],
   },
-
-  [
-    {
-      rules: {
-        "import/consistent-type-specifier-style": [
-          "error", //
-          "prefer-top-level",
-        ],
-      },
+  {
+    rules: {
+      "import/consistent-type-specifier-style": [
+        "error", //
+        "prefer-top-level",
+      ],
     },
-  ],
+  },
 );

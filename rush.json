@@ -15,7 +15,7 @@
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.158.0",
+  "rushVersion": "5.166.0",
   /**
    * The next field selects which package manager should be installed and determines its version.
    * Rush installs its own local copy of the package manager to ensure that your build process
@@ -24,7 +24,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "10.17.0",
+  "pnpmVersion": "10.28.1",
   // "pnpmVersion": "9.15.4",
   // "npmVersion": "6.14.15",
   // "yarnVersion": "1.9.4",
@@ -38,7 +38,7 @@
      *
      * - "local" - use the "pnpm-store" folder in the current configured temp folder:
      *   "common/temp/pnpm-store" by default.
-     * - "global" - use PNPM's global store, which has the benefit of being shared
+     * - "global" - use PNPM's global store, which has the benefit of being _shared
      *    across multiple repo folders, but the disadvantage of less isolation for builds
      *    (e.g. bugs or incompatibilities when two repos use different releases of PNPM)
      *
@@ -383,8 +383,8 @@
       "shouldPublish": false
     },
     {
-      "projectFolder": "dev/common-rig",
-      "packageName": "@positron/common-rig",
+      "projectFolder": "dev/heft-rig",
+      "packageName": "@positron/heft-rig",
       "shouldPublish": false
     },
     /** utils */
@@ -401,8 +401,8 @@
       "projectFolder": "utils/nominal",
     },
     {
-      "packageName": "@positron/nominal-symbols",
-      "projectFolder": "utils/nominal-symbols",
+      "packageName": "@positron/nominal-symbol",
+      "projectFolder": "utils/nominal-symbol",
     },
     {
       "packageName": "@positron/prefixed",
@@ -413,24 +413,29 @@
       "packageName": "@positron/react-core",
       "projectFolder": "react/react-core",
     },
-    {
-      "packageName": "@positron/react-descriptors",
-      "projectFolder": "react/react-descriptors",
-    },
     /** w3c-* */
-    {
-      "packageName": "@positron/css-numeric-objects",
-      "projectFolder": "w3c/css-numeric-objects",
-    },
+    //    {
+    //      "packageName": "@positron/css-numeric-objects",
+    //      "projectFolder": "w3c/css-numeric-objects",
+    //    },
     /** misc */
     {
       "packageName": "@positron/crazy-sequence",
       "projectFolder": "misc/crazy"
     },
     /** tree */
+    //    {
+    //      "packageName": "@positron/tree-core",
+    //      "projectFolder": "tree/tree-core"
+    //    }
+    /** ui */
     {
-      "packageName": "@positron/tree-core",
-      "projectFolder": "tree/tree-core"
+      "packageName": "@positron/ui-components",
+      "projectFolder": "ui/components"
+    },
+    {
+      "packageName": "@positron/ui-hooks",
+      "projectFolder": "ui/hooks"
     }
   ],
 }

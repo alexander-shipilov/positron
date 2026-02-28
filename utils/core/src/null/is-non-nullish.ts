@@ -2,7 +2,7 @@ import type { NonNullish } from "./non-nullish";
 
 /**
  * The {@link isNonNullish} function determines if the passed
- * {@link maybeNonNullish} is {@link NonNullish}
+ * `maybeNonNullish` is {@link NonNullish}
  *
  * @param maybeNonNullish - Any value
  *

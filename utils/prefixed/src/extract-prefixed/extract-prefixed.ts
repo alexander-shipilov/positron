@@ -17,21 +17,21 @@ import { isPrefixedKey } from "../prefixed";
  * ```ts
  *  type Props = { foo: unknown, "foo-bar": unknown, "bar-baz": unknown }
  *
- *  type PropsTuple = ExtractPrefixed<"foo", Props>
+ *  type PropsTuple = ExtractPrefixed<Props, "foo">
  *  // [ { foo: unknown, "bar-baz": unknown }, { bar: unknown } ]
  * ```
  *
- * @typeParam TKey - Type to extract prefixed props
  * @typeParam TPrefix - Prefix
+ * @typeParam TKey - Type to extract prefixed props
  *
  * @public
  */
 export type ExtractPrefixed<
-  TPrefix extends Prefix,
   TProps extends UnknownObject,
+  TPrefix extends Prefix,
 > = [
-  OmitPrefixed<TPrefix, TProps>, //
-  PickPrefixed<TPrefix, TProps>,
+  OmitPrefixed<TProps, TPrefix>, //
+  PickPrefixed<TProps, TPrefix>,
 ];
 
 /**
@@ -42,15 +42,15 @@ export type ExtractPrefixed<
  * ```ts
  *  const props = { foo: 1, "ted-bar": 2 }
  *
- *  console.log(unprefix('ted', props))
+ *  console.log(extractPrefixed(props, 'ted'))
  *  // [ { foo: 1 }, { bar: 2 } ]
  *
- *  console.log(unprefix('baz', props))
+ *  console.log(extractPrefixed(props, 'baz'))
  *  // [ { foo: 1, "ted-bar": 2 }, {} ]
  * ```
  *
- * @param prefix - A prefix to extract
  * @param props - Props object
+ * @param prefix - A prefix to extract
  *
  * @returns - Returns an array of props without `prefix`.
  *    Zero-indexed item contains props which have no the specified `prefix`
@@ -58,9 +58,9 @@ export type ExtractPrefixed<
  * @public
  */
 export function extractPrefixed<
-  TPrefix extends Prefix,
   TProps extends UnknownObject,
->(prefix: TPrefix, props: TProps): ExtractPrefixed<TPrefix, TProps> {
+  TPrefix extends Prefix,
+>(props: TProps, prefix: TPrefix): ExtractPrefixed<TProps, TPrefix> {
   const { length } = prefix;
 
   return propertyKeys(props).reduce(
@@ -74,5 +74,5 @@ export function extractPrefixed<
       return extracted;
     },
     [{}, {}],
-  ) as ExtractPrefixed<TPrefix, TProps>;
+  ) as ExtractPrefixed<TProps, TPrefix>;
 }

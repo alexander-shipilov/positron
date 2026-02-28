@@ -3,6 +3,8 @@ import { Exception } from "../exception";
 /**
  * The {@link ASSERT_EXCEPTION} constant represents a name of the
  * {@link AssertException}
+ *
+ * @public
  */
 export const ASSERT_EXCEPTION = "AssertException";
 

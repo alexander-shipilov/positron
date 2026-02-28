@@ -6,5 +6,3 @@ export type * from "./union-to-intersection";
 
 export * from "./capitalize";
 export * from "./is-non-optional";
-export * from "./omit";
-export * from "./pick";

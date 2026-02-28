@@ -13,7 +13,7 @@ enum EntityOrder {
   AdditionSubtraction = 1,
   Exponentiation = 3,
   Negation = 4,
-  Operand = Infinity,
+  Operand = 5,
   ProductDivision = 2,
 }
 

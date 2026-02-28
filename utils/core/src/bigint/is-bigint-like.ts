@@ -8,10 +8,10 @@ import type { BigintLike } from "./bigint-like";
 
 /**
  * The {@link isBigintLike} function is a type-guard function that determines
- * whether the type of the passed value {@link maybeBigintLike} extends
+ * whether the type of the passed value `maybeBigintLike` extends
  * the {@link BigintLike} type.
  *
- * This means that if the return value is `true`, then {@link maybeBigintLike}
+ * This means that if the return value is `true`, then `maybeBigintLike`
  * is not strictly of type {@link BigintLike}, but is
  * `{@link BigintLike} & typeof maybeBigintLike`.
  *
@@ -19,7 +19,7 @@ import type { BigintLike } from "./bigint-like";
  *   {@link BigintLike}.
  *
  * @returns The boolean value `true` if the type of the given
- * {@link maybeBigintLike} extends the {@link BigintLike} type. Otherwise,
+ * `maybeBigintLike` extends the {@link BigintLike} type. Otherwise,
  *   `false`.
  *
  * @public

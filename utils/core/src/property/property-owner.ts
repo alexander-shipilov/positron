@@ -1,5 +1,5 @@
 /**
- * The {@link PropertyOwner} type constructs a type with the property `TKey`
+ * The {@link PropertyOwner} type constructs an object with the property `TKey`
  *
  * @example
  * ```ts

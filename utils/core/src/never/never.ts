@@ -17,10 +17,10 @@ import { NeverException } from "./never-exception";
  *
  * @param message - A string or an `Error` instance.
  * @param Class - The class to create instance of error if the passed
- *   {@link message} is not an instance of `Error`.
+ *   `message` is not an instance of `Error`.
  *
- * @throws {@link NeverException} if {@link message} is a string or omitted
- * @throws {@link message} otherwise
+ * @throws {@link Class} instance if `message` is a string or omitted
+ * @throws `message` otherwise
  *
  * @public
  */

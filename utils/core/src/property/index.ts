@@ -9,9 +9,10 @@ export type * from "./property-symbol";
 export type * from "./property-symbol-of";
 
 export * from "./has-own-property";
-export * from "./is-own-property-owner";
+export * from "./has-property";
+export * from "./is-own-property-of";
 export * from "./is-property-key";
-export * from "./is-property-owner";
+export * from "./is-property-of";
 export * from "./property-keys";
 export * from "./property-names";
 export * from "./property-symbols";

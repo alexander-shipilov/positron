@@ -3,12 +3,12 @@ import { BOOLEAN_TYPE } from "./boolean-type";
 
 /**
  * The {@link isBooleanType} function checks if the passed
- * {@link maybeBooleanType} is a {@link BooleanType}.
+ * `maybeBooleanType` is a {@link BooleanType}.
  *
  * @param maybeBooleanType - The value to be tested for being
  *   a {@link BooleanType}.
  *
- * @returns The boolean value `true` if the passed {@link maybeBooleanType}
+ * @returns The boolean value `true` if the passed `maybeBooleanType`
  *   value is a {@link BooleanType}.
  * @public
  */

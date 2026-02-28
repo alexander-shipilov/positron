@@ -1,4 +1,10 @@
 {
   "preset": "ts-jest",
-  "testEnvironment": "node"
+  "testEnvironment": "node",
+  "moduleNameMapper": {
+    "@/(.+)": "<rootDir>/src/$1"
+  },
+  "testMatch": [
+    "<rootDir>/src/**/*.{spec,test}.{tsx,ts}"
+  ]
 }

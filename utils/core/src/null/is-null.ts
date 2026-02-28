@@ -1,6 +1,6 @@
 /**
  * The {@link isNull} function is a type-guard function that determines whether
- * the passed {@link maybeNull} is strictly the `null` literal.
+ * the passed `maybeNull` is strictly the `null` literal.
  *
  * @example
  * ```ts
@@ -21,7 +21,7 @@
  *
  * @param maybeNull - The value to be tested for being a `null` literal.
  *
- * @returns The boolean value `true` if the given {@link maybeNull} is the
+ * @returns The boolean value `true` if the given `maybeNull` is the
  *   `null` literal. Otherwise, `false`.
  *
  * @public

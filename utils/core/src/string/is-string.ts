@@ -3,10 +3,10 @@ import { typeOf } from "../type-of";
 
 /**
  * The {@link isString} function is a type-guard function that determines
- * whether the type of the passed value {@link maybeString} extends
+ * whether the type of the passed value `maybeString` extends
  * the `string` type.
  *
- * This means that if the return value is `true`, then {@link maybeString} is
+ * This means that if the return value is `true`, then `maybeString` is
  * not strictly of type `string`, but is `string & typeof maybeString`.
  *
  * @example The following example demonstrates this.
@@ -29,7 +29,7 @@ import { typeOf } from "../type-of";
  * @param maybeString - The value to be tested for being a `string`.
  *
  * @returns The boolean value `true` if the type of the given
- * {@link maybeString} extends the `string` type. Otherwise, `false`.
+ * `maybeString` extends the `string` type. Otherwise, `false`.
  *
  * @public
  */

@@ -1,7 +1,7 @@
 import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
-import type { Any, Optional } from "@positron/core";
+import type { Optional, Any } from "@positron/core";
 
 import type { ArrayFirst } from "./array-first";
 

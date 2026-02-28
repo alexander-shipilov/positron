@@ -11,6 +11,15 @@ const customGroups = [
     groupName: "react",
   },
   {
+    elementNamePattern: ["^@positron/.+"],
+    groupName: "type-positron",
+    selector: "type",
+  },
+  {
+    elementNamePattern: ["^@positron/.+"],
+    groupName: "positron",
+  },
+  {
     elementNamePattern: ["\\.svg$", "\\.md$"],
     groupName: "resources",
   },
@@ -23,6 +32,9 @@ const groups = [
   "type-import",
   { newlinesBetween: 0 },
   ["value-builtin", "value-external"],
+  ["type-positron"],
+  { newlinesBetween: 0 },
+  ["positron"],
   ["type-internal"],
   { newlinesBetween: 0 },
   ["value-internal"],
@@ -44,7 +56,7 @@ export default rules({
     {
       customGroups,
       groups,
-      internalPattern: ["^@positron/"],
+      internalPattern: ["^@/"],
       newlinesBetween: 1,
     },
   ],

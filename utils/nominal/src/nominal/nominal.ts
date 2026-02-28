@@ -2,10 +2,10 @@ import type { ArrayType } from "@positron/array";
 
 import type { NominalType } from "../nominal-type";
 
-import type { Nominal as Nominal_ } from "./nominal-";
+import type { Nominal_ } from "./nominal-";
 
 /**
- * The {@link Nominal} type returns a nominal type from passed type `TType`
+ * The {@link Nominal_} type returns a nominal type from passed type `TType`
  *
  * A type system is nominal (or name-based) if compatibility and equivalence
  * of data types is determined by explicit declarations and / or the name of

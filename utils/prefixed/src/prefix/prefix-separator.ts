@@ -1,10 +1,9 @@
 /**
+ * @public
  */
-export type PrefixSeparator = "-";
+export const PREFIX_SEPARATOR = "-";
 
 /**
  * @public
- *
- * @public
  */
-export const PREFIX_SEPARATOR: PrefixSeparator = "-";
+export type PrefixSeparator = typeof PREFIX_SEPARATOR;

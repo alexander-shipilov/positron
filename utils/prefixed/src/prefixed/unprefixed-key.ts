@@ -1,5 +1,3 @@
-import type { PropertyName } from "@positron/core";
-
 import type { Prefix } from "../prefix";
 
 import type { PrefixedKey } from "./prefixed-key";
@@ -23,7 +21,5 @@ import type { PrefixedKey } from "./prefixed-key";
  *
  * @public
  */
-export type UnprefixedKey<
-  TPrefix extends Prefix,
-  TKey extends PropertyKey = PropertyName,
-> = TKey extends PrefixedKey<TPrefix, infer Unprefixed> ? Unprefixed : TKey;
+export type UnprefixedKey<TPrefix extends Prefix, TKey extends PropertyKey> =
+  TKey extends PrefixedKey<TPrefix, infer Unprefixed> ? Unprefixed : TKey;

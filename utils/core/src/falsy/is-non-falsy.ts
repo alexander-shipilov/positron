@@ -3,12 +3,12 @@ import { isFalsy } from "./is-falsy";
 
 /**
  * The {@link isNonFalsy} function determines whether the passed
- * {@link maybeNonFalsy} is a {@link NonFalsy}.
+ * `maybeNonFalsy` is a {@link NonFalsy}.
  *
  * @param maybeNonFalsy - The value to be tested for being a
  *   {@link NonFalsy | non-falsy}.
  *
- * @returns The boolean value `true` if the given {@link maybeNonFalsy} is
+ * @returns The boolean value `true` if the given `maybeNonFalsy` is
  *   non-falsy value. Otherwise, `false`.
  *
  * @public

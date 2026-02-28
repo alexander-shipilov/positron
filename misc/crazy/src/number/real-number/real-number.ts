@@ -1,7 +1,6 @@
 import type { NumberLike } from "@positron/core";
 import type { Nominal } from "@positron/nominal";
-import { isNumber, never } from "@positron/core";
-import { typeOf } from "@positron/core/src";
+import { isNumber, never, typeOf } from "@positron/core";
 
 import type { RealNumberType } from "./real-number-type";
 import { isRealNumber } from "./is-real-number";
@@ -48,11 +47,11 @@ export const RealNumber = (numberLike: NumberLike): RealNumber => {
     : never(
         isNumber(numberLike)
           ? new RangeError(
-              `The number ${numberLike} cannot be converted to ` +
+              `The number ${String(numberLike)} cannot be converted to ` +
                 `a 'RealNumber' because it is not a finite number`,
             )
           : new SyntaxError(
-              `Cannot convert ${typeOf(numberLike)} ${numberLike} to ` +
+              `Cannot convert ${typeOf(numberLike)} ${String(numberLike)} to ` +
                 `a 'RealNumber'`,
             ),
       );

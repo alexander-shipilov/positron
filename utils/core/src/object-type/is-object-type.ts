@@ -3,12 +3,12 @@ import { OBJECT_TYPE } from "./object-type";
 
 /**
  * The {@link isObjectType} function checks if the passed
- * {@link maybeObjectType} is a {@link ObjectType}.
+ * `maybeObjectType` is a {@link ObjectType}.
  *
  * @param maybeObjectType - The value to be tested for being
  *   a {@link ObjectType}.
  *
- * @returns The object value `true` if the passed {@link maybeObjectType}
+ * @returns The object value `true` if the passed `maybeObjectType`
  *   value is a {@link ObjectType}.
  * @public
  */

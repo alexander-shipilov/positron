@@ -1,17 +1,6 @@
 import type { ReactDom } from "./react-dom";
+import type { ReactDomPropsForKey } from "./react-dom-props-for-key";
 import type { ReactDomTag } from "./react-dom-tag";
-
-/**
- * @internal
- */
-type ReactDomPropsForKey<
-  TTag extends ReactDomTag,
-  TProps,
-> = keyof TProps extends keyof ReactDom[TTag]
-  ? TProps extends Pick<ReactDom[TTag], keyof TProps>
-    ? TTag
-    : never
-  : never;
 
 /**
  * The {@link ReactDomPropsFor} type constructs a subset of {@link ReactDom}
@@ -19,9 +8,9 @@ type ReactDomPropsForKey<
  *
  * @example
  * ```ts
- *  type Input = ReactDomFilter<{ value: string; maxLength: number }>>
+ *  type Input = ReactDomPropsFor<{ value: string; maxLength: number }\>
  *  // { input: { ... }, textarea: { ... } }
- *s ```
+ * ```
  *
  * @public
  */

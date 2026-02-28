@@ -1,3 +1,5 @@
+import type { ArrayToTuple_ } from "./array-to-tuple_";
+
 /**
  * The {@link ArrayToTuple} type creates a tuple by removing non-fixed-length
  * sequences of elements from the passed `TArray`.
@@ -25,15 +27,3 @@ export type ArrayToTuple<TArray extends readonly unknown[]> =
   Readonly<TArray> extends TArray
     ? Readonly<ArrayToTuple_<[...TArray]>>
     : ArrayToTuple_<[...TArray]>;
-
-/**
- * @internal
- */
-type ArrayToTuple_<TArray extends unknown[]> = TArray extends [
-  infer First,
-  ...infer Tail extends unknown[],
-]
-  ? [First, ...ArrayToTuple_<Tail>]
-  : TArray extends [...infer Head extends unknown[], infer Last]
-    ? [...ArrayToTuple_<Head>, Last]
-    : [];

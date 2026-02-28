@@ -3,10 +3,10 @@ import { typeOf } from "../type-of";
 
 /**
  * The {@link isBigint} function is a type-guard function that determines
- * whether the type of the passed value {@link maybeBigint} extends
+ * whether the type of the passed value `maybeBigint` extends
  * the `bigint` type.
  *
- * This means that if the return value is `true`, then {@link maybeBigint} is
+ * This means that if the return value is `true`, then `maybeBigint` is
  * not strictly of type `bigint`, but is `bigint & typeof maybeBigint`.
  *
  * @example The following example demonstrates this.
@@ -28,7 +28,7 @@ import { typeOf } from "../type-of";
  * @param maybeBigint - The value to be tested for being a `bigint`.
  *
  * @returns The boolean value `true` if the type of the given
- * {@link maybeBigint} extends the `bigint` type. Otherwise, `false`.
+ * `maybeBigint` extends the `bigint` type. Otherwise, `false`.
  *
  * @public
  */

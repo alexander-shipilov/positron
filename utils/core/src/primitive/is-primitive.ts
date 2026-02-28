@@ -11,11 +11,11 @@ import type { Primitive } from "./primitive";
 
 /**
  * The {@link isPrimitive} function determines whether the passed
- * {@link maybePrimitive} is a {@link Primitive}.
+ * `maybePrimitive` is a {@link Primitive}.
  *
  * @param maybePrimitive - The value to be tested for being a {@link Primitive}.
  *
- * @returns The boolean value `true` if the given {@link maybePrimitive} is a
+ * @returns The boolean value `true` if the given `maybePrimitive` is a
  *   {@link Primitive}. Otherwise, `false`.
  *
  * @public

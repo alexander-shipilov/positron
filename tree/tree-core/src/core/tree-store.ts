@@ -18,5 +18,3 @@ export interface TreeStore<TItem extends TreeItem> {
 
   replaceChild(parent: TItem, item: TItem, newItem: TItem): TItem;
 }
-
-Node;

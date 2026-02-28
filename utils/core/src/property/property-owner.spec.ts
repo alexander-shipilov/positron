@@ -44,7 +44,7 @@ describe("PropertyOwner<K, V>", () => {
     expectTypeOf<PropertyOwner<K, V1>>().toEqualTypeOf<{ [T in K]?: V1 }>();
 
     type V2 = unknown;
-    expectTypeOf<PropertyOwner<K, V2>>().toEqualTypeOf<{ [T in K]?: V2 }>();
+    expectTypeOf<PropertyOwner<K>>().toEqualTypeOf<{ [T in K]?: V2 }>();
   });
 
   it("should return `AnyObject` if 'K' or `V` is `never`", () => {

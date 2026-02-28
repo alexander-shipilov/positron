@@ -5,10 +5,10 @@ import type { AnyFunction } from "./any-function";
 
 /**
  * The {@link isFunction} function is a type-guard function that determines
- * whether the type of the passed value {@link maybeFunction} extends
+ * whether the type of the passed value `maybeFunction` extends
  * the `Function` type.
  *
- * This means that if the return value is `true`, then {@link maybeFunction} is
+ * This means that if the return value is `true`, then `maybeFunction` is
  * not strictly of type `Function`, but is `Function & typeof maybeFunction`.
  *
  * The following example demonstrates this.
@@ -34,7 +34,7 @@ import type { AnyFunction } from "./any-function";
  * @param maybeFunction - The value to be tested for being a function.
  *
  * @returns The boolean value `true` if the type of the given
- * {@link maybeFunction} extends the `Function` type. Otherwise, `false`.
+ * `maybeFunction` extends the `Function` type. Otherwise, `false`.
  *
  * @public
  */

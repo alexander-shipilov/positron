@@ -1,7 +1,7 @@
-import type { NominalType as NominalType_ } from "./nominal-type-";
+import type { NominalType_ } from "./nominal-type_";
 
 /**
- * The {@link NominalType} type describes a symbol is used by the {@link
+ * The {@link NominalType_} type describes a symbol is used by the {@link
  * Nominal} to describe nominal types.
  *
  * Each `NominalType` must be a unique symbol. This will eliminate possible

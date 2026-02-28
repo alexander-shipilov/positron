@@ -1,8 +1,6 @@
-declare function expect<V>(v: V): void;
-
 /**
  * The {@link isUndefined} undefined determines whether the passed
- * {@link maybeUndefined} is an `undefined` literal.
+ * `maybeUndefined` is an `undefined` literal.
  *
  * @example
  * ```ts
@@ -24,7 +22,7 @@ declare function expect<V>(v: V): void;
  * @param maybeUndefined - The value to be tested for being an `undefined`
  *   literal.
  *
- * @returns The boolean value `true` if the given {@link maybeUndefined} is an
+ * @returns The boolean value `true` if the given `maybeUndefined` is an
  *   `undefined` literal. Otherwise, `false`.
  *
  * @public

@@ -1,3 +1,5 @@
+import type { ArrayHead_ } from "./array-head_";
+
 /**
  * The {@link ArrayHead} type constructs an array / tuple type by removing the
  * last item from the passed `TArray` type.
@@ -25,15 +27,3 @@ export type ArrayHead<TArray extends readonly unknown[]> =
   Readonly<TArray> extends TArray
     ? Readonly<ArrayHead_<[...TArray]>>
     : ArrayHead_<[...TArray]>;
-
-/**
- * @internal
- */
-type ArrayHead_<TArray extends unknown[]> = TArray extends [
-  ...infer Head,
-  unknown,
-]
-  ? Head
-  : TArray extends []
-    ? never[]
-    : TArray;

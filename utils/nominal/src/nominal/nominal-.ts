@@ -1,23 +1,11 @@
-import { NominalSymbols } from "@positron/nominal-symbols";
-
 import type { NominalType } from "../nominal-type";
 
-/**
- */
-export type Nominal<
-  TTarget,
-  TTypes extends NominalType[] = [],
-> = Nominal_<TTypes> & TTarget;
+import type { NominalClass } from "./nominal-class-";
 
 /**
- * @intrnal
- *
- * @internal
+ * @public
  */
-export declare class Nominal_<TTypes extends NominalType[]> {
-  private readonly [NominalSymbols.type]: [
-    NominalType,
-    ...TTypes,
-    ...NominalType[],
-  ];
-}
+export type Nominal_<
+  TTarget,
+  TTypes extends NominalType[] = [],
+> = NominalClass<TTypes> & TTarget;

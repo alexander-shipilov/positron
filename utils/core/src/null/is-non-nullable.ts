@@ -1,6 +1,6 @@
 /**
  * The {@link isNonNullable} function checks if the passed
- * {@link maybeNonNullable} is a `NonNullable`
+ * `maybeNonNullable` is a `NonNullable`
  *
  * @param maybeNonNullable - The value to the check
  *

@@ -5,7 +5,7 @@ import { typeOf } from "../type-of";
 
 /**
  * The {@link isPropertyKey} function determines whether the passed
- * {@link maybePropertyKey} is a `PropertyKey`
+ * `maybePropertyKey` is a `PropertyKey`
  *
  * @param maybePropertyKey - The value to be checked.
  *

@@ -3,7 +3,7 @@ import { expectTypeOf } from "expect-type";
 
 import type { NominalType } from "./nominal-type";
 
-declare function assert<T>(message: string, v: T): void;
+declare function assert<T>(message: string, v: T): T;
 
 declare const S1: unique symbol;
 type S1 = typeof S1;
@@ -12,26 +12,28 @@ declare const S2: unique symbol;
 type S2 = typeof S2;
 
 describe("NominalType<S, N>", () => {
-  assert<NominalType>(
-    "`unique symbol` should not be a `NominalType`",
-    // @ts-expect-error TS2345: Argument of type `symbol` is not
-    // assignable to parameter of type `NominalType<symbol, string>`
-    S1 as symbol,
-  );
+  void (() => {
+    assert<NominalType>(
+      "`unique symbol` should not be a `NominalType`",
+      // @ts-expect-error TS2345: Argument of type `symbol` is not
+      // assignable to parameter of type `NominalType<symbol, string>`
+      S1 as symbol,
+    );
 
-  assert<NominalType<S1>>(
-    "`unique symbol` should not be a `NominalType`",
-    // @ts-expect-error TS2345: Argument of type 'unique symbol' is not
-    // assignable to parameter of type 'NominalType<unique symbol, string>'
-    S1,
-  );
+    assert<NominalType<S1>>(
+      "`unique symbol` should not be a `NominalType`",
+      // @ts-expect-error TS2345: Argument of type 'unique symbol' is not
+      // assignable to parameter of type 'NominalType<unique symbol, string>'
+      S1,
+    );
 
-  assert<NominalType<S1, "foo">>(
-    "`unique symbol` should not be a `NominalType`",
-    // @ts-expect-error TS2322: Type 'unique symbol' is not assignable to type
-    // 'NominalType<unique symbol, "foo">'
-    S1,
-  );
+    assert<NominalType<S1, "foo">>(
+      "`unique symbol` should not be a `NominalType`",
+      // @ts-expect-error TS2322: Type 'unique symbol' is not assignable to type
+      // 'NominalType<unique symbol, "foo">'
+      S1,
+    );
+  });
 
   it("`NominalType` should match any `Metatype<S, N?>` but not vise versa", () => {
     type Tag1 = NominalType<S1>;

@@ -7,6 +7,6 @@
  *
  * @public
  */
-export type TypeGuard<TExpected, TValue = unknown> = (
-  value: TExpected | TValue,
+export type TypeGuard<TValue, TExpected extends TValue> = (
+  value: TValue,
 ) => value is TExpected;

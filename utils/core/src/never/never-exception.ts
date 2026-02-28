@@ -3,6 +3,8 @@ import { Exception } from "../exception";
 /**
  * The {@link NEVER_EXCEPTION} constant represents a name of the
  * {@link NeverException}
+ *
+ * @public
  */
 export const NEVER_EXCEPTION = "NeverException";
 

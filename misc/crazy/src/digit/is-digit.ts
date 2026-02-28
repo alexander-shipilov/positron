@@ -4,7 +4,7 @@ import type { Digit } from "./digit";
 
 /**
  * The {@link isDigit} function determines whether the passed
- * {@link maybeDigit} is an {@Link Digit}.
+ * `maybeDigit` is an {@Link Digit}.
  *
  * @param maybeDigit - The value to be checked.
  *

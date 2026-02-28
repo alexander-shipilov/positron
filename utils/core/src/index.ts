@@ -2,9 +2,11 @@ export type * from "./any";
 export type * from "./class";
 export type * from "./collection";
 export type * from "./set";
+
 export type * from "./type-guard";
 
 export * from "./array";
+export * from "./array-like";
 export * from "./assert";
 export * from "./bigint";
 export * from "./bigint-type";

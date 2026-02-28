@@ -1,11 +1,11 @@
 import type { NominalType } from "@positron/nominal";
 
 /**
- * @internal
+ * @public
  */
-declare const ClassNameType: unique symbol;
+export declare const CLASS_NAME_TYPE: unique symbol;
 
 /**
- * @internal
+ * @public
  */
-export type ClassNameType = NominalType<typeof ClassNameType, "ClassName">;
+export type ClassNameType = NominalType<typeof CLASS_NAME_TYPE, "ClassName">;

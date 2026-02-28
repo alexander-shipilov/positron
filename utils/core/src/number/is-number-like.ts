@@ -8,13 +8,13 @@ import type { NumberLike } from "./number-like";
 
 /**
  * The {@link isNumberLike} function is a type-guard function that determines
- * whether the passed {@link maybeNumberLike} is the {@link NumberLike}.
+ * whether the passed `maybeNumberLike` is the {@link NumberLike}.
  *
  * @param maybeNumberLike - The value to be tested for being a
  *   {@link NumberLike}.
  *
  * @returns The boolean value `true` if the type of the given
- *   {@link maybeNumberLike} extends the {@link NumberLike} type.
+ *   `maybeNumberLike` extends the {@link NumberLike} type.
  *   Otherwise, `false`.
  *
  * @public

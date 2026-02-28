@@ -3,10 +3,10 @@ import { typeOf } from "../type-of";
 
 /**
  * The {@link isNumber} function is a type-guard function that determines
- * whether the type of the passed value {@link maybeNumber} extends
+ * whether the type of the passed value `maybeNumber` extends
  * the `number` type.
  *
- * This means that if the return value is `true`, then {@link maybeNumber} is
+ * This means that if the return value is `true`, then `maybeNumber` is
  * not strictly of type `number`, but is `number & typeof maybeNumber`.
  *
  * @example The following example demonstrates this.
@@ -28,7 +28,7 @@ import { typeOf } from "../type-of";
  * @param maybeNumber - The value to be tested for being a `number`.
  *
  * @returns The boolean value `true` if the type of the given
- * {@link maybeNumber} extends the `number` type. Otherwise, `false`.
+ * `maybeNumber` extends the `number` type. Otherwise, `false`.
  *
  * @public
  */

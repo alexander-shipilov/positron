@@ -16,7 +16,7 @@ import type { ErrorLike } from "./error-like";
  *
  * @param message - A string or `Error` instance.
  * @param Class - The class to create instance of error if the passed
- *   {@link message} is not an instance of `Error`.
+ *   `message` is not an instance of `Error`.
  *
  * @public
  */

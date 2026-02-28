@@ -3,12 +3,12 @@ import { NULL_TYPE } from "./null-type";
 
 /**
  * The {@link isNullType} function checks if the passed
- * {@link maybeNullType} is a {@link NullType}.
+ * `maybeNullType` is a {@link NullType}.
  *
  * @param maybeNullType - The value to be tested for being
  *   a {@link NullType}.
  *
- * @returns The null value `true` if the passed {@link maybeNullType}
+ * @returns The null value `true` if the passed `maybeNullType`
  *   value is a {@link NullType}.
  * @public
  */

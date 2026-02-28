@@ -3,12 +3,12 @@ import { UNDEFINED_TYPE } from "./undefined-type";
 
 /**
  * The {@link isUndefinedType} function checks if the passed
- * {@link maybeUndefinedType} is a {@link UndefinedType}.
+ * `maybeUndefinedType` is a {@link UndefinedType}.
  *
  * @param maybeUndefinedType - The value to be tested for being
  *   a {@link UndefinedType}.
  *
- * @returns The boolean value `true` if the passed {@link maybeUndefinedType}
+ * @returns The boolean value `true` if the passed `maybeUndefinedType`
  *   value is a {@link UndefinedType}.
  * @public
  */

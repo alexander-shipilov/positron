@@ -49,7 +49,7 @@ describe(`${RealNumber.name}(value?)`, () => {
   });
 
   it("should throw a `RangeError` if the passed `value` is not finite", () => {
-    expect(() => RealNumber(+Infinity)).toThrow(RangeError);
+    expect(() => RealNumber(Infinity)).toThrow(RangeError);
     expect(() => RealNumber(-Infinity)).toThrow(RangeError);
   });
 

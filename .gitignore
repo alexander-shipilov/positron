@@ -65,6 +65,7 @@ common/deploy/
 common/temp/
 common/autoinstallers/*/.npmrc
 **/.rush/temp/
+**/rush-logs
 
 # Heft
 .heft
@@ -78,4 +79,5 @@ common/autoinstallers/*/.npmrc
 # Temporary files
 temp/
 
+*/*/dist
 */*/lib

@@ -11,6 +11,7 @@ describe("EmptyObject<K>", () => {
   it("should not match any other values", () => {
     expectTypeOf<Record<PropertyKey, unknown>>().not.toExtend<EmptyObject>();
     expectTypeOf<{ foo: 1 }>().not.toExtend<EmptyObject>();
+    expectTypeOf<object>().not.toExtend<EmptyObject>();
     expectTypeOf<() => void>().not.toExtend<EmptyObject>();
     expectTypeOf<string>().not.toExtend<EmptyObject>();
   });

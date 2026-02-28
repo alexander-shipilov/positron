@@ -1,4 +1,4 @@
-import type { EmptyObject, UnknownObject } from "@positron/core";
+import type { UnknownObject, EmptyObject } from "@positron/core";
 import { propertyKeys } from "@positron/core";
 
 import type { Prefix } from "../prefix";
@@ -12,8 +12,8 @@ import { isPrefixedKey } from "../prefixed";
  * @example
  * ```ts
  *  type FooPrefixedProps = PickPrefixed<
- *    "foo",
- *    { foo: unknown, "foo-bar": unknown }
+ *    { foo: unknown, "foo-bar": unknown, bar: unknown },
+ *    "foo"
  *  >
  *  // { bar: unknown }
  * ```
@@ -24,8 +24,8 @@ import { isPrefixedKey } from "../prefixed";
  * @public
  */
 export type PickPrefixed<
-  TPrefix extends Prefix,
   TProps extends UnknownObject,
+  TPrefix extends Prefix,
 > = {
   [TKey in keyof TProps as TKey extends PrefixedKey<TPrefix>
     ? UnprefixedKey<TPrefix, TKey>
@@ -42,9 +42,9 @@ export type PickPrefixed<
  * @public
  */
 export function pickPrefixed<
+  TProps extends UnknownObject,
   TPrefix extends Prefix,
-  TProps extends EmptyObject,
->(prefix: TPrefix, props: TProps): PickPrefixed<TPrefix, TProps> {
+>(props: TProps, prefix: TPrefix): PickPrefixed<TProps, TPrefix> {
   const { length } = prefix;
 
   return propertyKeys(props).reduce(
@@ -53,5 +53,5 @@ export function pickPrefixed<
         ? Object.assign(prefixed, { [key.substring(length + 1)]: props[key] })
         : prefixed,
     {},
-  ) as PickPrefixed<TPrefix, TProps>;
+  ) as PickPrefixed<TProps, TPrefix>;
 }

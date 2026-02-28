@@ -3,7 +3,8 @@ import type { Prefix } from "../prefix";
 import type { PrefixedKey } from "./prefixed-key";
 
 /**
- * The {@link Prefixed} type constructs a type by adding to the all string keys of
+ * The {@link Prefixed} type constructs a type by adding to the all string keys
+ * of
  *   `TProps` the prefix specified by `TPrefix` (string literal)
  *
  * @example

@@ -32,8 +32,7 @@ describe("UnprefixedKey<P, K>", () => {
   });
 
   it("should return `K` if `K` is a `string`", () => {
-    type K = string;
-    expectTypeOf<UnprefixedKey<P, K>>().toEqualTypeOf<K>();
+    expectTypeOf<UnprefixedKey<P, string>>().toEqualTypeOf<string>();
   });
 
   it("should return `K` if `K` is a `number`", () => {

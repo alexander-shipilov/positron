@@ -1,4 +1,4 @@
-import { isOwnPropertyOwner } from "@positron/core";
+import { hasOwnProperty } from "@positron/core";
 
 import type { ClassNameProps } from "./class-name-props";
 import { CLASS_NAME_PROP } from "./class-name-prop";
@@ -16,7 +16,7 @@ export function isClassNameProps(
   maybeClassNameProps: unknown,
 ): maybeClassNameProps is ClassNameProps {
   return (
-    isOwnPropertyOwner(maybeClassNameProps, CLASS_NAME_PROP) &&
+    hasOwnProperty(maybeClassNameProps, CLASS_NAME_PROP) &&
     isClassName(maybeClassNameProps[CLASS_NAME_PROP])
   );
 }

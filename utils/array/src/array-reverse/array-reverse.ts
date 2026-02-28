@@ -1,3 +1,5 @@
+import type { ArrayReverse_ } from "./array-reverse_";
+
 /**
  * The {@link ArrayReverse} type creates an array/tuple type from the elements
  * of the passed `TArray`, placed in reverse order.
@@ -20,17 +22,5 @@
  */
 export type ArrayReverse<TArray extends readonly unknown[]> =
   Readonly<TArray> extends TArray
-    ? Readonly<_ArrayReverse<[...TArray]>>
-    : _ArrayReverse<[...TArray]>;
-
-/**
- * @internal
- */
-type _ArrayReverse<TArray extends unknown[]> = TArray extends [
-  infer First,
-  ...infer Tail extends unknown[],
-]
-  ? [..._ArrayReverse<Tail>, First]
-  : TArray extends [...infer Head extends unknown[], infer Last]
-    ? [Last, ..._ArrayReverse<Head>]
-    : TArray;
+    ? Readonly<ArrayReverse_<[...TArray]>>
+    : ArrayReverse_<[...TArray]>;

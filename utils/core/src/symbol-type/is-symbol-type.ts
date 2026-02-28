@@ -3,12 +3,12 @@ import { SYMBOL_TYPE } from "./symbol-type";
 
 /**
  * The {@link isSymbolType} function checks if the passed
- * {@link maybeSymbolType} is a {@link SymbolType}.
+ * `maybeSymbolType` is a {@link SymbolType}.
  *
  * @param maybeSymbolType - The value to be tested for being
  *   a {@link SymbolType}.
  *
- * @returns The boolean value `true` if the passed {@link maybeSymbolType}
+ * @returns The boolean value `true` if the passed `maybeSymbolType`
  *   value is a {@link SymbolType}.
  * @public
  */

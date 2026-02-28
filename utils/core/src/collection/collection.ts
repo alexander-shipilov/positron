@@ -5,14 +5,15 @@
  */
 export interface Collection<TKey, TValue> {
   /**
-   * The {@link entries} method of the {@link Collection} interface returns an
-   * iterable of key, value pairs for every entry in the collection.
+   * The {@link Collection.entries} method of the {@link Collection} interface
+   * returns an iterable of key, value pairs for every entry in the collection.
    */
   entries(): IterableIterator<[TKey, TValue]>;
 
   /**
-   * The {@link forEach} method of the {@link Collection} interface calls the
-   * callback given in parameter once for each value pair in the list.
+   * The {@link Collection.forEach} method of the {@link Collection} interface
+   * calls the callback given in parameter once for each value pair in the
+   * list.
    */
   forEach(
     callback: (
@@ -24,14 +25,14 @@ export interface Collection<TKey, TValue> {
   ): void;
 
   /**
-   * The {@link keys} method of the {@link Collection} interface returns an
-   * iterable of keys in the collection.
+   * The {@link Collection.keys} method of the {@link Collection} interface
+   * returns an iterable of keys in the collection.
    */
   keys(): IterableIterator<TKey>;
 
   /**
-   * The {@link values} method of the {@link Collection} interface returns an
-   * iterable of values in the collection
+   * The {@link Collection.values} method of the {@link Collection} interface
+   * returns an iterable of values in the collection
    */
   values(): IterableIterator<TValue>;
 }

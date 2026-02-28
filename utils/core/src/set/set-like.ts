@@ -10,9 +10,9 @@
  */
 export interface SetLike<TItem> {
   /**
-   * The {@link has} method of the {@link SetLike} object returns a `boolean`
-   * indicating whether an element with the specified value exists in this
-   * set-like object or not.
+   * The {@link SetLike.has} method of the {@link SetLike} object returns a
+   * `boolean` indicating whether an element with the specified value exists in
+   * this set-like object or not.
    *
    * @param value - The value to test for presence in the {@link SetLike}
    *   object.
@@ -20,15 +20,15 @@ export interface SetLike<TItem> {
   has(value: TItem): boolean;
 
   /**
-   * The {@link values} method of the {@link SetLike} object returns a new
-   * {@link SetIterator} object that contains the values for each element in
+   * The {@link SetLike.keys} method of the {@link SetLike} object returns a
+   * new `SetIterator` object that contains the values for each element in
    * this set-like object in insertion order.
    */
   keys(): SetIterator<TItem>;
 
   /**
-   * The {@link size} accessor property of {@link SetLike} interface returns
-   * the number of (unique) elements in this set-like object.
+   * The {@link SetLike.size} accessor property of {@link SetLike} interface
+   * returns the number of (unique) elements in this set-like object.
    */
   readonly size: number;
 }

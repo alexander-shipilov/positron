@@ -4,7 +4,7 @@ import type { NaturalNumber } from "./natural-number";
 
 /**
  * The {@link isNaturalNumber} function determines whether the passed
- * {@link maybeNaturalNumber} is a {@Link NaturalNumber}.
+ * `maybeNaturalNumber` is a {@Link NaturalNumber}.
  *
  * @param maybeNaturalNumber - The value to be checked.
  *
