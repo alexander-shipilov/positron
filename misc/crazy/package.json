@@ -7,9 +7,13 @@
   "repository": "git@github.com:alexander-shipilov/positron.git",
   "type": "module",
   "exports": {
-    ".": "./lib/index.js"
+    ".": {
+      "require": "./lib/cjs/index.js",
+      "import": "./lib/esm/index.js",
+      "types": "./lib/esm/index.d.ts"
+    }
   },
-  "main": "./lib/index.js",
+  "main": "./lib/cjs/index.js",
   "files": [
     "./lib"
   ],
@@ -19,7 +23,7 @@
     "build": "heft build --clean",
     "test": "heft test --clean"
   },
-  "types": "./lib/index.d.ts",
+  "types": "./lib/esm/index.d.ts",
   "dependencies": {
     "@positron/core": "workspace:*",
     "@positron/nominal": "workspace:*"

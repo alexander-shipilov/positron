@@ -1,4 +1,4 @@
-export type * from "../crazy/crazy-formatter";
+export type * from "../core/entity-formatter";
 
-export * from "./crazy-common-formatter";
-export * from "./crazy-infix-formatter";
+export * from "./common-formatter";
+export * from "./infix-formatter";

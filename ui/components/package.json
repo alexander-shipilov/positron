@@ -26,7 +26,8 @@
   "types": "./lib/esm/index.d.ts",
   "dependencies": {
     "@positron/core": "workspace:*",
-    "@positron/ui-hooks": "workspace:*"
+    "@positron/ui-hooks": "workspace:*",
+    "@positron/react-core": "workspace:*"
   },
   "devDependencies": {
     "@jest/globals": "~30.2.0",

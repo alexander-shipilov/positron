@@ -3,8 +3,6 @@ import { expectTypeOf } from "expect-type";
 
 import type { AnyObject } from "./any-object";
 
-declare const t: object;
-
 describe("AnyObject", () => {
   it("should be a `Record<never, never>`", () => {
     expectTypeOf<AnyObject>().toEqualTypeOf<Record<never, never>>();

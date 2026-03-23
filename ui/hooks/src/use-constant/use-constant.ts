@@ -29,8 +29,8 @@ const unset = Symbol("unset");
  *
  * @example
  * ```ts
- *  const client = use-variable(() => new ApolloClient({ ... }));
- *  const initialValue = use-variable(() => computeExpensiveValue(props));
+ *  const client = useConstant(() => new ApolloClient({ ... }));
+ *  const initialValue = useConstant(() => computeExpensiveValue(props));
  * ```
  *
  * @remarks

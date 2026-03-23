@@ -1,7 +1,6 @@
 /**
  * The {@link isArray} function is a type-guard function that determines
- * whether the type of the passed value `maybeArray` extends
- * the `readonly unknown[]` type.
+ * whether the passed `maybeArray` is an array.
  *
  * This means that if the return value is `true`, then `maybeArray` is
  * not strictly of type `readonly unknown[]`, but is

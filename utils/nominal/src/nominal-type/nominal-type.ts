@@ -1,4 +1,4 @@
-import type { NominalType_ } from "./nominal-type_";
+import type { NominalType_ } from "./nominal-type-";
 
 /**
  * The {@link NominalType_} type describes a symbol is used by the {@link

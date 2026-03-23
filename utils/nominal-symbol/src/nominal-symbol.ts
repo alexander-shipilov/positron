@@ -1,6 +1,6 @@
 /**
- * The {@link NOMINAL_SYMBOL} constant represents the symbol
- * used my `nominal` package.
+ * The {@link NOMINAL_SYMBOL} constant represents the unique symbol is used by
+ * `nominal` package.
  *
  * @public
  */

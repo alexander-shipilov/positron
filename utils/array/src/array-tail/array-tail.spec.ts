@@ -18,6 +18,14 @@ describe("ArrayTail<T>", () => {
     expectTypeOf<ArrayTail<Readonly<T2>>>().toEqualTypeOf<
       readonly [Type1, Type2]
     >();
+
+    type T3 = [Type0, Type1?];
+    expectTypeOf<ArrayTail<T3>>().toEqualTypeOf<[Type1?]>();
+
+    // @todo fix me
+    // type T4 = [Type0?, Type1?];
+    // expectTypeOf<ArrayTail<T4>>().toEqualTypeOf<[Type1?]>();
+    // expectTypeOf<ArrayTail<T4>>().toEqualTypeOf<[Type1?]>();
   });
 
   it("should be `T` if `T` is `Type[]`", () => {

@@ -1,18 +1,19 @@
 import type { Nominal } from "../nominal";
 import type { NominalType } from "../nominal-type";
 
-export declare const integer: unique symbol;
+declare const IntegerType: unique symbol;
+export type Integer = Nominal<Real, IntegerType>;
+export type IntegerType = NominalType<typeof IntegerType, "integer">;
+export type IntegerType2 = NominalType<typeof IntegerType, "integer2">;
 
-export type Integer = Nominal<number, IntegerType>;
-export type IntegerType = NominalType<typeof integer, "integer">;
-export type IntegerType2 = NominalType<typeof integer, "integer2">;
+declare const RealType: unique symbol;
+export type Real = Nominal<number, RealType>;
+export type RealType = NominalType<typeof RealType, "real">;
 
-export declare const natural: unique symbol;
-
+declare const NaturalType: unique symbol;
 export type Natural = Nominal<Integer, NaturalType>;
-export type NaturalType = NominalType<typeof natural, "natural">;
+export type NaturalType = NominalType<typeof NaturalType, "natural">;
 
-export declare const positive: unique symbol;
-
+declare const PositiveType: unique symbol;
 export type Positive = Nominal<Integer, PositiveType>;
-export type PositiveType = NominalType<typeof positive, "positive">;
+export type PositiveType = NominalType<typeof PositiveType, "positive">;

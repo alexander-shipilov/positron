@@ -5,7 +5,7 @@ import type { NominalType } from "../nominal-type";
 import type { Nominal_ } from "./nominal-";
 
 /**
- * The {@link Nominal_} type returns a nominal type from passed type `TType`
+ * The {@link Nominal} type returns a nominal type from passed type `TType`
  *
  * A type system is nominal (or name-based) if compatibility and equivalence
  * of data types is determined by explicit declarations and / or the name of
@@ -21,20 +21,20 @@ import type { Nominal_ } from "./nominal-";
  *
  *  type Integer = Nominal<number, IntegerType>;
  *
- *  function integer(value: number): Integer {
- *    return assertType(isInteger, value);
- *  }
- *
  *  function isInteger(maybeInteger: unknown): maybeInteger is Integer {
  *    return Number.isSafeInteger(maybeInteger);
+ *  }
+ *
+ *  function integer(value: number): Integer {
+ *    return assert(value, isInteger);
  *  }
  *
  *  const int1: Integer = integer(2);
  *  // Ok
  *
  *  const int2: Integer = 1;
- *  // TS2322: Type 'number' is not assignable to type
- *  // 'Metatype<number, [MetaTag<unique symbol, "Integer">, unknown]>'
+ *  // TS2322: Type number is not assignable to type
+ *  // Nominal_<number, [NominalType_<unique symbol, "Integer">]>
  * ```
  *
  * @param TType - The type to make nominal type from

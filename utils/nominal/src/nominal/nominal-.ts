@@ -1,6 +1,6 @@
 import type { NominalType } from "../nominal-type";
 
-import type { NominalClass } from "./nominal-class-";
+import type { NominalClass_ } from "./nominal-class-";
 
 /**
  * @public
@@ -8,4 +8,4 @@ import type { NominalClass } from "./nominal-class-";
 export type Nominal_<
   TTarget,
   TTypes extends NominalType[] = [],
-> = NominalClass<TTypes> & TTarget;
+> = NominalClass_<TTypes> & TTarget;

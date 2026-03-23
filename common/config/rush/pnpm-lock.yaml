@@ -249,6 +249,9 @@ importers:
       '@positron/core':
         specifier: workspace:*
         version: link:../../utils/core
+      '@positron/react-core':
+        specifier: workspace:*
+        version: link:../../react/react-core
       '@positron/ui-hooks':
         specifier: workspace:*
         version: link:../hooks

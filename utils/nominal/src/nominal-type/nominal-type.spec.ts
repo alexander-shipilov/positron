@@ -35,7 +35,7 @@ describe("NominalType<S, N>", () => {
     );
   });
 
-  it("`NominalType` should match any `Metatype<S, N?>` but not vise versa", () => {
+  it("`NominalType` should match any `NominalType<S, N?>` but not vice versa", () => {
     type Tag1 = NominalType<S1>;
     expectTypeOf<Tag1>().toExtend<NominalType>();
     expectTypeOf<NominalType>().not.toExtend<Tag1>();
@@ -45,20 +45,20 @@ describe("NominalType<S, N>", () => {
     expectTypeOf<NominalType>().not.toExtend<Tag2>();
   });
 
-  it("`NominalType<S>` should be equal `Metatype<S, D>`", () => {
+  it("`NominalType<S>` should be equal `NominalType<S, D>`", () => {
     type Tag1 = NominalType<S1>;
     type Tag2 = NominalType<S1, "bar">;
     expectTypeOf<Tag1>().branded.toEqualTypeOf<Tag2>();
   });
 
-  it("`NominalType<S1>` should not be equal `Metatype<S2>`", () => {
+  it("`NominalType<S1>` should not be equal `NominalType<S2>`", () => {
     type Tag1 = NominalType<S1>;
     type Tag2 = NominalType<S2>;
     expectTypeOf<Tag1>().not.toExtend<Tag2>();
     expectTypeOf<Tag2>().not.toExtend<Tag1>();
   });
 
-  it("`NominalType<NominalType<S>>` should be equal `Metatype<S>`", () => {
+  it("`NominalType<NominalType<S>>` should be equal `NominalType<S>`", () => {
     type Tag1 = NominalType;
     expectTypeOf<NominalType<Tag1>>().branded.toEqualTypeOf<Tag1>();
 

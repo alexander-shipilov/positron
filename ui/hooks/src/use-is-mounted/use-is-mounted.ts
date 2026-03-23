@@ -5,8 +5,8 @@ import { useConstant } from "../use-constant";
 /**
  * The {@useIsMounted} hook returns a stable function which indicates whether
  * the component is currently mounted. This is useful for preventing state
- * updates or other operations after a component has unmounted, which can cause
- * memory leaks and React warnings.
+ * updates or other unary-operations after a component has unmounted, which can
+ * cause memory leaks and React warnings.
  *
  * How it works:
  * - A ref is used to store a boolean flag (`isMountedRef`).
@@ -36,9 +36,9 @@ import { useConstant } from "../use-constant";
  * ```
  *
  * @remarks
- * This hook is especially helpful when dealing with asynchronous operations,
- * timers, subscriptions, or any side effects that may complete after the
- * component has unmounted.
+ * This hook is especially helpful when dealing with asynchronous
+ *   unary-operations, timers, subscriptions, or any side effects that may
+ *   complete after the component has unmounted.
  */
 export function useIsMounted(): () => boolean {
   const isMountedRef = useRef(false);

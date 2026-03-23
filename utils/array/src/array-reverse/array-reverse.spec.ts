@@ -46,6 +46,12 @@ describe("ArrayReverse<T>", () => {
       | readonly [...2[], 1] //
       | readonly [2, ...1[]]
     >();
+
+    // @todo Fix me
+    // type T6 = [string, number?, boolean?];
+    // expectTypeOf<ArrayReverse<T6>>().toEqualTypeOf<
+    //   [string] | [number, string] | [boolean, number, string]
+    // >();
   });
 
   it("should be `never` if `T` extends `unknown[]`", () => {

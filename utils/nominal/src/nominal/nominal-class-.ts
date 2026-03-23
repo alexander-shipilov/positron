@@ -5,6 +5,10 @@ import type { NominalType } from "../nominal-type";
 /**
  * @public
  */
-export declare class NominalClass<TTypes extends NominalType[]> {
-  private readonly [NOMINAL_SYMBOL]: [NominalType, ...TTypes, ...NominalType[]];
+export declare class NominalClass_<TTypes extends NominalType[]> {
+  protected readonly [NOMINAL_SYMBOL]: [
+    NominalType,
+    ...TTypes,
+    ...NominalType[],
+  ];
 }

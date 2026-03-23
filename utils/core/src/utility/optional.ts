@@ -9,6 +9,4 @@
  *
  * @public
  */
-export type Optional<TType> = TType extends undefined
-  ? TType
-  : TType | undefined;
+export type Optional<TType> = TType | undefined;

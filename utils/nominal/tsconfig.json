@@ -1,10 +1,3 @@
 {
   "extends": "./node_modules/@positron/heft-rig/profiles/default/tsconfig.base.json",
-  "compilerOptions": {
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
-  }
 }

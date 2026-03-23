@@ -352,7 +352,7 @@
   ],
   /**
    * Rush can collect anonymous telemetry about everyday developer activity such as
-   * success/failure of installs, builds, and other operations.  You can use this to identify
+   * success/failure of installs, builds, and other unary-operations.  You can use this to identify
    * problems with your toolchain or Rush itself.  THIS TELEMETRY IS NOT SHARED WITH MICROSOFT.
    * It is written into JSON files in the common/temp folder.  It's up to you to write scripts
    * that read these JSON files and do something with them.  These scripts are typically registered
