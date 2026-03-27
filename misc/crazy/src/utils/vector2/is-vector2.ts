@@ -3,7 +3,6 @@ import { isTuple2 } from "../tuple2";
 import type { Vector2 } from "./vector2";
 
 /**
- *
  * @param maybeVector2
  *
  * @public

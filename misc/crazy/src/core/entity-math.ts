@@ -9,8 +9,8 @@ import type { UnaryOperationResolver } from "./unary-operation";
  */
 export interface EntityMath<TValue extends EntityValue = EntityValue> {
   /**
-   * The {@link add} method of the {@link EntityMath} object performs the
-   * addition of the given operands.
+   * The {@link EntityMath#add} method of the {@link EntityMath} object
+   * performs the addition of the given operands.
    *
    * @param operand1 - The first operand
    * @param operand2 - The second operand
@@ -18,8 +18,8 @@ export interface EntityMath<TValue extends EntityValue = EntityValue> {
   add: BinaryOperationResolver<TValue>;
 
   /**
-   * The {@link div} method of the {@link EntityMath} object performs the
-   * division of the given operands.
+   * The {@link EntityMath#div} method of the {@link EntityMath} object
+   * performs the division of the given operands.
    *
    * @param operand1 - The first operand
    * @param operand2 - The second operand
@@ -27,8 +27,8 @@ export interface EntityMath<TValue extends EntityValue = EntityValue> {
   div: BinaryOperationResolver<TValue>;
 
   /**
-   * The {@link mul} method of the {@link EntityMath} object performs the
-   * product of the given operands.
+   * The {@link EntityMath#mul} method of the {@link EntityMath} object
+   * performs the product of the given operands.
    *
    * @param operand1 - The first operand
    * @param operand2 - The second operand
@@ -36,24 +36,24 @@ export interface EntityMath<TValue extends EntityValue = EntityValue> {
   mul: BinaryOperationResolver<TValue>;
 
   /**
-   * The {@link neg} method of the {@link EntityMath} object performs the
-   * negation of the given operand.
+   * The {@link EntityMath#neg} method of the {@link EntityMath} object
+   * performs the negation of the given operand.
    *
    * @param operand - The first operand
    */
   neg: UnaryOperationResolver<TValue>;
 
   /**
-   * The {@link operand} method of the {@link EntityMath} converts the passed
-   * number-like `value` to the math operand.
+   * The {@link EntityMath#operand} method of the {@link EntityMath} converts
+   * the passed number-like `value` to the math operand.
    *
    * @param value - The value to convert
    */
   operand: OperandResolver<TValue>;
 
   /**
-   * The {@link pow} method of the {@link EntityMath} object performs the
-   * exponentiation of the given operands.
+   * The {@link EntityMath#pow} method of the {@link EntityMath} object
+   * performs the exponentiation of the given operands.
    *
    * @param operand1 - The first operand
    * @param operand2 - The second operand
@@ -61,8 +61,8 @@ export interface EntityMath<TValue extends EntityValue = EntityValue> {
   pow: BinaryOperationResolver<TValue>;
 
   /**
-   * The {@link sub} method of the {@link EntityMath} object performs the
-   * subtraction of the given operands.
+   * The {@link EntityMath#sub} method of the {@link EntityMath} object
+   * performs the subtraction of the given operands.
    *
    * @param operand1 - The first operand
    * @param operand2 - The second operand

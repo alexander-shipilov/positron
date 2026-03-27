@@ -1,7 +1,7 @@
-import type { NumberMath } from "../number-math";
+import type { NumericalMath } from "../numerical-math";
 import type { Fraction } from "../types";
 
-export interface FractionMathInterface<TValue> extends NumberMath<
+export interface FractionMathInterface<TValue> extends NumericalMath<
   Fraction<TValue>
 > {
   isInteger(value: Fraction<TValue>): boolean;

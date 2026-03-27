@@ -1,5 +1,3 @@
-import type { Nullish } from "@positron/core";
-
 import type { EntityValue } from "../entity";
 
 import type { OperandArg } from "./operand-arg";
@@ -9,4 +7,4 @@ import type { OperandArg } from "./operand-arg";
  */
 export type OperandResolver<TValue extends EntityValue> = (
   arg: OperandArg,
-) => Nullish<TValue>;
+) => TValue;

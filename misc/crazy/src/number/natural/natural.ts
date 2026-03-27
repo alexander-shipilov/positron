@@ -49,8 +49,8 @@ export const natural = (numberLike: NumberLike): Natural => {
     : never(
         isNumber(numberLike)
           ? new RangeError(
-              `The ${debug(numberLike)} cannot be converted to ` +
-                `a 'Natural' because it is not a non-negative safe integer`,
+              `The ${debug(numberLike)} cannot be converted to a 'Natural' ` +
+                `because it is not a non-negative safe integer`,
             )
           : new SyntaxError(
               `Cannot convert ${debug(numberLike)} to a 'Natural'`,

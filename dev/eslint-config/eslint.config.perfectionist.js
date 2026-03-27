@@ -4,6 +4,7 @@ import alphabet from "./perfectionist/-alphabet.js";
 import sortClasses from "./perfectionist/sort-classes.js";
 import sortExports from "./perfectionist/sort-exports.js";
 import sortImports from "./perfectionist/sort-imports.js";
+import sortInterfaces from "./perfectionist/sort-interfaces.js";
 import sortIntersectionTypes from "./perfectionist/sort-intersection-types.js";
 import sortJsxProps from "./perfectionist/sort-jsx-props.js";
 import sortModules from "./perfectionist/sort-modules.js";
@@ -13,6 +14,14 @@ export default [
   {
     ...perfectionist.configs["recommended-custom"],
 
+    settings: {
+      perfectionist: {
+        alphabet: alphabet.getCharacters(),
+      },
+    },
+  },
+
+  {
     rules: {
       "@typescript-eslint/adjacent-overload-signatures": "off",
       "@typescript-eslint/sort-type-constituents": "off",
@@ -21,17 +30,12 @@ export default [
       "sort-imports": "off",
       "sort-keys": "off",
     },
-
-    settings: {
-      perfectionist: {
-        alphabet: alphabet.getCharacters(),
-      },
-    },
   },
 
   ...sortClasses,
   ...sortExports,
   ...sortImports,
+  ...sortInterfaces,
   ...sortIntersectionTypes,
   ...sortJsxProps,
   ...sortModules,

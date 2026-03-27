@@ -1,7 +1,7 @@
 import type { NumberLike } from "@positron/core";
 
 import type { MixedRational } from "../types";
-import { toIntegralFraction } from "../integral";
+import { IntegralFraction } from "../integral";
 
 import { MixedIntegerMath } from "./MixedIntegerMath";
 
@@ -14,5 +14,5 @@ export function toMixedRational(
   value1: NumberLike,
   value2: NumberLike = 1,
 ): MixedRational {
-  return toIntegralFraction(MixedIntegerMath, value1, value2);
+  return IntegralFraction(MixedIntegerMath, value1, value2);
 }

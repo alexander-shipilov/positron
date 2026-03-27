@@ -1,3 +1,3 @@
 export type * from "./integral-math";
 
-export * from "./toIntegralFraction";
+export * from "./integral-fraction";

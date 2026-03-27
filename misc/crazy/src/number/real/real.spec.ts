@@ -1,7 +1,6 @@
 import { describe, expect, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
-import type { Real } from "./real";
 import { Real } from "./real";
 
 describe("Real", () => {
@@ -53,12 +52,24 @@ describe(`${Real.name}(value)`, () => {
   });
 
   it("should throw a `RangeError` if the passed `value` is `NaN`", () => {
-    expect(() => Real(NaN)).toThrow(RangeError);
+    expect(() => Real(NaN)).toThrow(
+      new RangeError(
+        "The number NaN cannot be converted to a 'Real' because it is not a finite number",
+      ),
+    );
   });
 
   it("should throw a `RangeError` if the passed `value` is not finite", () => {
-    expect(() => Real(Infinity)).toThrow(RangeError);
-    expect(() => Real(-Infinity)).toThrow(RangeError);
+    expect(() => Real(Infinity)).toThrow(
+      new RangeError(
+        "The number Infinity cannot be converted to a 'Real' because it is not a finite number",
+      ),
+    );
+    expect(() => Real(-Infinity)).toThrow(
+      new RangeError(
+        "The number -Infinity cannot be converted to a 'Real' because it is not a finite number",
+      ),
+    );
   });
 
   it("should throw a `SyntaxError` if the passed string `value` cannot be converted to a finite number", () => {

@@ -1,8 +1,4 @@
-import { isBinaryOperationType } from "../binary-operation/is-binary-operation-type";
-import { isOperandType } from "../operand/is-operand-type";
-import { isUnaryOperationType } from "../unary-operation/is-unary-operation-type";
-
-import type { EntityType } from "./entity-type";
+import { EntityType } from "./entity-type";
 
 /**
  * @param maybeEntityType
@@ -13,8 +9,12 @@ export function isEntityType(
   maybeEntityType: unknown,
 ): maybeEntityType is EntityType {
   return (
-    isOperandType(maybeEntityType) ||
-    isUnaryOperationType(maybeEntityType) ||
-    isBinaryOperationType(maybeEntityType)
+    maybeEntityType === EntityType.Operand ||
+    maybeEntityType === EntityType.Neg ||
+    maybeEntityType === EntityType.Add ||
+    maybeEntityType === EntityType.Div ||
+    maybeEntityType === EntityType.Pow ||
+    maybeEntityType === EntityType.Mul ||
+    maybeEntityType === EntityType.Sub
   );
 }

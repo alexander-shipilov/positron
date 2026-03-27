@@ -1,10 +1,12 @@
 import type { NumberLike } from "@positron/core";
 
+import type { Vector2 } from "../../utils";
+
 /**
  *
  * @public
  */
-export type Fraction<TValue> = readonly [TValue, TValue];
+export type Fraction<TValue> = Readonly<Vector2<TValue>>;
 
 /**
  * The {@link Fraction} function creates a {@link Fraction}.

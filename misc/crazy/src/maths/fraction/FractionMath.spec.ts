@@ -2,13 +2,13 @@ import { describe, expect, it } from "@jest/globals";
 
 import type { NumberLike } from "@positron/core";
 
-import { SmallIntegerMath, toSmallInteger } from "../small";
+import { IntegerMath, toSmallInteger } from "../integer";
 
 import { Fraction } from "./fraction";
 import { FractionMath } from "./FractionMath";
 
 describe("FractionMath", () => {
-  const Math = new FractionMath(SmallIntegerMath);
+  const Math = new FractionMath(IntegerMath);
   const Rational = (num: NumberLike, den: NumberLike = 1) =>
     Fraction(toSmallInteger, num, den);
 

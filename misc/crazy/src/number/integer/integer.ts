@@ -50,8 +50,8 @@ export function Integer(numberLike: NumberLike): Integer {
     : never(
         isNumber(numberLike)
           ? new RangeError(
-              `The ${debug(numberLike)} cannot be converted to ` +
-                `an 'Integer' because it is not a safe integer`,
+              `The ${debug(numberLike)} cannot be converted to an 'Integer' ` +
+                `because it is not a safe integer`,
             )
           : new SyntaxError(
               `Cannot convert ${debug(numberLike)} to an 'Integer'`,

@@ -1,11 +1,5 @@
-import type {
-  UnaryOperation,
-  BinaryOperation,
-  Operand,
-  Entity,
-  EntityFormatter,
-} from "../core";
-import { isNeg, isSub, isMul, isDiv, isPow, isOperand, isAdd } from "../core";
+import type { Entity, EntityFormatter } from "../core";
+import { Operand, Neg, Add, Sub, Mul, Div, Pow } from "../core";
 
 enum EntityOrder {
   AddSub = 1,
@@ -17,15 +11,15 @@ enum EntityOrder {
 
 function getOrder(entity: Entity): EntityOrder {
   switch (true) {
-    case isNeg(entity):
+    case entity instanceof Neg:
       return EntityOrder.Neg;
-    case isAdd(entity):
-    case isSub(entity):
+    case entity instanceof Add:
+    case entity instanceof Sub:
       return EntityOrder.AddSub;
-    case isMul(entity):
-    case isDiv(entity):
+    case entity instanceof Mul:
+    case entity instanceof Div:
       return EntityOrder.MulDiv;
-    case isPow(entity):
+    case entity instanceof Pow:
       return EntityOrder.Pow;
     default:
       return EntityOrder.Operand;
@@ -35,26 +29,26 @@ function getOrder(entity: Entity): EntityOrder {
 export class InfixFormatter implements EntityFormatter {
   format(entity: Entity): string {
     switch (true) {
-      case isOperand(entity):
+      case entity instanceof Operand:
         return this.formatOperand(entity);
-      case isNeg(entity):
+      case entity instanceof Neg:
         return this.formatNeg(entity);
-      case isAdd(entity):
+      case entity instanceof Add:
         return this.formatAdd(entity);
-      case isSub(entity):
+      case entity instanceof Sub:
         return this.formatSub(entity);
-      case isMul(entity):
+      case entity instanceof Mul:
         return this.formatMul(entity);
-      case isDiv(entity):
+      case entity instanceof Div:
         return this.formatDiv(entity);
-      case isPow(entity):
+      case entity instanceof Pow:
         return this.formatPow(entity);
       default:
         throw new TypeError(`Invalid operand`);
     }
   }
 
-  protected formatAdd(operation: BinaryOperation): string {
+  protected formatAdd(operation: Add): string {
     const { arg1, arg2 } = operation;
     const order = getOrder(operation);
 
@@ -68,7 +62,7 @@ export class InfixFormatter implements EntityFormatter {
     return parens ? `(${this.format(argument)})` : this.format(argument);
   }
 
-  protected formatDiv(operation: BinaryOperation): string {
+  protected formatDiv(operation: Div): string {
     const { arg1, arg2 } = operation;
     const order = getOrder(operation);
 
@@ -78,7 +72,7 @@ export class InfixFormatter implements EntityFormatter {
     ].join(" / ");
   }
 
-  protected formatMul(operation: BinaryOperation): string {
+  protected formatMul(operation: Mul): string {
     const { arg1, arg2 } = operation;
     const order = getOrder(operation);
 
@@ -88,7 +82,7 @@ export class InfixFormatter implements EntityFormatter {
     ].join(" * ");
   }
 
-  protected formatNeg(operation: UnaryOperation): string {
+  protected formatNeg(operation: Neg): string {
     const { arg } = operation;
     const order = getOrder(operation);
 
@@ -99,7 +93,7 @@ export class InfixFormatter implements EntityFormatter {
     return operation.arg.join("");
   }
 
-  protected formatPow(operation: BinaryOperation): string {
+  protected formatPow(operation: Pow): string {
     const { arg1, arg2 } = operation;
     const order = getOrder(operation);
 
@@ -109,7 +103,7 @@ export class InfixFormatter implements EntityFormatter {
     ].join(" ** ");
   }
 
-  protected formatSub(operation: BinaryOperation): string {
+  protected formatSub(operation: Sub): string {
     const { arg1, arg2 } = operation;
     const order = getOrder(operation);
 

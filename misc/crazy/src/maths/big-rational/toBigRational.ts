@@ -2,7 +2,7 @@ import type { NumberLike } from "@positron/core";
 
 import type { BigRational } from "../types";
 import { BigIntegerMath } from "../big-integer/BigIntegerMath";
-import { toIntegralFraction } from "../integral";
+import { IntegralFraction } from "../integral";
 
 /**
  * Converts a pair of values to `rational`
@@ -13,5 +13,5 @@ export function toBigRational(
   num: NumberLike,
   den: NumberLike = 1,
 ): BigRational {
-  return toIntegralFraction(BigIntegerMath, num, den);
+  return IntegralFraction(BigIntegerMath, num, den);
 }

@@ -1,0 +1,5 @@
+export enum Order {
+  Less = -1,
+  Equal = 0,
+  Greater = 1,
+}

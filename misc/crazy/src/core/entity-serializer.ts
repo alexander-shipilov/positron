@@ -1,4 +1,4 @@
-import type { Entity, EntityValue } from "./entity";
+import type { Entity } from "./entity";
 
 /**
  * The {@link EntitySerializer} interface describes an object to serialize
@@ -6,14 +6,14 @@ import type { Entity, EntityValue } from "./entity";
  *
  * @public
  */
-export interface EntitySerializer<TValue extends EntityValue, TData> {
+export interface EntitySerializer<TData> {
   /**
    * The {@link deserialize} method of the {@link EntitySerializer}
    * creates a {@link Entity} from the passed serialized `data`.
    *
    * @param data - The data to read entity from.
    */
-  deserialize(data: TData): Entity<TValue>;
+  deserialize(data: TData): Entity;
 
   /**
    * The {@link serialize} method of the {@link EntitySerializer}
@@ -21,5 +21,5 @@ export interface EntitySerializer<TValue extends EntityValue, TData> {
    *
    * @param entity - The entity to serialize
    */
-  serialize(entity: Entity<TValue>): TData;
+  serialize(entity: Entity): TData;
 }

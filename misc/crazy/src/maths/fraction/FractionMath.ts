@@ -1,9 +1,9 @@
 import type { NumberLike } from "@positron/core";
 
 import type { IntegralMath } from "../integral";
-import { Fraction } from "../types";
 
 import type { FractionMathInterface } from "./FractionMath.interface";
+import { Fraction } from "./fraction";
 
 export class FractionMath<TValue> implements FractionMathInterface<TValue> {
   readonly ONE: Fraction<TValue>;

@@ -1,12 +1,12 @@
 import type { BinaryOperation, BinaryOperationType } from "./binary-operation";
-import type { Entity, EntityValue } from "./entity";
+import type { Entity } from "./entity";
 import type { Operand, OperandArg } from "./operand";
 import type { UnaryOperation, UnaryOperationType } from "./unary-operation";
 
 /**
  * @public
  */
-export interface EntityCreator<TValue extends EntityValue> {
+export interface EntityCreator {
   /**
    * @param type
    * @param arg1
@@ -14,21 +14,18 @@ export interface EntityCreator<TValue extends EntityValue> {
    */
   createBinaryOperation(
     type: BinaryOperationType,
-    arg1: Entity<TValue>,
-    arg2: Entity<TValue>,
-  ): BinaryOperation<TValue>;
+    arg1: Entity,
+    arg2: Entity,
+  ): BinaryOperation;
 
   /**
    * @param arg
    */
-  createOperand(arg: OperandArg): Operand<TValue>;
+  createOperand(arg: OperandArg): Operand;
 
   /**
    * @param type
    * @param arg
    */
-  createUnaryOperation(
-    type: UnaryOperationType,
-    arg: Entity<TValue>,
-  ): UnaryOperation<TValue>;
+  createUnaryOperation(type: UnaryOperationType, arg: Entity): UnaryOperation;
 }

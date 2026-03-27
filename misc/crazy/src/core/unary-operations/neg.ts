@@ -1,13 +1,10 @@
-import type { EntityValue } from "../entity";
 import { EntityType } from "../entity";
 import { UnaryOperation } from "../unary-operation";
 
 /**
  * @public
  */
-export class Neg<
-  TValue extends EntityValue = EntityValue,
-> extends UnaryOperation<TValue> {
+export class Neg extends UnaryOperation {
   /**
    *
    */

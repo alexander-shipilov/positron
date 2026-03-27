@@ -12,9 +12,9 @@ export class Exception<TName extends string> extends Error {
   readonly #name: TName;
 
   /**
-   * The {@link Exception.name} read-only property of the {@link Exception} object
-   * returns a string that contains one of the strings associated with an error
-   * name.
+   * The {@link Exception.name} read-only property of the {@link Exception}
+   * object returns a string that contains one of the strings associated with
+   * an error name.
    */
   public get name() {
     return this.#name;

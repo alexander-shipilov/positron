@@ -24,6 +24,12 @@ describe("Integer(value)", () => {
     expect(Integer(Number.MIN_SAFE_INTEGER)).toEqual(Number.MIN_SAFE_INTEGER);
   });
 
+  it("should throw `SyntaxError` if `value` cannot be converted to an `Integer`", () => {
+    expect(() => Integer("1.1")).toThrow(
+      new SyntaxError("Cannot convert string \"1.1\" to an 'Integer'"),
+    );
+  });
+
   it("should throw `RangeError` if `value` is not an integer", () => {
     expect(() => Integer(1.1)).toThrow(
       new RangeError(

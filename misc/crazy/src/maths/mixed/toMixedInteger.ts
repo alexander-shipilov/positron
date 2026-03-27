@@ -2,7 +2,7 @@ import type { NumberLike } from "@positron/core";
 
 import type { MixedInteger } from "../types";
 import { toBigInteger } from "../big-integer";
-import { isSmallInteger, toSmallInteger } from "../small";
+import { isSmallInteger, toSmallInteger } from "../integer";
 
 import { isMixedInteger } from "./isMixedInteger";
 

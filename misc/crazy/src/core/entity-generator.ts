@@ -1,9 +1,12 @@
-import type { Entity, EntityValue } from "./entity";
+import type { Entity } from "./entity";
 import type { OperandArg } from "./operand";
 
 /**
  * @public
  */
-export interface EntityGenerator<TValue extends EntityValue> {
-  generate(digits: OperandArg): Generator<Entity<TValue>>;
+export interface EntityGenerator {
+  /**
+   * @param digits
+   */
+  generate(digits: OperandArg): Generator<Entity>;
 }
