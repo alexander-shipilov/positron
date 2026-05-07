@@ -22,13 +22,13 @@
   "types": "./lib/index.d.ts",
   "dependencies": {},
   "devDependencies": {
-    "@jest/globals": "~30.3.0",
+    "@jest/globals": "~30.4.0",
     "@positron/heft-rig": "workspace:*",
-    "@rushstack/heft": "~1.2.7",
-    "eslint": "^9.39.4",
+    "@rushstack/heft": "~1.2.17",
+    "eslint": "^10.3.0",
     "expect-type": "^1.3.0",
-    "jest": "~30.3.0",
-    "ts-jest": "~29.4.6",
-    "typescript": "^5.9.3"
+    "jest": "~30.4.0",
+    "ts-jest": "~29.4.9",
+    "typescript": "^6.0.3"
   }
 }

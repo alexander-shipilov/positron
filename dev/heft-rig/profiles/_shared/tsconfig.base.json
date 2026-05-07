@@ -3,7 +3,6 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./../../../../..",
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "declaration": true,
@@ -14,7 +13,7 @@
     "inlineSourceMap": true,
     "isolatedModules": true,
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "outDir": "./../../../../../lib/esm",
     "noImplicitAny": true,
     "noImplicitReturns": true,

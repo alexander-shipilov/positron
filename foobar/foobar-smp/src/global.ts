@@ -39,6 +39,7 @@ declare global {
   /**
    * Global `this` object.
    */
+  // eslint-disable-next-line no-shadow-restricted-names
   const globalThis: GlobalThis;
 
   /**

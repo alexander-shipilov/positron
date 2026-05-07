@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export directories=(
+  '../foobar'
   '../dev'
   '../misc'
   '../utils'
