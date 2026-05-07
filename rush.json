@@ -436,6 +436,11 @@
     {
       "packageName": "@positron/ui-hooks",
       "projectFolder": "ui/hooks"
+    },
+    /** foobar */
+    {
+      "packageName": "@positron/foobar-smp",
+      "projectFolder": "foobar/foobar-smp"
     }
   ],
 }

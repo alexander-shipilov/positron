@@ -1,38 +1,29 @@
 import type { NumberLike } from "@positron/core";
-import type { Nominal } from "@positron/nominal";
 import { isNumber, never } from "@positron/core";
 
 import { debug } from "../../utils";
 import { Integer } from "../integer";
 
-import type { NaturalType } from "./natural-type";
-import { isNatural } from "./is-natural";
+import type { NaturalNumber } from "./natural-number";
+import { isNaturalNumber } from "./is-natural-number";
 
 /**
- * The {@link Natural} type represents a natural number:
- * an integer from the range [0, 9].
- *
- * @public
- */
-export type Natural = Nominal<Integer, NaturalType>;
-
-/**
- * The {@link natural} function creates a {@link Natural} from the given
- * {@link NumberLike} value.
+ * The {@link Natural} function creates a {@link NaturalNumber}
+ * from the given `NumberLike` value.
  *
  * ```ts
- *  const natural1 = natural(1)
+ *  const natural1 = Natural(1)
  *  // 1
  *
- *  const natural3 = natural('1e20')
+ *  const natural3 = Natural('1e20')
  *  // SyntaxError
  *
- *  const natural3 = natural(-1)
+ *  const natural3 = Natural(-1)
  *  // RangeError
  * ```
  *
- * @param numberLike - The {@link NumberLike} value to be converted to
- *   a {@link Natural}
+ * @param numberLike - The `NumberLike` value to be converted to a
+ *   {@link NaturalNumber}
  *
  * @throws RangeError if the passed `numberLike` is not a non-negative safe
  *   integer.
@@ -41,19 +32,19 @@ export type Natural = Nominal<Integer, NaturalType>;
  *
  * @public
  */
-export const natural = (numberLike: NumberLike): Natural => {
+export const Natural = (numberLike: NumberLike): NaturalNumber => {
   const integer = Integer(numberLike);
 
-  return isNatural(integer)
+  return isNaturalNumber(integer)
     ? integer
     : never(
         isNumber(numberLike)
           ? new RangeError(
-              `The ${debug(numberLike)} cannot be converted to a 'Natural' ` +
+              `The ${debug(numberLike)} cannot be converted to a 'NaturalNumber' ` +
                 `because it is not a non-negative safe integer`,
             )
           : new SyntaxError(
-              `Cannot convert ${debug(numberLike)} to a 'Natural'`,
+              `Cannot convert ${debug(numberLike)} to a 'NaturalNumber'`,
             ),
       );
 };

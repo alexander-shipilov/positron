@@ -4,7 +4,7 @@ import type { Tuple2 } from "./tuple2";
 
 /**
  *
- * @param maybeTuple2
+ * @param maybeTuple2 -
  *
  * @public
  */

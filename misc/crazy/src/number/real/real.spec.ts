@@ -1,14 +1,8 @@
 import { describe, expect, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
+import type { RealNumber } from "./real-number";
 import { Real } from "./real";
-
-describe("Real", () => {
-  it("should extend `number` but not vice versa", () => {
-    expectTypeOf<Real>().toExtend<number>();
-    expectTypeOf<number>().not.toExtend<Real>();
-  });
-});
 
 describe(`${Real.name}(value)`, () => {
   it("should return `value` if the passed `value` is a finite number", () => {
@@ -17,8 +11,12 @@ describe(`${Real.name}(value)`, () => {
     expect(Real(Number.MIN_VALUE)).toBe(Number.MIN_VALUE);
   });
 
-  it("should return `Real` type", () => {
-    expectTypeOf(Real(0)).toEqualTypeOf<Real>();
+  it("should return `RealNumber` type", () => {
+    expectTypeOf(Real(0)).toEqualTypeOf<RealNumber>();
+  });
+
+  it("should convert number `-0` to `0`", () => {
+    expect(Real(-0)).toBe(0);
   });
 
   it("should convert boolean `value`: `false` -> `0`, `true` -> `1`", () => {
@@ -54,7 +52,7 @@ describe(`${Real.name}(value)`, () => {
   it("should throw a `RangeError` if the passed `value` is `NaN`", () => {
     expect(() => Real(NaN)).toThrow(
       new RangeError(
-        "The number NaN cannot be converted to a 'Real' because it is not a finite number",
+        "The number NaN cannot be converted to a 'RealNumber' because it is not a finite number",
       ),
     );
   });
@@ -62,12 +60,12 @@ describe(`${Real.name}(value)`, () => {
   it("should throw a `RangeError` if the passed `value` is not finite", () => {
     expect(() => Real(Infinity)).toThrow(
       new RangeError(
-        "The number Infinity cannot be converted to a 'Real' because it is not a finite number",
+        "The number Infinity cannot be converted to a 'RealNumber' because it is not a finite number",
       ),
     );
     expect(() => Real(-Infinity)).toThrow(
       new RangeError(
-        "The number -Infinity cannot be converted to a 'Real' because it is not a finite number",
+        "The number -Infinity cannot be converted to a 'RealNumber' because it is not a finite number",
       ),
     );
   });

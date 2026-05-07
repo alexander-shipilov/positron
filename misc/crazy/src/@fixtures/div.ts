@@ -1,5 +1,5 @@
-import type { Entity } from "../core";
-import { Div } from "../core";
+import type { Entity } from "../entity";
+import { Div } from "../entity";
 
 import { entity } from "./entity";
 

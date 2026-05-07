@@ -26,6 +26,6 @@
  *
  * @public
  */
-export function isArray(maybeArray: unknown): maybeArray is readonly unknown[] {
+export function isArray(maybeArray: unknown): maybeArray is unknown[] {
   return Array.isArray(maybeArray);
 }

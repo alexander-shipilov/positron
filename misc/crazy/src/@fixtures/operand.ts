@@ -1,9 +1,9 @@
-import { Operand } from "../core";
-import { natural } from "../number";
+import { Operand } from "../entity";
+import { Natural } from "../number";
 
 /**
  * @public
  */
 export function operand(arg: number, ...rest: number[]): Operand {
-  return new Operand([natural(arg), ...rest.map((arg) => natural(arg))]);
+  return new Operand([Natural(arg), ...rest.map((item) => Natural(item))]);
 }

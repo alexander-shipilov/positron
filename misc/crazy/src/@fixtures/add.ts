@@ -1,5 +1,5 @@
-import type { Entity } from "../core";
-import { Add } from "../core";
+import type { Entity } from "../entity";
+import { Add } from "../entity";
 
 import { entity } from "./entity";
 

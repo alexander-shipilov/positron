@@ -1,6 +1,6 @@
 import { describe, expect, it } from "@jest/globals";
 
-import { typesValues, isTypeTests } from "./-fixtures/types";
+import { isTypeTests, typesValues } from "./@fixtures/types";
 
 describe.each(
   [...isTypeTests].map(([func, types]) => [func.name, func, types] as const),

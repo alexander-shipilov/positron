@@ -1,5 +1,5 @@
-import type { Entity } from "../core";
-import { Neg } from "../core";
+import type { Entity } from "../entity";
+import { Neg } from "../entity";
 
 import { entity } from "./entity";
 

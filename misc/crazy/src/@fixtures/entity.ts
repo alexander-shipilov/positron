@@ -1,6 +1,6 @@
 import { isNumber } from "@positron/core";
 
-import type { Entity } from "../core";
+import type { Entity } from "../entity";
 
 import { operand } from "./operand";
 

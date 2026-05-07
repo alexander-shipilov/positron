@@ -18,41 +18,37 @@ const require = createRequire(__filename);
  * then the "production" function parameter will be true.
  * You can use this to enable bundling optimizations.
  */
-function createWebpackConfig({ env, configOverride, extractCssInProduction }) {
+function createWebpackConfig({ configOverride, env, extractCssInProduction }) {
   const { production } = env;
 
   const defaultArgs = {
+    devServer: {
+      host: "localhost",
+      port: 8080,
+    },
+    // See here for documentation: https://webpack.js.org/configuration/devtool
+    devtool: production ? undefined : "eval-source-map",
     // Documentation: https://webpack.js.org/configuration/mode/
     mode: production ? "production" : "development",
-    resolve: {
-      extensions: [".mjs", ".js", ".json"],
-    },
-    output: production
-      ? {
-          chunkFilename: "[name].[contenthash].js",
-          filename: "[name].[contenthash].js",
-          sourceMapFilename: "[name].[contenthash].js.map",
-        }
-      : {},
     module: {
       rules: [
         {
-          // The source-map-loader extracts existing source maps from all JavaScript entries. This includes both
-          // inline source maps as well as those linked via URL. All source map data is passed to Webpack for
-          // processing as per a chosen source map style specified by the devtool option in webpack.config.js.
-          // https://www.npmjs.com/package/source-map-loader
-          test: /\.js$/,
+          enforce: "pre",
 
           // Include source maps from other library projects in the monorepo workspace,
           // but exclude source maps for external NPM packages.  Webpack tests the fs.realPathSync() path,
           // so external packages will be under "common/temp/node_modules/.pnpm/".
           exclude: /[\\/]\.pnpm[\\/]/,
 
-          enforce: "pre",
-
           resolve: {
             fullySpecified: false,
           },
+
+          // The source-map-loader extracts existing source maps from all JavaScript entries. This includes both
+          // inline source maps as well as those linked via URL. All source map data is passed to Webpack for
+          // processing as per a chosen source map style specified by the devtool option in webpack.config.js.
+          // https://www.npmjs.com/package/source-map-loader
+          test: /\.js$/,
 
           use: [
             {
@@ -62,6 +58,7 @@ function createWebpackConfig({ env, configOverride, extractCssInProduction }) {
         },
 
         {
+          exclude: /node_modules/,
           // CSS INPUT FORMATS
           //
           // File extensions    Autoprefixer  CSS modules
@@ -74,7 +71,6 @@ function createWebpackConfig({ env, configOverride, extractCssInProduction }) {
           // - Autoprefixer:       handled by Webpack
           // - CSS modules:        handled by Webpack
           test: /\.css$/,
-          exclude: /node_modules/,
           use: [
             // "For production builds it's recommended to extract the CSS from your bundle being able to
             // use parallel loading of CSS/JS resources later on. This can be achieved by using the
@@ -106,6 +102,28 @@ function createWebpackConfig({ env, configOverride, extractCssInProduction }) {
 
                 // Enable CSS modules:  https://github.com/css-modules/css-modules
                 modules: {
+                  // Provide a recognizable class/module names for developers
+                  //
+                  // DEFAULT: "[hash:base64]"
+                  localIdentName: production
+                    ? "[hash:base64]"
+                    : "[local]__[hash:base64:5]",
+
+                  // This setting has no effect unless CSS modules is enabled. Possible values:
+                  // - "local": global CSS by default, overridable using the ":local" selector
+                  // - "global": local CSS by default, overridable using the ":global" selector
+                  // - "pure": requires selectors to contain at least one local class or id
+                  // - a lambda that returns the mode string; the function parameter is the resource path
+                  //
+                  // DEFAULT: "local"
+                  mode: "local",
+
+                  // Set this to true if you want to be able to reference the global declarations using import statements
+                  // similar to local CSS modules
+                  //
+                  // DEFAULT: false
+                  // exportGlobals: true,
+
                   // The "auto" setting has a confusing design:
                   // - "false" disables CSS modules, i.e. ":local" and ":global" selectors can't be used at all
                   // - "true" means magically disable CSS modules if the file extension isn't like ".module.css"
@@ -126,28 +144,6 @@ function createWebpackConfig({ env, configOverride, extractCssInProduction }) {
                       !/\.global\.\w+$/i.test(resourcePath)
                     );
                   },
-
-                  // This setting has no effect unless CSS modules is enabled. Possible values:
-                  // - "local": global CSS by default, overridable using the ":local" selector
-                  // - "global": local CSS by default, overridable using the ":global" selector
-                  // - "pure": requires selectors to contain at least one local class or id
-                  // - a lambda that returns the mode string; the function parameter is the resource path
-                  //
-                  // DEFAULT: "local"
-                  mode: "local",
-
-                  // Set this to true if you want to be able to reference the global declarations using import statements
-                  // similar to local CSS modules
-                  //
-                  // DEFAULT: false
-                  // exportGlobals: true,
-
-                  // Provide a recognizable class/module names for developers
-                  //
-                  // DEFAULT: "[hash:base64]"
-                  localIdentName: production
-                    ? "[hash:base64]"
-                    : "[local]__[hash:base64:5]",
                 },
 
                 sourceMap: !production,
@@ -184,17 +180,8 @@ function createWebpackConfig({ env, configOverride, extractCssInProduction }) {
       ],
     },
 
-    devServer: {
-      host: "localhost",
-      port: 8080,
-    },
-
-    // See here for documentation: https://webpack.js.org/configuration/devtool
-    devtool: production ? undefined : "eval-source-map",
-
     optimization: {
       minimize: !!production,
-      nodeEnv: production ? "production" : "development",
       minimizer: [
         new TerserPlugin({
           parallel: true,
@@ -214,7 +201,17 @@ function createWebpackConfig({ env, configOverride, extractCssInProduction }) {
         // https://webpack.js.org/configuration/optimization/#optimizationminimizer
         "...",
       ],
+      nodeEnv: production ? "production" : "development",
     },
+
+    output: production
+      ? {
+          chunkFilename: "[name].[contenthash].js",
+          filename: "[name].[contenthash].js",
+          sourceMapFilename: "[name].[contenthash].js.map",
+        }
+      : {},
+
     plugins: [
       // See here for documentation: https://webpack.js.org/plugins/mini-css-extract-plugin/
       new MiniCssExtractPlugin({
@@ -230,6 +227,9 @@ function createWebpackConfig({ env, configOverride, extractCssInProduction }) {
         ? new BundleAnalyzerPlugin({ analyzerMode: "static" })
         : undefined,
     ],
+    resolve: {
+      extensions: [".mjs", ".js", ".json"],
+    },
   };
 
   let result = mergeWithCustomize({

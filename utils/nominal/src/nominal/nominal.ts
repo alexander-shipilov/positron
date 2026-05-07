@@ -16,25 +16,25 @@ import type { Nominal_ } from "./nominal-";
  *
  * @example
  * ```ts
- *  declare const IntegerType: unique symbol;
- *  type IntegerType = NominalType<typeof IntegerType, "Integer">;
+ *  declare const Bigint1024Type: unique symbol;
+ *  type Bigint1024Type = NominalType<typeof Bigint1024Type, "Bigint1024">;
  *
- *  type Integer = Nominal<number, IntegerType>;
+ *  type Bigint1024 = Nominal<number, Bigint1024Type>;
  *
- *  function isInteger(maybeInteger: unknown): maybeInteger is Integer {
+ *  function isBigint1024(maybeInteger: unknown): maybeInteger is Bigint1024 {
  *    return Number.isSafeInteger(maybeInteger);
  *  }
  *
- *  function integer(value: number): Integer {
- *    return assert(value, isInteger);
+ *  function integer(value: number): Bigint1024 {
+ *    return assert(value, isBigint1024);
  *  }
  *
- *  const int1: Integer = integer(2);
+ *  const int1: Bigint1024 = integer(2);
  *  // Ok
  *
- *  const int2: Integer = 1;
+ *  const int2: Bigint1024 = 1;
  *  // TS2322: Type number is not assignable to type
- *  // Nominal_<number, [NominalType_<unique symbol, "Integer">]>
+ *  // Nominal_<number, [NominalType_<unique symbol, "Bigint1024">]>
  * ```
  *
  * @param TType - The type to make nominal type from

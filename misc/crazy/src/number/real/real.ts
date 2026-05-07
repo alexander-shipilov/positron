@@ -1,39 +1,31 @@
 import type { NumberLike } from "@positron/core";
-import type { Nominal } from "@positron/nominal";
 import { isNumber, never } from "@positron/core";
 
 import { debug } from "../../utils";
 
-import type { RealType } from "./real-type";
-import { isReal } from "./is-real";
+import type { RealNumber } from "./real-number";
+import { isRealNumber } from "./is-real-number";
 
 /**
- * The {@link Real} type represents a real number: any finite number.
- *
- * @public
- */
-export type Real = Nominal<number, RealType>;
-
-/**
- * The {@link Real} function creates a {@link Real} number from the
- * given {@link NumberLike} value.
+ * The {@link Real} function creates a {@link RealNumber} number from the given
+ * `NumberLike` value.
  *
  * ```ts
- *  const real1 = real(1.1)
+ *  const real1 = Real(1.1)
  *  // 1.1
  *
- *  const real2 = real('1e10')
+ *  const real2 = Real('1e10')
  *  // 10_000_000_000
  *
- *  const real3 = real(NaN)
+ *  const real3 = Real(NaN)
  *  // RangeError
  *
- *  const real4 = real(Infinity)
+ *  const real4 = Real(Infinity)
  *  // RangeError
  * ```
  *
- * @param numberLike - The {@link NumberLike} value to be converted to
- *   a {@link Real}
+ * @param numberLike - The `NumberLike` value to be converted to
+ *   a {@link RealNumber}
  *
  * @throws RangeError if the passed `numberLike` is not a finite number.
  * @throws SyntaxError if the passed `numberLike` cannot be converted to
@@ -41,17 +33,19 @@ export type Real = Nominal<number, RealType>;
  *
  * @public
  */
-export const Real = (numberLike: NumberLike): Real => {
-  const number = isNumber(numberLike) ? numberLike : Number(numberLike);
+export const Real = (numberLike: NumberLike): RealNumber => {
+  const number = 0 + (isNumber(numberLike) ? numberLike : Number(numberLike));
 
-  return isReal(number)
+  return isRealNumber(number)
     ? number
     : never(
         isNumber(numberLike)
           ? new RangeError(
-              `The ${debug(numberLike)} cannot be converted to a 'Real' ` +
+              `The ${debug(numberLike)} cannot be converted to a 'RealNumber' ` +
                 `because it is not a finite number`,
             )
-          : new SyntaxError(`Cannot convert ${debug(numberLike)} to a 'Real'`),
+          : new SyntaxError(
+              `Cannot convert ${debug(numberLike)} to a 'RealNumber'`,
+            ),
       );
 };

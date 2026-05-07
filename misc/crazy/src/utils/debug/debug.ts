@@ -1,15 +1,15 @@
 import {
-  typeOf,
+  isBigint,
   isBoolean,
   isNumber,
   isString,
-  isBigint,
   isSymbol,
+  typeOf,
 } from "@positron/core";
 
 /**
  *
- * @param value
+ * @param value -
  *
  * @public
  */

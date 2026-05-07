@@ -9,6 +9,7 @@ import sortIntersectionTypes from "./perfectionist/sort-intersection-types.js";
 import sortJsxProps from "./perfectionist/sort-jsx-props.js";
 import sortModules from "./perfectionist/sort-modules.js";
 import sortObjectTypes from "./perfectionist/sort-object-types.js";
+import sortObjects from "./perfectionist/sort-objects.js";
 
 export default [
   {
@@ -39,5 +40,6 @@ export default [
   ...sortIntersectionTypes,
   ...sortJsxProps,
   ...sortModules,
+  ...sortObjects,
   ...sortObjectTypes,
 ];

@@ -10,6 +10,12 @@
  */
 export interface SetLike<TItem> {
   /**
+   * The {@link SetLike.size} accessor property of {@link SetLike} interface
+   * returns the number of (unique) elements in this set-like object.
+   */
+  readonly size: number;
+
+  /**
    * The {@link SetLike.has} method of the {@link SetLike} object returns a
    * `boolean` indicating whether an element with the specified value exists in
    * this set-like object or not.
@@ -25,10 +31,4 @@ export interface SetLike<TItem> {
    * this set-like object in insertion order.
    */
   keys(): SetIterator<TItem>;
-
-  /**
-   * The {@link SetLike.size} accessor property of {@link SetLike} interface
-   * returns the number of (unique) elements in this set-like object.
-   */
-  readonly size: number;
 }

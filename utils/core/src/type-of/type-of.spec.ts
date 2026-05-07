@@ -1,6 +1,6 @@
 import { describe, expect, it } from "@jest/globals";
 
-import { typesValues } from "../-fixtures/types";
+import { typesValues } from "../@fixtures/types";
 
 import { typeOf } from "./type-of";
 
