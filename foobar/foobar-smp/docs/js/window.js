@@ -30,7 +30,7 @@ export let window = {
   ID: undefined, // (read) (uint)
 
   /**
-   * You need this to determine which GetFontXXX and GetColourXXX methods to use, assuming you want to support both interfaces.<br>
+   * You need this to determine which GetFontXXX and GetColourXXX methods to use, assuming you want to support both types.<br>
    * <br>
    * 0 - if using Columns UI<br>
    * 1 - if using default UI.

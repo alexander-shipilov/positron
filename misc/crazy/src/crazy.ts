@@ -24,8 +24,6 @@ const resolver = new CalculatorResolver(
 );
 const formatter = DefaultFormatter;
 
-setInterval();
-
 const digits = [
   Natural(1),
   Natural(2),

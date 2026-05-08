@@ -284,7 +284,7 @@ export class BigintMath<
     if (arg2 === ZERO) {
       throw new Exception(Exception.ZeroDivisor);
     } else {
-      const remainder = this.rem(arg1, arg2);
+      const remainder = mod(arg1, arg2);
 
       return remainder < ZERO
         ? arg2 < ZERO

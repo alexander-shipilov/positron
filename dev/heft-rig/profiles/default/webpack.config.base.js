@@ -10,10 +10,7 @@ async function createWebpackConfig({ argv, configOverride, env, projectRoot }) {
     entry: {
       // Rush Stack convention is that the entry point for libraries is "src/index.ts"
       // whereas the entry point for apps is "src/start.ts"
-      index: path.resolve(projectRoot, "src", "index.ts"),
-    },
-    experiments: {
-      outputModule: true,
+      index: path.resolve(projectRoot, "lib", "esm", "index.js"),
     },
     output: env.production
       ? {
@@ -31,7 +28,7 @@ async function createWebpackConfig({ argv, configOverride, env, projectRoot }) {
 
   return createWebpackConfigCommon({
     argv: argv,
-    configOverride: merge(libraryOverrides, configOverride),
+    configOverride: merge(libraryOverrides, configOverride ?? {}),
     env: env,
     // If you're building a design system or component library and shipping
     // to NPM you shouldn't extract just yet, let your consumers do it in their

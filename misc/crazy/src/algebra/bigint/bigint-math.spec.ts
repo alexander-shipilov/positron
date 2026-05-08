@@ -6,7 +6,7 @@ import { Exception } from "../../exception";
 
 import { BigintMath } from "./bigint-math";
 
-describe(BigintMath.name, () => {
+describe("BigintMath", () => {
   const math = new BigintMath(BigInt, isBigint);
 
   describe("#compare(arg1, arg2)", () => {

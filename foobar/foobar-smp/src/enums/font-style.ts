@@ -4,7 +4,6 @@
  *
  * Used by:
  *  - {@link Gdi.Font}
- *  - {@link GdiFontConstructor}
  *
  * @see http://msdn.microsoft.com/en-us/library/ms534124(VS.85).aspx
  *

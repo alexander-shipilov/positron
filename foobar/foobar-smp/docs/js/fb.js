@@ -5,6 +5,109 @@
  */
 export let fb = {
   /**
+   * @type {boolean}
+   *
+   * @example
+   * fb.AlwaysOnTop = !fb.AlwaysOnTop; // Toggles the current value.
+   */
+  AlwaysOnTop: undefined, //(boolean) (read, write)
+
+  /**
+   * @type {string}
+   * @readonly
+   *
+   * @example
+   * console.log(fb.ComponentPath); // C:\Users\User\AppData\Roaming\foobar2000\user-components\foo_spider_monkey_panel\
+   */
+  ComponentPath: undefined, // (string) (read)
+
+  /** @type {boolean} */
+  CursorFollowPlayback: undefined, // (boolean) (read, write)
+
+  /**
+   * @type {string}
+   * @readonly
+   */
+  FoobarPath: undefined, // (string) (read)
+
+  /**
+   * @type {boolean}
+   * @readonly
+   */
+  IsPaused: undefined, // (boolean) (read)
+
+  /**
+   * @type {boolean}
+   * @readonly
+   */
+  IsPlaying: undefined, // (boolean) (read)
+
+  /** @type {boolean} */
+  PlaybackFollowCursor: undefined, // (boolean) (read, write)
+
+  /**
+   * @type {float}
+   * @readonly
+   *
+   * @example
+   * console.log(fb.PlaybackLength); // 322.843414966166
+   *
+   * @example
+   * console.log(Math.round(fb.PlaybackLength)); // 323
+   */
+  PlaybackLength: undefined, // (double) (read)
+
+  /**
+   * @type {float}
+   *
+   * @example
+   * fb.PlaybackTime = 60; // Jumps to the 1 minute mark.
+   */
+  PlaybackTime: undefined, // (double) (read, write)
+
+  /**
+   * @type {string}
+   * @readonly
+   */
+  ProfilePath: undefined, // (string) (read)
+
+  /**
+   * 0 - None<br>
+   * 1 - Track<br>
+   * 2 - Album<br>
+   * 3 - Track/Album by Playback Order (only available in foobar2000 v1.3.8 and later)
+   *
+   * @type {number}
+   */
+  ReplaygainMode: undefined, // (uint) (read, write)
+
+  /**
+   * @type {boolean}
+   *
+   * @example
+   * fb.StopAfterCurrent = !fb.StopAfterCurrent; // Toggles the current value.
+   */
+  StopAfterCurrent: undefined, // (boolean) (read, write)
+
+  /**
+   * @type {string}
+   * @readonly
+   *
+   * @example
+   * console.log(fb.Version)
+   * // 1.4.1
+   */
+  Version: undefined,
+
+  /**
+   * @type {float}
+   *
+   * @example
+   * fb.Volume = 0; // Sets the volume to max. -100 is the minimum.
+   */
+  Volume: undefined, // (float) (read, write),
+
+  /**
    * @return {FbUiSelectionHolder}
    */
   AcquireUiSelectionHolder() {}, // (FbUiSelectionHolder)
@@ -14,14 +117,6 @@ export let fb = {
 
   /** @method */
   AddFiles() {}, // (void)
-
-  /**
-   * @type {boolean}
-   *
-   * @example
-   * fb.AlwaysOnTop = !fb.AlwaysOnTop; // Toggles the current value.
-   */
-  AlwaysOnTop: undefined, //(boolean) (read, write)
 
   /**
    * Checks Clipboard contents are handles or a file selection from Windows Explorer. Use in conjunction
@@ -36,15 +131,6 @@ export let fb = {
    * If you wish to clear a specific playlist, use {@link plman.ClearPlaylist}(playlistIndex).
    */
   ClearPlaylist() {}, // (void)
-
-  /**
-   * @type {string}
-   * @readonly
-   *
-   * @example
-   * console.log(fb.ComponentPath); // C:\Users\User\AppData\Roaming\foobar2000\user-components\foo_spider_monkey_panel\
-   */
-  ComponentPath: undefined, // (string) (read)
 
   /**
    * Note: items can then be pasted in other playlist viewers or in Windows Explorer as files.
@@ -100,9 +186,6 @@ export let fb = {
    */
   CreateProfiler(name) {}, // (FbProfiler) [name]
 
-  /** @type {boolean} */
-  CursorFollowPlayback: undefined, // (boolean) (read, write)
-
   /**
    * Invokes drag-n-drop operation (see {@link https://docs.microsoft.com/en-us/windows/win32/api/ole2/nf-ole2-dodragdrop}).<br>
    * <br>
@@ -113,7 +196,7 @@ export let fb = {
    *      handle `on_drop_*()` callbacks, while setting action.effect argument to (DROPEFFECT_COPY | DROPEFFECT_LINK).<br>
    * <br>
    * Full drag-n-drop interface description:<br>
-   * - Drag-n-drop interface is based on Microsoft IDropSource and IDropTarget interfaces, so a lot of info (including examples) could be gathered from MSDN (IDropSource, IDropTarget, DoDragDrop, DROPEFFECT).<br>
+   * - Drag-n-drop interface is based on Microsoft IDropSource and IDropTarget types, so a lot of info (including examples) could be gathered from MSDN (IDropSource, IDropTarget, DoDragDrop, DROPEFFECT).<br>
    * - Drag operation is started with DoDragDrop (whether it is called by your panel, or externally) with okEffects argument supplied.<br>
    * - DoDragDrop blocks code execution until the drag operation is finished (callbacks will be called properly though). It returns effect from Action.Effect from on_drag_drop after completion.<br>
    * - (Spider Monkey Panel specific) Drag operation is canceled when any mouse button is pressed.<br>
@@ -147,12 +230,6 @@ export let fb = {
 
   /** @method */
   Exit() {}, // (void)
-
-  /**
-   * @type {string}
-   * @readonly
-   */
-  FoobarPath: undefined, // (string) (read)
 
   /**
    * Note: clipboard contents can be handles copied to the clipboard in other components,
@@ -365,18 +442,6 @@ export let fb = {
   IsMetadbInMediaLibrary(handle) {}, // (boolean)
 
   /**
-   * @type {boolean}
-   * @readonly
-   */
-  IsPaused: undefined, // (boolean) (read)
-
-  /**
-   * @type {boolean}
-   * @readonly
-   */
-  IsPlaying: undefined, // (boolean) (read)
-
-  /**
    * Loads playlist from file. Equivalent to `File`>`Load Playlist...`.
    *
    * @method
@@ -392,40 +457,11 @@ export let fb = {
   /** @method */
   Play() {}, // (void)
 
-  /** @type {boolean} */
-  PlaybackFollowCursor: undefined, // (boolean) (read, write)
-
-  /**
-   * @type {float}
-   * @readonly
-   *
-   * @example
-   * console.log(fb.PlaybackLength); // 322.843414966166
-   *
-   * @example
-   * console.log(Math.round(fb.PlaybackLength)); // 323
-   */
-  PlaybackLength: undefined, // (double) (read)
-
-  /**
-   * @type {float}
-   *
-   * @example
-   * fb.PlaybackTime = 60; // Jumps to the 1 minute mark.
-   */
-  PlaybackTime: undefined, // (double) (read, write)
-
   /** @method */
   PlayOrPause() {}, // (void)
 
   /** @method */
   Prev() {}, // (void)
-
-  /**
-   * @type {string}
-   * @readonly
-   */
-  ProfilePath: undefined, // (string) (read)
 
   /** @method */
   Random() {}, // (void)
@@ -446,16 +482,6 @@ export let fb = {
    * @param {string=} [description='']
    */
   RegisterMainMenuCommand(id, name, description) {},
-
-  /**
-   * 0 - None<br>
-   * 1 - Track<br>
-   * 2 - Album<br>
-   * 3 - Track/Album by Playback Order (only available in foobar2000 v1.3.8 and later)
-   *
-   * @type {number}
-   */
-  ReplaygainMode: undefined, // (uint) (read, write)
 
   /** @method */
   Restart() {}, // (void)
@@ -554,14 +580,6 @@ export let fb = {
   Stop() {}, // (void)
 
   /**
-   * @type {boolean}
-   *
-   * @example
-   * fb.StopAfterCurrent = !fb.StopAfterCurrent; // Toggles the current value.
-   */
-  StopAfterCurrent: undefined, // (boolean) (read, write)
-
-  /**
    * Performance note: if you use the same query frequently,
    * try caching FbTitleFormat object (by storing it somewhere),
    * instead of creating it every time.
@@ -579,24 +597,6 @@ export let fb = {
    * @param {number} id
    */
   UnregisterMainMenuCommand(id, name, description) {},
-
-  /**
-   * @type {string}
-   * @readonly
-   *
-   * @example
-   * console.log(fb.Version)
-   * // 1.4.1
-   */
-  Version: undefined,
-
-  /**
-   * @type {float}
-   *
-   * @example
-   * fb.Volume = 0; // Sets the volume to max. -100 is the minimum.
-   */
-  Volume: undefined, // (float) (read, write),
 
   /** @method */
   VolumeDown() {}, // (void)

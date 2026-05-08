@@ -7,7 +7,7 @@ describe("capitalize(value)", () => {
   it("should capitalize the passed `value`", () => {
     expect(capitalize("foo")).toBe("Foo");
     expect(capitalize("FOO")).toBe("FOO");
-    expect(capitalize("fooBar")).toBe("Fb");
+    expect(capitalize("fooBar")).toBe("FooBar");
   });
 
   it("should return `Capitalize` type", () => {

@@ -1,4 +1,5 @@
 import perfectionist from "eslint-plugin-perfectionist";
+import { defineConfig } from "eslint/config";
 
 import alphabet from "./perfectionist/-alphabet.js";
 import sortClasses from "./perfectionist/sort-classes.js";
@@ -11,7 +12,7 @@ import sortModules from "./perfectionist/sort-modules.js";
 import sortObjectTypes from "./perfectionist/sort-object-types.js";
 import sortObjects from "./perfectionist/sort-objects.js";
 
-export default [
+export default defineConfig(
   {
     ...perfectionist.configs["recommended-custom"],
 
@@ -42,4 +43,4 @@ export default [
   ...sortModules,
   ...sortObjects,
   ...sortObjectTypes,
-];
+);

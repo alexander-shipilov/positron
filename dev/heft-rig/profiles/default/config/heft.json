@@ -48,12 +48,12 @@
             "pluginPackage": "@rushstack/heft-api-extractor-plugin"
           }
         },
-//        "webpack": {
-//          "taskDependencies": ["typescript"],
-//          "taskPlugin": {
-//            "pluginPackage": "@rushstack/heft-webpack5-plugin"
-//          }
-//        }
+        "webpack": {
+          "taskDependencies": ["typescript"],
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-webpack5-plugin"
+          }
+        }
       }
     },
     "test": {
