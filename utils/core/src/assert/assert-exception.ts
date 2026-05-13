@@ -15,7 +15,7 @@ export const ASSERT_EXCEPTION = "AssertException";
  * @public
  */
 export class AssertException extends Exception<typeof ASSERT_EXCEPTION> {
-  constructor(message?: string) {
+  public constructor(message?: string) {
     super(ASSERT_EXCEPTION, message);
   }
 }

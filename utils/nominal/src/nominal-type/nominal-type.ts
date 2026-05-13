@@ -12,6 +12,7 @@ import type { NominalType_ } from "./nominal-type-";
  * then to create a new nominal type, use the `declare` keyword as described
  * below:
  *
+ * @example
  * ```ts
  *  declare const MyTypeSymbol: unique symbol;
  *
@@ -21,6 +22,7 @@ import type { NominalType_ } from "./nominal-type-";
  * Each nominal type is the symbol with which it was created, but not vice
  * versa. The following code demonstrates this:
  *
+ * @example
  * ```ts
  *  type T1 = typeof MyTypeSymbol extends MyType ? true : false;
  *  // type T1 = true
@@ -36,6 +38,7 @@ import type { NominalType_ } from "./nominal-type-";
  * nominal type. Any known nominal type is an unknown nominal type, but not
  * vice versa. The following code demonstrates this:
  *
+ * @example
  * ```ts
  *  type T3 = MyType extends NominalType ? true : false;
  *  // type T3 = true

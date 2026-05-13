@@ -2,8 +2,9 @@ import type { FbMetadbHandle } from "./fb-metadb-handle";
 import type { FbMetadbHandleList } from "./fb-metadb-handle-list";
 
 /**
- * The {@link FbTitleFormat} class create a new title format object.
+ * The {@link FbTitleFormat} class creates a new title format object.
  *
+ * @remarks
  * Performance note: if you use the same query frequently,
  * try caching {@link FbTitleFormat} object (by storing it somewhere),
  * instead of creating it every time.
@@ -14,21 +15,23 @@ export declare class FbTitleFormat {
   /**
    * @param expression -
    */
-  constructor(expression: string);
+  public constructor(expression: string);
 
   /**
    * The {@link FbTitleFormat.Eval} method evaluates {@link FbTitleFormat} to
    * the current playing item.
    *
+   * @remarks
    * Note: Always use {@link FbTitleFormat.Eval} when you want dynamic info
-   * such as "%playback_time%", "%bitrate%", etc.
-   * `FbTitleFormat.EvalWithMetadb(fb.GetNowPlaying())` will not give the
-   * results you want.
+   *   such as "%playback_time%", "%bitrate%", etc.
+   *   `FbTitleFormat.EvalWithMetadb(fb.GetNowPlaying())` will not give the
+   *   results you want.
    *
+   * @example
    * ```ts
-   *  const tfo = fb.TitleFormat("%artist%");
+   *  const tf = fb.TitleFormat("%artist%");
    *
-   *  console.log(tfo.Eval());
+   *  console.log(tf.Eval());
    * ```
    *
    * @param force - If `true`, you can process text that doesn't
@@ -38,33 +41,35 @@ export declare class FbTitleFormat {
    * @example
    *
    */
-  Eval(force?: boolean): string;
+  public Eval(force?: boolean): string;
 
   /**
-   * The {@link FbTitleFormat.Eval} method evaluates {@link FbTitleFormat} to
-   * the specified `handle`.
+   * The {@link FbTitleFormat.EvalWithMetadb} method evaluates
+   * {@link FbTitleFormat} to the specified `handle`.
    *
-   * Note: If possible, avoid using while looping a handle
-   * list. Using {@link FbTitleFormat.EvalWithMetadbs} below should be much
-   * faster.
+   * @remarks
+   * Note: If possible, avoid using while looping a handle list. Using
+   *   {@link FbTitleFormat.EvalWithMetadbs} below should be much faster.
    *
+   * @example
    * ```ts
-   *  const tfo = fb.TitleFormat("%artist%");
-   *  const artist = tfo.EvalWithMetadb(fb.GetFocusItem());
+   *  const tf = fb.TitleFormat("%artist%");
+   *  const artist = tf.EvalWithMetadb(fb.GetFocusItem());
    * ```
    *
    * @param handle -
    */
-  EvalWithMetadb(handle: FbMetadbHandle): string;
+  public EvalWithMetadb(handle: FbMetadbHandle): string;
 
   /**
-   * The {@link FbTitleFormat.Eval} method evaluates {@link FbTitleFormat} to
-   * all items of the specified `handleList`.
+   * The {@link FbTitleFormat.EvalWithMetadbs} method evaluates
+   * {@link FbTitleFormat} to all items of the specified `handleList`.
    *
+   * @example
    * ```ts
    *  const handleList = fb.GetLibraryItems();
-   *  const tfo = fb.TitleFormat("%artist%");
-   *  const artists = tfo.EvalWithMetadbs(handleList);
+   *  const tf = fb.TitleFormat("%artist%");
+   *  const artists = tf.EvalWithMetadbs(handleList);
    *
    *  console.log(handleList.Count === artists.length);
    *  // should always be true!
@@ -72,5 +77,5 @@ export declare class FbTitleFormat {
    *
    * @param handleList -
    */
-  EvalWithMetadbs(handleList: FbMetadbHandleList): string[];
+  public EvalWithMetadbs(handleList: FbMetadbHandleList): string[];
 }

@@ -30,7 +30,17 @@ export default defineConfig(
           prefer: "type-imports",
         },
       ],
+      "@typescript-eslint/explicit-member-accessibility": [
+        "error",
+        {
+          accessibility: "explicit",
+        },
+      ],
       "@typescript-eslint/indent": "off",
+      "@typescript-eslint/no-invalid-void-type": [
+        "error",
+        { allowAsThisParameter: true },
+      ],
     },
   },
   {

@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "declaration": true,
+    "declarationDir": "./../../../../../lib/dts",
     "declarationMap": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,

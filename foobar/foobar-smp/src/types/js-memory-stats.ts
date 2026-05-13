@@ -1,6 +1,6 @@
 /**
  * The {@link JsMemoryStats} interface represents return value of
- * {@link Window.JsMemoryStats}.
+ * {@link FbWindow.JsMemoryStats}.
  *
  * @public
  */
@@ -13,8 +13,11 @@ export interface JsMemoryStats {
 
   /**
    * The {@link JsMemoryStats.TotalMemoryLimit} property represents maximum
-   * allowed memory usage for the component (in bytes). If the total memory
-   * usage exceeds this value, all panels will fail with OOM error.
+   * allowed memory usage for the component (in bytes).
+   *
+   * @remarks
+   * If the total memory usage exceeds this value, all panels will fail with
+   *   OOM error.
    */
   TotalMemoryLimit: number;
 

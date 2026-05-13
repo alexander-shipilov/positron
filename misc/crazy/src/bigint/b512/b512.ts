@@ -10,6 +10,7 @@ import { isB512Int } from "./is-b512-int";
  * The {@link B512} function creates an
  * {@link B512Int} from the given `NumberLike` value.
  *
+ * @example
  * ```ts
  *  const integer1 = B512(1)
  *  // 1n

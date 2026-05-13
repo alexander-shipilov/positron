@@ -3,11 +3,15 @@ import type { SelectionType } from "../enums";
 import type { FbMetadbHandleList } from "./fb-metadb-handle-list";
 
 /**
+ * @remarks
  * This is typically used to update the selection used by the default UI
- * artwork panel or any other panel that makes use of the preferences under
- * `File` \> `Preferences` \> `Display` \> `Selection viewers`. Use in
- * conjunction with the {@link Callbacks.on_focus} callback.
+ *   artwork panel or any other panel that makes use of the preferences under
+ *   `File > Preferences > Display > Selection viewers`.
  *
+ * Use in conjunction with the {@link FbCallbacks.on_focus} callback.
+ * See {@link FooBar.AcquireUiSelectionHolder}.
+ *
+ * @example
  * ```ts
  *  // For playlist viewers
  *  const selectionHolder = fb.AcquireUiSelectionHolder();
@@ -22,6 +26,7 @@ import type { FbMetadbHandleList } from "./fb-metadb-handle-list";
  *  }
  * ```
  *
+ * @example
  * ```ts
  *  // For library viewers
  *  const selectionHolder = fb.AcquireUiSelectionHolder();

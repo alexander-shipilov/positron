@@ -24,7 +24,7 @@ export interface JsPackageDirs {
 
   /**
    * The {@link JsPackageDirs.Storage} property represents a path to the
-   * persistent and unique directory inside foobar2000 profile folder that can
+   * persistent and unique directory inside `foobar2000` profile folder that can
    * be used to store runtime data (e.g. cache).
    */
   readonly Storage: string;

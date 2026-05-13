@@ -10,11 +10,14 @@ import type { GdiRawBitmap } from "./gdi-raw-bitmap";
 import type { MeasureStringInfo } from "./measure-string-info";
 
 /**
- * Typically used inside {@link Callbacks.on_paint}.
+ * The {@link GdiGraphics} interface represents `GDI` graphics object.
  *
- * Note: There are many different ways to get colors.
- * Use {@link Window.GetColourDUI} / {@link Window.GetColourCUI},
- * RGB function from Helpers.js, {@link Utils.ColourPicker}, etc.
+ * @remarks
+ * Typically used inside {@link FbCallbacks.on_paint}.
+ *
+ * Note: There are many different ways to get colors. Use
+ *   {@link FbWindow.GetColourDUI} / {@link FbWindow.GetColourCUI},
+ *   {@link FbUtils.ColourPicker}, etc.
  *
  * @public
  */
@@ -23,6 +26,7 @@ export interface GdiGraphics {
    * The {@link GdiGraphics.CalcTextHeight} method calculates text height for
    * {@link GdiGraphics.GdiDrawText}.
    *
+   * @remarks
    * Note: this will only calculate the text height of one line.
    *
    * @param text -
@@ -34,10 +38,11 @@ export interface GdiGraphics {
    * The {@link GdiGraphics.CalcTextWidth} method calculates text width for
    * {@link GdiGraphics.GdiDrawText}.
    *
+   * @remarks
    * Note: When the `text` contains a kerning pair that is found in the
-   * specified font, the return value will be larger than the actual drawn
-   * width of the text. If accurate values are required, set `useExact` to
-   * `true`.
+   *   specified font, the return value will be larger than the actual drawn
+   *   width of the text. If accurate values are required, set `useExact` to
+   *   `true`.
    *
    * @param text - Text to calculate width.
    * @param font - Font.
@@ -118,8 +123,8 @@ export interface GdiGraphics {
    *
    * @param color - The color.
    * @param lineWidth - The line width.
-   * @param points - An array of x, y co-ordinate pairs. Must be an even number
-   *   in length.
+   * @param points - An array of x, y co-ordinate pairs.
+   *   Must be an even number in length.
    */
   DrawPolygon(color: number, lineWidth: number, points: number[]): void;
 
@@ -167,8 +172,9 @@ export interface GdiGraphics {
 
   /**
    * The {@link GdiGraphics.DrawString} method draws a string.
-   * Should be only used when {@link GdiGraphics.GdiDrawText} is not
-   * applicable.
+   *
+   * @remarks
+   * Should be only used when {@link GdiGraphics.GdiDrawText} is not applicable.
    *
    * @param str -
    * @param font - Font
@@ -192,7 +198,11 @@ export interface GdiGraphics {
   ): void;
 
   /**
+   * The {@link GdiGraphics.EstimateLineWrap} method estimates line wraps.
+   *
+   * @remarks
    * Return format:
+   * ```text
    *  index | meaning
    *  [0] text line 1
    *  [1] width of text line 1 (in pixel)
@@ -201,6 +211,7 @@ export interface GdiGraphics {
    *  ...
    *  [2n + 2] text line n
    *  [2n + 3] width of text line n (px)
+   * ```
    *
    * @param str -
    * @param font -
@@ -213,7 +224,7 @@ export interface GdiGraphics {
   ): (number | string)[];
 
   /**
-   * The {@link GdiGraphics.DrawString} method draws a filled ellipse.
+   * The {@link GdiGraphics.FillEllipse} method draws a filled ellipse.
    *
    * @param x -
    * @param y -
@@ -230,10 +241,12 @@ export interface GdiGraphics {
   ): void;
 
   /**
-   * The {@link GdiGraphics.DrawString} method draws gradient filled rectangle.
+   * The {@link GdiGraphics.FillGradRect} method draws gradient filled
+   * rectangle.
    *
-   * Note: This may appear buggy depending on rectangle size.
-   * The easiest fix is to adjust the "angle" by a degree or two.
+   * @remarks
+   * Note: This may appear buggy depending on rectangle size. The easiest fix
+   *   is to adjust the "angle" by a degree or two.
    *
    * @param x - Rectangle x-position
    * @param y - Rectangle y-position
@@ -257,7 +270,7 @@ export interface GdiGraphics {
   ): void;
 
   /**
-   * The {@link GdiGraphics.DrawString} method draws filled polygon.
+   * The {@link GdiGraphics.FillPolygon} method draws filled polygon.
    *
    * @param color -
    * @param fillMode - 0 alternate, 1 winding.
@@ -336,8 +349,9 @@ export interface GdiGraphics {
   /**
    * The {@link GdiGraphics.GdiDrawBitmap} method draws a bitmap.
    *
+   * @remarks
    * Performance note: Always faster than {@link GdiGraphics.DrawImage}, does
-   * not support alpha channel.
+   *   not support alpha channel.
    *
    * @param bitmap -
    * @param dstX - Destination x-position
@@ -364,22 +378,21 @@ export interface GdiGraphics {
   /**
    * The {@link GdiGraphics.GdiDrawText} method draws a text.
    *
-   * Provides faster and better rendering than
-   * {@link GdiGraphics.DrawString}.
-   *
-   * Do not use this to draw text on transparent background or
-   * with {@link GdiGraphics} other than the one passed in
-   * {@link Callbacks.on_paint} callback: this will result in
-   * visual artifacts caused by ClearType hinting.
-   *
-   * Use {@link GdiGraphics.DrawString} instead in such cases.
+   * @remarks
+   * Provides faster and better rendering than {@link GdiGraphics.DrawString}.
    *
    * To calculate text dimensions use {@link GdiGraphics.CalcTextHeight},
-   * {@link GdiGraphics.CalcTextWidth}.
+   *   {@link GdiGraphics.CalcTextWidth}.
+   *
+   * Note: Do not use this to draw text on transparent background or with
+   *   {@link GdiGraphics} other than the one passed in
+   *   {@link FbCallbacks.on_paint} callback: this will result in visual
+   *   artifacts caused by ClearType hinting.
+   *   Use {@link GdiGraphics.DrawString} instead in such cases.
    *
    * Note: uses special rules for `&` character by default, which consumes the
-   * `&` and causes the next character to be underscored. This behaviour can be
-   * changed (or disabled) via `format` parameter.
+   *   `&` and causes the next character to be underscored. This behaviour can
+   *   be changed (or disabled) via `format` parameter.
    *
    * @param text - Text
    * @param font - Font
@@ -427,8 +440,11 @@ export interface GdiGraphics {
 
   /**
    * The {@link GdiGraphics.SetInterpolationMode} method sets the interpolation
-   * mode. The interpolation mode determines the algorithm that is used when
-   * images are scaled or rotated.
+   * mode.
+   *
+   * @remarks
+   * The interpolation mode determines the algorithm that is used when images
+   *   are scaled or rotated.
    *
    * @param mode - Interpolation mode. Default {@link
    *   InterpolationMode.Default}.

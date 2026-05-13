@@ -1,6 +1,9 @@
 /**
- * The {@link FontTypeDui} enumeration specifies Default UI font types.
- * This enumeration is used by {@link Window.GetFontDUI}
+ * The {@link FontTypeDui} enumeration specifies `Default UI` font types.
+ *
+ * @remarks
+ * The {@link FontTypeDui} enumeration is used by:
+ * {@link FbWindow.GetFontDUI}
  *
  * @public
  */

@@ -1,10 +1,11 @@
 /**
  * The {@link MouseEventMask} enumeration specifies various virtual keys.
  *
- * This enumeration is used by:
- *  - {@link Callbacks.on_mouse_lbtn_dblclk}
- *  - {@link Callbacks.on_mouse_lbtn_down}
- *  - {@link Callbacks.on_mouse_lbtn_up}
+ * @remarks
+ * The {@link MouseEventMask} enumeration is used by:
+ * {@link FbCallbacks.on_mouse_lbtn_dblclk}
+ * {@link FbCallbacks.on_mouse_lbtn_down}
+ * {@link FbCallbacks.on_mouse_lbtn_up}
  *
  * @public
  */

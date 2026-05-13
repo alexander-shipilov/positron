@@ -23,6 +23,7 @@ function isPropertyOfArrayLike<TTarget extends ArrayLike<unknown>>(
  * @example
  * The following example demonstrates this:
  *
+ * @example
  * ```ts
  *  abstract class MyNodeList extends ArrayLikeProxy<Node> implements NodeList {
  *    constructor(protected readonly items: Node[]) {

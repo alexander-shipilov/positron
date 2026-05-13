@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-duplicate-enum-values */
 /**
- * Used with {@link Utils.IsKeyPressed}.
+ * The {@link VirtualKey} enumeration represents virtual keys.
+ *
+ * @remarks
+ * The {@link VirtualKey} enumeration is used by:
+ * {@link FbCallbacks.on_key_down}
+ * {@link FbCallbacks.on_key_up}
+ * {@link FbUtils.IsKeyPressed}.
  *
  * @public
  */

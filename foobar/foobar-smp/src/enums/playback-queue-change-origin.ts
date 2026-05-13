@@ -2,6 +2,10 @@
  * The {@link PlaybackQueueChangeOrigin} enumeration specifies the origins of
  * playback queue changes.
  *
+ * @remarks
+ * The {@link PlaybackQueueChangeOrigin} enumeration is used by:
+ * {@link FbCallbacks.on_playback_queue_changed}.
+ *
  * @public
  */
 export enum PlaybackQueueChangeOrigin {

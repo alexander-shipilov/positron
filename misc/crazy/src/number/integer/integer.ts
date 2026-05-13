@@ -11,6 +11,7 @@ import { isIntegerNumber } from "./is-integer-number";
  * The {@link Integer} function creates an
  * {@link IntegerNumber} from the given `NumberLike` value.
  *
+ * @example
  * ```ts
  *  const integer1 = Integer(1)
  *  // 1

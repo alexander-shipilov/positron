@@ -1,6 +1,9 @@
 /**
- * The {@link ColourTypeDui} enumeration specifies Default UI colors types.
- * This enumeration is used by {@link Window.GetColourDUI}
+ * The {@link ColourTypeDui} enumeration specifies `Default UI` colors types.
+ *
+ * @remarks
+ * The {@link ColourTypeDui} enumeration is used by:
+ * {@link FbWindow.GetColourDUI}.
  *
  * @public
  */

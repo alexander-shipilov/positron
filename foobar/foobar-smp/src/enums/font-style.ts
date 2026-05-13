@@ -2,8 +2,9 @@
  * The {@link FontStyle} enumeration specifies the style of the typeface of a
  * font. Styles can be combined.
  *
- * Used by:
- *  - {@link Gdi.Font}
+ * @remarks
+ * The {@link FontStyle} enumeration is used by:
+ * {@link FbGdi.Font}
  *
  * @see http://msdn.microsoft.com/en-us/library/ms534124(VS.85).aspx
  *

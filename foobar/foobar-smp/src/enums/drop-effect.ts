@@ -1,6 +1,6 @@
 /**
- * The {@link DropEffect} enumeration represents information about the effects
- * of a drag-and-drop operation.
+ * The {@link DropEffect} enumeration represents the effects of a drag-and-drop
+ * operation.
  *
  * @public
  */

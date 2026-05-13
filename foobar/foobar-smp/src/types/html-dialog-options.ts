@@ -19,14 +19,20 @@ export interface HtmlDialogOptions {
    * executed inside HTML window. This data is read-only and should not be
    * modified.
    *
-   * May contain only the following types:
-   *  - Basic types: number, string, boolean, `null`, `undefined`.
-   *  - Objects as string: the only way to pass objects is to convert them to
-   *    string and back with `JSON.stringify()` and `JSON.parse()`.
-   *  - Arrays: must be cast via `.toArray()` inside html. Each element has
-   *    same type limitations as {@link HtmlDialogOptions.data}.
-   *  - Functions: has maximum of 7 arguments. Each argument has same type
-   *    limitations as {@link HtmlDialogOptions.data}.
+   * @remarks
+   * The {@link HtmlDialogOptions.data} property may contain only the following
+   *   types:
+   *
+   *   - Basic types: number, string, boolean, `null`, `undefined`.
+   *
+   *   - Objects as string: the only way to pass objects is to convert them to
+   *     string and back with `JSON.stringify()` and `JSON.parse()`.
+   *
+   *   - Arrays: must be cast via `.toArray()` inside html. Each element has
+   *     same type limitations as {@link HtmlDialogOptions.data}.
+   *
+   *   - Functions: has maximum of 7 arguments. Each argument has same type
+   *     limitations as {@link HtmlDialogOptions.data}.
    */
   readonly data: unknown;
 

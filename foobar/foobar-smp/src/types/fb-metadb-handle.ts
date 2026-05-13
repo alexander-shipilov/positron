@@ -5,20 +5,21 @@ import type { FbFileInfo } from "./fb-file-info";
  */
 export interface FbMetadbHandle {
   /**
-   * The {@link FbMetadbHandle.FileSize} property contains item file size.
+   * The {@link FbMetadbHandle.FileSize} property represents an item file size.
    *
    * @returns `-1 `if size is unavailable.
    */
   readonly FileSize: number;
 
   /**
-   * The {@link FbMetadbHandle.Length} property contains item length.
+   * The {@link FbMetadbHandle.Length} property represents an item length.
    */
   readonly Length: number;
 
   /**
-   * The {@link FbMetadbHandle.Length} property contains item path.
+   * The {@link FbMetadbHandle.Length} property represents an item path.
    *
+   * @example
    * ```ts
    *  const handle = fb.GetFocusItem();
    *
@@ -29,6 +30,9 @@ export interface FbMetadbHandle {
   readonly Path: string;
 
   /**
+   * The {@link FbMetadbHandle.RawPath} property represents an item raw path.
+   *
+   * @example
    * ```ts
    *  const handle = fb.GetFocusItem();
    *
@@ -39,7 +43,8 @@ export interface FbMetadbHandle {
   readonly RawPath: string;
 
   /**
-   *
+   * The {@link FbMetadbHandle.SubSong} property represents an item subsong
+   * number.
    */
   readonly SubSong: number;
 
@@ -52,9 +57,11 @@ export interface FbMetadbHandle {
    * The {@link FbMetadbHandle.Compare} method compares two
    * {@link FbMetadbHandle} instances, pointer only.
    *
+   * @remarks
    * If you want to compare them physically, use the
-   * {@link FbMetadbHandle.RawPath} property.
+   *   {@link FbMetadbHandle.RawPath} property.
    *
+   * @example
    * ```ts
    *  handle.Compare(handle2);
    * ```
@@ -64,7 +71,7 @@ export interface FbMetadbHandle {
   Compare(handle: FbMetadbHandle): boolean;
 
   /**
-   * The {@link FbMetadbHandle.Compare} method returns file info.
+   * The {@link FbMetadbHandle.GetFileInfo} method returns file info.
    *
    * @returns `null` if file info is not available.
    */
@@ -77,7 +84,7 @@ export interface FbMetadbHandle {
 
   /**
    *
-   * @param firstPlayed - Use `""` to clear
+   * @param firstPlayed - Use `""` to clear.
    */
   SetFirstPlayed(firstPlayed: string): void;
 

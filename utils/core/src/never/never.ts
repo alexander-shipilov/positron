@@ -7,6 +7,7 @@ import { NeverException } from "./never-exception";
  * The {@link never} function throws an exception and therefore
  * returns the `never` type.
  *
+ * @example
  * ```ts
  *  function assertFoo(maybeFoo: string): "foo" {
  *   return maybeFoo === "foo"

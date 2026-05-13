@@ -1,5 +1,9 @@
 /**
- * The {@link Cursor} enumeration is used by {@link Window.SetCursor}.
+ * The {@link Cursor} enumeration represents cursor types.
+ *
+ * @remarks
+ * The {@link Cursor} enumeration is used by:
+ * {@link FbWindow.SetCursor}.
  *
  * @public
  */

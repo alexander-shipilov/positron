@@ -1,6 +1,7 @@
 /**
- * The {@link ActiveXObject} class creates a new ActiveX object.
+ * The {@link ActiveXObject} class creates a new `ActiveX` object.
  *
+ * @example
  * ```ts
  *  const xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
  * ```
@@ -9,10 +10,11 @@
  */
 export declare class ActiveXObject {
   /**
-   * The {@link ActiveXObject.ActiveX_CreateArray} method creates an
-   * instance of {@link ActiveXObject} that contains an object of type
-   * (VT_ARRAY | SOME_TYPE).
+   * The {@link ActiveXObject.ActiveX_CreateArray} static method of the
+   * {@link ActiveXObject} class creates an instance of {@link ActiveXObject}
+   * that contains an object of type (VT_ARRAY | SOME_TYPE).
    *
+   * @example
    * ```ts
    *  const filename = 'x:\\file.bin';
    *  const binData = [0x01, 0x00, 0x00, 0x02];
@@ -31,20 +33,21 @@ export declare class ActiveXObject {
    * @param array - An array that contains elements of primitive type.
    * @param elementVariantType - A variant type of array elements.
    */
-  static ActiveX_CreateArray(
+  public static ActiveX_CreateArray(
     array: unknown[],
     elementVariantType: number,
   ): ActiveXObject;
 
   /**
-   * @param name - The name of ActiveX object
+   * @param name - The name of `ActiveX` object
    */
-  constructor(name: string);
+  public constructor(name: string);
 
   /**
    * The {@link ActiveXObject.ActiveX_Get} method emulates COM's weird
    * behaviour of property accessors.
    *
+   * @example
    * ```ts
    *  someActiveX.ActiveX_Get('property_name', 'additional_info').DoSmth();
    *  // in COM:
@@ -53,12 +56,13 @@ export declare class ActiveXObject {
    *
    * @param propName - Name of the property, or it's numeric index
    */
-  ActiveX_Get(propName: number | string): unknown;
+  public ActiveX_Get(propName: number | string): unknown;
 
   /**
    * The {@link ActiveXObject.ActiveX_Set} emulates COM's weird behaviour of
    * property accessors.
    *
+   * @example
    * ```ts
    *  someActiveX.ActiveX_Set('property_name', 'new_value', 'additional_info');
    *  // in COM:
@@ -68,5 +72,5 @@ export declare class ActiveXObject {
    * @param propName - Name of the property, or it's numeric index
    * @param propValue - Property value
    */
-  ActiveX_Set(propName: number | string, propValue: string): unknown;
+  public ActiveX_Set(propName: number | string, propValue: string): unknown;
 }

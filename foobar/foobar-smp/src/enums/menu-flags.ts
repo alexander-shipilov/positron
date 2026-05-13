@@ -3,9 +3,10 @@
  * The {@link MenuFlags} enumeration contains menu flags to control the
  * appearance and behavior of the new menu item.
  *
- * This enumeration is used by:
- *  - {@link MenuObject.AppendMenuItem}
- *  - {@link MenuObject.AppendTo}
+ * @remarks
+ * The {@link MenuFlags} enumeration is used by:
+ * {@link MenuObject.AppendMenuItem},
+ * {@link MenuObject.AppendTo}.
  *
  * @see http://msdn.microsoft.com/en-us/library/ms647616(VS.85).aspx
  *

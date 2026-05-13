@@ -1,6 +1,6 @@
 /**
  * The {@link ScriptInfo} interface represents a return value of
- * {@link Window.ScriptInfo}.
+ * {@link FbWindow.ScriptInfo}.
  *
  * @public
  */
@@ -18,8 +18,9 @@ export interface ScriptInfo {
   /**
    * The {@link ScriptInfo.PackageId} property contains script package id.
    *
+   * @remarks
    * Note: {@link ScriptInfo.PackageId} is only present when the panel script
-   * is a package.
+   *   is a package.
    */
   readonly PackageId?: string;
 

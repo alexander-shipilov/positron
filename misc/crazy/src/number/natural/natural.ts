@@ -11,6 +11,7 @@ import { isNaturalNumber } from "./is-natural-number";
  * The {@link Natural} function creates a {@link NaturalNumber}
  * from the given `NumberLike` value.
  *
+ * @example
  * ```ts
  *  const natural1 = Natural(1)
  *  // 1

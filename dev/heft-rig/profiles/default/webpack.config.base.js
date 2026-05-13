@@ -12,13 +12,17 @@ async function createWebpackConfig({ argv, configOverride, env, projectRoot }) {
       // whereas the entry point for apps is "src/start.ts"
       index: path.resolve(projectRoot, "lib", "esm", "index.js"),
     },
+    experiments: {
+      // Required to support library type "module"
+      outputModule: env.production,
+    },
     output: env.production
       ? {
           // For libraries, the filename is unhashed so that the package.json
           // "main" field can refer to it
           filename: `[name].js`,
           library: {
-            type: "module",
+            type: "modern",
           },
           sourceMapFilename: "[name].js.map",
         }

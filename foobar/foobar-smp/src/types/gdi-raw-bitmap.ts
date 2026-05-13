@@ -1,4 +1,12 @@
 /**
+ * The {@link GdiRawBitmap} represents Device-Dependent Bitmap, which can be
+ * used in {@link GdiGraphics.GdiDrawBitmap}.
+ *
+ * @remarks
+ * Related methods:
+ *   {@link GdiBitmap.CreateRawBitmap}
+ *   {@link GdiGraphics.GdiDrawBitmap}
+ *
  * @public
  */
 export interface GdiRawBitmap {

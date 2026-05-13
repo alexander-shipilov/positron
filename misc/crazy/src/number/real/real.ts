@@ -10,6 +10,7 @@ import { isRealNumber } from "./is-real-number";
  * The {@link Real} function creates a {@link RealNumber} number from the given
  * `NumberLike` value.
  *
+ * @example
  * ```ts
  *  const real1 = Real(1.1)
  *  // 1.1

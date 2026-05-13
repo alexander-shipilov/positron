@@ -1,6 +1,10 @@
 /**
  * The {@link PlaybackOrderType} enumeration specifies playback orders.
- * @see {@link Plman.PlaybackOrder}, {@link Callbacks.on_playback_order_changed}
+ *
+ * @remarks
+ * The {@link PlaybackOrderType} enumeration is used by:
+ * {@link FbPlaylistManager.PlaybackOrder},
+ * {@link FbCallbacks.on_playback_order_changed}.
  *
  * @public
  */

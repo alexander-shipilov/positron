@@ -79,5 +79,6 @@ common/autoinstallers/*/.npmrc
 # Temporary files
 temp/
 
+*/*/docs
 */*/dist
 */*/lib

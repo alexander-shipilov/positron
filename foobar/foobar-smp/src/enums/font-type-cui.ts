@@ -1,6 +1,9 @@
 /**
- * The {@link FontTypeCui} enumeration specifies Columns UI font types.
- * This enumeration is used by {@link Window.GetFontCUI}.
+ * The {@link FontTypeCui} enumeration specifies `Columns UI` font types.
+ *
+ * @remarks
+ * The {@link FontTypeCui} enumeration is used by:
+ * {@link FbWindow.GetFontCUI}.
  *
  * @public
  */

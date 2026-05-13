@@ -10,11 +10,14 @@
     ".": {
       "require": "./lib/cjs/index.js",
       "import": "./lib/esm/index.js",
-      "types": "./lib/esm/index.d.ts"
+      "types": "./dist/index.d.ts"
     }
   },
   "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
   "files": [
+    "./dist",
     "./lib"
   ],
   "scripts": {
@@ -23,7 +26,6 @@
     "build": "heft build --clean",
     "test": "heft test --clean"
   },
-  "types": "./lib/esm/index.d.ts",
   "dependencies": {
     "@positron/core": "workspace:*"
   },

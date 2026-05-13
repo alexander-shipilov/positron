@@ -1,4 +1,8 @@
 /**
+ * The {@link MeasureStringInfo} interface represents the object returned by
+ * the {@link GdiGraphics.MeasureString} method.
+ *
+ * @example
  * ```ts
  *  const sf = StringFormat(StringAlignment.Near, StringAlignment.Near);
  *  const text = utils.ReadTextFile("z:\\info.txt");

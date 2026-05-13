@@ -2,6 +2,10 @@
  * The {@link PlaybackStopReason} enumeration specifies reasons that can stop
  * playback.
  *
+ * @remarks
+ * The {@link PlaybackStopReason} enumeration is used by:
+ * {@link FbCallbacks.on_playback_stop}.
+ *
  * @public
  */
 export enum PlaybackStopReason {

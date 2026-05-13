@@ -1,8 +1,8 @@
 /**
- * The {@link TextRenderingHint} enumeration specifies the process used to
- * render text. The process affects the quality of the text. This enumeration
- * is used by {@link GdiGraphics.SetTextRenderingHint}
+ * The {@link TextRenderingHint} enumeration represents processes used to
+ * render text. The process affects the quality of the text.
  *
+ * @remarks
  * The quality associated with each process varies according to the
  * circumstances.
  *
@@ -12,6 +12,9 @@
  * {@link TextRenderingHint.AntiAlias} provides the best quality for rotated
  * text. Generally, a process that produces higher quality text is slower than
  * a process that produces lower quality text.
+ *
+ * The {@link TextRenderingHint} enumeration is used by:
+ * {@link GdiGraphics.SetTextRenderingHint}
  *
  * @see http://msdn.microsoft.com/en-us/library/ms534404(VS.85).aspx
  *

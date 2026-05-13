@@ -1,7 +1,10 @@
 /**
- * The {@link FileAttribute} enumeration contains file attributes which are
+ * The {@link FileAttribute} enumeration represents file attributes which are
  * metadata values stored by the file system on disk.
- * Used by {@link Utils.Glob}.
+ *
+ * @remarks
+ * The {@link FileAttribute} enumeration is used by:
+ * {@link FbUtils.Glob}.
  *
  * @see http://msdn.microsoft.com/en-us/library/ee332330%28VS.85%29.aspx
  *

@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-duplicate-enum-values */
 /**
  * The {@link TextFormat} enumeration contains text format flags.
- * This enumeration is used by {@link GdiGraphics.GdiDrawText}.
+ *
+ * @remarks
+ * The {@link TextFormat} enumeration is used by:
+ * {@link GdiGraphics.GdiDrawText}.
  *
  * @see http://msdn.microsoft.com/en-us/library/dd162498(VS.85).aspx
  *

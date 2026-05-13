@@ -9,7 +9,10 @@
  * @public
  */
 export class Exception<TName extends string> extends Error {
-  readonly #name: TName;
+  /**
+   * @internal
+   */
+  declare private readonly _name: TName;
 
   /**
    * The {@link Exception.name} read-only property of the {@link Exception}
@@ -17,15 +20,15 @@ export class Exception<TName extends string> extends Error {
    * an error name.
    */
   public get name() {
-    return this.#name;
+    return this._name;
   }
 
   /**
    * @param name - The exception name
    * @param message - The exception message
    */
-  constructor(name: TName, message?: string) {
+  public constructor(name: TName, message?: string) {
     super(message);
-    this.#name = name;
+    this._name = name;
   }
 }

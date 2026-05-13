@@ -15,7 +15,7 @@ export const NEVER_EXCEPTION = "NeverException";
  * @public
  */
 export class NeverException extends Exception<typeof NEVER_EXCEPTION> {
-  constructor(message?: string) {
+  public constructor(message?: string) {
     super(NEVER_EXCEPTION, message);
   }
 }

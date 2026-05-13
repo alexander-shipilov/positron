@@ -33,7 +33,9 @@ export interface ThemeManager {
   IsThemePartDefined(partId: number): boolean;
 
   /**
-   * todo: http://msdn.microsoft.com/en-us/library/bb773210%28VS.85%29.aspx
+   * @remarks
+   * todo: add enumeration
+   *   http://msdn.microsoft.com/en-us/library/bb773210%28VS.85%29.aspx
    *
    * @param partId -
    * @param stateId - Default `0`.

@@ -1,14 +1,15 @@
 /**
  * The {@link FbPlayingItemLocation} interface describes a playing item
- * locations returned by {@link Plman.GetPlayingItemLocation}.
+ * locations returned by {@link FbPlaylistManager.GetPlayingItemLocation}.
  *
  * @public
  */
 export interface FbPlayingItemLocation {
   /**
    * The {@link FbPlayingItemLocation.IsValid} property checks
-   * whether playlist item at the current location is valid.
+   * if the playlist item at the current location is valid.
    *
+   * @example
    * ```ts
    *  const playingItemLocation = plman.GetPlayingItemLocation();
    *

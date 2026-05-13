@@ -6,6 +6,8 @@ import type { MenuObject } from "./menu-object";
  */
 export interface ContextMenuManager {
   /**
+   * The {@link ContextMenuManager.BuildMenu} method builds context menu.
+   *
    * @param menuObject -
    * @param baseId -
    * @param maxId - Default `-1`

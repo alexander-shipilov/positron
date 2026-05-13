@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-duplicate-enum-values */
 /**
- * Used in {@link MenuObject.TrackPopupMenu}.
+ * The {@link TrackPopupMenu} enumeration represents flags to locate and track
+ * the menu.
+ *
+ * @remarks
+ * The {@link TrackPopupMenu} enumeration is used by:
+ * {@link MenuObject.TrackPopupMenu}.
+ *
  * @see http://msdn.microsoft.com/en-us/library/ms648002(VS.85).aspx
  *
  * @public

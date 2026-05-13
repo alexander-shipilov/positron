@@ -7,6 +7,7 @@ import type { TreeItem } from "./tree-item";
  * It's possible to loop over the items in a {@link TreeList} using
  * a `for` loop:
  *
+ * @example
  * ```ts
  *  for (let i = 0; i < index.length; i++) {
  *     let item = index[i];

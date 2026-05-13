@@ -8,11 +8,11 @@ export interface ArtPromiseResult {
    * The {@link ArtPromiseResult.image} property contains an image or `null` on
    * failure.
    */
-  image: GdiBitmap | null;
+  readonly image: GdiBitmap | null;
 
   /**
-   * The {@link ArtPromiseResult.image} property contains path to image file
-   * (or track file if image is embedded)
+   * The {@link ArtPromiseResult.path} property contains path to image file
+   * (or track file if image is embedded).
    */
-  path: string;
+  readonly path: string;
 }

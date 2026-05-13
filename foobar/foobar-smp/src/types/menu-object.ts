@@ -50,9 +50,10 @@ export interface MenuObject {
   ): void;
 
   /**
-   * @param x -
-   * @param y -
-   * @param flags - See {@link TrackPopupMenu}. Default `0`.
+   * @param x - The x-coordinate.
+   * @param y - The y-coordinate.
+   * @param flags - Use zero of more of the {@link TrackPopupMenu} flags.
+   *   Default `0`.
    */
   TrackPopupMenu(x: number, y: number, flags?: number): number;
 }

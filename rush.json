@@ -15,7 +15,8 @@
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.172.0",
+  "rushVersion": "5.175.1",
+
   /**
    * The next field selects which package manager should be installed and determines its version.
    * Rush installs its own local copy of the package manager to ensure that your build process
@@ -24,7 +25,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "10.33.0",
+  "pnpmVersion": "10.30.2",
   // "pnpmVersion": "9.15.4",
   // "npmVersion": "6.14.15",
   // "yarnVersion": "1.9.4",
@@ -378,13 +379,18 @@
   "projects": [
     /** Dev */
     {
-      "projectFolder": "dev/eslint-config",
       "packageName": "@positron/eslint-config",
+      "projectFolder": "dev/eslint-config",
       "shouldPublish": false
     },
     {
-      "projectFolder": "dev/heft-rig",
       "packageName": "@positron/heft-rig",
+      "projectFolder": "dev/heft-rig",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@positron/api-documenter",
+      "projectFolder": "dev/api-documenter",
       "shouldPublish": false
     },
     /** utils */
@@ -441,6 +447,14 @@
     {
       "packageName": "@positron/foobar-smp",
       "projectFolder": "foobar/foobar-smp"
+    },
+    {
+      "packageName": "@positron/foobar-smp-core",
+      "projectFolder": "foobar/foobar-smp-core"
+    },
+    {
+      "packageName": "@positron/foobar-smp-website",
+      "projectFolder": "foobar/foobar-smp-website"
     }
   ],
 }

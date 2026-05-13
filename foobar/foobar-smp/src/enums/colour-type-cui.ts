@@ -1,6 +1,9 @@
 /**
- * The {@link ColourTypeCui} enumeration specifies Columns UI colors types.
- * This enumeration is used by {@link Window.GetColourCUI}.
+ * The {@link ColourTypeCui} enumeration specifies `Columns UI` colors types.
+ *
+ * @remarks
+ * The {@link ColourTypeCui} enumeration is used by:
+ * {@link FbWindow.GetColourCUI}.
  *
  * @public
  */

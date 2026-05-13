@@ -1,7 +1,10 @@
 /**
  * The {@link SmoothingMode} enumeration specifies the type of smoothing
- * (antialiasing) that is applied to lines and curves. This enumeration is used
- * by {@link GdiGraphics.SetSmoothingMode}
+ * (antialiasing) that is applied to lines and curves.
+ *
+ * @remarks
+ * The {@link SmoothingMode} enumeration is used by:
+ * {@link GdiGraphics.SetSmoothingMode}
  *
  * @see http://msdn.microsoft.com/en-us/library/ms534173(VS.85).aspx
  *

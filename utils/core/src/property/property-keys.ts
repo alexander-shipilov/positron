@@ -17,6 +17,6 @@ import { propertySymbols } from "./property-symbols";
  */
 export function propertyKeys<TValue extends AnyObject>(
   object: TValue,
-): PropertyKeyOf<TValue>[] {
+): PropertyKeyOf<TValue, string | symbol>[] {
   return [...propertyNames(object), ...propertySymbols(object)];
 }

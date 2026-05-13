@@ -1,5 +1,10 @@
 /**
- * The {@link SelectionType} enumeration specifies selection type
+ * The {@link SelectionType} enumeration specifies selection types.
+ *
+ * @remarks
+ * The {@link SelectionType} enumeration is used by:
+ * {@link FooBar.GetSelectionType},
+ * {@link FbUiSelectionHolder.SetSelection}.
  *
  * @public
  */

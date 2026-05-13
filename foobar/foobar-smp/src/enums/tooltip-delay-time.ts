@@ -1,7 +1,10 @@
 /**
- * Used by:
- *  - {@link FbTooltip.GetDelayTime}
- *  - {@link FbTooltip.SetDelayTime}
+ * The {@link TooltipDelayTime} enumeration represents tooltip delays.
+ *
+ * @remarks
+ * The {@link TooltipDelayTime} enumeration is used by:
+ * {@link FbTooltip.GetDelayTime}
+ * {@link FbTooltip.SetDelayTime}
  *
  * @see http://msdn.microsoft.com/en-us/library/bb760404(VS.85).aspx
  *

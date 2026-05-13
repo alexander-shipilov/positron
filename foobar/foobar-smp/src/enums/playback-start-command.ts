@@ -2,6 +2,10 @@
  * The {@link PlaybackQueueChangeOrigin} enumeration specifies commands that
  * can initiate playback.
  *
+ * @remarks
+ * The {@link PlaybackStartCommand} enumeration is used by:
+ * {@link FbCallbacks.on_playback_starting}.
+ *
  * @public
  */
 export enum PlaybackStartCommand {

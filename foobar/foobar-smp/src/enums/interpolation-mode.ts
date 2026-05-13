@@ -1,7 +1,11 @@
 /**
  * The {@link InterpolationMode} enumeration specifies the algorithm that is
- * used when images are scaled or rotated. This enumeration is used by
- * {@link GdiGraphics.SetInterpolationMode}, {@link GdiBitmap.Resize}.
+ * used when images are scaled or rotated.
+ *
+ * @remarks
+ * The {@link FontTypeDui} enumeration is used by:
+ * {@link GdiGraphics.SetInterpolationMode},
+ * {@link GdiBitmap.Resize}.
  *
  * @see http://msdn.microsoft.com/en-us/library/ms534141(VS.85).aspx
  *

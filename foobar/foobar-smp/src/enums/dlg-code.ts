@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-duplicate-enum-values */
 /**
- * The {@link DlgCode} enumeration store values indicating which type of input
- * the application processes.
+ * The {@link DlgCode} enumeration represents values indicating which type of
+ * input the panel processes.
+ *
+ * @remarks
+ * The {@link DlgCode} enumeration is used by:
+ * {@link FbWindow.DlgCode}.
  *
  * @public
  */

@@ -1,5 +1,10 @@
 /**
- * The {@link ContextCommandFlags} enumeration specifies context command flags.
+ * The {@link ContextCommandFlags} enumeration represents context command flags.
+ *
+ * @remarks
+ * The {@link ContextCommandFlags} enumeration is used by:
+ * {@link FooBar.RunContextCommand},
+ * {@link FooBar.RunContextCommandWithMetadb}.
  *
  * @public
  */
@@ -18,7 +23,7 @@ export enum ContextCommandFlags {
 
   /**
    * This can be useful if you need to run context commands the user may have
-   * hidden using `File` \> `Preferences` \> `Display` \> `Context Menu`
+   * hidden using `File > Preferences > Display > Context Menu`
    */
   Full = 8,
 }

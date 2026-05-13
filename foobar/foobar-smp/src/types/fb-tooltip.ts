@@ -5,12 +5,15 @@ import type { FontStyle, TooltipDelayTime } from "../enums";
  */
 export interface FbTooltip {
   /**
+   *
+   * @remarks
    * Note: this also updates text on the active tooltip i.e. there is no need
-   * to manually cycle {@link FbTooltip.Deactivate} /
-   * {@link FbTooltip.Activate} to update text.
+   *   to manually cycle {@link FbTooltip.Deactivate} /
+   *   {@link FbTooltip.Activate} to update text.
    *
    * Note: Use "\\n" if you want multi-line tooltips.
    *
+   * @example
    * ```ts
    *  const tooltip = window.Tooltip;
    *
@@ -27,11 +30,13 @@ export interface FbTooltip {
   /**
    * The {@link FbTooltip.Activate} method activates tooltip.
    *
+   * @remarks
    * Note: only do this when text has changed, otherwise it will flicker.
    *
+   * @example
    * ```ts
-   *  var tooltip = window.Tooltip;
-   *  var text = "...";
+   *  const tooltip = window.Tooltip;
+   *  const text = "...";
    *
    *  if (tooltip.Text != text) {
    *    tooltip.Text = text;
@@ -76,6 +81,7 @@ export interface FbTooltip {
    *
    * @param width -
    *
+   * @example
    * ```ts
    *  const tooltip = window.Tooltip;
    *
@@ -86,14 +92,15 @@ export interface FbTooltip {
   SetMaxWidth(width: number): void;
 
   /**
+   * @remarks
    * Note: check that `x`, `y` positions have changed from the last invocation,
-   * otherwise it will flicker.
+   *   otherwise it will flicker.
    *
    * Note 2: ensure that the tooltip does not overlap the mouse pointer,
-   * otherwise it will glitch out.
+   *   otherwise it will glitch out.
    *
-   * @param x - X-position
-   * @param y - Y-position
+   * @param x - The x-position
+   * @param y - The y-position
    */
   TrackPosition(x: number, y: number): void;
 }

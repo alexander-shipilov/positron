@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-duplicate-enum-values */
 /**
- * The {@link RotateFlipType} enumeration specifies the direction of an image's
- * rotation and the axis used to flip the image. Used with
- * {@link GdiBitmap.RotateFlip}
+ * The {@link RotateFlipType} enumeration specifies the directions of an image's
+ * rotation and the axis used to flip the image.
+ *
+ * @remarks
+ * The {@link RotateFlipType} enumeration is used by:
+ * {@link GdiBitmap.RotateFlip}.
  *
  * @see http://msdn.microsoft.com/en-us/library/ms534171(VS.85).aspx
  *

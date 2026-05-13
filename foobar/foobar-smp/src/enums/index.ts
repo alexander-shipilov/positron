@@ -27,7 +27,7 @@ export * from "./smoothing-mode";
 export * from "./string-alignment";
 export * from "./string-format-flags";
 export * from "./string-trimming";
-export * from "./system-color";
+export * from "./system-colour";
 export * from "./text-format";
 export * from "./text-rendering-hint";
 export * from "./tooltip-delay-time";

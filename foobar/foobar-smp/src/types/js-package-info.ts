@@ -2,7 +2,7 @@ import type { JsPackageDirs } from "./js-package-dirs";
 
 /**
  * The {@link JsPackageInfo} interface represents a return value of
- * {@link Utils.GetPackageInfo}.
+ * {@link FbUtils.GetPackageInfo}.
  *
  * @public
  */

@@ -8,6 +8,7 @@ import type { GenericElementProps } from "./generic-element-props";
  * @public
  * Component {@link GenericElement} renders an HTML-element
  *
+ * @example
  * ```tsx
  *  const element = <Element element="div" className="foo" />
  * ```

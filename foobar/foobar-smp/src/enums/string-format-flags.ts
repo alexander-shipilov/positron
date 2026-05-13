@@ -2,9 +2,9 @@
  * The {@link StringFormatFlags} enumeration specifies text layout information
  * (such as orientation and clipping) and display manipulations (such as
  * ellipsis insertion, digit substitution, and representation of characters
- * that are not supported by a font). This enumeration is used by the
- * {@link GdiGraphics.MeasureString}, {@link GdiGraphics.DrawString}.
+ * that are not supported by a font).
  *
+ * @remarks
  * Multiple flags set can produce combined effects:
  * When both {@link StringFormatFlags.DirectionVertical} and
  * {@link StringFormatFlags.DirectionRightToLeft} are set, individual lines of
@@ -26,6 +26,10 @@
  * The {@link StringFormatFlags.DirectionVertical} and
  * {@link StringFormatFlags.DirectionRightToLeft} flags can affect string
  * alignment.
+ *
+ * The {@link StringFormatFlags} enumeration is used by:
+ * {@link GdiGraphics.MeasureString},
+ * {@link GdiGraphics.DrawString}.
  *
  * @see http://msdn.microsoft.com/en-us/library/ms534181(VS.85).aspx
  *

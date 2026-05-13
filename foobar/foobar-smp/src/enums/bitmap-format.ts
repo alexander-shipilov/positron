@@ -1,6 +1,9 @@
 /**
- * The {@link BitmapFormat} enumeration specifies bitmap output formats.
- * This enumeration is used by {@link GdiBitmap.SaveAs}.
+ * The {@link BitmapFormat} enumeration represents bitmap output formats.
+ *
+ * @remarks
+ * The {@link BitmapFormat} enumeration is used by:
+ * {@link GdiBitmap.SaveAs}.
  *
  * @public
  */
