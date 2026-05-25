@@ -12,7 +12,7 @@
  *
  * @public
  */
-export enum AlbumArtType {
+export const enum AlbumArtType {
   /**
    * Front art.
    */

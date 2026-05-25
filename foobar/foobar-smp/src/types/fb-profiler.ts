@@ -17,16 +17,11 @@
  *
  * @public
  */
-export declare class FbProfiler {
+export interface FbProfiler {
   /**
    * The {@link FbProfiler.Time} property contains time in milliseconds.
    */
-  public readonly Time: number;
-
-  /**
-   * @param name -
-   */
-  public constructor(name: string);
+  readonly Time: number;
 
   /**
    * The {@link FbProfiler.Print} prints profiled the measured time to the
@@ -55,10 +50,10 @@ export declare class FbProfiler {
    *   time. Default `""`.
    * @param printComponentInfo - Default `true`.
    */
-  public Print(additionalMsg?: string, printComponentInfo?: boolean): void;
+  Print(additionalMsg?: string, printComponentInfo?: boolean): void;
 
   /**
    * The {@link FbProfiler.Reset} resets measured times.
    */
-  public Reset(): void;
+  Reset(): void;
 }

@@ -9,7 +9,7 @@ import type { FbMetadbHandleList } from "./fb-metadb-handle-list";
  *   `File > Preferences > Display > Selection viewers`.
  *
  * Use in conjunction with the {@link FbCallbacks.on_focus} callback.
- * See {@link FooBar.AcquireUiSelectionHolder}.
+ * See {@link Fb.AcquireUiSelectionHolder}.
  *
  * @example
  * ```ts

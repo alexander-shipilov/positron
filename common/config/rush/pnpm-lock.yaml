@@ -259,6 +259,91 @@ importers:
       '@positron/foobar-smp':
         specifier: workspace:*
         version: link:../foobar-smp
+      '@positron/foobar-smp-globals':
+        specifier: workspace:*
+        version: link:../foobar-smp-globals
+    devDependencies:
+      '@jest/globals':
+        specifier: ~30.4.0
+        version: 30.4.0
+      '@microsoft/api-documenter':
+        specifier: ~7.30.5
+        version: 7.30.5(@types/node@25.6.2)
+      '@positron/heft-rig':
+        specifier: workspace:*
+        version: link:../../dev/heft-rig
+      '@rushstack/heft':
+        specifier: ~1.2.17
+        version: 1.2.17(@types/node@25.6.2)
+      '@types/node':
+        specifier: ~25.6.2
+        version: 25.6.2
+      eslint:
+        specifier: ^10.3.0
+        version: 10.3.0(jiti@2.6.1)
+      expect-type:
+        specifier: ^1.3.0
+        version: 1.3.0
+      jest:
+        specifier: ~30.4.0
+        version: 30.4.0(@types/node@25.6.2)(ts-node@10.9.2(@swc/core@1.15.33)(@types/node@25.6.2)(typescript@6.0.3))
+      react:
+        specifier: ~19.2.6
+        version: 19.2.6
+      ts-jest:
+        specifier: ~29.4.9
+        version: 29.4.9(@babel/core@7.27.4)(@jest/transform@30.4.0)(@jest/types@30.4.0)(babel-jest@30.4.0(@babel/core@7.27.4))(jest-util@30.4.0)(jest@30.4.0(@types/node@25.6.2))(typescript@6.0.3)
+      ts-node:
+        specifier: ~10.9.2
+        version: 10.9.2(@swc/core@1.15.33)(@types/node@25.6.2)(typescript@6.0.3)
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+
+  ../../foobar/foobar-smp-enums:
+    devDependencies:
+      '@jest/globals':
+        specifier: ~30.4.0
+        version: 30.4.0
+      '@microsoft/api-documenter':
+        specifier: ~7.30.5
+        version: 7.30.5(@types/node@25.6.2)
+      '@positron/heft-rig':
+        specifier: workspace:*
+        version: link:../../dev/heft-rig
+      '@rushstack/heft':
+        specifier: ~1.2.17
+        version: 1.2.17(@types/node@25.6.2)
+      '@types/node':
+        specifier: ~25.6.2
+        version: 25.6.2
+      eslint:
+        specifier: ^10.3.0
+        version: 10.3.0(jiti@2.6.1)
+      expect-type:
+        specifier: ^1.3.0
+        version: 1.3.0
+      jest:
+        specifier: ~30.4.0
+        version: 30.4.0(@types/node@25.6.2)(ts-node@10.9.2(@swc/core@1.15.33)(@types/node@25.6.2)(typescript@6.0.3))
+      react:
+        specifier: ~19.2.6
+        version: 19.2.6
+      ts-jest:
+        specifier: ~29.4.9
+        version: 29.4.9(@babel/core@7.27.4)(@jest/transform@30.4.0)(@jest/types@30.4.0)(babel-jest@30.4.0(@babel/core@7.27.4))(jest-util@30.4.0)(jest@30.4.0(@types/node@25.6.2))(typescript@6.0.3)
+      ts-node:
+        specifier: ~10.9.2
+        version: 10.9.2(@swc/core@1.15.33)(@types/node@25.6.2)(typescript@6.0.3)
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+
+  ../../foobar/foobar-smp-globals:
+    dependencies:
+      '@positron/foobar-smp':
+        specifier: workspace:*
+        version: link:../foobar-smp
     devDependencies:
       '@jest/globals':
         specifier: ~30.4.0

@@ -1,32 +1,75 @@
+import type { ActiveXObjectConstructor } from "./active-x-object-constructor";
+import type { EnumeratorConstructor } from "./enumerator-constructor";
+import type { Fb } from "./fb";
 import type { FbCallbacks } from "./fb-callbacks";
 import type { FbConsole } from "./fb-console";
-import type { FbGdi } from "./fb-gdi";
+import type { FbMetadbHandleListConstructor } from "./fb-metadb-handle-list-constructor";
 import type { FbPlaylistManager } from "./fb-playlist-manager";
+import type { FbProfilerConstructor } from "./fb-profiler-constructor";
+import type { FbTitleFormatConstructor } from "./fb-title-format-constructor";
 import type { FbUtils } from "./fb-utils";
 import type { FbWindow } from "./fb-window";
-import type { FooBar } from "./foo-bar";
+import type { GdiBitmapConstructor } from "./gdi-bitmap-constructor";
+import type { GdiFontConstructor } from "./gdi-font-constructor";
+import type { GdiUtils } from "./gdi-utils";
 import type { IncludeOptions } from "./include-options";
 
 /**
- * The {@link FbGlobal} interface represents `global` object.
+ * The {@link FbGlobal} interface represents `globalThis` object.
  *
  * @public
  */
 export interface FbGlobal extends Partial<FbCallbacks> {
+  /**
+   * `ActiveXObject` constructor.
+   */
+  readonly ActiveXObject: ActiveXObjectConstructor;
+
   /**
    * @see console.
    */
   readonly console: FbConsole;
 
   /**
-   * @see fb
+   * The `Enumerator` constructor.
    */
-  readonly fb: FooBar;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  readonly Enumerator: EnumeratorConstructor;
 
   /**
-   * @see gdi
+   * @see fb
    */
-  readonly gdi: FbGdi;
+  readonly fb: Fb;
+
+  /**
+   * The `FbMetadbHandleList` constructor.
+   */
+  readonly FbMetadbHandleList: FbMetadbHandleListConstructor;
+
+  /**
+   * The `FbProfiler` constructor.
+   */
+  readonly FbProfiler: FbProfilerConstructor;
+
+  /**
+   * The `FbTitleFormat` constructor.
+   */
+  readonly FbTitleFormat: FbTitleFormatConstructor;
+
+  /**
+   * The `gdi` object.
+   */
+  readonly gdi: GdiUtils;
+
+  /**
+   * The `GdiBitmap` constructor.
+   */
+  readonly GdiBitmap: GdiBitmapConstructor;
+
+  /**
+   * The `GdiFont` constructor
+   */
+  readonly GdiFont: GdiFontConstructor;
 
   /**
    * Link to global this.
@@ -54,8 +97,8 @@ export interface FbGlobal extends Partial<FbCallbacks> {
    * {@link FbGlobal.setInterval}.
    *
    * @remarks
-   * If the parameter provided does not identify a previously established action,
-   *   this does nothing.
+   * If the parameter provided does not identify a previously established
+   *   action, this does nothing.
    *
    * @param intervalID - The identifier of the repeated action you want to
    *   cancel. This ID was returned by the corresponding call to
@@ -70,8 +113,8 @@ export interface FbGlobal extends Partial<FbCallbacks> {
    * established by calling {@link FbGlobal.setTimeout}.
    *
    * @remarks
-   * If the parameter provided does not identify a previously established action,
-   *   this does nothing.
+   * If the parameter provided does not identify a previously established
+   *   action, this does nothing.
    *
    * @param timeoutID - The identifier of the timeout you want to cancel. This
    *   ID was returned by the corresponding call to
@@ -118,7 +161,7 @@ export interface FbGlobal extends Partial<FbCallbacks> {
    *
    * @public
    */
-  include(path: string, options?: IncludeOptions): void;
+  include(this: void, path: string, options?: IncludeOptions): void;
 
   /**
    * The {@link FbGlobal.setInterval} function repeatedly calls a with a fixed
@@ -147,14 +190,15 @@ export interface FbGlobal extends Partial<FbCallbacks> {
   ): number;
 
   /**
-   * The {@link FbGlobal.setTimeout} function sets a timer which executes a once
-   * the timer expires.
+   * The {@link FbGlobal.setTimeout} function sets a timer which executes a
+   * once the timer expires.
    *
    * @param func - A to be executed after the timer expires.
    * @param delay - A non-negative integer indicating how long the timer should
    *   wait before the specified or code is executed, in milliseconds.
    *   Defaults to `0` if not specified.
-   * @param args - Additional arguments which are passed through to the function
+   * @param args - Additional arguments which are passed through to the
+   *   function
    *   specified by `func`.
    *
    * @returns - A positive integer (typically within the range of `1` to

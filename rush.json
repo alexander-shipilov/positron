@@ -453,6 +453,14 @@
       "projectFolder": "foobar/foobar-smp-core"
     },
     {
+      "packageName": "@positron/foobar-smp-enums",
+      "projectFolder": "foobar/foobar-smp-enums"
+    },
+    {
+      "packageName": "@positron/foobar-smp-globals",
+      "projectFolder": "foobar/foobar-smp-globals"
+    },
+    {
       "packageName": "@positron/foobar-smp-website",
       "projectFolder": "foobar/foobar-smp-website"
     }

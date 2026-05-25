@@ -21,11 +21,11 @@ export interface FbCallbacks {
   /**
    * The {@link FbCallbacks.on_always_on_top_changed} callback is called when
    * "Always On Top" state changes: from using the menu, Alt + A,
-   * {@link FooBar.AlwaysOnTop}, etc.
+   * {@link Fb.AlwaysOnTop}, etc.
    *
    * @param state - Current "Always On Top" state.
    */
-  on_always_on_top_changed: (this: void, state: boolean) => undefined;
+  on_always_on_top_changed(this: void, state: boolean): undefined;
 
   /**
    * The {@link FbCallbacks.on_char} callback is called when
@@ -37,7 +37,7 @@ export interface FbCallbacks {
    *
    * @param code - UTF16 encoded char.
    */
-  on_char: (this: void, code: string) => undefined;
+  on_char(this: void, code: string): undefined;
 
   /**
    * The {@link FbCallbacks.on_colours_changed} callback is called when
@@ -47,7 +47,7 @@ export interface FbCallbacks {
    * Note: Use {@link FbWindow.GetColourCUI} / {@link FbWindow.GetColourDUI} to
    *   get new colours.
    */
-  on_colours_changed: (this: void) => undefined;
+  on_colours_changed(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_cursor_follow_playback_changed} callback is
@@ -55,63 +55,63 @@ export interface FbCallbacks {
    *
    * @param state - Current "cursor follow playback" state.
    */
-  on_cursor_follow_playback_changed: (this: void, state: boolean) => undefined;
+  on_cursor_follow_playback_changed(this: void, state: boolean): undefined;
 
   /**
-   * See {@link FooBar.DoDragDrop} documentation.
+   * See {@link Fb.DoDragDrop} documentation.
    *
    * @param action -
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_drag_drop: (
+  on_drag_drop(
     this: void,
     action: DropTargetAction,
     x: number,
     y: number,
-    mask: number,
-  ) => undefined;
+    keys: number,
+  ): undefined;
 
   /**
-   * See {@link FooBar.DoDragDrop} documentation.
+   * See {@link Fb.DoDragDrop} documentation.
    *
    * @param action -
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_drag_enter: (
+  on_drag_enter(
     this: void,
     action: DropTargetAction,
     x: number,
     y: number,
-    mask: number,
-  ) => undefined;
+    keys: number,
+  ): undefined;
 
   /**
-   * See {@link FooBar.DoDragDrop} documentation.
+   * See {@link Fb.DoDragDrop} documentation.
    */
-  on_drag_leave: (this: void) => undefined;
+  on_drag_leave(this: void): undefined;
 
   /**
-   * See {@link FooBar.DoDragDrop} documentation.
+   * See {@link Fb.DoDragDrop} documentation.
    *
    * @param action -
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_drag_over: (
+  on_drag_over(
     this: void,
     action: DropTargetAction,
     x: number,
     y: number,
-    mask: number,
-  ) => undefined;
+    keys: number,
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_dsp_preset_changed} callback is called when DSP
@@ -124,7 +124,7 @@ export interface FbCallbacks {
    * Note: The {@link FbCallbacks.on_dsp_preset_changed} callback does not get
    *   called when presets are added or removed.
    */
-  on_dsp_preset_changed: (this: void) => undefined;
+  on_dsp_preset_changed(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_focus} callback called when the panel gets /
@@ -132,7 +132,7 @@ export interface FbCallbacks {
    *
    * @param isFocused - The current focus state.
    */
-  on_focus: (this: void, isFocused: boolean) => undefined;
+  on_focus(this: void, isFocused: boolean): undefined;
 
   /**
    * The {@link FbCallbacks.on_font_changed} callback called when fonts are
@@ -142,7 +142,7 @@ export interface FbCallbacks {
    * Note: you can retrieve fonts using {@link FbWindow.GetFontDUI} /
    *   {@link FbWindow.GetFontCUI}
    */
-  on_font_changed: (this: void) => undefined;
+  on_font_changed(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_get_album_art_done} callback called when thread
@@ -154,13 +154,13 @@ export interface FbCallbacks {
    * @param imagePath - Path to image file (or music file if image is
    *   embedded).
    */
-  on_get_album_art_done: (
+  on_get_album_art_done(
     this: void,
     handle: FbMetadbHandle,
     artType: AlbumArtType,
     image: GdiBitmap | null,
     imagePath: string,
-  ) => undefined;
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_item_focus_change} callback called when playlist
@@ -171,12 +171,12 @@ export interface FbCallbacks {
    *   no focused item.
    * @param to - The index of the new focused item.
    */
-  on_item_focus_change: (
+  on_item_focus_change(
     this: void,
     playlistIndex: number,
     from: number,
     to: number,
-  ) => undefined;
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_item_played} callback called when at least
@@ -185,7 +185,7 @@ export interface FbCallbacks {
    *
    * @param handle - The track handle.
    */
-  on_item_played: (this: void, handle: FbMetadbHandle) => undefined;
+  on_item_played(this: void, handle: FbMetadbHandle): undefined;
 
   /**
    * The {@link FbCallbacks.on_key_down} callback called when keyboard key is
@@ -200,7 +200,7 @@ export interface FbCallbacks {
    *
    * @param vkey - Virtual key code.
    */
-  on_key_down: (this: void, vkey: VirtualKey) => undefined;
+  on_key_down(this: void, vkey: VirtualKey): undefined;
 
   /**
    * The {@link FbCallbacks.on_key_up} callback called when keyboard key is
@@ -212,7 +212,7 @@ export interface FbCallbacks {
    *
    * @param vkey - Virtual key code.
    */
-  on_key_up: (this: void, vkey: VirtualKey) => undefined;
+  on_key_up(this: void, vkey: VirtualKey): undefined;
 
   /**
    * The {@link FbCallbacks.on_library_items_added} callback called when tracks
@@ -220,10 +220,7 @@ export interface FbCallbacks {
    *
    * @param handleList - Affected items
    */
-  on_library_items_added: (
-    this: void,
-    handleList: FbMetadbHandleList,
-  ) => undefined;
+  on_library_items_added(this: void, handleList: FbMetadbHandleList): undefined;
 
   /**
    * The {@link FbCallbacks.on_library_items_changed} callback called when
@@ -231,10 +228,10 @@ export interface FbCallbacks {
    *
    * @param handleList - Affected items
    */
-  on_library_items_changed: (
+  on_library_items_changed(
     this: void,
     handleList: FbMetadbHandleList,
-  ) => undefined;
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_library_items_removed} callback called when
@@ -242,28 +239,28 @@ export interface FbCallbacks {
    *
    * @param handleList - Affected items
    */
-  on_library_items_removed: (
+  on_library_items_removed(
     this: void,
     handleList: FbMetadbHandleList,
-  ) => undefined;
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_load_image_done} callback called when thread
-   * created by {@link FbGdi.LoadImageAsync} is done.
+   * created by {@link GdiUtils.LoadImageAsync} is done.
    *
-   * @param cookie - The return value from the {@link FbGdi.LoadImageAsync}
+   * @param cookie - The return value from the {@link GdiUtils.LoadImageAsync}
    *   call.
    * @param image - {@link GdiBitmap} object or `null` on failure (invalid
    *   path / not an image).
    * @param imagePath - The path that was originally supplied to
-   *   {@link FbGdi.LoadImageAsync}.
+   *   {@link GdiUtils.LoadImageAsync}.
    */
-  on_load_image_done: (
+  on_load_image_done(
     this: void,
     cookie: number,
     image: GdiBitmap,
     imagePath: string,
-  ) => undefined;
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_main_menu} callback called when main menu item
@@ -299,7 +296,7 @@ export interface FbCallbacks {
    *
    * @deprecated Use {@link FbCallbacks.on_main_menu_dynamic} instead.
    */
-  on_main_menu: (this: void, index: number) => undefined;
+  on_main_menu(this: void, index: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_main_menu_dynamic} callback called when one of
@@ -309,12 +306,12 @@ export interface FbCallbacks {
    *
    * @remarks
    * Related methods:
-   * {@link FooBar.RegisterMainMenuCommand},
-   * {@link FooBar.UnregisterMainMenuCommand}.
+   * {@link Fb.RegisterMainMenuCommand},
+   * {@link Fb.UnregisterMainMenuCommand}.
    *
    * @param commandId - Id of the associated command.
    */
-  on_main_menu_dynamic: (this: void, commandId: number) => undefined;
+  on_main_menu_dynamic(this: void, commandId: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_metadb_changed} callback called when metadb
@@ -326,11 +323,11 @@ export interface FbCallbacks {
    *   component that provides tag-like data from a database. E.g.
    *   `foo_playcount` and {@link FbMetadbHandle.RefreshStats}
    */
-  on_metadb_changed: (
+  on_metadb_changed(
     this: void,
     handleList: FbMetadbHandleList,
     fromHook: boolean,
-  ) => undefined;
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_lbtn_dblclk} callback called when left
@@ -338,15 +335,15 @@ export interface FbCallbacks {
    *
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_mouse_lbtn_dblclk: (
+  on_mouse_lbtn_dblclk(
     this: void,
     x: number,
     y: number,
-    mask: number,
-  ) => undefined;
+    keys: number,
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_lbtn_down} callback called when left mouse
@@ -354,15 +351,10 @@ export interface FbCallbacks {
    *
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_mouse_lbtn_down: (
-    this: void,
-    x: number,
-    y: number,
-    mask: number,
-  ) => undefined;
+  on_mouse_lbtn_down(this: void, x: number, y: number, keys: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_lbtn_up} callback called when left mouse
@@ -370,21 +362,16 @@ export interface FbCallbacks {
    *
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_mouse_lbtn_up: (
-    this: void,
-    x: number,
-    y: number,
-    mask: number,
-  ) => undefined;
+  on_mouse_lbtn_up(this: void, x: number, y: number, keys: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_leave} callback called when mouse cursor
    * leaves panel.
    */
-  on_mouse_leave: (this: void) => undefined;
+  on_mouse_leave(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_mbtn_dblclk} callback called when middle
@@ -392,15 +379,15 @@ export interface FbCallbacks {
    *
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_mouse_mbtn_dblclk: (
+  on_mouse_mbtn_dblclk(
     this: void,
     x: number,
     y: number,
-    mask: number,
-  ) => undefined;
+    keys: number,
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_mbtn_down} callback called when middle
@@ -408,15 +395,10 @@ export interface FbCallbacks {
    *
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_mouse_mbtn_down: (
-    this: void,
-    x: number,
-    y: number,
-    mask: number,
-  ) => undefined;
+  on_mouse_mbtn_down(this: void, x: number, y: number, keys: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_mbtn_up} callback called when middle
@@ -424,15 +406,10 @@ export interface FbCallbacks {
    *
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_mouse_mbtn_up: (
-    this: void,
-    x: number,
-    y: number,
-    mask: number,
-  ) => undefined;
+  on_mouse_mbtn_up(this: void, x: number, y: number, keys: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_move} callback called when mouse
@@ -440,10 +417,10 @@ export interface FbCallbacks {
    *
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_mouse_move: (this: void, x: number, y: number, mask: number) => undefined;
+  on_mouse_move(this: void, x: number, y: number, keys: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_rbtn_dblclk} callback called when right
@@ -451,15 +428,15 @@ export interface FbCallbacks {
    *
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_mouse_rbtn_dblclk: (
+  on_mouse_rbtn_dblclk(
     this: void,
     x: number,
     y: number,
-    mask: number,
-  ) => undefined;
+    keys: number,
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_rbtn_down} callback called when right
@@ -467,15 +444,10 @@ export interface FbCallbacks {
    *
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_mouse_rbtn_down: (
-    this: void,
-    x: number,
-    y: number,
-    mask: number,
-  ) => undefined;
+  on_mouse_rbtn_down(this: void, x: number, y: number, keys: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_rbtn_up} callback called when right
@@ -490,10 +462,10 @@ export interface FbCallbacks {
    *
    * @param x - The x-coordinate.
    * @param y - The y-coordinate.
-   * @param mask - Indicates whether various virtual keys are down.
-   *   See {@link MouseEventMask}.
+   * @param keys - Indicates whether various virtual keys are down.
+   *   See {@link MouseKey}.
    */
-  on_mouse_rbtn_up: (this: void, x: number, y: number, mask: number) => boolean;
+  on_mouse_rbtn_up(this: void, x: number, y: number, keys: number): boolean;
 
   /**
    * The {@link FbCallbacks.on_mouse_wheel} callback called on scroll up /
@@ -501,7 +473,7 @@ export interface FbCallbacks {
    *
    * @param step - Scroll direction: `-1` or `1`.
    */
-  on_mouse_wheel: (this: void, step: number) => undefined;
+  on_mouse_wheel(this: void, step: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_mouse_wheel_h} callback called on scroll left
@@ -509,7 +481,7 @@ export interface FbCallbacks {
    *
    * @param step - Scroll direction: `-1` or `1`
    */
-  on_mouse_wheel_h: (this: void, step: number) => undefined;
+  on_mouse_wheel_h(this: void, step: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_notify_data} callback called in other panels
@@ -540,17 +512,17 @@ export interface FbCallbacks {
    * @param name - The data name.
    * @param info - Info.
    */
-  on_notify_data: (this: void, name: string, info: unknown) => undefined;
+  on_notify_data(this: void, name: string, info: unknown): undefined;
 
   /**
    * The {@link FbCallbacks.on_output_device_changed} callback called when
-   * output device changes. Use {@link FooBar.GetOutputDevices} to retrieve
+   * output device changes. Use {@link Fb.GetOutputDevices} to retrieve
    * settings.
    *
    * @remarks
    * Note: available only in foobar2000 v1.4 and later.
    */
-  on_output_device_changed: (this: void) => undefined;
+  on_output_device_changed(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_paint} callback called when window is ready to
@@ -558,27 +530,27 @@ export interface FbCallbacks {
    *
    * @param graphics - The GDI graphics object.
    */
-  on_paint: (this: void, graphics: GdiGraphics) => undefined;
+  on_paint(this: void, graphics: GdiGraphics): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_dynamic_info} callback called when
    * dynamic info (VBR bitrate etc.) changes.
    */
-  on_playback_dynamic_info: (this: void) => undefined;
+  on_playback_dynamic_info(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_dynamic_info_track} callback called when
    * per-track dynamic info (stream track titles etc.) changes. Happens less
    * often than {@link FbCallbacks.on_playback_dynamic_info}.
    */
-  on_playback_dynamic_info_track: (this: void) => undefined;
+  on_playback_dynamic_info_track(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_edited} callback called when currently
    * playing file gets edited. It's also called by components that provide
    * tag-like data such as `foo_playcount`.
    */
-  on_playback_edited: (this: void, handle: FbMetadbHandle) => undefined;
+  on_playback_edited(this: void, handle: FbMetadbHandle): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_follow_cursor_changed} callback called
@@ -586,7 +558,7 @@ export interface FbCallbacks {
    *
    * @param state - Current "playback follow cursor" value.
    */
-  on_playback_follow_cursor_changed: (this: void, state: boolean) => undefined;
+  on_playback_follow_cursor_changed(this: void, state: boolean): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_new_track} callback called when playback
@@ -594,7 +566,7 @@ export interface FbCallbacks {
    *
    * @param handle - The DB handle.
    */
-  on_playback_new_track: (this: void, handle: FbMetadbHandle) => undefined;
+  on_playback_new_track(this: void, handle: FbMetadbHandle): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_order_changed} callback called when
@@ -602,10 +574,7 @@ export interface FbCallbacks {
    *
    * @param order - Current playback order.
    */
-  on_playback_order_changed: (
-    this: void,
-    order: PlaybackOrderType,
-  ) => undefined;
+  on_playback_order_changed(this: void, order: PlaybackOrderType): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_pause} callback called on pause /
@@ -614,7 +583,7 @@ export interface FbCallbacks {
    * @param state - The current pause state: `true` when paused, `false` when
    *   unpaused.
    */
-  on_playback_pause: (this: void, state: boolean) => undefined;
+  on_playback_pause(this: void, state: boolean): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_queue_changed} callback called when
@@ -622,10 +591,10 @@ export interface FbCallbacks {
    *
    * @param origin - The change origin.
    */
-  on_playback_queue_changed: (
+  on_playback_queue_changed(
     this: void,
     origin: PlaybackQueueChangeOrigin,
-  ) => undefined;
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_seek} callback called when playing track
@@ -633,7 +602,7 @@ export interface FbCallbacks {
    *
    * @param time - The new position in seconds.
    */
-  on_playback_seek: (this: void, time: number) => undefined;
+  on_playback_seek(this: void, time: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_starting} callback called when playback
@@ -646,11 +615,11 @@ export interface FbCallbacks {
    * @param command - The command that initiates playback.
    * @param isPaused - Current paused state.
    */
-  on_playback_starting: (
+  on_playback_starting(
     this: void,
     command: PlaybackStartCommand,
     isPaused: boolean,
-  ) => undefined;
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_stop} callback called when playback
@@ -658,7 +627,7 @@ export interface FbCallbacks {
    *
    * @param reason - The reason.
    */
-  on_playback_stop: (this: void, reason: PlaybackStopReason) => undefined;
+  on_playback_stop(this: void, reason: PlaybackStopReason): undefined;
 
   /**
    * The {@link FbCallbacks.on_playback_time} callback called every second,
@@ -666,18 +635,18 @@ export interface FbCallbacks {
    *
    * @param time - Current playback time in seconds.
    */
-  on_playback_time: (this: void, time: number) => undefined;
+  on_playback_time(this: void, time: number): undefined;
 
   /**
    *
    * @param playlistIndex - Playlist index.
    * @param playlistItemIndex - Playlist item index.
    */
-  on_playlist_item_ensure_visible: (
+  on_playlist_item_ensure_visible(
     this: void,
     playlistIndex: number,
     playlistItemIndex: number,
-  ) => undefined;
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_playlist_items_added} callback called when items
@@ -685,7 +654,7 @@ export interface FbCallbacks {
    *
    * @param playlistIndex - Playlist index
    */
-  on_playlist_items_added: (this: void, playlistIndex: number) => undefined;
+  on_playlist_items_added(this: void, playlistIndex: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_playlist_items_removed} callback called when
@@ -694,11 +663,11 @@ export interface FbCallbacks {
    * @param playlistIndex - Playlist index.
    * @param newCount - Playlist length.
    */
-  on_playlist_items_removed: (
+  on_playlist_items_removed(
     this: void,
     playlistIndex: number,
     newCount: number,
-  ) => undefined;
+  ): undefined;
 
   /**
    * The {@link FbCallbacks.on_playlist_items_reordered} callback called when
@@ -711,14 +680,14 @@ export interface FbCallbacks {
    *
    * @param playlistIndex - Playlist index.
    */
-  on_playlist_items_reordered: (this: void, playlistIndex: number) => undefined;
+  on_playlist_items_reordered(this: void, playlistIndex: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_playlist_items_selection_change} callback
    * provides a workaround for some 3rd party playlist viewers not working with
    * {@link FbCallbacks.on_selection_changed}.
    */
-  on_playlist_items_selection_change: (this: void) => undefined;
+  on_playlist_items_selection_change(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_playlist_stop_after_current_changed} callback
@@ -726,16 +695,13 @@ export interface FbCallbacks {
    *
    * @param state - Current "stop after current" state.
    */
-  on_playlist_stop_after_current_changed: (
-    this: void,
-    state: boolean,
-  ) => undefined;
+  on_playlist_stop_after_current_changed(this: void, state: boolean): undefined;
 
   /**
    * The {@link FbCallbacks.on_playlist_switch} callback called when user
    * selects another playlist.
    */
-  on_playlist_switch: (this: void) => undefined;
+  on_playlist_switch(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_playlists_changed} callback called when:
@@ -746,7 +712,7 @@ export interface FbCallbacks {
    *    {@link FbPlaylistManager.SetPlaylistLockedActions} or components such
    * as `foo_utils` or `foo_playlist_attributes`.
    */
-  on_playlists_changed: (this: void) => undefined;
+  on_playlists_changed(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_replaygain_mode_changed} callback called when
@@ -757,7 +723,7 @@ export interface FbCallbacks {
    *
    * @param mode - Current replaygain mode.
    */
-  on_replaygain_mode_changed: (this: void, mode: ReplayGainMode) => undefined;
+  on_replaygain_mode_changed(this: void, mode: ReplayGainMode): undefined;
 
   /**
    * The {@link FbCallbacks.on_script_unload} callback called when script
@@ -780,13 +746,13 @@ export interface FbCallbacks {
    *
    *   - fb2k fails with exception.
    */
-  on_script_unload: (this: void) => undefined;
+  on_script_unload(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_selection_changed} callback called when selection
    * changes based on `File > Preferences > Display > Selection viewers`.
    */
-  on_selection_changed: (this: void) => undefined;
+  on_selection_changed(this: void): undefined;
 
   /**
    * The {@link FbCallbacks.on_size} callback called when panel is
@@ -801,7 +767,7 @@ export interface FbCallbacks {
    * @param width -
    * @param height -
    */
-  on_size: (this: void, width: number, height: number) => undefined;
+  on_size(this: void, width: number, height: number): undefined;
 
   /**
    * The {@link FbCallbacks.on_volume_change} callback called when volume
@@ -810,5 +776,5 @@ export interface FbCallbacks {
    * @param value - Current volume level in dB. Minimum volume is `-100`.
    *   Maximum is `0`.
    */
-  on_volume_change: (this: void, value: number) => undefined;
+  on_volume_change(this: void, value: number): undefined;
 }

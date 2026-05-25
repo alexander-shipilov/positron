@@ -194,7 +194,7 @@ describe(`${debug.name}(value)`, () => {
           [true, false],
         ]),
       ),
-    ).toBe('Map(4) {"foo" → "bar", 1 → 1, {} → {"foo": "bar"}, true → false}');
+    ).toBe('Map(4) {"foo" = "bar", 1 = 1, {} = {"foo": "bar"}, true = false}');
     expect(
       debug(
         new Map<unknown, unknown>([
@@ -203,7 +203,7 @@ describe(`${debug.name}(value)`, () => {
         ]),
       ),
     ).toBe(
-      "Map(2) {Map(1) {1 → 2} → Map(1) {1 → 2}, Set(1) {1} → Set(2) {1, 2}}",
+      "Map(2) {Map(1) {1 = 2} = Map(1) {1 = 2}, Set(1) {1} = Set(2) {1, 2}}",
     );
     expect(debug(Object.assign(new Map([]), { foo: 1 }))).toBe(
       'Map(0) {"foo": 1}',
@@ -220,17 +220,17 @@ describe(`${debug.name}(value)`, () => {
     );
   });
 
-  it("should return 'WeekMap {...}' if `value` is a `WeekMap`", () => {
-    expect(debug(new WeakMap())).toBe("WeakMap {...}");
+  it("should return 'WeekMap() {...}' if `value` is a `WeekMap`", () => {
+    expect(debug(new WeakMap())).toBe("WeakMap()");
     expect(debug(Object.assign(new WeakMap(), { foo: 1 }))).toBe(
-      'WeakMap {..., "foo": 1}',
+      'WeakMap() {"foo": 1}',
     );
   });
 
-  it("should return 'WeekSet {...}' if `value` is a `WeekSet`", () => {
-    expect(debug(new WeakSet())).toBe("WeakSet {...}");
+  it("should return 'WeekSet() {...}' if `value` is a `WeekSet`", () => {
+    expect(debug(new WeakSet())).toBe("WeakSet()");
     expect(debug(Object.assign(new WeakSet(), { foo: 1 }))).toBe(
-      'WeakSet {..., "foo": 1}',
+      'WeakSet() {"foo": 1}',
     );
   });
 });

@@ -3,7 +3,7 @@
  * The {@link SystemColour} enumeration represents system colours.
  *
  * @remarks
- * The {@link StringFormatFlags} enumeration is used by:
+ * The {@link SystemColour} enumeration is used by:
  * {@link FbUtils.GetSysColour}.
  *
  * @public

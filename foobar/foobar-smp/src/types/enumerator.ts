@@ -1,8 +1,8 @@
 import type { ActiveXObject } from "./active-x-object";
 
 /**
- * The {@link Enumerator} class creates a new object to iterate over `ActiveX`
- * collections.
+ * The {@link Enumerator} interface represents an object to iterate over
+ * `ActiveX` collections.
  *
  * @example
  * ```ts

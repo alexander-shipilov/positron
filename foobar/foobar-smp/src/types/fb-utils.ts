@@ -7,8 +7,7 @@ import type { HtmlDialogOptions } from "./html-dialog-options";
 import type { JsPackageInfo } from "./js-package-info";
 
 /**
- * The {@link FbUtils} interface represent a type of {@link utils} constant
- * which contains various utility functions.
+ * The {@link FbUtils} interface represent various utility functions.
  *
  * @public
  */
@@ -71,7 +70,7 @@ export interface FbUtils {
    *
    * @remarks
    * Note: it cannot detect fonts loaded by `foo_ui_hacks`. However,
-   * {@link FbGdi.Font} can use those fonts.
+   * {@link GdiUtils.Font} can use those fonts.
    *
    * @param name - Can be either in English or the localised name in your
    *   OS.
@@ -170,9 +169,9 @@ export interface FbUtils {
    *
    *
    * @remarks
-   * Performance note: consider using {@link FbGdi.LoadImageAsync} or
-   * {@link FbGdi.LoadImageAsyncV2} if there are a lot of images to load or if
-   * the image is big.
+   * Performance note: consider using {@link GdiUtils.LoadImageAsync} or
+   * {@link GdiUtils.LoadImageAsyncV2} if there are a lot of images to load or
+   *   if the image is big.
    *
    * todo: See `samples\\basic\\GetAlbumArtAsync.js`
    *

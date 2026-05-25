@@ -1,0 +1,34 @@
+/**
+ * Config file for API Documenter.
+ * For more info, please visit: https://api-extractor.com
+ */
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-documenter.schema.json",
+
+  /**
+   * Specifies the output target.
+   * Supported values are "docfx" or "markdown"
+   */
+  "outputTarget": "markdown",
+
+  /**
+   * Specifies what type of newlines API Documenter should use when writing output files.  By default, the output files
+   * will be written with Windows-style newlines.  To use POSIX-style newlines, specify "lf" instead.
+   * To use the OS's default newline kind, specify "os".
+   *
+   * DEFAULT VALUE: "crlf"
+   */
+  "newlineKind": "lf",
+
+  /**
+   * Describes plugin packages to be loaded, and which features to enable.
+   */
+  "plugins": [],
+
+  /**
+   * Specifies whether inherited members should also be shown on an API item's page.
+   *
+   * DEFAULT VALUE: false
+   */
+  "showInheritedMembers": true
+}

@@ -12,7 +12,7 @@ export enum StringAlignment {
    * Specifies that alignment is towards the origin of the bounding rectangle.
    * May be used for alignment of characters along the line or for alignment of
    * lines within the rectangle. For a right to left bounding rectangle
-   * ({@link StringFormatFlags.DirectionRightToLeft}), the origin is at the
+   * ({@link StringFormat.DirectionRightToLeft}), the origin is at the
    * upper right.
    */
   Near = 0,

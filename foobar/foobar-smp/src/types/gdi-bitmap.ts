@@ -4,38 +4,33 @@ import type { GdiGraphics } from "./gdi-graphics";
 import type { GdiRawBitmap } from "./gdi-raw-bitmap";
 
 /**
- * The {@link GdiBitmap} class creates a new `GDI` bitmap object.
+ * The {@link GdiBitmap} interface represents a `GDI` bitmap object.
  *
  * @public
  */
-export declare class GdiBitmap {
+export interface GdiBitmap {
   /**
-   * The {@link GdiBitmap.Height} property contains bitmap height of the
-   * current {@link GdiBitmap} object.
+   * The {@link GdiBitmap.Height} property contains bitmap height of
+   * the current {@link GdiBitmap} object.
    */
-  public readonly Height: number;
+  readonly Height: number;
 
   /**
    * The {@link GdiBitmap.Width} property contains bitmap width of the
    * current {@link GdiBitmap} object.
    */
-  public readonly Width: number;
+  readonly Width: number;
 
   /**
-   * @param arg - The {@link GdiBitmap} object to create copy from.
-   */
-  public constructor(arg: GdiBitmap);
-
-  /**
-   * The {@link GdiBitmap.ApplyAlpha} method applies alpha channel to the
-   * current {@link GdiBitmap} object.
+   * The {@link GdiBitmap.ApplyAlpha} method applies alpha channel to
+   * the current {@link GdiBitmap} object.
    *
    * @remarks
    * Note: Changes will be saved in the current bitmap.
    *
    * @param alpha - Valid values 0-255.
    */
-  public ApplyAlpha(alpha: number): GdiBitmap;
+  ApplyAlpha(alpha: number): GdiBitmap;
 
   /**
    * The {@link GdiBitmap.ApplyMask} method applies mask to the current
@@ -46,10 +41,10 @@ export declare class GdiBitmap {
    *
    * @param mask - Mask bitmap. Must be the same size as current instance.
    */
-  public ApplyMask(mask: GdiBitmap): boolean;
+  ApplyMask(mask: GdiBitmap): boolean;
 
   /**
-   * The {@link GdiBitmap.Clone} method clones bitmap the current
+   * The {@link GdiBitmap.Clone} method clones the current
    * {@link GdiBitmap} object.
    *
    * @param x -
@@ -57,31 +52,34 @@ export declare class GdiBitmap {
    * @param width -
    * @param height -
    */
-  public Clone(x: number, y: number, width: number, height: number): GdiBitmap;
+  Clone(x: number, y: number, width: number, height: number): GdiBitmap;
 
   /**
-   * The {@link GdiBitmap.ApplyMask} method creates a Device-Dependent Bitmap
-   * from the current {@link GdiBitmap} object, which is used in
+   * The {@link GdiBitmap.CreateRawBitmap} method creates a
+   * Device-Dependent Bitmap from the current {@link GdiBitmap}
+   * object, which is used in
    * {@link GdiGraphics.GdiDrawBitmap}
    */
-  public CreateRawBitmap(): GdiRawBitmap;
+  CreateRawBitmap(): GdiRawBitmap;
 
   /**
    * @param maxCount -
    */
-  public GetColourScheme(maxCount: number): number[];
+  GetColourScheme(maxCount: number): number[];
 
   /**
-   * The {@link GdiBitmap.GetColourSchemeJSON} method returns color scheme of
-   * the current {@link GdiBitmap} object as JSON array in string form.
+   * The {@link GdiBitmap.GetColourSchemeJSON} method returns color
+   * scheme of the current {@link GdiBitmap} object as JSON array in
+   * string form.
    *
    * @remarks
    * You need to use `JSON.parse()` on the result. Each entry in the
    *   array is an object which contains colour (`col`) and frequency (`freq`)
    *   values.
    *
-   * Note: The {@link GdiBitmap.GetColourSchemeJSON} method uses a different
-   *   method for calculating colours than {@link GdiBitmap.GetColourScheme}.
+   * Note: The {@link GdiBitmap.GetColourSchemeJSON} method uses a
+   *   different method for calculating colours than
+   *   {@link GdiBitmap.GetColourScheme}.
    *
    * Note: Image is automatically resized during processing for performance
    *   reasons so there's no need to resize before calling the method.
@@ -104,23 +102,24 @@ export declare class GdiBitmap {
    *
    * @param maxCount -
    */
-  public GetColourSchemeJSON(maxCount: number): string;
+  GetColourSchemeJSON(maxCount: number): string;
 
   /**
-   * The {@link GdiBitmap.GetGraphics} returns a {@link GdiGraphics} object.
+   * The {@link GdiBitmap.GetGraphics} returns a {@link GdiGraphics}
+   * object.
    *
    * @remarks
    * Note: Don't forget to use {@link GdiBitmap.ReleaseGraphics} after
    *   operations on {@link GdiGraphics} interface is done.
    */
-  public GetGraphics(): GdiGraphics;
+  GetGraphics(): GdiGraphics;
 
   /**
-   * The {@link GdiBitmap.InvertColours} method inverts the colours of the
-   * current {@link GdiBitmap} object, to create a negative image. i.e. white
-   * becomes black, black becomes white, etc.
+   * The {@link GdiBitmap.InvertColours} method inverts the colours of
+   * the current {@link GdiBitmap} object, to create a negative image.
+   * i.e. white becomes black, black becomes white, etc.
    */
-  public InvertColours(): GdiBitmap;
+  InvertColours(): GdiBitmap;
 
   /**
    * The {@link GdiBitmap.ReleaseGraphics} releases the specified
@@ -128,20 +127,17 @@ export declare class GdiBitmap {
    *
    * @param graphics -
    */
-  public ReleaseGraphics(graphics: GdiGraphics): void;
+  ReleaseGraphics(graphics: GdiGraphics): void;
 
   /**
-   * The {@link GdiBitmap.Resize} resizes the current {@link GdiBitmap} object.
+   * The {@link GdiBitmap.Resize} resizes the current
+   * {@link GdiBitmap} object.
    *
    * @param width -
    * @param height -
    * @param mode - Default {@link InterpolationMode.Default}.
    */
-  public Resize(
-    width: number,
-    height: number,
-    mode?: InterpolationMode,
-  ): GdiBitmap;
+  Resize(width: number, height: number, mode?: InterpolationMode): GdiBitmap;
 
   /**
    * The {@link GdiBitmap.RotateFlip} method rotates / flips current
@@ -152,11 +148,11 @@ export declare class GdiBitmap {
    *
    * @param mode -
    */
-  public RotateFlip(mode: RotateFlipType): void;
+  RotateFlip(mode: RotateFlipType): void;
 
   /**
-   * The {@link GdiBitmap.RotateFlip} method saves current {@link GdiBitmap}
-   * object to the file.
+   * The {@link GdiBitmap.RotateFlip} method saves current
+   * {@link GdiBitmap} object to the file.
    *
    * @remarks
    * Note: The parent folder must already exist.
@@ -173,10 +169,11 @@ export declare class GdiBitmap {
    * @param path - Full path including file extension.
    * @param format - Format. Default {@link BitmapFormat.Png}
    */
-  public SaveAs(path: string, format?: BitmapFormat): boolean;
+  SaveAs(path: string, format?: BitmapFormat): boolean;
 
   /**
-   * The {@link GdiBitmap.StackBlur} method applies blur effect to the current
+   * The {@link GdiBitmap.StackBlur} method applies blur effect to the
+   * current
    * {@link GdiBitmap} object.
    *
    * @remarks
@@ -189,5 +186,5 @@ export declare class GdiBitmap {
    *
    * @param radius - Valid values 2-254.
    */
-  public StackBlur(radius: number): void;
+  StackBlur(radius: number): void;
 }

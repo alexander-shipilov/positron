@@ -1,5 +1,7 @@
 /**
  * The {@link ApiPage} interface represents an API page.
+ *
+ * @public
  */
 export interface ApiPage {
   /**

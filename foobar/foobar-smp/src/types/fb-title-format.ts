@@ -2,7 +2,7 @@ import type { FbMetadbHandle } from "./fb-metadb-handle";
 import type { FbMetadbHandleList } from "./fb-metadb-handle-list";
 
 /**
- * The {@link FbTitleFormat} class creates a new title format object.
+ * The {@link FbTitleFormat} interface represents title format object.
  *
  * @remarks
  * Performance note: if you use the same query frequently,
@@ -11,12 +11,7 @@ import type { FbMetadbHandleList } from "./fb-metadb-handle-list";
  *
  * @public
  */
-export declare class FbTitleFormat {
-  /**
-   * @param expression -
-   */
-  public constructor(expression: string);
-
+export interface FbTitleFormat {
   /**
    * The {@link FbTitleFormat.Eval} method evaluates {@link FbTitleFormat} to
    * the current playing item.
@@ -41,7 +36,7 @@ export declare class FbTitleFormat {
    * @example
    *
    */
-  public Eval(force?: boolean): string;
+  Eval(force?: boolean): string;
 
   /**
    * The {@link FbTitleFormat.EvalWithMetadb} method evaluates
@@ -59,7 +54,7 @@ export declare class FbTitleFormat {
    *
    * @param handle -
    */
-  public EvalWithMetadb(handle: FbMetadbHandle): string;
+  EvalWithMetadb(handle: FbMetadbHandle): string;
 
   /**
    * The {@link FbTitleFormat.EvalWithMetadbs} method evaluates
@@ -77,5 +72,5 @@ export declare class FbTitleFormat {
    *
    * @param handleList -
    */
-  public EvalWithMetadbs(handleList: FbMetadbHandleList): string[];
+  EvalWithMetadbs(handleList: FbMetadbHandleList): string[];
 }

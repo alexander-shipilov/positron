@@ -7,7 +7,7 @@ export interface MenuObject {
    * of the current {@link MenuObject}.
    *
    * @param flags - Controls the appearance and behavior of the new menu item.
-   *   Can be a combination of the {@link MenuFlags}.
+   *   Can be a combination of the {@link MenuFlag}.
    * @param itemId - integer greater than `0`. Each menu item needs a unique
    *   id.
    * @param text - Menu item text
@@ -22,7 +22,7 @@ export interface MenuObject {
   /**
    * @param parentMenu -
    * @param flags - Controls the appearance and behavior of the new menu item.
-   *   Can be a combination of the {@link MenuFlags}.
+   *   Can be a combination of the {@link MenuFlag}.
    * @param text -
    */
   AppendTo(parentMenu: number, flags: number, text: string): void;

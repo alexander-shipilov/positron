@@ -3,8 +3,8 @@
  *
  * @remarks
  * The {@link ContextCommandFlags} enumeration is used by:
- * {@link FooBar.RunContextCommand},
- * {@link FooBar.RunContextCommandWithMetadb}.
+ * {@link Fb.RunContextCommand},
+ * {@link Fb.RunContextCommandWithMetadb}.
  *
  * @public
  */

@@ -31,7 +31,7 @@ export interface DropTargetAction {
    *
    * @remarks
    * The {@link DropTargetAction.IsInternal} property is `true`, if the drag
-   *   session was started by {@link FooBar.DoDragDrop}. `false`, otherwise.
+   *   session was started by {@link Fb.DoDragDrop}. `false`, otherwise.
    *
    */
   readonly IsInternal: boolean;

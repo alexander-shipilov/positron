@@ -4,11 +4,11 @@ import type { FbMetadbHandle } from "./fb-metadb-handle";
 import type { FbTitleFormat } from "./fb-title-format";
 
 /**
- * The {@link FbMetadbHandleList} class creates a new handle collection.
+ * The {@link FbMetadbHandleList} interface represents a handle collection.
  *
  * @public
  */
-export declare class FbMetadbHandleList {
+export interface FbMetadbHandleList {
   /**
    * Handle list elements can be accessed with array accessor, e.g.
    * `handleList[i]`
@@ -27,14 +27,7 @@ export declare class FbMetadbHandleList {
    *  // >> 11
    * ```
    */
-  public readonly Count: number;
-
-  /**
-   * @param arg -
-   */
-  public constructor(
-    arg?: FbMetadbHandle | FbMetadbHandle[] | FbMetadbHandleList | null,
-  );
+  readonly Count: number;
 
   /**
    * The {@link FbMetadbHandleList.Add} method adds an item to the current
@@ -49,7 +42,7 @@ export declare class FbMetadbHandleList {
    *
    * @param handle - Item handle to add.
    */
-  public Add(handle: FbMetadbHandle): void;
+  Add(handle: FbMetadbHandle): void;
 
   /**
    * @example
@@ -61,7 +54,7 @@ export declare class FbMetadbHandleList {
    *
    * @param handleList - DOMList handle to add
    */
-  public AddRange(handleList: FbMetadbHandleList): void;
+  AddRange(handleList: FbMetadbHandleList): void;
 
   /**
    * Note: Errors such as invalid path, corrupt image, target file type not
@@ -94,7 +87,7 @@ export declare class FbMetadbHandleList {
    * @param imagePath - The path to an existing image
    * @param artType - The album art type. Default {@link AlbumArtType.Front}.
    */
-  public AttachImage(imagePath: string, artType?: AlbumArtType): void;
+  AttachImage(imagePath: string, artType?: AlbumArtType): void;
 
   /**
    * The {@link FbMetadbHandleList.BSearch} method performs a binary search of
@@ -108,21 +101,21 @@ export declare class FbMetadbHandleList {
    *
    * @returns `-1` on failure.
    */
-  public BSearch(handle: FbMetadbHandle): number;
+  BSearch(handle: FbMetadbHandle): number;
 
   /**
    * The {@link FbMetadbHandleList.CalcTotalDuration} method returns total time
    * in seconds. For display purposes, consider using
    * {@link FbUtils.FormatDuration} on the result.
    */
-  public CalcTotalDuration(): number;
+  CalcTotalDuration(): number;
 
   /**
    * The {@link FbMetadbHandleList.CalcTotalSize} method returns total size
    * in bytes. For display purposes, consider using
    * {@link FbUtils.FormatFileSize} on the result.
    */
-  public CalcTotalSize(): number;
+  CalcTotalSize(): number;
 
   /**
    * The {@link FbMetadbHandleList.Clone} method clones list.
@@ -132,7 +125,7 @@ export declare class FbMetadbHandleList {
    *  const handleList2 = handleList.Clone();
    * ```
    */
-  public Clone(): FbMetadbHandleList;
+  Clone(): FbMetadbHandleList;
 
   /**
    * The {@link FbMetadbHandleList.Convert} method converts
@@ -151,7 +144,7 @@ export declare class FbMetadbHandleList {
    *  }
    * ```
    */
-  public Convert(): FbMetadbHandle[];
+  Convert(): FbMetadbHandle[];
 
   /**
    * The {@link FbMetadbHandleList.Convert} method returns an index at which a
@@ -165,10 +158,10 @@ export declare class FbMetadbHandleList {
    *
    * @returns The index in the handle list on success, `-1` if not found.
    */
-  public Find(handle: FbMetadbHandle): number;
+  Find(handle: FbMetadbHandle): number;
 
   /**
-   * See {@link FooBar.GetLibraryRelativePath}.
+   * See {@link Fb.GetLibraryRelativePath}.
    *
    * This should be faster than looping a handle list manually and using the
    * aforementioned method.
@@ -181,7 +174,7 @@ export declare class FbMetadbHandleList {
    *  console.log(handleList.GetLibraryRelativePaths());
    * ```
    */
-  public GetLibraryRelativePaths(): string[];
+  GetLibraryRelativePaths(): string[];
 
   /**
    * The {@link FbMetadbHandleList.Insert} method inserts an item to the
@@ -196,7 +189,7 @@ export declare class FbMetadbHandleList {
    * @param index -
    * @param handle -
    */
-  public Insert(index: number, handle: FbMetadbHandle): void;
+  Insert(index: number, handle: FbMetadbHandle): void;
 
   /**
    * The {@link FbMetadbHandleList.Convert} method inserts items to the
@@ -205,7 +198,7 @@ export declare class FbMetadbHandleList {
    * @param index -
    * @param handleList -
    */
-  public InsertRange(index: number, handleList: FbMetadbHandleList): void;
+  InsertRange(index: number, handleList: FbMetadbHandleList): void;
 
   /**
    * Note: sort with {@link FbMetadbHandleList.Sort} before using.
@@ -225,7 +218,7 @@ export declare class FbMetadbHandleList {
    *  @param handleList - Sorted handle list.
    * ```
    */
-  public MakeDifference(handleList: FbMetadbHandleList): void;
+  MakeDifference(handleList: FbMetadbHandleList): void;
 
   /**
    * Note: sort with {@link FbMetadbHandleList.Sort} before using.
@@ -244,7 +237,7 @@ export declare class FbMetadbHandleList {
    *  // `one` now only contains handles that were in BOTH `one` AND `two`
    * ```
    */
-  public MakeIntersection(handleList: FbMetadbHandleList): void;
+  MakeIntersection(handleList: FbMetadbHandleList): void;
 
   /**
    * Note: sort with {@link FbMetadbHandleList.Sort} before using.
@@ -264,7 +257,7 @@ export declare class FbMetadbHandleList {
    *
    * @param handleList - Sorted handle list.
    */
-  public MakeUnion(handleList: FbMetadbHandleList): void;
+  MakeUnion(handleList: FbMetadbHandleList): void;
 
   /**
    * @example
@@ -280,24 +273,24 @@ export declare class FbMetadbHandleList {
    * @param titleFormat - An instance of {@link FbTitleFormat}.
    * @param direction - Direction. Ascending while greater than `0`.
    */
-  public OrderByFormat(titleFormat: FbTitleFormat, direction: number): void;
+  OrderByFormat(titleFormat: FbTitleFormat, direction: number): void;
 
   /**
    * Note: this method should only be used on a handle list containing items
    * that are monitored as part of the Media Library.
    */
-  public OrderByPath(): void;
+  OrderByPath(): void;
 
   /**
    *
    */
-  public OrderByRelativePath(): void;
+  OrderByRelativePath(): void;
 
   /**
    * todo: See
    *    https://kbuffington.github.io/foo_jscript_panel/foo_jscript_panel/Playback-Stats.html
    */
-  public RefreshStats(): void;
+  RefreshStats(): void;
 
   /**
    * The {@link FbMetadbHandleList.Remove} method removes an item from the
@@ -305,13 +298,13 @@ export declare class FbMetadbHandleList {
    *
    * @param handle - The item to remove.
    */
-  public Remove(handle: FbMetadbHandle): void;
+  Remove(handle: FbMetadbHandle): void;
 
   /**
    * The {@link FbMetadbHandleList.RemoveAll} method removes all items from the
    * current list.
    */
-  public RemoveAll(): void;
+  RemoveAll(): void;
 
   /**
    * The {@link FbMetadbHandleList.RemoveAttachedImage} method removes attached
@@ -321,7 +314,7 @@ export declare class FbMetadbHandleList {
    *
    * @param artType - The album art type. Default {@link AlbumArtType.Front}.
    */
-  public RemoveAttachedImage(artType: AlbumArtType): void;
+  RemoveAttachedImage(artType: AlbumArtType): void;
 
   /**
    * The {@link FbMetadbHandleList.RemoveAttachedImages} method removes all
@@ -329,7 +322,7 @@ export declare class FbMetadbHandleList {
    *
    * Note: a progress dialog will be shown for larger file selections.
    */
-  public RemoveAttachedImages(): void;
+  RemoveAttachedImages(): void;
 
   /**
    * The {@link FbMetadbHandleList.RemoveAttachedImages} method removes an item
@@ -340,7 +333,7 @@ export declare class FbMetadbHandleList {
    *  handleList.RemoveById(0);
    * ```
    */
-  public RemoveById(index: number): void;
+  RemoveById(index: number): void;
 
   /**
    * The {@link FbMetadbHandleList.RemoveRange} method removes `num`
@@ -354,14 +347,14 @@ export declare class FbMetadbHandleList {
    * @param fromIndex -
    * @param num -
    */
-  public RemoveRange(fromIndex: number, num: number): void;
+  RemoveRange(fromIndex: number, num: number): void;
 
   /**
    * The {@link FbMetadbHandleList.Sort} method sorts list.
    *
    * Note: Removes duplicates and optimises for other handle list operations.
    */
-  public Sort(): void;
+  Sort(): void;
 
   /**
    * The {@link FbMetadbHandleList.UpdateFileInfoFromJSON} method updates
@@ -395,5 +388,5 @@ export declare class FbMetadbHandleList {
    * @param json - JSON string, which contains an object (applies same
    *   values to every track) or an array of objects (one object per track).
    */
-  public UpdateFileInfoFromJSON(json: string): void;
+  UpdateFileInfoFromJSON(json: string): void;
 }

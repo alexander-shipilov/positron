@@ -3,7 +3,7 @@
  *
  * @remarks
  * The {@link SelectionType} enumeration is used by:
- * {@link FooBar.GetSelectionType},
+ * {@link Fb.GetSelectionType},
  * {@link FbUiSelectionHolder.SetSelection}.
  *
  * @public

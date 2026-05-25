@@ -22,7 +22,7 @@ type DebugContext = {
  * @param context -
  */
 function debugArray(value: readonly unknown[], context: DebugContext): string {
-  return debugArrayLike(tagOf(value, "Array"), value, context);
+  return debugArrayLike(formatTag(value, "Array"), value, context);
 }
 
 /**
@@ -35,14 +35,13 @@ function debugArrayLike(
   value: ArrayLike<unknown>,
   context: DebugContext,
 ): string {
-  const props = indentProps(debugArrayLikeItems(value, context), context, "[]");
-  const ref = reference(value, context);
+  const props = formatProps(debugArrayLikeItems(value, context), context, "[]");
 
-  return [
-    ...(ref === "" ? [] : [ref]),
+  return formatObject(
+    formatRef(value, context),
     tag + "(" + String(value.length) + ")",
-    ...(props === "" ? [] : [props]),
-  ].join(" ");
+    props,
+  );
 }
 
 /**
@@ -60,7 +59,7 @@ function debugArrayLikeItem(
   const index = isSymbol(key) ? NaN : parseFloat(key);
   const isIndex = Number.isInteger(index) && index >= 0 && index < value.length;
 
-  return debugProp(isIndex ? index : key, item, context);
+  return debugObjectProp(isIndex ? index : key, item, context);
 }
 
 /**
@@ -90,7 +89,7 @@ function debugBoolean(value: boolean): string {
 // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
 function debugBooleanObject(value: Boolean, context: DebugContext): string {
   return debugObjectLike(
-    tagOf(value, "Boolean"),
+    formatTag(value, "Boolean"),
     value,
     String(value),
     context,
@@ -103,7 +102,7 @@ function debugBooleanObject(value: Boolean, context: DebugContext): string {
  */
 function debugDate(value: Date, context: DebugContext): string {
   return debugObjectLike(
-    tagOf(value, "Date"),
+    formatTag(value, "Date"),
     value,
     value.toUTCString(),
     context,
@@ -116,7 +115,7 @@ function debugDate(value: Date, context: DebugContext): string {
  */
 function debugError(value: Error, context: DebugContext): string {
   return debugObjectLike(
-    tagOf(value, "Error"),
+    formatTag(value, "Error"),
     value,
     JSON.stringify(value.message),
     context,
@@ -142,18 +141,17 @@ function debugFunction(
  * @param context -
  */
 function debugMap(value: Map<unknown, unknown>, context: DebugContext): string {
-  const props = indentProps(
-    [...debugMapItems(value, context), ...debugProps(value, context)],
+  const props = formatProps(
+    [...debugMapItems(value, context), ...debugObjectProps(value, context)],
     context,
     "{}",
   );
-  const ref = reference(value, context);
 
-  return [
-    ...(ref === "" ? [] : [ref]),
-    tagOf(value, "Map") + "(" + String(value.size) + ")",
-    ...(props === "" ? [] : [props]),
-  ].join(" ");
+  return formatObject(
+    formatRef(value, context),
+    formatTag(value, "Map") + "(" + String(value.size) + ")",
+    props,
+  );
 }
 
 /**
@@ -166,7 +164,7 @@ function debugMapItem(
   value: unknown,
   context: DebugContext,
 ): string {
-  return `${debugValue(key, context)} → ${debugValue(value, context)}`;
+  return `${debugValue(key, context)} = ${debugValue(value, context)}`;
 }
 
 /**
@@ -196,7 +194,7 @@ function debugNumber(value: number): string {
 // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
 function debugNumberObject(value: Number, context: DebugContext): string {
   return debugObjectLike(
-    tagOf(value, "Number"),
+    formatTag(value, "Number"),
     value,
     debugNumber(Number(value)),
     context,
@@ -208,7 +206,7 @@ function debugNumberObject(value: Number, context: DebugContext): string {
  * @param context -
  */
 function debugObject(value: object, context: DebugContext): string {
-  return debugObjectLike(tagOf(value, "Object"), value, "", context);
+  return debugObjectLike(formatTag(value, "Object"), value, "", context);
 }
 
 /**
@@ -223,19 +221,16 @@ function debugObjectLike(
   stringValue: string = "",
   context: DebugContext,
 ): string {
-  const props = indentProps(debugProps(value, context), context, "{}");
-  const ref = reference(value, context);
+  const props = formatProps(debugObjectProps(value, context), context, "{}");
 
-  const name = [
-    ...(tag === "" || tag === "Object" ? [] : [tag]),
-    ...(stringValue === "" ? [] : [`(${stringValue})`]),
-  ].join("");
-
-  return [
-    ...(ref === "" ? [] : [ref]),
-    ...(name === "" ? [] : [name]),
-    ...(props === "" ? (name === "" ? ["{}"] : []) : [props]),
-  ].join(" ");
+  return formatObject(
+    formatRef(value, context),
+    [
+      ...(tag === "" || tag === "Object" ? [] : [tag]),
+      ...(stringValue === "" ? [] : [`(${stringValue})`]),
+    ].join(""),
+    props,
+  );
 }
 
 /**
@@ -243,7 +238,11 @@ function debugObjectLike(
  * @param value -
  * @param context -
  */
-function debugProp(key: PropertyKey, value: unknown, context: DebugContext) {
+function debugObjectProp(
+  key: PropertyKey,
+  value: unknown,
+  context: DebugContext,
+) {
   const keyString = debugValue(key, context);
 
   return `${isSymbol(key) ? `[${keyString}]` : keyString}: ${debugValue(value, context)}`;
@@ -253,8 +252,10 @@ function debugProp(key: PropertyKey, value: unknown, context: DebugContext) {
  * @param value -
  * @param context -
  */
-function debugProps(value: object, context: DebugContext): string[] {
-  return propertyKeys(value).map((key) => debugProp(key, value[key], context));
+function debugObjectProps(value: object, context: DebugContext): string[] {
+  return propertyKeys(value).map((key) =>
+    debugObjectProp(key, value[key], context),
+  );
 }
 
 /**
@@ -319,7 +320,7 @@ function debugReference(value: object, context: DebugContext): string {
     circulars.push(value);
   }
 
-  return `#circular${reference(value, context)}`;
+  return `#circular${formatRef(value, context)}`;
 }
 
 /**
@@ -327,7 +328,12 @@ function debugReference(value: object, context: DebugContext): string {
  * @param context -
  */
 function debugRegExp(value: RegExp, context: DebugContext) {
-  return debugObjectLike(tagOf(value, "RegExp"), value, String(value), context);
+  return debugObjectLike(
+    formatTag(value, "RegExp"),
+    value,
+    String(value),
+    context,
+  );
 }
 
 /**
@@ -335,18 +341,17 @@ function debugRegExp(value: RegExp, context: DebugContext) {
  * @param context -
  */
 function debugSet(value: Set<unknown>, context: DebugContext): string {
-  const props = indentProps(
-    [...debugSetItems(value, context), ...debugProps(value, context)],
+  const props = formatProps(
+    [...debugSetItems(value, context), ...debugObjectProps(value, context)],
     context,
     "{}",
   );
-  const ref = reference(value, context);
 
-  return [
-    ...(ref === "" ? [] : [ref]),
-    tagOf(value, "Set") + "(" + String(value.size) + ")",
-    ...(props === "" ? [] : [props]),
-  ].join(" ");
+  return formatObject(
+    formatRef(value, context),
+    formatTag(value, "Set") + "(" + String(value.size) + ")",
+    props,
+  );
 }
 
 /**
@@ -372,7 +377,7 @@ function debugString(value: string): string {
  */
 // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
 function debugStringObject(value: String, context: DebugContext): string {
-  return debugArrayLike(tagOf(value, "String"), value, context);
+  return debugArrayLike(formatTag(value, "String"), value, context);
 }
 
 /**
@@ -400,7 +405,7 @@ function debugTypedArray(
   value: ArrayLike<unknown>,
   context: DebugContext,
 ): string {
-  return debugArrayLike(tagOf(value, "TypedArray"), value, context);
+  return debugArrayLike(formatTag(value, "TypedArray"), value, context);
 }
 
 /**
@@ -434,9 +439,12 @@ function debugValue(value: unknown, context: DebugContext): string {
  * @param context -
  */
 function debugWeekMap(value: WeakMap<object, unknown>, context: DebugContext) {
-  return (
-    `${tagOf(value, "WeakMap")} ` +
-    `{${["...", ...debugProps(value, context)].join(", ")}}`
+  const props = formatProps(debugObjectProps(value, context), context, "{}");
+
+  return formatObject(
+    formatRef(value, context),
+    formatTag(value, "WeakMap") + "()",
+    props,
   );
 }
 
@@ -445,14 +453,26 @@ function debugWeekMap(value: WeakMap<object, unknown>, context: DebugContext) {
  * @param context -
  */
 function debugWeekSet(value: WeakSet<object>, context: DebugContext) {
-  return (
-    `${tagOf(value, "WeakSet")} ` +
-    `{${["...", ...debugProps(value, context)].join(", ")}}`
+  const props = formatProps(debugObjectProps(value, context), context, "{}");
+
+  return formatObject(
+    formatRef(value, context),
+    formatTag(value, "WeakSet") + "()",
+    props,
   );
 }
 
-function indent(tab: string, length: number): string {
-  return Array.from({ length: length + 1 }).join(tab);
+/**
+ * @param ref -
+ * @param name -
+ * @param props -
+ */
+function formatObject(ref: string, name: string, props: string): string {
+  return [
+    ...(ref === "" ? [] : [ref]),
+    ...(name === "" ? [] : [name]),
+    ...(props === "" ? (name === "" ? ["{}"] : []) : [props]),
+  ].join(" ");
 }
 
 /**
@@ -460,7 +480,7 @@ function indent(tab: string, length: number): string {
  * @param context -
  * @param brackets -
  */
-function indentProps(
+function formatProps(
   props: string[],
   context: DebugContext,
   brackets: string,
@@ -471,20 +491,18 @@ function indentProps(
   return props.length === 0
     ? ""
     : tab === ""
-      ? brackets[0] +
-        props.map((prop) => indent(tab, depth) + prop).join(", ") +
-        brackets[1]
+      ? brackets[0] + props.join(", ") + brackets[1]
       : brackets[0] +
-        `\n${props.map((prop) => indent(tab, depth) + prop).join(",\n")}` +
-        `\n${indent(tab, depth - 1)}` +
+        `\n${props.map((prop) => tab.repeat(depth) + prop).join(",\n")}` +
+        `\n${tab.repeat(depth - 1)}` +
         brackets[1];
 }
 
 /**
  * @param value -
- * @param context
+ * @param context -
  */
-function reference(value: object, context: DebugContext): string {
+function formatRef(value: object, context: DebugContext): string {
   const ref = context.circulars.findIndex((item) => Object.is(item, value));
 
   return ref === -1 ? "" : `<ref *${String(ref + 1)}>`;
@@ -494,20 +512,20 @@ function reference(value: object, context: DebugContext): string {
  * @param value -
  * @param defaultTag -
  */
-function tagOf(value: unknown, defaultTag: string): string {
+function formatTag(value: unknown, defaultTag: string): string {
   return value?.constructor?.name || `<${defaultTag}>`;
 }
 
 /**
  * @param value -
- * @param indent -
+ * @param tabSize -
  *
  * @public
  */
-export function debug(value: unknown, indent: number = 0): string {
+export function debug(value: unknown, tabSize: number = 0): string {
   return debugValue(value, {
     circulars: [],
     stack: [],
-    tab: "".padStart(indent, " "),
+    tab: " ".repeat(tabSize),
   });
 }

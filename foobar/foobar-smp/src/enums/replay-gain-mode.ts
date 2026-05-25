@@ -4,7 +4,7 @@
  * @remarks
  * The {@link ReplayGainMode} enumeration is used by:
  * {@link FbCallbacks.on_replaygain_mode_changed},
- * {@link FooBar.ReplaygainMode}.
+ * {@link Fb.ReplaygainMode}.
  *
  * @public
  */

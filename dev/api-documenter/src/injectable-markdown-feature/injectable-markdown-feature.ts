@@ -1,5 +1,4 @@
 import type {
-  IApiDocumenterPluginManifest,
   IFeatureDefinition,
   IMarkdownDocumenterFeatureOnBeforeWritePageArgs,
 } from "@microsoft/api-documenter";
@@ -10,10 +9,6 @@ import type { ApiPage } from "../api";
 import type { MarkdownDocumenterFeatureClass } from "../api-documenter";
 
 import type { InjectableMarkdownFeatureInjector } from "./injectable-markdown-feature-injector";
-
-declare function createToc(pages: ReadonlyMap<ApiItem, ApiPage>): void;
-
-declare function updateContent(content: string): string;
 
 /**
  *
@@ -100,10 +95,12 @@ export abstract class InjectableMarkdownFeature extends MarkdownDocumenterFeatur
       );
     }
 
-    this.pages.set(apiItem, {
-      content: pageArgs.pageContent,
-      filename: pageArgs.outputFilename,
-    });
+    if (injector.onFinished) {
+      this.pages.set(apiItem, {
+        content: pageArgs.pageContent,
+        filename: pageArgs.outputFilename,
+      });
+    }
   }
 
   /**
@@ -117,15 +114,3 @@ export abstract class InjectableMarkdownFeature extends MarkdownDocumenterFeatur
     }
   }
 }
-
-export const apiDocumenterPluginManifest: IApiDocumenterPluginManifest = {
-  features: [
-    InjectableMarkdownFeature.definition("my-feature", {
-      onBeforeWritePage: ({ content }) => updateContent(content),
-      onFinished: (pages) => {
-        createToc(pages);
-      },
-    }),
-  ],
-  manifestVersion: 1000,
-};

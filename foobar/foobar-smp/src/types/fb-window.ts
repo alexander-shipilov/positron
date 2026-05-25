@@ -18,23 +18,22 @@ import type { ScriptOptions } from "./script-options";
 import type { ThemeManager } from "./theme-manager";
 
 /**
- * The {@link FbWindow} interface represents a type of {@link window} constants
- * which contains functions for working with the current `SpiderMonkey` panel
- * and accessing its properties.
+ * The {@link FbWindow} interface represents functions for working with the
+ * current SMP panel and accessing its properties.
  *
  * @public
  */
 export interface FbWindow {
   /**
    * The {@link FbWindow.DlgCode} property indicates which keys should be
-   * processed by the panel.
+   * processed by the panel. See {@link DlgCode}.
    *
    * @example
    * ```ts
    *  window.DlgCode = DlgCode.WantAllKeys;
    * ```
    */
-  DlgCode: DlgCode;
+  DlgCode: number;
 
   /**
    * The {@link FbWindow.Height} property contains panel height.
@@ -156,7 +155,7 @@ export interface FbWindow {
   readonly Width: number;
 
   /**
-   * See {@link clearInterval}.
+   * See {@link FbGlobal.clearInterval}.
    *
    * @param timerId - The identifier of the repeated action you want to
    *   cancel.
@@ -164,7 +163,7 @@ export interface FbWindow {
   ClearInterval(timerId: number): void;
 
   /**
-   * See {@link clearTimeout}.
+   * See {@link FbGlobal.clearTimeout}.
    *
    * @param timerId - The identifier of the timeout you want to cancel.
    */
@@ -400,7 +399,7 @@ export interface FbWindow {
   SetCursor(id: Cursor): void;
 
   /**
-   * See {@link setInterval}.
+   * See {@link FbGlobal.setInterval}.
    *
    * @param func -
    * @param delay -
@@ -424,7 +423,7 @@ export interface FbWindow {
   SetProperty(name: string, value: null | PropertyValue | undefined): void;
 
   /**
-   * See {@link setTimeout}.
+   * See {@link FbGlobal.setTimeout}.
    *
    * @param func -
    * @param delay -

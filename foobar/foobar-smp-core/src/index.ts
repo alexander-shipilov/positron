@@ -1,3 +1,3 @@
 export * from "./debug";
 export * from "./emitter";
-export * from "./fb-event";
+export * from "./fb-callback";

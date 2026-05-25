@@ -1,4 +1,5 @@
 import type {
+  FillMode,
   InterpolationMode,
   SmoothingMode,
   TextRenderingHint,
@@ -183,7 +184,7 @@ export interface GdiGraphics {
    * @param y - The y-coordinate of the top-left corner
    * @param width - The width
    * @param height - The height
-   * @param flags - Flags. Can be one or more of the {@link StringFormatFlags}.
+   * @param flags - Flags. Can be one or more of the {@link StringFormat}.
    *   Default `0`
    */
   DrawString(
@@ -273,11 +274,11 @@ export interface GdiGraphics {
    * The {@link GdiGraphics.FillPolygon} method draws filled polygon.
    *
    * @param color -
-   * @param fillMode - 0 alternate, 1 winding.
+   * @param fillMode - Fill mode.
    * @param points - An array of x, y co-ordinate pairs. Must be an even number
    *   in length.
    */
-  FillPolygon(color: number, fillMode: 0 | 1, points: number[]): void;
+  FillPolygon(color: number, fillMode: FillMode, points: number[]): void;
 
   /**
    * The {@link GdiGraphics.FillRoundRect} method draws a filled rounded
@@ -425,7 +426,7 @@ export interface GdiGraphics {
    * @param y - The y-coordinate of the top-left corner
    * @param width - The width
    * @param height - The height
-   * @param flags - Flags. Can be one or more of the {@link StringFormatFlags}.
+   * @param flags - Flags. Can be one or more of the {@link StringFormat}.
    *   Default `0`.
    */
   MeasureString(
