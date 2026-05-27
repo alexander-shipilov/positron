@@ -2,7 +2,6 @@ import type {
   ColourTypeCui,
   ColourTypeDui,
   Cursor,
-  DlgCode,
   FontTypeCui,
   FontTypeDui,
   UiType,
@@ -26,7 +25,7 @@ import type { ThemeManager } from "./theme-manager";
 export interface FbWindow {
   /**
    * The {@link FbWindow.DlgCode} property indicates which keys should be
-   * processed by the panel. See {@link DlgCode}.
+   * processed by the panel. Can be one or more of the {@link DlgCode}.
    *
    * @example
    * ```ts

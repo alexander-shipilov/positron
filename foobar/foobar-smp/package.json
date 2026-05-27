@@ -31,7 +31,7 @@
   "scripts": {
     "_phase:build": "heft run --only build -- --clean",
     "_phase:test": "heft run --only test -- --clean",
-    "docs": "npm run build & api-documenter markdown -i dist -i  -o docs/api",
+    "docs": "npm run build & api-documenter markdown -i dist -o docs/api",
     "build": "heft build --clean",
     "test": "heft test --clean"
   },

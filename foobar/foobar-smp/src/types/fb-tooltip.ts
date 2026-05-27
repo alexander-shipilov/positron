@@ -1,4 +1,4 @@
-import type { FontStyle, TooltipDelayTime } from "../enums";
+import type { TooltipDelayTime } from "../enums";
 
 /**
  * @public
@@ -72,9 +72,10 @@ export interface FbTooltip {
    *
    * @param fontName -
    * @param fontSizePx - Default `12`.
-   * @param fontStyle - Default `0`.
+   * @param fontStyle - Can be one or more of the {@link FontStyle}.
+   *   Default `0`.
    */
-  SetFont(fontName: string, fontSizePx: number, fontStyle: FontStyle): void;
+  SetFont(fontName: string, fontSizePx?: number, fontStyle?: number): void;
 
   /**
    * The {@link FbTooltip.SetMaxWidth} method sets tooltip's max width.
