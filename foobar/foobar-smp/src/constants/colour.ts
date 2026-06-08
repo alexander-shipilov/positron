@@ -6,7 +6,7 @@
 export const Colour = {
   AliceBlue: 0xfff0f8ff,
   AntiqueWhite: 0xfffaebd7,
-  Aqua: 0x00ffffff,
+  Aqua: 0xff00ffff,
   Aquamarine: 0xff7fffd4,
   Azure: 0xfff0ffff,
   Beige: 0xfff5f5dc,
@@ -24,7 +24,7 @@ export const Colour = {
   CornflowerBlue: 0xff6495ed,
   Cornsilk: 0xfffff8dc,
   Crimson: 0xffdc143c,
-  Cyan: 0x00ffffff,
+  Cyan: 0xff00ffff,
   DarkBlue: 0xff00008b,
   DarkCyan: 0xff008b8b,
   DarkGoldenrod: 0xffb8860b,

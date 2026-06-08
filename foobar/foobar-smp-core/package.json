@@ -35,6 +35,7 @@
     "test": "heft test --clean"
   },
   "dependencies": {
+    "@positron/array": "workspace:*",
     "@positron/core": "workspace:*",
     "@positron/foobar-smp": "workspace:*"
   },

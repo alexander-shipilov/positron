@@ -338,8 +338,8 @@ export interface Fb {
    *
    *  - Every drag callback receives Action argument.
    *    {@link DropTargetAction.Effect} contains `okEffects` from
-   *    {@link Fb.DoDragDrop} call. {@link DropTargetAction.Effect} should
-   *   be changed to the desired effect in the callback. If the returned
+   *    {@link Fb.DoDragDrop} call. {@link DropTargetAction.Effect} should be
+   *    changed to the desired effect in the callback. If the returned
    *    {@link DropTargetAction.Effect} was not in `okEffects` or is equal to
    *    {@link DropEffect.None} (`=== 0`), then drop will be denied: cursor
    *    icon will be changed, {@link FbCallbacks.on_drag_drop} won't be called
@@ -408,7 +408,7 @@ export interface Fb {
    *      fb.CheckClipboardContents();
    *
    *    menu.AppendMenuItem(
-   *      disabled ? MenuFlag.String : MenuFlag.Grayed,
+   *      disabled ? MenuFlags.String : MenuFlags.Grayed,
    *      1,
    *      "Paste",
    *    );

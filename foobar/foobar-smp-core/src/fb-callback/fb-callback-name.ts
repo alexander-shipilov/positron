@@ -4,7 +4,7 @@
 export type FbCallbackName<TType extends string> = `on_${TType}`;
 
 /**
- * @param eventName - Event type
+ * @param eventName - DomEvent type
  *
  * @public
  */
