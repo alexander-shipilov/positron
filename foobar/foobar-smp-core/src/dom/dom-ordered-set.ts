@@ -3,8 +3,8 @@ import type { DomSet } from "./dom-set";
 
 export interface DomOrderedSet<TItem> extends DomList<TItem>, DomSet<TItem> {
   /**
-   * Method {@link DomOrderedSet.insert} inserts a new element with a specified
-   * `value` before `beforeValue`.
+   * The {@link DomOrderedSet.insert} method inserts a new element with a
+   * specified `value` before `beforeValue`.
    *
    * @param value -
    * @param beforeValue -

@@ -126,6 +126,13 @@ export class Node extends EventTarget implements DomNode {
     throw new Error("Method not implemented.");
   }
 
+  public isValidNode(node: DomNode): node is Node {
+    return (
+      node instanceof Node &&
+      node._document._implementation === this._document._implementation
+    );
+  }
+
   public normalize(): void {
     throw new Error("Method not implemented.");
   }
@@ -139,12 +146,5 @@ export class Node extends EventTarget implements DomNode {
     child: DomNode,
   ): TNode {
     throw new Error("Method not implemented.");
-  }
-
-  protected isValidNode(node: DomNode): node is Node {
-    return (
-      node instanceof Node &&
-      node._document._implementation === this._document._implementation
-    );
   }
 }
