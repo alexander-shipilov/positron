@@ -15,7 +15,8 @@
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.155.1",
+  "rushVersion": "5.175.1",
+
   /**
    * The next field selects which package manager should be installed and determines its version.
    * Rush installs its own local copy of the package manager to ensure that your build process
@@ -24,7 +25,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "10.13.1",
+  "pnpmVersion": "10.30.2",
   // "pnpmVersion": "9.15.4",
   // "npmVersion": "6.14.15",
   // "yarnVersion": "1.9.4",
@@ -38,7 +39,7 @@
      *
      * - "local" - use the "pnpm-store" folder in the current configured temp folder:
      *   "common/temp/pnpm-store" by default.
-     * - "global" - use PNPM's global store, which has the benefit of being shared
+     * - "global" - use PNPM's global store, which has the benefit of being _shared
      *    across multiple repo folders, but the disadvantage of less isolation for builds
      *    (e.g. bugs or incompatibilities when two repos use different releases of PNPM)
      *
@@ -352,7 +353,7 @@
   ],
   /**
    * Rush can collect anonymous telemetry about everyday developer activity such as
-   * success/failure of installs, builds, and other operations.  You can use this to identify
+   * success/failure of installs, builds, and other unary-operations.  You can use this to identify
    * problems with your toolchain or Rush itself.  THIS TELEMETRY IS NOT SHARED WITH MICROSOFT.
    * It is written into JSON files in the common/temp folder.  It's up to you to write scripts
    * that read these JSON files and do something with them.  These scripts are typically registered
@@ -378,13 +379,18 @@
   "projects": [
     /** Dev */
     {
-      "projectFolder": "dev/eslint-config",
       "packageName": "@positron/eslint-config",
+      "projectFolder": "dev/eslint-config",
       "shouldPublish": false
     },
     {
-      "projectFolder": "dev/common-rig",
-      "packageName": "@positron/common-rig",
+      "packageName": "@positron/heft-rig",
+      "projectFolder": "dev/heft-rig",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@positron/api-documenter",
+      "projectFolder": "dev/api-documenter",
       "shouldPublish": false
     },
     /** utils */
@@ -397,20 +403,12 @@
       "projectFolder": "utils/core",
     },
     {
-      "packageName": "@positron/meta",
-      "projectFolder": "utils/meta",
-    },
-    {
-      "packageName": "@positron/meta-symbols",
-      "projectFolder": "utils/meta-symbols",
-    },
-    {
       "packageName": "@positron/nominal",
       "projectFolder": "utils/nominal",
     },
     {
-      "packageName": "@positron/nominal-symbols",
-      "projectFolder": "utils/nominal-symbols",
+      "packageName": "@positron/nominal-symbol",
+      "projectFolder": "utils/nominal-symbol",
     },
     {
       "packageName": "@positron/prefixed",
@@ -421,9 +419,42 @@
       "packageName": "@positron/react-core",
       "projectFolder": "react/react-core",
     },
+    /** w3c-* */
+    //    {
+    //      "packageName": "@positron/css-numeric-objects",
+    //      "projectFolder": "w3c/css-numeric-objects",
+    //    },
+    /** misc */
     {
-      "packageName": "@positron/react-factory",
-      "projectFolder": "react/react-factory",
+      "packageName": "@positron/crazy-sequence",
+      "projectFolder": "misc/crazy"
+    },
+    /** tree */
+    //    {
+    //      "packageName": "@positron/tree-core",
+    //      "projectFolder": "tree/tree-core"
+    //    }
+    /** ui */
+    {
+      "packageName": "@positron/ui-components",
+      "projectFolder": "ui/components"
+    },
+    {
+      "packageName": "@positron/ui-hooks",
+      "projectFolder": "ui/hooks"
+    },
+    /** foobar */
+    {
+      "packageName": "@positron/foobar-smp",
+      "projectFolder": "foobar/foobar-smp"
+    },
+    {
+      "packageName": "@positron/foobar-smp-core",
+      "projectFolder": "foobar/foobar-smp-core"
+    },
+    {
+      "packageName": "@positron/foobar-smp-website",
+      "projectFolder": "foobar/foobar-smp-website"
     }
   ],
 }

@@ -1,0 +1,46 @@
+{
+  "private": false,
+  "name": "@positron/crazy-sequence",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
+  "repository": "git@github.com:alexander-shipilov/positron.git",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./lib/cjs/index.js",
+      "import": "./lib/esm/index.js",
+      "types": "./lib/esm/index.d.ts"
+    }
+  },
+  "main": "./lib/cjs/index.js",
+  "files": [
+    "./lib"
+  ],
+  "scripts": {
+    "_phase:build": "heft run --only build -- --clean",
+    "_phase:test": "heft run --only test -- --clean",
+    "build": "heft build --clean",
+    "test": "heft test --clean"
+  },
+  "types": "./lib/esm/index.d.ts",
+  "dependencies": {
+    "@positron/core": "workspace:*",
+    "@positron/nominal": "workspace:*",
+    "ts-progress": "~0.1.9",
+    "commander": "~14.0.3"
+  },
+  "devDependencies": {
+    "@jest/globals": "~30.4.0",
+    "@positron/heft-rig": "workspace:*",
+    "@rushstack/heft": "~1.2.17",
+    "@types/node": "~25.6.2",
+    "eslint": "^10.3.0",
+    "expect-type": "^1.3.0",
+    "jest": "~30.4.0",
+    "react": "~19.2.6",
+    "ts-jest": "~29.4.9",
+    "typescript": "^6.0.3",
+    "ts-node": "~10.9.2"
+  }
+}

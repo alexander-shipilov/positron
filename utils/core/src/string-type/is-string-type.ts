@@ -3,12 +3,12 @@ import { STRING_TYPE } from "./string-type";
 
 /**
  * The {@link isStringType} function checks if the passed
- * {@link maybeStringType} is a {@link StringType}.
+ * `maybeStringType` is a {@link StringType}.
  *
  * @param maybeStringType - The value to be tested for being
  *   a {@link StringType}.
  *
- * @returns The string value `true` if the passed {@link maybeStringType}
+ * @returns The string value `true` if the passed `maybeStringType`
  *   value is a {@link StringType}.
  * @public
  */

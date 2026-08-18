@@ -1,16 +1,5 @@
-import { isFunction } from "../function";
-import { isObject } from "../object";
-
-import type { PropertyOwner } from "./property-owner";
-
-const hasOwn = isFunction(Object.hasOwn)
-  ? Object.hasOwn
-  : (() => {
-      const object = {};
-
-      return (target: unknown, key: PropertyKey) =>
-        object.hasOwnProperty.call(target, key);
-    })();
+import type { PropertyKeyOf } from "./property-key-of";
+import { hasOwnProperty } from "./has-own-property";
 
 /**
  * The {@link isOwnPropertyOf} function returns `true` if the specified
@@ -39,17 +28,17 @@ const hasOwn = isFunction(Object.hasOwn)
  * ```
  *
  * @param target - The object to check
- * @param key - The key to check
+ * @param maybePropertyOf - The key to check
  *
- * @returns `true` if the specified `object` has the indicated `key` as its own
- *   key. If the `target` is nullable or the `key` is inherited, or does not
- *   exist, returns `false`.
+ * @returns `true` if the specified `object` has the indicated
+ *   `maybePropertyOf` as its own key. If the `target` is nullable or the `key`
+ *   is inherited, or does not exist, returns `false`.
  *
  * @public
  */
-export function isOwnPropertyOf<TKey extends PropertyKey>(
-  key: TKey,
-  target: unknown,
-): target is PropertyOwner<TKey> {
-  return isObject(target) && hasOwn(target, key);
+export function isOwnPropertyOf<TTarget>(
+  maybePropertyOf: PropertyKey,
+  target: TTarget,
+): maybePropertyOf is PropertyKeyOf<TTarget> {
+  return hasOwnProperty(target, maybePropertyOf);
 }

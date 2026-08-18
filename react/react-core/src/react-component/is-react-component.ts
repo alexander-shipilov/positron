@@ -3,7 +3,7 @@ import { isFunction } from "@positron/core";
 import type { ReactComponent } from "./react-component";
 
 /**
- * @param maybeReactComponent
+ * @param maybeReactComponent - TBD
  *
  * @public
  */

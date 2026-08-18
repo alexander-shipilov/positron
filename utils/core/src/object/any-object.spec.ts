@@ -12,8 +12,13 @@ describe("AnyObject", () => {
     expectTypeOf<AnyObject>().toExtend<AnyObject>();
     expectTypeOf<Record<PropertyKey, unknown>>().toExtend<AnyObject>();
     expectTypeOf<{ foo: 1 }>().toExtend<AnyObject>();
+    expectTypeOf<object>().toExtend<AnyObject>();
     expectTypeOf<() => void>().toExtend<AnyObject>();
     expectTypeOf<string>().toExtend<AnyObject>();
+  });
+
+  it("`keyof EmptyObject` should be `never`", () => {
+    expectTypeOf<keyof AnyObject>().toBeNever();
   });
 
   it("should not match nullables", () => {

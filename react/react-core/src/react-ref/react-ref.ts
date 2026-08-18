@@ -1,7 +1,8 @@
 import type React from "react";
 
 /**
- * Possible value of `ref` attribute
+ * The {@link ReactRef} type represents a reference object.
+ *
  * @public
  */
 export type ReactRef<TValue> = React.Ref<TValue>;

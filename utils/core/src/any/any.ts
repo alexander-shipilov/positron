@@ -5,6 +5,6 @@
  *
  * Use the {@link Any} type when the `any` type cannot be avoided.
  *
- * @internal
+ * @public
  */
 export type Any = any;

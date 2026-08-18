@@ -3,10 +3,10 @@ import { typeOf } from "../type-of";
 
 /**
  * The {@link isSymbol} function is a type-guard function that determines
- * whether the type of the passed value {@link maybeSymbol} extends
+ * whether the type of the passed value `maybeSymbol` extends
  * the `symbol` type.
  *
- * This means that if the return value is `true`, then {@link maybeSymbol} is
+ * This means that if the return value is `true`, then `maybeSymbol` is
  * not strictly of type `symbol`, but is `symbol & typeof maybeSymbol`.
  *
  * @example The following example demonstrates this.
@@ -30,7 +30,7 @@ import { typeOf } from "../type-of";
  * @param maybeSymbol - The value to be tested for being a `symbol`.
  *
  * @returns The boolean value `true` if the type of the given
- * {@link maybeSymbol} extends the `symbol` type. Otherwise, `false`.
+ * `maybeSymbol` extends the `symbol` type. Otherwise, `false`.
  *
  * @public
  */

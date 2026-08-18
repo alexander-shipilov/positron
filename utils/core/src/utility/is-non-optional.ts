@@ -2,12 +2,12 @@ import type { NonOptional } from "./non-optional";
 
 /**
  * The {@link isNonOptional} function determines whether the passed
- * {@link maybeNonOptional} is {@link NonOptional}
+ * `maybeNonOptional` is {@link NonOptional}
  *
  * @param maybeNonOptional - The value to be tested for being
  *   {@link NonOptional}.
  *
- * @returns The boolean value `true` if the given {@link maybeNonOptional} is
+ * @returns The boolean value `true` if the given `maybeNonOptional` is
  *   {@link NonOptional}. Otherwise, `false`.
  *
  * @public

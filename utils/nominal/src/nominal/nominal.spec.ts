@@ -9,7 +9,7 @@ import type {
   Natural,
   NaturalType,
   Positive,
-} from "../@fixtures/nominal";
+} from "../-fixtures/nominal";
 
 import type { Nominal } from "./nominal";
 

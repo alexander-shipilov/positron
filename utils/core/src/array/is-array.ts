@@ -1,9 +1,8 @@
 /**
  * The {@link isArray} function is a type-guard function that determines
- * whether the type of the passed value {@link maybeArray} extends
- * the `readonly unknown[]` type.
+ * whether the passed `maybeArray` is an array.
  *
- * This means that if the return value is `true`, then {@link maybeArray} is
+ * This means that if the return value is `true`, then `maybeArray` is
  * not strictly of type `readonly unknown[]`, but is
  * `readonly unknown[] & typeof maybeArray`.
  *
@@ -27,6 +26,6 @@
  *
  * @public
  */
-export function isArray(maybeArray: unknown): maybeArray is readonly unknown[] {
+export function isArray(maybeArray: unknown): maybeArray is unknown[] {
   return Array.isArray(maybeArray);
 }

@@ -2,13 +2,19 @@
   "private": false,
   "name": "@positron/react-core",
   "version": "0.0.1",
-  "type": "module",
   "license": "MIT",
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
   "repository": "git@github.com:alexander-shipilov/positron.git",
-  "main": "./lib/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
   "files": [
-    "./lib"
+    "./dist"
   ],
   "scripts": {
     "_phase:build": "heft run --only build -- --clean",
@@ -16,24 +22,21 @@
     "build": "heft build --clean",
     "test": "heft test --clean"
   },
-  "types": "./lib/index.d.ts",
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "@positron/core": "workspace:*",
     "@positron/nominal": "workspace:*"
   },
   "devDependencies": {
-    "@jest/globals": "~30.0.5",
-    "@positron/common-rig": "workspace:*",
-    "@rushstack/heft": "~0.74.0",
-    "@types/react": "~19.1.8",
-    "eslint": "^9.31.0",
-    "expect-type": "^1.2.2",
-    "jest": "~30.0.5",
-    "react": "~19.1.0",
-    "ts-jest": "~29.4.0",
-    "typescript": "^5.8.3"
-  },
-  "exports": {
-    ".": "./lib/index.js"
+    "@jest/globals": "~30.4.0",
+    "@positron/heft-rig": "workspace:*",
+    "@rushstack/heft": "~1.2.17",
+    "@types/react": "~19.2.14",
+    "eslint": "^10.3.0",
+    "expect-type": "^1.3.0",
+    "jest": "~30.4.0",
+    "react": "~19.2.6",
+    "ts-jest": "~29.4.9",
+    "typescript": "^6.0.3"
   }
 }

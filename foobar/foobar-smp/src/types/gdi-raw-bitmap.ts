@@ -1,0 +1,22 @@
+/**
+ * The {@link GdiRawBitmap} represents Device-Dependent Bitmap, which can be
+ * used in {@link GdiGraphics.GdiDrawBitmap}.
+ *
+ * @remarks
+ * Related methods:
+ *   {@link GdiBitmap.CreateRawBitmap}
+ *   {@link GdiGraphics.GdiDrawBitmap}
+ *
+ * @public
+ */
+export interface GdiRawBitmap {
+  /**
+   * The {@link GdiRawBitmap.Height} property represents a height of bitmap.
+   */
+  readonly Height: number;
+
+  /**
+   * The {@link GdiRawBitmap.Width} property represents a width of bitmap.
+   */
+  readonly Width: number;
+}

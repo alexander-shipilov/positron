@@ -8,7 +8,7 @@ import type { Optional } from "../utility";
 import type { PropertyOwner } from "./property-owner";
 
 describe("PropertyOwner<K, V>", () => {
-  it("should return `{ [T in K]?: V }` if `K` is key and `T` is required", () => {
+  it("should return `{ [T in K]: V }` if `K` is key and `T` is required", () => {
     type V = 1;
 
     type K1 = string;
@@ -27,7 +27,7 @@ describe("PropertyOwner<K, V>", () => {
     expectTypeOf<PropertyOwner<K6, V>>().toEqualTypeOf<{ [T in K6]: V }>();
   });
 
-  it("should `{ [T in K]?: V }` if `V` is `undefined or `extends `undefined`", () => {
+  it("should return `{ [T in K]?: V }` if `V` extends `undefined`", () => {
     type K = "key";
 
     type V1 = undefined;
@@ -43,15 +43,15 @@ describe("PropertyOwner<K, V>", () => {
     type V1 = Any;
     expectTypeOf<PropertyOwner<K, V1>>().toEqualTypeOf<{ [T in K]?: V1 }>();
 
-    type V2 = Any;
-    expectTypeOf<PropertyOwner<K, V2>>().toEqualTypeOf<{ [T in K]?: V2 }>();
+    type V2 = unknown;
+    expectTypeOf<PropertyOwner<K>>().toEqualTypeOf<{ [T in K]?: V2 }>();
   });
 
-  it("should return `EmptyObject` if 'K' or `V` is `never`", () => {
+  it("should return `AnyObject` if 'K' or `V` is `never`", () => {
     type K1 = "key";
     type V1 = never;
 
-    expectTypeOf<PropertyOwner<K1, V1>>().toEqualTypeOf<AnyObject>();
+    expectTypeOf<PropertyOwner<K1, V1>>().toEqualTypeOf<{ [T in K1]: never }>();
 
     type K2 = never;
     type V2 = "value";

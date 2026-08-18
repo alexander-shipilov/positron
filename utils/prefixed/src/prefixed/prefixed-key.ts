@@ -8,7 +8,7 @@ import type { Prefix, PrefixSeparator } from "../prefix";
  *
  * @example
  * ```ts
- *  type BarKey = PrefixedKey<"foo", "bar">
+ *  type BarKey = PrefixedKey<"bar", "foo">
  *  // "bar-foo"
  * ```
  *

@@ -1,7 +1,7 @@
 import type React from "react";
 
 import type { ReactDomProps } from "./react-dom-props";
-import type { ReactDOMTag } from "./react-dom-tag";
+import type { ReactDomTag } from "./react-dom-tag";
 
 /**
  * The {@link ReactDomElement} type constructs a union of `HTMLElements` which
@@ -9,13 +9,13 @@ import type { ReactDOMTag } from "./react-dom-tag";
  *
  * @example
  * ```ts
- *  type Element = ReactDOMElement<"input" | "textarea">
+ *  type Element = ReactDomElement<"input" | "textarea">
  *  // HTMLInputElement | HTMLTextAreaElement
  * ```
  *
  * @public
  */
-export type ReactDomElement<TTag extends ReactDOMTag> =
+export type ReactDomElement<TTag extends ReactDomTag> =
   ReactDomProps<TTag> extends React.RefAttributes<infer Element>
     ? Element
     : never;

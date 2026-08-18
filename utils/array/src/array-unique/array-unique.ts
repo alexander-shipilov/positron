@@ -1,4 +1,4 @@
-import type { ArrayType } from "../array-type";
+import type { ArrayUnique_ } from "./array-unique_";
 
 /**
  * The {@link ArrayUnique} type constructs the array / tuple type of the
@@ -18,28 +18,3 @@ export type ArrayUnique<TArray extends readonly unknown[]> =
   Readonly<TArray> extends TArray
     ? Readonly<ArrayUnique_<[...TArray]>>
     : ArrayUnique_<[...TArray]>;
-
-/**
- */
-type ArrayUnique_<
-  TArray extends unknown[],
-  TUnique extends unknown[] = [],
-> = TArray extends [infer First, ...infer Tail extends unknown[]]
-  ? ArrayUnique_<Tail, ArrayUniqueItem_<[...TUnique, First]>>
-  : TArray extends [...infer Head extends unknown[], infer Last]
-    ? ArrayUniqueItem_<[...ArrayUnique_<Head, TUnique>, Last]>
-    : ArrayUniqueItem_<[...TUnique, ArrayType<TArray>]> | TUnique;
-
-/**
- * @internal
- *
- * @internal
- */
-type ArrayUniqueItem_<TUnique extends unknown[]> = TUnique extends [
-  ...infer Head,
-  infer Last,
-]
-  ? Last extends ArrayType<Head>
-    ? Head
-    : [...Head, Last]
-  : TUnique;

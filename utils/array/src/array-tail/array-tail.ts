@@ -1,3 +1,5 @@
+import type { ArrayTail_ } from "./array-tail_";
+
 /**
  * The {@link ArrayTail} type constructs an array / tuple type by removing the
  * first item from the passed `TArray` type.
@@ -25,15 +27,3 @@ export type ArrayTail<TArray extends readonly unknown[]> =
   Readonly<TArray> extends TArray
     ? Readonly<ArrayTail_<[...TArray]>>
     : ArrayTail_<[...TArray]>;
-
-/**
- * @internal
- */
-type ArrayTail_<TArray extends unknown[]> = TArray extends [
-  unknown,
-  ...infer Tail,
-]
-  ? Tail
-  : TArray extends readonly []
-    ? never[]
-    : TArray;

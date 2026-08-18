@@ -9,11 +9,11 @@ describe("TypeGuard<TExpected, TValue>", () => {
       " the passed arg matches `TExpected`",
     () => {
       expectTypeOf<(value: unknown) => value is number>().toEqualTypeOf<
-        TypeGuard<number>
+        TypeGuard<unknown, number>
       >();
 
       expectTypeOf<(value: number | string) => value is number>().toEqualTypeOf<
-        TypeGuard<number, number | string>
+        TypeGuard<number | string, number>
       >();
     },
   );

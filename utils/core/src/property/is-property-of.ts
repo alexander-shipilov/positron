@@ -1,10 +1,15 @@
-import { isObject } from "../object";
+import type { PropertyKeyOf } from "./property-key-of";
+import { hasProperty } from "./has-property";
 
-import type { PropertyOwner } from "./property-owner";
-
-export function isPropertyOf<TKey extends PropertyKey>(
-  key: TKey,
-  target: unknown,
-): target is PropertyOwner<TKey> {
-  return isObject(target) && key in target;
+/**
+ * @param key - TBD
+ * @param target - TBD
+ *
+ * @public
+ */
+export function isPropertyOf<TTarget>(
+  key: PropertyKey,
+  target: TTarget,
+): key is PropertyKeyOf<TTarget> {
+  return hasProperty(target, key);
 }

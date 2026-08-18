@@ -3,12 +3,12 @@ import { BIGINT_TYPE } from "./bigint-type";
 
 /**
  * The {@link isBigintType} function checks if the passed
- * {@link maybeBigintType} is a {@link BigintType}.
+ * `maybeBigintType` is a {@link BigintType}.
  *
  * @param maybeBigintType - The value to be tested for being
  *   a {@link BigintType}.
  *
- * @returns The boolean value `true` if the passed {@link maybeBigintType}
+ * @returns The boolean value `true` if the passed `maybeBigintType`
  *   value is a {@link BigintType}.
  * @public
  */

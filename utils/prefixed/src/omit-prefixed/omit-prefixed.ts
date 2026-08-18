@@ -10,18 +10,18 @@ import type { PrefixedKey } from "../prefixed";
  * @example
  * ```ts
  *  type PropsWithoutFooPrefixed = OmitPrefixed<
- *    "foo",
- *    { foo: unknown; "foo-bar": unknown }
+ *    { foo: unknown; "foo-bar": unknown, bar: unknown },
+ *    "foo"
  *  >;
- *  // { foo: unknown }
+ *  // { foo: unknown, bar: unknown }
  * ```
  *
- * @typeParam TPrefix - String type of prefix
  * @typeParam TProps - Type to omit prefixed props
+ * @typeParam TPrefix - String type of prefix
  *
  * @public
  */
 export type OmitPrefixed<
-  TPrefix extends Prefix,
   TProps extends UnknownObject,
+  TPrefix extends Prefix,
 > = Omit<TProps, PrefixedKey<TPrefix>> & {};

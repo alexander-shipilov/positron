@@ -1,13 +1,14 @@
+import { describe, it } from "@jest/globals";
 import { expectTypeOf } from "expect-type";
 
 import type { AnyObject } from "@positron/core";
 
-import type { MockComponentProps } from "../@fixtures";
+import type { MockComponentProps } from "../-fixtures";
 import {
   MockComponent,
   MockComponentMemo,
   MockComponentNoArgs,
-} from "../@fixtures";
+} from "../-fixtures";
 
 import type { ReactComponent } from "./react-component";
 

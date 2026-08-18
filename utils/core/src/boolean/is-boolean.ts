@@ -3,10 +3,10 @@ import { typeOf } from "../type-of";
 
 /**
  * The {@link isBoolean} function is a type-guard function that determines
- * whether the type of the passed value {@link maybeBoolean} extends
+ * whether the type of the passed value `maybeBoolean` extends
  * the `boolean` type.
  *
- * This means that if the return value is `true`, then {@link maybeBoolean} is
+ * This means that if the return value is `true`, then `maybeBoolean` is
  * not strictly of type `boolean`, but is `boolean & typeof maybeBoolean`.
  *
  * @example The following example demonstrates this.
@@ -29,7 +29,7 @@ import { typeOf } from "../type-of";
  * @param maybeBoolean - The value to be tested for being a `boolean`.
  *
  * @returns The boolean value `true` if the type of the given
- * {@link maybeBoolean} extends the `boolean` type. Otherwise, `false`.
+ * `maybeBoolean` extends the `boolean` type. Otherwise, `false`.
  *
  * @public
  */

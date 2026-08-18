@@ -1,6 +1,7 @@
 import react from "eslint-plugin-react";
+import { defineConfig } from "eslint/config";
 
-export default [
+export default defineConfig(
   react.configs.flat.recommended,
   react.configs.flat["jsx-runtime"],
   {
@@ -21,4 +22,4 @@ export default [
       },
     },
   },
-];
+);

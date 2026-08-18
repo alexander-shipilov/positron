@@ -8,6 +8,7 @@ export default rules({
     {
       customGroups,
       groups: ["unknown", callbacks],
+      type: "custom",
     },
   ],
 });

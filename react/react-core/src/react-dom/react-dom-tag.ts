@@ -6,4 +6,4 @@ import type { ReactDom } from "./react-dom";
  * Tag supported by react
  * @public
  */
-export type ReactDOMTag = PropertyKeyOf<ReactDom>;
+export type ReactDomTag = PropertyKeyOf<ReactDom>;

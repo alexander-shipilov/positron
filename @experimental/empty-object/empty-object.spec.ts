@@ -1,4 +1,4 @@
-import { describe, it } from "@jest/globals";
+import { describe, it } from "@jest/constants";
 import { expectTypeOf } from "expect-type";
 
 import type { EmptyObject } from "./empty-object";

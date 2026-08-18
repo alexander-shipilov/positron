@@ -11,7 +11,7 @@
  *  // number | string
  * ```
  *
- * @paramType TType - The type from which the `null` type should be excluded.
+ * @typeParam TType - The type from which the `null` type should be excluded.
  *
  * @public
  */

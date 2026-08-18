@@ -28,7 +28,7 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (https://nodejs.org/api/addons.html)
+# Compiled operation2 addons (https://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directories
@@ -65,6 +65,7 @@ common/deploy/
 common/temp/
 common/autoinstallers/*/.npmrc
 **/.rush/temp/
+**/rush-logs
 
 # Heft
 .heft
@@ -78,4 +79,6 @@ common/autoinstallers/*/.npmrc
 # Temporary files
 temp/
 
+*/*/docs
+*/*/dist
 */*/lib

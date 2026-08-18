@@ -1,7 +1,7 @@
 import type React from "react";
 
 /**
- * Mutable ref object
+ * The {@link ReactRefObject} type represents a reference object.
  * @public
  */
 export type ReactRefObject<TValue> = React.RefObject<TValue>;

@@ -2,6 +2,19 @@ import type { PropertyKeyOf } from "@positron/core";
 import { isOwnPropertyOf } from "@positron/core";
 
 /**
+ * @param target
+ * @param key
+ *
+ * @internal
+ */
+function isPropertyOfArrayLike<TTarget extends ArrayLike<unknown>>(
+  key: PropertyKey,
+  target: TTarget,
+): key is PropertyKeyOf<TTarget> {
+  return key === "length" || isOwnPropertyOf(key, target);
+}
+
+/**
  * The {@link ArrayLikeProxy} class creates a proxy to the given array-like.
  *
  * This is useful if you need to create a class that implements `ArrayLike` but
@@ -10,6 +23,7 @@ import { isOwnPropertyOf } from "@positron/core";
  * @example
  * The following example demonstrates this:
  *
+ * @example
  * ```ts
  *  abstract class MyNodeList extends ArrayLikeProxy<Node> implements NodeList {
  *    constructor(protected readonly items: Node[]) {
@@ -43,22 +57,9 @@ export class ArrayLikeProxy<TValue> implements ArrayLike<TValue> {
   constructor(arrayLike: ArrayLike<TValue>) {
     return new Proxy(this, {
       get: (target: ArrayLikeProxy<TValue>, key: PropertyKey): unknown =>
-        isArrayLikeProperty(arrayLike, key)
+        isPropertyOfArrayLike(key, arrayLike)
           ? arrayLike[key]
           : target[key as keyof ArrayLikeProxy<TValue>],
     });
   }
-}
-
-/**
- * @param values
- * @param key
- *
- * @internal
- */
-function isArrayLikeProperty<TValues extends ArrayLike<unknown>>(
-  values: TValues,
-  key: PropertyKey,
-): key is PropertyKeyOf<TValues> {
-  return key === "length" || isOwnPropertyOf(key, values);
 }

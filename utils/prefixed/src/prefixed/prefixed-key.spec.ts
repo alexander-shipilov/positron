@@ -8,7 +8,7 @@ import type { PrefixedKey } from "./prefixed-key";
 describe("PrefixedKey<P, K>", () => {
   type P = "foo";
 
-  it("should strip prefix `P` from the prefixed `K`", () => {
+  it("should add prefix `P` to the key `K`", () => {
     type P1 = "foo";
     type K1 = "bar";
     expectTypeOf<PrefixedKey<P1, K1>>().toEqualTypeOf<"foo-bar">();
@@ -22,12 +22,11 @@ describe("PrefixedKey<P, K>", () => {
     expectTypeOf<PrefixedKey<P3, K3>>().toEqualTypeOf<"foo-bar-baz">();
   });
 
-  it("`should return `${P}-${string}` if `K` is a `string``", () => {
-    type K = string;
-    expectTypeOf<PrefixedKey<P, K>>().toEqualTypeOf<`${P}-${string}`>();
+  it("`should be `${P}-${string}` if `K` is omitted`", () => {
+    expectTypeOf<PrefixedKey<P>>().toEqualTypeOf<`${P}-${string}`>();
   });
 
-  it("should return `number` if `K` is a `number`", () => {
+  it("should be `number` if `K` is a `number`", () => {
     type K1 = number;
     expectTypeOf<PrefixedKey<P, K1>>().toEqualTypeOf<K1>();
 
@@ -35,7 +34,7 @@ describe("PrefixedKey<P, K>", () => {
     expectTypeOf<PrefixedKey<P, K2>>().toEqualTypeOf<K2>();
   });
 
-  it("should return `symbol` if `K` is a `symbol`", () => {
+  it("should be `symbol` if `K` is a `symbol`", () => {
     type K1 = symbol;
     expectTypeOf<PrefixedKey<P, K1>>().toEqualTypeOf<K1>();
 

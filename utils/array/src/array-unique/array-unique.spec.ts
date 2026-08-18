@@ -8,8 +8,7 @@ describe("ArrayUnique<T>", () => {
     "should return unique items of `T`:\n" + //
       " [1, 2, 2]       --> [1, 2]\n" +
       " [number, 1, 2]  --> [number]\n" +
-      " [1, number]     --> [1, number]\n" +
-      "",
+      " [1, number]     --> [1, number]\n",
     () => {
       type T1 = [1, 2, 2];
       expectTypeOf<ArrayUnique<T1>>().toEqualTypeOf<[1, 2]>();
@@ -27,6 +26,14 @@ describe("ArrayUnique<T>", () => {
       expectTypeOf<ArrayUnique<T3>>().toEqualTypeOf<[1, number]>();
       expectTypeOf<ArrayUnique<Readonly<T3>>>().toEqualTypeOf<
         readonly [1, number]
+      >();
+
+      type T4 = [1, number?];
+      expectTypeOf<ArrayUnique<T4>>().toEqualTypeOf<
+        [1] | [1, number] | [1, undefined]
+      >();
+      expectTypeOf<ArrayUnique<Readonly<T4>>>().toEqualTypeOf<
+        readonly [1] | readonly [1, number] | readonly [1, undefined]
       >();
     },
   );
@@ -47,8 +54,7 @@ describe("ArrayUnique<T>", () => {
       " [1, 2 | 3]               -->  [1, 2] | [1, 3]\n" +
       " [1 | 2, 1]               -->  [1] | [2, 1]\n" +
       " [1 | 2, 2 | 3]           -->  [1, 2] | [1, 3] | [2, 3] | [2]\n" +
-      " [number, string | 1, 2]  -->  [number, string] | [number]\n" +
-      "",
+      " [number, string | 1, 2]  -->  [number, string] | [number]\n",
     () => {
       type T1 = [1, 1 | 2];
       expectTypeOf<ArrayUnique<T1>>().toEqualTypeOf<[1, 2] | [1]>();
@@ -93,8 +99,7 @@ describe("ArrayUnique<T>", () => {
       " [...1[], 2]            -->  [1, 2] | [2]\n" +
       " [...1[], 2, 1]         -->  [1, 2] | [2, 1]\n" +
       " [...(1 | 2)[], 2 | 3]  -->  [1, 2] | [1, 3] | [2, 3] | [2] | [3]\n" +
-      " 1 | 2, ...(2 | 3)[]    -->  [1] | [2] | [1, 2] | [1, 3] | [2, 3]\n" +
-      "",
+      " [1 | 2, ...(2 | 3)[]]  -->  [1] | [2] | [1, 2] | [1, 3] | [2, 3]\n",
     () => {
       type T1 = [...1[]];
       expectTypeOf<ArrayUnique<T1>>().toEqualTypeOf<[1] | []>();

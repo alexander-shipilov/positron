@@ -1,47 +1,34 @@
 import type { ErrorLike } from "../error";
-import type { NonFalsy } from "../falsy";
-import { error } from "../error";
-import { isNonFalsy } from "../falsy";
+import type { TypeGuard } from "../type-guard";
 import { never } from "../never";
 
 import { AssertException } from "./assert-exception";
 
 /**
- * The {@link assert} function tests if the passed {@link value} is truthy.
- *
- * If {@link value} is falsy, an `Error` is thrown.
- *
- * If the {@link message} parameter is omitted or `undefined`, a default
- * {@link AssertException} is assigned.
- *
- * If the {@link message} parameter is an instance of `Error` or function
- * which returns an instance of `Error`, then it will be thrown instead of the
- * {@link AssertException}.
+ * The {@link assert} function tests if the passed `value` is match
+ *   to the specified type.
  *
  * @example
  * ```ts
- *  const string = assert(stringOrUndefined)
- *
- *  string.concat('value passed')
- *
- *  if (assert(value === "foo", '{@link value} should be "foo"')) {
- *    // here some portion of the code that expects that value is "foo"
- *  }
+ *  const array = assert(maybeArray, isArray, 'Array expected')
+ *  // array is unknown[]
  * ```
  *
- * @param value - The value to test to be truthy.
+ * @param value - The value to check.
+ * @param isType - The type-guard function to test `value` type.
  * @param message - An {@link  ErrorLike} to get error if assertion is failed.
  *
  * @returns The passed value
  *
- * @throws {@link AssertException} if {@link message} is a string or omitted
- * @throws the passed {@link message} otherwise
+ * @throws {@link AssertException} if `value` is a string or omitted
+ * @throws `value` otherwise
  *
  * @public
  */
-export function assert<TValue>(
+export function assert<TValue, TExpected extends TValue>(
   value: TValue,
+  isType: TypeGuard<TValue, TExpected>,
   message: ErrorLike = "Assertion failed",
-): NonFalsy<TValue> {
-  return isNonFalsy(value) ? value : never(error(message, AssertException));
+): TExpected {
+  return isType(value) ? value : never(message, AssertException);
 }

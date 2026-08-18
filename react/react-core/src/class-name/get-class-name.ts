@@ -12,6 +12,6 @@ import { isClassNameProps } from "./is-class-name-props";
  *
  * @public
  */
-export function getClassName<TProps>(props: TProps): ClassName | null {
+export function getClassName(props: unknown): ClassName | null {
   return isClassNameProps(props) ? props[CLASS_NAME_PROP] : null;
 }

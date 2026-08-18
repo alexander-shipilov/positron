@@ -34,6 +34,7 @@
  * current version of TS considers the following declaration (necessarily
  * enclosed in a literal template) to be unequal to the `string` type:
  *
+ * @example
  * ```ts
  * `${string & { readonly length: number }}`
  * ```

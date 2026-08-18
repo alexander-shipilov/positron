@@ -5,8 +5,8 @@ import type { NullLike } from "./null-like";
 
 describe("NullLike", () => {
   it(
-    "should be `" +
-      " | null" + //
+    "should be `" + //
+      " | null" +
       " | undefined" +
       "`",
     () => {

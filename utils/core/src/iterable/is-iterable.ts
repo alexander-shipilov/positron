@@ -1,13 +1,15 @@
-import { isFunction } from "../index";
-import { isPropertyOf } from "../property";
+import { isFunction } from "../function";
+import { hasOwnProperty } from "../property";
 
 /**
- * Checks if the `passed` value is an {@link Iterable} object
+ * Checks if the `passed` value is an `Iterable` object
  *
  * @param value - The value to be checked.
+ *
+ * @public
  */
 export function isIterable(value: unknown): value is Iterable<unknown> {
   return (
-    isPropertyOf(Symbol.iterator, value) && isFunction(value[Symbol.iterator])
+    hasOwnProperty(value, Symbol.iterator) && isFunction(value[Symbol.iterator])
   );
 }

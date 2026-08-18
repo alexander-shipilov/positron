@@ -3,6 +3,6 @@
  *
  * @public
  */
-export function ReactVoid<TProps = never>(props: TProps): undefined {
+export function ReactVoid(props: unknown): undefined {
   return void props;
 }

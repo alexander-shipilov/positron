@@ -1,9 +1,5 @@
-import type { IsNever } from "expect-type";
-
-import type { AnyObject } from "../object";
-
 /**
- * The {@link PropertyOwner} type constructs a type with the property `TKey`
+ * The {@link PropertyOwner} type constructs an object with the property `TKey`
  *
  * @example
  * ```ts
@@ -21,6 +17,4 @@ export type PropertyOwner<
   TValue = unknown,
 > = undefined extends TValue
   ? Partial<Record<TKey, TValue>>
-  : true extends IsNever<TKey> | IsNever<TValue>
-    ? AnyObject
-    : Record<TKey, TValue>;
+  : Record<TKey, TValue>;

@@ -1,11 +1,12 @@
 import eslintjs from "@eslint/js";
 import importPlugin from "eslint-plugin-import";
+import { defineConfig } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
-export default tseslint.config(
+export default defineConfig(
   eslintjs.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
+  tseslint.configs.strictTypeChecked,
   {
     languageOptions: {
       globals: {
@@ -19,6 +20,28 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    rules: {
+      "@typescript-eslint/array-type": "error",
+      "@typescript-eslint/consistent-type-exports": "error",
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          fixStyle: "separate-type-imports",
+          prefer: "type-imports",
+        },
+      ],
+      "@typescript-eslint/explicit-member-accessibility": [
+        "error",
+        {
+          accessibility: "explicit",
+        },
+      ],
+      "@typescript-eslint/indent": "off",
+      "@typescript-eslint/no-invalid-void-type": [
+        "error",
+        { allowAsThisParameter: true },
+      ],
+    },
   },
   {
     ...importPlugin.flatConfigs.recommended,
@@ -28,26 +51,12 @@ export default tseslint.config(
     ...tseslint.configs.disableTypeChecked,
     files: ["**/*.{cjs,js,jsx,mjs}"],
   },
-
-  [
-    {
-      rules: {
-        "@typescript-eslint/array-type": "error",
-        "@typescript-eslint/consistent-type-exports": "error",
-        "@typescript-eslint/consistent-type-imports": [
-          "error",
-          {
-            fixStyle: "separate-type-imports",
-            prefer: "type-imports",
-          },
-        ],
-        "@typescript-eslint/indent": "off",
-
-        "import/consistent-type-specifier-style": [
-          "error", //
-          "prefer-top-level",
-        ],
-      },
+  {
+    rules: {
+      "import/consistent-type-specifier-style": [
+        "error", //
+        "prefer-top-level",
+      ],
     },
-  ],
+  },
 );
