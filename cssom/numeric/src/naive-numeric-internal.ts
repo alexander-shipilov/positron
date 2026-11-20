@@ -417,9 +417,9 @@ export abstract class NaiveNumericInternal {
   protected isEqualMathClamp($this: MathClamp, value: NumericValue): boolean {
     return (
       value instanceof this.MathClamp &&
-      $this[$lower] === value[$lower] &&
-      $this[$upper] === value[$upper] &&
-      $this[$value] === value[$value]
+      this.isEqual($this[$lower], value[$lower]) &&
+      this.isEqual($this[$upper], value[$upper]) &&
+      this.isEqual($this[$value], value[$value])
     );
   }
 
