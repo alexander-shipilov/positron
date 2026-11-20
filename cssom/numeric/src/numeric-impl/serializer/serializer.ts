@@ -14,7 +14,7 @@ import type { MathNegate } from "../math-negate";
 import type { MathProduct } from "../math-product";
 import type { MathSum } from "../math-sum";
 import type { NumericImpl } from "../numeric-impl";
-import { $value, $values } from "../-internal";
+import { $value, $values } from "../internal";
 import { NUMBER_UNIT } from "../number";
 import { PERCENT_UNIT } from "../percent";
 

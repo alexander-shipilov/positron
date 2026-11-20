@@ -7,7 +7,7 @@ import type {
 } from "@positron/css-numeric";
 
 import type { TypeImpl } from "../type";
-import { $type } from "../-internal";
+import { $type } from "../internal";
 import { Registry } from "../registry";
 
 import type { NumericValue as INumericValue } from "./numeric-value";

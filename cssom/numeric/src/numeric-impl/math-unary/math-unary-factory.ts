@@ -1,7 +1,7 @@
 import type { CssNumberish, CssNumericValue } from "@positron/css-numeric";
 
 import type { NumericValue } from "../numeric-value";
-import { $value } from "../-internal";
+import { $value } from "../internal";
 import { MathValueFactory } from "../math-value";
 import { Registry } from "../registry";
 

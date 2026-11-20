@@ -1,5 +1,5 @@
 import type { Unit } from "../unit";
-import { $unit, $value } from "../-internal";
+import { $unit, $value } from "../internal";
 import { NumericValueFactory } from "../numeric-value";
 import { Registry } from "../registry";
 

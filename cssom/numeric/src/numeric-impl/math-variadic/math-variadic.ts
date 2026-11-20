@@ -1,6 +1,6 @@
 import type { CssNumericArray } from "@positron/css-numeric";
 
-import type { $values } from "../-internal";
+import type { $values } from "../internal";
 import type { MathValue } from "../math-value";
 import type { NumericValue } from "../numeric-value";
 

@@ -38,7 +38,7 @@ import {
   $upper,
   $value,
   $values,
-} from "./numeric-impl/-internal";
+} from "./numeric-impl/internal";
 import { NUMBER_UNIT } from "./numeric-impl/number";
 import { toDouble } from "./numeric-impl/to-double";
 import { toUnit } from "./numeric-impl/unit";
