@@ -1,4 +1,6 @@
+import type { Key } from "@positron/lang";
 import {
+  getKeys,
   isArray,
   isArrayLike,
   isBoolean,
@@ -7,9 +9,8 @@ import {
   isNumber,
   isString,
   isSymbol,
-  propertyKeys,
   typeOf,
-} from "@positron/core";
+} from "@positron/lang";
 
 type DebugContext = {
   circulars: object[];
@@ -70,7 +71,7 @@ function debugArrayLikeItems(
   value: ArrayLike<unknown>,
   context: DebugContext,
 ): string[] {
-  return propertyKeys(value).map((key) =>
+  return getKeys(value).map((key) =>
     debugArrayLikeItem(key, value[key], value, context),
   );
 }
@@ -238,11 +239,7 @@ function debugObjectLike(
  * @param value -
  * @param context -
  */
-function debugObjectProp(
-  key: PropertyKey,
-  value: unknown,
-  context: DebugContext,
-) {
+function debugObjectProp(key: Key, value: unknown, context: DebugContext) {
   const keyString = debugValue(key, context);
 
   return `${isSymbol(key) ? `[${keyString}]` : keyString}: ${debugValue(value, context)}`;
@@ -253,9 +250,7 @@ function debugObjectProp(
  * @param context -
  */
 function debugObjectProps(value: object, context: DebugContext): string[] {
-  return propertyKeys(value).map((key) =>
-    debugObjectProp(key, value[key], context),
-  );
+  return getKeys(value).map((key) => debugObjectProp(key, value[key], context));
 }
 
 /**

@@ -8,7 +8,7 @@ import { Rational } from "./rational";
 describe(`${Rational.name}(math, num, den)`, () => {
   const math = new IntegerMath(Integer, isIntegerNumber);
 
-  it("should create a `Fraction` using passed integral `math`", () => {
+  it("should create a `Fraction` using passed math `math`", () => {
     expect(Rational(math, 1, 2)).toEqual([1, 2]);
     expect(Rational(math, 1)).toEqual([1, 1]);
     expect(Rational(math, 2)).toEqual([2, 1]);

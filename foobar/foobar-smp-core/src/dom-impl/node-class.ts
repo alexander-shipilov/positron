@@ -1,4 +1,4 @@
-import type { Any } from "@positron/core";
+import type { Any } from "@positron/lang";
 
 import type { Node } from "./node";
 

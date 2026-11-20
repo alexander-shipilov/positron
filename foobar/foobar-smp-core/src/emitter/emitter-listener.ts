@@ -1,4 +1,4 @@
-import type { Any, Optional } from "@positron/core";
+import type { Any, Optional } from "@positron/lang";
 
 /**
  * The {@link EmitterListener} type represents an event listener.

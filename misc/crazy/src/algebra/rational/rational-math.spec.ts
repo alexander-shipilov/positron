@@ -1,6 +1,6 @@
 import { describe, expect, it } from "@jest/globals";
 
-import type { NumberLike } from "@positron/core";
+import type { NumericLike } from "@positron/lang";
 
 import { Exception } from "../../exception";
 import { Integer, isIntegerNumber } from "../../number";
@@ -13,7 +13,7 @@ describe(RationalMath.name, () => {
   const integral = new IntegerMath(Integer, isIntegerNumber);
   const rational = new RationalMath(integral);
 
-  const Ratio = (num: NumberLike, den: NumberLike = 1) =>
+  const Ratio = (num: NumericLike, den: NumericLike = 1) =>
     Rational(integral, num, den);
 
   describe("#equals(value1, value2)", () => {

@@ -1,5 +1,5 @@
-import type { TypeGuard } from "@positron/core";
-import { never } from "@positron/core";
+import type { TypeGuard } from "@positron/lang";
+import { never } from "@positron/lang";
 
 import type { Entity } from "../../entity";
 import type { Serializer } from "../serializer";
@@ -12,7 +12,7 @@ export class JsonSerializer<TValue> implements Serializer<string> {
    * @param serializer
    * @param isValue
    */
-  constructor(
+  public constructor(
     protected readonly serializer: Serializer<TValue>,
     protected readonly isValue: TypeGuard<unknown, TValue>,
   ) {}
@@ -20,7 +20,7 @@ export class JsonSerializer<TValue> implements Serializer<string> {
   /**
    * @param data
    */
-  deserialize(data: string): Entity {
+  public deserialize(data: string): Entity {
     const input: unknown = JSON.parse(data);
 
     return this.isValue(input)
@@ -31,7 +31,7 @@ export class JsonSerializer<TValue> implements Serializer<string> {
   /**
    * @param entity
    */
-  serialize(entity: Entity): string {
+  public serialize(entity: Entity): string {
     return JSON.stringify(this.serializer.serialize(entity));
   }
 }

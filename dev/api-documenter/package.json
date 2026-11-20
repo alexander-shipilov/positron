@@ -5,42 +5,44 @@
   "license": "MIT",
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
   "repository": "git@github.com:alexander-shipilov/positron.git",
-  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/dts/index.d.ts",
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
       "import": "./lib/esm/index.js",
-      "types": "./lib/esm/index.d.ts"
+      "node": "./lib/cjs/index.js",
+      "require": "./lib/cjs/index.js",
+      "types": "./lib/dts/index.d.ts"
+    },
+    "./lib/*": {
+      "import": "./lib/esm/*.js",
+      "node": "./lib/cjs/*.js",
+      "require": "./lib/cjs/*.js",
+      "types": "./lib/dts/*.d.ts"
     }
   },
-  "main": "./lib/cjs/index.js",
-  "files": [
-    "./lib"
-  ],
   "scripts": {
     "_phase:build": "heft run --only build -- --clean",
     "_phase:test": "heft run --only test -- --clean",
-    "docs": "npm run build & api-documenter markdown -i lib/esm -o docs/api",
+    "docs": "npm run build & api-documenter markdown -i dist -o docs",
     "build": "heft build --clean",
     "test": "heft test --clean"
   },
-  "types": "./lib/esm/index.d.ts",
   "dependencies": {
   },
   "devDependencies": {
-    "@jest/globals": "~30.4.0",
-    "@microsoft/api-documenter": "~7.30.5",
-    "@microsoft/api-extractor": "~7.58.7",
-    "@microsoft/api-extractor-model": "~7.33.8",
+    "@jest/globals": "~30.5.2",
+    "@microsoft/api-documenter": "~7.30.18",
+    "@microsoft/api-extractor": "~7.59.4",
+    "@microsoft/api-extractor-model": "~7.33.15",
     "@positron/heft-rig": "workspace:*",
-    "@rushstack/heft": "~1.2.17",
-    "@types/node": "~25.6.2",
-    "eslint": "^10.3.0",
-    "expect-type": "^1.3.0",
-    "jest": "~30.4.0",
-    "react": "~19.2.6",
-    "ts-jest": "~29.4.9",
-    "typescript": "^6.0.3",
-    "ts-node": "~10.9.2"
+    "@rushstack/heft": "~1.3.3",
+    "eslint": "^10.13.0",
+    "expect-type": "^1.4.0",
+    "jest": "~30.5.2",
+    "ts-jest": "~29.4.15",
+    "typescript": "^6.0.3"
   }
 }

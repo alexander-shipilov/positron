@@ -1,5 +1,5 @@
-import type { NumberLike } from "@positron/core";
-import { isBigint, isNumber, never } from "@positron/core";
+import type { NumberLike } from "@positron/lang";
+import { isBigint, isNumber, never } from "@positron/lang";
 
 import { debug } from "../../utils";
 

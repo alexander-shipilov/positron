@@ -7,6 +7,7 @@ export default rules({
     "error",
     {
       groups,
+      newlinesBetween: 0,
     },
   ],
 });

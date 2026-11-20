@@ -20,8 +20,8 @@ import type { DomString } from "./dom-string";
 export interface DomNode extends DomEventTarget {
   /**
    * The read-only {@link DomNode.childNodes} property returns a live
-   * {@link DomNodeList} of child nodes of the given element where the first
-   * child node is assigned index `0`. Child nodes include elements, text and
+   * {@link DomNodeList} of child node of the given element where the first
+   * child node is assigned index `0`. Child node include elements, text and
    * comments.
    */
   readonly childNodes: DomNodeList;
@@ -30,8 +30,8 @@ export interface DomNode extends DomEventTarget {
    * The read-only {@link DomNode.firstChild} property returns the node's
    * first child in the tree, or `null` if the node has no children.
    *
-   * If the node is a {@link DomDocument}, this property returns the first node
-   * in the list of its direct children.
+   * If the node is a {@link DomDocument}, this property returns the first
+   * node in the list of its direct children.
    */
   readonly firstChild: DomNode | null;
 
@@ -44,7 +44,7 @@ export interface DomNode extends DomEventTarget {
 
   /**
    * The read-only {@link DomNode.lastChild} property returns the last
-   * child of the node, or `null` if there are no child nodes.
+   * child of the node, or `null` if there are no child node.
    */
   readonly lastChild: DomNode | null;
 
@@ -64,7 +64,7 @@ export interface DomNode extends DomEventTarget {
 
   /**
    * The read-only {@link DomNode.nodeType} property is an integer that
-   * identifies what the node is. It distinguishes different kinds of nodes
+   * identifies what the node is. It distinguishes different kinds of node
    * from each other, such as elements, text.
    */
   readonly nodeType: DomNodeType;
@@ -101,11 +101,11 @@ export interface DomNode extends DomEventTarget {
    * the specified node in the DOM tree.
    *
    * @remarks
-   * {@link DomDocument} and {@link DomDocumentFragment} nodes can never have a
+   * {@link DomDocument} and {@link DomDocumentFragment} node can never have a
    *   parent, so {@link DomNode.parentNode} will always return `null`. It also
    *   returns `null` if the node has just been created and is not yet attached
    *   to the tree. {@link DomNode.parentElement} on the other hand only
-   *   returns {@link DomElement} nodes.
+   *   returns {@link DomElement} node.
    */
   readonly parentNode: DomNode | null;
 

@@ -7,6 +7,11 @@ declare namespace Configs {
   const core: Config[];
 
   /**
+   * TSDoc / JSDoc config.
+   */
+  const doc: Config[];
+
+  /**
    * Jest config.
    */
   const jest: Config[];
@@ -17,9 +22,14 @@ declare namespace Configs {
   const perfectionist: Config[];
 
   /**
-   * Prettier configs.
+   * Stylistic configs.
    */
   const prettier: Config[];
+
+  /**
+   * Stylistic configs.
+   */
+  const stylistic: Config[];
 
   /**
    * React configs.

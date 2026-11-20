@@ -1,4 +1,4 @@
-import type { Nullish } from "@positron/core";
+import type { Nullish } from "@positron/lang";
 
 import type {
   Entity,

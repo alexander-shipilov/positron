@@ -1,4 +1,4 @@
-import { assert, isNonOptional } from "@positron/core";
+import { assert, isNonOptional } from "@positron/lang";
 
 import type { Entity } from "../../entity";
 import type { Serializer } from "../serializer";

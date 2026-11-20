@@ -1,4 +1,4 @@
-import { never } from "@positron/core";
+import { never } from "@positron/lang";
 
 import type { DomString, DomText } from "../dom";
 import { DomNodeType } from "../dom";

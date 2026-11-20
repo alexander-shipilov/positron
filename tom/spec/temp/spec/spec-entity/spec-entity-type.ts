@@ -1,0 +1,15 @@
+export enum SpecEntityType {
+  Class = "class",
+  Code = "code",
+  Function = "function",
+  Index = "index",
+  Interface = "interface",
+  Literal = "expr",
+  Method = "method",
+  Param = "param",
+  Params = "params",
+  Property = "property",
+  Ref = "ref",
+  Token = "token",
+  TypeParam = "type param",
+}

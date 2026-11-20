@@ -5,9 +5,20 @@ import { Integer } from "./integer";
 describe(`${Integer.name}(value)`, () => {
   it("should return `value` if `value` is a safe integer", () => {
     expect(Integer(0)).toEqual(0);
-    expect(Integer(-0)).toEqual(0);
     expect(Integer(Number.MAX_SAFE_INTEGER)).toEqual(Number.MAX_SAFE_INTEGER);
     expect(Integer(Number.MIN_SAFE_INTEGER)).toEqual(Number.MIN_SAFE_INTEGER);
+  });
+
+  it("should convert `-0` to `0`", () => {
+    expect(Integer(-0)).toEqual(0);
+  });
+
+  it("should parse string `value`", () => {
+    expect(Integer("10")).toEqual(10);
+    expect(Integer("010")).toEqual(10);
+    expect(Integer("0x10")).toEqual(16);
+    expect(Integer("0o10")).toEqual(8);
+    expect(Integer("0b10")).toEqual(2);
   });
 
   it("should throw `SyntaxError` if `value` cannot be converted to an `IntegerNumber`", () => {

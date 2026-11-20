@@ -11,19 +11,19 @@ export class Operand implements Entity<OperandType> {
   /**
    *
    */
-  get length(): number {
+  public get length(): number {
     return 1;
   }
 
   /**
    *
    */
-  get type(): OperandType {
+  public get type(): OperandType {
     return EntityType.Operand;
   }
 
   /**
    * @param arg -
    */
-  constructor(readonly arg: OperandArg) {}
+  public constructor(public readonly arg: OperandArg) {}
 }

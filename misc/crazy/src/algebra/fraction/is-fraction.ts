@@ -1,5 +1,5 @@
-import type { TypeGuard } from "@positron/core";
-import { isArrayOf } from "@positron/core";
+import type { TypeGuard } from "@positron/lang";
+import { isArrayOf } from "@positron/lang";
 
 import { isVector2 } from "../../utils";
 

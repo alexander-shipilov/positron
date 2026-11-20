@@ -8,11 +8,11 @@ import type {
 import { DomEventPhase } from "../dom";
 
 export class Event implements DomEvent {
-  public _bubbles: boolean;
+  public readonly _bubbles: boolean;
 
-  public _cancelable: boolean;
+  public readonly _cancelable: boolean;
 
-  public _composed: boolean;
+  public readonly _composed: boolean;
 
   public _currentTarget: DomEventTarget | null = null;
 
@@ -22,9 +22,9 @@ export class Event implements DomEvent {
 
   public _target: DomEventTarget | null = null;
 
-  public _timeStamp: DomHighResTimeStamp;
+  public readonly _timeStamp: DomHighResTimeStamp;
 
-  public _type: DomString;
+  public readonly _type: DomString;
 
   public get bubbles(): boolean {
     return this._bubbles;

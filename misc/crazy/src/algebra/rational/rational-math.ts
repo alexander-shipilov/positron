@@ -1,10 +1,9 @@
-import type { NumberLike } from "@positron/core";
+import type { NumericLike } from "@positron/lang";
 
 import type { Vector2 } from "../../utils";
 import type { Fraction, FractionMath } from "../fraction";
 import type { IntegralAlgebra } from "../integral-algebra";
-import { isVector2 } from "../../utils";
-import { isVector2Of } from "../../utils/vector2/is-vector2-of";
+import { isVector2, isVector2Of } from "../../utils";
 
 import { Rational } from "./rational";
 
@@ -12,12 +11,12 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
   /**
    *
    */
-  readonly ONE: Fraction<TValue>;
+  public readonly ONE: Fraction<TValue>;
 
   /**
    *
    */
-  readonly ZERO: Fraction<TValue>;
+  public readonly ZERO: Fraction<TValue>;
 
   /**
    *
@@ -27,7 +26,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
   /**
    * @param integral
    */
-  constructor(integral: IntegralAlgebra<TValue>) {
+  public constructor(integral: IntegralAlgebra<TValue>) {
     this.integral = integral;
     this.ZERO = [integral.ZERO, integral.ONE];
     this.ONE = [integral.ONE, integral.ONE];
@@ -36,7 +35,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
   /**
    * @param arg
    */
-  abs(arg: Fraction<TValue>): Fraction<TValue> {
+  public abs(arg: Fraction<TValue>): Fraction<TValue> {
     return [this.integral.abs(arg[0]), arg[1]];
   }
 
@@ -44,7 +43,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
    * @param arg1
    * @param arg2
    */
-  add(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
+  public add(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
     const { integral } = this;
     const [num1, den1] = arg1;
     const [num2, den2] = arg2;
@@ -64,7 +63,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
    * @param arg1
    * @param arg2
    */
-  compare(arg1: Fraction<TValue>, arg2: Fraction<TValue>): number {
+  public compare(arg1: Fraction<TValue>, arg2: Fraction<TValue>): number {
     if (this.equals(arg1, arg2)) {
       return 0;
     } else {
@@ -86,14 +85,14 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
    * @param arg1
    * @param arg2
    */
-  div(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
+  public div(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
     return this.mul(arg1, this.inv(arg2));
   }
 
   /**
    * @param value
    */
-  element(value: NumberLike): Fraction<TValue> {
+  public element(value: NumericLike): Fraction<TValue> {
     return Rational(this.integral, value);
   }
 
@@ -101,7 +100,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
    * @param arg1
    * @param arg2
    */
-  equals(arg1: Fraction<TValue>, arg2: Fraction<TValue>): boolean {
+  public equals(arg1: Fraction<TValue>, arg2: Fraction<TValue>): boolean {
     return (
       this.integral.equals(arg1[0], arg2[0]) &&
       this.integral.equals(arg1[1], arg2[1])
@@ -111,7 +110,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
   /**
    * @param arg
    */
-  inv(arg: Fraction<TValue>): Fraction<TValue> {
+  public inv(arg: Fraction<TValue>): Fraction<TValue> {
     const { integral } = this;
     const [num, den] = arg;
 
@@ -121,7 +120,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
   /**
    * @param maybeElement
    */
-  isElement(maybeElement: unknown): maybeElement is Vector2<TValue> {
+  public isElement(maybeElement: unknown): maybeElement is Vector2<TValue> {
     return (
       isVector2(maybeElement) &&
       isVector2Of(maybeElement, (value) => this.integral.isElement(value))
@@ -131,7 +130,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
   /**
    * @param value
    */
-  isInteger(value: Fraction<TValue>): boolean {
+  public isInteger(value: Fraction<TValue>): boolean {
     const { integral } = this;
 
     return integral.equals(value[1], integral.ONE);
@@ -141,7 +140,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
    * @param arg1
    * @param arg2
    */
-  mul(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
+  public mul(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
     const { integral } = this;
     const [num1, den1] = this.reduce([arg1[0], arg2[1]]);
     const [num2, den2] = this.reduce([arg2[0], arg1[1]]);
@@ -152,7 +151,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
   /**
    * @param arg
    */
-  neg(arg: Fraction<TValue>): Fraction<TValue> {
+  public neg(arg: Fraction<TValue>): Fraction<TValue> {
     return [this.integral.neg(arg[0]), arg[1]];
   }
 
@@ -160,7 +159,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
    * @param arg1
    * @param arg2
    */
-  pow(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
+  public pow(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
     const { integral, ZERO } = this;
 
     if (!this.isInteger(arg2)) {
@@ -176,7 +175,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
   /**
    * @param value
    */
-  reduce(value: Fraction<TValue>): Fraction<TValue> {
+  public reduce(value: Fraction<TValue>): Fraction<TValue> {
     const { integral } = this;
     const [num, den] = value;
     const gcd = integral.gcd(num, den);
@@ -189,7 +188,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
   /**
    * @param arg
    */
-  sign(arg: Fraction<TValue>): Fraction<TValue> {
+  public sign(arg: Fraction<TValue>): Fraction<TValue> {
     return [this.integral.sign(arg[0]), this.integral.ONE];
   }
 
@@ -197,7 +196,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
    * @param arg1
    * @param arg2
    */
-  sub(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
+  public sub(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
     return this.add(arg1, this.neg(arg2));
   }
 }

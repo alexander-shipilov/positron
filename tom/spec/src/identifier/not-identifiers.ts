@@ -1,0 +1,46 @@
+/**
+ * The constant {@link NOT_IDENTIFIERS} is a read-only set containing names
+ * that cannot be used as identifiers.
+ *
+ * @public
+ */
+export const NOT_IDENTIFIERS: ReadonlySet<string> = new Set([
+  "await",
+  "break",
+  "case",
+  "catch",
+  "class",
+  "const",
+  "continue",
+  "debugger",
+  "default",
+  "delete",
+  "do",
+  "else",
+  "enum",
+  "export",
+  "extends",
+  "false",
+  "finally",
+  "for",
+  "function",
+  "if",
+  "import",
+  "in",
+  "instanceof",
+  "new",
+  "null",
+  "return",
+  "super",
+  "switch",
+  "this",
+  "throw",
+  "true",
+  "try",
+  "typeof",
+  "var",
+  "void",
+  "while",
+  "with",
+  "yield",
+]);

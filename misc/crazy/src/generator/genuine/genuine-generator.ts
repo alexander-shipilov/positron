@@ -11,12 +11,12 @@ export class GenuineGenerator implements Generator {
   /**
    * @param creator
    */
-  constructor(protected readonly creator: Creator) {}
+  public constructor(protected readonly creator: Creator) {}
 
   /**
    * @param digits -
    */
-  *generate(digits: OperandArg): Iterable<Entity> {
+  public *generate(digits: OperandArg): Iterable<Entity> {
     yield* this.generateArg(digits);
   }
 

@@ -1,0 +1,10 @@
+import { never } from "@positron/lang";
+
+/**
+ * The {@link ReactNever} component throws exception while be rendered.
+ *
+ * @public
+ */
+export function ReactNever(): never {
+  return never("Cannot render `ReactNever` component");
+}

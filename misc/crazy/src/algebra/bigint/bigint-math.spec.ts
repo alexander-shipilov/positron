@@ -1,6 +1,6 @@
 import { describe, expect, it } from "@jest/globals";
 
-import { isBigint } from "@positron/core";
+import { isBigint } from "@positron/lang";
 
 import { Exception } from "../../exception";
 

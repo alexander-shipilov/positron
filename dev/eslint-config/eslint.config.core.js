@@ -1,18 +1,30 @@
-import eslintjs from "@eslint/js";
+import js from "@eslint/js";
 import importPlugin from "eslint-plugin-import";
-import { defineConfig } from "eslint/config";
+import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
-import tseslint from "typescript-eslint";
+import ts from "typescript-eslint";
 
 export default defineConfig(
-  eslintjs.configs.recommended,
-  tseslint.configs.strictTypeChecked,
+  globalIgnores([
+    "dist/", //
+    "docs/",
+    "lib/",
+    "temp/",
+  ]),
   {
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.es2021,
+        ...globals.es2026,
+        ...globals.node,
       },
+    },
+  },
+  js.configs.recommended,
+  ts.configs.strictTypeChecked,
+  {
+    files: ["**/*.{cjs,js,jsx,mjs,cts,mts,ts,tsx}"],
+    languageOptions: {
       parserOptions: {
         ecmaVersion: "latest",
         projectService: true,
@@ -20,6 +32,19 @@ export default defineConfig(
         tsconfigRootDir: import.meta.dirname,
       },
     },
+  },
+  {
+    rules: {
+      complexity: [
+        "error",
+        {
+          max: 7,
+          variant: "modified",
+        },
+      ],
+    },
+  },
+  {
     rules: {
       "@typescript-eslint/array-type": "error",
       "@typescript-eslint/consistent-type-exports": "error",
@@ -39,17 +64,21 @@ export default defineConfig(
       "@typescript-eslint/indent": "off",
       "@typescript-eslint/no-invalid-void-type": [
         "error",
-        { allowAsThisParameter: true },
+        {
+          allowAsThisParameter: true,
+        },
       ],
     },
   },
+
+  {
+    files: ["**/*.{cjs,js,jsx,mjs}"],
+    ...ts.configs.disableTypeChecked,
+  },
+
   {
     ...importPlugin.flatConfigs.recommended,
     ...importPlugin.flatConfigs.typescript,
-  },
-  {
-    ...tseslint.configs.disableTypeChecked,
-    files: ["**/*.{cjs,js,jsx,mjs}"],
   },
   {
     rules: {

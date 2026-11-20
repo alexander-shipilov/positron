@@ -61,7 +61,7 @@ export interface FbUtils {
    *
    * @param name -
    * @param isDll - If `true`, method checks filename as well as the
-   *   internal name. Default `true`.
+   *   - name. Default `true`.
    */
   CheckComponent(name: string, isDll?: boolean): boolean;
 

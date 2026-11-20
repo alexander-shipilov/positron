@@ -1,0 +1,9 @@
+{
+  "extends": "./node_modules/@positron/heft-rig/profiles/default/tsconfig.base.json",
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["ESNext", "DOM"],
+    "target": "ESNext",
+  }
+}

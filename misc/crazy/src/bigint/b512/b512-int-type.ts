@@ -1,4 +1,4 @@
-import type { NominalType } from "@positron/nominal";
+import type { NominalType } from "@positron/lang";
 
 /**
  * @internal

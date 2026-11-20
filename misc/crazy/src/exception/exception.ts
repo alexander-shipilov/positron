@@ -7,42 +7,42 @@ export class Exception extends Error {
   /**
    *
    */
-  static readonly NegativeRadicand = Symbol("NegativeRadicand");
+  public static readonly NegativeRadicand = Symbol("NegativeRadicand");
 
   /**
    *
    */
-  static readonly NonIntegralDivision = Symbol("NonIntegralDivision");
+  public static readonly NonIntegralDivision = Symbol("NonIntegralDivision");
 
   /**
    *
    */
-  static readonly NonIntegralRoot = Symbol("NonIntegralRoot");
+  public static readonly NonIntegralRoot = Symbol("NonIntegralRoot");
 
   /**
    *
    */
-  static readonly NonPositiveDegree = Symbol("NonPositiveDegree");
+  public static readonly NonPositiveDegree = Symbol("NonPositiveDegree");
 
   /**
    *
    */
-  static readonly OutOfRange = Symbol("OutOfRange");
+  public static readonly OutOfRange = Symbol("OutOfRange");
 
   /**
    *
    */
-  static readonly ZeroDivisor = Symbol("ZeroDivisor");
+  public static readonly ZeroDivisor = Symbol("ZeroDivisor");
 
   /**
    *
    */
-  static readonly ZeroPowerOfZero = Symbol("ZeroPowerOfZero");
+  public static readonly ZeroPowerOfZero = Symbol("ZeroPowerOfZero");
 
   /**
    * @param type -
    */
-  constructor(readonly type: ExceptionType) {
+  public constructor(public readonly type: ExceptionType) {
     super(type.description);
   }
 }
