@@ -1,4 +1,4 @@
-import type { Optional } from "@positron/core";
+import type { Optional } from "@positron/lang";
 
 import type { Entity } from "../../entity";
 import type { ExceptionType } from "../../exception";

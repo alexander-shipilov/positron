@@ -1,0 +1,125 @@
+Подытожу.
+
+Документация пишется на английском.
+Документируются только объекты которые имеют сигнатуры.
+
+Формат ссылок:
+
+Simple Grammar:
+
+  | - alternation
+
+link:
+  | "{@link" /\s+/ link-ref "}"
+
+link-ref:
+  | entity
+  | package-path entity
+
+package-path:
+  | identifier "/" path "#"
+  | identifier "#"
+
+path:
+  | identifier "/" path
+  | identifier
+
+entity:
+  | identifier "." entity
+  | ref
+
+ref:
+  | identifier
+  | "(" identifier ":" ref-selector ")"
+
+ref-selector:
+  | ref-type
+  | ref-index
+
+ref-type:
+  | "class"
+  | "enum"
+  | "function"
+  | "interface"
+  | "namespace"
+  | "type"
+  | "variable"
+
+ref-index:
+  | /[1-9][0-9]?/
+
+identifier:
+  | /^[_$\p{IDS}][$\p{IDC}]*$/u
+
+
+
+
+
+@link <package> <path> # <name>
+
+Unable to resolve reference "(UnitSet:constructor)": Unsupported system selector "constructor"
+
+
+/**
+ * Это ссылка {}
+ */
+
+// For merged declarations:
+// 'class',
+// 'enum',
+// 'function',
+// 'interface',
+// 'namespace',
+// 'type',
+// 'variable'
+
+<type>:
+ type
+ enum
+ constant
+ variable
+
+
+
+type-param:
+
+/**
+ * ...
+ *
+ * @typeParam <name> - Description. 1-2 sentences.
+ */
+
+Если в тексте встречается упоминание параметра, оно оборачивается в `...`.
+
+/**
+ * ... constructs a new type from the passed `<name>` by ...
+ */
+
+type:
+
+/**
+ * The {@link <name>} type represents / constructs a new type / do something / ...
+ *
+ * @remarks
+ *
+ *
+ * @typeParam ...
+ *
+ * @typeParam ...
+ */
+
+
+Если в тексте встречается упоминание параметра, оно оборачивается в `...`.
+
+интерфейсы
++ сигнатуры generic параметров
+
+@typeParam Name - Description
+
+классы
+сигнатуры generic параметров
+
+@typeParam Name - Description
+
+модули, константы (или переменные) верхнего уровня (в рамках файла или модуля),  сами модули (пока про них ничего не написано, будет потом).
+свойства

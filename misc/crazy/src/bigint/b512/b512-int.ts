@@ -1,4 +1,4 @@
-import type { Nominal } from "@positron/nominal";
+import type { Nominal } from "@positron/lang";
 
 import type { B512IntType } from "./b512-int-type";
 

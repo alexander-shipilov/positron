@@ -8,12 +8,12 @@ import { splittings } from "../../utils";
  * @public
  */
 export class PseudoGenerator implements Generator {
-  constructor(protected readonly creator: Creator) {}
+  public constructor(protected readonly creator: Creator) {}
 
   /**
    * @param digits -
    */
-  *generate(digits: OperandArg): Iterable<Entity> {
+  public *generate(digits: OperandArg): Iterable<Entity> {
     for (const entity of this.generateArg(digits)) {
       yield entity;
       yield this.creator.createOperation1(EntityType.Neg, entity);

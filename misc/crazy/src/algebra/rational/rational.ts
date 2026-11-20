@@ -1,4 +1,4 @@
-import type { NumberLike } from "@positron/core";
+import type { NumericLike } from "@positron/lang";
 
 import type { IntegralAlgebra } from "../integral-algebra";
 import { Fraction } from "../fraction";
@@ -10,8 +10,8 @@ import { Fraction } from "../fraction";
  */
 export const Rational = <TValue>(
   integral: IntegralAlgebra<TValue>,
-  value1: NumberLike,
-  value2: NumberLike = 1,
+  value1: NumericLike,
+  value2: NumericLike = 1,
 ): Fraction<TValue> => {
   const [num, den] = Fraction((v) => integral.element(v), value1, value2);
 

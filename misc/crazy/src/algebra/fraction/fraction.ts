@@ -1,4 +1,4 @@
-import type { NumberLike } from "@positron/core";
+import type { NumericLike } from "@positron/lang";
 
 import type { Vector2 } from "../../utils";
 
@@ -17,9 +17,9 @@ export type Fraction<TValue> = Readonly<Vector2<TValue>>;
  * @public
  */
 export function Fraction<TValue>(
-  toValue: (value: NumberLike) => TValue,
-  num: NumberLike,
-  den: NumberLike = 1,
+  toValue: (value: NumericLike) => TValue,
+  num: NumericLike,
+  den: NumericLike = 1,
 ): Fraction<TValue> {
   return [toValue(num), toValue(den)];
 }

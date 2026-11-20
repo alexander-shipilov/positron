@@ -5,7 +5,7 @@ import {
   isString,
   isSymbol,
   typeOf,
-} from "@positron/core";
+} from "@positron/lang";
 
 /**
  *

@@ -1,5 +1,5 @@
-import type { NumberLike, TypeGuard } from "@positron/core";
-import { isNumber, never } from "@positron/core";
+import type { NumericLike, TypeGuard } from "@positron/lang";
+import { isNumber } from "@positron/lang";
 
 import type { IntegerNumber } from "../../number";
 import type { Vector2 } from "../../utils";
@@ -15,19 +15,19 @@ export class IntegerMath<
   /**
    *
    */
-  readonly ONE: TValue;
+  public readonly ONE: TValue;
 
   /**
    *
    */
-  readonly ZERO: TValue;
+  public readonly ZERO: TValue;
 
   /**
    * @param element -
    * @param isValue -
    */
-  constructor(
-    readonly element: (arg: NumberLike) => TValue,
+  public constructor(
+    public readonly element: (arg: NumericLike) => TValue,
     protected readonly isValue: TypeGuard<number, TValue>,
   ) {
     this.ZERO = element(0);
@@ -37,7 +37,7 @@ export class IntegerMath<
   /**
    * @param arg -
    */
-  abs(arg: TValue): TValue {
+  public abs(arg: TValue): TValue {
     return this.result(Math.abs(arg));
   }
 
@@ -45,7 +45,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  add(arg1: TValue, arg2: TValue): TValue {
+  public add(arg1: TValue, arg2: TValue): TValue {
     return this.result(arg1 + arg2);
   }
 
@@ -53,7 +53,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  compare(arg1: TValue, arg2: TValue): number {
+  public compare(arg1: TValue, arg2: TValue): number {
     return arg1 > arg2 ? 1 : arg1 < arg2 ? -1 : 0;
   }
 
@@ -61,7 +61,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  div(arg1: TValue, arg2: TValue): TValue {
+  public div(arg1: TValue, arg2: TValue): TValue {
     const { ZERO } = this;
 
     if (arg2 === ZERO) {
@@ -77,7 +77,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  divRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
+  public divRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
     const mod = this.rem(arg1, arg2);
 
     return [this.result(this.sub(arg1, mod) / arg2), mod];
@@ -87,7 +87,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  equals(arg1: TValue, arg2: TValue): boolean {
+  public equals(arg1: TValue, arg2: TValue): boolean {
     return arg1 === arg2;
   }
 
@@ -95,7 +95,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  gcd(arg1: TValue, arg2: TValue): TValue {
+  public gcd(arg1: TValue, arg2: TValue): TValue {
     const { ZERO } = this;
 
     if (arg1 === ZERO && arg2 === ZERO) {
@@ -115,7 +115,7 @@ export class IntegerMath<
   /**
    * @param arg -
    */
-  inv(arg: TValue): TValue {
+  public inv(arg: TValue): TValue {
     return this.div(this.ONE, arg);
   }
 
@@ -130,7 +130,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  lcm(arg1: TValue, arg2: TValue): TValue {
+  public lcm(arg1: TValue, arg2: TValue): TValue {
     const gcd = this.gcd(arg1, arg2);
 
     return this.abs(this.mul(arg1, this.div(arg2, gcd)));
@@ -140,14 +140,14 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  mul(arg1: TValue, arg2: TValue): TValue {
+  public mul(arg1: TValue, arg2: TValue): TValue {
     return this.result(arg1 * arg2);
   }
 
   /**
    * @param arg -
    */
-  neg(arg: TValue): TValue {
+  public neg(arg: TValue): TValue {
     return arg === this.ZERO ? arg : this.result(-(arg as number));
   }
 
@@ -155,7 +155,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  pow(arg1: TValue, arg2: TValue): TValue {
+  public pow(arg1: TValue, arg2: TValue): TValue {
     const { ZERO } = this;
 
     if (arg1 === ZERO && arg2 === ZERO) {
@@ -171,7 +171,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  rem(arg1: TValue, arg2: TValue): TValue {
+  public rem(arg1: TValue, arg2: TValue): TValue {
     const { ZERO } = this;
 
     if (arg2 === ZERO) {
@@ -191,7 +191,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  root(arg1: TValue, arg2: TValue): TValue {
+  public root(arg1: TValue, arg2: TValue): TValue {
     const [root, mod] = this.rootRem(arg1, arg2);
 
     if (mod !== this.ZERO) {
@@ -205,7 +205,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  rootRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
+  public rootRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
     const { ZERO } = this;
 
     if (arg1 < ZERO) {
@@ -222,7 +222,7 @@ export class IntegerMath<
   /**
    * @param arg -
    */
-  sign(arg: TValue): TValue {
+  public sign(arg: TValue): TValue {
     return this.result(Math.sign(arg));
   }
 
@@ -230,7 +230,7 @@ export class IntegerMath<
    * @param arg1 -
    * @param arg2 -
    */
-  sub(arg1: TValue, arg2: TValue): TValue {
+  public sub(arg1: TValue, arg2: TValue): TValue {
     return this.result(arg1 - arg2);
   }
 
@@ -238,8 +238,10 @@ export class IntegerMath<
    * @param value -
    */
   protected result(value: number): TValue {
-    return this.isValue(value)
-      ? value
-      : never(new Exception(Exception.OutOfRange));
+    if (this.isValue(value)) {
+      return value;
+    }
+
+    throw new Exception(Exception.OutOfRange);
   }
 }

@@ -3,7 +3,7 @@ import { dirname } from "path";
 import Progress from "ts-progress";
 import { fileURLToPath } from "url";
 
-import { isBigint, isUndefined } from "@positron/core";
+import { isBigint, isUndefined } from "@positron/lang";
 
 import type { Entity } from "./entity";
 import { BigintMath } from "./algebra";
@@ -16,12 +16,14 @@ import { Natural } from "./number";
 import { CalculatorResolver } from "./resolver";
 
 const generator = new PseudoGenerator(DefaultCreator);
+
 const resolver = new CalculatorResolver(
   new CachingCalculator(
     new AlgebraCalculator(new BigintMath(B512, isB512Int)),
     new WeakMap(),
   ),
 );
+
 const formatter = DefaultFormatter;
 
 const digits = [

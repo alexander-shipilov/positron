@@ -5,7 +5,7 @@ import type { DomEventListenerOrEventListenerObject } from "./dom-event-listener
 
 /**
  * The **`DomEventTarget`** interface is implemented by objects that can receive
- * events and may have listeners for them. In other words, any target of events
+ * event and may have listeners for them. In other words, any target of event
  * implements the three methods associated with this interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget)
@@ -30,7 +30,7 @@ export interface DomEventTarget {
    * to
    * the object, (synchronously) invoking the affected event listeners in the
    * appropriate order. The normal event processing rules (including the
-   * capturing and optional bubbling phase) also apply to events dispatched
+   * capturing and optional bubbling phase) also apply to event dispatched
    * manually with dispatchEvent().
    *
    * [MDN

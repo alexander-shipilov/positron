@@ -1,4 +1,4 @@
-import { isNumber } from "@positron/core";
+import { isNumber } from "@positron/lang";
 
 import type { Entity } from "../entity";
 

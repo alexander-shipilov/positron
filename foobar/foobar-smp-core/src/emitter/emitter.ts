@@ -1,7 +1,5 @@
-import type { Optional } from "@positron/core";
+import type { Optional } from "@positron/lang";
 
-import type { EmitterEventName } from "./emitter-event-name";
-import type { EmitterListener } from "./emitter-listener";
 import type { EmitterListeners } from "./emitter-listeners";
 
 /**
@@ -12,12 +10,7 @@ export const _listeners = Symbol("listeners");
 /**
  * @public
  */
-export class Emitter<
-  TListeners extends EmitterListeners = Record<
-    EmitterEventName,
-    EmitterListener
-  >,
-> {
+export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
   /**
    * Internal listeners.
    *
@@ -69,10 +62,11 @@ export class Emitter<
     eventName: TName,
     ...args: Parameters<TListeners[TName]>
   ): Optional<boolean> {
+    const { [_listeners]: listeners } = this;
     let result: Optional<boolean> = undefined;
 
-    if (this[_listeners][eventName]) {
-      [...this[_listeners][eventName]].forEach((listener) => {
+    if (listeners[eventName]) {
+      [...listeners[eventName]].forEach((listener) => {
         result = listener(...args) || result;
       });
     }
@@ -155,7 +149,7 @@ export class Emitter<
    *   emitting are called in order. This implies that any {@link Emitter.off}
    *   calls _after_ emitting and _before_ the last listener finishes execution
    *   will not remove them from {@link Emitter.emit} in progress. Subsequent
-   *   events behave as expected.
+   *   event behave as expected.
    *
    * ```ts
    *  const emitter = new Emitter();
@@ -186,7 +180,7 @@ export class Emitter<
    *  // >> A
    * ```
    *
-   * Because listeners are managed using an internal array, calling this will
+   * Because listeners are managed using an - array, calling this will
    *   change the position indexes of any listener registered _after_ the
    *   listener being removed. This will not impact the order in which
    *   listeners are called, but it means that any copies of the listener array

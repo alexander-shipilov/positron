@@ -1,4 +1,4 @@
-import { isArray } from "@positron/core";
+import { isArray } from "@positron/lang";
 
 import type { Tuple2 } from "./tuple2";
 

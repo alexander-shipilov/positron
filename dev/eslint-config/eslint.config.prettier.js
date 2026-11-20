@@ -1,4 +1,6 @@
 import recommended from "eslint-plugin-prettier/recommended";
 import { defineConfig } from "eslint/config";
 
-export default defineConfig(recommended);
+export default defineConfig(
+  recommended, //
+);

@@ -299,7 +299,7 @@
     // "defaultRemote": "origin"
   },
   /**
-   * Event hooks are customized script actions that Rush executes when specific events occur
+   * Event hooks are customized script actions that Rush executes when specific event occur
    */
   "eventHooks": {
     /**
@@ -377,7 +377,7 @@
    * 3. It's useful to have a centralized inventory of all projects and their important metadata.
    */
   "projects": [
-    /** Dev */
+    /** dev */
     {
       "packageName": "@positron/eslint-config",
       "projectFolder": "dev/eslint-config",
@@ -393,68 +393,93 @@
       "projectFolder": "dev/api-documenter",
       "shouldPublish": false
     },
-    /** utils */
+    /** shared */
     {
       "packageName": "@positron/array",
-      "projectFolder": "utils/array",
+      "projectFolder": "shared/array",
     },
     {
-      "packageName": "@positron/core",
-      "projectFolder": "utils/core",
+      "packageName": "@positron/lang",
+      "projectFolder": "shared/lang",
     },
     {
-      "packageName": "@positron/nominal",
-      "projectFolder": "utils/nominal",
-    },
-    {
-      "packageName": "@positron/nominal-symbol",
-      "projectFolder": "utils/nominal-symbol",
+      "packageName": "@positron/lang-nominal",
+      "projectFolder": "shared/lang-nominal",
     },
     {
       "packageName": "@positron/prefixed",
-      "projectFolder": "utils/prefixed",
+      "projectFolder": "shared/prefixed",
     },
     /** react-* */
     {
-      "packageName": "@positron/react-core",
-      "projectFolder": "react/react-core",
+      "packageName": "@positron/react-shared",
+      "projectFolder": "react/shared",
     },
-    /** w3c-* */
-    //    {
-    //      "packageName": "@positron/css-numeric-objects",
-    //      "projectFolder": "w3c/css-numeric-objects",
-    //    },
+	  /*
+    {
+      "packageName": "@positron/react-components",
+      "projectFolder": "react/components"
+    },
+    {
+      "packageName": "@positron/react-hooks",
+      "projectFolder": "react/hooks"
+    },
+	  */
+    /** css-* */
+    {
+      "packageName": "@positron/css-numeric",
+      "projectFolder": "css/css-numeric",
+    },
+    {
+      "packageName": "@positron/css-parser",
+      "projectFolder": "css/css-parser",
+    },
+    {
+      "packageName": "@positron/css-unit",
+      "projectFolder": "css/css-unit",
+    },
+    /** cssom-* */
+    {
+      "packageName": "@positron/cssom-numeric",
+      "projectFolder": "cssom/numeric",
+    },
     /** misc */
     {
       "packageName": "@positron/crazy-sequence",
-      "projectFolder": "misc/crazy"
-    },
-    /** tree */
-    //    {
-    //      "packageName": "@positron/tree-core",
-    //      "projectFolder": "tree/tree-core"
-    //    }
-    /** ui */
-    {
-      "packageName": "@positron/ui-components",
-      "projectFolder": "ui/components"
+      "projectFolder": "misc/crazy",
+      "shouldPublish": false
     },
     {
-      "packageName": "@positron/ui-hooks",
-      "projectFolder": "ui/hooks"
+      "packageName": "@positron/math",
+      "projectFolder": "misc/math",
+      "shouldPublish": false
     },
     /** foobar */
     {
       "packageName": "@positron/foobar-smp",
-      "projectFolder": "foobar/foobar-smp"
+      "projectFolder": "foobar/foobar-smp",
+      "shouldPublish": false
     },
     {
       "packageName": "@positron/foobar-smp-core",
-      "projectFolder": "foobar/foobar-smp-core"
+      "projectFolder": "foobar/foobar-smp-core",
+      "shouldPublish": false
     },
     {
       "packageName": "@positron/foobar-smp-website",
-      "projectFolder": "foobar/foobar-smp-website"
+      "projectFolder": "foobar/foobar-smp-website",
+      "shouldPublish": false
+    },
+    /** tom */
+    {
+      "packageName": "@positron/tom-shared",
+      "projectFolder": "tom/shared",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@positron/tom-spec",
+      "projectFolder": "tom/spec",
+      "shouldPublish": false
     }
   ],
 }

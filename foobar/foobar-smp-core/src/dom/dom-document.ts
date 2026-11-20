@@ -49,7 +49,5 @@ export interface DomDocument
     filter?: DomNodeFilter | null,
   ): DomTreeWalker;
 
-  // getElementsByTagName(qualifiedName: DomString): HTMLCollection;
-
   importNode(node: DomNode, options?: boolean | DomImportNodeOptions): DomNode;
 }

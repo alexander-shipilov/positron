@@ -1,5 +1,5 @@
-import type { NumberLike, TypeGuard } from "@positron/core";
-import { isBigint } from "@positron/core";
+import type { NumericLike, TypeGuard } from "@positron/lang";
+import { isBigint } from "@positron/lang";
 
 import type { Vector2 } from "../../utils";
 import type { IntegralAlgebra } from "../integral-algebra";
@@ -98,19 +98,19 @@ export class BigintMath<
   /**
    *
    */
-  readonly ONE: TValue;
+  public readonly ONE: TValue;
 
   /**
    *
    */
-  readonly ZERO: TValue;
+  public readonly ZERO: TValue;
 
   /**
    * @param element -
    * @param isValue -
    */
-  constructor(
-    readonly element: (value: NumberLike) => TValue,
+  public constructor(
+    public readonly element: (value: NumericLike) => TValue,
     protected readonly isValue: TypeGuard<bigint, TValue>,
   ) {
     this.ZERO = element(0);
@@ -120,7 +120,7 @@ export class BigintMath<
   /**
    * @param arg -
    */
-  abs(arg: TValue): TValue {
+  public abs(arg: TValue): TValue {
     return arg < this.ZERO ? this.neg(arg) : arg;
   }
 
@@ -128,7 +128,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  add(arg1: TValue, arg2: TValue): TValue {
+  public add(arg1: TValue, arg2: TValue): TValue {
     return this.result(add(arg1, arg2));
   }
 
@@ -136,7 +136,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  compare(arg1: TValue, arg2: TValue): number {
+  public compare(arg1: TValue, arg2: TValue): number {
     return arg1 > arg2 ? 1 : arg1 < arg2 ? -1 : 0;
   }
 
@@ -144,7 +144,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  div(arg1: TValue, arg2: TValue): TValue {
+  public div(arg1: TValue, arg2: TValue): TValue {
     const { ZERO } = this;
 
     if (arg2 === ZERO) {
@@ -160,7 +160,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  divRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
+  public divRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
     const mod = this.rem(arg1, arg2);
 
     return [this.quot(this.sub(arg1, mod), arg2), mod];
@@ -170,7 +170,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  equals(arg1: TValue, arg2: TValue): boolean {
+  public equals(arg1: TValue, arg2: TValue): boolean {
     return arg1 === arg2;
   }
 
@@ -178,7 +178,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  gcd(arg1: TValue, arg2: TValue): TValue {
+  public gcd(arg1: TValue, arg2: TValue): TValue {
     const { ZERO } = this;
 
     if (arg1 === ZERO && arg2 === ZERO) {
@@ -198,11 +198,14 @@ export class BigintMath<
   /**
    * @param arg -
    */
-  inv(arg: TValue): TValue {
+  public inv(arg: TValue): TValue {
     return this.div(this.ONE, arg);
   }
 
-  isElement(maybeElement: unknown): maybeElement is TValue {
+  /**
+   * @param maybeElement -
+   */
+  public isElement(maybeElement: unknown): maybeElement is TValue {
     return isBigint(maybeElement) && this.isValue(maybeElement);
   }
 
@@ -210,7 +213,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  lcm(arg1: TValue, arg2: TValue): TValue {
+  public lcm(arg1: TValue, arg2: TValue): TValue {
     const gcd = this.gcd(arg1, arg2);
 
     return this.abs(this.mul(arg1, this.div(arg2, gcd)));
@@ -220,7 +223,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  mod(arg1: TValue, arg2: TValue): TValue {
+  public mod(arg1: TValue, arg2: TValue): TValue {
     return this.result(mod(arg1, arg2));
   }
 
@@ -228,14 +231,14 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  mul(arg1: TValue, arg2: TValue): TValue {
+  public mul(arg1: TValue, arg2: TValue): TValue {
     return this.result(mul(arg1, arg2));
   }
 
   /**
    * @param arg -
    */
-  neg(arg: TValue): TValue {
+  public neg(arg: TValue): TValue {
     return this.result(-(arg as bigint));
   }
 
@@ -243,7 +246,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  pow(arg1: TValue, arg2: TValue): TValue {
+  public pow(arg1: TValue, arg2: TValue): TValue {
     const { ONE, ZERO } = this;
 
     if (arg1 === ZERO && arg2 === ZERO) {
@@ -270,7 +273,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  quot(arg1: TValue, arg2: TValue): TValue {
+  public quot(arg1: TValue, arg2: TValue): TValue {
     return this.result(quot(arg1, arg2));
   }
 
@@ -278,13 +281,13 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  rem(arg1: TValue, arg2: TValue): TValue {
+  public rem(arg1: TValue, arg2: TValue): TValue {
     const { ZERO } = this;
 
     if (arg2 === ZERO) {
       throw new Exception(Exception.ZeroDivisor);
     } else {
-      const remainder = mod(arg1, arg2);
+      const remainder = this.mod(arg1, arg2);
 
       return remainder < ZERO
         ? arg2 < ZERO
@@ -298,7 +301,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  root(arg1: TValue, arg2: TValue): TValue {
+  public root(arg1: TValue, arg2: TValue): TValue {
     const [root, mod] = this.rootRem(arg1, arg2);
 
     if (mod !== this.ZERO) {
@@ -312,7 +315,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  rootRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
+  public rootRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
     const { ONE, ZERO } = this;
 
     if (arg1 < ZERO) {
@@ -347,7 +350,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  shl(arg1: TValue, arg2: TValue): TValue {
+  public shl(arg1: TValue, arg2: TValue): TValue {
     return this.result(shl(arg1, arg2));
   }
 
@@ -355,14 +358,14 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  shr(arg1: TValue, arg2: TValue): TValue {
+  public shr(arg1: TValue, arg2: TValue): TValue {
     return this.result(shr(arg1, arg2));
   }
 
   /**
    * @param arg -
    */
-  sign(arg: TValue): TValue {
+  public sign(arg: TValue): TValue {
     const { ONE, ZERO } = this;
 
     return arg < ZERO ? this.result(-(ONE as bigint)) : arg > ZERO ? ONE : ZERO;
@@ -372,7 +375,7 @@ export class BigintMath<
    * @param arg1 -
    * @param arg2 -
    */
-  sub(arg1: TValue, arg2: TValue): TValue {
+  public sub(arg1: TValue, arg2: TValue): TValue {
     return this.result(sub(arg1, arg2));
   }
 
@@ -380,7 +383,7 @@ export class BigintMath<
    * @param value -
    */
   protected result(value: bigint): TValue {
-    if (this.isElement(value)) {
+    if (this.isValue(value)) {
       return value;
     }
 

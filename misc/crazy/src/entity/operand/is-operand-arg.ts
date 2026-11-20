@@ -1,4 +1,4 @@
-import { isArray, isNumber } from "@positron/core";
+import { isArray, isNumber } from "@positron/lang";
 
 import { isNaturalNumber } from "../../number";
 

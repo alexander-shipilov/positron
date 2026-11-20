@@ -1,4 +1,4 @@
-import { isUndefined } from "@positron/core";
+import { isUndefined } from "@positron/lang";
 
 import type {
   Entity,

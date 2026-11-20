@@ -1,4 +1,5 @@
-export type * from "./api";
-export type * from "./api-documenter";
+export type * from "./markdown/markdown-feature-config";
+export type * from "./markdown/markdown-feature-constructor";
+export type * from "./markdown/markdown-page";
 
-export * from "./injectable-markdown-feature";
+export * from "./markdown/markdown-feature";

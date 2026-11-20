@@ -79,6 +79,8 @@ common/autoinstallers/*/.npmrc
 # Temporary files
 temp/
 
+*/*/.idea
 */*/docs
 */*/dist
 */*/lib
+*/*/deps.svg

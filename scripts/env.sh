@@ -1,10 +1,11 @@
 #!/bin/bash
 
 export directories=(
-  '../foobar'
+  '../css'
+  '../cssom'
   '../dev'
   '../misc'
-  '../utils'
   '../react'
-  '../w3c'
+  '../shared'
+  '../tom'
 )

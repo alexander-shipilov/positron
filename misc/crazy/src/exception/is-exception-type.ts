@@ -1,4 +1,4 @@
-import { isSymbol } from "@positron/core";
+import { isSymbol } from "@positron/lang";
 
 import type { ExceptionType } from "./exception-type";
 

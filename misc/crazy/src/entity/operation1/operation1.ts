@@ -9,17 +9,17 @@ export abstract class Operation1 implements Entity<Operation1Type> {
   /**
    *
    */
-  abstract readonly type: Operation1Type;
+  public abstract readonly type: Operation1Type;
 
   /**
    *
    */
-  get length(): number {
+  public get length(): number {
     return this.arg.length + 1;
   }
 
   /**
    * @param arg - The argument
    */
-  constructor(readonly arg: Entity) {}
+  public constructor(public readonly arg: Entity) {}
 }

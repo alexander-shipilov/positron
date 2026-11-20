@@ -32,7 +32,7 @@ export enum PlaybackStartCommand {
   Prev = 3,
 
   /**
-   * settrack (internal fb2k value)
+   * settrack (- fb2k value)
    */
   SetTrack = 4,
 
@@ -42,7 +42,7 @@ export enum PlaybackStartCommand {
   Rand = 5,
 
   /**
-   * resume (internal fb2k value).
+   * resume (- fb2k value).
    */
   Resume = 6,
 }

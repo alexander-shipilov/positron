@@ -1,4 +1,4 @@
-import type { Optional } from "@positron/core";
+import type { Optional } from "@positron/lang";
 import { global } from "@positron/foobar-smp/global";
 
 import { Emitter } from "../emitter";
@@ -10,7 +10,7 @@ const $instance = Symbol("instance");
 
 /**
  * The {@link FbCallbackManager} singleton class add subscriptions to foobar
- * events.
+ * event.
  *
  * @public
  */
