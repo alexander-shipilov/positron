@@ -2,6 +2,7 @@
 // noinspection GrazieStyle,GrazieInspection
 
 import type { CssNumberish, CssNumericType } from "@positron/css-numeric";
+import type { Nullish } from "@positron/lang";
 import { assertType, error, isNonEmptyArray, never } from "@positron/lang";
 
 import type { MathClamp, MathClampClass } from "./numeric-impl/math-clamp";
@@ -120,21 +121,9 @@ export class NaiveNumeric extends NaiveNumericInternal implements NumericImpl {
    *    to `values`.
    */
   public add($this: NumericValue, ...nums: CssNumberish[]): NumericValue {
-    const { MathSum, UnitValue } = this;
+    const values = this.rectifyVariadicArgs(this.MathSum, $this, nums);
 
-    const values = [
-      ...($this instanceof MathSum ? $this[$values] : [$this]),
-      ...nums.map((num) => this.rectify(num)),
-    ];
-
-    if (this.areSameUnitValues(values)) {
-      return new UnitValue(
-        values.reduce((max, item) => max + item[$value], 0),
-        values[0][$unit],
-      );
-    }
-
-    return new MathSum(...values);
+    return this.collapseAddArgs(values) ?? new this.MathSum(...values);
   }
 
   /**
@@ -383,21 +372,9 @@ export class NaiveNumeric extends NaiveNumericInternal implements NumericImpl {
    *    to `values`.
    */
   public max($this: NumericValue, ...nums: CssNumberish[]): NumericValue {
-    const { MathMax, UnitValue } = this;
+    const values = this.rectifyVariadicArgs(this.MathMax, $this, nums);
 
-    const values = [
-      ...($this instanceof MathMax ? $this[$values] : [$this]),
-      ...nums.map((num) => this.rectify(num)),
-    ];
-
-    if (this.areSameUnitValues(values)) {
-      return new UnitValue(
-        values.reduce((max, item) => Math.max(max, item[$value]), -Infinity),
-        values[0][$unit],
-      );
-    }
-
-    return new MathMax(...values);
+    return this.collapseMaxArgs(values) ?? new this.MathMax(...values);
   }
 
   /**
@@ -425,21 +402,9 @@ export class NaiveNumeric extends NaiveNumericInternal implements NumericImpl {
    *    to `values`.
    */
   public min($this: NumericValue, ...nums: CssNumberish[]): NumericValue {
-    const { MathMin, UnitValue } = this;
+    const values = this.rectifyVariadicArgs(this.MathMin, $this, nums);
 
-    const values = [
-      ...($this instanceof MathMin ? $this[$values] : [$this]),
-      ...nums.map((num) => this.rectify(num)),
-    ];
-
-    if (this.areSameUnitValues(values)) {
-      return new UnitValue(
-        values.reduce((max, item) => Math.min(max, item[$value]), Infinity),
-        values[0][$unit],
-      );
-    }
-
-    return new MathMin(...values);
+    return this.collapseMinArgs(values) ?? new this.MathMin(...values);
   }
 
   /**
@@ -480,33 +445,10 @@ export class NaiveNumeric extends NaiveNumericInternal implements NumericImpl {
    * 6. Return a new CSSMathProduct object whose values internal slot is
    *    set to `values`.
    */
-  // eslint-disable-next-line complexity
   public mul($this: NumericValue, ...nums: CssNumberish[]): NumericValue {
-    const { MathProduct, UnitValue } = this;
+    const values = this.rectifyVariadicArgs(this.MathProduct, $this, nums);
 
-    const values = [
-      ...($this instanceof MathProduct ? $this[$values] : [$this]),
-      ...nums.map((num) => this.rectify(num)),
-    ];
-
-    let entry: [number, Unit] | null = [1, NUMBER_UNIT];
-
-    for (const value of values) {
-      if (entry == null) {
-        break;
-      }
-
-      entry =
-        value instanceof UnitValue
-          ? value[$unit] === NUMBER_UNIT
-            ? [entry[0] * value[$value], entry[1]]
-            : entry[1] === NUMBER_UNIT
-              ? [entry[0] * value[$value], value[$unit]]
-              : null
-          : null;
-    }
-
-    return entry ? new UnitValue(...entry) : new MathProduct(...values);
+    return this.collapseProductArgs(values) ?? new this.MathProduct(...values);
   }
 
   /**
@@ -678,25 +620,141 @@ export class NaiveNumeric extends NaiveNumericInternal implements NumericImpl {
     return result;
   }
 
-  protected areSameUnitValues(
-    values: NumericValue[],
-  ): values is [UnitValue, ...UnitValue[]] {
-    const first = values[0];
-
-    return (
-      first instanceof this.UnitValue &&
-      this.areUnitValuesOf(values, first[$unit])
-    );
+  /**
+   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-add
+   *
+   * 3. If all of the items in `values` are CSSUnitValues and have the same
+   *    unit, return a new CSSUnitValue whose unit internal slot is set to
+   *    this’s unit internal slot, and value internal slot is set to the sum
+   *    of the value internal slots of the items in `values`. This addition
+   *    must be done "left to right" - if values is « 1, 2, 3, 4 »,
+   *    the result must be (((1 + 2) + 3) + 4). (This detail is necessary to
+   *    ensure interoperability in the presence of floating-point arithmetic.)
+   */
+  protected collapseAddArgs(values: NumericValue[]): Nullish<UnitValue> {
+    return this.collapseSameUnitValues(values, (acc, value) => acc + value);
   }
 
-  protected areUnitValuesOf(
-    values: NumericValue[],
-    unit: Unit,
-  ): values is UnitValue[] {
+  /**
+   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-max
+   *
+   * 3. If all of the items in `values` are CSSUnitValues and have the same
+   *    unit, return a new CSSUnitValue whose unit internal slot is set
+   *    to `this`’s unit internal slot, and value internal slot is set to the
+   *    maximum of the value internal slots of the items in `values`.
+   */
+  protected collapseMaxArgs(values: NumericValue[]): Nullish<UnitValue> {
+    return this.collapseSameUnitValues(values, Math.max);
+  }
+
+  /**
+   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-min
+   *
+   * 3. If all of the items in `values` are CSSUnitValues and have the same
+   *    unit, return a new CSSUnitValue whose unit internal slot is set
+   *    to `this`’s unit internal slot, and value internal slot is set to the
+   *    minimum of the value internal slots of the items in `values`.
+   */
+  protected collapseMinArgs(values: NumericValue[]): Nullish<UnitValue> {
+    return this.collapseSameUnitValues(values, Math.min);
+  }
+
+  /**
+   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-mul
+   *
+   * 3. If all of the items in `values` are CSSUnitValues with unit internal
+   *    slot set to "number", return a new CSSUnitValue whose unit internal
+   *    slot is set to "number", and value internal slot is set to the
+   *    product of the value internal slots of the items in `values`.
+   *
+   *    This multiplication must be done "left to right" - if `values`
+   *    is « 1, 2, 3, 4 », the result must be (((1 × 2) × 3) × 4). (This
+   *    detail is necessary to ensure interoperability in the presence of
+   *    floating-point arithmetic.)
+   *
+   * 4. If all of the items in `values` are CSSUnitValues with unit internal
+   *    slot set to "number" except one which is set to unit, return a
+   *    new CSSUnitValue whose unit internal slot is set to unit, and value
+   *    internal slot is set to the product of the value internal slots of
+   *    the items in `values`.
+   *
+   *    This multiplication must be done "left to right" - if `values`
+   *    is « 1, 2, 3, 4 », the result must be (((1 × 2) × 3) × 4).
+   */
+  protected collapseProductArgs(values: NumericValue[]): Nullish<UnitValue> {
     const { UnitValue } = this;
 
-    return values.every(
-      (item) => item instanceof UnitValue && item[$unit] === unit,
-    );
+    let result = 1;
+    let unit: Unit = NUMBER_UNIT;
+
+    for (const item of values) {
+      if (!(item instanceof UnitValue)) {
+        return null;
+      }
+
+      if (item[$unit] !== NUMBER_UNIT) {
+        if (unit !== NUMBER_UNIT) {
+          return null;
+        }
+
+        unit = item[$unit];
+      }
+
+      result *= item[$value];
+    }
+
+    return new UnitValue(result, unit);
+  }
+
+  /**
+   * 3. If all of the items in `values` are CSSUnitValues and have the same
+   *    unit, return a new CSSUnitValue whose unit internal slot is set
+   *    to `this`’s unit internal slot, and value internal slot is set to the
+   *    [result] of the value internal slots of the items in `values`.
+   */
+  protected collapseSameUnitValues(
+    values: NumericValue[],
+    reducer: (acc: number, value: number) => number,
+  ): Nullish<UnitValue> {
+    const { UnitValue } = this;
+    const first = values[0];
+
+    if (first instanceof UnitValue) {
+      const { [$unit]: unit } = first;
+
+      let result = first[$value];
+
+      for (let i = 1; i < values.length; i++) {
+        const item = values[i];
+
+        if (!(item instanceof UnitValue) || item[$unit] !== unit) {
+          return null;
+        }
+
+        result = reducer(result, item[$value]);
+      }
+
+      return new UnitValue(result, unit);
+    }
+
+    return null;
+  }
+
+  /**
+   * 1. Replace each item of `values` with the result of rectifying a
+   *    numberish value for the item.
+   *
+   * 2. If `this` is a CSSMath[Object] object, prepend the items in `this`’s
+   *    values internal slot to values. Otherwise, prepend `this` to `values`.
+   */
+  protected rectifyVariadicArgs(
+    MathVariadic: MathVariadicClass,
+    $this: NumericValue,
+    nums: CssNumberish[],
+  ): NumericValue[] {
+    return [
+      ...($this instanceof MathVariadic ? $this[$values] : [$this]),
+      ...nums.map((num) => this.rectify(num)),
+    ];
   }
 }
