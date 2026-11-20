@@ -1,4 +1,4 @@
-import { CssNumericBaseType } from "../../../css-numeric/src";
+import { CssNumericBaseType } from "@positron/css-numeric";
 
 import { BASE_TYPES } from "./base-types";
 

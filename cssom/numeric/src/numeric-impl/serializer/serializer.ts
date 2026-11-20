@@ -20,7 +20,6 @@ import { PERCENT_UNIT } from "../percent";
 
 import type { SerializeMathOpts } from "./serialize-math-opts";
 import type { SerializeOpts } from "./serialize-opts";
-import type { SerializeUnitValueOpts } from "./serialize-unit-value-opts";
 import type { SerializerImpl } from "./serializer-impl";
 
 /**
@@ -119,10 +118,7 @@ export class Serializer implements SerializerImpl {
    *
    * 5. Return `s`.
    */
-  public serializeUnitValue(
-    unitValue: CssUnitValue,
-    opts: SerializeUnitValueOpts = {},
-  ): string {
+  public serializeUnitValue(unitValue: CssUnitValue): string {
     let s = this.serializeNumber(unitValue.value);
 
     if (unitValue.unit === PERCENT_UNIT) {
@@ -131,7 +127,7 @@ export class Serializer implements SerializerImpl {
       s += unitValue.unit;
     }
 
-    if (opts.minimum) return s;
+    return s;
   }
 
   /**

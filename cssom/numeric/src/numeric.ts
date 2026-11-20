@@ -4,28 +4,44 @@
 import type { CssNumberish, CssNumericType } from "@positron/css-numeric";
 import { assertType, error, isNonEmptyArray, never } from "@positron/lang";
 
-import type { MathClamp, MathClampClass } from "./math-clamp";
-import type { MathInvertClass } from "./math-invert";
-import type { MathMax, MathMaxClass } from "./math-max";
-import type { MathMin, MathMinClass } from "./math-min";
-import type { MathNegateClass } from "./math-negate";
-import type { MathProduct, MathProductClass } from "./math-product";
-import type { MathSum, MathSumClass } from "./math-sum";
-import type { MathUnary, MathUnaryClass } from "./math-unary";
-import type { MathValueClass } from "./math-value";
-import type { MathVariadic, MathVariadicClass } from "./math-variadic";
-import type { NumericImpl } from "./numeric-impl";
-import type { NumericImplOpts } from "./numeric-impl-opts";
-import type { NumericValue, NumericValueClass } from "./numeric-value";
-import type { SerializerImpl } from "./serializer";
-import type { Unit } from "./unit";
-import type { UnitValue, UnitValueClass } from "./unit-value";
-import { $lower, $type, $unit, $upper, $value, $values } from "./-internal";
-import { NUMBER_UNIT } from "./number";
+import type { MathClamp, MathClampClass } from "./numeric-impl/math-clamp";
+import type { MathInvertClass } from "./numeric-impl/math-invert";
+import type { MathMax, MathMaxClass } from "./numeric-impl/math-max";
+import type { MathMin, MathMinClass } from "./numeric-impl/math-min";
+import type { MathNegateClass } from "./numeric-impl/math-negate";
+import type {
+  MathProduct,
+  MathProductClass,
+} from "./numeric-impl/math-product";
+import type { MathSum, MathSumClass } from "./numeric-impl/math-sum";
+import type { MathUnary, MathUnaryClass } from "./numeric-impl/math-unary";
+import type { MathValueClass } from "./numeric-impl/math-value";
+import type {
+  MathVariadic,
+  MathVariadicClass,
+} from "./numeric-impl/math-variadic";
+import type { NumericImpl } from "./numeric-impl/numeric-impl";
+import type { NumericImplOpts } from "./numeric-impl/numeric-impl-opts";
+import type {
+  NumericValue,
+  NumericValueClass,
+} from "./numeric-impl/numeric-value";
+import type { SerializerImpl } from "./numeric-impl/serializer";
+import type { Unit } from "./numeric-impl/unit";
+import type { UnitValue, UnitValueClass } from "./numeric-impl/unit-value";
+import {
+  $lower,
+  $type,
+  $unit,
+  $upper,
+  $value,
+  $values,
+} from "./numeric-impl/-internal";
+import { NUMBER_UNIT } from "./numeric-impl/number";
+import { toDouble } from "./numeric-impl/to-double";
+import { Type } from "./numeric-impl/type";
+import { toUnit } from "./numeric-impl/unit";
 import { NumericInternal } from "./numeric-internal";
-import { toDouble } from "./to-double";
-import { Type } from "./type";
-import { toUnit } from "./unit";
 
 export class Numeric extends NumericInternal implements NumericImpl {
   public readonly MathClamp: MathClampClass;

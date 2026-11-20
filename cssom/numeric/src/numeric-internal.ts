@@ -4,27 +4,42 @@ import type { CssNumberish } from "@positron/css-numeric";
 import {
   CssCanonicalUnits,
   CssCompatibleUnits,
-  toCssCanonicalUnit,
+  toCanonical,
 } from "@positron/css-unit";
 import { assertFinite, isNumber, never } from "@positron/lang";
 
-import type { MathClamp, MathClampClass } from "./math-clamp";
-import type { MathInvert, MathInvertClass } from "./math-invert";
-import type { MathMax, MathMaxClass } from "./math-max";
-import type { MathMin, MathMinClass } from "./math-min";
-import type { MathNegate, MathNegateClass } from "./math-negate";
-import type { MathProduct, MathProductClass } from "./math-product";
-import type { MathSum, MathSumClass } from "./math-sum";
-import type { MathUnary, MathUnaryClass } from "./math-unary";
-import type { MathValueClass } from "./math-value";
-import type { MathVariadic, MathVariadicClass } from "./math-variadic";
-import type { NumericValue, NumericValueClass } from "./numeric-value";
-import type { Sum, SumItem } from "./sum";
-import type { Unit } from "./unit";
-import type { UnitValue, UnitValueClass } from "./unit-value";
-import { $lower, $unit, $upper, $value, $values } from "./-internal";
-import { NUMBER_UNIT } from "./number";
-import { UnitMap } from "./unit";
+import type { MathClamp, MathClampClass } from "./numeric-impl/math-clamp";
+import type { MathInvert, MathInvertClass } from "./numeric-impl/math-invert";
+import type { MathMax, MathMaxClass } from "./numeric-impl/math-max";
+import type { MathMin, MathMinClass } from "./numeric-impl/math-min";
+import type { MathNegate, MathNegateClass } from "./numeric-impl/math-negate";
+import type {
+  MathProduct,
+  MathProductClass,
+} from "./numeric-impl/math-product";
+import type { MathSum, MathSumClass } from "./numeric-impl/math-sum";
+import type { MathUnary, MathUnaryClass } from "./numeric-impl/math-unary";
+import type { MathValueClass } from "./numeric-impl/math-value";
+import type {
+  MathVariadic,
+  MathVariadicClass,
+} from "./numeric-impl/math-variadic";
+import type {
+  NumericValue,
+  NumericValueClass,
+} from "./numeric-impl/numeric-value";
+import type { Sum, SumItem } from "./numeric-impl/sum";
+import type { Unit } from "./numeric-impl/unit";
+import type { UnitValue, UnitValueClass } from "./numeric-impl/unit-value";
+import {
+  $lower,
+  $unit,
+  $upper,
+  $value,
+  $values,
+} from "./numeric-impl/-internal";
+import { NUMBER_UNIT } from "./numeric-impl/number";
+import { UnitMap } from "./numeric-impl/unit";
 
 export abstract class NumericInternal {
   public abstract readonly MathClamp: MathClampClass;
@@ -247,7 +262,7 @@ export abstract class NumericInternal {
     let { [$unit]: unit, [$value]: value } = $this;
 
     if (CssCompatibleUnits.has(unit) && !CssCanonicalUnits.has(unit)) {
-      [value, unit] = toCssCanonicalUnit(value, unit);
+      [value, unit] = toCanonical(value, unit);
     }
 
     return unit === NUMBER_UNIT
