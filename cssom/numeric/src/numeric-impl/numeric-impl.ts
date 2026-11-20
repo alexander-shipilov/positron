@@ -9,6 +9,7 @@ import type { MathUnaryImpl } from "./math-unary";
 import type { MathValueImpl } from "./math-value";
 import type { MathVariadicImpl } from "./math-variadic";
 import type { NumericValueImpl } from "./numeric-value";
+import type { TypeImplClass } from "./type";
 import type { UnitValueImpl } from "./unit-value";
 
 export interface NumericImpl
@@ -24,4 +25,6 @@ export interface NumericImpl
     MathValueImpl,
     MathVariadicImpl,
     NumericValueImpl,
-    UnitValueImpl {}
+    UnitValueImpl {
+  Type: TypeImplClass;
+}

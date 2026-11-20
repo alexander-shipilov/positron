@@ -27,8 +27,10 @@ import type {
   NumericValueClass,
 } from "./numeric-impl/numeric-value";
 import type { SerializerImpl } from "./numeric-impl/serializer";
+import type { TypeImplClass } from "./numeric-impl/type";
 import type { Unit } from "./numeric-impl/unit";
 import type { UnitValue, UnitValueClass } from "./numeric-impl/unit-value";
+import { NaiveNumericInternal } from "./naive-numeric-internal";
 import {
   $lower,
   $type,
@@ -39,11 +41,9 @@ import {
 } from "./numeric-impl/-internal";
 import { NUMBER_UNIT } from "./numeric-impl/number";
 import { toDouble } from "./numeric-impl/to-double";
-import { Type } from "./numeric-impl/type";
 import { toUnit } from "./numeric-impl/unit";
-import { NumericInternal } from "./numeric-internal";
 
-export class Numeric extends NumericInternal implements NumericImpl {
+export class NaiveNumeric extends NaiveNumericInternal implements NumericImpl {
   public readonly MathClamp: MathClampClass;
 
   public readonly MathInvert: MathInvertClass;
@@ -66,6 +66,8 @@ export class Numeric extends NumericInternal implements NumericImpl {
 
   public readonly NumericValue: NumericValueClass;
 
+  public readonly Type: TypeImplClass;
+
   public readonly UnitValue: UnitValueClass;
 
   protected readonly serializer: SerializerImpl;
@@ -85,6 +87,7 @@ export class Numeric extends NumericInternal implements NumericImpl {
     this.MathVariadic = opts.MathVariadic(this);
     this.NumericValue = opts.NumericValue(this);
     this.UnitValue = opts.UnitValue(this);
+    this.Type = opts.Type;
 
     this.serializer = new opts.Serializer(this);
   }
@@ -352,7 +355,7 @@ export class Numeric extends NumericInternal implements NumericImpl {
   public initUnitValue($this: UnitValue, value: number, unit: string): void {
     $this[$value] = toDouble(value);
     $this[$unit] = toUnit(unit);
-    $this[$type] = Type.fromUnit($this[$unit]);
+    $this[$type] = this.Type.fromUnit($this[$unit]);
   }
 
   /**

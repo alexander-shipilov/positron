@@ -41,7 +41,7 @@ import {
 import { NUMBER_UNIT } from "./numeric-impl/number";
 import { UnitMap } from "./numeric-impl/unit";
 
-export abstract class NumericInternal {
+export abstract class NaiveNumericInternal {
   public abstract readonly MathClamp: MathClampClass;
 
   public abstract readonly MathInvert: MathInvertClass;

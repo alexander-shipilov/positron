@@ -15,3 +15,4 @@ export interface TypeImplClass {
   fromUnit(unit: Unit, power?: number): TypeImpl;
 
   fromUnitMap(unitMap: UnitMap): TypeImpl;
+}

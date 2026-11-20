@@ -11,10 +11,13 @@ import type { MathVariadicClass } from "./math-variadic";
 import type { NumericImpl } from "./numeric-impl";
 import type { NumericValueClass } from "./numeric-value";
 import type { SerializerImplClass } from "./serializer";
+import type { TypeImplClass } from "./type";
 import type { UnitValueClass } from "./unit-value";
 
 export interface NumericImplOpts {
   Serializer: SerializerImplClass;
+
+  Type: TypeImplClass;
 
   MathClamp(impl: NumericImpl): MathClampClass;
 

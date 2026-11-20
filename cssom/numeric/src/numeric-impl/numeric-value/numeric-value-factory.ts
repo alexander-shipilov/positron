@@ -6,7 +6,7 @@ import type {
   CssUnitValue,
 } from "@positron/css-numeric";
 
-import type { Type } from "../type";
+import type { TypeImpl } from "../type";
 import { $type } from "../-internal";
 import { Registry } from "../registry";
 
@@ -26,7 +26,7 @@ export function NumericValueFactory(impl: NumericValueImpl): NumericValueClass {
         return impl.parse(cssText);
       }
 
-      public [$type]!: Type;
+      public [$type]!: TypeImpl;
 
       public add(...values: CssNumberish[]): CssNumericValue {
         return impl.add(this, ...values);

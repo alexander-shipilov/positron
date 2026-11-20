@@ -1,2 +1,3 @@
-export * from "./numeric-impl/number";
-export * from "./numeric-impl/percent";
+export * from "./naive-numeric";
+export * from "./naive-numeric-internal";
+export * from "./naive-type";
