@@ -1,3 +1,9 @@
+/**
+ * The `@positron/lang` package provides core TypeScript type guards,
+ * runtime assertions, nominal type helpers, and language-level utilities.
+ *
+ * @packageDocumentation
+ */
 export type * from "./any/any";
 export type * from "./any/is-any";
 export type * from "./any/is-any-like";

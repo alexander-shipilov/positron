@@ -515,6 +515,12 @@
       "projectFolder": "tom/spec",
       "shouldPublish": false
     }
-	*/
+    */
+    /** web */
+    {
+      "packageName": "@positron/docs-website",
+      "projectFolder": "web/docs",
+      "shouldPublish": false
+    }
   ],
 }

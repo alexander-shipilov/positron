@@ -1,41 +1,20 @@
-# Website
+# `@positron/docs-website`
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
-
-## Installation
-
-```bash
-yarn
-```
+Documentation website for Positron built with [Docusaurus](https://docusaurus.io)
+and powered by `@positron/api-documenter`.
 
 ## Local Development
 
 ```bash
-yarn start
-```
+# Build API packages (if not built yet)
+rush build
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+# Start local dev server (generates Docusaurus API docs via @positron/api-documenter plugin)
+pnpm --dir web/docs start
+```
 
 ## Build
 
 ```bash
-yarn build
+pnpm --dir web/docs build
 ```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

@@ -37,7 +37,8 @@ a pre-1.0 (`0.x.x`) package in accordance with `docs.rules.md`,
 - Deleting empty files, intermediate barrel files (`src/**/index.ts`), and
   legacy package-level `docs/` directories.
 
-- Regenerating root `src/index.ts` from release tags.
+- Regenerating root `src/index.ts` from release tags with a top-level
+  `@packageDocumentation` comment.
 
 - Migrating package configuration files (`package.json`, `tsconfig.json`,
   `config/rig.json`, `eslint.config.mjs`, `jest.config.mjs`, `README.md`)

@@ -2,56 +2,27 @@ import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
 const config: Config = {
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
-
   favicon: "img/favicon.ico",
-
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
   },
-
-  onBrokenLinks: "throw",
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "positron", // Usually your GitHub org/user name.
-
+  markdown: {
+    format: "detect",
+  },
+  onBrokenLinks: "warn",
+  organizationName: "alexander-shipilov",
   presets: [
     [
       "classic",
       {
-        blog: {
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          feedOptions: {
-            type: ["rss", "atom"],
-            xslt: true,
-          },
-          onInlineAuthors: "warn",
-          // Useful options to enforce blogging best practices
-          onInlineTags: "warn",
-          onUntruncatedBlogPosts: "warn",
-          showReadingTime: true,
-        },
+        blog: false,
         docs: {
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //  "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
           sidebarPath: "./sidebars.ts",
         },
         theme: {
@@ -60,95 +31,72 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-  projectName: "docusaurus", // Usually your repo name.
-
-  tagline: "Dinosaurs are cool",
-
+  projectName: "positron",
+  tagline: "Modular TypeScript Libraries & Type Definitions",
   themeConfig: {
     colorMode: {
       respectPrefersColorScheme: true,
     },
-
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
-
+      copyright: `Copyright © ${new Date().getFullYear()} Alexander Shipilov. Built with Docusaurus.`,
       links: [
         {
           items: [
             {
-              label: "Tutorial",
+              label: "Introduction",
               to: "/docs/intro",
             },
+            {
+              label: "API Reference",
+              to: "/docs/api",
+            },
           ],
-          title: "Docs",
+          title: "Documentation",
         },
         {
           items: [
             {
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-              label: "Stack Overflow",
-            },
-            {
-              href: "https://discordapp.com/invite/docusaurus",
-              label: "Discord",
-            },
-            {
-              href: "https://x.com/docusaurus",
-              label: "X",
-            },
-          ],
-          title: "Community",
-        },
-        {
-          items: [
-            {
-              label: "Blog",
-              to: "/blog",
-            },
-            {
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com",
               label: "GitHub",
             },
           ],
-          title: "More",
+          title: "Repository",
         },
       ],
       style: "dark",
     },
-
-    // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
     navbar: {
       items: [
         {
-          label: "Tutorial",
+          label: "Guides",
           position: "left",
-          sidebarId: "tutorialSidebar",
+          sidebarId: "docsSidebar",
           type: "docSidebar",
         },
-        { label: "Blog", position: "left", to: "/blog" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          label: "API Reference",
+          position: "left",
+          to: "/docs/api",
+        },
+        {
+          href: "https://github.com",
           label: "GitHub",
           position: "right",
         },
       ],
       logo: {
-        alt: "My Site Logo",
+        alt: "Positron Logo",
         src: "img/logo.svg",
       },
-      title: "My Site",
+      title: "Positron",
     },
     prism: {
       darkTheme: prismThemes.dracula,
       theme: prismThemes.github,
     },
   } satisfies Preset.ThemeConfig,
-
-  title: "My Site",
-
-  // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  title: "Positron",
+  url: "https://github.io",
 };
 
 export default config;

@@ -1,3 +1,3 @@
-import config from "@positron/heft-rig/profiles/default/eslint.config.base.js";
+import config from "@positron/heft-lib-rig/profiles/default/eslint.config.base.mjs";
 
 export default config;

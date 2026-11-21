@@ -19,7 +19,67 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[@positron/api-documenter](./api-documenter.md)
+
+
+</td><td>
+
+The `@positron/api-documenter` package provides a plugin-friendly architecture for `@microsoft/api-documenter` markdown generation.
+
+
+</td></tr>
+<tr><td>
+
+[@positron/css-numeric](./css-numeric.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@positron/css-unit](./css-unit.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@positron/cssom-numeric](./cssom-numeric.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [@positron/lang](./lang.md)
+
+
+</td><td>
+
+The `@positron/lang` package provides core TypeScript type guards, runtime assertions, nominal type helpers, and language-level utilities.
+
+
+</td></tr>
+<tr><td>
+
+[@positron/lang-nominal](./lang-nominal.md)
+
+
+</td><td>
+
+The `@positron/lang-nominal` package provides internal types for storing nominal types metadata and is used by the `@positron/lang` package.
+
+
+</td></tr>
+<tr><td>
+
+[@positron/prefixed](./prefixed.md)
 
 
 </td><td>

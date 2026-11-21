@@ -5,8 +5,11 @@
 /build
 
 # Generated files
-.docusaurus
-.cache-loader
+/.docusaurus
+/.cache-loader
+/.temp
+/docs/api/*
+!/docs/api/.gitkeep
 
 # Misc
 .DS_Store

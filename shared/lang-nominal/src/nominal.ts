@@ -6,7 +6,7 @@ import type { NominalMeta } from "./nominal-meta";
  *
  * @typeParam TType - The type to add metadata to.
  *
- * @typeParam TMeta - The additional metadata.
+ * @typeParam TMeta - The additional metadata tuple.
  *
  * @public
  */
