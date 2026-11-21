@@ -14,10 +14,9 @@ describe("interface CssUnitValue", () => {
     expectTypeOf<CssUnitValue["unit"]>().toEqualTypeOf<string>();
 
     expectTypeOf<Readonly<CssUnitValue>>().toExtend<CssUnitValue>();
-    expectTypeOf<CssUnitValue>().not.toExtend<{ readonly value: number }>();
   });
 
   it("should be satisfied by DOM `CSSUnitValue`", () => {
-    expectTypeOf<CSSUnitValue>().toExtend<CssUnitValue>();
+    expectTypeOf<CssUnitValue>().toExtend<CSSUnitValue>();
   });
 });

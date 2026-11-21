@@ -1,4 +1,4 @@
-import type { Any, IterableCollection } from "@positron/lang";
+import type { Any } from "@positron/lang";
 
 import type { CssNumericArrayCallback } from "./css-numeric-array-callback";
 import type { CssNumericValue } from "./css-numeric-value";
@@ -17,13 +17,14 @@ import type { CssNumericValue } from "./css-numeric-value";
  *
  * @public
  */
-export interface CssNumericArray
-  extends
-    Iterable<CssNumericValue>,
-    IterableCollection<number, CssNumericValue> {
+export interface CssNumericArray {
   readonly [n: number]: CssNumericValue;
 
   readonly length: number;
+
+  [Symbol.iterator](): ArrayIterator<CssNumericValue>;
+
+  entries(): ArrayIterator<[number, CssNumericValue]>;
 
   /**
    * The {@link CssNumericArray.forEach} method executes a provided function
@@ -34,4 +35,8 @@ export interface CssNumericArray
    * @param thisArg - Value to use as this when executing `callback`.
    */
   forEach(callback: CssNumericArrayCallback, thisArg?: Any): void;
+
+  keys(): ArrayIterator<number>;
+
+  values(): ArrayIterator<CssNumericValue>;
 }

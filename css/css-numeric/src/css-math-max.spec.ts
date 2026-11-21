@@ -15,6 +15,6 @@ describe("interface CssMathMax", () => {
   });
 
   it("should be satisfied by DOM `CSSMathMax`", () => {
-    expectTypeOf<CSSMathMax>().toExtend<CssMathMax>();
+    expectTypeOf<CssMathMax>().toExtend<CSSMathMax>();
   });
 });

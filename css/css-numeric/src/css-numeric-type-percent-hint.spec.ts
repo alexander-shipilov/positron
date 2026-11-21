@@ -17,7 +17,7 @@ describe("type CssNumericTypePercentHint", () => {
   });
 
   it("should match DOM `CSSNumericType['percentHint']`", () => {
-    expectTypeOf<`${CssNumericTypePercentHint}`>().toEqualTypeOf<
+    expectTypeOf<CssNumericTypePercentHint>().toExtend<
       NonNullable<CSSNumericType["percentHint"]>
     >();
   });

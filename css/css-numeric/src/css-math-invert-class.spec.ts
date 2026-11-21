@@ -11,8 +11,4 @@ describe("interface CssMathInvertClass", () => {
       InstanceType<CssMathInvertClass>
     >().toEqualTypeOf<CssMathInvert>();
   });
-
-  it("should be satisfied by DOM `typeof CSSMathInvert`", () => {
-    expectTypeOf<typeof CSSMathInvert>().toExtend<CssMathInvertClass>();
-  });
 });

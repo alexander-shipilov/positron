@@ -31,7 +31,8 @@ describe(`class ${UnitSet.name}`, () => {
   });
 
   describe(".match(value)", () => {
-    it("should return `true` if set contains the `value` converted to lowercase", () => {
+    it("should return `true` if set contains the `value` converted to \
+        lowercase", () => {
       const frequency = new UnitSet(["hz", "khz"]);
 
       expect(frequency.match("hz")).toBe(true);
@@ -40,7 +41,8 @@ describe(`class ${UnitSet.name}`, () => {
       expect(frequency.match("kHz")).toBe(true);
     });
 
-    it("should return `value` if set does not contain the `value` converted to lowercase", () => {
+    it("should return `value` if set does not contain the `value` converted to \
+        lowercase", () => {
       const frequency = new UnitSet(["hz", "khz"]);
 
       expect(frequency.match("hz1")).toBe(false);
@@ -49,7 +51,8 @@ describe(`class ${UnitSet.name}`, () => {
   });
 
   describe(".toUnit(value)", () => {
-    it("should return a unit if set contains the `value` converted to lowercase", () => {
+    it("should return a unit if set contains the `value` converted to \
+        lowercase", () => {
       const frequency = new UnitSet(["hz", "khz"]);
 
       expect(frequency.toUnit("Hz")).toBe("hz");
@@ -57,7 +60,8 @@ describe(`class ${UnitSet.name}`, () => {
       expect(frequency.toUnit("kHz")).toBe("khz");
     });
 
-    it("should return `null` if set does not contain the `value` converted to lowercase", () => {
+    it("should return `null` if set does not contain the `value` converted to \
+        lowercase", () => {
       const frequency = new UnitSet(["hz", "khz"]);
 
       expect(frequency.toUnit("hz1")).toBeNull();

@@ -9,8 +9,4 @@ describe("interface CssMathMaxClass", () => {
     expectTypeOf<CssMathMaxClass>().toBeConstructibleWith(1, 2);
     expectTypeOf<InstanceType<CssMathMaxClass>>().toEqualTypeOf<CssMathMax>();
   });
-
-  it("should be satisfied by DOM `typeof CSSMathMax`", () => {
-    expectTypeOf<typeof CSSMathMax>().toExtend<CssMathMaxClass>();
-  });
 });

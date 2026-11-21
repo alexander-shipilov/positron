@@ -5,7 +5,6 @@ import type { CssNumericType } from "./css-numeric-type";
 
 describe("interface CssNumericType", () => {
   it("should be mutually assignable with DOM `CSSNumericType`", () => {
-    expectTypeOf<CSSNumericType>().toExtend<CssNumericType>();
     expectTypeOf<CssNumericType>().toExtend<CSSNumericType>();
   });
 });

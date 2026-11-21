@@ -27,5 +27,5 @@ export interface CssMathMinClass<TInstance extends CssMathMin = CssMathMin> {
    *   have incompatible types (for example, mixing a `<length>` with an
    *   `<angle>`).
    */
-  new (...args: readonly CssNumberish[]): TInstance;
+  new (...args: CssNumberish[]): TInstance;
 }

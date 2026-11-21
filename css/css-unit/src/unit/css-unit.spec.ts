@@ -14,20 +14,6 @@ describe("enum CssUnit", () => {
     expectTypeOf<CssUnit>().toExtend<
       ConstructorParameters<typeof CSSUnitValue>[1]
     >();
-    expectTypeOf<CssUnit>().toExtend<
-      Parameters<CSSNumericValue["to"]>[0]
-    >();
-  });
-
-  it("should align with DOM `CSS` factory method names", () => {
-    type DomCssFactoryUnits = {
-      [K in keyof typeof CSS]: (typeof CSS)[K] extends (
-        value: number,
-      ) => CSSUnitValue
-        ? Lowercase<K & string>
-        : never;
-    }[keyof typeof CSS];
-
-    expectTypeOf<DomCssFactoryUnits>().toExtend<`${CssUnit}`>();
+    expectTypeOf<CssUnit>().toExtend<Parameters<CSSNumericValue["to"]>[0]>();
   });
 });

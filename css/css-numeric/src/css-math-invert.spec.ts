@@ -15,6 +15,6 @@ describe("interface CssMathInvert", () => {
   });
 
   it("should be satisfied by DOM `CSSMathInvert`", () => {
-    expectTypeOf<CSSMathInvert>().toExtend<CssMathInvert>();
+    expectTypeOf<CssMathInvert>().toExtend<CSSMathInvert>();
   });
 });

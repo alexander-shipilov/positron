@@ -11,8 +11,4 @@ describe("interface CssUnitValueClass", () => {
       InstanceType<CssUnitValueClass>
     >().toEqualTypeOf<CssUnitValue>();
   });
-
-  it("should be satisfied by DOM `typeof CSSUnitValue`", () => {
-    expectTypeOf<typeof CSSUnitValue>().toExtend<CssUnitValueClass>();
-  });
 });

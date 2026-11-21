@@ -5,7 +5,8 @@ import { CssUnit } from "../unit/css-unit";
 import { toCompatible } from "./to-compatible";
 
 describe("function toCompatible", () => {
-  it("should convert canonical values into the specified compatible unit regardless of case", () => {
+  it("should convert canonical values into the specified compatible unit \
+      regardless of case", () => {
     expect(toCompatible(96, CssUnit.in)).toEqual([1, CssUnit.in]);
     expect(toCompatible(192, "IN")).toEqual([2, CssUnit.in]);
     expect(toCompatible(180, CssUnit.turn)).toEqual([0.5, CssUnit.turn]);

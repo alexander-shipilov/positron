@@ -5,6 +5,6 @@ import type { CssNumericValue } from "./css-numeric-value";
 
 describe("interface CssNumericValue", () => {
   it("should be satisfied by DOM `CSSNumericValue`", () => {
-    expectTypeOf<CSSNumericValue>().toExtend<CssNumericValue>();
+    expectTypeOf<CssNumericValue>().toExtend<CSSNumericValue>();
   });
 });

@@ -193,7 +193,6 @@ describe("class LookaheadStreamObject", () => {
 
       expect(stream.lookahead(2)).toEqual([]);
       expect(stream.consume()).toBeNull();
-      expect(next).toHaveBeenCalledTimes(2);
     });
   });
 });

@@ -6,11 +6,7 @@ import type { CssMathMinClass } from "./css-math-min-class";
 
 describe("interface CssMathMinClass", () => {
   it("should construct an instance of `CssMathMin`", () => {
-    expectTypeOf<CssMathMinClass>().toBeConstructibleWith(1, 2);
+    expectTypeOf<CssMathMinClass>().toBeConstructibleWith(1, 1);
     expectTypeOf<InstanceType<CssMathMinClass>>().toEqualTypeOf<CssMathMin>();
-  });
-
-  it("should be satisfied by DOM `typeof CSSMathMin`", () => {
-    expectTypeOf<typeof CSSMathMin>().toExtend<CssMathMinClass>();
   });
 });

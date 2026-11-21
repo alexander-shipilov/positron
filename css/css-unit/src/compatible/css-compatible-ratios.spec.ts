@@ -7,7 +7,8 @@ import { CssCompatibleRatios } from "./css-compatible-ratios";
 import { CssCompatibleUnits } from "./css-compatible-units";
 
 describe("const CssCompatibleRatios", () => {
-  it("should define a positive ratio and canonical unit for every compatible unit", () => {
+  it("should define a positive ratio and canonical unit for every compatible \
+      unit", () => {
     const keys = Object.keys(CssCompatibleRatios);
 
     expect(keys.sort()).toEqual([...CssCompatibleUnits].sort());

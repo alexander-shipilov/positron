@@ -38,4 +38,6 @@ export interface CssMathClampClass<
     value: CssNumberish,
     upper: CssNumberish,
   ): TInstance;
+
+  prototype: CssMathClamp;
 }

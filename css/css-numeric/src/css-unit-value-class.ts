@@ -8,9 +8,7 @@ import type { CssUnitValue } from "./css-unit-value";
  *
  * @public
  */
-export interface CssUnitValueClass<
-  TInstance extends CssUnitValue = CssUnitValue,
-> {
+export interface CssUnitValueClass {
   /**
    * Creates a new {@link CssUnitValue} object representing values that contain
    * a single unit type. For example, `"42px"` is represented by a
@@ -22,5 +20,5 @@ export interface CssUnitValueClass<
    *
    * @throws `TypeError` If `value` is non-finite or `unit` is invalid.
    */
-  new (value: number, unit: string): TInstance;
+  new (value: number, unit: string): CssUnitValue;
 }

@@ -28,5 +28,5 @@ export interface CssMathProductClass<
    * @throws `TypeError` If one or more arguments are non-finite numbers or if
    *   the types of arguments cannot be combined into a product.
    */
-  new (...args: readonly CssNumberish[]): TInstance;
+  new (...args: CssNumberish[]): TInstance;
 }

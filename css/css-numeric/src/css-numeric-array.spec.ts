@@ -12,6 +12,6 @@ describe("interface CssNumericArray", () => {
   });
 
   it("should be satisfied by DOM `CSSNumericArray`", () => {
-    expectTypeOf<CSSNumericArray>().toExtend<CssNumericArray>();
+    expectTypeOf<CssNumericArray>().toExtend<CSSNumericArray>();
   });
 });

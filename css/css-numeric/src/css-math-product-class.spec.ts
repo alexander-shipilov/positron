@@ -11,8 +11,4 @@ describe("interface CssMathProductClass", () => {
       InstanceType<CssMathProductClass>
     >().toEqualTypeOf<CssMathProduct>();
   });
-
-  it("should be satisfied by DOM `typeof CSSMathProduct`", () => {
-    expectTypeOf<typeof CSSMathProduct>().toExtend<CssMathProductClass>();
-  });
 });

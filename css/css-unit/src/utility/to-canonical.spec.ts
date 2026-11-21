@@ -5,7 +5,8 @@ import { CssUnit } from "../unit/css-unit";
 import { toCanonical } from "./to-canonical";
 
 describe("function toCanonical", () => {
-  it("should convert compatible units to their canonical unit regardless of case", () => {
+  it("should convert compatible units to their canonical unit regardless of \
+      case", () => {
     expect(toCanonical(1, CssUnit.in)).toEqual([96, CssUnit.px]);
     expect(toCanonical(2, "IN")).toEqual([192, CssUnit.px]);
     expect(toCanonical(0.5, CssUnit.turn)).toEqual([180, CssUnit.deg]);

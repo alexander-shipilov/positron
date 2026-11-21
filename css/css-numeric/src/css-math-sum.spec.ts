@@ -15,6 +15,6 @@ describe("interface CssMathSum", () => {
   });
 
   it("should be satisfied by DOM `CSSMathSum`", () => {
-    expectTypeOf<CSSMathSum>().toExtend<CssMathSum>();
+    expectTypeOf<CssMathSum>().toExtend<CSSMathSum>();
   });
 });

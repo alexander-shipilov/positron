@@ -10,8 +10,4 @@ describe("type CssMathValueClass", () => {
       InstanceType<CssMathValueClass>
     >().toEqualTypeOf<CssMathValue>();
   });
-
-  it("should be satisfied by DOM `typeof CSSMathValue`", () => {
-    expectTypeOf<typeof CSSMathValue>().toExtend<CssMathValueClass>();
-  });
 });

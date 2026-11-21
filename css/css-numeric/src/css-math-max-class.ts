@@ -27,5 +27,5 @@ export interface CssMathMaxClass<TInstance extends CssMathMax = CssMathMax> {
    *   have incompatible types (for example, mixing a `<length>` with an
    *   `<angle>`).
    */
-  new (...args: readonly CssNumberish[]): TInstance;
+  new (...args: CssNumberish[]): TInstance;
 }

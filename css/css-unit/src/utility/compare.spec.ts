@@ -21,12 +21,14 @@ describe("function compare", () => {
     expect(compare([2, CssUnit.khz], [500, CssUnit.hz])).toBeGreaterThan(0);
   });
 
-  it("should return `NaN` if dimensions belong to different canonical categories", () => {
+  it("should return `NaN` if dimensions belong to different canonical \
+      categories", () => {
     expect(compare([10, CssUnit.px], [10, CssUnit.deg])).toBeNaN();
     expect(compare([1, CssUnit.s], [1, CssUnit.hz])).toBeNaN();
   });
 
-  it("should return `NaN` if any dimension uses a relative or incompatible unit", () => {
+  it("should return `NaN` if any dimension uses a relative or incompatible \
+      unit", () => {
     expect(compare([10, CssUnit.em], [10, CssUnit.px])).toBeNaN();
     expect(compare([10, CssUnit.px], [10, CssUnit.em])).toBeNaN();
     expect(compare([10, CssUnit.vw], [10, CssUnit.vh])).toBeNaN();

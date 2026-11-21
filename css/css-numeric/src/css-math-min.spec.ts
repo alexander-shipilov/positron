@@ -15,6 +15,6 @@ describe("interface CssMathMin", () => {
   });
 
   it("should be satisfied by DOM `CSSMathMin`", () => {
-    expectTypeOf<CSSMathMin>().toExtend<CssMathMin>();
+    expectTypeOf<CssMathMin>().toExtend<CSSMathMin>();
   });
 });

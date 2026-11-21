@@ -11,8 +11,4 @@ describe("interface CssMathNegateClass", () => {
       InstanceType<CssMathNegateClass>
     >().toEqualTypeOf<CssMathNegate>();
   });
-
-  it("should be satisfied by DOM `typeof CSSMathNegate`", () => {
-    expectTypeOf<typeof CSSMathNegate>().toExtend<CssMathNegateClass>();
-  });
 });

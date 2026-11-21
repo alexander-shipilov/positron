@@ -15,6 +15,6 @@ describe("interface CssMathProduct", () => {
   });
 
   it("should be satisfied by DOM `CSSMathProduct`", () => {
-    expectTypeOf<CSSMathProduct>().toExtend<CssMathProduct>();
+    expectTypeOf<CssMathProduct>().toExtend<CSSMathProduct>();
   });
 });

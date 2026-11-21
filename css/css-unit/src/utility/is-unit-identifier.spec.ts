@@ -9,7 +9,8 @@ describe("function isUnitIdentifier", () => {
     expect(isUnitIdentifier("khz")).toBe(true);
   });
 
-  it("should return `false` if `maybeUnit` is empty or contains uppercase characters", () => {
+  it("should return `false` if `maybeUnit` is empty or contains uppercase \
+      characters", () => {
     expect(isUnitIdentifier("")).toBe(false);
     expect(isUnitIdentifier("Px")).toBe(false);
     expect(isUnitIdentifier("PX")).toBe(false);

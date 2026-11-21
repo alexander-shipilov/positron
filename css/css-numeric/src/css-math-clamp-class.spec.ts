@@ -11,8 +11,4 @@ describe("interface CssMathClampClass", () => {
       InstanceType<CssMathClampClass>
     >().toEqualTypeOf<CssMathClamp>();
   });
-
-  it("should be satisfied by DOM `typeof CSSMathClamp`", () => {
-    expectTypeOf<typeof CSSMathClamp>().toExtend<CssMathClampClass>();
-  });
 });

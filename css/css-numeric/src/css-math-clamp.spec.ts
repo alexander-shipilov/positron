@@ -17,6 +17,6 @@ describe("interface CssMathClamp", () => {
   });
 
   it("should be satisfied by DOM `CSSMathClamp`", () => {
-    expectTypeOf<CSSMathClamp>().toExtend<CssMathClamp>();
+    expectTypeOf<CssMathClamp>().toExtend<CSSMathClamp>();
   });
 });

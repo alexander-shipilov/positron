@@ -10,6 +10,8 @@ describe("type CssNumericArrayCallback", () => {
     expectTypeOf<CssNumericArrayCallback>().parameters.toEqualTypeOf<
       [value: CssNumericValue, index: number, array: CssNumericArray]
     >();
+
+    // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     expectTypeOf<CssNumericArrayCallback>().returns.toEqualTypeOf<void>();
   });
 });
