@@ -5,27 +5,28 @@ import type {
   CssNumericValue,
   CssUnitValue,
 } from "@positron/css-numeric";
-import { never } from "@positron/lang";
+import { assertType, isFiniteNumber, never } from "@positron/lang";
 
-import type { MathInvert } from "../math-invert";
-import type { MathMax } from "../math-max";
-import type { MathMin } from "../math-min";
-import type { MathNegate } from "../math-negate";
-import type { MathProduct } from "../math-product";
-import type { MathSum } from "../math-sum";
-import type { NumericImpl } from "../numeric-impl";
-import { $value, $values } from "../internal";
-import { NUMBER_UNIT } from "../number";
-import { PERCENT_UNIT } from "../percent";
-
-import type { SerializeMathOpts } from "./serialize-math-opts";
-import type { SerializeOpts } from "./serialize-opts";
-import type { SerializerImpl } from "./serializer-impl";
+import type { MathInvert } from "./numeric-impl/math-invert";
+import type { MathMax } from "./numeric-impl/math-max";
+import type { MathMin } from "./numeric-impl/math-min";
+import type { MathNegate } from "./numeric-impl/math-negate";
+import type { MathProduct } from "./numeric-impl/math-product";
+import type { MathSum } from "./numeric-impl/math-sum";
+import type { NumericImpl } from "./numeric-impl/numeric-impl";
+import type {
+  SerializeMathOpts,
+  SerializeOpts,
+  SerializerImpl,
+} from "./numeric-impl/serializer";
+import { $value, $values } from "./numeric-impl/internal";
+import { NUMBER_UNIT } from "./numeric-impl/number";
+import { PERCENT_UNIT } from "./numeric-impl/percent";
 
 /**
  *
  */
-export class Serializer implements SerializerImpl {
+export class NaiveSerializer implements SerializerImpl {
   protected readonly impl: NumericImpl;
 
   public constructor(impl: NumericImpl) {
@@ -90,6 +91,8 @@ export class Serializer implements SerializerImpl {
   }
 
   /**
+   * https://www.w3.org/TR/css-typed-om-1/#serialize-a-cssunitvalue
+   *
    * To serialize a CSSUnitValue this, with optional arguments `minimum`, a
    * numeric value, and `maximum`, a numeric value:
    *
@@ -355,11 +358,23 @@ export class Serializer implements SerializerImpl {
     return this.parens(s, opts);
   }
 
+  /**
+   * A base-ten number using digits 0-9 (U+0030 to U+0039) in the shortest
+   * form possible, using "." to separate decimals (if any), rounding the
+   * value if necessary to not produce more than 6 decimals, preceded
+   * by "-" (U+002D) if it is negative.
+   */
   protected serializeNumber(value: number): string {
-    // A base-ten number using digits 0-9 (U+0030 to U+0039) in the shortest
-    // form possible, using "." to separate decimals (if any), rounding the
-    // value if necessary to not produce more than 6 decimals, preceded by "-"
-    // (U+002D) if it is negative.
-    return (Math.round(value * 1e6) / 1e6).toFixed();
+    /* TODO: move this code to the css implementation package
+     *
+     * Don't forget:
+     *  Infinity -> calc("infinity" * 1<unit>)
+     *  NaN -> calc("nan" * 1<unit>)
+     */
+    const trunc = Math.trunc(
+      assertType(value, isFiniteNumber, "non-finite value"),
+    );
+
+    return (trunc + Math.round((value - trunc) * 1e6) / 1e6).toFixed();
   }
 }

@@ -1,0 +1,37 @@
+/* W3C EBNF grammar for TSDoc {@link} declaration references */
+
+link         ::= '{@link' S link-ref '}'
+
+link-ref     ::= entity
+               | package-path entity
+
+package-path ::= '@' path-segment '/' path
+               | path
+
+path         ::= path-segment '/' path
+               | path-segment '#'
+
+path-segment ::= [a-zA-Z0-9._-]+
+
+entity       ::= typed-ref '.' entity
+               | ref
+
+typed-ref    ::= identifier
+               | '(' identifier ':' ref-type ')'
+
+ref          ::= typed-ref
+               | '(' identifier ':' ref-index ')'
+
+ref-type     ::= 'class'
+               | 'enum'
+               | 'function'
+               | 'interface'
+               | 'namespace'
+               | 'type'
+               | 'variable'
+
+ref-index    ::= [1-9] [0-9]*
+
+identifier   ::= [_$\p{IDS}] [$\p{IDC}]*
+
+S            ::= #x20 | #x9 | #xD | #xA
