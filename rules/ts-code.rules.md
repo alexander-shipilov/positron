@@ -43,6 +43,10 @@
 - The inspected target parameter of a type-guard function or method MUST begin
   with the `maybe` prefix (e.g., `maybeString`, `maybeArray`).
 
+- Acronyms and initialisms in identifiers MUST be treated as regular words
+  and formatted in standard `camelCase` or `PascalCase` (e.g., `CssUnit`,
+  `DomParser`, `parseXml` rather than `CSSUnit`, `DOMParser`, `parseXML`).
+
 - Identifiers with ambiguous word boundaries (such as `parseXMLs`, `HTMLs`,
   or `DOMsParser`) are prohibited.
 
