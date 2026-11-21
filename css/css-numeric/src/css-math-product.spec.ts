@@ -14,7 +14,7 @@ describe("interface CssMathProduct", () => {
     expectTypeOf<CssMathProduct["values"]>().toEqualTypeOf<CssNumericArray>();
   });
 
-  it("should be satisfied by DOM `CSSMathProduct`", () => {
+  it("should satisfy DOM `CSSMathProduct`", () => {
     expectTypeOf<CssMathProduct>().toExtend<CSSMathProduct>();
   });
 });

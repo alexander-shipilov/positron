@@ -4,7 +4,7 @@ import { expectTypeOf } from "expect-type";
 import type { CssNumericType } from "./css-numeric-type";
 
 describe("interface CssNumericType", () => {
-  it("should be mutually assignable with DOM `CSSNumericType`", () => {
+  it("should satisfy DOM `CSSNumericType`", () => {
     expectTypeOf<CssNumericType>().toExtend<CSSNumericType>();
   });
 });

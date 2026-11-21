@@ -1,6 +1,17 @@
 /* eslint-disable @typescript-eslint/no-meaningless-void-operator */
 
-import type { CssNumberish } from "@positron/css-numeric";
+import type {
+  CssMathClampClass,
+  CssMathInvertClass,
+  CssMathMaxClass,
+  CssMathMinClass,
+  CssMathNegateClass,
+  CssMathProductClass,
+  CssMathSumClass,
+  CssNumberish,
+  CssNumericValueClass,
+  CssUnitValueClass,
+} from "@positron/css-numeric";
 import {
   CssCanonicalUnits,
   CssCompatibleUnits,
@@ -8,29 +19,20 @@ import {
 } from "@positron/css-unit";
 import { assertFinite, isNumber, never } from "@positron/lang";
 
-import type { MathClamp, MathClampClass } from "./numeric-impl/math-clamp";
-import type { MathInvert, MathInvertClass } from "./numeric-impl/math-invert";
-import type { MathMax, MathMaxClass } from "./numeric-impl/math-max";
-import type { MathMin, MathMinClass } from "./numeric-impl/math-min";
-import type { MathNegate, MathNegateClass } from "./numeric-impl/math-negate";
-import type {
-  MathProduct,
-  MathProductClass,
-} from "./numeric-impl/math-product";
-import type { MathSum, MathSumClass } from "./numeric-impl/math-sum";
-import type { MathUnary, MathUnaryClass } from "./numeric-impl/math-unary";
+import type { MathClamp } from "./numeric-impl/math-clamp";
+import type { MathInvert } from "./numeric-impl/math-invert";
+import type { MathMax } from "./numeric-impl/math-max";
+import type { MathMin } from "./numeric-impl/math-min";
+import type { MathNegate } from "./numeric-impl/math-negate";
+import type { MathProduct } from "./numeric-impl/math-product";
+import type { MathSum } from "./numeric-impl/math-sum";
+import type { MathUnary } from "./numeric-impl/math-unary";
 import type { MathValueClass } from "./numeric-impl/math-value";
-import type {
-  MathVariadic,
-  MathVariadicClass,
-} from "./numeric-impl/math-variadic";
-import type {
-  NumericValue,
-  NumericValueClass,
-} from "./numeric-impl/numeric-value";
+import type { MathVariadic } from "./numeric-impl/math-variadic";
+import type { NumericValue } from "./numeric-impl/numeric-value";
 import type { Sum, SumItem } from "./numeric-impl/sum";
 import type { Unit } from "./numeric-impl/unit";
-import type { UnitValue, UnitValueClass } from "./numeric-impl/unit-value";
+import type { UnitValue } from "./numeric-impl/unit-value";
 import {
   $lower,
   $unit,
@@ -42,29 +44,25 @@ import { NUMBER_UNIT } from "./numeric-impl/number";
 import { UnitMap } from "./numeric-impl/unit";
 
 export abstract class NaiveNumericInternal {
-  public abstract readonly MathClamp: MathClampClass;
+  public abstract readonly MathClamp: CssMathClampClass;
 
-  public abstract readonly MathInvert: MathInvertClass;
+  public abstract readonly MathInvert: CssMathInvertClass;
 
-  public abstract readonly MathMax: MathMaxClass;
+  public abstract readonly MathMax: CssMathMaxClass;
 
-  public abstract readonly MathMin: MathMinClass;
+  public abstract readonly MathMin: CssMathMinClass;
 
-  public abstract readonly MathNegate: MathNegateClass;
+  public abstract readonly MathNegate: CssMathNegateClass;
 
-  public abstract readonly MathProduct: MathProductClass;
+  public abstract readonly MathProduct: CssMathProductClass;
 
-  public abstract readonly MathSum: MathSumClass;
-
-  public abstract readonly MathUnary: MathUnaryClass;
+  public abstract readonly MathSum: CssMathSumClass;
 
   public abstract readonly MathValue: MathValueClass;
 
-  public abstract readonly MathVariadic: MathVariadicClass;
+  public abstract readonly NumericValue: CssNumericValueClass;
 
-  public abstract readonly NumericValue: NumericValueClass;
-
-  public abstract readonly UnitValue: UnitValueClass;
+  public abstract readonly UnitValue: CssUnitValueClass;
 
   /**
    * https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value

@@ -5,11 +5,9 @@ import type { CssNumberish } from "./css-numberish";
  * The {@link CssMathMinClass} interface represents a class for creating
  * instances of {@link CssMathMin}.
  *
- * @typeParam TInstance - The instance type constructed by this class.
- *
  * @public
  */
-export interface CssMathMinClass<TInstance extends CssMathMin = CssMathMin> {
+export interface CssMathMinClass {
   /**
    * Creates a new {@link CssMathMin} object representing the CSS `min()`
    * function.
@@ -27,5 +25,5 @@ export interface CssMathMinClass<TInstance extends CssMathMin = CssMathMin> {
    *   have incompatible types (for example, mixing a `<length>` with an
    *   `<angle>`).
    */
-  new (...args: CssNumberish[]): TInstance;
+  new (...args: CssNumberish[]): CssMathMin;
 }

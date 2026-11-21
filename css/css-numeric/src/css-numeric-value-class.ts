@@ -4,13 +4,9 @@ import type { CssNumericValue } from "./css-numeric-value";
  * The {@link CssNumericValueClass} type represents an abstract constructor and
  * static parser for {@link CssNumericValue}.
  *
- * @typeParam TInstance - The instance type constructed by subclasses.
- *
  * @public
  */
-export type CssNumericValueClass<
-  TInstance extends CssNumericValue = CssNumericValue,
-> = (abstract new () => TInstance) & {
+export type CssNumericValueClass = (abstract new () => CssNumericValue) & {
   /**
    * The {@link CssNumericValueClass.parse} method creates a new instance of
    * {@link CssNumericValue} from a string of CSS.
@@ -42,5 +38,5 @@ export type CssNumericValueClass<
    *   dimension, or math function, uses an unknown unit, or contains an
    *   invalid calculation.
    */
-  parse(cssText: string): TInstance;
+  parse(cssText: string): CssNumericValue;
 };

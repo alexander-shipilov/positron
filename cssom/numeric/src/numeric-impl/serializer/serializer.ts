@@ -8,7 +8,7 @@ import type { SerializeMathOpts } from "./serialize-math-opts";
 import type { SerializeOpts } from "./serialize-opts";
 import type { SerializeUnitValueOpts } from "./serialize-unit-value-opts";
 
-export interface SerializerImpl {
+export interface Serializer {
   serialize($this: CssNumericValue, opts?: SerializeOpts): string;
 
   serializeMathValue(

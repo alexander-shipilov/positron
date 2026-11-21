@@ -1,12 +1,12 @@
 import type { Unit } from "../unit";
 import { $unit, $value } from "../internal";
 import { NumericValueFactory } from "../numeric-value";
-import { Registry } from "../registry";
+import { WeekMapRegistry } from "../registry/week-map-registry";
 
 import type { UnitValueClass } from "./unit-value-class";
 import type { UnitValueImpl } from "./unit-value-impl";
 
-const registry = new Registry<UnitValueImpl, UnitValueClass>();
+const registry = new WeekMapRegistry<UnitValueImpl, UnitValueClass>();
 
 /**
  *

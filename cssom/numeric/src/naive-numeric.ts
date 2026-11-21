@@ -1,11 +1,21 @@
 /* eslint-disable @typescript-eslint/no-meaningless-void-operator */
 // noinspection GrazieStyle,GrazieInspection
 
-import type { CssNumberish, CssNumericType } from "@positron/css-numeric";
+import type {
+  CssMathClampClass,
+  CssNumberish,
+  CssNumericType,
+} from "@positron/css-numeric";
 import type { Nullish } from "@positron/lang";
-import { assertType, error, isNonEmptyArray, never } from "@positron/lang";
+import {
+  assertNonNullish,
+  assertType,
+  error,
+  isNonEmptyArray,
+  never,
+} from "@positron/lang";
 
-import type { MathClamp, MathClampClass } from "./numeric-impl/math-clamp";
+import type { MathClamp } from "./numeric-impl/math-clamp";
 import type { MathInvertClass } from "./numeric-impl/math-invert";
 import type { MathMax, MathMaxClass } from "./numeric-impl/math-max";
 import type { MathMin, MathMinClass } from "./numeric-impl/math-min";
@@ -15,20 +25,19 @@ import type {
   MathProductClass,
 } from "./numeric-impl/math-product";
 import type { MathSum, MathSumClass } from "./numeric-impl/math-sum";
-import type { MathUnary, MathUnaryClass } from "./numeric-impl/math-unary";
-import type { MathValueClass } from "./numeric-impl/math-value";
+import type { MathUnary } from "./numeric-impl/math-unary";
 import type {
   MathVariadic,
   MathVariadicClass,
 } from "./numeric-impl/math-variadic";
-import type { NumericImpl } from "./numeric-impl/numeric-impl";
-import type { NumericImplOpts } from "./numeric-impl/numeric-impl-opts";
+import type { Numeric } from "./numeric-impl/numeric";
+import type { NumericOpts } from "./numeric-impl/numeric-opts";
 import type {
   NumericValue,
   NumericValueClass,
 } from "./numeric-impl/numeric-value";
-import type { SerializerImpl } from "./numeric-impl/serializer";
-import type { TypeImplClass } from "./numeric-impl/type";
+import type { Serializer } from "./numeric-impl/serializer";
+import type { TypeClass } from "./numeric-impl/type";
 import type { Unit } from "./numeric-impl/unit";
 import type { UnitValue, UnitValueClass } from "./numeric-impl/unit-value";
 import { NaiveNumericInternal } from "./naive-numeric-internal";
@@ -41,11 +50,11 @@ import {
   $values,
 } from "./numeric-impl/internal";
 import { NUMBER_UNIT } from "./numeric-impl/number";
-import { toDouble } from "./numeric-impl/to-double";
 import { toUnit } from "./numeric-impl/unit";
+import { toDouble } from "./numeric-impl/utility/to-double";
 
-export class NaiveNumeric extends NaiveNumericInternal implements NumericImpl {
-  public readonly MathClamp: MathClampClass;
+export class NaiveNumeric extends NaiveNumericInternal implements Numeric {
+  public readonly MathClamp: CssMathClampClass;
 
   public readonly MathInvert: MathInvertClass;
 
@@ -59,21 +68,15 @@ export class NaiveNumeric extends NaiveNumericInternal implements NumericImpl {
 
   public readonly MathSum: MathSumClass;
 
-  public readonly MathUnary: MathUnaryClass;
-
-  public readonly MathValue: MathValueClass;
-
-  public readonly MathVariadic: MathVariadicClass;
-
   public readonly NumericValue: NumericValueClass;
 
-  public readonly Type: TypeImplClass;
+  public readonly Type: TypeClass;
 
   public readonly UnitValue: UnitValueClass;
 
-  protected readonly serializer: SerializerImpl;
+  protected readonly serializer: Serializer;
 
-  public constructor(opts: NumericImplOpts) {
+  public constructor(opts: NumericOpts) {
     super();
 
     this.MathClamp = opts.MathClamp(this);
@@ -83,9 +86,6 @@ export class NaiveNumeric extends NaiveNumericInternal implements NumericImpl {
     this.MathNegate = opts.MathNegate(this);
     this.MathProduct = opts.MathProduct(this);
     this.MathSum = opts.MathSum(this);
-    this.MathUnary = opts.MathUnary(this);
-    this.MathValue = opts.MathValue(this);
-    this.MathVariadic = opts.MathVariadic(this);
     this.NumericValue = opts.NumericValue(this);
     this.UnitValue = opts.UnitValue(this);
     this.Type = opts.Type;
@@ -342,8 +342,11 @@ export class NaiveNumeric extends NaiveNumericInternal implements NumericImpl {
    *    and its unit set to `unit`.
    */
   public initUnitValue($this: UnitValue, value: number, unit: string): void {
+    $this[$unit] = assertNonNullish(toUnit(unit), () =>
+      error("Invalid unit", SyntaxError),
+    );
+
     $this[$value] = toDouble(value);
-    $this[$unit] = toUnit(unit);
     $this[$type] = this.Type.fromUnit($this[$unit]);
   }
 

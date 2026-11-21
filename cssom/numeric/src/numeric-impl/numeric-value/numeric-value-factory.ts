@@ -3,30 +3,27 @@ import type {
   CssNumberish,
   CssNumericType,
   CssNumericValue,
+  CssNumericValueClass,
   CssUnitValue,
 } from "@positron/css-numeric";
 
-import type { TypeImpl } from "../type";
-import { $type } from "../internal";
-import { Registry } from "../registry";
+import { WeekMapRegistry } from "../registry/week-map-registry";
 
-import type { NumericValue as INumericValue } from "./numeric-value";
-import type { NumericValueClass } from "./numeric-value-class";
 import type { NumericValueImpl } from "./numeric-value-impl";
 
-const registry = new Registry<NumericValueImpl, NumericValueClass>();
+const registry = new WeekMapRegistry<NumericValueImpl, CssNumericValueClass>();
 
 /**
  *
  */
-export function NumericValueFactory(impl: NumericValueImpl): NumericValueClass {
+export function NumericValueFactory(
+  impl: NumericValueImpl,
+): CssNumericValueClass {
   return registry.get(impl, () => {
     class NumericValue {
-      public static parse(cssText: string): INumericValue {
+      public static parse(cssText: string): CssNumericValue {
         return impl.parse(cssText);
       }
-
-      public [$type]!: TypeImpl;
 
       public add(...values: CssNumberish[]): CssNumericValue {
         return impl.add(this, ...values);

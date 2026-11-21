@@ -1,17 +1,14 @@
 import type { CssMathProduct } from "./css-math-product";
+import type { CssMathVariadicClass } from "./css-math-variadic-class";
 import type { CssNumberish } from "./css-numberish";
 
 /**
  * The {@link CssMathProductClass} interface represents a class for creating
  * instances of {@link CssMathProduct}.
  *
- * @typeParam TInstance - The instance type constructed by this class.
- *
  * @public
  */
-export interface CssMathProductClass<
-  TInstance extends CssMathProduct = CssMathProduct,
-> {
+export interface CssMathProductClass extends CssMathVariadicClass {
   /**
    * Creates a new {@link CssMathProduct} object representing the product of
    * the arguments passed into it.
@@ -28,5 +25,5 @@ export interface CssMathProductClass<
    * @throws `TypeError` If one or more arguments are non-finite numbers or if
    *   the types of arguments cannot be combined into a product.
    */
-  new (...args: CssNumberish[]): TInstance;
+  new (...args: CssNumberish[]): CssMathProduct;
 }

@@ -5,13 +5,9 @@ import type { CssNumberish } from "./css-numberish";
  * The {@link CssMathClampClass} interface represents a class for creating
  * instances of {@link CssMathClamp}.
  *
- * @typeParam TInstance - The instance type constructed by this class.
- *
  * @public
  */
-export interface CssMathClampClass<
-  TInstance extends CssMathClamp = CssMathClamp,
-> {
+export interface CssMathClampClass {
   /**
    * Creates a new {@link CssMathClamp} object representing a CSS `clamp()`
    * function.
@@ -37,7 +33,5 @@ export interface CssMathClampClass<
     lower: CssNumberish,
     value: CssNumberish,
     upper: CssNumberish,
-  ): TInstance;
-
-  prototype: CssMathClamp;
+  ): CssMathClamp;
 }

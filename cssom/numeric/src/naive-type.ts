@@ -13,11 +13,11 @@ import { assertNonNullish, error, never } from "@positron/lang";
 
 import type { TypeEntries, TypeEntry } from "./numeric-impl/type";
 import type { Unit, UnitMap } from "./numeric-impl/unit";
-import { BASE_TYPES } from "./numeric-impl/base-types";
-import { NON_PERCENT_TYPES } from "./numeric-impl/non-percent-types";
 import { isNumberUnit } from "./numeric-impl/number";
 import { isPercentUnit } from "./numeric-impl/percent";
-import { toPower } from "./numeric-impl/to-power";
+import { BASE_TYPES } from "./numeric-impl/utility/base-types";
+import { NON_PERCENT_TYPES } from "./numeric-impl/utility/non-percent-types";
+import { toPower } from "./numeric-impl/utility/to-power";
 
 /**
  * https://www.w3.org/TR/css-typed-om-1/#cssnumericvalue-type

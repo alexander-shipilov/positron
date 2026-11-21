@@ -1,12 +1,12 @@
 import { CssMathOperator } from "@positron/css-numeric";
 
 import { MathUnaryFactory } from "../math-unary";
-import { Registry } from "../registry";
+import { WeekMapRegistry } from "../registry/week-map-registry";
 
 import type { MathInvertClass } from "./math-invert-class";
 import type { MathInvertImpl } from "./math-invert-impl";
 
-const registry = new Registry<MathInvertImpl, MathInvertClass>();
+const registry = new WeekMapRegistry<MathInvertImpl, MathInvertClass>();
 
 /**
  *

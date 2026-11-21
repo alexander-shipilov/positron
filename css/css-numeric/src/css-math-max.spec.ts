@@ -14,7 +14,7 @@ describe("interface CssMathMax", () => {
     expectTypeOf<CssMathMax["values"]>().toEqualTypeOf<CssNumericArray>();
   });
 
-  it("should be satisfied by DOM `CSSMathMax`", () => {
+  it("should satisfy DOM `CSSMathMax`", () => {
     expectTypeOf<CssMathMax>().toExtend<CSSMathMax>();
   });
 });

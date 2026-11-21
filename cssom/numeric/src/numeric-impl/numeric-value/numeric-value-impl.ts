@@ -1,35 +1,36 @@
-import type { CssNumberish, CssNumericType } from "@positron/css-numeric";
-
-import type { MathSum } from "../math-sum";
-import type { UnitValue } from "../unit-value";
-
-import type { NumericValue } from "./numeric-value";
-import type { NumericValueClass } from "./numeric-value-class";
+import type {
+  CssMathSum,
+  CssNumberish,
+  CssNumericType,
+  CssNumericValue,
+  CssNumericValueClass,
+  CssUnitValue,
+} from "@positron/css-numeric";
 
 export interface NumericValueImpl {
-  readonly NumericValue: NumericValueClass;
+  readonly NumericValue: CssNumericValueClass;
 
-  add($this: NumericValue, ...values: CssNumberish[]): NumericValue;
+  add($this: CssNumericValue, ...values: CssNumberish[]): CssNumericValue;
 
-  div($this: NumericValue, ...values: CssNumberish[]): NumericValue;
+  div($this: CssNumericValue, ...values: CssNumberish[]): CssNumericValue;
 
-  equals($this: NumericValue, ...values: CssNumberish[]): boolean;
+  equals($this: CssNumericValue, ...values: CssNumberish[]): boolean;
 
-  max($this: NumericValue, ...values: CssNumberish[]): NumericValue;
+  max($this: CssNumericValue, ...values: CssNumberish[]): CssNumericValue;
 
-  min($this: NumericValue, ...values: CssNumberish[]): NumericValue;
+  min($this: CssNumericValue, ...values: CssNumberish[]): CssNumericValue;
 
-  mul($this: NumericValue, ...values: CssNumberish[]): NumericValue;
+  mul($this: CssNumericValue, ...values: CssNumberish[]): CssNumericValue;
 
-  parse(cssText: string): NumericValue;
+  parse(cssText: string): CssNumericValue;
 
-  serialize($this: NumericValue): string;
+  serialize($this: CssNumericValue): string;
 
-  sub($this: NumericValue, ...values: CssNumberish[]): NumericValue;
+  sub($this: CssNumericValue, ...values: CssNumberish[]): CssNumericValue;
 
-  to($this: NumericValue, unit: string): UnitValue;
+  to($this: CssNumericValue, unit: string): CssUnitValue;
 
-  toSum($this: NumericValue, ...units: string[]): MathSum;
+  toSum($this: CssNumericValue, ...units: string[]): CssMathSum;
 
-  type($this: NumericValue): CssNumericType;
+  type($this: CssNumericValue): CssNumericType;
 }

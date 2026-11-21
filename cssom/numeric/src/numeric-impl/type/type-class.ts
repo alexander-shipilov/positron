@@ -3,16 +3,16 @@ import type { Nullish } from "@positron/lang";
 
 import type { Unit, UnitMap } from "../unit";
 
+import type { Type } from "./type";
 import type { TypeEntries } from "./type-entries";
-import type { TypeImpl } from "./type-impl";
 
-export interface TypeImplClass {
+export interface TypeClass {
   new (
     entries?: Readonly<TypeEntries>,
     percentHint?: Nullish<CssNumericTypePercentHint>,
-  ): TypeImpl;
+  ): Type;
 
-  fromUnit(unit: Unit, power?: number): TypeImpl;
+  fromUnit(unit: Unit, power?: number): Type;
 
-  fromUnitMap(unitMap: UnitMap): TypeImpl;
+  fromUnitMap(unitMap: UnitMap): Type;
 }

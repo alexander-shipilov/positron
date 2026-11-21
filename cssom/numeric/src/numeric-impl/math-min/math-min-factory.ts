@@ -2,12 +2,12 @@ import type { CssNumberish } from "@positron/css-numeric";
 import { CssMathOperator } from "@positron/css-numeric";
 
 import { MathVariadicFactory } from "../math-variadic";
-import { Registry } from "../registry";
+import { WeekMapRegistry } from "../registry/week-map-registry";
 
 import type { MathMinClass } from "./math-min-class";
 import type { MathMinImpl } from "./math-min-impl";
 
-const registry = new Registry<MathMinImpl, MathMinClass>();
+const registry = new WeekMapRegistry<MathMinImpl, MathMinClass>();
 
 /**
  *

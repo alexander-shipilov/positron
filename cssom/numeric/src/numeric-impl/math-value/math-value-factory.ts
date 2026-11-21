@@ -1,17 +1,16 @@
-import type { CssMathOperator } from "@positron/css-numeric";
+import type { CssMathOperator, CssMathValueClass } from "@positron/css-numeric";
 
 import { NumericValueFactory } from "../numeric-value";
-import { Registry } from "../registry";
+import { WeekMapRegistry } from "../registry/week-map-registry";
 
-import type { MathValueClass } from "./math-value-class";
 import type { MathValueImpl } from "./math-value-impl";
 
-const registry = new Registry<MathValueImpl, MathValueClass>();
+const registry = new WeekMapRegistry<MathValueImpl, CssMathValueClass>();
 
 /**
  *
  */
-export function MathValueFactory(impl: MathValueImpl): MathValueClass {
+export function MathValueFactory(impl: MathValueImpl): CssMathValueClass {
   return registry.get(impl, () => {
     abstract class MathValue extends NumericValueFactory(impl) {
       public abstract readonly operator: CssMathOperator;

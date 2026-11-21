@@ -3,12 +3,12 @@ import type { CssNumberish, CssNumericArray } from "@positron/css-numeric";
 import type { NumericValue } from "../numeric-value";
 import { $values } from "../internal";
 import { MathValueFactory } from "../math-value";
-import { Registry } from "../registry";
+import { WeekMapRegistry } from "../registry/week-map-registry";
 
 import type { MathVariadicClass } from "./math-variadic-class";
 import type { MathVariadicImpl } from "./math-variadic-impl";
 
-const registry = new Registry<MathVariadicImpl, MathVariadicClass>();
+const registry = new WeekMapRegistry<MathVariadicImpl, MathVariadicClass>();
 
 /**
  *

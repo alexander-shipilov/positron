@@ -1,4 +1,4 @@
-import { assertNonNullish } from "@positron/lang";
+import type { Nullish } from "@positron/lang";
 
 import { PERCENT_TOKEN, PERCENT_UNIT } from "../percent";
 
@@ -8,8 +8,6 @@ import { Units } from "./units";
 /**
  *
  */
-export function toUnit(unitLike: string): Unit {
-  return unitLike === PERCENT_TOKEN
-    ? PERCENT_UNIT
-    : assertNonNullish(Units.toUnit(unitLike));
+export function toUnit(unitLike: string): Nullish<Unit> {
+  return unitLike === PERCENT_TOKEN ? PERCENT_UNIT : Units.toUnit(unitLike);
 }

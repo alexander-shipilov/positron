@@ -20,10 +20,22 @@ import type { CssNumericValue } from "./css-numeric-value";
 export interface CssNumericArray {
   readonly [n: number]: CssNumericValue;
 
+  /**
+   * The {@link CssNumericArray.length} returns the number of items in the
+   * object.
+   */
   readonly length: number;
 
+  /**
+   * The `CssNumericArray[Symbol.iterator]` method returns an iterator over
+   * the {@link CssNumericValue} items in this array.
+   */
   [Symbol.iterator](): ArrayIterator<CssNumericValue>;
 
+  /**
+   * The {@link CssNumericArray.entries} method returns an iterator of
+   * `[index, value]` pairs for each item in this array.
+   */
   entries(): ArrayIterator<[number, CssNumericValue]>;
 
   /**
@@ -32,11 +44,19 @@ export interface CssNumericArray {
    *
    * @param callback - The function to execute for each element.
    *
-   * @param thisArg - Value to use as this when executing `callback`.
+   * @param thisArg - Value to use as `this` when executing `callback`.
    */
   forEach(callback: CssNumericArrayCallback, thisArg?: Any): void;
 
+  /**
+   * The {@link CssNumericArray.keys} method returns an iterator of indices
+   * for each item in this array.
+   */
   keys(): ArrayIterator<number>;
 
+  /**
+   * The {@link CssNumericArray.values} method returns an iterator of values
+   * for each item in this array.
+   */
   values(): ArrayIterator<CssNumericValue>;
 }

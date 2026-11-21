@@ -1,4 +1,4 @@
-import type { CssMathValue } from "./css-math-value";
+import type { CssMathUnary } from "./css-math-unary";
 import type { CssNumericValue } from "./css-numeric-value";
 
 /**
@@ -31,7 +31,7 @@ import type { CssNumericValue } from "./css-numeric-value";
  *
  * @public
  */
-export interface CssMathNegate extends CssMathValue {
+export interface CssMathNegate extends CssMathUnary {
   /**
    * The {@link CssMathNegate.value} read-only property returns the
    * {@link CssNumericValue} that is being negated.

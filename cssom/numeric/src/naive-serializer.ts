@@ -13,11 +13,11 @@ import type { MathMin } from "./numeric-impl/math-min";
 import type { MathNegate } from "./numeric-impl/math-negate";
 import type { MathProduct } from "./numeric-impl/math-product";
 import type { MathSum } from "./numeric-impl/math-sum";
-import type { NumericImpl } from "./numeric-impl/numeric-impl";
+import type { Numeric } from "./numeric-impl/numeric";
 import type {
   SerializeMathOpts,
   SerializeOpts,
-  SerializerImpl,
+  Serializer,
 } from "./numeric-impl/serializer";
 import { $value, $values } from "./numeric-impl/internal";
 import { NUMBER_UNIT } from "./numeric-impl/number";
@@ -26,10 +26,10 @@ import { PERCENT_UNIT } from "./numeric-impl/percent";
 /**
  *
  */
-export class NaiveSerializer implements SerializerImpl {
-  protected readonly impl: NumericImpl;
+export class NaiveSerializer implements Serializer {
+  protected readonly impl: Numeric;
 
-  public constructor(impl: NumericImpl) {
+  public constructor(impl: Numeric) {
     this.impl = impl;
   }
 
@@ -368,8 +368,8 @@ export class NaiveSerializer implements SerializerImpl {
     /* TODO: move this code to the css implementation package
      *
      * Don't forget:
-     *  Infinity -> calc("infinity" * 1<unit>)
-     *  NaN -> calc("nan" * 1<unit>)
+     *  Infinity -> calc(infinity * 1<unit>)
+     *  NaN -> calc(nan * 1<unit>)
      */
     const trunc = Math.trunc(
       assertType(value, isFiniteNumber, "non-finite value"),

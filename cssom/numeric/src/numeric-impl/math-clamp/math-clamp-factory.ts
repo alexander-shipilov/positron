@@ -4,12 +4,12 @@ import { CssMathOperator } from "@positron/css-numeric";
 import type { NumericValue } from "../numeric-value";
 import { $lower, $upper, $value } from "../internal";
 import { MathValueFactory } from "../math-value";
-import { Registry } from "../registry";
+import { WeekMapRegistry } from "../registry/week-map-registry";
 
 import type { MathClampClass } from "./math-clamp-class";
 import type { MathClampImpl } from "./math-clamp-impl";
 
-const registry = new Registry<MathClampImpl, MathClampClass>();
+const registry = new WeekMapRegistry<MathClampImpl, MathClampClass>();
 
 /**
  *

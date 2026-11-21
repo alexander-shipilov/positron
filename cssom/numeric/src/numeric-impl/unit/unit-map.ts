@@ -1,4 +1,4 @@
-import { toPower } from "../to-power";
+import { toPower } from "../utility/to-power";
 
 import type { Unit } from "./unit";
 
@@ -26,23 +26,23 @@ export class UnitMap extends Map<Unit, number> {
     );
   }
 
+  /**
+   * https://www.w3.org/TR/css-typed-om-1/#product-of-two-unit-maps
+   *
+   * The product of two unit maps `units1` and `units2` is the result given
+   * by the following steps:
+   *
+   * 1. Let `result` be a copy of `units1`.
+   *
+   * 2. For each `unit` → `power` in `units2`:
+   *
+   *    1. If `result`[`unit`] exists, increment `result`[`unit`] by `power`.
+   *
+   *    2. Otherwise, set `result`[`unit`] to `power`.
+   *
+   * 3. Return `result`.
+   */
   public mul(units: UnitMap): UnitMap {
-    /* https://www.w3.org/TR/css-typed-om-1/#product-of-two-unit-maps
-     *
-     * The product of two unit maps `units1` and `units2` is the result given
-     * by the following steps:
-     *
-     * 1. Let `result` be a copy of `units1`.
-     *
-     * 2. For each `unit` → `power` in `units2`:
-     *
-     *    1. If `result`[`unit`] exists, increment `result`[`unit`] by `power`.
-     *
-     *    2. Otherwise, set `result`[`unit`] to `power`.
-     *
-     * 3. Return `result`.
-     */
-
     const result = new UnitMap(this);
 
     for (const [unit, power] of units) {

@@ -1,4 +1,4 @@
-import type { CssMathValue } from "./css-math-value";
+import type { CssMathUnary } from "./css-math-unary";
 import type { CssNumericValue } from "./css-numeric-value";
 
 /**
@@ -26,7 +26,7 @@ import type { CssNumericValue } from "./css-numeric-value";
  *
  * @public
  */
-export interface CssMathInvert extends CssMathValue {
+export interface CssMathInvert extends CssMathUnary {
   /**
    * The {@link CssMathInvert.value} read-only property returns the
    * {@link CssNumericValue} that is being inverted.

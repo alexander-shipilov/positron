@@ -16,7 +16,7 @@ describe("interface CssMathClamp", () => {
     expectTypeOf<CssMathClamp["upper"]>().toEqualTypeOf<CssNumericValue>();
   });
 
-  it("should be satisfied by DOM `CSSMathClamp`", () => {
+  it("should satisfy DOM `CSSMathClamp`", () => {
     expectTypeOf<CssMathClamp>().toExtend<CSSMathClamp>();
   });
 });
