@@ -18,7 +18,7 @@
 
 ## 2. Formatting and Indentation
 
-- Every line inside a TSDoc block MUST NOT exceed **79 characters** (including
+- Every line inside a TSDoc block MUST NOT exceed **80 characters** (including
   leading indentation and ` * `).
 
 - A comment line MUST NOT start with punctuation (`.`, `,`, `:`, `;`, `(`,

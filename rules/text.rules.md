@@ -5,7 +5,7 @@
 - These rules apply to all text-based files in the repository, including
   source code, configuration files, documentation, and Markdown files.
 
-- Every line in a text file MUST NOT exceed **79 characters**.
+- Every line in a text file MUST NOT exceed **80 characters**.
 
 - **Exceptions:**
 
@@ -38,7 +38,7 @@ documentation comments.
   item.
 
 - If an indivisible inline token (such as a code literal in backticks) starts
-  with punctuation or exceeds the 79-character limit when combined with the
+  with punctuation or exceeds the 80-character limit when combined with the
   preceding word, the preceding word or preposition MUST be wrapped to the
   next line along with the token.
 
@@ -76,4 +76,4 @@ documentation comments.
 ## 6. Typography
 
 - Lines within a prose paragraph SHOULD be wrapped to approximately equal
-  visual lengths within the 79-character boundary.
+  visual lengths within the 80-character boundary.

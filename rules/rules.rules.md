@@ -17,7 +17,7 @@
 - All rule files MUST be written in English.
 
 - All rule files MUST comply with the formatting and typography constraints
-  defined in `text.rules.md` (including the 79-character line limit).
+  defined in `text.rules.md` (including the 80-character line limit).
 
 - Specifications MUST use normative keywords (`MUST`, `MUST NOT`, `SHOULD`,
   `MAY`) consistently and avoid personal pronouns.
