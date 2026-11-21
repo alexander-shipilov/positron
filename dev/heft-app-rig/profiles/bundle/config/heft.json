@@ -1,0 +1,4 @@
+{
+  "$schema": "https://microsoft.com",
+  "extends": "../../default/config/heft.json"
+}

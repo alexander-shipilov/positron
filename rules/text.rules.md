@@ -32,15 +32,14 @@ This section applies to prose blocks in Markdown files, plain text files, and
 documentation comments.
 
 - A line MUST NOT begin with a punctuation mark (`.`, `,`, `:`, `;`, `(`,
-  `)`, `"`, `'`) or a backtick (`` ` ``).
+  `)`, `"`, `'`).
 
 - **Exception:** A line MAY begin with `-` when it introduces a bullet list
   item.
 
-- If an indivisible inline token (such as a code literal in backticks) starts
-  with punctuation or exceeds the 80-character limit when combined with the
-  preceding word, the preceding word or preposition MUST be wrapped to the
-  next line along with the token.
+- If an indivisible inline token starts with punctuation and exceeds the
+  80-character limit when combined with the preceding word, the preceding word
+  or preposition MUST be wrapped to the next line along with the token.
 
 - Paragraphs MUST be separated by a single blank line.
 

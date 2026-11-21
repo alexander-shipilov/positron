@@ -1,0 +1,60 @@
+{
+  "$schema": "https://microsoft.com",
+  "aliasesByName": {
+    "start": {
+      "actionName": "build-watch",
+      "defaultParameters": ["--serve"]
+    }
+  },
+  "phasesByName": {
+    "build": {
+      "cleanFiles": [
+        {
+          "includeGlobs": [
+            "dist",
+            "lib"
+          ]
+        }
+      ],
+      "tasksByName": {
+        "typescript": {
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-typescript-plugin"
+          }
+        },
+        "lint": {
+          "taskDependencies": [
+            "typescript"
+          ],
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-lint-plugin"
+          }
+        },
+        "vite": {
+          "taskDependencies": [
+            "typescript"
+          ],
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-command-plugin",
+            "options": {
+              "command": "vite",
+              "args": ["build"]
+            }
+          }
+        }
+      }
+    },
+    "test": {
+      "phaseDependencies": [
+        "build"
+      ],
+      "tasksByName": {
+        "jest": {
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-jest-plugin"
+          }
+        }
+      }
+    }
+  }
+}

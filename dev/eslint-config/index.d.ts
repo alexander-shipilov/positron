@@ -1,40 +1,58 @@
 import type { Config } from "eslint/config";
 
+/**
+ * The `Configs` namespace represents the flat ESLint configuration presets
+ * exported by `@positron/eslint-config`.
+ *
+ * @public
+ */
 declare namespace Configs {
   /**
-   * Core configs.
+   * The `Configs.core` read-only property provides core TypeScript and JavaScript
+   * lint rules.
+   *
+   * @public
    */
   const core: Config[];
 
   /**
-   * TSDoc / JSDoc config.
+   * The `Configs.docs` read-only property provides TSDoc and `@example` lint
+   * rules.
+   *
+   * @public
    */
-  const doc: Config[];
+  const docs: Config[];
 
   /**
-   * Jest config.
+   * The `Configs.jest` read-only property provides Jest test lint rules.
+   *
+   * @public
    */
   const jest: Config[];
 
   /**
-   * Perfectionist config.
+   * The `Configs.perfectionist` read-only property provides deterministic AST
+   * sorting rules.
+   *
+   * @public
    */
   const perfectionist: Config[];
 
   /**
-   * Stylistic configs.
+   * The `Configs.prettier` read-only property provides Prettier formatting
+   * integration.
+   *
+   * @public
    */
   const prettier: Config[];
 
   /**
-   * Stylistic configs.
+   * The `Configs.stylistic` read-only property provides stylistic code layout
+   * rules.
+   *
+   * @public
    */
   const stylistic: Config[];
-
-  /**
-   * React configs.
-   */
-  const react: Config[];
 }
 
 export default Configs;

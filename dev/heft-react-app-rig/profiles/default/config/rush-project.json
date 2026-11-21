@@ -1,0 +1,3 @@
+{
+  "extends": "@positron/heft-app-rig/profiles/default/config/rush-project.json"
+}

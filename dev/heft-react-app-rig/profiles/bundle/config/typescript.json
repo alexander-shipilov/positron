@@ -1,0 +1,4 @@
+{
+  "$schema": "https://microsoft.com",
+  "extends": "../../default/config/typescript.json"
+}

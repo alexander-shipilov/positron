@@ -1,0 +1,4 @@
+{
+  "$schema": "https://schemastore.org",
+  "extends": "@positron/heft-lib-rig/profiles/default/tsconfig.base.json"
+}

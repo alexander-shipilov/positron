@@ -1,0 +1,20 @@
+{
+  "operationSettings": [
+    {
+      "operationName": "_phase:build",
+      "outputFolderNames": [
+        "dist",
+        "lib",
+        "temp"
+      ]
+    },
+    {
+      "operationName": "build",
+      "outputFolderNames": [
+        "dist",
+        "lib",
+        "temp"
+      ]
+    }
+  ]
+}

@@ -51,7 +51,9 @@ a pre-1.0 (`0.x.x`) package in accordance with `docs.rules.md`,
 
 - Refactoring or optimizing code logic, or modifying test assertions.
 
-- Adding new `import` statements solely to satisfy `{@link}` references.
+- Adding new `import` statements to the source file solely to satisfy
+  `{@link}` references (imports inside `@example` fenced code blocks are
+  permitted and required for self-contained examples).
 
 ## 4. Blocking Stop Conditions
 

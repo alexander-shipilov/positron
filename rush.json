@@ -319,7 +319,9 @@
     /**
      * The list of shell commands to run after the Rush build command finishes
      */
-    "postRushBuild": []
+    "postRushBuild": [
+      "rush docs"
+    ]
   },
   /**
    * Installation variants allow you to maintain a parallel set of configuration files that can be
@@ -384,20 +386,47 @@
       "shouldPublish": false
     },
     {
+      "packageName": "@positron/eslint-config-react",
+      "projectFolder": "dev/eslint-config-react",
+      "shouldPublish": false
+    },
+	{
       "packageName": "@positron/heft-rig",
       "projectFolder": "dev/heft-rig",
       "shouldPublish": false
     },
     {
-      "packageName": "@positron/api-documenter",
-      "projectFolder": "dev/api-documenter",
+      "packageName": "@positron/heft-lib-rig",
+      "projectFolder": "dev/heft-lib-rig",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@positron/heft-react-lib-rig",
+      "projectFolder": "dev/heft-react-lib-rig",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@positron/heft-app-rig",
+      "projectFolder": "dev/heft-app-rig",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@positron/heft-react-app-rig",
+      "projectFolder": "dev/heft-react-app-rig",
       "shouldPublish": false
     },
     /** shared */
     {
+      "packageName": "@positron/api-documenter",
+      "projectFolder": "shared/api-documenter",
+      "shouldPublish": false
+    },
+	/*
+    {
       "packageName": "@positron/array",
       "projectFolder": "shared/array",
     },
+	*/
     {
       "packageName": "@positron/lang",
       "projectFolder": "shared/lang",
@@ -411,11 +440,11 @@
       "projectFolder": "shared/prefixed",
     },
     /** react-* */
+	/*
     {
       "packageName": "@positron/react-shared",
       "projectFolder": "react/shared",
     },
-	  /*
     {
       "packageName": "@positron/react-components",
       "projectFolder": "react/components"
@@ -424,7 +453,7 @@
       "packageName": "@positron/react-hooks",
       "projectFolder": "react/hooks"
     },
-	  */
+	*/
     /** css-* */
     {
       "packageName": "@positron/css-numeric",
@@ -444,6 +473,7 @@
       "projectFolder": "cssom/numeric",
     },
     /** misc */
+	/*
     {
       "packageName": "@positron/crazy-sequence",
       "projectFolder": "misc/crazy",
@@ -454,7 +484,9 @@
       "projectFolder": "misc/math",
       "shouldPublish": false
     },
+	*/
     /** foobar */
+	/*
     {
       "packageName": "@positron/foobar-smp",
       "projectFolder": "foobar/foobar-smp",
@@ -470,7 +502,9 @@
       "projectFolder": "foobar/foobar-smp-website",
       "shouldPublish": false
     },
+	*/
     /** tom */
+	/*
     {
       "packageName": "@positron/tom-shared",
       "projectFolder": "tom/shared",
@@ -481,5 +515,6 @@
       "projectFolder": "tom/spec",
       "shouldPublish": false
     }
+	*/
   ],
 }

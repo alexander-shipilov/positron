@@ -13,6 +13,8 @@ declare const meta: unique symbol;
  *
  * @example
  * ```ts
+ *  import type { NominalMeta } from "@positron/lang-nominal";
+ *
  *  type Foo = { foo: 1 };
  *  type FooWithMeta = Foo & NominalMeta<["some data"]>;
  *

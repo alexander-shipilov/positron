@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "name": "@positron/heft-lib-rig",
+  "version": "0.0.1",
+  "description": "A rig package for TypeScript libraries built with Heft",
+  "license": "MIT",
+  "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
+  "repository": "git@github.com:alexander-shipilov/positron.git",
+  "type": "module",
+  "scripts": {
+    "_phase:build": "",
+    "build": ""
+  },
+  "dependencies": {
+    "@microsoft/api-extractor": "~7.59.4",
+    "@positron/eslint-config": "workspace:*",
+    "@rushstack/heft-api-extractor-plugin": "~1.3.30",
+    "@rushstack/heft-jest-plugin": "~2.0.20",
+    "@rushstack/heft-lint-plugin": "~1.4.0",
+    "@rushstack/heft-typescript-plugin": "~1.3.25",
+    "@types/heft-jest": "~1.0.6",
+    "eslint": "^10.13.0",
+    "jest-environment-jsdom": "~30.5.2",
+    "jest-environment-node": "~30.5.2",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@rushstack/heft": "^1.3.3",
+    "jest": "~30.5.2",
+    "ts-jest": "~29.4.15"
+  },
+  "keywords": [
+    "build",
+    "heft",
+    "library",
+    "positron",
+    "rig",
+    "typescript"
+  ]
+}

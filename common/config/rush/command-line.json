@@ -1,0 +1,22 @@
+{
+  "$schema": "https://microsoft.com",
+  "commands": [
+    {
+      "name": "docs",
+      "commandKind": "global",
+      "summary": "Generates unified Markdown API documentation in /docs",
+      "description": "Collects .api.json models from built packages and runs api-documenter into /docs.",
+      "autoinstallerName": "rush-docs",
+      "shellCommand": "node scripts/generate-docs.mjs"
+    }
+  ],
+  "parameters": [
+    {
+      "parameterKind": "stringList",
+      "longName": "--to",
+      "description": "Builds and generates documentation only for the specified package(s) and their dependencies",
+      "argumentName": "PROJECT_NAME",
+      "associatedCommands": ["docs"]
+    }
+  ]
+}

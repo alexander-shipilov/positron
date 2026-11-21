@@ -6,31 +6,29 @@
   "license": "MIT",
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
   "repository": "git@github.com:alexander-shipilov/positron.git",
+  "sideEffects": false,
   "type": "module",
-  "main": "./index.js",
+  "main": "./index.mjs",
   "types": "./index.d.ts",
   "exports": {
-    "default": "./index.js",
-    "types": "./index.d.ts",
-    "core": "./eslint.config.core.js",
-    "jest": "./eslint.config.jest.js",
-    "perfectionist": "./eslint.config.perfectionist.js",
-    "prettier": "./eslint.config.prettier.js",
-    "react": "./eslint.config.react.js"
+    ".": {
+      "default": "./index.mjs",
+      "types": "./index.d.ts"
+    },
+    "./core": "./eslint.config.core.mjs",
+    "./docs": "./eslint.config.docs.mjs",
+    "./jest": "./eslint.config.jest.mjs",
+    "./perfectionist": "./eslint.config.perfectionist.mjs",
+    "./prettier": "./eslint.config.prettier.mjs",
+    "./stylistic": "./eslint.config.stylistic.mjs"
   },
   "scripts": {
     "_phase:build": "",
     "build": ""
   },
-  "peerDependencies": {
-    "eslint": "^10.13.0",
-    "typescript": "^6.0.3"
-  },
-  "devDependencies": {
+  "dependencies": {
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "~5.10.0",
-    "@types/node": "~26.6.5",
-    "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "~4.4.5",
     "eslint-plugin-import": "~2.32.0",
@@ -38,16 +36,22 @@
     "eslint-plugin-jsdoc": "~65.4.0",
     "eslint-plugin-perfectionist": "~5.12.1",
     "eslint-plugin-prettier": "~5.5.7",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-tsdoc": "^0.5.4",
-    "expect-type": "^1.4.0",
     "globals": "~17.13.0",
-    "jest": "~30.5.2",
     "prettier": "^3.9.10",
-    "ts-jest": "~29.4.15",
-    "typescript": "^6.0.3",
     "typescript-eslint": "~8.72.0"
+  },
+  "peerDependencies": {
+    "eslint": "^10.13.0",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "~26.6.5",
+    "eslint": "^10.13.0",
+    "expect-type": "^1.4.0",
+    "jest": "~30.5.2",
+    "ts-jest": "~29.4.15",
+    "typescript": "^6.0.3"
   },
   "keywords": [
     "config",
@@ -55,7 +59,6 @@
     "eslint config",
     "javascript",
     "positron",
-    "react",
     "typescript"
   ]
 }

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://microsoft.com",
+  "outputTarget": "markdown",
+  "newlineKind": "lf",
+  "plugins": [],
+  "showInheritedMembers": true
+}

@@ -2,7 +2,7 @@ import config from "@positron/eslint-config";
 
 export default [
   ...config.core, //
-  ...config.doc,
+  ...config.docs,
   ...config.jest,
   ...config.stylistic,
   ...config.prettier,

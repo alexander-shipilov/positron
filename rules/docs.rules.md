@@ -16,13 +16,17 @@
 - Class and interface members MUST NOT carry `@public`, `@protected`, or
   `@private` tags (TypeScript access modifiers MUST be used instead).
 
+- Only standard `@microsoft/tsdoc` tags are permitted. Legacy JSDoc tags
+  (such as `@property`, `@typedef`, `@callback`, `@template`, `@type`,
+  `@augments`, `@implements`, `@author`, `@since`, `@todo`) are prohibited.
+
 ## 2. Formatting and Indentation
 
 - Every line inside a TSDoc block MUST NOT exceed **80 characters** (including
   leading indentation and ` * `).
 
 - A comment line MUST NOT start with punctuation (`.`, `,`, `:`, `;`, `(`,
-  `)`) or a backtick (`` ` ``).
+  `)`).
 
 - Every bullet list item (`- ...`) MUST be separated by a blank comment line
   (` *`) before the first item, between items, and after the last item.
@@ -206,5 +210,16 @@ by TSDoc or API Extractor:
 - `@inheritDoc`: MUST be used on members implementing an interface or
   overriding a base class method: `{@inheritDoc Foo.bar}`.
 
-- `@example`: Optional. Output of `console.log(...)` MUST be annotated with
-  `// >> <output>` only when the output is deterministic and obvious.
+- `@example`: Optional. Every fenced TypeScript block (```` ```ts ```` or
+  ```` ```tsx ````) inside `@example` MUST be a self-contained, runnable ES
+  module that can be extracted into a standalone file without modifications:
+
+  - All external and package entities used in the example MUST be explicitly
+    imported at the top of the block.
+
+  - All example code MUST comply with `@positron/eslint-config` (line length
+    limit of 80 characters, import sorting, explicit access modifiers, no
+    undefined globals; unused variables in examples are permitted).
+
+  - Output of `console.log(...)` MUST be annotated with `// >> <output>` only
+    when the output is deterministic and obvious.

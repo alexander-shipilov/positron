@@ -1,0 +1,4 @@
+{
+  "$schema": "https://microsoft.com",
+  "extends": "@positron/heft-lib-rig/profiles/default/config/api-extractor.json"
+}

@@ -1,11 +1,11 @@
-import reactHooks from "eslint-plugin-react-hooks";
-
-import config from "@positron/eslint-config";
-
-import base from "./eslint.config.base.js";
+import config from "@positron/eslint-config-react";
 
 export default [
-  ...base, //
+  ...config.core, //
+  ...config.docs,
+  ...config.jest,
   ...config.react,
-  reactHooks.configs.flat["recommended-latest"],
+  ...config.stylistic,
+  ...config.prettier,
+  ...config.perfectionist,
 ];

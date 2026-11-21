@@ -1,0 +1,47 @@
+{
+  "private": true,
+  "name": "@positron/eslint-config-react",
+  "version": "0.0.1",
+  "description": "@positron eslint config for React projects",
+  "license": "MIT",
+  "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
+  "repository": "git@github.com:alexander-shipilov/positron.git",
+  "sideEffects": false,
+  "type": "module",
+  "main": "./index.mjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./index.mjs",
+      "types": "./index.d.ts"
+    }
+  },
+  "scripts": {
+    "_phase:build": "",
+    "build": ""
+  },
+  "dependencies": {
+    "@positron/eslint-config": "workspace:*",
+    "eslint-plugin-perfectionist": "~5.12.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "typescript-eslint": "~8.72.0"
+  },
+  "peerDependencies": {
+    "eslint": "^10.13.0",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^10.13.0",
+    "typescript": "^6.0.3"
+  },
+  "keywords": [
+    "config",
+    "eslint",
+    "eslint config",
+    "jsx",
+    "positron",
+    "react",
+    "typescript"
+  ]
+}

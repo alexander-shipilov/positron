@@ -5,7 +5,8 @@
 - All source and test code MUST be written in TypeScript with strict type
   checking enabled.
 
-- Direct usage of the `any` type is prohibited.
+- Direct usage of the `any` type and the empty object type `{}` is
+  prohibited (use `object` or `Record<string, never>` instead of `{}`).
 
   - Where an unconstrained type is unavoidable, the `Any` alias from
     `@positron/lang` MUST be used.
@@ -19,7 +20,7 @@
   declaration files (`*.d.ts`).
 
 - All packages MUST pass the linter configured via `@positron/eslint-config`
-  (directly or through `@positron/heft-rig`).
+  (or `@positron/eslint-config-react`).
 
 - TSDoc comments and specification files (`*.spec.ts`) together serve as the
   single source of truth for the implemented contract.

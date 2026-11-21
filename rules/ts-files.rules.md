@@ -41,9 +41,9 @@ File names MUST be derived from the primary exported entity name in
 | `FOO_BAR` | `foo-bar.ts` |
 | `_FOO_BAR` | `-foo-bar.ts` |
 | `_BAR` | `-bar.ts` |
-| `DOMParser` | `dom-parser.ts` |
-| `AVLTreeNode` | `avl-tree-node.ts` |
-| `parseXML` | `parse-xml.ts` |
+| `DomParser` | `dom-parser.ts` |
+| `AvlTreeNode` | `avl-tree-node.ts` |
+| `parseXml` | `parse-xml.ts` |
 
 ## 3. Prohibition of Intermediate Barrel Files and Direct Imports
 
