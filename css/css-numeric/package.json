@@ -2,9 +2,17 @@
   "private": false,
   "name": "@positron/css-numeric",
   "version": "0.0.1",
+  "description": "TypeScript interfaces for CSS Typed OM numeric values and math expressions",
   "license": "MIT",
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
   "repository": "git@github.com:alexander-shipilov/positron.git",
+  "keywords": [
+    "css",
+    "css-typed-om",
+    "numeric",
+    "positron",
+    "typescript"
+  ],
   "sideEffects": false,
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -20,7 +28,6 @@
   "scripts": {
     "_phase:build": "heft run --only build -- --clean",
     "_phase:test": "heft run --only test -- --clean",
-    "docs": "npm run build & api-documenter markdown -i dist -o docs/api",
     "build": "heft build --clean",
     "test": "heft test --clean"
   },
@@ -29,8 +36,8 @@
   },
   "devDependencies": {
     "@jest/globals": "~30.5.2",
-    "@microsoft/api-documenter": "~7.30.18",
-    "@positron/heft-rig": "workspace:*",
+    "@microsoft/api-extractor": "~7.59.4",
+    "@positron/heft-lib-rig": "workspace:*",
     "@rushstack/heft": "~1.3.3",
     "eslint": "^10.13.0",
     "expect-type": "^1.4.0",

@@ -1,11 +1,11 @@
-import { CssUnit } from "../unit";
-import { UnitSet } from "../utility";
+import { CssUnit } from "../unit/css-unit";
+import { UnitSet } from "../utility/unit-set";
 
 import type { CssViewportPercentageUnit } from "./css-viewport-percentage-unit";
 
 /**
  * The {@link CssViewportPercentageUnits} constant represents a dictionary
- * that stores the viewport percentage units.
+ * that stores the viewport-percentage units.
  *
  * @public
  */

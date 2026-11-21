@@ -1,8 +1,10 @@
 import type { CssMathValue } from "./css-math-value";
 
 /**
- * The {@link CssMathValueClass} interface represents a class for creating
- * instances of {@link CssMathValue}.
+ * The {@link CssMathValueClass} type represents an abstract constructor for
+ * {@link CssMathValue} subclasses.
+ *
+ * @typeParam TInstance - The instance type constructed by subclasses.
  *
  * @public
  */

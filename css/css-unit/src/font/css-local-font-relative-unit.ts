@@ -1,8 +1,8 @@
-import type { CssUnit } from "../unit";
+import type { CssUnit } from "../unit/css-unit";
 
 /**
  * The {@link CssLocalFontRelativeUnit} type represents the local
- * font-relative lengths, that refer to the font metrics of the element on
+ * font-relative lengths, which refer to the font metrics of the element on
  * which they are used.
  *
  * @public

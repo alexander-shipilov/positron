@@ -8,7 +8,8 @@ import type { CssNumericTypePercentHint } from "./css-numeric-type-percent-hint"
  *   an integer representing the power of that unit.
  *
  *   The {@link CssNumericType.percentHint} property is a base type other than
- *   "percent" that indicates the type of value that the percent is applied to.
+ *   `"percent"` that indicates the type of value that the percent is applied
+ *   to.
  *
  * @public
  */
@@ -19,8 +20,15 @@ export interface CssNumericType {
    *
    * @example
    * ```ts
-   *  console.log(CSS.deg(1).mul(CSS.grad(1)).type());
-   *  // >> { angle: 2 }
+   * import type { CssUnitValue } from "@positron/css-numeric";
+   *
+   * declare const CSS: {
+   *   deg(value: number): CssUnitValue;
+   *   grad(value: number): CssUnitValue;
+   * };
+   *
+   * console.log(CSS.deg(1).mul(CSS.grad(1)).type());
+   * // >> { angle: 2 }
    * ```
    */
   angle?: number;
@@ -31,8 +39,14 @@ export interface CssNumericType {
    *
    * @example
    * ```ts
-   *  console.log(CSS.fr(1).mul(CSS.fr(1)).type());
-   *  // >> { flex: 2 }
+   * import type { CssUnitValue } from "@positron/css-numeric";
+   *
+   * declare const CSS: {
+   *   fr(value: number): CssUnitValue;
+   * };
+   *
+   * console.log(CSS.fr(1).mul(CSS.fr(1)).type());
+   * // >> { flex: 2 }
    * ```
    */
   flex?: number;
@@ -43,8 +57,15 @@ export interface CssNumericType {
    *
    * @example
    * ```ts
-   *  console.log(CSS.Hz(1).mul(CSS.kHz(1)).type());
-   *  // >> { frequency: 2 }
+   * import type { CssUnitValue } from "@positron/css-numeric";
+   *
+   * declare const CSS: {
+   *   Hz(value: number): CssUnitValue;
+   *   kHz(value: number): CssUnitValue;
+   * };
+   *
+   * console.log(CSS.Hz(1).mul(CSS.kHz(1)).type());
+   * // >> { frequency: 2 }
    * ```
    */
   frequency?: number;
@@ -53,9 +74,17 @@ export interface CssNumericType {
    * The {@link CssNumericType.length} property represents the power of
    * `<length>` unit.
    *
+   * @example
    * ```ts
-   *  console.log(CSS.px(1).mul(CSS.em(2)).type());
-   *  // >> { length: 2 }
+   * import type { CssUnitValue } from "@positron/css-numeric";
+   *
+   * declare const CSS: {
+   *   em(value: number): CssUnitValue;
+   *   px(value: number): CssUnitValue;
+   * };
+   *
+   * console.log(CSS.px(1).mul(CSS.em(2)).type());
+   * // >> { length: 2 }
    * ```
    */
   length?: number;
@@ -64,19 +93,28 @@ export interface CssNumericType {
    * The {@link CssNumericType.percent} property represents the power of
    * `<percentage>` unit.
    *
+   * @example
    * ```ts
-   *  console.log(CSS.px(1).mul(CSS.percent(50)).type());
-   *  // >> { length: 1, percent: 1 }
+   * import type { CssUnitValue } from "@positron/css-numeric";
    *
-   *  console.log(CSS.percent(25).mul(CSS.percent(50)).type());
-   *  // >> { percent: 2 }
+   * declare const CSS: {
+   *   percent(value: number): CssUnitValue;
+   *   px(value: number): CssUnitValue;
+   * };
+   *
+   * console.log(CSS.px(1).mul(CSS.percent(50)).type());
+   * // >> { length: 1, percent: 1 }
+   *
+   * console.log(CSS.percent(25).mul(CSS.percent(50)).type());
+   * // >> { percent: 2 }
    * ```
    */
   percent?: number;
 
   /**
    * The {@link CssNumericType.percentHint} property is a base type other than
-   * "percent" that indicates the type of value that the percent is applied to.
+   * `"percent"` that indicates the type of value that the percent is applied
+   * to.
    *
    * @remarks
    *   It indicates that the type actually holds a percentage, but that
@@ -85,8 +123,15 @@ export interface CssNumericType {
    *
    * @example
    * ```ts
-   *  console.log(CSS.px(1).add(CSS.percent(50)).type());
-   *  // >> { length: 1, percentHint: "length" }
+   * import type { CssUnitValue } from "@positron/css-numeric";
+   *
+   * declare const CSS: {
+   *   percent(value: number): CssUnitValue;
+   *   px(value: number): CssUnitValue;
+   * };
+   *
+   * console.log(CSS.px(1).add(CSS.percent(50)).type());
+   * // >> { length: 1, percentHint: "length" }
    * ```
    */
   percentHint?: CssNumericTypePercentHint;
@@ -95,21 +140,36 @@ export interface CssNumericType {
    * The {@link CssNumericType.resolution} property represents the power of
    * `<resolution>` unit.
    *
+   * @example
    * ```ts
-   *  console.log(CSS.dpi(1).mul(CSS.dppx(50)).type());
-   *  // >> { resolution: 2 }
+   * import type { CssUnitValue } from "@positron/css-numeric";
+   *
+   * declare const CSS: {
+   *   dpi(value: number): CssUnitValue;
+   *   dppx(value: number): CssUnitValue;
+   * };
+   *
+   * console.log(CSS.dpi(1).mul(CSS.dppx(50)).type());
+   * // >> { resolution: 2 }
    * ```
    */
   resolution?: number;
 
   /**
-   * The {@link CssNumericType.time} property  represents the power of `<time>`
+   * The {@link CssNumericType.time} property represents the power of `<time>`
    * unit.
    *
    * @example
    * ```ts
-   *  console.log(CSS.s(1).mul(CSS.ms(1)).type());
-   *  // >> { time: 2 }
+   * import type { CssUnitValue } from "@positron/css-numeric";
+   *
+   * declare const CSS: {
+   *   ms(value: number): CssUnitValue;
+   *   s(value: number): CssUnitValue;
+   * };
+   *
+   * console.log(CSS.s(1).mul(CSS.ms(1)).type());
+   * // >> { time: 2 }
    * ```
    */
   time?: number;

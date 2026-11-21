@@ -1,4 +1,4 @@
-import { UnitSet } from "../utility";
+import { UnitSet } from "../utility/unit-set";
 
 import { CssUnit } from "./css-unit";
 

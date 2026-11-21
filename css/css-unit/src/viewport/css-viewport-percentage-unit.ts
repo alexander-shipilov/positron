@@ -1,8 +1,8 @@
-import type { CssUnit } from "../unit";
+import type { CssUnit } from "../unit/css-unit";
 
 /**
  * The {@link CssViewportPercentageUnit} type represents the
- * viewport-percentage units, that are relative to the size of the initial
+ * viewport-percentage units, which are relative to the size of the initial
  * containing block.
  *
  * @remarks

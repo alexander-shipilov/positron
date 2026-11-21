@@ -4,7 +4,10 @@ import { assert, error } from "@positron/lang";
 import { isUnitIdentifier } from "./is-unit-identifier";
 
 /**
- * The {@link UnitSet} class represents a case-insensitive dictionary.
+ * The {@link UnitSet} class represents a case-insensitive dictionary of CSS
+ * unit identifiers.
+ *
+ * @typeParam TItem - The union of unit identifier string literals in the set.
  *
  * @public
  */
@@ -16,7 +19,7 @@ export class UnitSet<TItem extends string> implements Iterable<TItem> {
    *
    * @param units - The iterable object of dictionary units.
    *
-   * @throws `TypeError` if `units` contain empty or non-lowercase strings.
+   * @throws `TypeError` If `units` contain empty or non-lowercase strings.
    */
   public constructor(units: Iterable<TItem>) {
     this.#units = new Set(
@@ -29,18 +32,20 @@ export class UnitSet<TItem extends string> implements Iterable<TItem> {
   }
 
   /**
-   * The {@link UnitSet.has} type-guard method determines whether the
-   * passed `item` is an item of this dictionary.
+   * The {@link UnitSet.has} type-guard method determines whether the passed
+   * `item` is an item of this dictionary.
    *
    * @example
    * ```ts
-   *  const freq = new CssDictionary(["hz", "khz"]);
+   * import { UnitSet } from "@positron/css-unit";
    *
-   *  console.log(freq.is("hz"));
-   *  // >> true
+   * const freq = new UnitSet(["hz", "khz"]);
    *
-   *  console.log(freq.is("kHz"));
-   *  // >> false
+   * console.log(freq.has("hz"));
+   * // >> true
+   *
+   * console.log(freq.has("kHz"));
+   * // >> false
    * ```
    *
    * @param item - The value to be searched among items of this dictionary.
@@ -52,8 +57,8 @@ export class UnitSet<TItem extends string> implements Iterable<TItem> {
   }
 
   /**
-   * The {@link UnitSet.match} method determines whether the passed
-   * `value` is dictionary value.
+   * The {@link UnitSet.match} method determines whether the passed `value` is
+   * a dictionary value regardless of character case.
    *
    * @remarks
    *   The {@link UnitSet.match} method converts the given `value` to
@@ -61,19 +66,21 @@ export class UnitSet<TItem extends string> implements Iterable<TItem> {
    *
    * @example
    * ```ts
-   *  const freq = new CssDictionary(["hz", "khz"]);
+   * import { UnitSet } from "@positron/css-unit";
    *
-   *  console.log(freq.match("hz"));
-   *  // >> true
+   * const freq = new UnitSet(["hz", "khz"]);
    *
-   *  console.log(freq.match("Hz"));
-   *  // >> true
+   * console.log(freq.match("hz"));
+   * // >> true
    *
-   *  console.log(freq.match("kHz"));
-   *  // >> true
+   * console.log(freq.match("Hz"));
+   * // >> true
    *
-   *  console.log(freq.match("turn"));
-   *  // >> false
+   * console.log(freq.match("kHz"));
+   * // >> true
+   *
+   * console.log(freq.match("turn"));
+   * // >> false
    * ```
    *
    * @param value - The value to be searched among items of this dictionary.
@@ -87,24 +94,28 @@ export class UnitSet<TItem extends string> implements Iterable<TItem> {
   /**
    * The `UnitSet[Symbol.iterator]` method returns an iterator to iterate
    * dictionary items.
+   *
+   * @returns An iterator yielding the unit identifiers in this set.
    */
   public [Symbol.iterator](): IterableIterator<TItem> {
     return this.#units[Symbol.iterator]();
   }
 
   /**
-   * The {@link UnitSet.toUnit} method converts the given `value` to unit
-   * if it is possible.
+   * The {@link UnitSet.toUnit} method converts the given `value` to a
+   * canonical lowercase unit identifier if it exists in the dictionary.
    *
    * @example
    * ```ts
-   *  const freq = new CssDictionary(["hz", "khz"]);
+   * import { UnitSet } from "@positron/css-unit";
    *
-   *  console.log(freq.item("Hz"));
-   *  // >> "hz"
+   * const freq = new UnitSet(["hz", "khz"]);
    *
-   *  console.log(freq.item("turn"));
-   *  // throws "Invalid unit: turn"
+   * console.log(freq.toUnit("Hz"));
+   * // >> "hz"
+   *
+   * console.log(freq.toUnit("turn"));
+   * // >> null
    * ```
    *
    * @param value - The value to be converted to this dictionary item.
@@ -116,8 +127,8 @@ export class UnitSet<TItem extends string> implements Iterable<TItem> {
   }
 
   /**
-   * The {@link UnitSet.get} method returns a dictionary item or
-   * `null` if item not found among dictionary items.
+   * The {@link UnitSet.get} method returns a dictionary item or `null` if
+   * the item is not found among dictionary items.
    *
    * @param itemLike - Item to be returned.
    *

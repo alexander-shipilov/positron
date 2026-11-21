@@ -1,4 +1,4 @@
-import type { CssUnit } from "../unit";
+import type { CssUnit } from "../unit/css-unit";
 
 /**
  * The {@link CssResolutionUnit} type represents the units denoted by CSS
@@ -6,8 +6,8 @@ import type { CssUnit } from "../unit";
  *
  * @remarks
  *   The `<resolution>` unit represents the size of a single `"dot"` in a
- *   graphical representation by indicating how many of these dots fit in
- *   a `in`, `cm`, or `px`.
+ *   graphical representation by indicating how many of these dots fit in a
+ *   `in`, `cm`, or `px`.
  *
  *   All `<resolution>` units are compatible, and {@link CssUnit.dppx} is
  *   their canonical unit.

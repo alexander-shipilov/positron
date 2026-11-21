@@ -1,15 +1,22 @@
 import { assertNonNullable, debug, error, template } from "@positron/lang";
 
-import type { CssCompatibleUnit } from "../compatible";
-import { CssCompatibleRatios, CssCompatibleUnits } from "../compatible";
+import type { CssCompatibleUnit } from "../compatible/css-compatible-unit";
+import { CssCompatibleRatios } from "../compatible/css-compatible-ratios";
+import { CssCompatibleUnits } from "../compatible/css-compatible-units";
 
 import type { Dimension } from "./dimension";
 
 /**
+ * The {@link toCompatible} function converts a value expressed in a canonical
+ * unit into the specified {@link CssCompatibleUnit}.
  *
- * @param value -
+ * @param value - The numeric value in canonical units.
  *
- * @param unit -
+ * @param unit - The target compatible unit identifier.
+ *
+ * @returns The dimension converted into the target compatible unit.
+ *
+ * @throws `TypeError` If `unit` is not a {@link CssCompatibleUnit}.
  *
  * @public
  */

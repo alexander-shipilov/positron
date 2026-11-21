@@ -1,8 +1,11 @@
 /**
- * The {@link isUnitIdentifier} function determines if the passed `maybeUnit`
- * can be used as unit identifier.
+ * The {@link isUnitIdentifier} function determines whether the passed
+ * `maybeUnit` can be used as a lowercase unit identifier.
  *
- * @param maybeUnit - The value to be checked.
+ * @param maybeUnit - The string value to check.
+ *
+ * @returns `true` if `maybeUnit` is a non-empty lowercase string; otherwise,
+ *   `false`.
  *
  * @public
  */

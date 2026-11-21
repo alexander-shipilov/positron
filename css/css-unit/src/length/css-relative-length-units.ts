@@ -1,7 +1,7 @@
-import { CssContainerPercentageUnits } from "../container";
-import { CssFontRelativeUnits } from "../font";
-import { UnitSet } from "../utility";
-import { CssViewportPercentageUnits } from "../viewport";
+import { CssContainerPercentageUnits } from "../container/css-container-percentage-units";
+import { CssFontRelativeUnits } from "../font/css-font-relative-units";
+import { UnitSet } from "../utility/unit-set";
+import { CssViewportPercentageUnits } from "../viewport/css-viewport-percentage-units";
 
 import type { CssRelativeLengthUnit } from "./css-relative-length-unit";
 

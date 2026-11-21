@@ -1,4 +1,4 @@
-import type { CssUnit } from "../unit";
+import type { CssUnit } from "../unit/css-unit";
 
 /**
  * The {@link CssCanonicalUnit} type represents the canonical units for each
@@ -9,7 +9,7 @@ import type { CssUnit } from "../unit";
  *
  *   - The canonical unit for absolute length units is the pixel.
  *
- *   - The canonical unit for dimension units is the number of dots per pixel.
+ *   - The canonical unit for resolution units is the number of dots per pixel.
  *
  *   - The canonical unit for frequency units is the hertz.
  *

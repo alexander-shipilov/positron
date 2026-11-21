@@ -1,7 +1,8 @@
 import { assertNonNullish, debug, error, template } from "@positron/lang";
 
-import type { CssCanonicalUnit } from "../canonical";
-import { CssCompatibleRatios, CssCompatibleUnits } from "../compatible";
+import type { CssCanonicalUnit } from "../canonical/css-canonical-unit";
+import { CssCompatibleRatios } from "../compatible/css-compatible-ratios";
+import { CssCompatibleUnits } from "../compatible/css-compatible-units";
 
 import type { Dimension } from "./dimension";
 
@@ -9,13 +10,13 @@ import type { Dimension } from "./dimension";
  * The {@link toCanonical} function converts the provided dimension into the
  * canonical unit of measurement.
  *
- * @param value - The dimension value
+ * @param value - The dimension numeric value.
  *
- * @param unit - The dimension unit
+ * @param unit - The dimension unit identifier.
  *
- * @returns The dimension converted into a canonical unit of measurement.
+ * @returns The dimension converted into its canonical unit of measurement.
  *
- * @throws `TypeError` - if `unit` is not a {@link CssCompatibleUnit}.
+ * @throws `TypeError` If `unit` is not a {@link CssCompatibleUnit}.
  *
  * @public
  */

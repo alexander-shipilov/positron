@@ -1,5 +1,5 @@
-import { CssUnit } from "../unit";
-import { UnitSet } from "../utility";
+import { CssUnit } from "../unit/css-unit";
+import { UnitSet } from "../utility/unit-set";
 
 import type { CssCanonicalUnit } from "./css-canonical-unit";
 

@@ -1,8 +1,8 @@
-import type { CssUnit } from "../unit";
+import type { CssUnit } from "../unit/css-unit";
 
 /**
- * The {@link CssRootFontRelativeUnit} type represents the root
- * font-relative lengths, that refer to the font metrics of the root element.
+ * The {@link CssRootFontRelativeUnit} type represents the root font-relative
+ * lengths, which refer to the font metrics of the root element.
  *
  * @public
  */

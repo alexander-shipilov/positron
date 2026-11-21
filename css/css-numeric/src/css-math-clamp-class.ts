@@ -5,6 +5,8 @@ import type { CssNumberish } from "./css-numberish";
  * The {@link CssMathClampClass} interface represents a class for creating
  * instances of {@link CssMathClamp}.
  *
+ * @typeParam TInstance - The instance type constructed by this class.
+ *
  * @public
  */
 export interface CssMathClampClass<
@@ -27,10 +29,9 @@ export interface CssMathClampClass<
    * @param upper - A number or {@link CssNumericValue} that represents the
    *   maximum value.
    *
-   * @throws `TypeError` if one or more arguments are non-finite numbers.
-   *
-   * @throws `TypeError` if one or more arguments have incompatible types (for
-   *   example, mixing a `<length>` with an `<angle>`).
+   * @throws `TypeError` If one or more arguments are non-finite numbers or
+   *   have incompatible types (for example, mixing a `<length>` with an
+   *   `<angle>`).
    */
   new (
     lower: CssNumberish,

@@ -1,11 +1,11 @@
-import type { CssCanonicalUnit } from "../canonical";
-import { CssUnit } from "../unit";
+import type { CssCanonicalUnit } from "../canonical/css-canonical-unit";
+import { CssUnit } from "../unit/css-unit";
 
 import type { CssCompatibleUnit } from "./css-compatible-unit";
 
 /**
- * The {@link CssCompatibleRatios} represents an object of ratios between
- * compatible units.
+ * The {@link CssCompatibleRatios} constant represents a mapping of conversion
+ * ratios between compatible units and their canonical units.
  *
  * @public
  */

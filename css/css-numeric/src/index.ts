@@ -1,3 +1,9 @@
+/**
+ * The `@positron/css-numeric` package provides TypeScript interfaces and
+ * contracts representing the CSS Typed OM numeric value hierarchy.
+ *
+ * @packageDocumentation
+ */
 export type * from "./css-math-clamp";
 export type * from "./css-math-clamp-class";
 export type * from "./css-math-invert";

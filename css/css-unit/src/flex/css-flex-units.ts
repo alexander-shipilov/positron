@@ -1,11 +1,11 @@
-import { CssUnit } from "../unit";
-import { UnitSet } from "../utility";
+import { CssUnit } from "../unit/css-unit";
+import { UnitSet } from "../utility/unit-set";
 
 import type { CssFlexUnit } from "./css-flex-unit";
 
 /**
- * The {@link CssFlexUnits} constant represents a dictionary that stores
- * the `<flex>` units.
+ * The {@link CssFlexUnits} constant represents a dictionary that stores the
+ * `<flex>` units.
  *
  * @public
  */

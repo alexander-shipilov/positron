@@ -1,5 +1,5 @@
-import { CssUnit } from "../unit";
-import { UnitSet } from "../utility";
+import { CssUnit } from "../unit/css-unit";
+import { UnitSet } from "../utility/unit-set";
 
 import type { CssFrequencyUnit } from "./css-frequency-unit";
 
@@ -10,6 +10,6 @@ import type { CssFrequencyUnit } from "./css-frequency-unit";
  * @public
  */
 export const CssFrequencyUnits = new UnitSet<CssFrequencyUnit>([
-  CssUnit.hz,
+  CssUnit.hz, //
   CssUnit.khz,
 ]);

@@ -1,4 +1,4 @@
-import type { CssUnit } from "../unit";
+import type { CssUnit } from "../unit/css-unit";
 
 /**
  * The {@link CssFrequencyUnit} type represents the `<frequency>` units.

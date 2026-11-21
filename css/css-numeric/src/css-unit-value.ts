@@ -1,9 +1,9 @@
 import type { CssNumericValue } from "./css-numeric-value";
 
 /**
- * The {@link CssUnitValue} class represents values that contain a single unit
- * type. For example, the value `42px` (a `<dimension>`) would be represented
- * by a {@link CssNumericValue}.
+ * The {@link CssUnitValue} interface represents values that contain a single
+ * unit type. For example, the value `42px` (a `<dimension>`) is represented
+ * by a {@link CssUnitValue}.
  *
  * @public
  */
