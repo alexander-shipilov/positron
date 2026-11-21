@@ -4,9 +4,12 @@ import type { TypeGuard } from "../type/type-guard";
  * The {@link isArrayOf} type-guard function determines whether the passed
  * array `maybeArrayOf` is an array of the `TExpected` type.
  *
- * @param maybeArrayOf - The value to be checked.
+ * @param maybeArrayOf - The array to be checked.
  *
- * @param isType - The type-guard function to check array item.
+ * @param isType - The type-guard function to check each array item.
+ *
+ * @returns The boolean value `true` if every element satisfies `isType`;
+ *   otherwise, `false`.
  *
  * @public
  */

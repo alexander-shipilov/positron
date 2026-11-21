@@ -17,13 +17,15 @@ export const ASSERT_FALSE_MESSAGE = "False assertion failed";
  *
  * @example
  * ```ts
- *  assertFalse(false);
- *  // OK
+ * import { assertFalse } from "@positron/lang";
  *
- *  assertFalse(1);
- *  assertFalse(true);
- *  assertFalse(undefined);
- *  // throws
+ * assertFalse(false);
+ * // OK
+ *
+ * assertFalse(1);
+ * assertFalse(true);
+ * assertFalse(undefined);
+ * // throws
  * ```
  *
  * @param value - The value to assert for equality to `false`.
@@ -33,8 +35,8 @@ export const ASSERT_FALSE_MESSAGE = "False assertion failed";
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is not strictly equal to `false`
+ *   and no custom error is specified.
  *
  * @public
  */

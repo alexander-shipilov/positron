@@ -7,5 +7,5 @@ import type { ErrorLike } from "./error-like";
  * @public
  */
 export type ErrorMessage =
-  | (() => ErrorLike) //
-  | ErrorLike;
+  | ErrorLike //
+  | (() => ErrorLike);

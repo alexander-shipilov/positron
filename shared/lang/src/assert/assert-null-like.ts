@@ -19,12 +19,14 @@ export const ASSERT_NULL_LIKE_MESSAGE = "Null-like assertion failed";
  *
  * @example
  * ```ts
- *  assertNullLike(null);
- *  assertNullLike(undefined);
- *  // OK
+ * import { assertNullLike } from "@positron/lang";
  *
- *  assertNullLike(1);
- *  // throws
+ * assertNullLike(null);
+ * assertNullLike(undefined);
+ * // OK
+ *
+ * assertNullLike(1);
+ * // throws
  * ```
  *
  * @param value - The value to assert.
@@ -34,8 +36,8 @@ export const ASSERT_NULL_LIKE_MESSAGE = "Null-like assertion failed";
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is neither `null` nor `undefined`
+ *   and no custom error is specified.
  *
  * @public
  */

@@ -14,27 +14,31 @@ import { toNumber } from "./to-number";
  *
  * @example
  * ```ts
- *  const finite1 = toFiniteNumber(1.1)
- *  // 1.1
+ * import { toFiniteNumber } from "@positron/lang";
  *
- *  const finite2 = toFiniteNumber('1e10')
- *  // 10_000_000_000
+ * const finite1 = toFiniteNumber(1.1);
+ * // 1.1
  *
- *  const finite3 = toFiniteNumber(NaN)
- *  // RangeError
+ * const finite2 = toFiniteNumber("1e10");
+ * // 10_000_000_000
  *
- *  const finite4 = toFiniteNumber(Infinity)
- *  // RangeError
+ * const finite3 = toFiniteNumber(NaN);
+ * // throws RangeError
+ *
+ * const finite4 = toFiniteNumber(Infinity);
+ * // throws RangeError
  * ```
  *
- * @param numericLike - The {@link NumericLike} value to be converted to
- *   a finite number.
- *
- * @throws RangeError if the passed `numericLike` is a number that is not a
+ * @param numericLike - The {@link NumericLike} value to be converted to a
  *   finite number.
  *
- * @throws SyntaxError if the passed `numericLike` cannot be converted to
- *   a finite number.
+ * @returns The converted finite number.
+ *
+ * @throws `RangeError` If the passed `numericLike` is a number that is not a
+ *   finite number.
+ *
+ * @throws `SyntaxError` If the passed `numericLike` cannot be converted to a
+ *   finite number.
  *
  * @public
  */

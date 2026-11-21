@@ -5,4 +5,4 @@ import type { CssNumericValue } from "./css-numeric-value";
  *
  * @public
  */
-export type CssNumberish = CssNumericValue | number;
+export type CssNumberish = number | CssNumericValue;

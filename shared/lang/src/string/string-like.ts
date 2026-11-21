@@ -1,13 +1,15 @@
 /**
  * The {@link StringLike} type represents a type which can be safely converted
- * to the string.
+ * to a string.
  *
  * @example
  * ```ts
- *  type Template<T extends StringLike, U extends StringLike> = `${T}-${U}`;
+ * import type { StringLike } from "@positron/lang";
  *
- *  type TemplateFoo = Template<"foo", 1>
- *  // type TemplateFoo = "foo-1"
+ * type Template<T extends StringLike, U extends StringLike> = `${T}-${U}`;
+ *
+ * type TemplateFoo = Template<"foo", 1>;
+ * // type TemplateFoo = "foo-1"
  * ```
  *
  * @public
@@ -15,7 +17,7 @@
 export type StringLike =
   | bigint //
   | boolean
-  | null
   | number
   | string
+  | null
   | undefined;

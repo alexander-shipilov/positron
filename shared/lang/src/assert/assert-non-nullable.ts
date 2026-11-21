@@ -13,18 +13,19 @@ export const ASSERT_NON_NULLABLE_MESSAGE = "Non-nullable assertion failed";
 
 /**
  * The {@link assertNonNullable} function asserts whether the provided `value`
- * is `NonNullable` - it is strictly not equal to either `null` or `undefined`.
- * Returns the `value` if the assertion passes, or throws an exception if it
- * fails.
+ * is `NonNullable` (strictly not equal to `null` or `undefined`). Returns the
+ * `value` if the assertion passes, or throws an exception if it fails.
  *
  * @example
  * ```ts
- *  asserNotNullable(1);
- *  // OK
+ * import { assertNonNullable } from "@positron/lang";
  *
- *  asserNotNullable(null);
- *  asserNotNullable(undefined);
- *  // throws
+ * assertNonNullable(1);
+ * // OK
+ *
+ * assertNonNullable(null);
+ * assertNonNullable(undefined);
+ * // throws
  * ```
  *
  * @param value - The value to assert for non-nullability.
@@ -34,8 +35,8 @@ export const ASSERT_NON_NULLABLE_MESSAGE = "Non-nullable assertion failed";
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is `null` or `undefined` and no
+ *   custom error is specified.
  *
  * @public
  */

@@ -1,24 +1,28 @@
 /**
- * The {@link isArray} type-guard function that determines whether the passed
+ * The {@link isArray} type-guard function determines whether the passed
  * `maybeArray` is an array.
  *
  * @example
  * ```ts
- *  declare function expect<V>(v: V): void;
+ * import { isArray } from "@positron/lang";
  *
- *  declare const stringOrArray: string | string[];
+ * declare function expect<V>(v: V): void;
  *
- *  if (isArray(stringOrArray)) {
- *    expect<string[]>(stringOrArray);
- *    // OK
+ * declare const stringOrArray: string | string[];
  *
- *    expect<number[]>(stringOrArray);
- *    // TS2345: Argument of type 'string[]' is not assignable to parameter of
- *    // type 'number[]'. Type 'string' is not assignable to type 'number'.
- *  }
+ * if (isArray(stringOrArray)) {
+ *   expect<string[]>(stringOrArray);
+ *   // OK
+ *
+ *   // @ts-expect-error Argument of type 'string[]' is not assignable
+ *   expect<number[]>(stringOrArray);
+ * }
  * ```
  *
  * @param maybeArray - The value to be checked.
+ *
+ * @returns The boolean value `true` if `maybeArray` is an array; otherwise,
+ *   `false`.
  *
  * @public
  */

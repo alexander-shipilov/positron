@@ -14,28 +14,30 @@ export const ASSERT_NON_NULLISH_MESSAGE = "Non-nullish assertion failed";
 
 /**
  * The {@link assertNonNullish} function asserts whether the provided `value`
- * is {@link NonNullish} value - it is strictly not equal to `null`. Returns the
+ * is a {@link NonNullish} value (strictly not equal to `null`). Returns the
  * `value` if the assertion passes, or throws an exception if it fails.
  *
  * @example
  * ```ts
- *  asserNotNull(1);
- *  asserNotNull(undefined);
- *  // OK
+ * import { assertNonNullish } from "@positron/lang";
  *
- *  asserNotNull(null);
- *  // throws
+ * assertNonNullish(1);
+ * assertNonNullish(undefined);
+ * // OK
+ *
+ * assertNonNullish(null);
+ * // throws
  * ```
  *
- * @param value - The value to assert for equality to `null`.
+ * @param value - The value to assert for non-nullishness.
  *
  * @param errorParams - The parameters that will be passed to the {@link error}
  *   function to create an error if the assertion fails.
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is `null` and no custom error is
+ *   specified.
  *
  * @public
  */

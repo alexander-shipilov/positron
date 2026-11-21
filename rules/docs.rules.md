@@ -215,7 +215,8 @@ by TSDoc or API Extractor:
   module that can be extracted into a standalone file without modifications:
 
   - All external and package entities used in the example MUST be explicitly
-    imported at the top of the block.
+    imported at the top of the block (using `import type` for type-only
+    imports and separate `import` statements for values).
 
   - All example code MUST comply with `@positron/eslint-config` (line length
     limit of 80 characters, import sorting, explicit access modifiers, no

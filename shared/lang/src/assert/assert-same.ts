@@ -29,12 +29,14 @@ export const ASSERT_SAME_MESSAGE = "Same-value equality assertion failed";
  *
  * @example
  * ```ts
- *  asserSame(1, 1);
- *  asserSame(NaN, NaN);
- *  // OK
+ * import { assertSame } from "@positron/lang";
  *
- *  asserSame(-0, 0);
- *  // throws
+ * assertSame(1, 1);
+ * assertSame(NaN, NaN);
+ * // OK
+ *
+ * assertSame(-0, 0);
+ * // throws
  * ```
  *
  * @param value - The value to assert for equality to `expected`.
@@ -46,8 +48,8 @@ export const ASSERT_SAME_MESSAGE = "Same-value equality assertion failed";
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` and `expected` are not the same
+ *   value and no custom error is specified.
  *
  * @public
  */

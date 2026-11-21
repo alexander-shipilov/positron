@@ -10,6 +10,15 @@ import { debug } from "../utility/debug";
 import { template } from "../utility/template";
 
 /**
+ * The {@link neverLikeTests} function registers shared Jest assertions for
+ * functions throwing errors compatible with {@link never}.
+ *
+ * @param neverLike - The assertion or throwing function under test.
+ *
+ * @param message - The default error message expected when omitted.
+ *
+ * @param ErrorClass - The default error constructor expected when omitted.
+ *
  * @internal
  */
 export function neverLikeTests(
@@ -52,7 +61,7 @@ export function neverLikeTests(
 
   it(
     template`
-    should throw \`${0}\` if \`message\` is a function which returns a string 
+    should throw \`${0}\` if \`message\` is a function which returns a string
     or \`undefined\``(format(ErrorClass.name, "message()")),
     () => {
       expect(() => neverLike(testMessageFn.mockReturnValue(undefined))) //
@@ -84,7 +93,7 @@ export function neverLikeTests(
 
   it(
     template`
-    should throw \`${0}\` if \`ErrorClass\` passed and \`message\` is a 
+    should throw \`${0}\` if \`ErrorClass\` passed and \`message\` is a
     function which returns a string or \`undefined\``(
       format("ErrorClass", "message()"),
     ),

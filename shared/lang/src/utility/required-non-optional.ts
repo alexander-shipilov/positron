@@ -6,6 +6,8 @@ import type { NonOptional } from "./non-optional";
  *
  * @example
  * ```ts
+ *  import type { RequiredNonOptional } from "@positron/lang";
+ *
  *  type Foo = { bar?: number; foo: string | undefined };
  *
  *  type RequiredFoo = Required<Foo>;

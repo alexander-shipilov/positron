@@ -28,25 +28,27 @@ export const ASSERT_EQUAL_MESSAGE = "Equality assertion failed";
  *
  * @example
  * ```ts
- *  assertEqual(1, 1);
- *  assertEqual(-0, 0);
- *  // OK
+ * import { assertEqual } from "@positron/lang";
  *
- *  assertEqual(NaN, NaN);
- *  // throws
+ * assertEqual(1, 1);
+ * assertEqual(-0, 0);
+ * // OK
+ *
+ * assertEqual(NaN, NaN);
+ * // throws
  * ```
  *
  * @param value - The value to assert for equality.
  *
- * @param expected - The expected value
+ * @param expected - The expected value.
  *
  * @param errorParams - The parameters that will be passed to the {@link error}
  *   function to create an error if the assertion fails.
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is not strictly equal to
+ *   `expected` and no custom error is specified.
  *
  * @public
  */

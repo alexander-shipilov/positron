@@ -17,13 +17,15 @@ export const ASSERT_TRUE_MESSAGE = "True assertion failed";
  *
  * @example
  * ```ts
- *  assertTrue(true);
- *  // OK
+ * import { assertTrue } from "@positron/lang";
  *
- *  assertTrue(1);
- *  assertTrue(false);
- *  assertTrue(undefined);
- *  // throws
+ * assertTrue(true);
+ * // OK
+ *
+ * assertTrue(1);
+ * assertTrue(false);
+ * assertTrue(undefined);
+ * // throws
  * ```
  *
  * @param value - The value to assert for equality to `true`.
@@ -33,8 +35,8 @@ export const ASSERT_TRUE_MESSAGE = "True assertion failed";
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is not strictly equal to `true`
+ *   and no custom error is specified.
  *
  * @public
  */

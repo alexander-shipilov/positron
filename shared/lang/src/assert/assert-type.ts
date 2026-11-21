@@ -13,17 +13,19 @@ import { AssertException } from "./assert-exception";
 export const ASSERT_TYPE_MESSAGE = "Type assertion failed";
 
 /**
- * The {@link assertType} function asserts if the passed `value` is match to
+ * The {@link assertType} function asserts whether the passed `value` matches
  * the specified type. Returns the `value` if the assertion passes, or throws
  * an exception if it fails.
  *
  * @example
  * ```ts
- *  assertType([], isArray);
- *  // OK
+ * import { assertType, isArray } from "@positron/lang";
  *
- *  assertType(1, isArray)
- *  // throws
+ * assertType([], isArray);
+ * // OK
+ *
+ * assertType(1, isArray);
+ * // throws
  * ```
  *
  * @param value - The value to assert.
@@ -35,8 +37,8 @@ export const ASSERT_TYPE_MESSAGE = "Type assertion failed";
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `isType(value)` returns `false` and no
+ *   custom error is specified.
  *
  * @public
  */

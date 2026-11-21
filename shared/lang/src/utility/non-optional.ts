@@ -4,6 +4,8 @@
  *
  * @example
  * ```ts
+ *  import type { NonOptional } from "@positron/lang";
+ *
  *  type Foo =  number | string | undefined
  *
  *  type NonOptionalFoo = NonOptional<Foo>

@@ -14,27 +14,31 @@ import { toFiniteNumber } from "./to-finite-number";
  *
  * @example
  * ```ts
- *  const integer1 = toSafeIntegerNumber(1)
- *  // 1
+ * import { toSafeIntegerNumber } from "@positron/lang";
  *
- *  const integer2 = toSafeIntegerNumber('1e10')
- *  // 10_000_000_000
+ * const integer1 = toSafeIntegerNumber(1);
+ * // 1
  *
- *  const integer3 = toSafeIntegerNumber(1.1)
- *  // RangeError
+ * const integer2 = toSafeIntegerNumber("1e10");
+ * // 10_000_000_000
  *
- *  const integer4 = toSafeIntegerNumber(2 ** 53)
- *  // RangeError
+ * const integer3 = toSafeIntegerNumber(1.1);
+ * // throws RangeError
+ *
+ * const integer4 = toSafeIntegerNumber(2 ** 53);
+ * // throws RangeError
  * ```
  *
  * @param numericLike - The {@link NumericLike} value to be converted to a safe
  *   integer number.
  *
- * @throws RangeError if the passed `numericLike` is a number that is not a
+ * @returns The converted safe integer number.
+ *
+ * @throws `RangeError` If the passed `numericLike` is a number that is not a
  *   safe integer.
  *
- * @throws SyntaxError if the passed `numericLike` cannot be converted to
- *   a safe integer number.
+ * @throws `SyntaxError` If the passed `numericLike` cannot be converted to a
+ *   safe integer number.
  *
  * @public
  */

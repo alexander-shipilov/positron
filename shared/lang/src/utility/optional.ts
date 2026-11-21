@@ -3,6 +3,8 @@
  *
  * @example
  * ```ts
+ *  import type { Optional } from "@positron/lang";
+ *
  *  type OptionalString = Optional<string>
  *  // string | undefined
  * ```

@@ -10,8 +10,8 @@ describe("type ErrorLike", () => {
       | `undefined` \
       ", () => {
     expectTypeOf<ErrorLike>().toEqualTypeOf<
-      | Error //
       | string
+      | Error //
       | undefined
     >();
   });

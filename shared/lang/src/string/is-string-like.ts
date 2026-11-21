@@ -4,10 +4,13 @@ import { typeOf } from "../type/type-of";
 import type { StringLike } from "./string-like";
 
 /**
- * The {@link isStringLike} function determines whether the passed
+ * The {@link isStringLike} type-guard function determines whether the passed
  * `maybeStringLike` is a {@link StringLike} value.
  *
  * @param maybeStringLike - The value to be checked.
+ *
+ * @returns The boolean value `true` if `maybeStringLike` is a
+ *   {@link StringLike} value; otherwise, `false`.
  *
  * @public
  */

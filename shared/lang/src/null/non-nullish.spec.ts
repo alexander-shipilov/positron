@@ -7,7 +7,7 @@ import type { NonNullish } from "./non-nullish";
 
 describe("type NonNullish<T>", () => {
   it("should exclude `null` from `T`", () => {
-    expectTypeOf<NonNullish<null | number>>().toEqualTypeOf<number>();
+    expectTypeOf<NonNullish<number | null>>().toEqualTypeOf<number>();
     expectTypeOf<NonNullish<null | undefined>>().toEqualTypeOf<undefined>();
   });
 

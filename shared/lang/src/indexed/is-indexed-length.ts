@@ -3,11 +3,14 @@ import { isIntegerNumber } from "../number/is-integer-number";
 import { MAX_INDEXED_LENGTH } from "./max-indexed-length";
 
 /**
- * The {@link isIndexedLength} function determines whether the passed
- * `maybeLength` is the valid length of arrays, as well as of any other
+ * The {@link isIndexedLength} type-guard function determines whether the
+ * passed `maybeLength` is a valid length of arrays, as well as of any other
  * indexable types (strings, maps, etc.).
  *
- * @param maybeLength - The value to be checking.
+ * @param maybeLength - The value to be checked.
+ *
+ * @returns The boolean value `true` if `maybeLength` is a valid indexed
+ *   length; otherwise, `false`.
  *
  * @public
  */

@@ -16,10 +16,10 @@ describe("type Primitive", () => {
     expectTypeOf<Primitive>().toEqualTypeOf<
       | bigint //
       | boolean
-      | null
       | number
       | string
       | symbol
+      | null
       | undefined
     >();
   });

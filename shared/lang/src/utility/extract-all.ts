@@ -13,6 +13,8 @@ import type { ExtractOne } from "./extract-one";
  *
  * @example
  * ```ts
+ *  import type { ExtractAll } from "@positron/lang";
+ *
  *  type T1 = ExtractAll<number | string>;
  *  // [string, number]
  *

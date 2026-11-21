@@ -7,36 +7,37 @@ import { hasOwnKey } from "./has-own-key";
  * property is inherited or does not exist, the function returns `false`.
  *
  * @remarks
- *   This function works like `Object#hasOwn` but does not throw an exception
- *   if the `value` is `null` or `undefined`.
+ *   This function works like `Object#hasOwn` but does not throw an exception if
+ *   `value` is `null` or `undefined`.
  *
- *   {@link isOwnKeyOf} is a type-guard function that determines whether the
- *   provided `maybeKeyOf` conforms to the type `keyof TValue`.
+ *   {@link isOwnKeyOf} determines whether the provided `maybeKeyOf` conforms
+ *   to the type `keyof TValue`.
  *
  * @example
  * ```ts
- *  const target = { foo: 1 };
+ * import { isOwnKeyOf } from "@positron/lang";
  *
- *  isOwnKeyOf('foo', target);
- *  // `true`, since `target` has own key `foo`
+ * const target = { foo: 1 };
  *
- *  isOwnKeyOf('bar', target);
- *  // `false`, since `target` has no own key `bar`
+ * isOwnKeyOf("foo", target);
+ * // `true`, since `target` has own key `foo`
  *
- *  isOwnKeyOf('toString', target);
- *  // `false`, since key `toString` is inherited from `Object.prototype`
+ * isOwnKeyOf("bar", target);
+ * // `false`, since `target` has no own key `bar`
  *
- *  isOwnKeyOf('foo', null);
- *  // `false`, since `null` does not have properties at all
+ * isOwnKeyOf("toString", target);
+ * // `false`, since key `toString` is inherited from `Object.prototype`
+ *
+ * isOwnKeyOf("foo", null);
+ * // `false`, since `null` does not have properties at all
  * ```
  *
  * @param maybeKeyOf - The key to check.
  *
  * @param value - The value to check key presence of.
  *
- * @returns `true` if the specified `value` has the indicated `maybeKeyOf` as
- *   its own key. If the `value` is nullable or the `maybeKeyOf` is inherited,
- *   or does not exist, returns `false`.
+ * @returns The boolean value `true` if `value` has `maybeKeyOf` as its own
+ *   key; otherwise, `false`.
  *
  * @public
  */

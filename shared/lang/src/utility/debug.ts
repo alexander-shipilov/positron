@@ -9,7 +9,7 @@ import { isSymbol } from "../symbol/is-symbol";
 import { typeOf } from "../type/type-of";
 
 /**
- * The {@link DebugContext} type represents debug context.
+ * The {@link DebugContext} type represents debug formatting state.
  *
  * @internal
  */
@@ -20,20 +20,33 @@ type DebugContext = {
 };
 
 /**
- * @param value -
+ * The {@link debugArray} function formats an array value for debug output.
  *
- * @param context -
+ * @param value - The array to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugArray(value: readonly unknown[], context: DebugContext): string {
   return debugArrayLike(formatTag(value, "Array"), value, context);
 }
 
 /**
- * @param tag -
+ * The {@link debugArrayLike} function formats an array-like object for debug
+ * output.
  *
- * @param value -
+ * @param tag - The display tag for the object.
  *
- * @param context -
+ * @param value - The array-like object to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugArrayLike(
   tag: string,
@@ -50,13 +63,20 @@ function debugArrayLike(
 }
 
 /**
- * @param key -
+ * The {@link debugArrayLikeItem} function formats a single element or
+ * property of an array-like object.
  *
- * @param item -
+ * @param key - The property key to format.
  *
- * @param value -
+ * @param item - The property value to format.
  *
- * @param context -
+ * @param value - The containing array-like object.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted key-value entry string.
+ *
+ * @internal
  */
 function debugArrayLikeItem(
   key: string | symbol,
@@ -71,9 +91,16 @@ function debugArrayLikeItem(
 }
 
 /**
- * @param value -
+ * The {@link debugArrayLikeItems} function formats all own enumerable entries
+ * of an array-like object.
  *
- * @param context -
+ * @param value - The array-like object to inspect.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns An array of formatted key-value strings.
+ *
+ * @internal
  */
 function debugArrayLikeItems(
   value: ArrayLike<unknown>,
@@ -85,16 +112,29 @@ function debugArrayLikeItems(
 }
 
 /**
- * @param value -
+ * The {@link debugBoolean} function formats a primitive boolean value.
+ *
+ * @param value - The boolean value to format.
+ *
+ * @returns The string `"true"` or `"false"`.
+ *
+ * @internal
  */
 function debugBoolean(value: boolean): string {
   return JSON.stringify(value);
 }
 
 /**
- * @param value -
+ * The {@link debugBooleanObject} function formats a boxed `Boolean` wrapper
+ * object.
  *
- * @param context -
+ * @param value - The `Boolean` wrapper object to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
 function debugBooleanObject(value: Boolean, context: DebugContext): string {
@@ -107,9 +147,15 @@ function debugBooleanObject(value: Boolean, context: DebugContext): string {
 }
 
 /**
- * @param value -
+ * The {@link debugDate} function formats a `Date` instance.
  *
- * @param context -
+ * @param value - The `Date` instance to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugDate(value: Date, context: DebugContext): string {
   return debugObjectLike(
@@ -121,9 +167,15 @@ function debugDate(value: Date, context: DebugContext): string {
 }
 
 /**
- * @param value -
+ * The {@link debugError} function formats an `Error` instance.
  *
- * @param context -
+ * @param value - The `Error` instance to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugError(value: Error, context: DebugContext): string {
   return debugObjectLike(
@@ -135,9 +187,15 @@ function debugError(value: Error, context: DebugContext): string {
 }
 
 /**
- * @param value -
+ * The {@link debugFunction} function formats a function value.
  *
- * @param context -
+ * @param value - The function to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugFunction(
   value: (...args: never[]) => unknown,
@@ -150,9 +208,15 @@ function debugFunction(
 }
 
 /**
- * @param value -
+ * The {@link debugMap} function formats a `Map` instance.
  *
- * @param context -
+ * @param value - The `Map` instance to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugMap(value: Map<unknown, unknown>, context: DebugContext): string {
   const props = formatProps(
@@ -169,11 +233,17 @@ function debugMap(value: Map<unknown, unknown>, context: DebugContext): string {
 }
 
 /**
- * @param key -
+ * The {@link debugMapItem} function formats a single `Map` key-value entry.
  *
- * @param value -
+ * @param key - The entry key.
  *
- * @param context -
+ * @param value - The entry value.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted `key = value` string.
+ *
+ * @internal
  */
 function debugMapItem(
   key: unknown,
@@ -184,9 +254,15 @@ function debugMapItem(
 }
 
 /**
- * @param map -
+ * The {@link debugMapItems} function formats all entries of a `Map` instance.
  *
- * @param context -
+ * @param map - The `Map` instance to inspect.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns An array of formatted entry strings.
+ *
+ * @internal
  */
 function debugMapItems(
   map: Map<unknown, unknown>,
@@ -198,16 +274,29 @@ function debugMapItems(
 }
 
 /**
- * @param value -
+ * The {@link debugNumber} function formats a primitive number value.
+ *
+ * @param value - The number value to format.
+ *
+ * @returns The formatted numeric string.
+ *
+ * @internal
  */
 function debugNumber(value: number): string {
   return isFinite(value) ? JSON.stringify(value) : String(value);
 }
 
 /**
- * @param value -
+ * The {@link debugNumberObject} function formats a boxed `Number` wrapper
+ * object.
  *
- * @param context -
+ * @param value - The `Number` wrapper object to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
 function debugNumberObject(value: Number, context: DebugContext): string {
@@ -220,39 +309,59 @@ function debugNumberObject(value: Number, context: DebugContext): string {
 }
 
 /**
- * @param value -
+ * The {@link debugObject} function formats a plain or custom object.
  *
- * @param context -
+ * @param value - The object to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugObject(value: object, context: DebugContext): string {
   return debugObjectLike(formatTag(value, "Object"), value, "", context);
 }
 
 /**
- * @param key -
+ * The {@link debugObjectKey} function formats an object property key and its
+ * associated value.
  *
- * @param value -
+ * @param key - The property key.
  *
- * @param context -
+ * @param value - The property value.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted `key: value` string.
+ *
+ * @internal
  */
 function debugObjectKey(
   key: PropertyKey,
   value: unknown,
   context: DebugContext,
-) {
+): string {
   const keyString = debugValue(key, context);
 
   return `${isSymbol(key) ? `[${keyString}]` : keyString}: ${debugValue(value, context)}`;
 }
 
 /**
- * @param tag -
+ * The {@link debugObjectLike} function formats an object-like value with a
+ * tag, optional primitive payload, and own properties.
  *
- * @param value -
+ * @param tag - The display tag for the object.
  *
- * @param stringValue -
+ * @param value - The object to format.
  *
- * @param context -
+ * @param stringValue - The optional inner value description.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugObjectLike(
   tag: string,
@@ -273,9 +382,16 @@ function debugObjectLike(
 }
 
 /**
- * @param value -
+ * The {@link debugObjectProps} function formats all own enumerable properties
+ * of an object.
  *
- * @param context -
+ * @param value - The object to inspect.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns An array of formatted property strings.
+ *
+ * @internal
  */
 function debugObjectProps(value: object, context: DebugContext): string[] {
   return getOwnKeys(value).map((key) =>
@@ -284,9 +400,16 @@ function debugObjectProps(value: object, context: DebugContext): string[] {
 }
 
 /**
- * @param value -
+ * The {@link debugReference} function formats a non-primitive reference value
+ * while tracking circular references.
  *
- * @param context -
+ * @param value - The reference value to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugReference(value: object, context: DebugContext): string {
   const { circulars, stack } = context;
@@ -350,11 +473,17 @@ function debugReference(value: object, context: DebugContext): string {
 }
 
 /**
- * @param value -
+ * The {@link debugRegExp} function formats a `RegExp` instance.
  *
- * @param context -
+ * @param value - The `RegExp` instance to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
-function debugRegExp(value: RegExp, context: DebugContext) {
+function debugRegExp(value: RegExp, context: DebugContext): string {
   return debugObjectLike(
     formatTag(value, "RegExp"),
     value,
@@ -364,9 +493,15 @@ function debugRegExp(value: RegExp, context: DebugContext) {
 }
 
 /**
- * @param value -
+ * The {@link debugSet} function formats a `Set` instance.
  *
- * @param context -
+ * @param value - The `Set` instance to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugSet(value: Set<unknown>, context: DebugContext): string {
   const props = formatProps(
@@ -383,27 +518,48 @@ function debugSet(value: Set<unknown>, context: DebugContext): string {
 }
 
 /**
- * @param value -
+ * The {@link debugSetItems} function formats all values contained in a `Set`
+ * instance.
  *
- * @param context -
+ * @param value - The `Set` instance to inspect.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns An array of formatted value strings.
+ *
+ * @internal
  */
-function debugSetItems(value: Set<unknown>, context: DebugContext) {
+function debugSetItems(value: Set<unknown>, context: DebugContext): string[] {
   return [...value.values()].map((item) =>
     debugValue(item, { ...context, stack: context.stack }),
   );
 }
 
 /**
- * @param value -
+ * The {@link debugString} function formats a primitive string value as a
+ * JSON-escaped string literal.
+ *
+ * @param value - The string value to format.
+ *
+ * @returns The quoted and escaped string.
+ *
+ * @internal
  */
 function debugString(value: string): string {
   return JSON.stringify(value);
 }
 
 /**
- * @param value -
+ * The {@link debugStringObject} function formats a boxed `String` wrapper
+ * object.
  *
- * @param context -
+ * @param value - The `String` wrapper object to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
 function debugStringObject(value: String, context: DebugContext): string {
@@ -411,16 +567,29 @@ function debugStringObject(value: String, context: DebugContext): string {
 }
 
 /**
- * @param value -
+ * The {@link debugSymbol} function formats a primitive symbol value.
+ *
+ * @param value - The symbol value to format.
+ *
+ * @returns The string representation of `value`.
+ *
+ * @internal
  */
 function debugSymbol(value: symbol): string {
   return value.toString();
 }
 
 /**
- * @param value -
+ * The {@link debugSymbolObject} function formats a boxed `Symbol` wrapper
+ * object.
  *
- * @param context -
+ * @param value - The `Symbol` wrapper object to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
 function debugSymbolObject(value: Symbol, context: DebugContext): string {
@@ -428,9 +597,15 @@ function debugSymbolObject(value: Symbol, context: DebugContext): string {
 }
 
 /**
- * @param value -
+ * The {@link debugTypedArray} function formats a `TypedArray` view.
  *
- * @param context -
+ * @param value - The typed array view to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugTypedArray(
   value: ArrayLike<unknown>,
@@ -440,9 +615,16 @@ function debugTypedArray(
 }
 
 /**
- * @param value -
+ * The {@link debugValue} function dispatches formatting for any JavaScript
+ * value.
  *
- * @param context -
+ * @param value - The value to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
 function debugValue(value: unknown, context: DebugContext): string {
   switch (true) {
@@ -467,11 +649,20 @@ function debugValue(value: unknown, context: DebugContext): string {
 }
 
 /**
- * @param value -
+ * The {@link debugWeekMap} function formats a `WeakMap` instance.
  *
- * @param context -
+ * @param value - The `WeakMap` instance to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
-function debugWeekMap(value: WeakMap<WeakKey, unknown>, context: DebugContext) {
+function debugWeekMap(
+  value: WeakMap<WeakKey, unknown>,
+  context: DebugContext,
+): string {
   const props = formatProps(debugObjectProps(value, context), context, "{}");
 
   return formatObject(
@@ -482,11 +673,17 @@ function debugWeekMap(value: WeakMap<WeakKey, unknown>, context: DebugContext) {
 }
 
 /**
- * @param value -
+ * The {@link debugWeekSet} function formats a `WeakSet` instance.
  *
- * @param context -
+ * @param value - The `WeakSet` instance to format.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The formatted string representation of `value`.
+ *
+ * @internal
  */
-function debugWeekSet(value: WeakSet<object>, context: DebugContext) {
+function debugWeekSet(value: WeakSet<object>, context: DebugContext): string {
   const props = formatProps(debugObjectProps(value, context), context, "{}");
 
   return formatObject(
@@ -497,11 +694,18 @@ function debugWeekSet(value: WeakSet<object>, context: DebugContext) {
 }
 
 /**
- * @param ref -
+ * The {@link formatObject} function joins reference markers, tag names, and
+ * formatted property blocks into a single representation.
  *
- * @param name -
+ * @param ref - The circular reference marker, if any.
  *
- * @param props -
+ * @param name - The object type tag.
+ *
+ * @param props - The formatted property block.
+ *
+ * @returns The combined object representation string.
+ *
+ * @internal
  */
 function formatObject(ref: string, name: string, props: string): string {
   return [
@@ -512,11 +716,19 @@ function formatObject(ref: string, name: string, props: string): string {
 }
 
 /**
- * @param props -
+ * The {@link formatProps} function wraps formatted property entries in
+ * delimiters with optional multiline indentation.
  *
- * @param context -
+ * @param props - The formatted property strings.
  *
- * @param brackets -
+ * @param context - The active debug formatting context.
+ *
+ * @param brackets - The opening and closing delimiter pair.
+ *
+ * @returns The wrapped property block, or an empty string when `props` is
+ *   empty.
+ *
+ * @internal
  */
 function formatProps(
   props: string[],
@@ -537,9 +749,16 @@ function formatProps(
 }
 
 /**
- * @param value -
+ * The {@link formatRef} function returns a circular reference label for
+ * objects recorded in `context.circulars`.
  *
- * @param context -
+ * @param value - The object to look up.
+ *
+ * @param context - The active debug formatting context.
+ *
+ * @returns The `<ref *N>` marker, or an empty string if not circular.
+ *
+ * @internal
  */
 function formatRef(value: object, context: DebugContext): string {
   const ref = context.circulars.findIndex((item) => Object.is(item, value));
@@ -548,9 +767,16 @@ function formatRef(value: object, context: DebugContext): string {
 }
 
 /**
- * @param value -
+ * The {@link formatTag} function determines the display tag for `value` using
+ * `Object.prototype.toString` or constructor name.
  *
- * @param defaultTag -
+ * @param value - The value to inspect.
+ *
+ * @param defaultTag - The fallback tag when none can be inferred.
+ *
+ * @returns The resolved tag name.
+ *
+ * @internal
  */
 function formatTag(value: unknown, defaultTag: string): string {
   const tag =
@@ -566,10 +792,11 @@ function formatTag(value: unknown, defaultTag: string): string {
  *
  * @param value - The value to convert to a human-readable string.
  *
- * @param spaces - The number that indicates the number of space
- *   characters to be used as indentation, clamped to `10` (that is, any number
- *   greater than `10` is treated as if it were `10`). Values less than `1`
- *   indicate that no space should be used. Default is `0`.
+ * @param spaces - The number of space characters to be used as indentation,
+ *   clamped to `10` (any number greater than `10` is treated as `10`). Values
+ *   less than `1` indicate that no space should be used. Default is `0`.
+ *
+ * @returns The human-readable debug string representation of `value`.
  *
  * @public
  */

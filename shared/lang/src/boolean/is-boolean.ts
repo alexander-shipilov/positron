@@ -1,22 +1,23 @@
 /**
- * The {@link isBoolean} type-guard function that determines whether the type
- * of the passed value `maybeBoolean` extends the `boolean` type.
+ * The {@link isBoolean} type-guard function determines whether the type of
+ * the passed value `maybeBoolean` extends the `boolean` type.
  *
  * @example
  * ```ts
- *  declare function expect<V>(v: V): void;
+ * import { isBoolean } from "@positron/lang";
  *
- *  declare const stringOrTrue: string | true;
+ * declare function expect<V>(v: V): void;
  *
- *  if (isBoolean(stringOrTrue)) {
- *    expect<boolean>(stringOrTrue);
- *    expect<true>(stringOrTrue);
- *    // OK
+ * declare const stringOrTrue: string | true;
  *
- *    expect<false>(stringOrTrue);
- *    // TS2345: Argument of type true is not assignable to parameter
- *    // of type false
- *  }
+ * if (isBoolean(stringOrTrue)) {
+ *   expect<boolean>(stringOrTrue);
+ *   expect<true>(stringOrTrue);
+ *   // OK
+ *
+ *   // @ts-expect-error Argument of type 'true' is not assignable
+ *   expect<false>(stringOrTrue);
+ * }
  * ```
  *
  * @param maybeBoolean - The value to be tested for being a `boolean`.

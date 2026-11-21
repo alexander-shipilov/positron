@@ -4,10 +4,13 @@ import { MAX_INDEXED_LENGTH } from "./max-indexed-length";
 
 /**
  * The {@link isIndexNumber} function determines whether the passed number
- * `maybeIndexNumber` is the valid index of arrays, as well as of any
- * other indexable types (strings, etc.).
+ * `maybeIndexNumber` is a valid index of arrays, as well as of any other
+ * indexable types (strings, etc.).
  *
- * @param maybeIndexNumber - The value to be checking.
+ * @param maybeIndexNumber - The value to be checked.
+ *
+ * @returns The boolean value `true` if `maybeIndexNumber` is a valid index
+ *   number; otherwise, `false`.
  *
  * @public
  */

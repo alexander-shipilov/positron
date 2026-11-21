@@ -8,7 +8,7 @@ import type { Nullable } from "./nullable";
 
 describe("type Nullable<T>", () => {
   it("should add `NullLike` to `T`", () => {
-    expectTypeOf<Nullable<number>>().toEqualTypeOf<NullLike | number>();
+    expectTypeOf<Nullable<number>>().toEqualTypeOf<number | NullLike>();
   });
 
   it("should be `NullLike` if `T` is `never`", () => {

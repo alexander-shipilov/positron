@@ -7,18 +7,20 @@ import { typeOf } from "../type/type-of";
  *
  * @example
  * ```ts
- *  declare function expect<V>(v: V): void;
+ * import { isBigint } from "@positron/lang";
  *
- *  declare const stringOr1n: 1n | string;
+ * declare function expect<V>(v: V): void;
  *
- *  if (isBigint(stringOr1n)) {
- *    expect<bigint>(stringOr1n);
- *    expect<1n>(stringOr1n);
- *    // OK
+ * declare const stringOr1n: string | 1n;
  *
- *    expect<2n>(stringOr1n);
- *    // TS2345: Argument of type 1n is not assignable to parameter of type 2n
- *  }
+ * if (isBigint(stringOr1n)) {
+ *   expect<bigint>(stringOr1n);
+ *   expect<1n>(stringOr1n);
+ *   // OK
+ *
+ *   // @ts-expect-error Argument of type '1n' is not assignable
+ *   expect<2n>(stringOr1n);
+ * }
  * ```
  *
  * @param maybeBigint - The value to be tested for being a `bigint`.

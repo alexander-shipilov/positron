@@ -1,14 +1,14 @@
 import type { KeyOf } from "./key-of";
 
 /**
- * The {@link getOwnNamedKeys } function returns an array of enumerable
+ * The {@link getOwnNamedKeys} function returns an array of enumerable
  * string-keyed properties found directly in the given `object`.
  *
  * @param object - The object whose enumerable string-keyed properties are to be
  *   returned.
  *
- * @returns An array of enumerable string-keyed properties found directly
- *   upon the given `object`.
+ * @returns An array of enumerable string-keyed properties found directly upon
+ *   `object`.
  *
  * @public
  */

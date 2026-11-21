@@ -3,20 +3,28 @@ import type { Any } from "../any/any";
 /**
  * The {@link IterableCollection} interface describes a key-valued collection.
  *
+ * @typeParam TKey - The type of keys in the collection.
+ *
+ * @typeParam TValue - The type of values in the collection.
+ *
  * @public
  */
 export interface IterableCollection<TKey, TValue> {
   /**
-   * The {@link IterableCollection.entries} method of the
-   * {@link IterableCollection} interface returns an iterable of key, value
-   * pairs for every entry in the collection.
+   * The {@link IterableCollection.entries} method returns an iterable of key
+   * and value pairs for every entry in the collection.
+   *
+   * @returns An iterable iterator of `[TKey, TValue]` pairs.
    */
   entries(): IterableIterator<[TKey, TValue]>;
 
   /**
-   * The {@link IterableCollection.forEach} method of the
-   * {@link IterableCollection} interface calls the callback given in parameter
-   * once for each value pair in the list.
+   * The {@link IterableCollection.forEach} method calls `callback` once for
+   * each value pair in the collection.
+   *
+   * @param callback - The function to execute for each entry.
+   *
+   * @param thisArg - The value to use as `this` when executing `callback`.
    */
   forEach(
     callback: (
@@ -28,16 +36,18 @@ export interface IterableCollection<TKey, TValue> {
   ): void;
 
   /**
-   * The {@link IterableCollection.keys} method of the {@link
-   * IterableCollection} interface returns an iterable of keys in the
-   * collection.
+   * The {@link IterableCollection.keys} method returns an iterable of keys in
+   * the collection.
+   *
+   * @returns An iterable iterator of keys.
    */
   keys(): IterableIterator<TKey>;
 
   /**
-   * The {@link IterableCollection.values} method of the
-   * {@link IterableCollection} interface returns an iterable of values in the
-   * collection
+   * The {@link IterableCollection.values} method returns an iterable of values
+   * in the collection.
+   *
+   * @returns An iterable iterator of values.
    */
   values(): IterableIterator<TValue>;
 }

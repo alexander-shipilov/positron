@@ -14,17 +14,19 @@ export const ASSERT_NON_OPTIONAL_MESSAGE = "Non-optional assertion failed";
 
 /**
  * The {@link assertNonOptional} function asserts whether the provided `value`
- * is {@link NonOptional} - it is strictly not equal to `undefined`. Returns
- * the `value` if the assertion passes, or throws an exception if it fails.
+ * is {@link NonOptional} (strictly not equal to `undefined`). Returns the
+ * `value` if the assertion passes, or throws an exception if it fails.
  *
  * @example
  * ```ts
- *  asserNotOptional(1);
- *  asserNotOptional(null);
- *  // OK
+ * import { assertNonOptional } from "@positron/lang";
  *
- *  asserNotOptional(undefined);
- *  // throws
+ * assertNonOptional(1);
+ * assertNonOptional(null);
+ * // OK
+ *
+ * assertNonOptional(undefined);
+ * // throws
  * ```
  *
  * @param value - The value to assert for non-optionality.
@@ -34,8 +36,8 @@ export const ASSERT_NON_OPTIONAL_MESSAGE = "Non-optional assertion failed";
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is `undefined` and no custom error
+ *   is specified.
  *
  * @public
  */

@@ -4,19 +4,20 @@
  *
  * @example
  * ```ts
- *  declare function expect<V>(v: V): void;
+ * import { isNull } from "@positron/lang";
  *
- *  declare const stringOrNull: null | string;
+ * declare function expect<V>(v: V): void;
  *
- *  if (isNull(stringOrNull)) {
- *    expect<null>(stringOrNull);
- *    expect<null | string>(stringOrNull);
- *    // OK
+ * declare const stringOrNull: string | null;
  *
- *    expect<string>(stringOrNull);
- *    // TS2345: Argument of type 'null' is not assignable to parameter of
- *    // type 'string'
- *  }
+ * if (isNull(stringOrNull)) {
+ *   expect<null>(stringOrNull);
+ *   expect<string | null>(stringOrNull);
+ *   // OK
+ *
+ *   // @ts-expect-error Argument of type 'null' is not assignable
+ *   expect<string>(stringOrNull);
+ * }
  * ```
  *
  * @param maybeNull - The value to be tested for being a `null` literal.

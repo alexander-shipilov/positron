@@ -3,19 +3,23 @@ import { Type } from "./type";
 /**
  * The {@link typeOf} function returns the type of the passed `value`.
  *
- * This function acts the same way as the `typeof` operator, except for
- * `null`, for which it returns "null".
+ * This function acts the same way as the `typeof` operator, except for `null`,
+ * for which it returns {@link Type.Null}.
  *
  * @example
  * ```ts
- *  console.log(typeOf(""));
- *  // >> "string"
+ * import { typeOf } from "@positron/lang";
  *
- *  console.log(typeOf(null));
- *  // >> "null"
+ * console.log(typeOf(""));
+ * // >> "string"
+ *
+ * console.log(typeOf(null));
+ * // >> "null"
  * ```
  *
- * @param value - The value
+ * @param value - The value to inspect.
+ *
+ * @returns The {@link Type} member corresponding to `value`.
  *
  * @public
  */

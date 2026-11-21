@@ -12,29 +12,31 @@ import { assertType } from "./assert-type";
 export const ASSERT_FINITE_MESSAGE = "Finite number assertion failed";
 
 /**
- * The {@link assertFinite} function asserts whether the provided `value`
- * is a finite number. Returns the `value` if the assertion passes, or throws
- * an exception if it fails.
+ * The {@link assertFinite} function asserts whether the provided `value` is a
+ * finite number. Returns the `value` if the assertion passes, or throws an
+ * exception if it fails.
  *
  * @example
  * ```ts
- *  assertFinite(0);
- *  // OK
+ * import { assertFinite } from "@positron/lang";
  *
- *  assertFinite(Infinity);
- *  assertFinite(NaN);
- *  // throws
+ * assertFinite(0);
+ * // OK
+ *
+ * assertFinite(Infinity);
+ * assertFinite(NaN);
+ * // throws
  * ```
  *
- * @param value - The value to assert for being finite number.
+ * @param value - The value to assert for being a finite number.
  *
  * @param errorParams - The parameters that will be passed to the {@link error}
  *   function to create an error if the assertion fails.
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is not a finite number and no
+ *   custom error is specified.
  *
  * @public
  */

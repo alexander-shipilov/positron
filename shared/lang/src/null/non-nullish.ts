@@ -4,11 +4,13 @@
  *
  * @example
  * ```ts
- *  type Foo = Nullish<number | string>
- *  // number | string | null
+ * import type { NonNullish, Nullish } from "@positron/lang";
  *
- *  type NonNullishFoo = NonNullish<null | number | string>
- *  // number | string
+ * type Foo = Nullish<number | string>;
+ * // number | string | null
+ *
+ * type NonNullishFoo = NonNullish<number | string | null>;
+ * // number | string
  * ```
  *
  * @typeParam TType - The type to exclude `null` from.

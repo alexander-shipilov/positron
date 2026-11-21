@@ -5,7 +5,10 @@ import { isNumber } from "../number/is-number";
  * The {@link isArrayLike} type-guard function determines whether the passed
  * `maybeArrayLike` is an `ArrayLike` object.
  *
- * @param maybeArrayLike - Value to check
+ * @param maybeArrayLike - The value to check.
+ *
+ * @returns The boolean value `true` if `maybeArrayLike` has a numeric `length`
+ *   property; otherwise, `false`.
  *
  * @public
  */

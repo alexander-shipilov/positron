@@ -7,6 +7,8 @@ import { isString } from "./is-string";
  *
  * @param stringLike - The value to be converted.
  *
+ * @returns The converted `string` value.
+ *
  * @public
  */
 export function toString(stringLike: StringLike): string {

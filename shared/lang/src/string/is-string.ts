@@ -2,24 +2,25 @@ import { Type } from "../type/type";
 import { typeOf } from "../type/type-of";
 
 /**
- * The {@link isString} type-guard function that determines whether the type of
- * the passed value `maybeString` extends the `string` type.
+ * The {@link isString} type-guard function determines whether the type of the
+ * passed value `maybeString` extends the `string` type.
  *
  * @example
  * ```ts
- *  declare function expect<V>(v: V): void;
+ * import { isString } from "@positron/lang";
  *
- *  declare const fooOrNumber: "foo" | number;
+ * declare function expect<V>(v: V): void;
  *
- *  if (isString(fooOrNumber)) {
- *    expect<string>(fooOrNumber);
- *    expect<"foo">(fooOrNumber);
- *    // OK
+ * declare const fooOrNumber: number | "foo";
  *
- *    expect<"bar">(fooOrNumber);
- *    // TS2345: Argument of type "foo" is not assignable to parameter of
- *    // type "bar"
- *  }
+ * if (isString(fooOrNumber)) {
+ *   expect<string>(fooOrNumber);
+ *   expect<"foo">(fooOrNumber);
+ *   // OK
+ *
+ *   // @ts-expect-error Argument of type 'foo' is not assignable
+ *   expect<"bar">(fooOrNumber);
+ * }
  * ```
  *
  * @param maybeString - The value to be tested for being a `string`.

@@ -1,16 +1,18 @@
 /**
  * The {@link KeyOf} type constructs a new type containing keys of the passed
- * `TValue` type. Additionally, it may add constraints to these key.
+ * `TValue` type. Additionally, it may add constraints to these keys.
  *
  * @example
  * ```ts
- *  type Test = { bar: unknown, foo: unknown }
+ * import type { KeyOf } from "@positron/lang";
  *
- *  type TestKeys1 = KeyOf<Test>
- *  // 'bar' | 'foo'
+ * type Test = { bar: unknown; foo: unknown };
  *
- *  type TestKeys2 = KeyOf<Test, 'foo' | 'ted'>
- *  // 'foo'
+ * type TestKeys1 = KeyOf<Test>;
+ * // 'bar' | 'foo'
+ *
+ * type TestKeys2 = KeyOf<Test, "foo" | "ted">;
+ * // 'foo'
  * ```
  *
  * @typeParam TValue - The type to get keys of.

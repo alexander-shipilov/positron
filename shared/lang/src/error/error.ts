@@ -9,18 +9,22 @@ import type { ErrorMessage } from "./error-message";
  *
  * @example
  * ```ts
- *  const error1 = error("Something went wrong");
- *  console.log(error1 instanceof Error);
- *  // >> `true`
+ * import { error } from "@positron/lang";
  *
- *  const error2 = error("Something went wrong", TypeError);
- *  console.log(error2 instanceof TypeError);
- *  // >> `true
+ * const error1 = error("Something went wrong");
+ * console.log(error1 instanceof Error);
+ * // >> true
+ *
+ * const error2 = error("Something went wrong", TypeError);
+ * console.log(error2 instanceof TypeError);
+ * // >> true
  * ```
  *
  * @param message - An error message or a function to generate it.
  *
  * @param ErrorClass - The class to create an instance of error.
+ *
+ * @returns An `Error` instance created from `message` and `ErrorClass`.
  *
  * @public
  */

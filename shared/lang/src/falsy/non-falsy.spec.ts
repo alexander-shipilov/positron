@@ -14,8 +14,8 @@ describe("type NonFalsy<T>", () => {
     expectTypeOf<NonFalsy<0 | X>>().toEqualTypeOf<X>();
     expectTypeOf<NonFalsy<0n | X>>().toEqualTypeOf<X>();
     expectTypeOf<NonFalsy<false | X>>().toEqualTypeOf<X>();
-    expectTypeOf<NonFalsy<null | X>>().toEqualTypeOf<X>();
-    expectTypeOf<NonFalsy<undefined | X>>().toEqualTypeOf<X>();
+    expectTypeOf<NonFalsy<X | null>>().toEqualTypeOf<X>();
+    expectTypeOf<NonFalsy<X | undefined>>().toEqualTypeOf<X>();
   });
 
   it("should be `T` if `T` is not falsy", () => {

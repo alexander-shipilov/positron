@@ -1,31 +1,34 @@
 import { isNonNullable } from "../null/is-non-nullable";
 
 /**
- * The {@link hasKey} function determines whether the passed `value` has the
- * property keyed by the given `key`.
+ * The {@link hasKey} type-guard function determines whether the passed `value`
+ * has the property keyed by the given `key`.
  *
  * @remarks
- *   {@link hasKey} is a type-guard function that determines whether the
- *   provided `value` conforms to the type `Record<TKey, unknown>`.
+ *   {@link hasKey} determines whether the provided `value` conforms to the
+ *   type `Record<TKey, unknown>`.
  *
  * @example
  * ```ts
- *  declare const someValue: unknown;
+ * import { hasKey } from "@positron/lang";
  *
- *  // @ts-expect-error TS18046: someValue is of type unknown
- *  console.log(someValue.foo);
+ * declare const someValue: unknown;
  *
- *  if (hasKey(someValue, "foo")) {
- *    console.log(someValue.foo);
- *    // OK
- *  }
+ * // @ts-expect-error TS18046: someValue is of type unknown
+ * console.log(someValue.foo);
+ *
+ * if (hasKey(someValue, "foo")) {
+ *   console.log(someValue.foo);
+ *   // OK
+ * }
  * ```
  *
  * @param value - The value to check key presence of.
  *
- * @param key - The key to check
+ * @param key - The key to check.
  *
- * @returns `true` if `value` has the property `key`; otherwise, `false`.
+ * @returns The boolean value `true` if `value` has the property `key`;
+ *   otherwise, `false`.
  *
  * @public
  */

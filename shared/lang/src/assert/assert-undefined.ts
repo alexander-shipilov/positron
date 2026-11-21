@@ -17,24 +17,26 @@ export const ASSERT_UNDEFINED_MESSAGE = "Undefined assertion failed";
  *
  * @example
  * ```ts
- *  assertUndefined(undefined);
- *  // OK
+ * import { assertUndefined } from "@positron/lang";
  *
- *  assertUndefined(1);
- *  assertUndefined(false);
- *  assertUndefined(null);
- *  // throws
+ * assertUndefined(undefined);
+ * // OK
+ *
+ * assertUndefined(1);
+ * assertUndefined(false);
+ * assertUndefined(null);
+ * // throws
  * ```
  *
- * @param value - The value to assert.
+ * @param value - The value to assert for equality to `undefined`.
  *
  * @param errorParams - The parameters that will be passed to the {@link error}
  *   function to create an error if the assertion fails.
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is not strictly equal to
+ *   `undefined` and no custom error is specified.
  *
  * @public
  */

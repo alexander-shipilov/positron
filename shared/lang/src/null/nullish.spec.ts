@@ -7,7 +7,7 @@ import type { Nullish } from "./nullish";
 
 describe("type Nullish<T>", () => {
   it("should add `null` to `T`", () => {
-    expectTypeOf<Nullish<number>>().toEqualTypeOf<null | number>();
+    expectTypeOf<Nullish<number>>().toEqualTypeOf<number | null>();
   });
 
   it("should be `null` if `T` is `never`", () => {

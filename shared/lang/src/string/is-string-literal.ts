@@ -3,27 +3,37 @@ import type { IsIndexerKey } from "../key/is-indexer-key";
 import type { ExtractOne } from "../utility/extract-one";
 
 /**
- * The {@link IsStringLiteral} type constructs a boolean literal which
- * equals to the `true` if the passed `TValue` is a literal string. This means
- * that `TValue` is a string of finite length.
+ * The {@link IsStringLiteral} type constructs a boolean literal which equals
+ * `true` if the passed `TValue` is a literal string. This means that `TValue`
+ * is a string of finite length.
  *
  * @example
+ * ```ts
+ * import type { IsStringLiteral } from "@positron/lang";
+ *
+ * type T1 = IsStringLiteral<"foo">;
+ * // true
+ *
+ * type T2 = IsStringLiteral<"bar" | "foo">;
+ * // true
+ *
+ * type T3 = IsStringLiteral<string>;
+ * // false
+ *
+ * type T4 = IsStringLiteral<Uppercase<string>>;
+ * // false
+ *
+ * type T5 = IsStringLiteral<`foo${string}`>;
+ * // false
+ *
+ * type T6 = IsStringLiteral<`foo${number}`>;
+ * // false
+ *
+ * type T7 = IsStringLiteral<"foo" | `foo${number}`>;
+ * // false
  * ```
- *  type T1 = IsStringLiteral<"foo">;
- *  // true
- *  type T2 = IsStringLiteral<"bar" | "foo">;
- *  // true
- *  type T3 = IsStringLiteral<string>;
- *  // false
- *  type T4 = IsStringLiteral<Uppercase<string>>;
- *  // false
- *  type T5 = IsStringLiteral<`foo${string}`>;
- *  // false
- *  type T6 = IsStringLiteral<`foo${number}`>;
- *  // false
- *  type T7: IsStringLiteral<"foo" | `foo${number}`>;
- *  // false
- * ```
+ *
+ * @typeParam TValue - The string type to check.
  *
  * @public
  */

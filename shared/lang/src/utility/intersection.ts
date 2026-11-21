@@ -13,6 +13,8 @@ import type { IsAnyLike } from "../any/is-any-like";
  *
  * @example
  * ```ts
+ *  import type { Intersection } from "@positron/lang";
+ *
  *  type T1 = Intersection<number>
  *  // number
  *

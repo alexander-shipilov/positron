@@ -19,24 +19,26 @@ export const ASSERT_NON_FALSY_MESSAGE = "Non-falsy assertion failed";
  *
  * @example
  * ```ts
- *  assertNonFalsy(1);
- *  assertNonFalsy("foo");
- *  // OK
+ * import { assertNonFalsy } from "@positron/lang";
  *
- *  assertNonFalsy(0);
- *  assertNonFalsy("");
- *  // throws
+ * assertNonFalsy(1);
+ * assertNonFalsy("foo");
+ * // OK
+ *
+ * assertNonFalsy(0);
+ * assertNonFalsy("");
+ * // throws
  * ```
  *
- * @param value - The value to assert for truthy.
+ * @param value - The value to assert for being non-falsy.
  *
  * @param errorParams - The parameters that will be passed to the {@link error}
  *   function to create an error if the assertion fails.
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is falsy and no custom error is
+ *   specified.
  *
  * @public
  */

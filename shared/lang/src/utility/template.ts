@@ -4,23 +4,27 @@ import { toString } from "../string/to-string";
 import type { TemplateFunction } from "./template-function";
 
 /**
- * The {@link template} function creates a function to format template string
+ * The {@link template} function creates a function to format a template string
  * with the passed arguments.
  *
  * @example
  * ```ts
- *  const message = template`${0}, ${1} world!`
+ * import { template } from "@positron/lang";
  *
- *  message('Hello', 'brave new')
- *  // Hello, brave new world!
+ * const message = template`${0}, ${1} world!`;
  *
- *  message('Goodbye', 'cruel')
- *  // Goodbye, cruel world!
+ * console.log(message("Hello", "brave new"));
+ * // >> "Hello, brave new world!"
+ *
+ * console.log(message("Goodbye", "cruel"));
+ * // >> "Goodbye, cruel world!"
  * ```
  *
- * @param parts - String parts
+ * @param parts - String parts.
  *
- * @param indexes - Arguments indexes
+ * @param indexes - Argument indexes.
+ *
+ * @returns A template formatting function.
  *
  * @public
  */

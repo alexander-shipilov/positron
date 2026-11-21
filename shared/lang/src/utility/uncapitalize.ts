@@ -1,11 +1,18 @@
 /**
- * The {@link uncapitalize} function converts first letter of the passed string
- * to the lower case. Added for compatibility with `Uncapitalize` type.
+ * The {@link uncapitalize} function converts the first letter of the passed
+ * string to lower case. Added for compatibility with the `Uncapitalize` type.
  *
  * @example
  * ```ts
- *  // todo: Add example
+ * import { uncapitalize } from "@positron/lang";
+ *
+ * console.log(uncapitalize("FooBar"));
+ * // >> "fooBar"
  * ```
+ *
+ * @param value - The string to uncapitalize.
+ *
+ * @returns The uncapitalized string.
  *
  * @public
  */

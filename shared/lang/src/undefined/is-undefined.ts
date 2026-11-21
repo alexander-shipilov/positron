@@ -4,19 +4,20 @@
  *
  * @example
  * ```ts
- *  declare function expect<V>(v: V): void;
+ * import { isUndefined } from "@positron/lang";
  *
- *  declare const t: string | undefined;
+ * declare function expect<V>(v: V): void;
  *
- *  if (isUndefined(t)) {
- *    expect<undefined>(t);
- *    expect<string | undefined>(t);
- *    // OK
+ * declare const t: string | undefined;
  *
- *    expect<string>(t);
- *    // TS2345: Argument of type 'undefined' is not assignable to parameter of
- *    // type 'string'
- *  }
+ * if (isUndefined(t)) {
+ *   expect<undefined>(t);
+ *   expect<string | undefined>(t);
+ *   // OK
+ *
+ *   // @ts-expect-error Argument of type 'undefined' is not assignable
+ *   expect<string>(t);
+ * }
  * ```
  *
  * @param maybeUndefined - The value to be tested for being an `undefined`

@@ -1,20 +1,23 @@
 import type { IsAnyLike } from "../any/is-any-like";
 
 /**
- * The {@link IsUniqueSymbol} type constructs a boolean literal which equals to
- * the `true` if the passed `TType` is a `unique symbol`.
+ * The {@link IsUniqueSymbol} type constructs a boolean literal which equals
+ * `true` if the passed `TValue` is a `unique symbol`.
  *
  * @example
- * ```
- *  declare const unique: unique symbol;
+ * ```ts
+ * import type { IsUniqueSymbol } from "@positron/lang";
  *
- *  type T1 = IsUniqueSymbol<typeof unique>;
- *  // true
- *  type T2 = IsUniqueSymbol<symbol>;
- *  // false
+ * declare const unique: unique symbol;
+ *
+ * type T1 = IsUniqueSymbol<typeof unique>;
+ * // true
+ *
+ * type T2 = IsUniqueSymbol<symbol>;
+ * // false
  * ```
  *
- * @typeParam TType - Type to check.
+ * @typeParam TValue - The symbol type to check.
  *
  * @public
  */

@@ -8,8 +8,8 @@ const isEnumerableProperty = (() => {
 })();
 
 /**
- * The {@link getOwnSymbolKeys} function returns an array of enumerable
- * symbol properties found directly upon the given `object`.
+ * The {@link getOwnSymbolKeys} function returns an array of enumerable symbol
+ * properties found directly upon the given `object`.
  *
  * @remarks
  *   If you need an array of all symbol properties (including non-enumerable
@@ -17,21 +17,23 @@ const isEnumerableProperty = (() => {
  *
  * @example
  * ```ts
- *  const foo = Symbol("foo");
+ * import { getOwnSymbolKeys } from "@positron/lang";
  *
- *  const object = {
- *    [foo]: "localSymbol"
- *  };
+ * const foo = Symbol("foo");
  *
- *  console.log(getSymbolKeys(object));
- *  // [Symbol(foo)]
+ * const object = {
+ *   [foo]: "localSymbol",
+ * };
+ *
+ * console.log(getOwnSymbolKeys(object));
+ * // >> [Symbol(foo)]
  * ```
  *
  * @param object - The object whose enumerable symbol properties are to be
  *   returned.
  *
- * @returns An array of enumerable symbol properties found directly upon the
- *   given object.
+ * @returns An array of enumerable symbol properties found directly upon
+ *   `object`.
  *
  * @public
  */

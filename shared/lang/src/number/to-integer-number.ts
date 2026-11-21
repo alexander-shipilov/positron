@@ -14,27 +14,31 @@ import { toFiniteNumber } from "./to-finite-number";
  *
  * @example
  * ```ts
- *  const integer1 = toIntegerNumber(1)
- *  // 1
+ * import { toIntegerNumber } from "@positron/lang";
  *
- *  const integer2 = toIntegerNumber('1e10')
- *  // 10_000_000_000
+ * const integer1 = toIntegerNumber(1);
+ * // 1
  *
- *  const integer3 = toIntegerNumber(1.1)
- *  // RangeError
+ * const integer2 = toIntegerNumber("1e10");
+ * // 10_000_000_000
  *
- *  const integer4 = toIntegerNumber(Infinity)
- *  // RangeError
+ * const integer3 = toIntegerNumber(1.1);
+ * // throws RangeError
+ *
+ * const integer4 = toIntegerNumber(Infinity);
+ * // throws RangeError
  * ```
  *
  * @param numericLike - The {@link NumericLike} value to be converted to an
  *   integer number.
  *
- * @throws RangeError if the passed `numericLike` is a number that is not an
+ * @returns The converted integer number.
+ *
+ * @throws `RangeError` If the passed `numericLike` is a number that is not an
  *   integer.
  *
- * @throws SyntaxError if the passed `numericLike` cannot be converted to
- *   an integer number.
+ * @throws `SyntaxError` If the passed `numericLike` cannot be converted to an
+ *   integer number.
  *
  * @public
  */

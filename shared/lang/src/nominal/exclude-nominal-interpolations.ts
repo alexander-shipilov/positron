@@ -4,17 +4,24 @@ import type { StringLike } from "../string/string-like";
 import type { Nominal } from "./nominal";
 
 /**
- * The type {@link ExcludeNominalInterpolations} excludes nominal
+ * The {@link ExcludeNominalInterpolations} type excludes nominal
  * meta-information from a given string type `TString` and all interpolations.
  *
  * @example
  * ```ts
- *  type T1 = ExcludeNominalInterpolations<Nominal<string>>;
- *  // string
+ * import type {
+ *   ExcludeNominalInterpolations,
+ *   Nominal,
+ * } from "@positron/lang";
  *
- *  type T2 = ExcludeNominalInterpolations<`foo${Nominal<string>}`>;
- *  // `foo${string}`
+ * type T1 = ExcludeNominalInterpolations<Nominal<string>>;
+ * // string
+ *
+ * type T2 = ExcludeNominalInterpolations<`foo${Nominal<string>}`>;
+ * // `foo${string}`
  * ```
+ *
+ * @typeParam TString - The string type to exclude nominal metadata from.
  *
  * @public
  */

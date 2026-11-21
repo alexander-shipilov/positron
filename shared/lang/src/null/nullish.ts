@@ -4,12 +4,14 @@
  *
  * @example
  * ```ts
- *  type NullishNumber = Nullish<number>
- *  // number | null
+ * import type { Nullish } from "@positron/lang";
+ *
+ * type NullishNumber = Nullish<number>;
+ * // number | null
  * ```
  *
- * @param TType - The type to make nullish.
+ * @typeParam TType - The type to make nullish.
  *
  * @public
  */
-export type Nullish<TType> = null | TType;
+export type Nullish<TType> = TType | null;

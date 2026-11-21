@@ -6,6 +6,8 @@ import type { Optional } from "./optional";
  *
  * @example
  * ```ts
+ *  import type { PartialOptional } from "@positron/lang";
+ *
  *  type Foo = { bar: number, foo: string };
  *
  *  type PartialFoo = Partial<Foo>;

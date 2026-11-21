@@ -10,8 +10,8 @@ describe("type ErrorMessage", () => {
       | `ErrorLike` \
       ", () => {
     expectTypeOf<ErrorMessage>().toEqualTypeOf<
-      | (() => ErrorLike) //
-      | ErrorLike
+      | ErrorLike //
+      | (() => ErrorLike)
     >();
   });
 });

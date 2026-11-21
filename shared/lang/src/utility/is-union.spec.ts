@@ -16,7 +16,7 @@ describe("type IsUnion<T>", () => {
     expectTypeOf<IsUnion<number>>().toEqualTypeOf<false>();
     expectTypeOf<IsUnion<1>>().toEqualTypeOf<false>();
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    expectTypeOf<IsUnion<1 | number>>().toEqualTypeOf<false>();
+    expectTypeOf<IsUnion<number | 1>>().toEqualTypeOf<false>();
   });
 
   it("should be `false` if `T` is `never`", () => {

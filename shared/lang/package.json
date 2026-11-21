@@ -2,9 +2,19 @@
   "private": false,
   "name": "@positron/lang",
   "version": "0.0.1",
+  "description": "Core TypeScript type guards, assertions, and language utilities",
   "license": "MIT",
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
   "repository": "git@github.com:alexander-shipilov/positron.git",
+  "keywords": [
+    "assertions",
+    "javascript",
+    "lang",
+    "nominal",
+    "positron",
+    "type-guards",
+    "typescript"
+  ],
   "sideEffects": false,
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -21,7 +31,6 @@
     "_phase:build": "heft run --only build -- --clean",
     "_phase:test": "heft run --only test -- --clean",
     "build": "heft build --clean",
-    "docs": "npm run build & api-documenter markdown -i dist -o docs",
     "deps": "npx dependency-cruiser src --output-type dot | dot -T svg > deps.svg",
     "test": "heft test --clean"
   },
@@ -30,8 +39,8 @@
   },
   "devDependencies": {
     "@jest/globals": "~30.5.2",
-    "@microsoft/api-documenter": "~7.30.18",
-    "@positron/heft-rig": "workspace:*",
+    "@microsoft/api-extractor": "~7.59.4",
+    "@positron/heft-lib-rig": "workspace:*",
     "@rushstack/heft": "~1.3.3",
     "dependency-cruiser": "^18.7.0",
     "eslint": "^10.13.0",

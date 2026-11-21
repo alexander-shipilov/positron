@@ -10,6 +10,8 @@ import type { Intersection } from "./intersection";
  *
  * @example
  * ```ts
+ *  import type { ExtractOne } from "@positron/lang";
+ *
  *  type T1 = ExtractOne<number | string>
  *  // number
  *

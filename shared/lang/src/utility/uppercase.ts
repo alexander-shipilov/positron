@@ -1,11 +1,18 @@
 /**
- * The {@link uppercase} function converts the given string converted to
- * uppercase. Added for compatibility with `Uppercase` type.
+ * The {@link uppercase} function converts the given string to uppercase. Added
+ * for compatibility with the `Uppercase` type.
  *
  * @example
  * ```ts
- *  // todo: Add example
+ * import { uppercase } from "@positron/lang";
+ *
+ * console.log(uppercase("fooBar"));
+ * // >> "FOOBAR"
  * ```
+ *
+ * @param value - The string to convert to uppercase.
+ *
+ * @returns The uppercased string.
  *
  * @public
  */

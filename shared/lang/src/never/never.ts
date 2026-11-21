@@ -17,18 +17,18 @@ export const NEVER_MESSAGE = "Never exception";
  *
  * @example
  * ```ts
- *  /* eslint-disable jsdoc/require-jsdoc *\/
+ * import { never } from "@positron/lang";
  *
- *  function assertArray(maybeArray: null | unknown[]): unknown[] {
- *    return Array.isArray(maybeArray) ? maybeArray : never("Array expected");
- *  }
+ * function assertArray(maybeArray: unknown[] | null): unknown[] {
+ *   return Array.isArray(maybeArray) ? maybeArray : never("Array expected");
+ * }
  * ```
  *
  * @param errorParams - The parameters that will be passed to the {@link error}
  *   function to create an error.
  *
- * @throws {@link NeverException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link NeverException} If no custom error class is provided in
+ *   `errorParams`.
  *
  * @public
  */

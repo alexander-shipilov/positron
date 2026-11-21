@@ -31,10 +31,10 @@ describe("type IsStringLiteral<T>", () => {
     expectTypeOf<
       IsStringLiteral<
         | `a${"b"}`
-        | `a${1}`
-        | `a${2n}`
         | `a${`b${"c"}`}`
         | `a${`b${1}`}`
+        | `a${1}`
+        | `a${2n}`
         | `a${boolean}`
         | `a${null}`
         | `a${undefined}`

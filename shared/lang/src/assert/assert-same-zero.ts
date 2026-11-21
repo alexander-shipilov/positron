@@ -27,18 +27,20 @@ export const ASSERT_SAME_ZERO_MESSAGE =
  *   {@link assertSameZero}, but uses `===` operator to check for equality.
  *
  *   The {@link assertSame} function works similarly to
- *   {@link assertSameZero}, but uses the `Object.is` function to check
- *   for equality.
+ *   {@link assertSameZero}, but uses the `Object.is` function to check for
+ *   equality.
  *
  * @example
  * ```ts
- *  assertSameZero(1, 1);
- *  assertSameZero(NaN, NaN);
- *  assertSameZero(-0, 0);
- *  // OK
+ * import { assertSameZero } from "@positron/lang";
+ *
+ * assertSameZero(1, 1);
+ * assertSameZero(NaN, NaN);
+ * assertSameZero(-0, 0);
+ * // OK
  * ```
  *
- * @param value - The value to asser for equality to `expected`.
+ * @param value - The value to assert for equality to `expected`.
  *
  * @param expected - The expected value.
  *
@@ -47,8 +49,8 @@ export const ASSERT_SAME_ZERO_MESSAGE =
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` and `expected` are not equal
+ *   under same-value-zero comparison and no custom error is specified.
  *
  * @public
  */

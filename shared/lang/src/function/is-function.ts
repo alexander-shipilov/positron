@@ -3,25 +3,24 @@ import { Type } from "../type/type";
 import { typeOf } from "../type/type-of";
 
 /**
- * The {@link isFunction} type-guard function that determines whether the type
- * of the passed value `maybeFunction` extends the `Function` type.
+ * The {@link isFunction} type-guard function determines whether the type of
+ * the passed value `maybeFunction` extends the `Function` type.
  *
  * @example
  * ```ts
- *  declare function expect<V>(v: V): void;
+ * import { isFunction } from "@positron/lang";
  *
- *  declare const stringOrToString: ((value: number) => string) | string;
+ * declare function expect<V>(v: V): void;
  *
- *  if (isFunction(stringOrToString)) {
- *    expect<(value: number) => string>(stringOrToString);
- *    // OK
+ * declare const stringOrToString: string | ((value: number) => string);
  *
- *    expect<() => string>(stringOrToString);
- *    // TS2345: Argument of type '(value: number) => string' is not assignable
- *    // to parameter of type '() => string'
- *    // Target signature provides too few arguments.
- *    // Expected '1' or more, but got '0'
- *  }
+ * if (isFunction(stringOrToString)) {
+ *   expect<(value: number) => string>(stringOrToString);
+ *   // OK
+ *
+ *   // @ts-expect-error Target signature provides too few arguments
+ *   expect<() => string>(stringOrToString);
+ * }
  * ```
  *
  * @param maybeFunction - The value to be tested for being a function.

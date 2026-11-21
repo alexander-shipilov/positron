@@ -6,6 +6,17 @@ import { isIntegerNumber } from "../number/is-integer-number";
 import { toString } from "../string/to-string";
 
 /**
+ * The {@link toTypedNumberTests} function registers shared Jest assertions
+ * for numeric conversion functions.
+ *
+ * @param toTypedNumber - The numeric conversion function under test.
+ *
+ * @param typeName - The human-readable name of the target numeric subtype.
+ *
+ * @param valid - Additional valid numbers for the target numeric subtype.
+ *
+ * @param invalid - Additional invalid numbers for the target numeric subtype.
+ *
  * @internal
  */
 export function toTypedNumberTests(

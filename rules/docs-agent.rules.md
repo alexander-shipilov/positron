@@ -34,9 +34,15 @@ a pre-1.0 (`0.x.x`) package in accordance with `docs.rules.md`,
 
 - Replacing directory imports with direct file imports.
 
-- Deleting empty files and intermediate barrel files (`src/**/index.ts`).
+- Deleting empty files, intermediate barrel files (`src/**/index.ts`), and
+  legacy package-level `docs/` directories.
 
 - Regenerating root `src/index.ts` from release tags.
+
+- Migrating package configuration files (`package.json`, `tsconfig.json`,
+  `config/rig.json`, `eslint.config.mjs`, `jest.config.mjs`, `README.md`)
+  to `package.rules.md` and removing legacy local `api-documenter.json` or
+  `docs/` artifacts.
 
 - Renaming local entities and function, method, or type parameters along with
   all references.
@@ -93,8 +99,10 @@ condition triggers, processing MUST halt immediately and report the violation:
 
 1. Verify all Blocking Stop Conditions (Section 4).
 
-2. Normalize file names, remove intermediate `src/**/index.ts` files, and
-   rewrite imports to direct file paths (`ts-files.rules.md`).
+2. Normalize package configuration (`package.rules.md`), file names (including
+   matching `*.spec.ts` / `*.test.ts` names to their target entities),
+   remove intermediate `src/**/index.ts` files, and rewrite imports to direct
+   file paths (`ts-files.rules.md`).
 
 3. Regenerate root `src/index.ts` from release tags (`ts-files.rules.md`).
 

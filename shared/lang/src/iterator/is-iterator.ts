@@ -8,20 +8,19 @@ import { hasKey } from "../key/has-key";
  * @remarks
  *   The {@link isIterator} function:
  *
- *   - checks for the presence of the `next` property (not necessarily own)
- *   which should be a function;
+ *   - checks for the presence of the `next` property (not necessarily own),
+ *     which must be a function;
  *
- *   - does not check `next` function return value (that should be
- *   `IteratorResult`) because calling of the `next()` changes the iterator
- *   state;
+ *   - does not check the `next` function return value (that should be
+ *     `IteratorResult`) because calling `next()` changes the iterator state;
  *
  *   - does not check the presence of the `return` and `throw` properties
- *   because both of them are optional and could be omitted;
+ *     because both of them are optional and may be omitted.
  *
  * @param maybeIterator - The value to be checked.
  *
- * @returns `true` if the `maybeIterator` has property `next` which is a
- *   function.
+ * @returns The boolean value `true` if `maybeIterator` has a `next` property
+ *   that is a function; otherwise, `false`.
  *
  * @public
  */

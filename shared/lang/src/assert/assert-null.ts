@@ -18,12 +18,14 @@ export const ASSERT_NULL_MESSAGE = "Null assertion failed";
  *
  * @example
  * ```ts
- *  assertNull(null);
- *  // OK
+ * import { assertNull } from "@positron/lang";
  *
- *  assertNull(1);
- *  assertNull(undefined);
- *  // throws
+ * assertNull(null);
+ * // OK
+ *
+ * assertNull(1);
+ * assertNull(undefined);
+ * // throws
  * ```
  *
  * @param value - The value to assert for equality to `null`.
@@ -33,8 +35,8 @@ export const ASSERT_NULL_MESSAGE = "Null assertion failed";
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `value` is not strictly equal to `null`
+ *   and no custom error is specified.
  *
  * @public
  */

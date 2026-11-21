@@ -4,6 +4,8 @@
  *
  * @example
  * ```ts
+ *  import { capitalize } from "@positron/lang";
+ *
  *  const getter = <TKey extends string>(key: TKey): `get${Capitalize<TKey>}`
  *   => `get${capitalize(key)}`
  * ```

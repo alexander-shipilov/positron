@@ -4,25 +4,27 @@ import { never } from "../never/never";
 import { AssertException } from "./assert-exception";
 
 /**
- * The {@link ASSERT_MESSAGE} constant represents the default error
- * message thrown by the {@link assert} function.
+ * The {@link ASSERT_MESSAGE} constant represents the default error message
+ * thrown by the {@link assert} function.
  *
  * @public
  */
 export const ASSERT_MESSAGE = "Assertion failed";
 
 /**
- * The {@link assert} function asserts if the passed `value` satisfies to
+ * The {@link assert} function asserts whether the passed `value` satisfies
  * the specified `predicate`. Returns the `value` if the assertion passes, or
  * throws an exception if it fails.
  *
  * @example
  * ```ts
- *  assert([], (value) => value.length === 0);
- *  // OK
+ * import { assert } from "@positron/lang";
  *
- *  assert([], (value) => value.length !== 0);
- *  // throws
+ * assert([], (value) => value.length === 0);
+ * // OK
+ *
+ * assert([], (value) => value.length !== 0);
+ * // throws
  * ```
  *
  * @param value - The value to assert.
@@ -34,8 +36,8 @@ export const ASSERT_MESSAGE = "Assertion failed";
  *
  * @returns The passed `value`.
  *
- * @throws {@link AssertException} by default, or an error created using the
- *   {@link error} function.
+ * @throws {@link AssertException} If `predicate(value)` returns `false` and no
+ *   custom error is specified.
  *
  * @public
  */
