@@ -31,8 +31,24 @@
 - Every bullet list item (`- ...`) MUST be separated by a blank comment line
   (` *`) before the first item, between items, and after the last item.
 
-- Content inside `@remarks` and `@privateRemarks` blocks MUST be indented by
-  4 spaces from the start of the comment line (` *   ...`).
+- Continuation lines inside `@param`, `@privateRemarks`, `@remarks`,
+  `@returns`, `@throws`, and `@typeParam` tags MUST be indented by 2 spaces
+  (3 spaces after `*`).
+
+- Text in `@remarks` and `@privateRemarks` MUST start on the line following
+  the tag (a blank comment line between the tag and text is permitted):
+
+  ```ts
+  /**
+   * The {@link Foo} class represents a sample entity.
+   *
+   * @remarks
+   *   Detailed remarks text starts on a new line
+   *   with a 2-space indent (3 spaces after `*`).
+   *
+   * @public
+   */
+  ```
 
 ## 3. Summary Opening Line
 
