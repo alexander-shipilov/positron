@@ -161,7 +161,7 @@ export abstract class NumericTypeOperations implements CssNumericTypeOperationsI
    */
   public createNumericTypeFromUnit(
     unit: NumericUnit,
-    power?: number,
+    power: number = 1,
   ): NumericTypeImpl {
     const { NumericType } = this;
 

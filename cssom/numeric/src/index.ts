@@ -1,3 +1,9 @@
+/**
+ * The `@positron/cssom-numeric` package provides a modular implementation of
+ * the CSS Typed OM numeric value hierarchy.
+ *
+ * @packageDocumentation
+ */
 export type * from "./numeric-opts";
 
 export * from "./numeric";

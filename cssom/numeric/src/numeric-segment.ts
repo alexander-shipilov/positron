@@ -4,7 +4,7 @@
 export abstract class NumericSegment<TImpl> {
   protected readonly impl: TImpl;
 
-  protected constructor(impl: TImpl) {
+  public constructor(impl: TImpl) {
     this.impl = impl;
   }
 }

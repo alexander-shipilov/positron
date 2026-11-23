@@ -1,3 +1,10 @@
+/**
+ * The `@positron/css-numeric-impl` package provides implementation contracts,
+ * internal slot interfaces, unit map structures, and numeric validation
+ * helpers for CSS Typed OM engines.
+ *
+ * @packageDocumentation
+ */
 export type * from "./css-math-value-impl";
 export type * from "./css-numeric-comparer-impl";
 export type * from "./css-numeric-converter-impl";
@@ -23,12 +30,15 @@ export type * from "./internal/math-variadic-internal";
 export type * from "./internal/numeric-value-internal";
 export type * from "./internal/unit-value-internal";
 export type * from "./shared/double";
+export type * from "./shared/percent-token";
+export type * from "./shared/percent-unit";
 export type * from "./shared/power";
 export type * from "./sum/numeric-sum";
 export type * from "./sum/numeric-sum-item";
 export type * from "./type/numeric-type-entries";
 export type * from "./type/numeric-type-impl";
 export type * from "./type/numeric-type-impl-class";
+export type * from "./unit/number-unit";
 export type * from "./unit/numeric-unit";
 
 export * from "./shared/is-number-unit";
