@@ -1,5 +1,4 @@
 import type { CssMathSum } from "./css-math-sum";
-import type { CssMathVariadicClass } from "./css-math-variadic-class";
 import type { CssNumberish } from "./css-numberish";
 
 /**
@@ -8,7 +7,7 @@ import type { CssNumberish } from "./css-numberish";
  *
  * @public
  */
-export interface CssMathSumClass extends CssMathVariadicClass {
+export interface CssMathSumClass {
   /**
    * Creates a new {@link CssMathSum} object representing the sum of the
    * arguments passed into it.

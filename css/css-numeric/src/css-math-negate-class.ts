@@ -1,5 +1,4 @@
 import type { CssMathNegate } from "./css-math-negate";
-import type { CssMathUnaryClass } from "./css-math-unary-class";
 import type { CssNumberish } from "./css-numberish";
 
 /**
@@ -8,7 +7,7 @@ import type { CssNumberish } from "./css-numberish";
  *
  * @public
  */
-export interface CssMathNegateClass extends CssMathUnaryClass {
+export interface CssMathNegateClass {
   /**
    * Creates a new {@link CssMathNegate} object representing the negation of a
    * {@link CssNumericValue}.

@@ -41,6 +41,8 @@ export default defineConfig(
         {
           tags: [
             "param", //
+            "privateRemarks",
+            "remarks",
             "returns",
             "throws",
             "typeParam",

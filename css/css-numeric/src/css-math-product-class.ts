@@ -1,5 +1,4 @@
 import type { CssMathProduct } from "./css-math-product";
-import type { CssMathVariadicClass } from "./css-math-variadic-class";
 import type { CssNumberish } from "./css-numberish";
 
 /**
@@ -8,7 +7,7 @@ import type { CssNumberish } from "./css-numberish";
  *
  * @public
  */
-export interface CssMathProductClass extends CssMathVariadicClass {
+export interface CssMathProductClass {
   /**
    * Creates a new {@link CssMathProduct} object representing the product of
    * the arguments passed into it.

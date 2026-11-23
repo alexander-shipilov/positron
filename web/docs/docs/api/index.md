@@ -39,6 +39,8 @@ The `@positron/api-documenter` package provides a plugin-friendly architecture f
 
 </td><td>
 
+The `@positron/css-numeric` package provides TypeScript interfaces and contracts representing the CSS Typed OM numeric value hierarchy.
+
 
 </td></tr>
 <tr><td>
@@ -47,6 +49,8 @@ The `@positron/api-documenter` package provides a plugin-friendly architecture f
 
 
 </td><td>
+
+The `@positron/css-unit` package provides CSS unit identifiers, categorized unit sets, canonical conversion ratios, and dimension utilities.
 
 
 </td></tr>

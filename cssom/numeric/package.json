@@ -27,6 +27,7 @@
   "dependencies": {
     "@positron/lang": "workspace:*",
     "@positron/css-numeric": "workspace:*",
+    "@positron/css-numeric-impl": "workspace:*",
     "@positron/css-unit": "workspace:*"
   },
   "devDependencies": {

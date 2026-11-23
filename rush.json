@@ -460,6 +460,10 @@
       "projectFolder": "css/css-numeric",
     },
     {
+      "packageName": "@positron/css-numeric-impl",
+      "projectFolder": "css/css-numeric-impl",
+    },
+    {
       "packageName": "@positron/css-parser",
       "projectFolder": "css/css-parser",
     },

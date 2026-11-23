@@ -1,0 +1,6 @@
+{
+  "extends": "./node_modules/@positron/heft-lib-rig/profiles/default/tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2020", "DOM"]
+  }
+}

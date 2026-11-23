@@ -10,7 +10,7 @@
  * @public
  */
 export function isNonEmptyArray<TItem>(
-  maybeNonEmptyArray: TItem[],
-): maybeNonEmptyArray is [TItem, ...TItem[]] {
+  maybeNonEmptyArray: readonly TItem[],
+): maybeNonEmptyArray is readonly [TItem, ...TItem[]] {
   return maybeNonEmptyArray.length > 0;
 }

@@ -1,5 +1,4 @@
 import type { CssMathInvert } from "./css-math-invert";
-import type { CssMathUnaryClass } from "./css-math-unary-class";
 import type { CssNumberish } from "./css-numberish";
 
 /**
@@ -8,7 +7,7 @@ import type { CssNumberish } from "./css-numberish";
  *
  * @public
  */
-export interface CssMathInvertClass extends CssMathUnaryClass {
+export interface CssMathInvertClass {
   /**
    * Creates a new {@link CssMathInvert} object representing the inversion
    * (reciprocal) of a {@link CssNumericValue}.

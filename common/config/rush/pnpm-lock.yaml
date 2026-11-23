@@ -44,6 +44,46 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
 
+  ../../css/css-numeric-impl:
+    dependencies:
+      '@positron/css-numeric':
+        specifier: workspace:*
+        version: link:../css-numeric
+      '@positron/css-unit':
+        specifier: workspace:*
+        version: link:../css-unit
+      '@positron/lang':
+        specifier: workspace:*
+        version: link:../../shared/lang
+    devDependencies:
+      '@jest/globals':
+        specifier: ~30.5.2
+        version: 30.5.2
+      '@microsoft/api-extractor':
+        specifier: ~7.59.4
+        version: 7.59.4(@types/node@26.6.5)
+      '@positron/heft-lib-rig':
+        specifier: workspace:*
+        version: link:../../dev/heft-lib-rig
+      '@rushstack/heft':
+        specifier: ~1.3.3
+        version: 1.3.3(@types/node@26.6.5)
+      eslint:
+        specifier: ^10.13.0
+        version: 10.13.0(jiti@2.6.1)
+      expect-type:
+        specifier: ^1.4.0
+        version: 1.4.0
+      jest:
+        specifier: ~30.5.2
+        version: 30.5.2(@types/node@26.6.5)
+      ts-jest:
+        specifier: ~29.4.15
+        version: 29.4.15(@babel/core@7.29.13)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.29.13))(jest-util@30.5.1)(jest@30.5.2(@types/node@26.6.5))(typescript@6.0.3)
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+
   ../../css/css-parser:
     dependencies:
       '@positron/lang':
@@ -117,6 +157,9 @@ importers:
       '@positron/css-numeric':
         specifier: workspace:*
         version: link:../../css/css-numeric
+      '@positron/css-numeric-impl':
+        specifier: workspace:*
+        version: link:../../css/css-numeric-impl
       '@positron/css-unit':
         specifier: workspace:*
         version: link:../../css/css-unit
