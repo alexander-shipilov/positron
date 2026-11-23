@@ -5,6 +5,10 @@ import type { PercentUnit } from "../shared/percent-unit";
 import type { NumberUnit } from "./number-unit";
 
 /**
+ * The {@link NumericUnit} type represents all valid CSS Typed OM unit
+ * identifiers, including standard `CssUnit` keywords, {@link NumberUnit}, and
+ * {@link PercentUnit}.
+ *
  * @public
  */
 export type NumericUnit =

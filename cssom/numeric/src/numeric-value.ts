@@ -16,6 +16,10 @@ import { never } from "@positron/lang";
 import { NumericSegment } from "./numeric-segment";
 
 /**
+ * The {@link NumericValue} class implements arithmetic, aggregation, and type
+ * inspection operations for {@link @positron/css-numeric#CssNumericValue}
+ * instances.
+ *
  * @public
  */
 export class NumericValue
@@ -23,16 +27,23 @@ export class NumericValue
   implements CssNumericValueImpl
 {
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-div
+   * The {@link NumericValue.divideNumericValue} method divides `$this` by the
+   * supplied `values`.
    *
-   * The div(...values) method, when called on a CSSNumericValue `this`,
-   * must perform the following steps:
-   
-   * 1. Replace each item of `values` with the result of rectifying
-   *    a numberish value for the item, then inverting the value.
-   
-   * 2. Return the result of calling the mul() internal algorithm
-   *    with `this` and `values`.
+   * @remarks
+   *   See
+   *   {@link https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-div}.
+   *
+   * @param $this - The dividend numeric value.
+   *
+   * @param values - The divisor numbers or numeric values.
+   *
+   * @returns The resulting {@link @positron/css-numeric#CssUnitValue} or
+   *   {@link @positron/css-numeric#CssMathProduct}.
+   *
+   * @throws `TypeError` If an argument has an incompatible or invalid type.
+   *
+   * @throws `RangeError` If any divisor resolves to `0` or `-0`.
    */
   public divideNumericValue(
     $this: CssNumericValue,
@@ -49,23 +60,17 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-type
+   * The {@link NumericValue.getNumericValueType} method returns the public
+   * {@link @positron/css-numeric#CssNumericType} representation of `$this`.
    *
-   * The type() method returns a representation of the type of `this`.
+   * @remarks
+   *   See
+   *   {@link https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-type}.
    *
-   * When called, it must perform the following steps:
+   * @param $this - The target numeric value.
    *
-   * 1. Let `result` be a new CSSNumericType.
-   *
-   * 2. For each `baseType` → `power` in the type of `this`,
-   *
-   *    1. If `power` is not 0, set `result`[`baseType`] to `power`.
-   *
-   * 3. If the percent hint of `this` is not null,
-   *
-   *    1. Set percentHint to the percent hint of `this`.
-   *
-   * 4. Return `result`.
+   * @returns A new {@link @positron/css-numeric#CssNumericType} dictionary
+   *   with non-zero exponents.
    */
   public getNumericValueType($this: CssNumericValue): CssNumericType {
     const { type } = this.impl.getInternal($this);
@@ -86,25 +91,18 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#cssmath-invert-a-cssnumericvalue
+   * The {@link NumericValue.invertNumericValue} method returns the
+   * multiplicative inverse of `$this`.
    *
-   * To invert a CSSNumericValue `this`:
+   * @remarks
+   *   See
+   *   {@link https://www.w3.org/TR/css-typed-om-1/#cssmath-invert-a-cssnumericvalue}.
    *
-   * 1. If `this` is a CSSMathInvert object, return `this`’s value internal
-   *    slot.
+   * @param $this - The numeric value to invert.
    *
-   * 2. If `this` is a CSSUnitValue object with unit internal slot set to
-   *    "number":
+   * @returns The inverted {@link @positron/css-numeric#CssNumericValue}.
    *
-   *    1. If `this`’s value internal slot is set to 0 or -0,
-   *       throw a RangeError.
-   *
-   *    2. Else return a new CSSUnitValue with the unit internal slot set
-   *       to "number", and a value internal slot set to 1 divided
-   *       by `this`’s value internal slot.
-   *
-   * 3. Otherwise, return a new CSSMathInvert object whose value internal
-   *    slot is set to `this`.
+   * @throws `RangeError` If `$this` is a unitless `0` or `-0`.
    */
   public invertNumericValue($this: CssNumericValue): CssNumericValue {
     const { impl } = this;
@@ -127,28 +125,21 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-max
+   * The {@link NumericValue.maximizeNumericValue} method computes the maximum
+   * of `$this` and `nums`.
    *
-   * The max(...`values`) method, when called on a CSSNumericValue `this`,
-   * must perform the following steps:
+   * @remarks
+   *   See
+   *   {@link https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-max}.
    *
-   * 1. Replace each item of `values` with the result of rectifying a
-   *    numberish value for the item.
+   * @param $this - The first candidate value.
    *
-   * 2. If `this` is a CSSMathMax object, prepend the items in `this`’s
-   *    values internal slot to `values`. Otherwise, prepend `this`
-   *    to `values`.
+   * @param nums - Additional numbers or numeric values.
    *
-   * 3. If all of the items in `values` are CSSUnitValues and have the same
-   *    unit, return a new CSSUnitValue whose unit internal slot is set
-   *    to `this`’s unit internal slot, and value internal slot is set to the
-   *    maximum of the value internal slots of the items in `values`.
+   * @returns A collapsed {@link @positron/css-numeric#CssUnitValue} or a
+   *   {@link @positron/css-numeric#CssMathMax}.
    *
-   * 4. Let `type` be the result of adding the types of every item
-   *    in `values`. If `type` is failure, throw a TypeError.
-   *
-   * 5. Return a new CSSMathMax object whose values internal slot is set
-   *    to `values`.
+   * @throws `TypeError` If the candidate types cannot be combined.
    */
   public maximizeNumericValue(
     $this: CssNumericValue,
@@ -162,28 +153,21 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-min
+   * The {@link NumericValue.minimizeNumericValue} method computes the minimum
+   * of `$this` and `nums`.
    *
-   * The min(...values) method, when called on a CSSNumericValue `this`, must
-   * perform the following steps:
+   * @remarks
+   *   See
+   *   {@link https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-min}.
    *
-   * 1. Replace each item of `values` with the result of rectifying a
-   *    numberish value for the item.
+   * @param $this - The first candidate value.
    *
-   * 2. If `this` is a CSSMathMin object, prepend the items in `this`’s
-   *    values internal slot to `values`. Otherwise, prepend `this`
-   *    to `values`.
+   * @param nums - Additional numbers or numeric values.
    *
-   * 3. If all of the items in `values` are CSSUnitValues and have the same
-   *    unit, return a new CSSUnitValue whose unit internal slot is set
-   *    to `this`’s unit internal slot, and value internal slot is set to the
-   *    minimum of the value internal slots of the items in `values`.
+   * @returns A collapsed {@link @positron/css-numeric#CssUnitValue} or a
+   *   {@link @positron/css-numeric#CssMathMin}.
    *
-   * 4. Let `type` be the result of adding the types of every item
-   *    in `values`. If `type` is failure, throw a TypeError.
-   *
-   * 5. Return a new CSSMathMin object whose values internal slot is set
-   *    to `values`.
+   * @throws `TypeError` If the candidate types cannot be combined.
    */
   public minimizeNumericValue(
     $this: CssNumericValue,
@@ -197,42 +181,21 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-mul
+   * The {@link NumericValue.multiplyNumericValue} method multiplies `$this` by
+   * `nums`.
    *
-   * The mul(...values) method, when called on a CSSNumericValue `this`,
-   * must perform the following steps:
+   * @remarks
+   *   See
+   *   {@link https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-mul}.
    *
-   * 1. Replace each item of `values` with the result of rectifying a
-   *    numberish value for the item.
+   * @param $this - The multiplicand numeric value.
    *
-   * 2. If `this` is a CSSMathProduct object, prepend the items in `this`’s
-   *    values internal slot to `values`. Otherwise, prepend `this`
-   *    to `values`.
+   * @param nums - Additional numbers or numeric values.
    *
-   * 3. If all of the items in `values` are CSSUnitValues with unit internal
-   *    slot set to "number", return a new CSSUnitValue whose unit internal
-   *    slot is set to "number", and value internal slot is set to the
-   *    product of the value internal slots of the items in `values`.
+   * @returns A collapsed {@link @positron/css-numeric#CssUnitValue} or a
+   *   {@link @positron/css-numeric#CssMathProduct}.
    *
-   *    This multiplication must be done "left to right" - if `values`
-   *    is « 1, 2, 3, 4 », the result must be (((1 × 2) × 3) × 4). (This
-   *    detail is necessary to ensure interoperability in the presence of
-   *    floating-point arithmetic.)
-   *
-   * 4. If all of the items in `values` are CSSUnitValues with unit internal
-   *    slot set to "number" except one which is set to unit, return a
-   *    new CSSUnitValue whose unit internal slot is set to unit, and value
-   *    internal slot is set to the product of the value internal slots of
-   *    the items in `values`.
-   *
-   *    This multiplication must be done "left to right" - if `values`
-   *    is « 1, 2, 3, 4 », the result must be (((1 × 2) × 3) × 4).
-   *
-   * 5. Let type be the result of multiplying the types of every item
-   *    in `values`. If type is failure, throw a TypeError.
-   *
-   * 6. Return a new CSSMathProduct object whose values internal slot is
-   *    set to `values`.
+   * @throws `TypeError` If the operand types cannot be multiplied.
    */
   public multiplyNumericValue(
     $this: CssNumericValue,
@@ -246,19 +209,16 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#cssmath-negate-a-cssnumericvalue
+   * The {@link NumericValue.negateNumericValue} method returns the additive
+   * negation of `$this`.
    *
-   * To negate a CSSNumericValue `this`:
+   * @remarks
+   *   See
+   *   {@link https://www.w3.org/TR/css-typed-om-1/#cssmath-negate-a-cssnumericvalue}.
    *
-   * 1. If `this` is a CSSMathNegate object, return `this`’s value internal
-   *    slot.
+   * @param $this - The numeric value to negate.
    *
-   * 2. If `this` is a CSSUnitValue object, return a new CSSUnitValue with
-   *    the same unit internal slot as `this`, and a value internal slot set
-   *    to the negation of `this`’s.
-   *
-   * 3. Otherwise, return a new CSSMathNegate object whose value internal
-   *    slot is set to `this`.
+   * @returns The negated {@link @positron/css-numeric#CssNumericValue}.
    */
   public negateNumericValue($this: CssNumericValue): CssNumericValue {
     const { impl } = this;
@@ -277,16 +237,21 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-sub
+   * The {@link NumericValue.subtractNumericValue} method subtracts `values`
+   * from `$this`.
    *
-   * The sub(...`values`) method, when called on a CSSNumericValue this, must
-   * perform the following step
+   * @remarks
+   *   See
+   *   {@link https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-sub}.
    *
-   * 1. Replace each item of `values` with the result of rectifying a
-   *    numberish value for the item, then negating the value.
+   * @param $this - The minuend numeric value.
    *
-   * 2. Return the result of calling the add() internal algorithm with `this`
-   *    and `values`.
+   * @param values - The subtrahend numbers or numeric values.
+   *
+   * @returns A collapsed {@link @positron/css-numeric#CssUnitValue} or a
+   *   {@link @positron/css-numeric#CssMathSum}.
+   *
+   * @throws `TypeError` If the operand types cannot be combined.
    */
   public subtractNumericValue(
     $this: CssNumericValue,
@@ -303,31 +268,21 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-add
+   * The {@link NumericValue.summarizeNumericValue} method adds `nums` to
+   * `$this`.
    *
-   * The add(...values) method, when called on a CSSNumericValue `this`,
-   * must perform the following steps:
+   * @remarks
+   *   See
+   *   {@link https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-add}.
    *
-   * 1. Replace each item of `values` with the result of rectifying a
-   *    numberish value for the item.
+   * @param $this - The augend numeric value.
    *
-   * 2. If `this` is a CSSMathSum object, prepend the items in `this`’s
-   *    values internal slot to values. Otherwise, prepend `this`
-   *    to `values`.
+   * @param nums - Additional numbers or numeric values.
    *
-   * 3. If all of the items in `values` are CSSUnitValues and have the same
-   *    unit, return a new CSSUnitValue whose unit internal slot is set to
-   *    this’s unit internal slot, and value internal slot is set to the sum
-   *    of the value internal slots of the items in `values`. This addition
-   *    must be done "left to right" - if values is « 1, 2, 3, 4 »,
-   *    the result must be (((1 + 2) + 3) + 4). (This detail is necessary to
-   *    ensure interoperability in the presence of floating-point arithmetic.)
+   * @returns A collapsed {@link @positron/css-numeric#CssUnitValue} or a
+   *   {@link @positron/css-numeric#CssMathSum}.
    *
-   * 4. Let `type` be the result of adding the types of every item in values.
-   *    If `type` is failure, throw a TypeError.
-   *
-   * 5. Return a new CSSMathSum object whose values internal slot is set
-   *    to `values`.
+   * @throws `TypeError` If the operand types cannot be added.
    */
   public summarizeNumericValue(
     $this: CssNumericValue,
@@ -340,15 +295,14 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-add
+   * The {@link NumericValue.collapseMathAddArgs} method collapses `values`
+   * into a single {@link @positron/css-numeric#CssUnitValue} when all items
+   * share the same unit.
    *
-   * 3. If all of the items in `values` are CSSUnitValues and have the same
-   *    unit, return a new CSSUnitValue whose unit internal slot is set to
-   *    this’s unit internal slot, and value internal slot is set to the sum
-   *    of the value internal slots of the items in `values`. This addition
-   *    must be done "left to right" - if values is « 1, 2, 3, 4 »,
-   *    the result must be (((1 + 2) + 3) + 4). (This detail is necessary to
-   *    ensure interoperability in the presence of floating-point arithmetic.)
+   * @param values - The rectified operands to sum.
+   *
+   * @returns A combined {@link @positron/css-numeric#CssUnitValue}, or `null`
+   *   if not collapsible.
    */
   protected collapseMathAddArgs(
     values: readonly [CssNumericValue, ...CssNumericValue[]],
@@ -357,12 +311,14 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-max
+   * The {@link NumericValue.collapseMathMaxArgs} method collapses `values`
+   * into a single {@link @positron/css-numeric#CssUnitValue} when all items
+   * share the same unit.
    *
-   * 3. If all of the items in `values` are CSSUnitValues and have the same
-   *    unit, return a new CSSUnitValue whose unit internal slot is set
-   *    to `this`’s unit internal slot, and value internal slot is set to the
-   *    maximum of the value internal slots of the items in `values`.
+   * @param values - The rectified operands to compare.
+   *
+   * @returns The maximum {@link @positron/css-numeric#CssUnitValue}, or `null`
+   *   if not collapsible.
    */
   protected collapseMathMaxArgs(
     values: readonly [CssNumericValue, ...CssNumericValue[]],
@@ -371,12 +327,14 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-min
+   * The {@link NumericValue.collapseMathMinArgs} method collapses `values`
+   * into a single {@link @positron/css-numeric#CssUnitValue} when all items
+   * share the same unit.
    *
-   * 3. If all of the items in `values` are CSSUnitValues and have the same
-   *    unit, return a new CSSUnitValue whose unit internal slot is set
-   *    to `this`’s unit internal slot, and value internal slot is set to the
-   *    minimum of the value internal slots of the items in `values`.
+   * @param values - The rectified operands to compare.
+   *
+   * @returns The minimum {@link @positron/css-numeric#CssUnitValue}, or `null`
+   *   if not collapsible.
    */
   protected collapseMathMinArgs(
     values: readonly [CssNumericValue, ...CssNumericValue[]],
@@ -385,26 +343,14 @@ export class NumericValue
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-mul
+   * The {@link NumericValue.collapseProductArgs} method collapses `values`
+   * into a single {@link @positron/css-numeric#CssUnitValue} when at most one
+   * operand has a unit.
    *
-   * 3. If all of the items in `values` are CSSUnitValues with unit internal
-   *    slot set to "number", return a new CSSUnitValue whose unit internal
-   *    slot is set to "number", and value internal slot is set to the
-   *    product of the value internal slots of the items in `values`.
+   * @param values - The rectified operands to multiply.
    *
-   *    This multiplication must be done "left to right" - if `values`
-   *    is « 1, 2, 3, 4 », the result must be (((1 × 2) × 3) × 4). (This
-   *    detail is necessary to ensure interoperability in the presence of
-   *    floating-point arithmetic.)
-   *
-   * 4. If all of the items in `values` are CSSUnitValues with unit internal
-   *    slot set to "number" except one which is set to unit, return a
-   *    new CSSUnitValue whose unit internal slot is set to unit, and value
-   *    internal slot is set to the product of the value internal slots of
-   *    the items in `values`.
-   *
-   *    This multiplication must be done "left to right" - if `values`
-   *    is « 1, 2, 3, 4 », the result must be (((1 × 2) × 3) × 4).
+   * @returns The product {@link @positron/css-numeric#CssUnitValue}, or `null`
+   *   if not collapsible.
    */
   protected collapseProductArgs(
     values: readonly [CssNumericValue, ...CssNumericValue[]],
@@ -437,10 +383,16 @@ export class NumericValue
   }
 
   /**
-   * 3. If all of the items in `values` are CSSUnitValues and have the same
-   *    unit, return a new CSSUnitValue whose unit internal slot is set
-   *    to `this`’s unit internal slot, and value internal slot is set to the
-   *    [result] of the value internal slots of the items in `values`.
+   * The {@link NumericValue.collapseSameUnitArgs} method reduces `values` with
+   * `reducer` when every item is a {@link @positron/css-numeric#CssUnitValue}
+   * with the same unit.
+   *
+   * @param values - The rectified operands to reduce.
+   *
+   * @param reducer - The left-to-right numeric reduction function.
+   *
+   * @returns The reduced {@link @positron/css-numeric#CssUnitValue}, or `null`
+   *   if units differ.
    */
   protected collapseSameUnitArgs(
     values: readonly [CssNumericValue, ...CssNumericValue[]],
@@ -476,11 +428,17 @@ export class NumericValue
   }
 
   /**
-   * 1. Replace each item of `values` with the result of rectifying a
-   *    numberish value for the item.
+   * The {@link NumericValue.rectifyMathVariadicArgs} method flattens `$this`
+   * when it matches `MathVariadic` and rectifies all trailing `nums`.
    *
-   * 2. If `this` is a CSSMath[Object] object, prepend the items in `this`’s
-   *    values internal slot to values. Otherwise, prepend `this` to `values`.
+   * @param MathVariadic - The variadic math constructor to unwrap.
+   *
+   * @param $this - The leading numeric value.
+   *
+   * @param nums - Additional numberish arguments.
+   *
+   * @returns A non-empty tuple of rectified
+   *   {@link @positron/css-numeric#CssNumericValue} items.
    */
   protected rectifyMathVariadicArgs(
     MathVariadic: Instantiable<CssMathVariadic>,

@@ -1,6 +1,9 @@
 import type { CssUnitValue } from "./css-unit-value";
 
 /**
+ * The {@link CssNumericHelpers} interface provides factory methods for
+ * creating {@link CssUnitValue} instances for every supported CSS unit, plain
+ * number, and percentage.
  *
  * @public
  */

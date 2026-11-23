@@ -9,12 +9,18 @@ import { never } from "@positron/lang";
 import { NumericSegment } from "./numeric-segment";
 
 /**
+ * The {@link NumericMathValue} class implements operator inspection for
+ * `CssMathValue` instances.
+ *
  * @public
  */
 export class NumericMathValue
   extends NumericSegment<CssNumericRegistryImpl>
   implements CssMathValueImpl
 {
+  /**
+   * {@inheritDoc @positron/css-numeric-impl#CssMathValueImpl.getMathValueOperator}
+   */
   public getMathValueOperator($this: CssMathValue): CssMathOperator {
     const { impl } = this;
 

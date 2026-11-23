@@ -2,20 +2,23 @@ import type { NumericUnit } from "../unit/numeric-unit";
 import { toPower } from "../shared/to-power";
 
 /**
- * https://www.w3.org/TR/css-typed-om-1/#sum-value-unit-map
+ * The {@link NumericUnitMap} class represents a mapping of CSS unit
+ * identifiers to safe integer powers used in {@link NumericSumItem} terms.
  *
- * A sum value is a list. Each entry in the list is a tuple of a value, which
- * is a number, and a unit map, which is a map of units (strings) to powers
- * (integers).
+ * @remarks
+ *   See https://www.w3.org/TR/css-typed-om-1/#sum-value-unit-map.
  *
  * @public
  */
 export class NumericUnitMap extends Map<NumericUnit, number> {
   /**
-   * The {@link NumericUnitMap.equals} method compares this map for equality
-   * to the given `map`
+   * The {@link NumericUnitMap.equals} method compares this unit map for
+   * equality with `map`.
    *
-   * @param map - The {@link NumericUnitMap} to check equality for.
+   * @param map - The {@link NumericUnitMap} to compare against.
+   *
+   * @returns `true` if both maps contain identical units with identical
+   *   powers; otherwise, `false`.
    */
   public equals(map: NumericUnitMap): boolean {
     return (
@@ -26,20 +29,16 @@ export class NumericUnitMap extends Map<NumericUnit, number> {
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#product-of-two-unit-maps
+   * The {@link NumericUnitMap.mul} method multiplies this unit map with
+   * `units` by summing exponents of matching units.
    *
-   * The product of two unit maps `units1` and `units2` is the result given
-   * by the following steps:
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#product-of-two-unit-maps.
    *
-   * 1. Let `result` be a copy of `units1`.
+   * @param units - The {@link NumericUnitMap} to multiply with.
    *
-   * 2. For each `unit` → `power` in `units2`:
-   *
-   *    1. If `result`[`unit`] exists, increment `result`[`unit`] by `power`.
-   *
-   *    2. Otherwise, set `result`[`unit`] to `power`.
-   *
-   * 3. Return `result`.
+   * @returns A new {@link NumericUnitMap} containing the combined unit
+   *   exponents.
    */
   public mul(units: NumericUnitMap): NumericUnitMap {
     const result = new NumericUnitMap(this);
@@ -52,16 +51,16 @@ export class NumericUnitMap extends Map<NumericUnit, number> {
   }
 
   /**
-   * The {@link NumericUnitMap.set} method overrides built-in `Map.set`
-   * method, adding an assertion to ensure that the provided `power` value is a
-   * safe integer.
+   * The {@link NumericUnitMap.set} override method validates that `value` is a
+   * safe integer power before storing the entry for `unit`.
    *
-   * @param unit - The unit to add to or modify power within this map object.
+   * @param unit - The unit identifier key to update.
    *
-   * @param value - The power of the unit to add to or modify within this map.
-   *   Can be a safe integer.
+   * @param value - The integer exponent to associate with `unit`.
    *
-   * @throws RangeError if `power` is not a safe integer.
+   * @returns This {@link NumericUnitMap} instance.
+   *
+   * @throws `RangeError` If `value` is not a safe integer.
    */
   public override set(unit: NumericUnit, value: number): this {
     return super.set(unit, toPower(value));

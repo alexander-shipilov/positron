@@ -10,6 +10,9 @@ import type { CssNumericTypeOperationsImpl } from "./css-numeric-type-operations
 import type { CssNumericValueImpl } from "./css-numeric-value-impl";
 
 /**
+ * The {@link CssNumericImpl} interface aggregates all internal implementation
+ * contracts required by a CSS Typed OM numeric runtime.
+ *
  * @public
  */
 export interface CssNumericImpl

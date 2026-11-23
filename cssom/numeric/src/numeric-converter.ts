@@ -27,6 +27,10 @@ import { never } from "@positron/lang";
 import { NumericSegment } from "./numeric-segment";
 
 /**
+ * The {@link NumericConverter} class implements unit conversion and sum-value
+ * reduction algorithms for {@link @positron/css-numeric#CssNumericValue}
+ * instances.
+ *
  * @public
  */
 export class NumericConverter
@@ -34,10 +38,19 @@ export class NumericConverter
   implements CssNumericConverterImpl
 {
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value
+   * The {@link NumericConverter.createSumValue} method converts a
+   * {@link @positron/css-numeric#CssNumericValue} into a normalized
+   * {@link @positron/css-numeric-impl#NumericSum} list.
    *
-   * To create a sum value from a CSSNumericValue `this`, the steps differ
-   * based on this’s class:
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value.
+   *
+   * @param $this - The numeric value to convert into a sum value.
+   *
+   * @returns A non-empty {@link @positron/css-numeric-impl#NumericSum} list of
+   *   canonicalized terms.
+   *
+   * @throws `TypeError` If `$this` cannot be expressed as a valid sum value.
    */
   public createSumValue($this: CssNumericValue): NumericSum {
     const { impl } = this;
@@ -65,55 +78,24 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-tosum
+   * The {@link NumericConverter.toMathSum} method converts a
+   * {@link @positron/css-numeric#CssNumericValue} into a `CssMathSum`
+   * expressed in the specified target `units`.
    *
-   * The toSum(...units) method converts an existing CSSNumericValue `this`
-   * into a CSSMathSum of only CSSUnitValues with the specified `units`, if
-   * possible. (It’s like to(), but allows the result to have multiple units
-   * in it.) If called without any units, it just simplifies `this` into a
-   * minimal sum of CSSUnitValues.
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-tosum.
    *
-   * When called, it must perform the following steps:
+   * @param $this - The numeric value to convert.
    *
-   * 1. For each `unit` in `units`, if the result of creating a type
-   *    from `unit` is failure, throw a SyntaxError.
+   * @param units - Target unit identifiers. When empty, simplifies `$this`
+   *   into a minimal sum sorted by unit code points.
    *
-   * 2. Let `sum` be the result of creating a sum value from `this`.
-   *    If `sum` is failure, throw a TypeError.
+   * @returns A `CssMathSum` containing converted `CssUnitValue` terms.
    *
-   * 3. Let `values` be the result of creating a CSSUnitValue for each
-   *    item in `sum`. If any item of `values` is failure, throw a TypeError.
+   * @throws `SyntaxError` If any unit identifier in `units` is invalid.
    *
-   * 4. If `units` is empty, sort `values` in code point order according to
-   *    the unit internal slot of its items, then return a new CSSMathSum
-   *    object whose values internal slot is set to `values`.
-   *
-   * 5. Otherwise, let `result` initially be an empty list. For each `unit`
-   *    in `units`:
-   *
-   *    1. Let `temp` initially be a new CSSUnitValue whose unit internal
-   *       slot is set to `unit` and whose value internal slot is set to 0.
-   *
-   *    2. For each `value` in `values`:
-   *
-   *       1. Let `value unit` be `value`’s unit internal slot.
-   *
-   *       2. If `value unit` is a compatible unit with `unit`, then:
-   *
-   *          1. Convert `value` to `unit`.
-   *
-   *          2. Increment `temp`’s value internal slot by the value
-   *             of `value`’s value internal slot.
-   *
-   *          3. Remove `value` from `values`.
-   *
-   *    3. Append `temp` to `result`.
-   *
-   * 6. If `values` is not empty, throw a TypeError.
-   *    Note: `this` had units that you didn’t ask for.
-   *
-   * 7. Return a new CSSMathSum object whose values internal slot is set
-   *    to `result`.
+   * @throws `TypeError` If `$this` cannot be expressed in the requested
+   *   `units`.
    */
   public toMathSum($this: CssNumericValue, ...units: string[]): CssMathSum {
     // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
@@ -121,24 +103,24 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-to
+   * The {@link NumericConverter.toUnitValue} method converts a
+   * {@link @positron/css-numeric#CssNumericValue} into a single `CssUnitValue`
+   * with the specified
+   * `unit`.
    *
-   * The to(`unit`) method converts an existing CSSNumericValue `this` into
-   * another one with the specified `unit`, if possible. When called, it must
-   * perform the following steps:
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-to.
    *
-   * 1. Let `type` be the result of creating a type from `unit`.
-   *    If `type` is failure, throw a SyntaxError.
+   * @param $this - The numeric value to convert.
    *
-   * 2. Let `sum` be the result of creating a sum value from `this`.
-   *    If `sum` is failure, throw a TypeError.
+   * @param unit - Target unit identifier.
    *
-   * 3. If `sum` has more than one item, throw a TypeError.
-   *    Otherwise, let `item` be the result of creating a CSSUnitValue from
-   *    the sole item in `sum`, then converting it to `unit`.
-   *    If `item` is failure, throw a TypeError.
+   * @returns A `CssUnitValue` expressed in `unit`.
    *
-   * 4. Return `item`.
+   * @throws `SyntaxError` If `unit` is not a valid unit identifier.
+   *
+   * @throws `TypeError` If `$this` cannot be resolved to a single value
+   *   compatible with `unit`.
    */
   public toUnitValue($this: CssNumericValue, unit: string): CssUnitValue {
     // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
@@ -146,8 +128,19 @@ export class NumericConverter
   }
 
   /**
-   * The W3C specification does not describe how to convert CSSMathClamp
-   * objects to sum value.
+   * The {@link NumericConverter.createSumValueFromMathClamp} method creates a
+   * sum value from a `CssMathClamp` expression.
+   *
+   * @remarks
+   *   The W3C specification does not define sum-value conversion for
+   *   `CSSMathClamp`.
+   *
+   * @param $this - The clamp expression to convert.
+   *
+   * @returns A {@link @positron/css-numeric-impl#NumericSum} representing the
+   *   clamp expression.
+   *
+   * @throws `TypeError` If the clamp expression cannot be converted.
    */
   protected createSumValueFromMathClamp($this: CssMathClamp): NumericSum {
     // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
@@ -155,21 +148,18 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value
+   * The {@link NumericConverter.createSumValueFromMathInvert} method creates a
+   * sum value from a `CssMathInvert` expression.
    *
-   * CSSMathInvert
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value.
    *
-   * 1. Let `values` be the result of creating a sum value from `this`’s
-   *    value internal slot.
+   * @param $this - The invert expression to convert.
    *
-   * 2. If `values` is failure, return failure.
+   * @returns A {@link @positron/css-numeric-impl#NumericSum} with inverted
+   *   value and negated unit powers.
    *
-   * 3. If the length of `values` is more than one, return failure.
-   *
-   * 4. Invert (find the reciprocal of) the value of the item in `values`,
-   *    and negate the value of each entry in its unit map.
-   *
-   * 5. Return values.
+   * @throws `TypeError` If the inner sum value has more than one term.
    */
   protected createSumValueFromMathInvert($this: CssMathInvert): NumericSum {
     // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
@@ -177,20 +167,20 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value
+   * The {@link NumericConverter.createSumValueFromMathMax} method creates a
+   * sum
+   * value from a `CssMathMax` expression.
    *
-   * CSSMathMax
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value.
    *
-   * 1. Let `args` be the result of creating a sum value for each item
-   *    in `this`’s values internal slot.
+   * @param $this - The `max()` expression to convert.
    *
-   * 2. If any item of `args` is failure, or has a length greater than
-   *    one, return failure.
+   * @returns A {@link @positron/css-numeric-impl#NumericSum} containing the
+   *   maximum single-term entry.
    *
-   * 3. If not all of the unit maps among the items of `args` are
-   *    identical, return failure.
-   *
-   * 4. Return the item of `args` whose sole item has the largest value.
+   * @throws `TypeError` If operands have multiple terms or mismatched unit
+   *   maps.
    */
   protected createSumValueFromMathMax($this: CssMathMax): NumericSum {
     // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
@@ -198,20 +188,20 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value
+   * The {@link NumericConverter.createSumValueFromMathMin} method creates a
+   * sum
+   * value from a `CssMathMin` expression.
    *
-   * CSSMathMin
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value.
    *
-   * 1. Let `args` be the result of creating a sum value for each item
-   *    in `this`’s values internal slot.
+   * @param $this - The `min()` expression to convert.
    *
-   * 2. If any item of `args` is failure, or has a length greater than
-   *    one, return failure.
+   * @returns A {@link @positron/css-numeric-impl#NumericSum} containing the
+   *   minimum single-term entry.
    *
-   * 3. If not all of the unit maps among the items of `args` are
-   *    identical, return failure.
-   *
-   * 4. Return the item of `args` whose sole item has the smallest value.
+   * @throws `TypeError` If operands have multiple terms or mismatched unit
+   *   maps.
    */
   protected createSumValueFromMathMin($this: CssMathMin): NumericSum {
     // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
@@ -219,18 +209,16 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value
+   * The {@link NumericConverter.createSumValueFromMathNegate} method creates a
+   * sum value from a `CssMathNegate` expression.
    *
-   * CSSMathNegate
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value.
    *
-   * 1. Let `values` be the result of creating a sum value from `this`’s
-   *    value internal slot.
+   * @param $this - The negate expression to convert.
    *
-   * 2. If `values` is failure, return failure.
-   *
-   * 3. Negate the value of each item of `values`.
-   *
-   * 4. Return `values`.
+   * @returns A {@link @positron/css-numeric-impl#NumericSum} with negated item
+   *   values.
    */
   protected createSumValueFromMathNegate($this: CssMathNegate): NumericSum {
     // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
@@ -238,34 +226,16 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value
+   * The {@link NumericConverter.createSumValueFromMathProduct} method creates
+   * a sum value from a `CssMathProduct` expression.
    *
-   * CSSMathProduct
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value.
    *
-   * 1. Let `values` initially be the sum value «(1, «[ ]»)». (I.e. what
-   *    you’d get from 1.)
+   * @param $this - The product expression to convert.
    *
-   * 2. For each `item` in this’s values internal slot:
-   *
-   *    1. Let `new values` be the result of creating a sum value
-   *       from `item`. Let `temp` initially be an empty list.
-   *
-   *    2. If `new values` is failure, return failure.
-   *
-   *    3. For each `item1` in `values`:
-   *
-   *       1. For each `item2` in `new values`:
-   *
-   *          1. Let `item` be a tuple with its value set to the product of
-   *             the values of `item1` and `item2`, and its unit map set to
-   *             the product of the unit maps of `item1` and `item2`, with
-   *             all entries with a zero value removed.
-   *
-   *          2. Append `item` to `temp`.
-   *
-   *    4. Set `values` to `temp`.
-   *
-   * 3. Return `values`.
+   * @returns A {@link @positron/css-numeric-impl#NumericSum} expanded across
+   *   all product operands.
    */
   protected createSumValueFromMathProduct($this: CssMathProduct): NumericSum {
     // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
@@ -273,29 +243,20 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value
+   * The {@link NumericConverter.createSumValueFromMathSum} method creates a
+   * sum
+   * value from a `CssMathSum` expression.
    *
-   * CSSMathSum
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value.
    *
-   * 1. Let `values` initially be an empty list.
+   * @param $this - The sum expression to convert.
    *
-   * 2. For each `item` in `this`’s values internal slot:
+   * @returns A {@link @positron/css-numeric-impl#NumericSum} with like unit
+   *   maps combined.
    *
-   *    1. Let `value` be the result of creating a sum value from `item`.
-   *       If `value` is failure, return failure.
-   *
-   *    2. For each `subvalue` of `value`:
-   *
-   *       1. If `values` already contains an item with the same unit map
-   *          as `subvalue`, increment that item’s value by the value
-   *          of `subvalue`.
-   *
-   *       2. Otherwise, append `subvalue` to `values`.
-   *
-   * 3. Create a type from the unit map of each item of `values`, and add all
-   *    the types together. If the result is failure, return failure.
-   *
-   * 4. Return `values`.
+   * @throws `TypeError` If the combined terms do not form a valid numeric
+   *   type.
    */
   protected createSumValueFromMathSum($this: CssMathSum): NumericSum {
     // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
@@ -303,21 +264,16 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value
+   * The {@link NumericConverter.createSumValueFromUnitValue} method creates a
+   * sum value from a `CssUnitValue` object.
    *
-   * CSSUnitValue
+   * @remarks
+   *   See https://www.w3.org/TR/css-typed-om-1/#create-a-sum-value.
    *
-   * 1. Let `unit` be the value of `this`’s unit internal slot, and `value`
-   *    be the value of `this`’s value internal slot.
+   * @param $this - The unit value to convert.
    *
-   * 2. If `unit` is a member of a set of compatible units, and is not the
-   *    set’s canonical unit, multiply `value` by the conversion ratio
-   *    between `unit` and the canonical unit, and change `unit` to the
-   *    canonical unit.
-   *
-   * 3. If `unit` is "number", return «(`value`, «[ ]»)».
-   *
-   * 4. Otherwise, return «(`value`, «[`unit` → 1]»)».
+   * @returns A single-element {@link @positron/css-numeric-impl#NumericSum}
+   *   normalized to its canonical unit when compatible.
    */
   protected createSumValueFromUnitValue($this: CssUnitValue): NumericSum {
     const { impl } = this;
@@ -333,14 +289,16 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#create-a-cssunitvalue-from-a-pair
+   * The {@link NumericConverter.createUnitValueFromPair} method creates a
+   * `CssUnitValue` from a numeric value and unit tuple.
    *
-   * To create a CSSUnitValue from a pair (`num`, `unit`), return a new
-   * CSSUnitValue object with its value internal slot set to `num`, and its
-   * unit internal slot set to `unit`.
+   * @remarks
+   *   See
+   *   https://www.w3.org/TR/css-typed-om-1/#create-a-cssunitvalue-from-a-pair.
    *
-   * Note: This is a spec-internal algorithm, meant simply to make it easier
-   * to create unit values in algorithms when needed.
+   * @param pair - A tuple `[num, unit]` specifying value and unit identifier.
+   *
+   * @returns A new `CssUnitValue` instance.
    */
   protected createUnitValueFromPair(
     pair: [num: number, unit: NumericUnit],
@@ -349,23 +307,20 @@ export class NumericConverter
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#create-a-cssunitvalue-from-a-sum-value-item
+   * The {@link NumericConverter.createUnitValueFromSumItem} method creates a
+   * `CssUnitValue` from a single
+   * {@link @positron/css-numeric-impl#NumericSumItem} .
    *
-   * When asked to create a CSSUnitValue from a sum value item `item`,
-   * perform the following steps:
+   * @remarks
+   *   See
+   *   https://www.w3.org/TR/css-typed-om-1/#create-a-cssunitvalue-from-a-sum-value-item.
    *
-   * 1. If `item` has more than one entry in its unit map, return failure.
+   * @param item - The sum item to materialize as a unit value.
    *
-   * 2. If `item` has no entries in its unit map, return a new CSSUnitValue
-   *    whose unit internal slot is set to "number", and whose value internal
-   *    slot is set to `item`’s value.
+   * @returns A new `CssUnitValue` instance.
    *
-   * 3. Otherwise, `item` has a single entry in its unit map.
-   *    If that entry’s value is anything other than 1, return failure.
-   *
-   * 4. Otherwise, return a new CSSUnitValue whose unit internal slot is set
-   *    to that entry’s key, and whose value internal slot is set to `item`’s
-   *    value.
+   * @throws `TypeError` If `item.units` has more than one entry or an
+   *   exponent other than `1`.
    */
   protected createUnitValueFromSumItem(item: NumericSumItem): CssUnitValue {
     const { impl } = this;

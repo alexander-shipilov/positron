@@ -224,7 +224,8 @@ by TSDoc or API Extractor:
   The description MUST start with `If`.
 
 - `@inheritDoc`: MUST be used on members implementing an interface or
-  overriding a base class method: `{@inheritDoc Foo.bar}`.
+  overriding a base class method: `{@inheritDoc Foo.bar}`. When used, it
+  MUST be the sole content of the TSDoc block (no summary or other tags).
 
 - `@example`: Optional. Every fenced TypeScript block (```` ```ts ```` or
   ```` ```tsx ````) inside `@example` MUST be a self-contained, runnable ES

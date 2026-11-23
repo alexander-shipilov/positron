@@ -1,11 +1,15 @@
 import { CssNumericBaseType } from "@positron/css-numeric";
 
 /**
- * https://www.w3.org/TR/css-typed-om-1/#cssnumericvalue-type
+ * The {@link BASE_TYPES} read-only variable defines the canonical ordering of
+ * CSS Typed OM base types.
  *
- * The base types are "length", "angle", "time", "frequency", "resolution",
- * "flex", and "percent". The ordering of a type’s entries always matches
- * this base type ordering.
+ * @remarks
+ *   See https://www.w3.org/TR/css-typed-om-1/#cssnumericvalue-type.
+ *
+ *   The base types are `"length"`, `"angle"`, `"time"`, `"frequency"`,
+ *   `"resolution"`, `"flex"`, and `"percent"`. The ordering of a type's
+ *   entries always matches this base type ordering.
  *
  * @internal
  */

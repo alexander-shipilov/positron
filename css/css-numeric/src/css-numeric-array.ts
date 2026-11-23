@@ -18,11 +18,15 @@ import type { CssNumericValue } from "./css-numeric-value";
  * @public
  */
 export interface CssNumericArray {
+  /**
+   * The `CssNumericArray[n]` read-only index property returns the
+   * {@link CssNumericValue} at the specified zero-based `n` index.
+   */
   readonly [n: number]: CssNumericValue;
 
   /**
-   * The {@link CssNumericArray.length} returns the number of items in the
-   * object.
+   * The {@link CssNumericArray.length} read-only property returns the number of
+   * items in the object.
    */
   readonly length: number;
 

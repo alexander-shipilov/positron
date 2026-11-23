@@ -1,26 +1,28 @@
 import type { NumericUnitMap } from "../unit-map/numeric-unit-map";
 
 /**
- * https://www.w3.org/TR/css-typed-om-1/#cssnumericvalue-sum-value
+ * The {@link NumericSumItem} interface represents a single term in a
+ * {@link NumericSum}, pairing a numeric value with a map of unit exponents.
  *
- * A sum value is a list. Each entry in the list is a tuple of a value, which
- * is a number, and a unit map, which is a map of units (strings) to powers
- * (integers).
+ * @remarks
+ *   See https://www.w3.org/TR/css-typed-om-1/#cssnumericvalue-sum-value.
  *
  * @privateRemarks
- *   For optimization purposes {@link NumericSumItem} is not a tuple.
- *
+ *   For optimization purposes {@link NumericSumItem} is an object rather than
+ *   a tuple.
  *
  * @public
  */
 export interface NumericSumItem {
   /**
-   * The {@link NumericSumItem.units} property represents a unit map.
+   * The {@link NumericSumItem.units} read-only property returns the unit
+   * exponent map for this sum term.
    */
   readonly units: NumericUnitMap;
 
   /**
-   * The {@link NumericSumItem.value} property represents a value.
+   * The {@link NumericSumItem.value} read-only property returns the numeric
+   * coefficient of this sum term.
    */
   readonly value: number;
 }

@@ -1,6 +1,9 @@
 import type { CssNumericBaseType } from "@positron/css-numeric";
 
 /**
+ * The {@link NumericTypeEntries} interface represents an optional mapping of
+ * `CssNumericBaseType` keys to their integer exponents.
+ *
  * @public
  */
 export interface NumericTypeEntries {

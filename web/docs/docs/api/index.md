@@ -45,6 +45,15 @@ The `@positron/css-numeric` package provides TypeScript interfaces and contracts
 </td></tr>
 <tr><td>
 
+[@positron/css-numeric-impl](./css-numeric-impl.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [@positron/css-unit](./css-unit.md)
 
 
@@ -60,6 +69,8 @@ The `@positron/css-unit` package provides CSS unit identifiers, categorized unit
 
 
 </td><td>
+
+The `@positron/cssom-numeric` package provides a modular implementation of the CSS Typed OM numeric value hierarchy.
 
 
 </td></tr>

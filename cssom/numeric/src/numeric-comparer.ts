@@ -16,6 +16,9 @@ import { never } from "@positron/lang";
 import { NumericSegment } from "./numeric-segment";
 
 /**
+ * The {@link NumericComparer} class implements structural equality comparison
+ * for `CssNumericValue` trees.
+ *
  * @public
  */
 export class NumericComparer
@@ -23,34 +26,7 @@ export class NumericComparer
   implements CssNumericComparerImpl
 {
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#equal-numeric-value
-   *
-   * To determine whether two CSSNumericValues `value1` and `value2` are
-   * equal numeric values, perform the following steps:
-   *
-   * 1. If `value1` and `value2` are not members of the same interface,
-   *    return false.
-   *
-   * 2. If `value1` and `value2` are both CSSUnitValues, return true if they
-   *    have equal unit and value internal slots, or false otherwise.
-   *
-   * 3. If `value1` and `value2` are both CSSMathSums, CSSMathProducts,
-   *    CSSMathMins, or CSSMathMaxs:
-   *
-   *    1. If `value1`’s values and `value2`’s values internal slots have
-   *       different sizes, return false.
-   *
-   *    2. If any item in `value1`’s values internal slot is not an equal
-   *       numeric value to the item in `value2`’s values internal slot at
-   *       the same index, return false.
-   *
-   *    3. Return true.
-   *
-   * 4. Assert: `value1` and `value2` are both CSSMathNegates or
-   *    CSSMathInverts.
-   *
-   * 5. Return whether `value1`’s value and `value2`’s value are equal
-   *    numeric values.
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericComparerImpl.areEqualNumericValues}
    */
   public areEqualNumericValues(
     value1: CssNumericValue,
@@ -81,18 +57,7 @@ export class NumericComparer
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#dom-cssnumericvalue-equals
-   *
-   * The equals(...values) method, when called on a CSSNumericValue `this`,
-   * must perform the following steps:
-   *
-   * 1. Replace each item of `values` with the result of rectifying a
-   *    numberish value for the item.
-   *
-   * 2. For each item in `values`, if the item is not an equal numeric value
-   *    to `this`, return false.
-   *
-   * 3. Return true.
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericComparerImpl.equalsNumericValue}
    */
   public equalsNumericValue(
     $this: CssNumericValue,
@@ -106,8 +71,16 @@ export class NumericComparer
   }
 
   /**
-   * The W3C specification does not describe how to compare CSSMathClamp
-   * objects for equality.
+   * The {@link NumericComparer.areEqualMathClamps} method compares two
+   * `CssMathClamp` values by recursively checking their `lower`, `value`, and
+   * `upper` slots.
+   *
+   * @param value1 - The first `CssMathClamp` instance.
+   *
+   * @param value2 - The candidate `CssNumericValue` to compare against.
+   *
+   * @returns `true` if `value2` is a `CssMathClamp` with equal operands;
+   *   otherwise, `false`.
    */
   protected areEqualMathClamps(
     value1: CssMathClamp,
@@ -130,13 +103,17 @@ export class NumericComparer
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#equal-numeric-value
+   * The {@link NumericComparer.areEqualMathUnary} method compares two unary
+   * math expressions of the same concrete class.
    *
-   * 4. Assert: `value1` and `value2` are both CSSMathNegates or
-   *    CSSMathInverts.
+   * @param MathUnary - The expected unary math constructor.
    *
-   * 5. Return whether `value1`’s value and `value2`’s value are equal
-   *    numeric values.
+   * @param value1 - The first unary math expression.
+   *
+   * @param value2 - The candidate `CssNumericValue` to compare against.
+   *
+   * @returns `true` if `value2` is an instance of `MathUnary` with an equal
+   *   operand; otherwise, `false`.
    */
   protected areEqualMathUnary(
     MathUnary: Instantiable<CssMathUnary>,
@@ -156,17 +133,17 @@ export class NumericComparer
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#equal-numeric-value
+   * The {@link NumericComparer.areEqualMathVariadic} method compares two
+   * variadic math expressions of the same concrete class.
    *
-   * 3. If `value1` and `value2` are both CSSMathSums, CSSMathProducts,
-   *    CSSMathMins, or CSSMathMaxs:
+   * @param MathVariadic - The expected variadic math constructor.
    *
-   *    1. If `value1`’s values and `value2`’s values internal slots have
-   *       different sizes, return false.
+   * @param value1 - The first variadic math expression.
    *
-   *    2. If any item in `value1`’s values internal slot is not an equal
-   *       numeric value to the item in `value2`’s values internal slot at
-   *       the same index, return false.
+   * @param value2 - The candidate `CssNumericValue` to compare against.
+   *
+   * @returns `true` if `value2` is an instance of `MathVariadic` with equal
+   *   operands in the same order; otherwise, `false`.
    */
   protected areEqualMathVariadic(
     MathVariadic: Instantiable<CssMathVariadic>,
@@ -190,13 +167,15 @@ export class NumericComparer
   }
 
   /**
-   * https://www.w3.org/TR/css-typed-om-1/#equal-numeric-value
+   * The {@link NumericComparer.areEqualUnitValues} method compares two
+   * `CssUnitValue` instances for identical unit and numeric value slots.
    *
-   * 1. If `value1` and `value2` are not members of the same interface,
-   *    return false.
+   * @param value1 - The first `CssUnitValue` instance.
    *
-   * 2. If `value1` and `value2` are both CSSUnitValues, return true if they
-   *    have equal unit and value internal slots, or false otherwise.
+   * @param value2 - The candidate `CssNumericValue` to compare against.
+   *
+   * @returns `true` if `value2` is a `CssUnitValue` with equal `unit` and
+   *   `value` slots; otherwise, `false`.
    */
   protected areEqualUnitValues(
     value1: CssUnitValue,

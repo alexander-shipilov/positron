@@ -7,6 +7,15 @@ import type { NumericUnit } from "./numeric-unit";
 import { NumericUnits } from "./numeric-units";
 
 /**
+ * The {@link toNumericUnit} function normalizes `unitLike` into a canonical
+ * lowercase {@link NumericUnit} identifier, mapping `"%"` to
+ * {@link PERCENT_UNIT}.
+ *
+ * @param unitLike - The raw unit string or percentage token to normalize.
+ *
+ * @returns The canonical {@link NumericUnit} identifier, or `null` if
+ *   `unitLike` is not a recognized unit.
+ *
  * @public
  */
 export function toNumericUnit(unitLike: string): Nullish<NumericUnit> {
