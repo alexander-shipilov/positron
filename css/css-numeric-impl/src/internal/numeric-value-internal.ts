@@ -8,7 +8,7 @@ import type { NumericTypeImpl } from "../type/numeric-type-impl";
  */
 export interface NumericValueInternal {
   /**
-   * The {@link NumericValueInternal.type} read-only property returns the
+   * The {@link NumericValueInternal."type"} read-only property returns the
    * computed numeric type of the value.
    */
   readonly type: NumericTypeImpl;

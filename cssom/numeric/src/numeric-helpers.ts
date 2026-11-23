@@ -31,441 +31,441 @@ export class NumericHelpers implements CssNumericHelpers {
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.cap}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.cap}
    */
   public cap(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.cap);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.ch}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.ch}
    */
   public ch(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.ch);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.cm}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.cm}
    */
   public cm(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.cm);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.cqb}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.cqb}
    */
   public cqb(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.cqb);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.cqh}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.cqh}
    */
   public cqh(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.cqh);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.cqi}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.cqi}
    */
   public cqi(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.cqi);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.cqmax}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.cqmax}
    */
   public cqmax(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.cqmax);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.cqmin}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.cqmin}
    */
   public cqmin(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.cqmin);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.cqw}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.cqw}
    */
   public cqw(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.cqw);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.deg}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.deg}
    */
   public deg(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.deg);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.dpcm}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.dpcm}
    */
   public dpcm(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.dpcm);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.dpi}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.dpi}
    */
   public dpi(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.dpi);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.dppx}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.dppx}
    */
   public dppx(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.dppx);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.dvb}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.dvb}
    */
   public dvb(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.dvb);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.dvh}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.dvh}
    */
   public dvh(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.dvh);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.dvi}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.dvi}
    */
   public dvi(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.dvi);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.dvmax}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.dvmax}
    */
   public dvmax(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.dvmax);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.dvmin}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.dvmin}
    */
   public dvmin(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.dvmin);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.dvw}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.dvw}
    */
   public dvw(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.dvw);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.em}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.em}
    */
   public em(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.em);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.ex}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.ex}
    */
   public ex(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.ex);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.fr}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.fr}
    */
   public fr(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.fr);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.grad}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.grad}
    */
   public grad(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.grad);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.Hz}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.Hz}
    */
   public Hz(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.hz);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.ic}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.ic}
    */
   public ic(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.ic);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.in}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.in}
    */
   public in(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.in);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.kHz}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.kHz}
    */
   public kHz(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.khz);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.lh}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.lh}
    */
   public lh(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.lh);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.lvb}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.lvb}
    */
   public lvb(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.lvb);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.lvh}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.lvh}
    */
   public lvh(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.lvh);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.lvi}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.lvi}
    */
   public lvi(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.lvi);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.lvmax}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.lvmax}
    */
   public lvmax(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.lvmax);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.lvmin}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.lvmin}
    */
   public lvmin(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.lvmin);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.lvw}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.lvw}
    */
   public lvw(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.lvw);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.mm}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.mm}
    */
   public mm(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.mm);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.ms}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.ms}
    */
   public ms(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.ms);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.number}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.number}
    */
   public number(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, NUMBER_UNIT);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.pc}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.pc}
    */
   public pc(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.pc);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.percent}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.percent}
    */
   public percent(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, PERCENT_UNIT);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.pt}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.pt}
    */
   public pt(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.pt);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.px}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.px}
    */
   public px(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.px);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.Q}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.Q}
    */
   public Q(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.q);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.rad}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.rad}
    */
   public rad(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.rad);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.rcap}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.rcap}
    */
   public rcap(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.rcap);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.rch}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.rch}
    */
   public rch(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.rch);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.rem}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.rem}
    */
   public rem(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.rem);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.rex}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.rex}
    */
   public rex(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.rex);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.ric}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.ric}
    */
   public ric(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.ric);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.rlh}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.rlh}
    */
   public rlh(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.rlh);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.s}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.s}
    */
   public s(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.s);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.svb}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.svb}
    */
   public svb(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.svb);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.svh}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.svh}
    */
   public svh(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.svh);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.svi}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.svi}
    */
   public svi(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.svi);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.svmax}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.svmax}
    */
   public svmax(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.svmax);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.svmin}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.svmin}
    */
   public svmin(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.svmin);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.svw}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.svw}
    */
   public svw(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.svw);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.turn}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.turn}
    */
   public turn(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.turn);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.vb}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.vb}
    */
   public vb(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.vb);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.vh}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.vh}
    */
   public vh(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.vh);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.vi}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.vi}
    */
   public vi(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.vi);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.vmax}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.vmax}
    */
   public vmax(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.vmax);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.vmin}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.vmin}
    */
   public vmin(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.vmin);
   }
 
   /**
-   * {@inheritDoc CssNumericHelpers.vw}
+   * {@inheritDoc @positron/css-numeric#CssNumericHelpers.vw}
    */
   public vw(value: number): CssUnitValue {
     return new this.CSSUnitValue(value, CssUnit.vw);

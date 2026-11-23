@@ -1,4 +1,5 @@
 # `@positron/css-numeric-impl`
 
-Internal implementation contracts, internal slot structures, unit map
-utilities, and numeric validation helpers for CSS Typed OM engines.
+The `@positron/css-numeric-impl` package provides implementation contracts,
+internal slot interfaces, unit map structures, and numeric validation
+helpers for CSS Typed OM engines.

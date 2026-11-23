@@ -44,57 +44,57 @@ import { NumericRegistry } from "./numeric-registry";
  */
 export class Numeric extends NumericRegistry implements CssNumericImpl {
   /**
-   * {@inheritDoc CssNumeric.CSS}
+   * {@inheritDoc @positron/css-numeric#CssNumeric.CSS}
    */
   public readonly CSS: CssNumericHelpers;
 
   /**
-   * {@inheritDoc CssNumericClasses.CSSMathClamp}
+   * {@inheritDoc @positron/css-numeric#CssNumericClasses.CSSMathClamp}
    */
   public readonly CSSMathClamp: CssMathClampClass;
 
   /**
-   * {@inheritDoc CssNumericClasses.CSSMathInvert}
+   * {@inheritDoc @positron/css-numeric#CssNumericClasses.CSSMathInvert}
    */
   public readonly CSSMathInvert: CssMathInvertClass;
 
   /**
-   * {@inheritDoc CssNumericClasses.CSSMathMax}
+   * {@inheritDoc @positron/css-numeric#CssNumericClasses.CSSMathMax}
    */
   public readonly CSSMathMax: CssMathMaxClass;
 
   /**
-   * {@inheritDoc CssNumericClasses.CSSMathMin}
+   * {@inheritDoc @positron/css-numeric#CssNumericClasses.CSSMathMin}
    */
   public readonly CSSMathMin: CssMathMinClass;
 
   /**
-   * {@inheritDoc CssNumericClasses.CSSMathNegate}
+   * {@inheritDoc @positron/css-numeric#CssNumericClasses.CSSMathNegate}
    */
   public readonly CSSMathNegate: CssMathNegateClass;
 
   /**
-   * {@inheritDoc CssNumericClasses.CSSMathProduct}
+   * {@inheritDoc @positron/css-numeric#CssNumericClasses.CSSMathProduct}
    */
   public readonly CSSMathProduct: CssMathProductClass;
 
   /**
-   * {@inheritDoc CssNumericClasses.CSSMathSum}
+   * {@inheritDoc @positron/css-numeric#CssNumericClasses.CSSMathSum}
    */
   public readonly CSSMathSum: CssMathSumClass;
 
   /**
-   * {@inheritDoc CssNumericClasses.CSSMathValue}
+   * {@inheritDoc @positron/css-numeric#CssNumericClasses.CSSMathValue}
    */
   public readonly CSSMathValue: CssMathValueClass;
 
   /**
-   * {@inheritDoc CssNumericClasses.CSSNumericValue}
+   * {@inheritDoc @positron/css-numeric#CssNumericClasses.CSSNumericValue}
    */
   public readonly CSSNumericValue: CssNumericValueClass;
 
   /**
-   * {@inheritDoc CssNumericClasses.CSSUnitValue}
+   * {@inheritDoc @positron/css-numeric#CssNumericClasses.CSSUnitValue}
    */
   public readonly CSSUnitValue: CssUnitValueClass;
 
@@ -175,7 +175,7 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericComparerImpl.areEqualNumericValues}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericComparerImpl.areEqualNumericValues}
    */
   public areEqualNumericValues(
     value1: CssNumericValue,
@@ -185,14 +185,14 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericConverterImpl.createSumValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericConverterImpl.createSumValue}
    */
   public createSumValue($this: CssNumericValue): NumericSum {
     return this.Converter.createSumValue($this);
   }
 
   /**
-   * {@inheritDoc CssNumericValueImpl.divideNumericValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericValueImpl.divideNumericValue}
    */
   public divideNumericValue(
     $this: CssNumericValue,
@@ -202,7 +202,7 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericComparerImpl.equalsNumericValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericComparerImpl.equalsNumericValue}
    */
   public equalsNumericValue(
     $this: CssNumericValue,
@@ -219,21 +219,21 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericValueImpl.getNumericValueType}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericValueImpl.getNumericValueType}
    */
   public getNumericValueType($this: CssNumericValue): CssNumericType {
     return this.NumericValue.getNumericValueType($this);
   }
 
   /**
-   * {@inheritDoc CssNumericValueImpl.invertNumericValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericValueImpl.invertNumericValue}
    */
   public invertNumericValue($this: CssNumericValue): CssNumericValue {
     return this.NumericValue.invertNumericValue($this);
   }
 
   /**
-   * {@inheritDoc CssNumericValueImpl.maximizeNumericValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericValueImpl.maximizeNumericValue}
    */
   public maximizeNumericValue(
     $this: CssNumericValue,
@@ -243,7 +243,7 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericValueImpl.minimizeNumericValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericValueImpl.minimizeNumericValue}
    */
   public minimizeNumericValue(
     $this: CssNumericValue,
@@ -253,7 +253,7 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericValueImpl.multiplyNumericValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericValueImpl.multiplyNumericValue}
    */
   public multiplyNumericValue(
     $this: CssNumericValue,
@@ -263,21 +263,21 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericValueImpl.negateNumericValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericValueImpl.negateNumericValue}
    */
   public negateNumericValue($this: CssNumericValue): CssNumericValue {
     return this.NumericValue.negateNumericValue($this);
   }
 
   /**
-   * {@inheritDoc CssNumericParserImpl.parse}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericParserImpl.parse}
    */
   public parse(textCss: string): CssNumericValue {
     return this.Parser.parse(textCss);
   }
 
   /**
-   * {@inheritDoc CssNumericSerializerImpl.serializeMathValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericSerializerImpl.serializeMathValue}
    */
   public serializeMathValue(
     $this: CssMathValue,
@@ -287,7 +287,7 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericSerializerImpl.serializeNumericValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericSerializerImpl.serializeNumericValue}
    */
   public serializeNumericValue(
     $this: CssNumericValue,
@@ -297,7 +297,7 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericSerializerImpl.serializeUnitValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericSerializerImpl.serializeUnitValue}
    */
   public serializeUnitValue(
     $this: CssUnitValue,
@@ -307,7 +307,7 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericValueImpl.subtractNumericValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericValueImpl.subtractNumericValue}
    */
   public subtractNumericValue(
     $this: CssNumericValue,
@@ -317,7 +317,7 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericValueImpl.summarizeNumericValue}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericValueImpl.summarizeNumericValue}
    */
   public summarizeNumericValue(
     $this: CssNumericValue,
@@ -327,14 +327,15 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssNumericConverterImpl.toMathSum}
+   * {@inheritDoc @positron/css-numeric-impl#CssNumericConverterImpl.toMathSum}
    */
   public toMathSum($this: CssNumericValue, ...units: string[]): CssMathSum {
     return this.Converter.toMathSum($this, ...units);
   }
 
   /**
-   * {@inheritDoc CssNumericConverterImpl.toUnitValue}
+   * {@inheritDoc
+   * @positron/css-numeric-impl#CssNumericConverterImpl.toUnitValue}
    */
   public toUnitValue($this: CssNumericValue, unit: string): CssUnitValue {
     return this.Converter.toUnitValue($this, unit);
