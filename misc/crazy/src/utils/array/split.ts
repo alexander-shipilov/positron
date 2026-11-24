@@ -4,6 +4,7 @@
  * part contains the rest.
  *
  * @param array - The array to split
+ *
  * @param index - The index
  *
  * @public

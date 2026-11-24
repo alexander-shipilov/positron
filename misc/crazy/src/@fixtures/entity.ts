@@ -7,6 +7,6 @@ import { operand } from "./operand";
 /**
  * @public
  */
-export function entity(arg: Entity | number): Entity {
+export function entity(arg: number | Entity): Entity {
   return isNumber(arg) ? operand(arg) : arg;
 }

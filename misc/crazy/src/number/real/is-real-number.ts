@@ -4,7 +4,7 @@ import type { RealNumber } from "./real-number";
 
 /**
  * The {@link isRealNumber} function determines whether the passed number
- * `maybeRealNumber` is a {@Link RealNumber}.
+ * `maybeRealNumber` is a {@link RealNumber}.
  *
  * @param maybeRealNumber - The value to be checked.
  *

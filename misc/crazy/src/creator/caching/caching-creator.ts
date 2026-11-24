@@ -20,6 +20,7 @@ import type { CachingCreatorCache } from "./caching-creator-cache";
 export class CachingCreator implements Creator {
   /**
    * @param cache -
+   *
    * @param getKey -
    */
   constructor(
@@ -36,6 +37,7 @@ export class CachingCreator implements Creator {
 
   /**
    * @param type -
+   *
    * @param arg -
    */
   createOperation1(type: Operation1Type, arg: Entity): Operation1 {
@@ -44,7 +46,9 @@ export class CachingCreator implements Creator {
 
   /**
    * @param type -
+   *
    * @param arg1 -
+   *
    * @param arg2 -
    */
   createOperation2(

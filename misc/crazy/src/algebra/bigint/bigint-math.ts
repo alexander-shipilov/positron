@@ -7,6 +7,7 @@ import { Exception } from "../../exception";
 
 /**
  * @param arg1 -
+ *
  * @param arg2 -
  */
 function add(arg1: bigint, arg2: bigint): bigint {
@@ -19,6 +20,7 @@ function add(arg1: bigint, arg2: bigint): bigint {
 
 /**
  * @param arg1 -
+ *
  * @param arg2 -
  */
 function and(arg1: bigint, arg2: bigint): bigint {
@@ -27,6 +29,7 @@ function and(arg1: bigint, arg2: bigint): bigint {
 
 /**
  * @param arg1 -
+ *
  * @param arg2 -
  */
 function mod(arg1: bigint, arg2: bigint): bigint {
@@ -35,6 +38,7 @@ function mod(arg1: bigint, arg2: bigint): bigint {
 
 /**
  * @param arg1 -
+ *
  * @param arg2 -
  */
 function mul(arg1: bigint, arg2: bigint): bigint {
@@ -47,6 +51,7 @@ function mul(arg1: bigint, arg2: bigint): bigint {
 
 /**
  * @param arg1 -
+ *
  * @param arg2 -
  */
 function quot(arg1: bigint, arg2: bigint): bigint {
@@ -55,6 +60,7 @@ function quot(arg1: bigint, arg2: bigint): bigint {
 
 /**
  * @param arg1 -
+ *
  * @param arg2 -
  */
 function shl(arg1: bigint, arg2: bigint): bigint {
@@ -67,6 +73,7 @@ function shl(arg1: bigint, arg2: bigint): bigint {
 
 /**
  * @param arg1 -
+ *
  * @param arg2 -
  */
 function shr(arg1: bigint, arg2: bigint): bigint {
@@ -79,6 +86,7 @@ function shr(arg1: bigint, arg2: bigint): bigint {
 
 /**
  * @param arg1 -
+ *
  * @param arg2 -
  */
 function sub(arg1: bigint, arg2: bigint): bigint {
@@ -107,6 +115,7 @@ export class BigintMath<
 
   /**
    * @param element -
+   *
    * @param isValue -
    */
   public constructor(
@@ -126,6 +135,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public add(arg1: TValue, arg2: TValue): TValue {
@@ -134,6 +144,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public compare(arg1: TValue, arg2: TValue): number {
@@ -142,6 +153,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public div(arg1: TValue, arg2: TValue): TValue {
@@ -158,6 +170,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public divRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
@@ -168,6 +181,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public equals(arg1: TValue, arg2: TValue): boolean {
@@ -176,6 +190,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public gcd(arg1: TValue, arg2: TValue): TValue {
@@ -211,6 +226,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public lcm(arg1: TValue, arg2: TValue): TValue {
@@ -221,6 +237,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public mod(arg1: TValue, arg2: TValue): TValue {
@@ -229,6 +246,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public mul(arg1: TValue, arg2: TValue): TValue {
@@ -244,6 +262,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public pow(arg1: TValue, arg2: TValue): TValue {
@@ -271,6 +290,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public quot(arg1: TValue, arg2: TValue): TValue {
@@ -279,6 +299,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public rem(arg1: TValue, arg2: TValue): TValue {
@@ -299,6 +320,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public root(arg1: TValue, arg2: TValue): TValue {
@@ -313,6 +335,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public rootRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
@@ -348,6 +371,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public shl(arg1: TValue, arg2: TValue): TValue {
@@ -356,6 +380,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public shr(arg1: TValue, arg2: TValue): TValue {
@@ -373,6 +398,7 @@ export class BigintMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public sub(arg1: TValue, arg2: TValue): TValue {

@@ -39,6 +39,7 @@ function format(entity: Entity): string {
 
 /**
  * @param entity -
+ *
  * @param operator -
  */
 function formatAddMul(entity: Add | Mul, operator: string): string {
@@ -53,6 +54,7 @@ function formatAddMul(entity: Add | Mul, operator: string): string {
 
 /**
  * @param entity -
+ *
  * @param parens -
  */
 function formatArg(entity: Entity, parens: boolean): string {
@@ -91,6 +93,7 @@ function formatPow(entity: Pow): string {
 
 /**
  * @param entity -
+ *
  * @param operator -
  */
 function formatSubDiv(entity: Div | Sub, operator: string): string {
@@ -104,7 +107,7 @@ function formatSubDiv(entity: Div | Sub, operator: string): string {
 }
 
 /**
- * @param entity
+ * @param entity -
  */
 function getOrder(entity: Entity): Order {
   switch (true) {

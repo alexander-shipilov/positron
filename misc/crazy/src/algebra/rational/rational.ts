@@ -5,7 +5,9 @@ import { Fraction } from "../fraction";
 
 /**
  * @param integral
+ *
  * @param value1
+ *
  * @param value2
  */
 export const Rational = <TValue>(

@@ -4,7 +4,7 @@ import type { IntegerNumber } from "./integer-number";
 
 /**
  * The {@link isIntegerNumber} function determines whether the passed
- * number `maybeIntegerNumber` is an {@Link IntegerNumber}.
+ * number `maybeIntegerNumber` is an {@link IntegerNumber}.
  *
  * @param maybeIntegerNumber - The value to be checked.
  *

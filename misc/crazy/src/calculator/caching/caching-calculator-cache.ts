@@ -14,6 +14,7 @@ export interface CachingCalculatorCache<TValue> {
 
   /**
    * @param entity -
+   *
    * @param value -
    */
   set(entity: Entity, value: ExceptionType | TValue): void;

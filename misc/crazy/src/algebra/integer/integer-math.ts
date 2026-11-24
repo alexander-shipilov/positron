@@ -24,6 +24,7 @@ export class IntegerMath<
 
   /**
    * @param element -
+   *
    * @param isValue -
    */
   public constructor(
@@ -43,6 +44,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public add(arg1: TValue, arg2: TValue): TValue {
@@ -51,6 +53,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public compare(arg1: TValue, arg2: TValue): number {
@@ -59,6 +62,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public div(arg1: TValue, arg2: TValue): TValue {
@@ -75,6 +79,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public divRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
@@ -85,6 +90,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public equals(arg1: TValue, arg2: TValue): boolean {
@@ -93,6 +99,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public gcd(arg1: TValue, arg2: TValue): TValue {
@@ -128,6 +135,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public lcm(arg1: TValue, arg2: TValue): TValue {
@@ -138,6 +146,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public mul(arg1: TValue, arg2: TValue): TValue {
@@ -153,6 +162,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public pow(arg1: TValue, arg2: TValue): TValue {
@@ -169,6 +179,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public rem(arg1: TValue, arg2: TValue): TValue {
@@ -189,6 +200,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public root(arg1: TValue, arg2: TValue): TValue {
@@ -203,6 +215,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public rootRem(arg1: TValue, arg2: TValue): Vector2<TValue> {
@@ -228,6 +241,7 @@ export class IntegerMath<
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   public sub(arg1: TValue, arg2: TValue): TValue {

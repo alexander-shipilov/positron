@@ -9,8 +9,9 @@ import type { Serializer } from "../serializer";
  */
 export class JsonSerializer<TValue> implements Serializer<string> {
   /**
-   * @param serializer
-   * @param isValue
+   * @param serializer -
+   *
+   * @param isValue -
    */
   public constructor(
     protected readonly serializer: Serializer<TValue>,
@@ -18,7 +19,7 @@ export class JsonSerializer<TValue> implements Serializer<string> {
   ) {}
 
   /**
-   * @param data
+   * @param data -
    */
   public deserialize(data: string): Entity {
     const input: unknown = JSON.parse(data);
@@ -29,7 +30,7 @@ export class JsonSerializer<TValue> implements Serializer<string> {
   }
 
   /**
-   * @param entity
+   * @param entity -
    */
   public serialize(entity: Entity): string {
     return JSON.stringify(this.serializer.serialize(entity));

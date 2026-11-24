@@ -35,6 +35,7 @@ function formatOperand(entity: Operand): string {
 
 /**
  * @param entity -
+ *
  * @param name -
  */
 function formatOperation1(entity: Operation1, name: string): string {
@@ -43,6 +44,7 @@ function formatOperation1(entity: Operation1, name: string): string {
 
 /**
  * @param entity -
+ *
  * @param name -
  */
 function formatOperation2(entity: Operation2, name: string): string {

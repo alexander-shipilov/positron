@@ -3,6 +3,7 @@
  * elements of the passed `iterable`, each transformed by a mapping function.
  *
  * @param iterable - Iterable object
+ *
  * @param callback - The mapping function
  */
 export function* map<TItem, TResult>(

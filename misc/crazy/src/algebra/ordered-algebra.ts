@@ -11,6 +11,7 @@ export interface OrderedAlgebra<TElement> extends Algebra<TElement> {
 
   /**
    * @param element1 -
+   *
    * @param element2 -
    */
   compare(element1: TElement, element2: TElement): number;

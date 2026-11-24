@@ -13,6 +13,7 @@ import type { ExceptionType } from "../exception";
 export interface Calculator<TValue> {
   /**
    * @param entity - Entity
+   *
    * @param arg -
    */
   calcOperand(
@@ -22,6 +23,7 @@ export interface Calculator<TValue> {
 
   /**
    * @param entity - Operation
+   *
    * @param arg - Argument
    */
   calcOperation1(
@@ -31,7 +33,9 @@ export interface Calculator<TValue> {
 
   /**
    * @param entity - Operation
+   *
    * @param arg1 - Argument 1
+   *
    * @param arg2 - Argument 1
    */
   calcOperation2(

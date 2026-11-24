@@ -19,13 +19,16 @@ export interface Creator {
 
   /**
    * @param type -
+   *
    * @param arg -
    */
   createOperation1(type: Operation1Type, arg: Entity): Operation1;
 
   /**
    * @param type -
+   *
    * @param arg1 -
+   *
    * @param arg2 -
    */
   createOperation2(
