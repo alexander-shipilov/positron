@@ -1,14 +1,15 @@
 {
   "private": false,
-  "name": "@positron/css-numeric-impl",
+  "name": "@positron/cssom-numeric",
   "version": "0.0.1",
-  "description": "Implementation contracts and internal utilities for CSS Typed OM numeric values",
+  "description": "CSS Typed OM numeric value implementation and factory segments",
   "license": "MIT",
   "author": "Alexander Shipilov <alexander.shipilov@gmail.com>",
   "repository": "git@github.com:alexander-shipilov/positron.git",
   "keywords": [
     "css",
     "css-typed-om",
+    "cssom",
     "numeric",
     "positron",
     "typescript"
@@ -34,6 +35,7 @@
   "dependencies": {
     "@positron/lang": "workspace:*",
     "@positron/css-numeric": "workspace:*",
+    "@positron/css-numeric-impl": "workspace:*",
     "@positron/css-unit": "workspace:*"
   },
   "devDependencies": {

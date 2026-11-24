@@ -1,5 +1,5 @@
-# `@positron/css-numeric-impl`
+# `@positron/cssom-numeric`
 
-The `@positron/css-numeric-impl` package provides implementation contracts,
-internal slot interfaces, unit map structures, and numeric validation
-helpers for CSS Typed OM engines.
+Modular implementation of the CSS Typed OM numeric value hierarchy (`CSS`,
+`CSSUnitValue`, `CSSNumericValue`, `CSSMathValue`, and math expression
+subclasses).
