@@ -12,8 +12,9 @@ import type { NumericTypeImpl } from "./numeric-type-impl";
  */
 export interface NumericTypeImplClass {
   /**
-   * Creates a new {@link NumericTypeImpl} instance from optional base type
-   * exponents and an optional percent hint.
+   * The {@link NumericTypeImplClass} constructor creates a new
+   * {@link NumericTypeImpl} instance from optional base type exponents and an
+   * optional percent hint.
    *
    * @param entries - Optional initial base type exponents.
    *
@@ -25,8 +26,9 @@ export interface NumericTypeImplClass {
   ): NumericTypeImpl;
 
   /**
-   * Aligns the percent hints of `type1` and `type2` in place when one has a
-   * hint and the other does not.
+   * The {@link NumericTypeImplClass.alignPercentHints} aligns the percent
+   * hints of `type1` and `type2` in place when one has a hint and the other
+   * does not.
    *
    * @param type1 - The first numeric type to equalize.
    *
@@ -35,5 +37,5 @@ export interface NumericTypeImplClass {
    * @throws `TypeError` If `type1` and `type2` specify conflicting non-null
    *   percent hints.
    */
-  equalizePercentHints(type1: NumericTypeImpl, type2: NumericTypeImpl): void;
+  alignPercentHints(type1: NumericTypeImpl, type2: NumericTypeImpl): void;
 }
