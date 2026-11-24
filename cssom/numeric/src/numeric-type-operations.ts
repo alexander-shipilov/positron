@@ -39,7 +39,7 @@ export abstract class NumericTypeOperations implements CssNumericTypeOperationsI
    */
   public addNumericTypes(
     type1: NumericTypeImpl,
-    ...types: [NumericTypeImpl, ...NumericTypeImpl[]]
+    ...types: NumericTypeImpl[]
   ): NumericTypeImpl {
     const { NumericType } = this;
 
@@ -48,7 +48,7 @@ export abstract class NumericTypeOperations implements CssNumericTypeOperationsI
       // `type1` is already a fresh copy that acts as `finalType`
       type2 = type2.copy();
 
-      NumericType.equalizePercentHints(type1, type2);
+      NumericType.alignPercentHints(type1, type2);
 
       if (type1.equals(type2)) {
         return type1;
@@ -140,7 +140,7 @@ export abstract class NumericTypeOperations implements CssNumericTypeOperationsI
    */
   public multiplyNumericTypes(
     type: NumericTypeImpl,
-    ...types: [NumericTypeImpl, ...NumericTypeImpl[]]
+    ...types: NumericTypeImpl[]
   ): NumericTypeImpl {
     const { NumericType } = this;
 
@@ -148,7 +148,7 @@ export abstract class NumericTypeOperations implements CssNumericTypeOperationsI
       // `type1` is already a fresh copy that acts as `finalType`
       type2 = type2.copy();
 
-      NumericType.equalizePercentHints(type1, type2);
+      NumericType.alignPercentHints(type1, type2);
 
       for (const [baseType, power] of type2) {
         type1.set(baseType, type1[baseType] + power);
