@@ -1,8 +1,11 @@
 import { Token } from "./token";
 import { TokenType } from "./token-type";
 
-export class LeftParenToken extends Token {
-  public get type(): TokenType {
+/**
+ * @public
+ */
+export class LeftParenToken extends Token<TokenType.LeftParen> {
+  public get type(): TokenType.LeftParen {
     return TokenType.LeftParen;
   }
 }

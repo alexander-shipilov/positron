@@ -1,5 +1,8 @@
-import type { Stream } from "../stream";
+import type { LookaheadStream } from "../stream/lookahead-stream";
 
 import type { Token } from "./token";
 
-export class TokenStream implements Stream<Token> {}
+/**
+ * @public
+ */
+export type TokenStream = LookaheadStream<Token>;

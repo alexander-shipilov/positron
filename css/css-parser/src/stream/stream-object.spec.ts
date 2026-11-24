@@ -1,7 +1,7 @@
 import { describe, expect, it } from "@jest/globals";
 
+import { createNext } from "./-fixtures/stream.fixtures";
 import { StreamObject } from "./stream-object";
-import { createNext } from "./stream.fixtures";
 
 describe("class StreamObject", () => {
   describe("new(next)", () => {
@@ -14,7 +14,8 @@ describe("class StreamObject", () => {
   });
 
   describe(".consume()", () => {
-    it("should return elements sequentially and `null` if the end of the stream is reached", () => {
+    it("should return elements sequentially and `null` if the end of the \
+        stream is reached", () => {
       const next = createNext(["a", "b", "c"]);
       const stream = new StreamObject(next);
 
@@ -34,7 +35,8 @@ describe("class StreamObject", () => {
       expect(next).toHaveBeenCalledTimes(1);
     });
 
-    it("should return falsy elements without treating them as EOF if the stream contains `0`, `''`, or `false`", () => {
+    it("should return falsy elements without treating them as EOF if the \
+        stream contains `0`, `''`, or `false`", () => {
       const next = createNext([0, "", false]);
       const stream = new StreamObject(next);
 
@@ -46,7 +48,8 @@ describe("class StreamObject", () => {
   });
 
   describe(".reconsume()", () => {
-    it("should return `false` and do nothing if called before any element has been consumed", () => {
+    it("should return `false` and do nothing if called before any element \
+        has been consumed", () => {
       const next = createNext(["a", "b"]);
       const stream = new StreamObject(next);
 
@@ -55,7 +58,8 @@ describe("class StreamObject", () => {
       expect(next).toHaveBeenCalledTimes(1);
     });
 
-    it("should return `true` and push back the last consumed element if an element was previously consumed", () => {
+    it("should return `true` and push back the last consumed element if an \
+        element was previously consumed", () => {
       const next = createNext(["a", "b", "c"]);
       const stream = new StreamObject(next);
 
@@ -69,7 +73,8 @@ describe("class StreamObject", () => {
       expect(next).toHaveBeenCalledTimes(3);
     });
 
-    it("should return `false` on subsequent calls if called multiple times consecutively without an intervening `.consume()`", () => {
+    it("should return `false` on subsequent calls if called multiple times \
+        consecutively without an intervening `.consume()`", () => {
       const next = createNext(["a", "b"]);
       const stream = new StreamObject(next);
 
@@ -84,7 +89,8 @@ describe("class StreamObject", () => {
       expect(next).toHaveBeenCalledTimes(2);
     });
 
-    it("should return `true` and push back falsy elements if `0`, `''`, or `false` was previously consumed", () => {
+    it("should return `true` and push back falsy elements if `0`, `''`, \
+        or `false` was previously consumed", () => {
       const next = createNext([0, "", false]);
       const stream = new StreamObject(next);
 
@@ -101,7 +107,8 @@ describe("class StreamObject", () => {
       expect(stream.consume()).toBe(false);
     });
 
-    it("should return `true` and replay `null` without calling `next` again if called after EOF (`null`) was consumed", () => {
+    it("should return `true` and replay `null` without calling `next` again \
+        if called after EOF (`null`) was consumed", () => {
       const next = createNext(["a"]);
       const stream = new StreamObject(next);
 

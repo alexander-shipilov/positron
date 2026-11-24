@@ -1,8 +1,11 @@
 import { Token } from "./token";
 import { TokenType } from "./token-type";
 
-export class LeftSquareBracketToken extends Token {
-  public get type(): TokenType {
+/**
+ * @public
+ */
+export class LeftSquareBracketToken extends Token<TokenType.LeftSquareBracket> {
+  public get type(): TokenType.LeftSquareBracket {
     return TokenType.LeftSquareBracket;
   }
 }

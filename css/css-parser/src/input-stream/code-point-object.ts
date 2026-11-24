@@ -6,13 +6,23 @@ import { CharFlag } from "./char-flag";
 import { getCharFlags } from "./get-char-flags";
 
 /**
+ * The {@link CodePointObject} class implements {@link CodePoint} with lazily
+ * computed CSS Syntax character classification flags.
+ *
  * @internal
  */
 export class CodePointObject implements CodePoint {
+  /**
+   * {@inheritDoc CodePoint.value}
+   */
   public readonly value: Point;
 
   #flags: Optional<number> = undefined;
 
+  /**
+   * The {@link CodePointObject.flags} property returns the cached
+   * {@link CharFlag} bitmask for {@link CodePointObject.value}.
+   */
   protected get flags(): number {
     return this.#flags ?? (this.#flags = getCharFlags(this.value));
   }
@@ -67,9 +77,9 @@ export class CodePointObject implements CodePoint {
   }
 
   /**
-   * {@inheritDoc CodePoint.isNonASCIIIdent}
+   * {@inheritDoc CodePoint.isNonAsciiIdent}
    */
-  public get isNonASCIIIdent(): boolean {
+  public get isNonAsciiIdent(): boolean {
     return (this.flags & CharFlag.In) !== 0;
   }
 
@@ -102,12 +112,18 @@ export class CodePointObject implements CodePoint {
   }
 
   /**
+   * The {@link CodePointObject} constructor creates a new
+   * {@link CodePointObject} instance for the given Unicode code point `value`.
+   *
    * @param value - The Unicode code point value.
    */
   public constructor(value: Point) {
     this.value = value;
   }
 
+  /**
+   * {@inheritDoc CodePoint.toString}
+   */
   public toString(): string {
     return String.fromCodePoint(this.value);
   }

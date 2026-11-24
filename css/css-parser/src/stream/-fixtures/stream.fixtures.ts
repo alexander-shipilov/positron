@@ -1,8 +1,7 @@
-/* eslint-disable jsdoc/require-jsdoc */
 import { jest } from "@jest/globals";
 
-import type { StreamElement } from "./stream-element";
-import type { StreamNext } from "./stream-next";
+import type { StreamElement } from "../stream-element";
+import type { StreamNext } from "../stream-next";
 
 export function createNext<TElement extends StreamElement>(
   elements: readonly TElement[],

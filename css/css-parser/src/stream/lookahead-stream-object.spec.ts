@@ -1,11 +1,12 @@
 import { describe, expect, it } from "@jest/globals";
 
+import { createNext } from "./-fixtures/stream.fixtures";
 import { LookaheadStreamObject } from "./lookahead-stream-object";
-import { createNext } from "./stream.fixtures";
 
 describe("class LookaheadStreamObject", () => {
   describe("new(next)", () => {
-    it("should create a LookaheadStreamObject instance if `next` is provided", () => {
+    it("should create a LookaheadStreamObject instance if `next` is \
+        provided", () => {
       const next = createNext([]);
       const stream = new LookaheadStreamObject(next);
 
@@ -14,7 +15,8 @@ describe("class LookaheadStreamObject", () => {
   });
 
   describe(".lookahead(count?)", () => {
-    it("should return an array with the next `1` element if `count` is omitted", () => {
+    it("should return an array with the next `1` element if `count` is \
+        omitted", () => {
       const next = createNext(["a", "b"]);
       const stream = new LookaheadStreamObject(next);
 
@@ -22,7 +24,8 @@ describe("class LookaheadStreamObject", () => {
       expect(stream.consume()).toBe("a");
     });
 
-    it("should return the next `count` elements without advancing the cursor if `count` is a positive integer", () => {
+    it("should return the next `count` elements without advancing the cursor \
+        if `count` is a positive integer", () => {
       const next = createNext(["a", "b", "c", "d"]);
       const stream = new LookaheadStreamObject(next);
 
@@ -35,7 +38,8 @@ describe("class LookaheadStreamObject", () => {
       expect(next).toHaveBeenCalledTimes(4);
     });
 
-    it("should return all remaining elements if `count` exceeds the number of remaining elements", () => {
+    it("should return all remaining elements if `count` exceeds the number \
+        of remaining elements", () => {
       const next = createNext(["a", "b"]);
       const stream = new LookaheadStreamObject(next);
 
@@ -69,7 +73,8 @@ describe("class LookaheadStreamObject", () => {
       expect(next).not.toHaveBeenCalled();
     });
 
-    it("should truncate `count` toward zero if `count` is a fractional number", () => {
+    it("should truncate `count` toward zero if `count` is a fractional \
+        number", () => {
       const next = createNext(["a", "b", "c", "d"]);
       const stream = new LookaheadStreamObject(next);
 
@@ -77,7 +82,8 @@ describe("class LookaheadStreamObject", () => {
       expect(next).toHaveBeenCalledTimes(2);
     });
 
-    it("should return a shallow copy so external mutations do not corrupt the internal cache if the returned array is modified", () => {
+    it("should return a shallow copy so external mutations do not corrupt the \
+        internal cache if the returned array is modified", () => {
       const next = createNext(["a", "b", "c"] as string[]);
       const stream = new LookaheadStreamObject(next);
 
@@ -89,7 +95,8 @@ describe("class LookaheadStreamObject", () => {
       expect(stream.consume()).toBe("a");
     });
 
-    it("should include the reconsumed element at index `0` if `.reconsume()` was called beforehand", () => {
+    it("should include the reconsumed element at index `0` if `.reconsume()` \
+        was called beforehand", () => {
       const next = createNext(["a", "b", "c"]);
       const stream = new LookaheadStreamObject(next);
 
@@ -105,7 +112,8 @@ describe("class LookaheadStreamObject", () => {
   });
 
   describe(".peek()", () => {
-    it("should return the immediate next element without advancing the cursor if the stream has unconsumed elements", () => {
+    it("should return the immediate next element without advancing the cursor \
+        if the stream has unconsumed elements", () => {
       const next = createNext(["a", "b"]);
       const stream = new LookaheadStreamObject(next);
 
@@ -127,7 +135,8 @@ describe("class LookaheadStreamObject", () => {
       expect(stream.consume()).toBeNull();
     });
 
-    it("should return falsy elements without losing them if the next element is `0`, `''`, or `false`", () => {
+    it("should return falsy elements without losing them if the next element \
+        is `0`, `''`, or `false`", () => {
       const next = createNext([0, "", false]);
       const stream = new LookaheadStreamObject(next);
 
@@ -142,7 +151,8 @@ describe("class LookaheadStreamObject", () => {
       expect(stream.consume()).toBe(false);
     });
 
-    it("should return the reconsumed element if `.reconsume()` was called beforehand", () => {
+    it("should return the reconsumed element if `.reconsume()` was called \
+        beforehand", () => {
       const next = createNext(["a", "b", "c"]);
       const stream = new LookaheadStreamObject(next);
 
@@ -158,7 +168,8 @@ describe("class LookaheadStreamObject", () => {
   });
 
   describe(".reconsume()", () => {
-    it("should return `false` if called before any element has been consumed", () => {
+    it("should return `false` if called before any element has been \
+        consumed", () => {
       const next = createNext(["a", "b"]);
       const stream = new LookaheadStreamObject(next);
 
@@ -166,7 +177,8 @@ describe("class LookaheadStreamObject", () => {
       expect(stream.peek()).toBe("a");
     });
 
-    it("should return `false` on subsequent calls if called multiple times consecutively without an intervening `.consume()`", () => {
+    it("should return `false` on subsequent calls if called multiple times \
+        consecutively without an intervening `.consume()`", () => {
       const next = createNext(["a", "b"]);
       const stream = new LookaheadStreamObject(next);
 
@@ -180,7 +192,8 @@ describe("class LookaheadStreamObject", () => {
       expect(stream.consume()).toBe("b");
     });
 
-    it("should return `true` and not duplicate elements if called after EOF (`null`) was consumed", () => {
+    it("should return `true` and not duplicate elements if called after \
+        EOF (`null`) was consumed", () => {
       const next = createNext(["a"]);
       const stream = new LookaheadStreamObject(next);
 

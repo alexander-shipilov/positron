@@ -1,8 +1,11 @@
 import { Token } from "./token";
 import { TokenType } from "./token-type";
 
-export class CDOToken extends Token {
-  public get type(): TokenType {
+/**
+ * @public
+ */
+export class CdoToken extends Token<TokenType.CDO> {
+  public get type(): TokenType.CDO {
     return TokenType.CDO;
   }
 }

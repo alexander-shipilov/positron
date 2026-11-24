@@ -17,12 +17,12 @@ import type { StreamNext } from "./stream-next";
  *   State machine invariants:
  *
  *   - `#consumed` distinguishes an untouched stream (where `reconsume()`
- *      must be a no-op and return `false`) from a stream that has already
- *      yielded `null` (EOF).
+ *     must be a no-op and return `false`) from a stream that has already
+ *     yielded `null` (EOF).
  *
  *   - `null` (EOF) is treated as a valid consumed token: reconsuming at EOF
- *      replays `null` on the next `consume()` call without invoking `next()`
- *      again.
+ *     replays `null` on the next `consume()` call without invoking `next()`
+ *     again.
  *
  * @typeParam TElement - The type of elements yielded by this stream.
  *
@@ -31,15 +31,30 @@ import type { StreamNext } from "./stream-next";
 export class StreamObject<
   TElement extends StreamElement,
 > implements Stream<TElement> {
+  /**
+   * The {@link StreamObject.current} property holds the most recently
+   * consumed element or `null` when at EOF.
+   */
   protected current: Nullish<TElement> = null;
 
+  /**
+   * The {@link StreamObject.next} read-only property holds the underlying
+   * source reader function.
+   */
   protected readonly next: StreamNext<TElement>;
 
+  /**
+   * The {@link StreamObject.reconsumed} property indicates whether
+   * {@link StreamObject.current} has been pushed back for re-reading.
+   */
   protected reconsumed = false;
 
   #consumed = false;
 
   /**
+   * The {@link StreamObject} constructor creates a new {@link StreamObject}
+   * backed by the given `next` reader function.
+   *
    * @param next - The function to read the next element from the source.
    */
   public constructor(next: StreamNext<TElement>) {
