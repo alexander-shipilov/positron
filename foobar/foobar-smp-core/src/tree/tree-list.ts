@@ -6,7 +6,7 @@
  * a `for` loop:
  *
  * @example
- * ```ts
+ * ```js
  *  for (let i = 0; i < index.length; i++) {
  *     let item = index[i];
  *  }
@@ -20,7 +20,7 @@
  * any particular order.
  *
  * `for...of` loops over {@link TreeList} objects correctly:
- * ```ts
+ * ```js
  *  for (const item of list) {
  *     // some code
  *  }
@@ -33,6 +33,7 @@ export interface TreeList<TItem> extends ArrayLike<TItem> {
    * list, in insertion order.
    *
    * @param callback
+   *
    * @param thisArg
    */
   forEach(
@@ -46,7 +47,7 @@ export interface TreeList<TItem> extends ArrayLike<TItem> {
    * if the `index` is out of range.
    *
    * @example
-   * ```ts
+   * ```js
    *  const second = list.item(1)
    *  // the second item in list or `undefined`
    *  // if list length less than 2
