@@ -10,7 +10,7 @@ describe("type CssNumberish", () => {
     expectTypeOf<CssNumericValue>().toExtend<CssNumberish>();
   });
 
-  it("should be satisfied by DOM `CSSNumberish`", () => {
+  it("should satisfy DOM `CSSNumberish`", () => {
     expectTypeOf<CssNumberish>().toExtend<CSSNumberish>();
   });
 });

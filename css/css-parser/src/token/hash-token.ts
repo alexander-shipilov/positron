@@ -7,11 +7,13 @@ import { TokenType } from "./token-type";
  * Additionally, hash tokens have a type flag set to either "id" or
  * "unrestricted". The type flag defaults to "unrestricted" if not otherwise
  * set.
+ *
+ * @public
  */
-export class HashToken extends CodePointsToken {
+export class HashToken extends CodePointsToken<TokenType.Hash> {
   public readonly hashType: HashType;
 
-  public get type(): TokenType {
+  public get type(): TokenType.Hash {
     return TokenType.Hash;
   }
 

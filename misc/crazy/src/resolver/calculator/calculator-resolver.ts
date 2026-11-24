@@ -12,12 +12,12 @@ export class CalculatorResolver<TValue> implements Resolver<TValue> {
   /**
    * @param calculator -
    */
-  constructor(protected readonly calculator: Calculator<TValue>) {}
+  public constructor(protected readonly calculator: Calculator<TValue>) {}
 
   /**
    * @param entity -
    */
-  resolve(entity: Entity): ExceptionType | TValue {
+  public resolve(entity: Entity): ExceptionType | TValue {
     if (entity instanceof Operand) {
       return this.resolveOperand(entity);
     } else if (entity instanceof Operation1) {

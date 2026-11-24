@@ -5,11 +5,9 @@ import type { CssNumberish } from "./css-numberish";
  * The {@link CssMathSumClass} interface represents a class for creating
  * instances of {@link CssMathSum}.
  *
- * @typeParam TInstance - The instance type constructed by this class.
- *
  * @public
  */
-export interface CssMathSumClass<TInstance extends CssMathSum = CssMathSum> {
+export interface CssMathSumClass {
   /**
    * Creates a new {@link CssMathSum} object representing the sum of the
    * arguments passed into it.
@@ -27,5 +25,5 @@ export interface CssMathSumClass<TInstance extends CssMathSum = CssMathSum> {
    *   have incompatible types (for example, mixing a `<length>` with an
    *   `<angle>`).
    */
-  new (...args: readonly CssNumberish[]): TInstance;
+  new (...args: CssNumberish[]): CssMathSum;
 }

@@ -4,8 +4,6 @@ import type { CssUnitValue } from "./css-unit-value";
  * The {@link CssUnitValueClass} interface represents a class for creating
  * instances of {@link CssUnitValue}.
  *
- * @typeParam TInstance - The instance type constructed by this class.
- *
  * @public
  */
 export interface CssUnitValueClass {

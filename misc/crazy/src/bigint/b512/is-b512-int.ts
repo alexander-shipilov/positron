@@ -5,7 +5,7 @@ const MIN = -MAX;
 
 /**
  * The {@link isB512Int} function determines whether the passed bigint
- * `maybeB512Int` is an {@Link B512Int}.
+ * `maybeB512Int` is an {@link B512Int}.
  *
  * @param maybeB512Int - The value to be checked.
  *

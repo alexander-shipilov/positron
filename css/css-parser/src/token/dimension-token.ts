@@ -15,11 +15,13 @@ import { TypedNumericalToken } from "./typed-numerical-token";
  * either "integer" or "number". The type flag defaults to "integer" if not
  * otherwise set. <dimension-token> additionally have a unit composed of one or
  * more code points.
+ *
+ * @public
  */
-export class DimensionToken extends TypedNumericalToken {
+export class DimensionToken extends TypedNumericalToken<TokenType.Dimension> {
   public readonly unit: DimensionUnit;
 
-  public get type(): TokenType {
+  public get type(): TokenType.Dimension {
     return TokenType.Dimension;
   }
 

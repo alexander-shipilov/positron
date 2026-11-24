@@ -1,4 +1,4 @@
-import type { CodePoint } from "../input-stream";
+import type { CodePoint } from "../input-stream/code-point";
 
 import { Token } from "./token";
 import { TokenType } from "./token-type";
@@ -8,13 +8,15 @@ import { TokenType } from "./token-type";
  * inclusive range of codepoints (including both the start and end). If the
  * ending code point is before the starting code point, it represents an empty
  * range.
+ *
+ * @public
  */
-export class UnicodeRangeToken extends Token {
+export class UnicodeRangeToken extends Token<TokenType.UnicodeRange> {
   public readonly end: CodePoint;
 
   public readonly start: CodePoint;
 
-  public get type(): TokenType {
+  public get type(): TokenType.UnicodeRange {
     return TokenType.UnicodeRange;
   }
 

@@ -1,8 +1,11 @@
 import { Token } from "./token";
 import { TokenType } from "./token-type";
 
-export class BadUrlToken extends Token {
-  public get type(): TokenType {
+/**
+ * @public
+ */
+export class BadUrlToken extends Token<TokenType.BadUrl> {
+  public get type(): TokenType.BadUrl {
     return TokenType.BadUrl;
   }
 }

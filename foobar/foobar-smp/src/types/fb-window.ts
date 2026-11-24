@@ -28,7 +28,7 @@ export interface FbWindow {
    * processed by the panel. Can be one or more of the {@link DlgCode}.
    *
    * @example
-   * ```ts
+   * ```js
    *  window.DlgCode = DlgCode.WantAllKeys;
    * ```
    */
@@ -48,8 +48,8 @@ export interface FbWindow {
    * The {@link FbWindow.InstanceType} property contains UI type.
    *
    * @remarks
-   * You need this to determine which GetFontXXX and GetColourXXX methods to
-   * use, assuming you want to support both types.
+   *   You need this to determine which GetFontXXX and GetColourXXX methods to
+   *   use, assuming you want to support both types.
    */
   readonly InstanceType: UiType;
 
@@ -58,10 +58,10 @@ export interface FbWindow {
    * panel is transparent.
    *
    * @remarks
-   * Only useful within Panel Stack Splitter (`Columns UI` component).
-   * Depends on setting inside Spider Monkey Panel Configuration window.
+   *   Only useful within Panel Stack Splitter (`Columns UI` component).
+   *   Depends on setting inside Spider Monkey Panel Configuration window.
    *
-   * You generally use it to determine whether to draw a background.
+   *   You generally use it to determine whether to draw a background.
    */
   readonly IsTransparent: boolean;
 
@@ -83,7 +83,7 @@ export interface FbWindow {
    * used to lock the panel size.
    *
    * @remarks
-   * Do not use if panels are contained within `Panel Stack Splitter`
+   *   Do not use if panels are contained within `Panel Stack Splitter`
    *   (`Columns UI` component).
    */
   MaxHeight: number;
@@ -98,7 +98,7 @@ export interface FbWindow {
    * usage for the component (in bytes).
    *
    * @remarks
-   * If the total memory usage exceeds this value, all panels will
+   *   If the total memory usage exceeds this value, all panels will
    *   fail with OOM error.
    *
    * @deprecated Use {@link FbWindow.JsMemoryStats} instead.
@@ -172,19 +172,20 @@ export interface FbWindow {
    * The {@link FbWindow.CreatePopupMenu} method creates popup menu.
    *
    * @remarks
-   * todo: See
-   *    samples\\basic\\MainMenuManager All-In-One.js,
-   *    samples\\basic\\Menu Sample.js
+   *   todo: See
+   *   samples\\basic\\MainMenuManager All-In-One.js,
+   *   samples\\basic\\Menu Sample.js
    */
   CreatePopupMenu(): MenuObject;
 
   /**
    * The {@link FbWindow.CreateThemeManager} method creates theme manger.
+   *
    * @see https://docs.microsoft.com/en-us/windows/win32/controls/parts-and-states
    *
    * @remarks
-   * todo: See
-   *    samples\\basic\\SimpleThemedButton.js
+   *   todo: See
+   *   samples\\basic\\SimpleThemedButton.js
    *
    * @param classId -
    */
@@ -194,11 +195,13 @@ export interface FbWindow {
    * The {@link FbWindow.CreateTooltip} method creates a tooltip.
    *
    * @remarks
-   * Note: a single panel can have only a single tooltip object. Creating a new
+   *   Note: a single panel can have only a single tooltip object. Creating a new
    *   tooltip will replace the previous one.
    *
    * @param fontName - Tooltip font. Default `"Segoe UI"`.
+   *
    * @param fontSizePx - Tooltip font size in pixels. Default `12`.
+   *
    * @param fontStyle - Tooltip font style. Default `0`.
    *
    * @deprecated Use {@link FbWindow.Tooltip} and {@link FbTooltip.SetFont}
@@ -215,10 +218,11 @@ export interface FbWindow {
    * information and available features.
    *
    * @remarks
-   * Can be called only once, so it's better to define it directly in the panel
+   *   Can be called only once, so it's better to define it directly in the panel
    *   Configure menu.
    *
    * @param name - Script name and panel name.
+   *
    * @param options - Options. Default `{}`.
    *
    * @deprecated Use {@link FbWindow.DefineScript} instead. Panel name can be
@@ -230,9 +234,10 @@ export interface FbWindow {
    * The {@link FbWindow.DefineScript} method setups the script information.
    *
    * @remarks
-   * Note: Can be called only once for the whole panel.
+   *   Note: Can be called only once for the whole panel.
    *
    * @param name - Script name
+   *
    * @param options - Options Default `{}`.
    */
   DefineScript(name: string, options: ScriptOptions): void;
@@ -242,7 +247,7 @@ export interface FbWindow {
    * the default text editor.
    *
    * @remarks
-   * Default text editor can be changed via `Edit` button on the main tab of
+   *   Default text editor can be changed via `Edit` button on the main tab of
    *   {@link FbWindow.ShowConfigureV2}.
    */
   EditScript(): void;
@@ -251,6 +256,7 @@ export interface FbWindow {
    * The {@link FbWindow.GetColourCUI} method returns a color from `Columns UI`.
    *
    * @param type - The colour type.
+   *
    * @param clientGuid - todo: add ColourCuiGuid enum.
    *   See `Flags.js > Used in GetColourCUI() as client_guid`.
    *
@@ -271,6 +277,7 @@ export interface FbWindow {
    * The {@link FbWindow.GetFontCUI} method returns font from `Columns UI`.
    *
    * @param type - Font type.
+   *
    * @param clientGuid - todo: add FontCuiGuid enum.
    *   See `Flags.js > Used in GetFontCUI() as client_guid`.
    *
@@ -282,7 +289,7 @@ export interface FbWindow {
    * The {@link FbWindow.GetFontDUI} method returns font from `Default UI`.
    *
    * @example
-   * ```ts
+   * ```js
    *  // To avoid errors when trying to use the font or access its properties,
    *  // you should use code something like this...
    *  let font = window.GetFontDUI(0);
@@ -304,12 +311,13 @@ export interface FbWindow {
    * The {@link FbWindow.GetProperty} method returns a value of property.
    *
    * @remarks
-   * If property does not exist and `defaultValue` is not `undefined` and not
-   * `null`, it will be created with the value of `defaultValue`.
+   *   If property does not exist and `defaultValue` is not `undefined` and not
+   *   `null`, it will be created with the value of `defaultValue`.
    *
-   * Note: leading and trailing whitespace are removed from property name.
+   *   Note: leading and trailing whitespace are removed from property name.
    *
    * @param name - Property name
+   *
    * @param defaultValue - Default value
    */
   GetProperty(name: string, defaultValue?: PropertyValue): PropertyValue;
@@ -319,11 +327,11 @@ export interface FbWindow {
    * This will trigger {@link FbCallbacks.on_notify_data} in other panels.
    *
    * @remarks
-   * Beware: data passed via `info` argument must NOT be used or modified in
+   *   Beware: data passed via `info` argument must NOT be used or modified in
    *   the source panel after invoking this method.
    *
    * @example
-   * ```ts
+   * ```js
    *  let data = {
    *    // some data
    *  };
@@ -338,6 +346,7 @@ export interface FbWindow {
    * ```
    *
    * @param name - The data name.
+   *
    * @param info - The information. All variable / array / object types should
    *   be supported.
    */
@@ -352,7 +361,7 @@ export interface FbWindow {
    * The {@link FbWindow.Repaint} method repaints window.
    *
    * @remarks
-   * Performance note: don't force the repaint unless it's really necessary -
+   *   Performance note: don't force the repaint unless it's really necessary -
    *   repaint calls might be grouped up when *not forced* which will turn them
    *   into a single repaint call, thus reducing the amount of
    *   {@link FbCallbacks.on_paint} calls.
@@ -366,15 +375,19 @@ export interface FbWindow {
    * The {@link FbWindow.RepaintRect} method repaints a part of the screen.
    *
    * @remarks
-   * Use this instead of {@link FbWindow.Repaint} on frequently updated areas
+   *   Use this instead of {@link FbWindow.Repaint} on frequently updated areas
    *   such as time, bitrate, seekbar, etc.
    *
-   * Performance note: see Performance note in {@link FbWindow.Repaint}.
+   *   Performance note: see Performance note in {@link FbWindow.Repaint}.
    *
    * @param x -
+   *
    * @param y -
+   *
    * @param width -
+   *
    * @param height -
+   *
    * @param force - If `true`, will repaint immediately, otherwise a
    *   repaint task will be *scheduled*. Default `false`.
    */
@@ -390,7 +403,7 @@ export interface FbWindow {
    * The {@link FbWindow.SetCursor} method sets window cursor.
    *
    * @remarks
-   * This would usually be used inside the {@link FbCallbacks.on_mouse_move}
+   *   This would usually be used inside the {@link FbCallbacks.on_mouse_move}
    *   callback. Use {@link Cursor.Hidden} if you want to hide the cursor.
    *
    * @param id - Cursor id.
@@ -401,6 +414,7 @@ export interface FbWindow {
    * See {@link FbGlobal.setInterval}.
    *
    * @param func -
+   *
    * @param delay -
    */
   SetInterval(func: () => void, delay: number): number;
@@ -409,22 +423,24 @@ export interface FbWindow {
    * The {@link FbWindow.SetProperty} method sets property value.
    *
    * @remarks
-   * Property will be removed, if `value` is `undefined` or `null`.
+   *   Property will be removed, if `value` is `undefined` or `null`.
    *
-   * Property values are saved per panel instance and are remembered between
+   *   Property values are saved per panel instance and are remembered between
    *   foobar2000 restarts.
    *
-   * Note: leading and trailing whitespace are removed from property name.
+   *   Note: leading and trailing whitespace are removed from property name.
    *
    * @param name - Property name
+   *
    * @param value - Property value. Pass `null` to remove an existing property.
    */
-  SetProperty(name: string, value: null | PropertyValue | undefined): void;
+  SetProperty(name: string, value: PropertyValue | null | undefined): void;
 
   /**
    * See {@link FbGlobal.setTimeout}.
    *
    * @param func -
+   *
    * @param delay -
    */
   SetTimeout(func: () => void, delay: number): number;

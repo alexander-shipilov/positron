@@ -41,6 +41,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
 
   /**
    * @param arg1
+   *
    * @param arg2
    */
   public add(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
@@ -61,6 +62,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
 
   /**
    * @param arg1
+   *
    * @param arg2
    */
   public compare(arg1: Fraction<TValue>, arg2: Fraction<TValue>): number {
@@ -83,6 +85,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
 
   /**
    * @param arg1
+   *
    * @param arg2
    */
   public div(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
@@ -98,6 +101,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
 
   /**
    * @param arg1
+   *
    * @param arg2
    */
   public equals(arg1: Fraction<TValue>, arg2: Fraction<TValue>): boolean {
@@ -138,6 +142,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
 
   /**
    * @param arg1
+   *
    * @param arg2
    */
   public mul(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
@@ -157,6 +162,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
 
   /**
    * @param arg1
+   *
    * @param arg2
    */
   public pow(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {
@@ -194,6 +200,7 @@ export class RationalMath<TValue> implements FractionMath<TValue> {
 
   /**
    * @param arg1
+   *
    * @param arg2
    */
   public sub(arg1: Fraction<TValue>, arg2: Fraction<TValue>): Fraction<TValue> {

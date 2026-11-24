@@ -5,12 +5,12 @@ import ts, { parser as tsParser } from "typescript-eslint";
 
 export default defineConfig(
   {
-    files: ["**/*.{cjs,js,jsx,mjs,cts,mts,ts,tsx}"],
-    name: "jsdoc/examples/processor",
+    files: ["**/*.{cts,mts,ts,tsx}"],
+    name: "tsdoc/examples/processor",
     plugins: {
       examples: getJsdocProcessorPlugin({
         exampleCodeRegex: /```tsx?\s*\n([\s(\S)]*?)```/,
-        matchingFileName: "example.jsdoc",
+        matchingFileName: "example.tsdoc",
         paddedIndent: 2,
         parser: tsParser,
         sourceType: "module",
@@ -19,11 +19,11 @@ export default defineConfig(
     processor: "examples/examples",
   },
   {
-    files: ["**/*.jsdoc"],
+    files: ["**/*.tsdoc"],
     languageOptions: {
       parser: tsParser,
     },
-    name: "jsdoc/examples/rules",
+    name: "tsdoc/examples/rules",
     rules: {
       ...ts.configs.disableTypeChecked.rules,
       "@typescript-eslint/no-explicit-any": "off",
@@ -41,6 +41,8 @@ export default defineConfig(
         {
           tags: [
             "param", //
+            "privateRemarks",
+            "remarks",
             "returns",
             "throws",
             "typeParam",

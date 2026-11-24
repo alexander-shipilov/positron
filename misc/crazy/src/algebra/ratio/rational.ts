@@ -10,7 +10,9 @@ export type Rational<TValue> = Nominal<Vector2<TValue>, "Rational">;
 
 /**
  * @param integral
+ *
  * @param numValue
+ *
  * @param denValue
  *
  * @public

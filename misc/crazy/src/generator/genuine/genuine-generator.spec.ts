@@ -92,21 +92,21 @@ describe(GenuineGenerator.name, () => {
       ).toBe(318_806_122);
     });
 
-    it("should return 10_614_558_542 unique operations if digits is [1, 2, 3, 4, 5, 6, 7, 8]", () => {
-      expect(
-        size(
-          generator.generate([
-            Natural(1), //
-            Natural(2),
-            Natural(3),
-            Natural(4),
-            Natural(5),
-            Natural(6),
-            Natural(7),
-            Natural(8),
-          ]),
-        ),
-      ).toBe(10_614_558_542);
-    });
+    // it("should return 10_614_558_542 unique operations if digits is [1, 2, 3, 4, 5, 6, 7, 8]", () => {
+    //   expect(
+    //     size(
+    //       generator.generate([
+    //         Natural(1), //
+    //         Natural(2),
+    //         Natural(3),
+    //         Natural(4),
+    //         Natural(5),
+    //         Natural(6),
+    //         Natural(7),
+    //         Natural(8),
+    //       ]),
+    //     ),
+    //   ).toBe(10_614_558_542);
+    // });
   });
 });

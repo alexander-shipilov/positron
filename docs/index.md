@@ -35,6 +35,19 @@ The `@positron/api-documenter` package provides a plugin-friendly architecture f
 
 </td><td>
 
+The `@positron/css-numeric` package provides TypeScript interfaces and contracts representing the CSS Typed OM numeric value hierarchy.
+
+
+</td></tr>
+<tr><td>
+
+[@positron/css-numeric-impl](./css-numeric-impl.md)
+
+
+</td><td>
+
+The `@positron/css-numeric-impl` package provides implementation contracts, internal slot interfaces, unit map structures, and numeric validation helpers for CSS Typed OM engines.
+
 
 </td></tr>
 <tr><td>
@@ -44,6 +57,8 @@ The `@positron/api-documenter` package provides a plugin-friendly architecture f
 
 </td><td>
 
+The `@positron/css-unit` package provides CSS unit identifiers, categorized unit sets, canonical conversion ratios, and dimension utilities.
+
 
 </td></tr>
 <tr><td>
@@ -52,6 +67,8 @@ The `@positron/api-documenter` package provides a plugin-friendly architecture f
 
 
 </td><td>
+
+The `@positron/cssom-numeric` package provides a modular implementation of the CSS Typed OM numeric value hierarchy.
 
 
 </td></tr>
@@ -74,15 +91,6 @@ The `@positron/lang` package provides core TypeScript type guards, runtime asser
 </td><td>
 
 The `@positron/lang-nominal` package provides internal types for storing nominal types metadata and is used by the `@positron/lang` package.
-
-
-</td></tr>
-<tr><td>
-
-[@positron/prefixed](./prefixed.md)
-
-
-</td><td>
 
 
 </td></tr>

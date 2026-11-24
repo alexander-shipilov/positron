@@ -18,21 +18,26 @@ export class AlgebraCalculator<TValue> implements Calculator<TValue> {
   /**
    * @param algebra -
    */
-  constructor(protected readonly algebra: Algebra<TValue>) {}
+  public constructor(protected readonly algebra: Algebra<TValue>) {}
 
   /**
    * @param _ -
+   *
    * @param arg -
    */
-  calcOperand(_: Entity<OperandType>, arg: OperandArg): ExceptionType | TValue {
+  public calcOperand(
+    _: Entity<OperandType>,
+    arg: OperandArg,
+  ): ExceptionType | TValue {
     return this.calc(() => this.algebra.element(arg.join("")));
   }
 
   /**
    * @param _ -
+   *
    * @param arg -
    */
-  calcOperation1(
+  public calcOperation1(
     _: Entity<Operation1Type>,
     arg: TValue,
   ): ExceptionType | TValue {
@@ -41,10 +46,12 @@ export class AlgebraCalculator<TValue> implements Calculator<TValue> {
 
   /**
    * @param entity -
+   *
    * @param arg1 -
+   *
    * @param arg2 -
    */
-  calcOperation2(
+  public calcOperation2(
     entity: Entity<Operation2Type>,
     arg1: TValue,
     arg2: TValue,

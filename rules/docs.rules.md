@@ -31,8 +31,24 @@
 - Every bullet list item (`- ...`) MUST be separated by a blank comment line
   (` *`) before the first item, between items, and after the last item.
 
-- Content inside `@remarks` and `@privateRemarks` blocks MUST be indented by
-  4 spaces from the start of the comment line (` *   ...`).
+- Continuation lines inside `@param`, `@privateRemarks`, `@remarks`,
+  `@returns`, `@throws`, and `@typeParam` tags MUST be indented by 2 spaces
+  (3 spaces after `*`).
+
+- Text in `@remarks` and `@privateRemarks` MUST start on the line following
+  the tag (a blank comment line between the tag and text is permitted):
+
+  ```ts
+  /**
+   * The {@link Foo} class represents a sample entity.
+   *
+   * @remarks
+   *   Detailed remarks text starts on a new line
+   *   with a 2-space indent (3 spaces after `*`).
+   *
+   * @public
+   */
+  ```
 
 ## 3. Summary Opening Line
 
@@ -106,9 +122,11 @@ Tags within a TSDoc block MUST appear in the following order:
 - Parameter names MUST be enclosed in backticks: `` `count` `` (`{@link count}`
   is prohibited).
 
-- Entities from external packages (including `@positron/*`) MUST be enclosed
-  in backticks (e.g., `` `Nullish` ``) rather than cross-package `{@link}`
-  references unless `tsdoc-metadata.json` resolution is configured.
+- Use `{@link ...}` only when the target entity can be resolved by TSDoc
+  (same-package entities via `{@link Entity}` or documented workspace
+  packages via `{@link @positron/pkg#Entity}` matching the `import` path).
+  Bare `{@link ImportedEntity}` for external imports MUST NOT be used;
+  enclose unresolvable or external symbols in backticks (`` `Entity` ``).
 
 - References to entities within the same package MUST use `{@link <link-ref>}`
   conforming strictly to the W3C EBNF grammar defined in `docs-link.ebnf`.
@@ -208,7 +226,8 @@ by TSDoc or API Extractor:
   The description MUST start with `If`.
 
 - `@inheritDoc`: MUST be used on members implementing an interface or
-  overriding a base class method: `{@inheritDoc Foo.bar}`.
+  overriding a base class method: `{@inheritDoc Foo.bar}`. When used, it
+  MUST be the sole content of the TSDoc block (no summary or other tags).
 
 - `@example`: Optional. Every fenced TypeScript block (```` ```ts ```` or
   ```` ```tsx ````) inside `@example` MUST be a self-contained, runnable ES

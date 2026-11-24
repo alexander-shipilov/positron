@@ -16,4 +16,4 @@ import type { Primitive } from "@positron/lang";
  *
  * @public
  */
-export type StreamElement = NonNullable<Primitive> | object;
+export type StreamElement = object | NonNullable<Primitive>;

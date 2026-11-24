@@ -18,18 +18,20 @@ import type { CachingCalculatorCache } from "./caching-calculator-cache";
 export class CachingCalculator<TValue> implements Calculator<TValue> {
   /**
    * @param calculator -
+   *
    * @param cache -
    */
-  constructor(
+  public constructor(
     protected readonly calculator: Calculator<TValue>,
     protected readonly cache: CachingCalculatorCache<TValue>,
   ) {}
 
   /**
    * @param entity -
+   *
    * @param arg -
    */
-  calcOperand(
+  public calcOperand(
     entity: Entity<OperandType>,
     arg: OperandArg,
   ): ExceptionType | TValue {
@@ -38,9 +40,10 @@ export class CachingCalculator<TValue> implements Calculator<TValue> {
 
   /**
    * @param entity -
+   *
    * @param arg -
    */
-  calcOperation1(
+  public calcOperation1(
     entity: Entity<Operation1Type>,
     arg: TValue,
   ): ExceptionType | TValue {
@@ -49,10 +52,12 @@ export class CachingCalculator<TValue> implements Calculator<TValue> {
 
   /**
    * @param entity -
+   *
    * @param arg1 -
+   *
    * @param arg2 -
    */
-  calcOperation2(
+  public calcOperation2(
     entity: Entity<Operation2Type>,
     arg1: TValue,
     arg2: TValue,
@@ -64,6 +69,7 @@ export class CachingCalculator<TValue> implements Calculator<TValue> {
 
   /**
    * @param entity -
+   *
    * @param fn -
    */
   protected calc(

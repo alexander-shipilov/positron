@@ -1,4 +1,4 @@
-import { assert, isNonOptional } from "@positron/lang";
+import { assert, assertType, isNonOptional } from "@positron/lang";
 
 import type { Entity } from "../../entity";
 import type { Serializer } from "../serializer";
@@ -14,6 +14,7 @@ import {
 
 /**
  * @param entity -
+ *
  * @param result -
  */
 function serialize(entity: Entity, result: unknown[]): void {
@@ -48,7 +49,7 @@ export const PostfixSerializer: Serializer<readonly unknown[]> = {
         stack.push(
           DefaultCreator.createOperation1(
             token,
-            assert(arg, isNonOptional, new SyntaxError("Missed arg")),
+            assertType(arg, isNonOptional, new SyntaxError("Missed arg")),
           ),
         );
       } else if (isOperation2Type(token)) {

@@ -1,4 +1,4 @@
-import type { CssMathValue } from "./css-math-value";
+import type { CssMathVariadic } from "./css-math-variadic";
 import type { CssNumericArray } from "./css-numeric-array";
 
 /**
@@ -23,7 +23,7 @@ import type { CssNumericArray } from "./css-numeric-array";
  *
  * @public
  */
-export interface CssMathSum extends CssMathValue {
+export interface CssMathSum extends CssMathVariadic {
   /**
    * The {@link CssMathSum.values} read-only property returns a
    * {@link CssNumericArray} containing the {@link CssNumericValue} objects

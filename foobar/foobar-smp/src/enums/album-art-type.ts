@@ -2,13 +2,13 @@
  * The {@link AlbumArtType} enumeration represents album art types.
  *
  * @remarks
- * The {@link AlbumArtType} enumeration is used by:
- * {@link FbMetadbHandleList.AttachImage},
- * {@link FbMetadbHandleList.RemoveAttachedImage},
- * {@link FbUtils.GetAlbumArtAsync},
- * {@link FbUtils.GetAlbumArtAsyncV2},
- * {@link FbUtils.GetAlbumArtEmbedded},
- * {@link FbUtils.GetAlbumArtV2}.
+ *   The {@link AlbumArtType} enumeration is used by:
+ *   {@link FbMetadbHandleList.AttachImage},
+ *   {@link FbMetadbHandleList.RemoveAttachedImage},
+ *   {@link FbUtils.GetAlbumArtAsync},
+ *   {@link FbUtils.GetAlbumArtAsyncV2},
+ *   {@link FbUtils.GetAlbumArtEmbedded},
+ *   {@link FbUtils.GetAlbumArtV2}.
  *
  * @public
  */

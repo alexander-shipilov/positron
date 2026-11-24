@@ -97,7 +97,7 @@ export interface FbGlobal extends Partial<FbCallbacks> {
    * {@link FbGlobal.setInterval}.
    *
    * @remarks
-   * If the parameter provided does not identify a previously established
+   *   If the parameter provided does not identify a previously established
    *   action, this does nothing.
    *
    * @param intervalID - The identifier of the repeated action you want to
@@ -113,7 +113,7 @@ export interface FbGlobal extends Partial<FbCallbacks> {
    * established by calling {@link FbGlobal.setTimeout}.
    *
    * @remarks
-   * If the parameter provided does not identify a previously established
+   *   If the parameter provided does not identify a previously established
    *   action, this does nothing.
    *
    * @param timeoutID - The identifier of the timeout you want to cancel. This
@@ -128,33 +128,33 @@ export interface FbGlobal extends Partial<FbCallbacks> {
    * The {@link FbGlobal.include} function evaluates the script in file.
    *
    * @example
-   * ```ts
+   * ```js
    *  include('samples/complete/properties.js');
    *  // include sample from `foo_spider_monkey_panel`
    * ```
    *
    * @remarks
-   * Similar to `eval({@link utils.ReadTextFile}(path))`, but provides more
-   * features:
+   *   Similar to `eval({@link utils.ReadTextFile}(path))`, but provides more
+   *   features:
    *
-   *  - Has `include guards` - script won't be evaluated a second time if it was
+   *   - Has `include guards` - script won't be evaluated a second time if it was
    *    evaluated before in the same panel.
    *
-   *  - Has script caching - script file will be read only once from filesystem
+   *   - Has script caching - script file will be read only once from filesystem
    *    (even if it is included from different panels).
    *
-   *  - Has better error reporting.
+   *   - Has better error reporting.
    *
-   * Note: when the relative `path` is used it will be searched in the following
-   * paths:
+   *   Note: when the relative `path` is used it will be searched in the following
+   *   paths:
    *
-   *  - `${current_package_path}/scripts/${path}`, if the panel uses a package
+   *   - `${current_package_path}/scripts/${path}`, if the panel uses a package
    *    script.
    *
-   *  - `${current_script_path}/${path}`, if the script is not a top-level
+   *   - `${current_script_path}/${path}`, if the script is not a top-level
    *    `in-memory` script.
    *
-   *  - `${fb.ComponentPath}/${path}`, otherwise.
+   *   - `${fb.ComponentPath}/${path}`, otherwise.
    *
    * @param path - Absolute or relative path to JavaScript file.
    * @param options - Include options.
@@ -169,8 +169,10 @@ export interface FbGlobal extends Partial<FbCallbacks> {
    *
    * @param func - A to be executed every `delay` milliseconds. The
    *   first execution happens after `delay` milliseconds.
+   *
    * @param delay - The delay time between executions of the specified function
    *   or code, in milliseconds. Defaults to 0 if not specified.
+   *
    * @param args - Additional arguments which are passed through to
    *   the specified by `func` once the timer expires.
    *
@@ -194,9 +196,11 @@ export interface FbGlobal extends Partial<FbCallbacks> {
    * once the timer expires.
    *
    * @param func - A to be executed after the timer expires.
+   *
    * @param delay - A non-negative integer indicating how long the timer should
    *   wait before the specified or code is executed, in milliseconds.
    *   Defaults to `0` if not specified.
+   *
    * @param args - Additional arguments which are passed through to the
    *   function
    *   specified by `func`.

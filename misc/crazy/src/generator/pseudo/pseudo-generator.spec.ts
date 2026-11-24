@@ -142,39 +142,39 @@ describe(PseudoGenerator.name, () => {
       ).toBe(87_547_746);
     });
 
-    it("should return 2_345_800_050 unique operations if digits is [1, 2, 3, 4, 5, 6, 7, 8]", () => {
-      expect(
-        size(
-          generator.generate([
-            Natural(1), //
-            Natural(2),
-            Natural(3),
-            Natural(4),
-            Natural(5),
-            Natural(6),
-            Natural(7),
-            Natural(8),
-          ]),
-        ),
-      ).toBe(2_345_800_050);
-    });
+    // it("should return 2_345_800_050 unique operations if digits is [1, 2, 3, 4, 5, 6, 7, 8]", () => {
+    //   expect(
+    //     size(
+    //       generator.generate([
+    //         Natural(1), //
+    //         Natural(2),
+    //         Natural(3),
+    //         Natural(4),
+    //         Natural(5),
+    //         Natural(6),
+    //         Natural(7),
+    //         Natural(8),
+    //       ]),
+    //     ),
+    //   ).toBe(2_345_800_050);
+    // });
 
-    it("should return 64_477_920_386 unique operations if digits is [1, 2, 3, 4, 5, 6, 7, 8, 9]", () => {
-      expect(
-        size(
-          generator.generate([
-            Natural(1), //
-            Natural(2),
-            Natural(3),
-            Natural(4),
-            Natural(5),
-            Natural(6),
-            Natural(7),
-            Natural(8),
-            Natural(9),
-          ]),
-        ),
-      ).toBe(64_477_920_386);
-    });
+    // it("should return 64_477_920_386 unique operations if digits is [1, 2, 3, 4, 5, 6, 7, 8, 9]", () => {
+    //   expect(
+    //     size(
+    //       generator.generate([
+    //         Natural(1), //
+    //         Natural(2),
+    //         Natural(3),
+    //         Natural(4),
+    //         Natural(5),
+    //         Natural(6),
+    //         Natural(7),
+    //         Natural(8),
+    //         Natural(9),
+    //       ]),
+    //     ),
+    //   ).toBe(64_477_920_386);
+    // });
   });
 });

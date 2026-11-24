@@ -5,13 +5,9 @@ import type { CssNumberish } from "./css-numberish";
  * The {@link CssMathNegateClass} interface represents a class for creating
  * instances of {@link CssMathNegate}.
  *
- * @typeParam TInstance - The instance type constructed by this class.
- *
  * @public
  */
-export interface CssMathNegateClass<
-  TInstance extends CssMathNegate = CssMathNegate,
-> {
+export interface CssMathNegateClass {
   /**
    * Creates a new {@link CssMathNegate} object representing the negation of a
    * {@link CssNumericValue}.
@@ -24,5 +20,5 @@ export interface CssMathNegateClass<
    *
    * @throws `TypeError` If `arg` is a non-finite number.
    */
-  new (arg: CssNumberish): TInstance;
+  new (arg: CssNumberish): CssMathNegate;
 }

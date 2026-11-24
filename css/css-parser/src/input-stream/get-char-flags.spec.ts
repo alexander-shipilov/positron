@@ -5,7 +5,8 @@ import { CharFlag } from "./char-flag";
 import { getCharFlags } from "./get-char-flags";
 
 describe(`function getCharFlags(code)`, () => {
-  it("should return `CharFlag.Np` if `code` is an ASCII non-printable control", () => {
+  it("should return `CharFlag.Np` if `code` is an ASCII non-printable \
+      control", () => {
     expect(getCharFlags(0x00 as Point)).toBe(CharFlag.Np);
     expect(getCharFlags(0x07 as Point)).toBe(CharFlag.Np);
     expect(getCharFlags(0x0b as Point)).toBe(CharFlag.Np);
@@ -17,11 +18,13 @@ describe(`function getCharFlags(code)`, () => {
     expect(getCharFlags(0x09 as Point)).toBe(CharFlag.Ws);
   });
 
-  it("should return `CharFlag.Nl | CharFlag.Ws` if `code` is LINE FEED", () => {
+  it("should return `CharFlag.Nl | CharFlag.Ws` if `code` is \
+      LINE FEED", () => {
     expect(getCharFlags(0x0a as Point)).toBe(CharFlag.Nl | CharFlag.Ws);
   });
 
-  it("should return `CharFlag.No` if `code` is CARRIAGE RETURN or FORM FEED", () => {
+  it("should return `CharFlag.No` if `code` is CARRIAGE RETURN or \
+      FORM FEED", () => {
     expect(getCharFlags(0x0d as Point)).toBe(CharFlag.No);
     expect(getCharFlags(0x0c as Point)).toBe(CharFlag.No);
   });
@@ -71,13 +74,15 @@ describe(`function getCharFlags(code)`, () => {
     expect(getCharFlags(0x5f as Point)).toBe(CharFlag.Is | CharFlag.Id);
   });
 
-  it("should return `CharFlag.No` if `code` is an ASCII punctuation not used in identifiers", () => {
+  it("should return `CharFlag.No` if `code` is an ASCII punctuation not used \
+      in identifiers", () => {
     expect(getCharFlags(0x7b as Point)).toBe(CharFlag.No);
     expect(getCharFlags(0x3b as Point)).toBe(CharFlag.No);
     expect(getCharFlags(0x22 as Point)).toBe(CharFlag.No);
   });
 
-  it("should delegate to non-ASCII flags if `code` is greater than or equal to 0x80", () => {
+  it("should delegate to non-ASCII flags if `code` is greater than or equal \
+      to 0x80", () => {
     expect(getCharFlags(0x80 as Point)).toBe(CharFlag.No);
     expect(getCharFlags(0xb7 as Point)).toBe(
       CharFlag.In | CharFlag.Is | CharFlag.Id,

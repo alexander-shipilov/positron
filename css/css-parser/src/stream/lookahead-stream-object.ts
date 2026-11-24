@@ -13,7 +13,7 @@ import { StreamObject } from "./stream-object";
  *   - `#next` holds the original source reader function so that
  *     {@link LookaheadStreamObject.peek} and
  *     {@link LookaheadStreamObject.lookahead} can populate `#cache` directly
- *      without advancing the parent pushback state.
+ *     without advancing the parent pushback state.
  *
  *   - Synchronizes `#cache` with the parent pushback state so that
  *     {@link LookaheadStreamObject.peek} and
@@ -34,6 +34,9 @@ export class LookaheadStreamObject<TElement extends StreamElement>
   readonly #next: StreamNext<TElement>;
 
   /**
+   * The {@link LookaheadStreamObject} constructor creates a new
+   * {@link LookaheadStreamObject} backed by the given `next` reader function.
+   *
    * @param next - The function to read the next element from the source.
    */
   public constructor(next: StreamNext<TElement>) {
@@ -72,8 +75,7 @@ export class LookaheadStreamObject<TElement extends StreamElement>
         this.#cache.push(element);
       }
 
-      // Always return a shallow copy to prevent external mutation
-      // of the cache.
+      // Always return a shallow copy to prevent external mutation of the cache.
       elements = this.#cache.slice(0, count);
     }
 

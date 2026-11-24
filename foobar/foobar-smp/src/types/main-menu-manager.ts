@@ -9,7 +9,9 @@ import type { MenuObject } from "./menu-object";
 export interface MainMenuManager {
   /**
    * @param menu -
+   *
    * @param baseId -
+   *
    * @param count -
    */
   BuildMenu(menu: MenuObject, baseId: number, count: number): void;

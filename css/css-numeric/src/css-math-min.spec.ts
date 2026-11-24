@@ -14,7 +14,7 @@ describe("interface CssMathMin", () => {
     expectTypeOf<CssMathMin["values"]>().toEqualTypeOf<CssNumericArray>();
   });
 
-  it("should be satisfied by DOM `CSSMathMin`", () => {
+  it("should satisfy DOM `CSSMathMin`", () => {
     expectTypeOf<CssMathMin>().toExtend<CSSMathMin>();
   });
 });

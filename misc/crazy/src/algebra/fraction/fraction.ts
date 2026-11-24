@@ -11,7 +11,9 @@ export type Fraction<TValue> = Readonly<Vector2<TValue>>;
  * The {@link Fraction} function creates a {@link Fraction}.
  *
  * @param toValue - A function
+ *
  * @param num - Numerator
+ *
  * @param den - Denominator
  *
  * @public

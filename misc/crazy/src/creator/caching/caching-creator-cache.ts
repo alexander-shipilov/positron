@@ -13,6 +13,7 @@ export interface CachingCreatorCache {
 
   /**
    * @param key -
+   *
    * @param entity -
    */
   set(key: string, entity: Entity): void;

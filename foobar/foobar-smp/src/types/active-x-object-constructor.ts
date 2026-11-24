@@ -13,7 +13,7 @@ export interface ActiveXObjectConstructor {
    * `(VT_ARRAY | SOME_TYPE)`.
    *
    * @example
-   * ```ts
+   * ```js
    *  const filename = 'x:\\file.bin';
    *  const binData = [0x01, 0x00, 0x00, 0x02];
    *  const comBinData = ActiveXObject.ActiveX_CreateArray(binData, 0x11);
@@ -29,6 +29,7 @@ export interface ActiveXObjectConstructor {
    * ```
    *
    * @param array - An array that contains elements of primitive type.
+   *
    * @param elementVariantType - A variant type of array elements.
    */
   ActiveX_CreateArray(

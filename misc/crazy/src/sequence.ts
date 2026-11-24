@@ -10,14 +10,14 @@ import { isExceptionType } from "./exception";
  *
  */
 export class Sequence<TValue> extends EventEmitter<SequenceEvents<TValue>> {
-  constructor(
+  protected constructor(
     protected readonly generator: Generator,
     protected readonly resolver: Resolver<TValue>,
   ) {
     super();
   }
 
-  resolve(digits: OperandArg): void {
+  protected resolve(digits: OperandArg): void {
     let total = 0;
     let resolved = 0;
 

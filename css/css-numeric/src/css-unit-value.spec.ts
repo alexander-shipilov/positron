@@ -16,7 +16,7 @@ describe("interface CssUnitValue", () => {
     expectTypeOf<Readonly<CssUnitValue>>().toExtend<CssUnitValue>();
   });
 
-  it("should be satisfied by DOM `CSSUnitValue`", () => {
+  it("should satisfy DOM `CSSUnitValue`", () => {
     expectTypeOf<CssUnitValue>().toExtend<CSSUnitValue>();
   });
 });

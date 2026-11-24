@@ -30,6 +30,7 @@ export class PseudoGenerator implements Generator {
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   protected *generateOperation(arg1: Entity, arg2: Entity): Iterable<Entity> {
@@ -56,6 +57,7 @@ export class PseudoGenerator implements Generator {
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   protected *generatePow(arg1: Entity, arg2: Entity): Iterable<Entity> {

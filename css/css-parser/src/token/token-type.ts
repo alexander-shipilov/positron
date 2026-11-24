@@ -13,8 +13,9 @@
  *   `<CDO-token>`, `<CDC-token>`, `<colon-token>`, `<semicolon-token>`,
  *   `<comma-token>`, `<[-token>`, `<]-token>`, `<(-token>`, `<)-token>`,
  *   `<{-token>`, and `<}-token>`.
+ *
+ * @public
  */
-
 export enum TokenType {
   AtKeyword = "at-keyword",
   BadString = "bad-string",

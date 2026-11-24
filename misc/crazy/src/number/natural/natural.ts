@@ -1,4 +1,4 @@
-import type { NumberLike } from "@positron/lang";
+import type { NumericLike } from "@positron/lang";
 import { isNumber, never } from "@positron/lang";
 
 import { debug } from "../../utils";
@@ -12,7 +12,7 @@ import { isNaturalNumber } from "./is-natural-number";
  * from the given `NumberLike` value.
  *
  * @example
- * ```ts
+ * ```js
  *  const natural1 = Natural(1)
  *  // 1
  *
@@ -28,12 +28,13 @@ import { isNaturalNumber } from "./is-natural-number";
  *
  * @throws RangeError if the passed `numberLike` is not a non-negative safe
  *   integer.
+ *
  * @throws SyntaxError if the passed `numberLike` cannot be converted to
  *   a non-negative safe integer.
  *
  * @public
  */
-export const Natural = (numberLike: NumberLike): NaturalNumber => {
+export const Natural = (numberLike: NumericLike): NaturalNumber => {
   const integer = Integer(numberLike);
 
   return isNaturalNumber(integer)

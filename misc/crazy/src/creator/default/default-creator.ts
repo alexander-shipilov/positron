@@ -30,6 +30,7 @@ export const DefaultCreator = {
 
   /**
    * @param type -
+   *
    * @param arg -
    */
   createOperation1(type: Operation1Type, arg: Entity): Operation1 {
@@ -44,7 +45,9 @@ export const DefaultCreator = {
 
   /**
    * @param type -
+   *
    * @param arg1 -
+   *
    * @param arg2 -
    */
   createOperation2(

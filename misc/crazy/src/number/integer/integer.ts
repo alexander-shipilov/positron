@@ -1,4 +1,4 @@
-import type { NumberLike } from "@positron/lang";
+import type { NumericLike } from "@positron/lang";
 import { isNumber, never } from "@positron/lang";
 
 import { debug } from "../../utils";
@@ -13,6 +13,8 @@ import { isIntegerNumber } from "./is-integer-number";
  *
  * @example
  * ```ts
+ *  import { Integer } from "./integer"
+ *
  *  const integer1 = Integer(1)
  *  // 1
  *
@@ -30,12 +32,13 @@ import { isIntegerNumber } from "./is-integer-number";
  *   {@link IntegerNumber}
  *
  * @throws RangeError if the passed `numberLike` is not a safe integer.
+ *
  * @throws SyntaxError if the passed `numberLike` cannot be converted to
  *   a safe integer.
  *
  * @public
  */
-export const Integer = (numberLike: NumberLike): IntegerNumber => {
+export const Integer = (numberLike: NumericLike): IntegerNumber => {
   const real = Real(numberLike);
 
   return isIntegerNumber(real)
@@ -43,8 +46,8 @@ export const Integer = (numberLike: NumberLike): IntegerNumber => {
     : never(
         isNumber(numberLike)
           ? new RangeError(
-              `The ${debug(numberLike)} cannot be converted to an 'IntegerNumber' ` +
-                `because it is not a safe integer`,
+              `The ${debug(numberLike)} cannot be converted to an ` +
+                `'IntegerNumber' because it is not a safe integer`,
             )
           : new SyntaxError(
               `Cannot convert ${debug(numberLike)} to an 'IntegerNumber'`,

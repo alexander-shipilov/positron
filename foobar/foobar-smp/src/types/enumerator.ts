@@ -5,7 +5,7 @@ import type { ActiveXObject } from "./active-x-object";
  * `ActiveX` collections.
  *
  * @example
- * ```ts
+ * ```js
  *  const e = new Enumerator(active_x_object);
  *
  *  for (e.moveFirst(); !e.atEnd(); e.moveNext()) {
@@ -14,6 +14,7 @@ import type { ActiveXObject } from "./active-x-object";
  * ```
  *
  * @public
+ *
  * @deprecated Use `for ... of` loop instead.
  */
 export declare class Enumerator {

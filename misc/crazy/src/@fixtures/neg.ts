@@ -6,6 +6,6 @@ import { entity } from "./entity";
 /**
  * @public
  */
-export function neg(arg: Entity | number): Neg {
+export function neg(arg: number | Entity): Neg {
   return new Neg(entity(arg));
 }

@@ -30,7 +30,6 @@ export class GenuineGenerator implements Generator {
 
   /**
    * @param arg -
-   * @protected
    */
   protected *generateOperand(arg: OperandArg): Iterable<Entity> {
     const operand = this.creator.createOperand(arg);
@@ -41,6 +40,7 @@ export class GenuineGenerator implements Generator {
 
   /**
    * @param arg1 -
+   *
    * @param arg2 -
    */
   protected *generateOperation(arg1: Entity, arg2: Entity): Iterable<Entity> {

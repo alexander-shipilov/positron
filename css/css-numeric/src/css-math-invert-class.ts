@@ -5,13 +5,9 @@ import type { CssNumberish } from "./css-numberish";
  * The {@link CssMathInvertClass} interface represents a class for creating
  * instances of {@link CssMathInvert}.
  *
- * @typeParam TInstance - The instance type constructed by this class.
- *
  * @public
  */
-export interface CssMathInvertClass<
-  TInstance extends CssMathInvert = CssMathInvert,
-> {
+export interface CssMathInvertClass {
   /**
    * Creates a new {@link CssMathInvert} object representing the inversion
    * (reciprocal) of a {@link CssNumericValue}.
@@ -24,5 +20,5 @@ export interface CssMathInvertClass<
    *
    * @throws `TypeError` If `arg` is a non-finite number.
    */
-  new (arg: CssNumberish): TInstance;
+  new (arg: CssNumberish): CssMathInvert;
 }

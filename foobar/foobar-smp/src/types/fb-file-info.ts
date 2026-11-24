@@ -6,7 +6,7 @@ export interface FbFileInfo {
    * The {@link FbFileInfo.InfoCount} property represents a count of info items.
    *
    * @example
-   * ```ts
+   * ```js
    *  const fileInfo = fb.GetFocusItem().GetFileInfo();
    *
    *  console.log(fileInfo.InfoCount);
@@ -19,7 +19,7 @@ export interface FbFileInfo {
    * The {@link FbFileInfo.MetaCount} property represents a count of meta items.
    *
    * @example
-   * ```ts
+   * ```js
    *  const fileInfo = fb.GetFocusItem().GetFileInfo();
    *
    *  console.log(fileInfo.MetaCount);
@@ -55,12 +55,12 @@ export interface FbFileInfo {
   /**
    *
    * @remarks
-   * Note: the case of the tag name returned can be different depending on tag
-   * type, so using `toLowerCase()` or `toUpperCase()` on the result is
-   * recommended.
+   *   Note: the case of the tag name returned can be different depending on tag
+   *   type, so using `toLowerCase()` or `toUpperCase()` on the result is
+   *   recommended.
    *
    * @example
-   * ```ts
+   * ```js
    *  const fileInfo = fb.GetFocusItem().GetFileInfo();
    *
    *  for (let i = 0; i < fileInfo.MetaCount; i++) {
@@ -75,6 +75,7 @@ export interface FbFileInfo {
    * `valueIndex` from the meta at `index`.
    *
    * @param index -
+   *
    * @param valueIndex - Used for iterating through multi-value tags.
    */
   MetaValue(index: number, valueIndex: number): string;

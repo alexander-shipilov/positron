@@ -4,15 +4,15 @@ import type { FbMetadbHandleList } from "./fb-metadb-handle-list";
 
 /**
  * @remarks
- * This is typically used to update the selection used by the default UI
+ *   This is typically used to update the selection used by the default UI
  *   artwork panel or any other panel that makes use of the preferences under
  *   `File > Preferences > Display > Selection viewers`.
  *
- * Use in conjunction with the {@link FbCallbacks.on_focus} callback.
- * See {@link Fb.AcquireUiSelectionHolder}.
+ *   Use in conjunction with the {@link FbCallbacks.on_focus} callback.
+ *   See {@link Fb.AcquireUiSelectionHolder}.
  *
  * @example
- * ```ts
+ * ```js
  *  // For playlist viewers
  *  const selectionHolder = fb.AcquireUiSelectionHolder();
  *
@@ -27,7 +27,7 @@ import type { FbMetadbHandleList } from "./fb-metadb-handle-list";
  * ```
  *
  * @example
- * ```ts
+ * ```js
  *  // For library viewers
  *  const selectionHolder = fb.AcquireUiSelectionHolder();
  *  let handleList = null;
@@ -78,8 +78,8 @@ export interface FbUiSelectionHolder {
    * items.
    *
    * @param handleList -
-   * @param type - Selection type. Default {@link SelectionType.NoItem}.
    *
+   * @param type - Selection type. Default {@link SelectionType.NoItem}.
    */
   SetSelection(handleList: FbMetadbHandleList, type: SelectionType): void;
 }

@@ -435,10 +435,10 @@
       "packageName": "@positron/lang-nominal",
       "projectFolder": "shared/lang-nominal",
     },
-    {
-      "packageName": "@positron/prefixed",
-      "projectFolder": "shared/prefixed",
-    },
+//    {
+//      "packageName": "@positron/prefixed",
+//      "projectFolder": "shared/prefixed",
+//    },
     /** react-* */
 	/*
     {
@@ -460,9 +460,13 @@
       "projectFolder": "css/css-numeric",
     },
     {
-      "packageName": "@positron/css-parser",
-      "projectFolder": "css/css-parser",
+      "packageName": "@positron/css-numeric-impl",
+      "projectFolder": "css/css-numeric-impl",
     },
+//    {
+//      "packageName": "@positron/css-parser",
+//      "projectFolder": "css/css-parser",
+//    },
     {
       "packageName": "@positron/css-unit",
       "projectFolder": "css/css-unit",

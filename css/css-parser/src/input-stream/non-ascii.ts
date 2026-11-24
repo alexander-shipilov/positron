@@ -4,7 +4,7 @@ import { CODE_POINT_LIMIT } from "./code-point-limit";
 /**
  * @internal
  */
-export const NonASCII = [
+export const NON_ASCII = [
   [0x000080, CharFlag.No],
   [0x0000b7, CharFlag.In | CharFlag.Is | CharFlag.Id],
   [0x0000b8, CharFlag.No],

@@ -26,7 +26,7 @@ export interface GdiBitmap {
    * the current {@link GdiBitmap} object.
    *
    * @remarks
-   * Note: Changes will be saved in the current bitmap.
+   *   Note: Changes will be saved in the current bitmap.
    *
    * @param alpha - Valid values 0-255.
    */
@@ -37,7 +37,7 @@ export interface GdiBitmap {
    * {@link GdiBitmap} object.
    *
    * @remarks
-   * Note: Changes will be saved in the current bitmap.
+   *   Note: Changes will be saved in the current bitmap.
    *
    * @param mask - Mask bitmap. Must be the same size as current instance.
    */
@@ -48,8 +48,11 @@ export interface GdiBitmap {
    * {@link GdiBitmap} object.
    *
    * @param x -
+   *
    * @param y -
+   *
    * @param width -
+   *
    * @param height -
    */
   Clone(x: number, y: number, width: number, height: number): GdiBitmap;
@@ -73,19 +76,19 @@ export interface GdiBitmap {
    * string form.
    *
    * @remarks
-   * You need to use `JSON.parse()` on the result. Each entry in the
+   *   You need to use `JSON.parse()` on the result. Each entry in the
    *   array is an object which contains colour (`col`) and frequency (`freq`)
    *   values.
    *
-   * Note: The {@link GdiBitmap.GetColourSchemeJSON} method uses a
+   *   Note: The {@link GdiBitmap.GetColourSchemeJSON} method uses a
    *   different method for calculating colours than
    *   {@link GdiBitmap.GetColourScheme}.
    *
-   * Note: Image is automatically resized during processing for performance
+   *   Note: Image is automatically resized during processing for performance
    *   reasons so there's no need to resize before calling the method.
    *
    * @example
-   * ```ts
+   * ```js
    *  // See docs\Helpers.js for "toRGB" function.
    *  const img = ... // use utils.GetAlbumArtV2 / gdi.Image / etc.
    *  const colours = JSON.parse(img.GetColourSchemeJSON(5));
@@ -109,7 +112,7 @@ export interface GdiBitmap {
    * object.
    *
    * @remarks
-   * Note: Don't forget to use {@link GdiBitmap.ReleaseGraphics} after
+   *   Note: Don't forget to use {@link GdiBitmap.ReleaseGraphics} after
    *   operations on {@link GdiGraphics} interface is done.
    */
   GetGraphics(): GdiGraphics;
@@ -134,7 +137,9 @@ export interface GdiBitmap {
    * {@link GdiBitmap} object.
    *
    * @param width -
+   *
    * @param height -
+   *
    * @param mode - Default {@link InterpolationMode.Default}.
    */
   Resize(width: number, height: number, mode?: InterpolationMode): GdiBitmap;
@@ -144,7 +149,7 @@ export interface GdiBitmap {
    * {@link GdiBitmap} object.
    *
    * @remarks
-   * Note: Changes will be saved in the current bitmap.
+   *   Note: Changes will be saved in the current bitmap.
    *
    * @param mode -
    */
@@ -155,10 +160,10 @@ export interface GdiBitmap {
    * {@link GdiBitmap} object to the file.
    *
    * @remarks
-   * Note: The parent folder must already exist.
+   *   Note: The parent folder must already exist.
    *
    * @example
-   * ```ts
+   * ```js
    *  const img = utils.GetAlbumArtEmbedded(fb.GetFocusItem().RawPath, 0);
    *
    *  if (img) {
@@ -167,6 +172,7 @@ export interface GdiBitmap {
    * ```
    *
    * @param path - Full path including file extension.
+   *
    * @param format - Format. Default {@link BitmapFormat.Png}
    */
   SaveAs(path: string, format?: BitmapFormat): boolean;
@@ -177,10 +183,10 @@ export interface GdiBitmap {
    * {@link GdiBitmap} object.
    *
    * @remarks
-   * Note: Changes will be saved in the current bitmap.
+   *   Note: Changes will be saved in the current bitmap.
    *
    * @remarks
-   * todo: See
+   *   todo: See
    *   samples\\basic\\StackBlur (image).txt,
    *   samples\\basic\\StackBlur (text).txt
    *

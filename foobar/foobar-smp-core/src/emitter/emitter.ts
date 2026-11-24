@@ -26,12 +26,12 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    * registered, passing the supplied arguments to each.
    *
    * @example
-   * ```ts
+   * ```js
    *  type Listeners = {
    *    event: (...args: number[]) => undefined
    *  }
    *
-   *  const emitter = new Emitter<Listeners>();
+   *  const emitter = new Emitter();
    *
    *  // First listener
    *  emitter.on("event", () => {
@@ -55,6 +55,7 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    * ```
    *
    * @param eventName - The name of the event to emit.
+   *
    * @param args - The callback arguments to pass to the registered listeners
    *   of event.
    */
@@ -81,6 +82,7 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    * listeners of the event.
    *
    * @param eventName - The name of the event being listened for.
+   *
    * @param listener - The event handler function.
    */
   public listenerCount<TName extends keyof TListeners>(
@@ -106,7 +108,7 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    * the event named `eventName`.
    *
    * @example
-   * ```ts
+   * ```js
    *  emitter.on('event', () => {
    *    console.log('event occurred');
    *  });
@@ -115,7 +117,7 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    *  // >> [Function]
    * ```
    *
-   *  @param eventName - The name of the event.
+   * @param eventName - The name of the event.
    */
   public listeners<TName extends keyof TListeners>(
     eventName: TName,
@@ -128,7 +130,7 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    * listener array for the event named `eventName`.
    *
    * @example
-   * ```ts
+   * ```js
    *  const callback = () => {
    *    console.log('event occurred');
    *  };
@@ -139,19 +141,20 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    * ```
    *
    * @remarks
-   * The {@link Emitter.off} method will remove, at most, one instance of a
+   *   The {@link Emitter.off} method will remove, at most, one instance of a
    *   listener from the listener array. If any single listener has been added
    *   multiple times to the listener array for the specified `eventName`, then
    *   {@link Emitter.off} must be called multiple times to remove each
    *   instance.
    *
-   * Once an event is emitted, all listeners attached to it at the time of
+   *   Once an event is emitted, all listeners attached to it at the time of
    *   emitting are called in order. This implies that any {@link Emitter.off}
    *   calls _after_ emitting and _before_ the last listener finishes execution
    *   will not remove them from {@link Emitter.emit} in progress. Subsequent
    *   event behave as expected.
    *
-   * ```ts
+   * @example
+   * ```js
    *  const emitter = new Emitter();
    *
    *  const callbackA = () => {
@@ -166,8 +169,8 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    *  emitter.on('event', callbackA);
    *  emitter.on('event', callbackB);
    *
-   * // `callbackA` removes listener `callbackB` but it will still be called.
-   * // Internal listener array at time of emit [`callbackA`, `callbackB`]
+   *  // `callbackA` removes listener `callbackB` but it will still be called.
+   *  // Internal listener array at time of emit [`callbackA`, `callbackB`]
    *
    *  emitter.emit('event');
    *  // >> A
@@ -180,19 +183,21 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    *  // >> A
    * ```
    *
-   * Because listeners are managed using an - array, calling this will
+   * @remarks
+   *   Because listeners are managed using an - array, calling this will
    *   change the position indexes of any listener registered _after_ the
    *   listener being removed. This will not impact the order in which
    *   listeners are called, but it means that any copies of the listener array
    *   as returned by the {@link Emitter.listeners} method will need to be
    *   recreated.
    *
-   * When a single function has been added as a handler multiple times for a
+   *   When a single function has been added as a handler multiple times for a
    *   single event (as in the example below), {@link Emitter.off} will remove
    *   the most recently added instance. In the example the last `on('ping')`
    *   listener is removed:
    *
-   * ```ts
+   * @example
+   * ```js
    *  const emitter = new EventEmitter();
    *
    *  function pong(): undefined {
@@ -206,7 +211,9 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    *  emitter.emit('ping');
    *  // >> pong
    * ```
+   *
    * @param eventName - The name of the event.
+   *
    * @param listener - The callback function to remove from the {@link Emitter}
    *   instance listeners.
    *
@@ -240,13 +247,13 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    * listeners array for the event named `eventName`.
    *
    * @remarks
-   * No checks are made to see if the `listener` has already been added.
+   *   No checks are made to see if the `listener` has already been added.
    *   Multiple calls passing the same combination of `eventName` and
    *   `listener` will result in the `listener` being added, and called,
    *   multiple times.
    *
-   *  @example
-   * ```ts
+   * @example
+   * ```js
    *   const emitter = new Emitter();
    *
    *   emitter.on('foo', () => console.log('a'));
@@ -258,6 +265,7 @@ export class Emitter<TListeners extends EmitterListeners = EmitterListeners> {
    * ```
    *
    * @param eventName - The name of the event.
+   *
    * @param listener - The callback function to append to the {@link Emitter}
    *   instance listeners.
    *

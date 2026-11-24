@@ -2,7 +2,7 @@
  * The {@link ActiveXObject} interface represents an `ActiveX` object.
  *
  * @example
- * ```ts
+ * ```js
  *  const xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
  * ```
  *
@@ -14,10 +14,9 @@ export interface ActiveXObject {
    * behaviour of property accessors.
    *
    * @example
-   * ```ts
+   * ```js
    *  someActiveX.ActiveX_Get('property_name', 'additional_info').DoSmth();
-   *  // in COM:
-   *  // someActiveX.Item('property_name', 'additional_info').DoSmth();
+   *  // in COM: someActiveX.Item('property_name', 'additional_info').DoSmth();
    * ```
    *
    * @param propName - Name of the property, or it's numeric index
@@ -29,13 +28,14 @@ export interface ActiveXObject {
    * property accessors.
    *
    * @example
-   * ```ts
+   * ```js
    *  someActiveX.ActiveX_Set('property_name', 'new_value', 'additional_info');
    *  // in COM:
    *  // someActiveX.Item('property_name', 'additional_info') = "new_value";
    * ```
    *
    * @param propName - Name of the property, or it's numeric index
+   *
    * @param propValue - Property value
    */
   ActiveX_Set(propName: number | string, propValue: string): unknown;

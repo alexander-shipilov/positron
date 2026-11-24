@@ -14,7 +14,7 @@ describe("interface CssMathNegate", () => {
     expectTypeOf<CssMathNegate["value"]>().toEqualTypeOf<CssNumericValue>();
   });
 
-  it("should be satisfied by DOM `CSSMathNegate`", () => {
+  it("should satisfy DOM `CSSMathNegate`", () => {
     expectTypeOf<CssMathNegate>().toExtend<CSSMathNegate>();
   });
 });

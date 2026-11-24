@@ -68,7 +68,7 @@ documentation comments.
 - If a backtick appears inside an inline code fragment and no context-specific
   escaping rule is defined, it MUST be escaped as `` \` ``.
 
-- Numeric values MUST be enclosed in backticks when used as language literals
+- CssNumeric values MUST be enclosed in backticks when used as language literals
   (e.g., `` `value` is equal to `0` ``) and written as plain text when used
   as natural-language quantities (e.g., `repeat 5 times`).
 

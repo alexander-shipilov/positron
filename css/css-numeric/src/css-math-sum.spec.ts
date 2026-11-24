@@ -14,7 +14,7 @@ describe("interface CssMathSum", () => {
     expectTypeOf<CssMathSum["values"]>().toEqualTypeOf<CssNumericArray>();
   });
 
-  it("should be satisfied by DOM `CSSMathSum`", () => {
+  it("should satisfy DOM `CSSMathSum`", () => {
     expectTypeOf<CssMathSum>().toExtend<CSSMathSum>();
   });
 });

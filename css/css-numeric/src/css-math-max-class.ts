@@ -5,11 +5,9 @@ import type { CssNumberish } from "./css-numberish";
  * The {@link CssMathMaxClass} interface represents a class for creating
  * instances of {@link CssMathMax}.
  *
- * @typeParam TInstance - The instance type constructed by this class.
- *
  * @public
  */
-export interface CssMathMaxClass<TInstance extends CssMathMax = CssMathMax> {
+export interface CssMathMaxClass {
   /**
    * Creates a new {@link CssMathMax} object representing the CSS `max()`
    * function.
@@ -27,5 +25,5 @@ export interface CssMathMaxClass<TInstance extends CssMathMax = CssMathMax> {
    *   have incompatible types (for example, mixing a `<length>` with an
    *   `<angle>`).
    */
-  new (...args: CssNumberish[]): TInstance;
+  new (...args: CssNumberish[]): CssMathMax;
 }

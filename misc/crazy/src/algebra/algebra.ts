@@ -21,6 +21,7 @@ export interface Algebra<TElement> {
    * The {@link Algebra#add} method performs the addition of the given operands.
    *
    * @param arg1 - The first operand.
+   *
    * @param arg2 - The second operand.
    */
   add(arg1: TElement, arg2: TElement): TElement;
@@ -29,6 +30,7 @@ export interface Algebra<TElement> {
    * The {@link Algebra#div} method performs the division of the given operands.
    *
    * @param arg1 - The first operand.
+   *
    * @param arg2 - The second operand.
    */
   div(arg1: TElement, arg2: TElement): TElement;
@@ -43,6 +45,7 @@ export interface Algebra<TElement> {
 
   /**
    * @param element1 -
+   *
    * @param element2 -
    */
   equals(element1: TElement, element2: TElement): boolean;
@@ -66,6 +69,7 @@ export interface Algebra<TElement> {
    * The {@link Algebra#mul} method performs the product of the given operands.
    *
    * @param arg1 - The first operand.
+   *
    * @param arg2 - The second operand.
    */
   mul(arg1: TElement, arg2: TElement): TElement;
@@ -82,6 +86,7 @@ export interface Algebra<TElement> {
    * operands.
    *
    * @param arg1 - The first operand.
+   *
    * @param arg2 - The second operand.
    */
   pow(arg1: TElement, arg2: TElement): TElement;
@@ -91,6 +96,7 @@ export interface Algebra<TElement> {
    * operands.
    *
    * @param arg1 - The first operand.
+   *
    * @param arg2 - The second operand.
    */
   sub(arg1: TElement, arg2: TElement): TElement;

@@ -3,11 +3,12 @@ import type { TokenType } from "./token-type";
 import { ValueToken } from "./value-token";
 
 /**
- * <ident-token>, <function-token>, <at-keyword-token>, <hash-token>,
- * <string-token>, and <url-token> have a value composed of zero or more code
- * points. Additionally, hash tokens have a type flag set to either "id" or
- * "unrestricted". The type flag defaults to "unrestricted" if not otherwise
- * set.
+ * The {@link CodePointsToken} abstract class represents a {@link Token} whose
+ * value is a sequence of {@link CodePoints}.
+ *
+ * @typeParam TType - The specific {@link TokenType} discriminant of the token.
+ *
+ * @public
  */
 export abstract class CodePointsToken<
   TType extends TokenType,

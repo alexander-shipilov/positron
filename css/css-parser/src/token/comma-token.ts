@@ -1,8 +1,11 @@
 import { Token } from "./token";
 import { TokenType } from "./token-type";
 
-export class CommaToken extends Token {
-  public get type(): TokenType {
+/**
+ * @public
+ */
+export class CommaToken extends Token<TokenType.Comma> {
+  public get type(): TokenType.Comma {
     return TokenType.Comma;
   }
 }

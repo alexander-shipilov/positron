@@ -3,7 +3,7 @@
  * the {@link GdiGraphics.MeasureString} method.
  *
  * @example
- * ```ts
+ * ```js
  *  const sf = StringFormat(StringAlignment.Near, StringAlignment.Near);
  *  const text = utils.ReadTextFile("z:\\info.txt");
  *  const font = window.GetFontDUI(0);

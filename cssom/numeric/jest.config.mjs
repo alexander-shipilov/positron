@@ -1,3 +1,3 @@
-import config from "@positron/heft-rig/profiles/default/jest.config.base.js";
+import config from "@positron/heft-lib-rig/profiles/default/jest.config.base.mjs";
 
 export default config;

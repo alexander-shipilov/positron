@@ -14,7 +14,7 @@ describe("interface CssMathValue", () => {
     expectTypeOf<CssMathValue["operator"]>().toEqualTypeOf<CssMathOperator>();
   });
 
-  it("should be satisfied by DOM `CSSMathValue`", () => {
+  it("should satisfy DOM `CSSMathValue`", () => {
     expectTypeOf<CssMathValue>().toExtend<CSSMathValue>();
   });
 });
