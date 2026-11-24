@@ -18,14 +18,21 @@ import type {
   NumericTypeImpl,
   NumericUnit,
 } from "@positron/css-numeric-impl";
-import { NUMBER_UNIT, NumericUnitMap } from "@positron/css-numeric-impl";
+import {
+  NUMBER_UNIT,
+  NumericUnitMap,
+  toNumericUnit,
+} from "@positron/css-numeric-impl";
 import {
   CssCanonicalUnits,
+  CssCompatibleRatios,
   CssCompatibleUnits,
   toCanonical,
+  toCompatible,
 } from "@positron/css-unit";
 import {
   assert,
+  assertNonNullish,
   assertTrue,
   error,
   isNonEmptyArray,
@@ -106,8 +113,19 @@ export class NumericConverter
    *   `units`.
    */
   public toMathSum($this: CssNumericValue, ...units: string[]): CssMathSum {
-    // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
-    return never(void [$this, units]);
+    const { CSSMathSum } = this.impl;
+    const targetUnits = units.map((unit) => this.parseNumericUnit(unit));
+    const values = this.createSumValue($this).map((item) =>
+      this.createUnitValueFromSumItem(item),
+    );
+
+    if (targetUnits.length === 0) {
+      values.sort((a, b) => (a.unit < b.unit ? -1 : a.unit > b.unit ? 1 : 0));
+
+      return new CSSMathSum(...values);
+    }
+
+    return new CSSMathSum(...this.collectMathSumValues(values, targetUnits));
   }
 
   /**
@@ -131,8 +149,120 @@ export class NumericConverter
    *   compatible with `unit`.
    */
   public toUnitValue($this: CssNumericValue, unit: string): CssUnitValue {
-    // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator
-    return never(void [$this, unit]);
+    const targetUnit = this.parseNumericUnit(unit);
+    const item = this.createSumValueItem($this);
+
+    return this.convertUnitValue(
+      this.createUnitValueFromSumItem(item),
+      targetUnit,
+    );
+  }
+
+  /**
+   * The {@link NumericConverter.areCompatibleUnits} method checks whether two
+   * numeric units are identical or share the same canonical unit.
+   *
+   * @param unit1 - The first numeric unit.
+   *
+   * @param unit2 - The second numeric unit.
+   *
+   * @returns `true` if `unit1` and `unit2` can be converted to each other;
+   *   otherwise, `false`.
+   */
+  protected areCompatibleUnits(
+    unit1: NumericUnit,
+    unit2: NumericUnit,
+  ): boolean {
+    return (
+      unit1 === unit2 ||
+      (CssCompatibleUnits.has(unit1) &&
+        CssCompatibleUnits.has(unit2) &&
+        CssCompatibleRatios[unit1][1] === CssCompatibleRatios[unit2][1])
+    );
+  }
+
+  /**
+   * The {@link NumericConverter.collectMathSumValues} method accumulates
+   * `values` into `CssUnitValue` instances matching `targetUnits`.
+   *
+   * @param values - The materialized canonical unit values from `$this`.
+   *
+   * @param targetUnits - The ordered list of requested target units.
+   *
+   * @returns An array of `CssUnitValue` objects corresponding to
+   *   `targetUnits`.
+   *
+   * @throws `TypeError` If any term in `values` is incompatible with all
+   *   `targetUnits`.
+   */
+  protected collectMathSumValues(
+    values: readonly CssUnitValue[],
+    targetUnits: readonly NumericUnit[],
+  ): CssUnitValue[] {
+    const { impl } = this;
+    const remaining = [...values];
+    const result: CssUnitValue[] = [];
+
+    for (const targetUnit of targetUnits) {
+      let total = 0;
+
+      for (let i = 0; i < remaining.length;) {
+        const current = remaining[i];
+        const currentUnit = impl.getInternal(current).unit;
+
+        if (this.areCompatibleUnits(currentUnit, targetUnit)) {
+          total += impl.getInternal(
+            this.convertUnitValue(current, targetUnit),
+          ).value;
+          remaining.splice(i, 1);
+        } else {
+          i++;
+        }
+      }
+
+      result.push(new impl.CSSUnitValue(total, targetUnit));
+    }
+
+    assertTrue(remaining.length === 0, () =>
+      error("Cannot convert to requested units", TypeError),
+    );
+
+    return result;
+  }
+
+  /**
+   * The {@link NumericConverter.convertUnitValue} method converts a single
+   * `CssUnitValue` into `targetUnit`.
+   *
+   * @param item - The source `CssUnitValue`.
+   *
+   * @param targetUnit - The target
+   *   {@link @positron/css-numeric-impl#NumericUnit}.
+   *
+   * @returns A new `CssUnitValue` expressed in `targetUnit`.
+   *
+   * @throws `TypeError` If `item` cannot be converted to `targetUnit`.
+   */
+  protected convertUnitValue(
+    item: CssUnitValue,
+    targetUnit: NumericUnit,
+  ): CssUnitValue {
+    const { impl } = this;
+    const { unit, value } = impl.getInternal(item);
+
+    if (unit === targetUnit) {
+      return new impl.CSSUnitValue(value, targetUnit);
+    }
+
+    if (this.areCompatibleUnits(unit, targetUnit)) {
+      const [canonicalValue] = toCanonical(value, unit);
+
+      return this.createUnitValueFromPair(
+        toCompatible(canonicalValue, targetUnit),
+      );
+    }
+
+    return never("Incompatible units", TypeError);
   }
 
   /**
@@ -446,7 +576,17 @@ export class NumericConverter
   }
 
   /**
+   * The {@link NumericConverter.getMaxMinSumItem} method selects the
+   * winning {@link @positron/css-numeric-impl#NumericSumItem} using `maxmin`,
+   * propagating `NaN` when present.
    *
+   * @param item1 - The candidate sum item.
+   *
+   * @param item2 - The accumulated sum item.
+   *
+   * @param maxmin - The comparison function (`Math.max` or `Math.min`).
+   *
+   * @returns The selected {@link @positron/css-numeric-impl#NumericSumItem}.
    */
   protected getMaxMinSumItem(
     item1: NumericSumItem,
@@ -458,5 +598,21 @@ export class NumericConverter
     return maxmin(value1, item2.value) === value1 || Number.isNaN(value1)
       ? item1
       : item2;
+  }
+
+  /**
+   * The {@link NumericConverter.parseNumericUnit} method normalizes a unit
+   * string into a {@link @positron/css-numeric-impl#NumericUnit}.
+   *
+   * @param unitLike - The raw unit identifier or `"%"`.
+   *
+   * @returns The normalized {@link @positron/css-numeric-impl#NumericUnit}.
+   *
+   * @throws `SyntaxError` If `unitLike` is not a valid unit identifier.
+   */
+  protected parseNumericUnit(unitLike: string): NumericUnit {
+    return assertNonNullish(toNumericUnit(unitLike), () =>
+      error(`Invalid unit: ${unitLike}`, SyntaxError),
+    );
   }
 }

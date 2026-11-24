@@ -1,6 +1,6 @@
 import { describe, expect, it } from "@jest/globals";
 
-import type { CssMathSum } from "@positron/css-numeric";
+import type { CssMathSum, CssUnitValue } from "@positron/css-numeric";
 
 import { Numeric } from "./numeric";
 import { NumericComparer } from "./numeric-comparer";
@@ -224,6 +224,100 @@ describe(`class ${Numeric.name}`, () => {
         ["em", 1],
         ["px", -1],
       ]);
+    });
+  });
+
+  describe(".to(unit)", () => {
+    it("should convert compatible units regardless of case", () => {
+      const inFromPx = CSS.px(96).to("in");
+      const pxFromIn = CSS.in(2).to("PX");
+      const degFromTurn = CSS.turn(0.5).to("deg");
+      const pctFromPct = CSS.percent(25).to("%");
+
+      expect(inFromPx).toBeInstanceOf(CSSUnitValue);
+      expect(inFromPx.value).toBe(1);
+      expect(inFromPx.unit).toBe("in");
+      expect(pxFromIn.value).toBe(192);
+      expect(pxFromIn.unit).toBe("px");
+      expect(degFromTurn.value).toBe(180);
+      expect(degFromTurn.unit).toBe("deg");
+      expect(pctFromPct.value).toBe(25);
+      expect(pctFromPct.unit).toBe("percent");
+    });
+
+    it("should simplify reducible math expressions into a single unit \
+        value", () => {
+      const sumResult = CSS.px(96).add(CSS.in(1)).to("in");
+      const ratioResult = CSS.px(10).div(CSS.px(2)).to("number");
+
+      expect(sumResult.value).toBe(2);
+      expect(sumResult.unit).toBe("in");
+      expect(ratioResult.value).toBe(5);
+      expect(ratioResult.unit).toBe("number");
+    });
+
+    it("should throw `SyntaxError` when `unit` is invalid", () => {
+      expect(() => CSS.px(10).to("unknown")).toThrow(SyntaxError);
+      expect(() => CSS.px(10).to("")).toThrow(SyntaxError);
+    });
+
+    it("should throw `TypeError` when `$this` has incompatible units or \
+        multiple terms", () => {
+      expect(() => CSS.px(10).to("em")).toThrow(TypeError);
+      expect(() => CSS.px(10).to("deg")).toThrow(TypeError);
+      expect(() => CSS.percent(50).to("px")).toThrow(TypeError);
+      expect(() => CSS.px(10).add(CSS.em(2)).to("px")).toThrow(TypeError);
+      expect(() => CSS.px(10).mul(CSS.px(2)).to("px")).toThrow(TypeError);
+    });
+  });
+
+  describe(".toSum(...units)", () => {
+    it("should simplify and sort terms by unit code point when `units` is \
+        empty", () => {
+      const expr = new CSSMathSum(
+        CSS.em(2),
+        CSS.px(10),
+        CSS.percent(50),
+        CSS.in(1),
+      );
+      const sum = expr.toSum();
+
+      expect(sum).toBeInstanceOf(CSSMathSum);
+      expect(sum.toString()).toBe("calc(2em + 50% + 106px)");
+      expect([...sum.values].map((v) => (v as CssUnitValue).unit)).toEqual([
+        "em",
+        "percent",
+        "px",
+      ]);
+    });
+
+    it("should convert and distribute values across the requested \
+        `units`", () => {
+      const expr = new CSSMathSum(CSS.in(1), CSS.px(96), CSS.percent(25));
+      const sum = expr.toSum("in", "%", "px");
+
+      expect(sum.values).toHaveLength(3);
+      expect((sum.values[0] as CssUnitValue).value).toBe(2);
+      expect((sum.values[0] as CssUnitValue).unit).toBe("in");
+      expect((sum.values[1] as CssUnitValue).value).toBe(25);
+      expect((sum.values[1] as CssUnitValue).unit).toBe("percent");
+      expect((sum.values[2] as CssUnitValue).value).toBe(0);
+      expect((sum.values[2] as CssUnitValue).unit).toBe("px");
+    });
+
+    it("should throw `SyntaxError` before `TypeError` when any unit in \
+        `units` is invalid", () => {
+      expect(() => CSS.px(10).add(CSS.em(2)).toSum("unknown")).toThrow(
+        SyntaxError,
+      );
+      expect(() => CSS.px(10).toSum("px", "")).toThrow(SyntaxError);
+    });
+
+    it("should throw `TypeError` when `$this` contains units not covered by \
+        `units`", () => {
+      expect(() => CSS.px(10).add(CSS.em(2)).toSum("px")).toThrow(TypeError);
+      expect(() => CSS.px(10).toSum("deg")).toThrow(TypeError);
+      expect(() => CSS.px(10).mul(CSS.px(2)).toSum()).toThrow(TypeError);
     });
   });
 });
