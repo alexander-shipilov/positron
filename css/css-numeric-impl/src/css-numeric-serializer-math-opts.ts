@@ -6,13 +6,15 @@
  */
 export interface CssNumericSerializerMathOpts {
   /**
-   * Whether the serialized expression is nested inside an outer math
+   * The {@link CssNumericSerializerMathOpts.nested} property specifies
+   * whether the serialized expression is nested inside an outer math
    * expression.
    */
   nested?: boolean;
 
   /**
-   * Whether outer parentheses or `calc(...)` wrapper should be omitted.
+   * The {@link CssNumericSerializerMathOpts.parenLess} property specifies
+   * whether outer parentheses or `calc(...)` wrapper should be omitted.
    */
   parenLess?: boolean;
 }

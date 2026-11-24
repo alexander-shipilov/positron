@@ -10,7 +10,7 @@ import type { Double } from "./double";
  *
  * @returns The finite number branded as {@link Double}.
  *
- * @throws `RangeError` If `value` is `NaN`, `Infinity`, or `-Infinity`.
+ * @throws `TypeError` If `value` is `NaN`, `Infinity`, or `-Infinity`.
  *
  * @public
  */

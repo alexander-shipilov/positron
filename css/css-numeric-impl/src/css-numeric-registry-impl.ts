@@ -32,21 +32,23 @@ import type { NumericUnit } from "./unit/numeric-unit";
  * The {@link CssNumericRegistryImpl} interface provides access to registered
  * CSS Typed OM constructors and internal slots of `CssNumericValue` objects.
  *
+ * @throws `TypeError` if there is no internal slots assigned registered to
+ *   the specified `value`.
+ *
  * @public
  */
 export interface CssNumericRegistryImpl extends CssNumericClasses {
   getInternal(value: CssMathClamp): MathClampInternal;
-  getInternal(value: CssMathUnary): MathUnaryInternal;
   getInternal(value: CssMathNegate): MathNegateInternal;
   getInternal(value: CssMathInvert): MathInvertInternal;
-  getInternal(value: CssMathVariadic): MathVariadicInternal;
+  getInternal(value: CssMathUnary): MathUnaryInternal;
   getInternal(value: CssMathMax): MathMaxInternal;
   getInternal(value: CssMathMin): MathMinInternal;
   getInternal(value: CssMathProduct): MathProductInternal;
   getInternal(value: CssMathSum): MathSumInternal;
+  getInternal(value: CssMathVariadic): MathVariadicInternal;
   getInternal(value: CssUnitValue): UnitValueInternal;
-  getInternal(value: CssNumericValue): NumericValueInternal;
-  getInternal(value: never): unknown;
+  getInternal(value: unknown): NumericValueInternal;
 
   /**
    * The {@link CssNumericRegistryImpl.rectifyNumericValue} method converts a
@@ -171,6 +173,8 @@ export interface CssNumericRegistryImpl extends CssNumericClasses {
    * @param unit - The validated {@link NumericUnit} identifier.
    *
    * @throws `TypeError` If `unit` is invalid.
+   *
+   * @throws `TypeError` If `value` is not a finite number.
    */
   setUnitValue($this: CssUnitValue, value: Double, unit: NumericUnit): void;
 }
