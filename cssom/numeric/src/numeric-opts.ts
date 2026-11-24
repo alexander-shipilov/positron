@@ -11,6 +11,7 @@ import type {
   CssNumericParserImpl,
   CssNumericRegistryImpl,
   CssNumericSerializerImpl,
+  CssNumericTypeOperationsImpl,
   CssNumericValueImpl,
   NumericTypeImplClass,
   NumericValueInternal,
@@ -38,7 +39,7 @@ export interface NumericOpts {
    * constructor for the unit conversion and sum-reduction segment.
    */
   readonly Converter: new (
-    impl: CssNumericRegistryImpl,
+    impl: CssNumericRegistryImpl & CssNumericTypeOperationsImpl,
   ) => CssNumericConverterImpl;
 
   /**

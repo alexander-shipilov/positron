@@ -1,4 +1,4 @@
-import { toFiniteNumber } from "@positron/lang";
+import { assertType, error, isFiniteNumber } from "@positron/lang";
 
 import type { Double } from "./double";
 
@@ -15,5 +15,7 @@ import type { Double } from "./double";
  * @public
  */
 export function toDouble(value: number): Double {
-  return toFiniteNumber(value) as Double;
+  return assertType(value, isFiniteNumber, () =>
+    error("The provided double value is non-finite.", TypeError),
+  ) as Double;
 }

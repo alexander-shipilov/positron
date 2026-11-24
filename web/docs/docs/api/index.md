@@ -50,6 +50,8 @@ The `@positron/css-numeric` package provides TypeScript interfaces and contracts
 
 </td><td>
 
+The `@positron/css-numeric-impl` package provides implementation contracts, internal slot interfaces, unit map structures, and numeric validation helpers for CSS Typed OM engines.
+
 
 </td></tr>
 <tr><td>
@@ -93,15 +95,6 @@ The `@positron/lang` package provides core TypeScript type guards, runtime asser
 </td><td>
 
 The `@positron/lang-nominal` package provides internal types for storing nominal types metadata and is used by the `@positron/lang` package.
-
-
-</td></tr>
-<tr><td>
-
-[@positron/prefixed](./prefixed.md)
-
-
-</td><td>
 
 
 </td></tr>

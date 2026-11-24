@@ -18,7 +18,7 @@ describe(`class ${NumericUnitMap.name}`, () => {
     it("should create an instance of `Map`", () => {
       expect(new NumericUnitMap()).toBeInstanceOf(Map);
       expect(new NumericUnitMap([])).toBeInstanceOf(Map);
-      expect(new NumericUnitMap([[unit, toPower(0)]])).toBeInstanceOf(Map);
+      expect(new NumericUnitMap([[unit, 0]])).toBeInstanceOf(Map);
     });
 
     it(`should create an instance of \`${NumericUnitMap.name}\``, () => {
@@ -26,7 +26,7 @@ describe(`class ${NumericUnitMap.name}`, () => {
     });
 
     it("should convert powers which is equal `-0` to `0`", () => {
-      expect(new NumericUnitMap([[unit, toPower(-0)]]).get(unit)).toBe(0);
+      expect(new NumericUnitMap([[unit, -0]]).get(unit)).toBe(0);
     });
   });
 
@@ -34,8 +34,8 @@ describe(`class ${NumericUnitMap.name}`, () => {
     it("should return `true` if `map` contains the same units with the \
         same powers", () => {
       const map = new NumericUnitMap([
-        [CssUnit.px, toPower(1)],
-        [CssUnit.px, toPower(2)],
+        [CssUnit.px, 1],
+        [CssUnit.px, 2],
       ]);
 
       expect(map.equals(map)).toBe(true);
@@ -44,20 +44,49 @@ describe(`class ${NumericUnitMap.name}`, () => {
 
     it("should return `false` if `map` contains a different count of \
         units", () => {
-      const map = new NumericUnitMap([[CssUnit.px, toPower(1)]]);
+      const map = new NumericUnitMap([[CssUnit.px, 1]]);
 
       expect(map.equals(new NumericUnitMap())).toBe(false);
-      expect(
-        map.equals(new NumericUnitMap([...map, [CssUnit.q, toPower(1)]])),
-      ).toBe(false);
+      expect(map.equals(new NumericUnitMap([...map, [CssUnit.q, 1]]))).toBe(
+        false,
+      );
     });
 
     it("should return `false` if `map` contains different powers", () => {
       const map = new NumericUnitMap([[CssUnit.px, toPower(1)]]);
 
-      expect(map.equals(new NumericUnitMap([[CssUnit.px, toPower(2)]]))).toBe(
-        false,
-      );
+      expect(map.equals(new NumericUnitMap([[CssUnit.px, 2]]))).toBe(false);
+    });
+  });
+
+  describe(".mul(units)", () => {
+    it("should add powers for matching units and preserve distinct units", () => {
+      const a = new NumericUnitMap([
+        [CssUnit.px, 1],
+        [CssUnit.s, -1],
+      ]);
+
+      const b = new NumericUnitMap([
+        [CssUnit.px, 2],
+        [CssUnit.deg, 1],
+      ]);
+
+      const product = a.mul(b);
+
+      expect([...product]).toEqual([
+        ["px", 3],
+        ["s", -1],
+        ["deg", 1],
+      ]);
+    });
+
+    it("should remove units whose resulting power equals `0`", () => {
+      const a = new NumericUnitMap([[CssUnit.px, 1]]);
+      const b = new NumericUnitMap([[CssUnit.px, -1]]);
+
+      const product = a.mul(b);
+
+      expect(product.size).toBe(0);
     });
   });
 

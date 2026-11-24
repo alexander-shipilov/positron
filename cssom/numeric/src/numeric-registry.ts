@@ -25,12 +25,6 @@ import type {
 import type {
   CssNumericRegistryImpl,
   MathClampInternal,
-  MathInvertInternal,
-  MathMaxInternal,
-  MathMinInternal,
-  MathNegateInternal,
-  MathProductInternal,
-  MathSumInternal,
   MathUnaryInternal,
   MathVariadicInternal,
   NumericTypeImpl,
@@ -92,13 +86,7 @@ export abstract class NumericRegistry
 
   public getInternal(value: CssMathClamp): MathClampInternal;
   public getInternal(value: CssMathUnary): MathUnaryInternal;
-  public getInternal(value: CssMathNegate): MathNegateInternal;
-  public getInternal(value: CssMathInvert): MathInvertInternal;
   public getInternal(value: CssMathVariadic): MathVariadicInternal;
-  public getInternal(value: CssMathMax): MathMaxInternal;
-  public getInternal(value: CssMathMin): MathMinInternal;
-  public getInternal(value: CssMathProduct): MathProductInternal;
-  public getInternal(value: CssMathSum): MathSumInternal;
   public getInternal(value: CssUnitValue): UnitValueInternal;
   public getInternal(value: CssNumericValue): NumericValueInternal;
   public getInternal(value: never): unknown {

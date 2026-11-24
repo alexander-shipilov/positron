@@ -23,7 +23,7 @@ export interface CssNumericTypeOperationsImpl {
    */
   addNumericTypes(
     type1: NumericTypeImpl,
-    ...types: [NumericTypeImpl, ...NumericTypeImpl[]]
+    ...types: NumericTypeImpl[]
   ): NumericTypeImpl;
 
   /**
@@ -92,6 +92,6 @@ export interface CssNumericTypeOperationsImpl {
    */
   multiplyNumericTypes(
     type1: NumericTypeImpl,
-    ...types: [NumericTypeImpl, ...NumericTypeImpl[]]
+    ...types: NumericTypeImpl[]
   ): NumericTypeImpl;
 }

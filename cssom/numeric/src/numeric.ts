@@ -212,7 +212,7 @@ export class Numeric extends NumericRegistry implements CssNumericImpl {
   }
 
   /**
-   * {@inheritDoc CssMathValueImpl.getMathValueOperator}
+   * {@inheritDoc @positron/css-numeric-impl#CssMathValueImpl.getMathValueOperator}
    */
   public getMathValueOperator($this: CssMathValue): CssMathOperator {
     return this.MathValue.getMathValueOperator($this);

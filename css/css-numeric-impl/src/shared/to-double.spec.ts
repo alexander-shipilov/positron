@@ -10,8 +10,8 @@ describe("function toDouble(value)", () => {
   });
 
   it("should throw `TypeError` if `value` is non-finite", () => {
-    expect(() => toDouble(NaN)).toThrow(RangeError);
-    expect(() => toDouble(Infinity)).toThrow(RangeError);
-    expect(() => toDouble(-Infinity)).toThrow(RangeError);
+    expect(() => toDouble(NaN)).toThrow(TypeError);
+    expect(() => toDouble(Infinity)).toThrow(TypeError);
+    expect(() => toDouble(-Infinity)).toThrow(TypeError);
   });
 });

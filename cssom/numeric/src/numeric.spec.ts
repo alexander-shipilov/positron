@@ -96,4 +96,134 @@ describe(`class ${Numeric.name}`, () => {
       "calc(2px * 3em)",
     );
   });
+
+  describe(".createSumValue($this)", () => {
+    it("should convert compatible unit values to canonical units", () => {
+      const sum = numeric.createSumValue(CSS.in(1));
+
+      expect(sum).toHaveLength(1);
+      expect(sum[0].value).toBe(96);
+      expect([...sum[0].units]).toEqual([["px", 1]]);
+    });
+
+    it("should convert unitless numbers to an empty unit map", () => {
+      const sum = numeric.createSumValue(CSS.number(42));
+
+      expect(sum).toHaveLength(1);
+      expect(sum[0].value).toBe(42);
+      expect(sum[0].units.size).toBe(0);
+    });
+
+    it("should negate all items when `$this` is a `CSSMathNegate`", () => {
+      const expr = new CSSMathNegate(
+        new CSSMathSum(CSS.px(10), CSS.percent(50)),
+      );
+      const sum = numeric.createSumValue(expr);
+
+      expect(sum).toHaveLength(2);
+      expect(sum[0].value).toBe(-10);
+      expect([...sum[0].units]).toEqual([["px", 1]]);
+      expect(sum[1].value).toBe(-50);
+      expect([...sum[1].units]).toEqual([["percent", 1]]);
+    });
+
+    it("should invert value and negate powers when `$this` is a \
+        `CSSMathInvert`", () => {
+      const sum = numeric.createSumValue(new CSSMathInvert(CSS.in(2)));
+
+      expect(sum).toHaveLength(1);
+      expect(sum[0].value).toBeCloseTo(1 / 192);
+      expect([...sum[0].units]).toEqual([["px", -1]]);
+    });
+
+    it("should throw `TypeError` when inverting zero or a multi-term \
+        sum", () => {
+      expect(() =>
+        numeric.createSumValue(new CSSMathInvert(CSS.px(0))),
+      ).toThrow(TypeError);
+
+      expect(() =>
+        numeric.createSumValue(
+          new CSSMathInvert(new CSSMathSum(CSS.px(10), CSS.em(5))),
+        ),
+      ).toThrow(TypeError);
+    });
+
+    it("should evaluate `CSSMathMin`, `CSSMathMax`, and `CSSMathClamp` for \
+        matching units", () => {
+      const maxSum = numeric.createSumValue(
+        new CSSMathMax(CSS.in(1), CSS.px(100)),
+      );
+      const minSum = numeric.createSumValue(
+        new CSSMathMin(CSS.in(1), CSS.px(100)),
+      );
+      const clampSum = numeric.createSumValue(
+        new CSSMathClamp(CSS.px(10), CSS.in(1), CSS.px(50)),
+      );
+
+      expect(maxSum[0].value).toBe(100);
+      expect([...maxSum[0].units]).toEqual([["px", 1]]);
+      expect(minSum[0].value).toBe(96);
+      expect([...minSum[0].units]).toEqual([["px", 1]]);
+      expect(clampSum[0].value).toBe(50);
+      expect([...clampSum[0].units]).toEqual([["px", 1]]);
+    });
+
+    it("should throw `TypeError` when `CSSMathMin`, `CSSMathMax`, or \
+        `CSSMathClamp` have incompatible units", () => {
+      expect(() =>
+        numeric.createSumValue(new CSSMathMax(CSS.px(10), CSS.em(5))),
+      ).toThrow(TypeError);
+
+      expect(() =>
+        numeric.createSumValue(
+          new CSSMathClamp(CSS.px(10), CSS.percent(50), CSS.px(100)),
+        ),
+      ).toThrow(TypeError);
+    });
+
+    it("should combine like units and keep distinct compatible units in \
+        `CSSMathSum`", () => {
+      const sum = numeric.createSumValue(
+        new CSSMathSum(
+          CSS.px(10), //
+          CSS.in(1),
+          CSS.percent(25),
+          CSS.percent(25),
+        ),
+      );
+
+      expect(sum).toHaveLength(2);
+      expect(sum[0].value).toBe(106);
+      expect([...sum[0].units]).toEqual([["px", 1]]);
+      expect(sum[1].value).toBe(50);
+      expect([...sum[1].units]).toEqual([["percent", 1]]);
+    });
+
+    it("should throw `TypeError` in `CSSMathSum` when operand types cannot \
+        be added", () => {
+      expect(() =>
+        numeric.createSumValue(new CSSMathSum(CSS.px(10), CSS.deg(10))),
+      ).toThrow(TypeError);
+    });
+
+    it("should distribute products and cancel opposite unit powers in \
+        `CSSMathProduct`", () => {
+      const sum = numeric.createSumValue(
+        new CSSMathProduct(
+          new CSSMathSum(CSS.px(10), CSS.em(2)),
+          new CSSMathInvert(CSS.px(2)),
+        ),
+      );
+
+      expect(sum).toHaveLength(2);
+      expect(sum[0].value).toBe(5);
+      expect(sum[0].units.size).toBe(0);
+      expect(sum[1].value).toBe(1);
+      expect([...sum[1].units]).toEqual([
+        ["em", 1],
+        ["px", -1],
+      ]);
+    });
+  });
 });

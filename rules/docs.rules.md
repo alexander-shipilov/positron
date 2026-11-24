@@ -122,9 +122,11 @@ Tags within a TSDoc block MUST appear in the following order:
 - Parameter names MUST be enclosed in backticks: `` `count` `` (`{@link count}`
   is prohibited).
 
-- Entities from external packages (including `@positron/*`) MUST be enclosed
-  in backticks (e.g., `` `Nullish` ``) rather than cross-package `{@link}`
-  references unless `tsdoc-metadata.json` resolution is configured.
+- Use `{@link ...}` only when the target entity can be resolved by TSDoc
+  (same-package entities via `{@link Entity}` or documented workspace
+  packages via `{@link @positron/pkg#Entity}` matching the `import` path).
+  Bare `{@link ImportedEntity}` for external imports MUST NOT be used;
+  enclose unresolvable or external symbols in backticks (`` `Entity` ``).
 
 - References to entities within the same package MUST use `{@link <link-ref>}`
   conforming strictly to the W3C EBNF grammar defined in `docs-link.ebnf`.

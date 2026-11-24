@@ -44,7 +44,13 @@ export class NumericUnitMap extends Map<NumericUnit, number> {
     const result = new NumericUnitMap(this);
 
     for (const [unit, power] of units) {
-      result.set(unit, (result.get(unit) ?? 0) + power);
+      const nextPower = (result.get(unit) ?? 0) + power;
+
+      if (nextPower === 0) {
+        result.delete(unit);
+      } else {
+        result.set(unit, nextPower);
+      }
     }
 
     return result;
