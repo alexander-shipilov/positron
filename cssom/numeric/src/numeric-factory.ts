@@ -10,7 +10,7 @@ import type {
 } from "@positron/css-numeric";
 import type { CssNumericImpl } from "@positron/css-numeric-impl";
 import { toDouble, toNumericUnit } from "@positron/css-numeric-impl";
-import { assertNonNullish, template } from "@positron/lang";
+import { assertNonNullish, error, template } from "@positron/lang";
 
 import { NumericStorage } from "./numeric-storage";
 
@@ -280,10 +280,8 @@ export function NumericFactory(impl: CssNumericImpl): CssNumericClasses {
       public constructor(value: number, unitLike: string) {
         super();
 
-        const unit = assertNonNullish(
-          toNumericUnit(unitLike),
-          () => template`Invalid unit: ${0}`(unitLike),
-          TypeError,
+        const unit = assertNonNullish(toNumericUnit(unitLike), () =>
+          error(template`Invalid unit: ${0}`(unitLike), TypeError),
         );
 
         impl.setUnitValue(this, toDouble(value), unit);

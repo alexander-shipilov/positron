@@ -27,7 +27,7 @@ import { NON_PERCENT_TYPES } from "./shared/non-percent-types";
  */
 export class NumericType implements NumericTypeImpl {
   /**
-   * The {@link NumericType.equalizePercentHints} method aligns the percent
+   * The {@link NumericType.alignPercentHints} method aligns the percent
    * hints of `type1` and `type2` in place when one type carries a hint and the
    * other does not.
    *
@@ -37,7 +37,7 @@ export class NumericType implements NumericTypeImpl {
    *
    * @throws `TypeError` If both types have different non-null percent hints.
    */
-  public static equalizePercentHints(
+  public static alignPercentHints(
     type1: NumericType,
     type2: NumericType,
   ): void {

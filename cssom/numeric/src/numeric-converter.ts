@@ -115,6 +115,7 @@ export class NumericConverter
   public toMathSum($this: CssNumericValue, ...units: string[]): CssMathSum {
     const { CSSMathSum } = this.impl;
     const targetUnits = units.map((unit) => this.parseNumericUnit(unit));
+
     const values = this.createSumValue($this).map((item) =>
       this.createUnitValueFromSumItem(item),
     );
@@ -267,7 +268,8 @@ export class NumericConverter
 
   /**
    * The {@link NumericConverter.createSumValueFromMathClamp} method converts a
-   * {@link CssMathClamp} node into a {@link NumericSum} by evaluating
+   * {@link @positron/css-numeric#CssMathClamp} node into a
+   * {@link @positron/css-numeric-impl#NumericSum} by evaluating
    * `max(lower, min(value, upper))`.
    *
    * @remarks
@@ -279,7 +281,7 @@ export class NumericConverter
    *
    * @param $this - The clamp expression to convert.
    *
-   * @returns A single-item {@link NumericSum}.
+   * @returns A single-item {@link @positron/css-numeric-impl#NumericSum}.
    *
    * @throws `TypeError` If any operand cannot resolve to a single sum item or
    *   if the operands have incompatible unit maps.
@@ -510,7 +512,7 @@ export class NumericConverter
    *
    * @param $this - The numeric value to convert.
    *
-   * @returns The sole {@link NumericSumItem}.
+   * @returns The sole {@link @positron/css-numeric-link#NumericSumItem}.
    *
    * @throws `TypeError` If the resulting sum contains more than one item.
    */
@@ -572,7 +574,7 @@ export class NumericConverter
       }
     }
 
-    return never("TBD", TypeError);
+    return never("Cannot create a sum value", TypeError);
   }
 
   /**
