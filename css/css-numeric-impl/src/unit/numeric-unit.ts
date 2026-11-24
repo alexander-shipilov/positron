@@ -1,8 +1,7 @@
 import type { CssUnit } from "@positron/css-unit";
 
+import type { NumberUnit } from "../shared/number-unit";
 import type { PercentUnit } from "../shared/percent-unit";
-
-import type { NumberUnit } from "./number-unit";
 
 /**
  * The {@link NumericUnit} type represents all valid CSS Typed OM unit

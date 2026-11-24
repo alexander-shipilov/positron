@@ -1,4 +1,4 @@
-import { NUMBER_UNIT } from "../unit/number-unit";
+import { NUMBER_UNIT } from "./number-unit";
 
 /**
  * The {@link isNumberUnit} function determines whether `maybeNumber` matches
