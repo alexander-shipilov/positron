@@ -2,7 +2,7 @@
  * The {@link GdiFont} interface represents a `GDI` font object.
  *
  * @remarks
- * Performance note: try caching and reusing {@link GdiFont} objects,
+ *   Performance note: try caching and reusing {@link GdiFont} objects,
  *   since the maximum amount of such objects is hard-limited by Windows.
  *   {@link GdiFont} creation will fail after reaching this limit.
  *
@@ -14,7 +14,7 @@ export interface GdiFont {
    * pixels.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(myFont.Height);
    *  // >> 15
    * ```
@@ -25,7 +25,7 @@ export interface GdiFont {
    * The {@link GdiFont.Name} property contains font name.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(myFont.Name);
    *  // >> Segoe UI
    * ```
@@ -36,7 +36,7 @@ export interface GdiFont {
    * The {@link GdiFont.Size} property contains font size in points.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(myFont.Size);
    *  // >> 12
    * ```
@@ -47,10 +47,10 @@ export interface GdiFont {
    * The {@link GdiFont.Style} property contains font style.
    *
    * @remarks
-   * See {@link FontStyle} for value interpretation.
+   *   See {@link FontStyle} for value interpretation.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(myFont.Style);
    *  // >> 0
    * ```

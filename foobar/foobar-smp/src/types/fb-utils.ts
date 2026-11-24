@@ -17,10 +17,10 @@ export interface FbUtils {
    * the version.
    *
    * @remarks
-   * Component uses semantic versioning (see {@link https://semver.org}).
+   *   Component uses semantic versioning (see {@link https://semver.org}).
    *
    * @example
-   * ```ts
+   * ```js
    *  function isCompatible(requiredVersionStr: string): boolean {
    *    const requiredVersion = requiredVersionStr.split('.');
    *    const currentVersion = utils.Version.split('.'); // e.g. 0.1.0-alpha.2
@@ -55,11 +55,12 @@ export interface FbUtils {
    * foobar2000 component.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(utils.CheckComponent("foo_playcount", true));
    * ```
    *
    * @param name -
+   *
    * @param isDll - If `true`, method checks filename as well as the
    *   - name. Default `true`.
    */
@@ -69,8 +70,8 @@ export interface FbUtils {
    * The {@link FbUtils.CheckFont} method checks if the font is installed.
    *
    * @remarks
-   * Note: it cannot detect fonts loaded by `foo_ui_hacks`. However,
-   * {@link GdiUtils.Font} can use those fonts.
+   *   Note: it cannot detect fonts loaded by `foo_ui_hacks`. However,
+   *   {@link GdiUtils.Font} can use those fonts.
    *
    * @param name - Can be either in English or the localised name in your
    *   OS.
@@ -82,10 +83,11 @@ export interface FbUtils {
    * let you choose a colour.
    *
    * @param windowId - Unused.
+   *
    * @param defaultColour - This colour is used if OK button was not clicked.
    *
    * @example
-   * ```ts
+   * ```js
    *  let colour = utils.ColourPicker(0, RGB(255, 0, 0));
    *  // See docs\Helper.js for RGB function.
    * ```
@@ -96,12 +98,12 @@ export interface FbUtils {
    * The {@link FbUtils.DetectCharset} method detects the codepage of the file.
    *
    * @remarks
-   * Note: detection algorithm is probability based (unless there is a UTF BOM),
-   * i.e. even though the returned codepage is the most likely one,
-   * there's no 100% guarantee it's the correct one.
+   *   Note: detection algorithm is probability based (unless there is a UTF BOM),
+   *   i.e. even though the returned codepage is the most likely one,
+   *   there's no 100% guarantee it's the correct one.
    *
-   * Performance note: detection algorithm is quite slow, so results should be
-   * cached as much as possible.
+   *   Performance note: detection algorithm is quite slow, so results should be
+   *   cached as much as possible.
    *
    * @param path - Path to file
    *
@@ -115,7 +117,7 @@ export interface FbUtils {
    * text editor.
    *
    * @remarks
-   * Default text editor can be changed via `Edit` button on the main tab of
+   *   Default text editor can be changed via `Edit` button on the main tab of
    *   {@link FbWindow.ShowConfigureV2}.
    *
    * @param path - Path to file
@@ -135,7 +137,7 @@ export interface FbUtils {
    * The {@link FbUtils.FormatDuration} method returns formatted duration.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(
    *    utils.FormatDuration(
    *      plman.GetPlaylistItems(plman.ActivePlaylist).CalcTotalDuration()
@@ -152,7 +154,7 @@ export interface FbUtils {
    * The {@link FbUtils.FormatFileSize} method returns formatted file size.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(utils.FormatFileSize(
    *    plman.GetPlaylistItems(plman.ActivePlaylist).CalcTotalSize()
    *  ));
@@ -167,22 +169,26 @@ export interface FbUtils {
    * The {@link FbUtils.GetAlbumArtAsync} method loads art image for the track
    * asynchronously.
    *
-   *
    * @remarks
-   * Performance note: consider using {@link GdiUtils.LoadImageAsync} or
-   * {@link GdiUtils.LoadImageAsyncV2} if there are a lot of images to load or
+   *   Performance note: consider using {@link GdiUtils.LoadImageAsync} or
+   *   {@link GdiUtils.LoadImageAsyncV2} if there are a lot of images to load or
    *   if the image is big.
    *
-   * todo: See `samples\\basic\\GetAlbumArtAsync.js`
+   *   todo: See `samples\\basic\\GetAlbumArtAsync.js`
    *
    * @param windowId - {@link FbWindow.ID}.
+   *
    * @param handle -
+   *
    * @param artType - Album art type. Default {@link AlbumArtType.Front}.
+   *
    * @param needStub - If `true`, will return a stub image from
    *   `Preferences > Display > Stub image path` when there is no art
    *   image available. Default `true`.
+   *
    * @param onlyEmbed - If `true`, will only try to load the embedded image.
    *   Default `false`.
+   *
    * @param noLoad - If `true`, `image` parameter will be `null` in
    *   {@link FbCallbacks.on_get_album_art_done} callback. Default `false`.
    */
@@ -201,19 +207,24 @@ export interface FbUtils {
    * asynchronously.
    *
    * @remarks
-   * Returns a `Promise` object, which will be resolved when art loading is
+   *   Returns a `Promise` object, which will be resolved when art loading is
    *   done.
    *
-   * todo: See samples\\basic\\GetAlbumArtAsyncV2.js
+   *   todo: See samples\\basic\\GetAlbumArtAsyncV2.js
    *
    * @param windowId - unused
+   *
    * @param handle -
+   *
    * @param artType - Album art type. Default {@link AlbumArtType.Front}.
+   *
    * @param needStub - If `true`, will return a stub image from
    *   `Preferences > Display > Stub image path` when there is no art
    *   image available. Default `true`.
+   *
    * @param onlyEmbed - If `true`, will only try to load the embedded image.
    *   Default `false`.
+   *
    * @param noLoad - If `true`, then no art loading will be performed
    *   and only path to art will be returned in {@link ArtPromiseResult}.
    *   Default `false`.
@@ -233,15 +244,16 @@ export interface FbUtils {
    * the track.
    *
    * @remarks
-   * Performance note: consider using {@link FbUtils.GetAlbumArtAsync} or
+   *   Performance note: consider using {@link FbUtils.GetAlbumArtAsync} or
    *   {@link FbUtils.GetAlbumArtAsyncV2} if there are a lot of images to load.
    *
    * @example
-   * ```ts
+   * ```js
    *  const img = utils.GetAlbumArtEmbedded(fb.GetNowPlaying().RawPath, 0);
    * ```
    *
    * @param rawPath - Path to track file.
+   *
    * @param artType - Album art type. Default {@link AlbumArtType.Front}.
    */
   GetAlbumArtEmbedded(rawPath: string, artType?: AlbumArtType): GdiBitmap;
@@ -250,13 +262,15 @@ export interface FbUtils {
    * The {@link FbUtils.GetAlbumArtV2} method loads art image for the track.
    *
    * @remarks
-   * Performance note: consider using {@link FbUtils.GetAlbumArtAsync} or
+   *   Performance note: consider using {@link FbUtils.GetAlbumArtAsync} or
    *   {@link FbUtils.GetAlbumArtAsyncV2} if there are a lot of images to load.
    *
-   * todo: See samples\\basic\\GetAlbumArtV2.txt
+   *   todo: See samples\\basic\\GetAlbumArtV2.txt
    *
    * @param handle -
+   *
    * @param artType - Album art type. Default {@link AlbumArtType.Front}.
+   *
    * @param needStub - If `true`, will return a stub image from
    *   `Preferences > Display > Stub image path` when there is no art
    *   image available. Default 'true'.
@@ -289,7 +303,7 @@ export interface FbUtils {
    * directory with the specified id.
    *
    * @remarks
-   * Throws an exception if package is not found.
+   *   Throws an exception if package is not found.
    *
    * @param packageId -
    *
@@ -304,7 +318,7 @@ export interface FbUtils {
    * @see https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsyscolor
    *
    * @example
-   * ```ts
+   * ```js
    *  const splitterColour = utils.GetSysColour(15);
    * ```
    *
@@ -332,13 +346,15 @@ export interface FbUtils {
    * pattern.
    *
    * @example
-   * ```ts
+   * ```js
    *  const arr = utils.Glob("C:\\*.*");
    * ```
    *
    * @param pattern -
+   *
    * @param excludeMask - Can be one or more of the {@link FileAttribute}.
    *   Default {@link FileAttribute.Directory}.
+   *
    * @param includeMask - Can be one or more of the {@link FileAttribute}.
    *   Default {@link FileAttribute.All}.
    */
@@ -349,7 +365,7 @@ export interface FbUtils {
    * prompting the user to input some text.
    *
    * @example
-   * ```ts
+   * ```js
    *  // With `errorOnCancel` not set (or set to `false`), cancelling the
    *  // dialog will return `defaultValue`.
    *  const username = utils.InputBox(
@@ -361,7 +377,7 @@ export interface FbUtils {
    * ```
    *
    * @example
-   * ```ts
+   * ```js
    *  // Using Example1, you can't tell if OK or Cancel was pressed if the
    *  // return value is the same as `defaultValue`. If you need to know,
    *  // set `errorOnCancel` to `true` which throws a script error
@@ -383,9 +399,13 @@ export interface FbUtils {
    * ```
    *
    * @param windowId - {@link FbWindow.ID}.
+   *
    * @param prompt - Dialog prompt.
+   *
    * @param caption - Dialog caption.
+   *
    * @param defaultValue - Default `""`.
+   *
    * @param errorOnCancel - If set to `true`, use `try` / `catch` to
    *   check result. Default `false`.
    *
@@ -434,7 +454,9 @@ export interface FbUtils {
    * @see https://docs.microsoft.com/en-us/windows/desktop/api/winnls/nf-winnls-lcmapstringa
    *
    * @param text -
+   *
    * @param lcid -
+   *
    * @param flags -
    */
   MapString(text: string, lcid: number, flags: number): string;
@@ -444,9 +466,10 @@ export interface FbUtils {
    * matches the pattern.
    *
    * @remarks
-   * Note: Using Microsoft MS-DOS wildcards match type. eg "*.txt", "abc?.tx?"
+   *   Note: Using Microsoft MS-DOS wildcards match type. eg "*.txt", "abc?.tx?"
    *
    * @param pattern -
+   *
    * @param str -
    */
   PathWildcardMatch(pattern: string, str: string): boolean;
@@ -455,22 +478,25 @@ export interface FbUtils {
    * The {@link FbUtils.ReadINI} method reads value from INI file.
    *
    * @remarks
-   * An INI file should like this:
-   * ```ini
-   *  [section]
-   *  key=val
-   * ```
+   *   An INI file should like this:
+   *   ```ini
+   *   [section]
+   *   key=val
+   *   ```
    *
-   * Note: this only returns up to 255 characters per value.
+   *   Note: this only returns up to 255 characters per value.
    *
    * @example
-   * ```ts
+   * ```js
    *  const username = utils.ReadINI("e:\\my_file.ini", "Last.fm", "username");
    * ```
    *
    * @param fileName -
+   *
    * @param section -
+   *
    * @param key -
+   *
    * @param defaultValue -
    *
    * @returns Up to 255 characters per value.
@@ -486,17 +512,18 @@ export interface FbUtils {
    * The {@link FbUtils.ReadTextFile} method reads file content.
    *
    * @remarks
-   * Performance note: supply codepage argument if it is known, since codepage
-   * detection might take some time.
+   *   Performance note: supply codepage argument if it is known, since codepage
+   *   detection might take some time.
    *
-   * todo: See Codepages.txt
+   *   todo: See Codepages.txt
    *
    * @example
-   * ```ts
+   * ```js
    *  const text = utils.ReadTextFile("E:\\some text file.txt");
    * ```
    *
    * @param fileName - File
+   *
    * @param codePage - If codepage is `0`, then automatic detection is
    *   performed. Default `0`.
    */
@@ -507,22 +534,22 @@ export interface FbUtils {
    * by IE engine.
    *
    * @remarks
-   * Utilizes the latest non-Edge IE that you have on your system. Dialog is
+   *   Utilizes the latest non-Edge IE that you have on your system. Dialog is
    *   modal (blocks input to the parent window while open).
    *
-   * Html code must be IE compatible, meaning:
+   *   Html code must be IE compatible, meaning:
    *
-   *  - JavaScript features are limited by IE
+   *   - JavaScript features are limited by IE
    *    (see {@link https://www.w3schools.com/js/js_versions.asp}).
    *
-   *  - Objects passed to `data` are limited to standard JavaScript objects: no
+   *   - Objects passed to `data` are limited to standard JavaScript objects: no
    *    extensions from `SpiderMonkey` panel (e.g. no {@link FbMetadbHandle}
    *    or {@link GdiBitmap}).
    *
-   * todo: See `samples/basic/HtmlDialogWithCheckbox.js`
+   *   todo: See `samples/basic/HtmlDialogWithCheckbox.js`
    *
    * @example
-   * ```ts
+   * ```js
    *  // Dialog from file
    *
    *  const file =
@@ -532,8 +559,10 @@ export interface FbUtils {
    * ```
    *
    * @param windowId - Unused
+   *
    * @param codeOrPath - Html code or file path.  File path must begin with
    *   `file://` prefix.
+   *
    * @param options - Dialog options
    */
   ShowHtmlDialog(
@@ -547,7 +576,7 @@ export interface FbUtils {
    * parts.
    *
    * @example
-   * ```ts
+   * ```js
    *  const arr = utils.SplitFilePath('D:\\Somedir\\Somefile.txt');
    *  // arr[0] <= 'D:\\Somedir\\' (always includes backslash at the end)
    *  // arr[1] <= 'Somefile'
@@ -564,13 +593,16 @@ export interface FbUtils {
    * The {@link FbUtils.WriteINI} method writes value to INI file.
    *
    * @example
-   * ```ts
+   * ```js
    *  utils.WriteINI("e:\\my_file.ini", "Last.fm", "username", "Bob");
    * ```
    *
    * @param fileName - File name
+   *
    * @param section - Section name
+   *
    * @param key - Key
+   *
    * @param value - Value
    */
   WriteINI(
@@ -585,12 +617,12 @@ export interface FbUtils {
    * file.
    *
    * @remarks
-   * Note: the parent folder must already exist.
+   *   Note: the parent folder must already exist.
    *
-   * Note: the file is written with UTF8 encoding.
+   *   Note: the file is written with UTF8 encoding.
    *
    * @example
-   * ```ts
+   * ```js
    *  // Default encoding
    *  // writeBom missing but defaults to true, resulting file is UTF8-BOM
    *  utils.WriteTextFile("z:\\1.txt", "test");
@@ -603,7 +635,9 @@ export interface FbUtils {
    * ```
    *
    * @param fileName -
+   *
    * @param content -
+   *
    * @param writeBom - Default `true`.
    */
   WriteTextFile(fileName: string, content: string, writeBom?: boolean): boolean;

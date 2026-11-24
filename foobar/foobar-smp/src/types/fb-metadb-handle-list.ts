@@ -20,7 +20,7 @@ export interface FbMetadbHandleList {
    * in collection.
    *
    * @example
-   * ```ts
+   * ```js
    *  const handleList = plman.GetPlaylistItems(plman.ActivePlaylist);
    *
    *  console.log(handleList.Count);
@@ -34,7 +34,7 @@ export interface FbMetadbHandleList {
    * list.
    *
    * @example
-   * ```ts
+   * ```js
    *  const handleList = plman.GetPlaylistItems(plman.ActivePlaylist);
    *
    *  handleList.Add(fb.GetNowPlaying());
@@ -46,7 +46,7 @@ export interface FbMetadbHandleList {
 
   /**
    * @example
-   * ```ts
+   * ```js
    *  const handleList = plman.GetPlaylistItems(plman.ActivePlaylist);
    *
    *  handleList.Add(fb.GetLibraryItems());
@@ -65,7 +65,7 @@ export interface FbMetadbHandleList {
    * there is no need to remove it first.
    *
    * @example
-   * ```ts
+   * ```js
    *  const handleList = plman.GetPlaylistItems(plman.ActivePlaylist);
    *
    *  if (handleList.Count > 0) {
@@ -76,7 +76,7 @@ export interface FbMetadbHandleList {
    * ```
    *
    * @example
-   * ```ts
+   * ```js
    *  // since there is no handle method, do this for a single item
    *  const handleList = new FbMetadbHandleList(fb.GetFocusItem());
    *  const imagePath = "C:\\path\\to\\image.jpg";
@@ -85,6 +85,7 @@ export interface FbMetadbHandleList {
    * ```
    *
    * @param imagePath - The path to an existing image
+   *
    * @param artType - The album art type. Default {@link AlbumArtType.Front}.
    */
   AttachImage(imagePath: string, artType?: AlbumArtType): void;
@@ -121,7 +122,7 @@ export interface FbMetadbHandleList {
    * The {@link FbMetadbHandleList.Clone} method clones list.
    *
    * @example
-   * ```ts
+   * ```js
    *  const handleList2 = handleList.Clone();
    * ```
    */
@@ -135,7 +136,7 @@ export interface FbMetadbHandleList {
    * playlist is big or if you need to loop multiple times.
    *
    * @example
-   * ```ts
+   * ```js
    *  const playlistItems =
    *   plman.GetPlaylistItems(plman.ActivePlaylist).Convert();
    *
@@ -167,7 +168,7 @@ export interface FbMetadbHandleList {
    * aforementioned method.
    *
    * @example
-   * ```ts
+   * ```js
    *  const handleList = fb.GetLibraryItems();
    *
    *  handleList.OrderByRelativePath();
@@ -181,12 +182,13 @@ export interface FbMetadbHandleList {
    * current list.
    *
    * @example
-   * ```ts
+   * ```js
    *  // This inserts at the end of the handle list.
    *  handleList.Insert(handleList.Count, fb.GetNowPlaying());
    * ```
    *
    * @param index -
+   *
    * @param handle -
    */
   Insert(index: number, handle: FbMetadbHandle): void;
@@ -196,6 +198,7 @@ export interface FbMetadbHandleList {
    * current list.
    *
    * @param index -
+   *
    * @param handleList -
    */
   InsertRange(index: number, handleList: FbMetadbHandleList): void;
@@ -204,7 +207,7 @@ export interface FbMetadbHandleList {
    * Note: sort with {@link FbMetadbHandleList.Sort} before using.
    *
    * @example
-   * ```ts
+   * ```js
    *  const one = plman.GetPlaylistItems(0);
    *  const two = plman.GetPlaylistItems(1);
    *
@@ -226,7 +229,7 @@ export interface FbMetadbHandleList {
    * @param handleList - Sorted handle list.
    *
    * @example
-   * ```ts
+   * ```js
    *  const one = plman.GetPlaylistItems(0);
    *  const two = plman.GetPlaylistItems(1);
    *
@@ -243,7 +246,7 @@ export interface FbMetadbHandleList {
    * Note: sort with {@link FbMetadbHandleList.Sort} before using.
    *
    * @example
-   * ```ts
+   * ```js
    *  const one = plman.GetPlaylistItems(0);
    *  const two = plman.GetPlaylistItems(1);
    *
@@ -261,7 +264,7 @@ export interface FbMetadbHandleList {
 
   /**
    * @example
-   * ```ts
+   * ```js
    *  const handleList = fb.GetLibraryItems();
    *  const titleFormat = fb.TitleFormat(
    *    "%album artist% | %date% | %album% | %discnumber% | %tracknumber%"
@@ -271,6 +274,7 @@ export interface FbMetadbHandleList {
    * ```
    *
    * @param titleFormat - An instance of {@link FbTitleFormat}.
+   *
    * @param direction - Direction. Ascending while greater than `0`.
    */
   OrderByFormat(titleFormat: FbTitleFormat, direction: number): void;
@@ -329,7 +333,7 @@ export interface FbMetadbHandleList {
    * at the specified `index`.
    *
    * @example
-   * ```ts
+   * ```js
    *  handleList.RemoveById(0);
    * ```
    */
@@ -340,11 +344,12 @@ export interface FbMetadbHandleList {
    * items starting from `fromIndex`.
    *
    * @example
-   * ```ts
+   * ```js
    *  handleList.RemoveRange(10, 20);
    * ```
    *
    * @param fromIndex -
+   *
    * @param num -
    */
   RemoveRange(fromIndex: number, num: number): void;
@@ -361,7 +366,7 @@ export interface FbMetadbHandleList {
    * metadb tags with new values.
    *
    * @example
-   * ```ts
+   * ```js
    *  // assume we've selected one album
    *  const handles = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
    *  const arr = [];

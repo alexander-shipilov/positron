@@ -25,7 +25,7 @@ export interface Fb {
    * state.
    *
    * @example
-   * ```ts
+   * ```js
    *  fb.AlwaysOnTop = !fb.AlwaysOnTop;
    *  // Toggles the current value.
    * ```
@@ -37,7 +37,7 @@ export interface Fb {
    * `foo_spidermonkey_panel` component path.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(fb.ComponentPath);
    *  // AppData\Roaming\foobar2000\user-components\foo_spidermonkey_panel\
    * ```
@@ -76,7 +76,7 @@ export interface Fb {
    * playback length.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(fb.PlaybackLength);
    *  // 322.843414966166
    *
@@ -91,7 +91,7 @@ export interface Fb {
    * playback time.
    *
    * @example
-   * ```ts
+   * ```js
    *  fb.PlaybackTime = 60;
    *  // Jumps to the 1-minute mark.
    * ```
@@ -115,7 +115,7 @@ export interface Fb {
    * `Stop after current` state.
    *
    * @example
-   * ```ts
+   * ```js
    *  fb.StopAfterCurrent = !fb.StopAfterCurrent;
    *  // Toggles the current value.
    * ```
@@ -126,7 +126,7 @@ export interface Fb {
    * The {@link Fb.Version} property represents the `foobar2000` version.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(fb.Version)
    *  // "1.4.1"
    * ```
@@ -137,7 +137,7 @@ export interface Fb {
    * The {@link Fb.Volume} property represents the current volume.
    *
    * @example
-   * ```ts
+   * ```js
    *  fb.Volume = 0;
    *  // Sets the volume to max. -100 is the minimum.
    * ```
@@ -151,10 +151,10 @@ export interface Fb {
    * `File > Preferences > Display > Selection viewers`.
    *
    * @remarks
-   * Use in conjunction with the {@link FbCallbacks.on_focus} callback.
+   *   Use in conjunction with the {@link FbCallbacks.on_focus} callback.
    *
    * @example
-   * ```ts
+   * ```js
    *  // for playlist viewers
    *  const selectionHolder = fb.AcquireUiSelectionHolder();
    *
@@ -169,7 +169,7 @@ export interface Fb {
    * ```
    *
    * @example
-   * ```ts
+   * ```js
    *  // for library viewers
    *  const selectionHolder = fb.AcquireUiSelectionHolder();
    *  let handleList = null;
@@ -225,7 +225,7 @@ export interface Fb {
    * in Windows Explorer as files.
    *
    * @example
-   * ```ts
+   * ```js
    *  // Copy playlist items
    *  fb.CopyHandleListToClipboard(
    *    plman.GetPlaylistSelectedItems(plman.ActivePlaylist)
@@ -233,7 +233,7 @@ export interface Fb {
    * ```
    *
    * @example
-   * ```ts
+   * ```js
    *  // Cut playlist items
    *  const ap = plman.ActivePlaylist;
    *
@@ -253,9 +253,9 @@ export interface Fb {
    * The {@link Fb.CreateContextMenuManager} method creates menu manager.
    *
    * @remarks
-   * todo: See
-   *    `samples\\basic\\MainMenuManager All-In-One`,
-   *    `samples\\basic\\Menu Sample.txt`
+   *   todo: See
+   *   `samples\\basic\\MainMenuManager All-In-One`,
+   *   `samples\\basic\\Menu Sample.txt`
    */
   CreateContextMenuManager(): ContextMenuManager;
 
@@ -271,9 +271,9 @@ export interface Fb {
    * main menu.
    *
    * @remarks
-   * todo: See
-   *    samples\\basic\\MainMenuManager All-In-One,
-   *    samples\\basic\\Menu Sample.txt
+   *   todo: See
+   *   samples\\basic\\MainMenuManager All-In-One,
+   *   samples\\basic\\Menu Sample.txt
    */
   CreateMainMenuManager(): MainMenuManager;
 
@@ -282,7 +282,7 @@ export interface Fb {
    * object.
    *
    * @example
-   * ```ts
+   * ```js
    *  var test = fb.CreateProfiler("test");
    *
    *  // do something time-consuming
@@ -303,40 +303,40 @@ export interface Fb {
    * The {@link Fb.DoDragDrop} method invokes drag-n-drop operation.
    *
    * @remarks
-   * Quick tips:
+   *   Quick tips:
    *
-   *  - If you need only to drag from your panel with copy (i.e. without
+   *   - If you need only to drag from your panel with copy (i.e. without
    *    physically moving them): use only
    *    `fb.DoDragDrop(handles, DropEffect.Copy | DropEffect.Link)`.
    *
-   *  - If you need only to receive drop to your panel with copy:
+   *   - If you need only to receive drop to your panel with copy:
    *    handle `on_drop_*()` callbacks, while setting `action.effect` argument
    *    to `DropEffect.Copy | DropEffect.Link`.
    *
-   * Full drag-n-drop interface description:
+   *   Full drag-n-drop interface description:
    *
-   *  - Drag-n-drop interface is based on Microsoft `IDropSource` and
+   *   - Drag-n-drop interface is based on Microsoft `IDropSource` and
    *    `IDropTarget` types, so a lot of info (including examples) could
    *    be gathered from MSDN:
    *    `IDropSource`, `IDropTarget`, `DoDragDrop`, `DROPEFFECT`.
    *
-   *  - Drag operation is started with {@link Fb.DoDragDrop} (whether it is
+   *   - Drag operation is started with {@link Fb.DoDragDrop} (whether it is
    *    called by your panel, or externally) with `okEffects` argument
    *    supplied.
    *
-   *  - {@link Fb.DoDragDrop} blocks code execution until the drag
+   *   - {@link Fb.DoDragDrop} blocks code execution until the drag
    *    operation is finished (callbacks will be called properly though). It
    *    returns effect from {@link DropTargetAction.Effect} from
    *    {@link FbCallbacks.on_drag_drop} after completion.
    *
-   *  - (Spider Monkey Panel specific) Drag operation is canceled when any
+   *   - (Spider Monkey Panel specific) Drag operation is canceled when any
    *    mouse button is pressed.
    *
-   *  - (Spider Monkey Panel specific) All mouse callbacks are suppressed
+   *   - (Spider Monkey Panel specific) All mouse callbacks are suppressed
    *    during drag operation (including `on_mouse_lbtn_up`, but excluding
    *    `on_mouse_mbtn_up` and on_mouse_rbtn_up).
    *
-   *  - Every drag callback receives Action argument.
+   *   - Every drag callback receives Action argument.
    *    {@link DropTargetAction.Effect} contains `okEffects` from
    *    {@link Fb.DoDragDrop} call. {@link DropTargetAction.Effect} should be
    *    changed to the desired effect in the callback. If the returned
@@ -390,15 +390,15 @@ export interface Fb {
    * The {@link Fb.GetClipboardContents} method returns clipboard contents.
    *
    * @remarks
-   * Clipboard contents can be handles copied to the clipboard in other
+   *   Clipboard contents can be handles copied to the clipboard in other
    *   components, from {@link Fb.CopyHandleListToClipboard} or a file
    *   selection from Windows Explorer etc.
    *
-   * Performance note: validate clipboard content with
+   *   Performance note: validate clipboard content with
    *   {@link Fb.CheckClipboardContents} before calling this method.
    *
    * @example
-   * ```ts
+   * ```js
    *  function on_mouse_rbtn_up(x, y) {
    *    const ap = plman.ActivePlaylist;
    *    const menu = window.CreatePopupMenu();
@@ -438,7 +438,7 @@ export interface Fb {
    * form so you need to use `JSON.parse()` on the result.
    *
    * @example
-   * ```ts
+   * ```js
    *  const str = fb.GetDSPPresets();
    *  const arr = JSON.parse(str);
    *
@@ -465,7 +465,7 @@ export interface Fb {
    * ```
    *
    * @example
-   * ```ts
+   * ```js
    *  const str = fb.GetDSPPresets();
    *  const arr = JSON.parse(str);
    *  let activeName = "";
@@ -502,12 +502,12 @@ export interface Fb {
    * not in Media Library.
    *
    * @remarks
-   * Note: do not use the {@link Fb.GetLibraryRelativePath} method while
+   *   Note: do not use the {@link Fb.GetLibraryRelativePath} method while
    *   looping through a handle list. Use
    *   {@link FbMetadbHandleList.GetLibraryRelativePaths} instead.
    *
    * @example
-   * ```ts
+   * ```js
    *  // The foobar2000 Media Library is configured to watch "D:\Music"
    *  // and the path of the now playing item is
    *  // "D:\Music\Albums\Artist\Some Album\Some Song.flac"
@@ -532,7 +532,7 @@ export interface Fb {
    * form so you need to use `JSON.parse()` on the result.
    *
    * @example
-   * ```ts
+   * ```js
    *  const str = fb.GetOutputDevices();
    *  const arr = JSON.parse(str);
    *
@@ -585,11 +585,11 @@ export interface Fb {
    * The {@link Fb.GetQueryItems} method queries items.
    *
    * @remarks
-   * Note: use `try / catch` to handle invalid queries. An empty handle list
+   *   Note: use `try / catch` to handle invalid queries. An empty handle list
    *   will be returned if the query is valid but there are no results.
    *
    * @example
-   * ```ts
+   * ```js
    *  const a = fb.GetQueryItems(
    *    plman.GetPlaylistItems(plman.ActivePlaylist),
    *    "rating IS 5"
@@ -610,10 +610,10 @@ export interface Fb {
    * The {@link Fb.GetSelection} method gets now playing or selected item.
    *
    * @remarks
-   * What you get will depend on
-   * `File > Preferences > Display > Selection viewers`.
+   *   What you get will depend on
+   *   `File > Preferences > Display > Selection viewers`.
    *
-   * The return value may be `null`.
+   *   The return value may be `null`.
    */
   GetSelection(): FbMetadbHandle | null;
 
@@ -642,11 +642,11 @@ export interface Fb {
    * `command` is checked.
    *
    * @remarks
-   * Performance note: don't use {@link Fb.IsMainMenuCommandChecked} in
+   *   Performance note: don't use {@link Fb.IsMainMenuCommandChecked} in
    *   {@link FbCallbacks.on_paint}.
    *
    * @example
-   * ```ts
+   * ```js
    *  fb.IsMainMenuCommandChecked("Playback/Scrobble Tracks");
    *  // available with foo_scrobble
    * ```
@@ -654,7 +654,6 @@ export interface Fb {
    * @param command - Path to main menu item
    *
    * @returns `true`, if the item is checked.
-   *
    */
   IsMainMenuCommandChecked(command: string): boolean;
 
@@ -663,7 +662,7 @@ export interface Fb {
    * track handle is in media library.
    *
    * @example
-   * ```ts
+   * ```js
    *  const nowPlaying = fb.GetNowPlaying();
    *
    *  console.log(fb.IsMetadbInMediaLibrary(nowPlaying));
@@ -715,24 +714,26 @@ export interface Fb {
    * `Main menu > File > Spider Monkey Panel > Script commands > \{Panel\}`
    *
    * @remarks
-   * Being main menu item means you can bind it to global keyboard shortcuts,
+   *   Being main menu item means you can bind it to global keyboard shortcuts,
    *   standard toolbar buttons, panel stack splitter buttons, etc. Execution
    *   of the corresponding menu item will trigger
    *   {@link FbCallbacks.on_main_menu_dynamic} callback.
    *
-   * Note: SMP uses a combination of panel name and command id to identify and
+   *   Note: SMP uses a combination of panel name and command id to identify and
    *   bind the command. Hence, all corresponding binds will fail if the id or
    *   the panel name is changed. This also means that collision WILL occur if
    *   there are two panels with the same name.
    *
-   * Related methods:
+   *   Related methods:
    *   {@link Fb.UnregisterMainMenuCommand}
    *
-   * Related callbacks:
+   *   Related callbacks:
    *   {@link FbCallbacks.on_main_menu_dynamic}
    *
    * @param id -
+   *
    * @param name -
+   *
    * @param description - Default `""`.
    */
   RegisterMainMenuCommand(id: number, name: string, description?: string): void;
@@ -747,11 +748,12 @@ export interface Fb {
    * currently played track.
    *
    * @example
-   * ```ts
+   * ```js
    *  fb.RunContextCommand("Properties");
    * ```
    *
    * @param command -
+   *
    * @param flags - Default {@link ContextCommandFlags.Default}
    */
   RunContextCommand(command: string, flags?: ContextCommandFlags): boolean;
@@ -761,7 +763,9 @@ export interface Fb {
    * for supplied tracks.
    *
    * @param command -
+   *
    * @param handleOrHandleList -
+   *
    * @param flags - Default {@link ContextCommandFlags.Default}
    */
   RunContextCommandWithMetadb(
@@ -775,9 +779,10 @@ export interface Fb {
    * main menu command.
    *
    * @example
-   * ```ts
+   * ```js
    *  fb.RunMainMenuCommand("File/Add Location...");
    * ```
+   *
    * @param command - The command.
    */
   RunMainMenuCommand(command: string): boolean;
@@ -792,14 +797,14 @@ export interface Fb {
    * The {@link Fb.SetDSPPreset} method sets the DSP preset.
    *
    * @remarks
-   * Available only in foobar2000 v1.4 and above. Throws a script error on
-   * v1.3.
+   *   Available only in foobar2000 v1.4 and above. Throws a script error on
+   *   v1.3.
    *
-   * Related methods:
+   *   Related methods:
    *   {@link Fb.GetDSPPresets}.
    *
    * @example
-   * ```ts
+   * ```js
    *  const str = fb.GetDSPPresets();
    *  const arr = JSON.parse(str);
    *  const idx = ...;
@@ -816,14 +821,14 @@ export interface Fb {
    * The {@link Fb.SetOutputDevice} method sets the output device.
    *
    * @remarks
-   * Available only in foobar2000 v1.4 and above. Throws a script error on
-   * v1.3.
+   *   Available only in foobar2000 v1.4 and above. Throws a script error on
+   *   v1.3.
    *
-   * Related methods:
+   *   Related methods:
    *   {@link Fb.GetOutputDevices}.
    *
    * @example
-   * ```ts
+   * ```js
    *  // To actually change device, you'll need the device_id and output_id
    *  // and use them with fb.SetOutputDevice.
    *  const str = fb.GetOutputDevices();
@@ -833,8 +838,9 @@ export interface Fb {
    *  fb.SetOutputDevice(arr[4].output_id, arr[4].device_id);
    * ```
    *
-   * @param  output -
-   * @param  device -
+   * @param output -
+   *
+   * @param device -
    */
   SetOutputDevice(output: string, device: string): void;
 
@@ -854,6 +860,7 @@ export interface Fb {
    * `message`.
    *
    * @param message - The message.
+   *
    * @param title - The dialog title. Default `"Spider Monkey Panel"`.
    */
   ShowPopupMessage(message: string, title?: string): void;
@@ -873,9 +880,9 @@ export interface Fb {
    * format tracks.
    *
    * @remarks
-   * Performance note: if you use the same query frequently,
-   * try caching {@link FbTitleFormat} object (by storing it somewhere),
-   * instead of creating it every time.
+   *   Performance note: if you use the same query frequently,
+   *   try caching {@link FbTitleFormat} object (by storing it somewhere),
+   *   instead of creating it every time.
    *
    * @param expression - The format expression.
    */
@@ -886,7 +893,7 @@ export interface Fb {
    * menu item.
    *
    * @remarks
-   * Related methods:
+   *   Related methods:
    *   {@link Fb.RegisterMainMenuCommand}
    *
    * @param id - The command ID.

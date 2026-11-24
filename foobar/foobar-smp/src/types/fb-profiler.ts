@@ -2,7 +2,7 @@
  * The {@link FbProfiler} class creates a new profiler object.
  *
  * @example
- * ```ts
+ * ```js
  *  const test = new FbProfiler('test');
  *
  *  // do something time-consuming
@@ -28,7 +28,7 @@ export interface FbProfiler {
    * console.
    *
    * @example
-   * ```ts
+   * ```js
    *  const test = new FbProfiler('Group #1');
    *
    *  // Do smth #1
@@ -48,6 +48,7 @@ export interface FbProfiler {
    *
    * @param additionalMsg - String that will be prepended to the measured
    *   time. Default `""`.
+   *
    * @param printComponentInfo - Default `true`.
    */
   Print(additionalMsg?: string, printComponentInfo?: boolean): void;

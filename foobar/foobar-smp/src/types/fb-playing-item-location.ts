@@ -10,7 +10,7 @@ export interface FbPlayingItemLocation {
    * if the playlist item at the current location is valid.
    *
    * @example
-   * ```ts
+   * ```js
    *  const playingItemLocation = plman.GetPlayingItemLocation();
    *
    *  if (playingItemLocation.IsValid) {
@@ -23,8 +23,8 @@ export interface FbPlayingItemLocation {
    * ```
    *
    * @returns `false` if foobar2000 isn't playing or if the playing track
-   * has since been removed from the playlist it was on when playback was
-   * started.
+   *   has since been removed from the playlist it was on when playback was
+   *   started.
    */
   readonly IsValid: boolean;
 

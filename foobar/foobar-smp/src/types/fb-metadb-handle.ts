@@ -20,7 +20,7 @@ export interface FbMetadbHandle {
    * The {@link FbMetadbHandle.Length} property represents an item path.
    *
    * @example
-   * ```ts
+   * ```js
    *  const handle = fb.GetFocusItem();
    *
    *  console.log(handle.Path);
@@ -33,7 +33,7 @@ export interface FbMetadbHandle {
    * The {@link FbMetadbHandle.RawPath} property represents an item raw path.
    *
    * @example
-   * ```ts
+   * ```js
    *  const handle = fb.GetFocusItem();
    *
    *  console.log(handle.RawPath);
@@ -58,11 +58,11 @@ export interface FbMetadbHandle {
    * {@link FbMetadbHandle} instances, pointer only.
    *
    * @remarks
-   * If you want to compare them physically, use the
+   *   If you want to compare them physically, use the
    *   {@link FbMetadbHandle.RawPath} property.
    *
    * @example
-   * ```ts
+   * ```js
    *  handle.Compare(handle2);
    * ```
    *
@@ -95,7 +95,7 @@ export interface FbMetadbHandle {
   SetLastPlayed(lastPlayed: string): void;
 
   /**
-   * @param loved -  Use `0` to clear
+   * @param loved - Use `0` to clear
    */
   SetLoved(loved: number): void;
 

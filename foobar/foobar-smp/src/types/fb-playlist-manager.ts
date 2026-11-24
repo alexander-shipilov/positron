@@ -22,7 +22,7 @@ export interface FbPlaylistManager {
    * playlist index. Returns `-1` if there is no active playlist.
    *
    * @example
-   * ```ts
+   * ```js
    *  const ap = plman.ActivePlaylist;
    *  // Returns -1 if there is no active playlist.
    *
@@ -43,7 +43,7 @@ export interface FbPlaylistManager {
    * the playing playlist. Returns `-1` if there is no playing playlist.
    *
    * @example
-   * ```ts
+   * ```js
    *  const pp = plman.PlayingPlaylist;
    * ```
    */
@@ -74,12 +74,12 @@ export interface FbPlaylistManager {
    * to the playlist at `playlistIndex`.
    *
    * @remarks
-   * This operation is asynchronous and may take some time to complete if it's
+   *   This operation is asynchronous and may take some time to complete if it's
    *   a large array. Any code in your script directly after this line will run
    *   immediately without waiting for the job to finish.
    *
    * @example
-   * ```ts
+   * ```js
    *  plman.AddLocations(plman.ActivePlaylist, ["e:\\1.mp3"]);
    *  // This operation is asynchronous, so any code in your script directly
    *  // after this line will run immediately without waiting for the job to
@@ -87,7 +87,9 @@ export interface FbPlaylistManager {
    * ```
    *
    * @param playlistIndex - The target playlist
+   *
    * @param locations - An array of files / URLs
+   *
    * @param select - If `true`, the active playlist will be set to the
    *   `playlistIndex`, the items will be selected and focus will be set to the
    *   first new item. Default `false`.
@@ -103,6 +105,7 @@ export interface FbPlaylistManager {
    * the specified playlist item to the playback queue.
    *
    * @param playlistIndex - The playlist index.
+   *
    * @param playlistItemIndex - The playlist item index.
    */
   AddPlaylistItemToPlaybackQueue(
@@ -115,7 +118,7 @@ export interface FbPlaylistManager {
    * specified `playlistIndex`
    *
    * @example
-   * ```ts
+   * ```js
    *  plman.ClearPlaylist(plman.PlayingPlaylist);
    * ```
    *
@@ -128,7 +131,7 @@ export interface FbPlaylistManager {
    * playlist selection at the specified `playlistIndex`
    *
    * @example
-   * ```ts
+   * ```js
    *  plman.ClearPlaylistSelection(plman.ActivePlaylist);
    * ```
    *
@@ -142,7 +145,7 @@ export interface FbPlaylistManager {
    * `playlistIndex`.
    *
    * @example
-   * ```ts
+   * ```js
    *  const sort = "%album artist% | %date% | %album% | " +
    *    "%discnumber% | %tracknumber%";
    *
@@ -153,9 +156,13 @@ export interface FbPlaylistManager {
    * ```
    *
    * @param playlistIndex -
+   *
    * @param name - A name for the new auto-playlist.
+   *
    * @param query - Title formatting pattern for forming the playlist content.
+   *
    * @param sort - Title formatting pattern for sorting. Default `""`.
+   *
    * @param flags - `1` - when set, will keep the autoplaylist sorted and
    *   prevent user from reordering it. Default `0`.
    *
@@ -175,7 +182,7 @@ export interface FbPlaylistManager {
    * and append it to the current playlists at the specified `playlistIndex`.
    *
    * @example
-   * ```ts
+   * ```js
    *  plman.CreatePlaylist(0, "");
    *  // Creates a new playlist named "New playlist", which is put at the
    *  // beginning of the current playlists.
@@ -185,6 +192,7 @@ export interface FbPlaylistManager {
    * ```
    *
    * @param playlistIndex -
+   *
    * @param name - A name for the new playlist
    *
    * @returns The index of newly created playlist.
@@ -196,11 +204,12 @@ export interface FbPlaylistManager {
    * at the specified `playlistIndex`.
    *
    * @remarks
-   * Note: the duplicated playlist gets inserted directly after the source
+   *   Note: the duplicated playlist gets inserted directly after the source
    *   `playlistIndex`. It only duplicates playlist content, not the properties
    *   of the playlist (e.g. auto-playlist).
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param name - The name for the new playlist. If the name is "" or
    *   undefined, the name of the source playlist will be used.
    *
@@ -213,6 +222,7 @@ export interface FbPlaylistManager {
    * playlist viewers to display the track (e.g. by scrolling to its position).
    *
    * @param playlistIndex - The target playlist index
+   *
    * @param playlistItemIndex -
    */
   EnsurePlaylistItemVisible(
@@ -226,6 +236,7 @@ export interface FbPlaylistManager {
    * overridden by a lock to do something else.
    *
    * @param playlistIndex -
+   *
    * @param playlistItemIndex -
    */
   ExecutePlaylistDefaultAction(
@@ -238,9 +249,10 @@ export interface FbPlaylistManager {
    * index of the named playlist or creates a new one, if not found.
    *
    * @remarks
-   * If a new playlist is created, the playlist index of that will be returned.
+   *   If a new playlist is created, the playlist index of that will be returned.
    *
    * @param name -
+   *
    * @param unlocked - If `true`, locked playlists are ignored when
    *   looking for existing playlists. If `false`, the index of any
    *   playlist with the matching name will be returned.
@@ -251,7 +263,9 @@ export interface FbPlaylistManager {
 
   /**
    * @param handle -
+   *
    * @param playlistIndex -
+   *
    * @param playlistItemIndex -
    *
    * @returns The position in queue on success, `-1` if track is not in queue.
@@ -280,7 +294,7 @@ export interface FbPlaylistManager {
    * added to the playback queue.
    *
    * @example
-   * ```ts
+   * ```js
    *  const contents = plman.GetPlaybackQueueContents();
    *
    *  if (contents.length) {
@@ -296,7 +310,7 @@ export interface FbPlaylistManager {
    * track handles added to the playback queue.
    *
    * @example
-   * ```ts
+   * ```js
    *  const handles = plman.GetPlaybackQueueHandles();
    *
    *  if (handles.Count > 0) {
@@ -311,14 +325,14 @@ export interface FbPlaylistManager {
    * playlist position of currently playing item.
    *
    * @remarks
-   * On failure, the property {@link FbPlayingItemLocation.IsValid} will be set
+   *   On failure, the property {@link FbPlayingItemLocation.IsValid} will be set
    *   to `false`.
    */
   GetPlayingItemLocation(): FbPlayingItemLocation;
 
   /**
    * @example
-   * ```ts
+   * ```js
    *  const focusItemIndex =
    *   plman.GetPlaylistFocusItemIndex(plman.ActivePlaylist);
    * ```
@@ -331,7 +345,7 @@ export interface FbPlaylistManager {
 
   /**
    * @example
-   * ```ts
+   * ```js
    *  const handleList = plman.GetPlaylistItems(plman.PlayingPlaylist);
    * ```
    *
@@ -352,13 +366,13 @@ export interface FbPlaylistManager {
    *
    * @returns The name of lock owner if there is a lock, `null` otherwise
    */
-  GetPlaylistLockName(playlistIndex: number): null | string;
+  GetPlaylistLockName(playlistIndex: number): string | null;
 
   /**
    * The {@link FbPlaylistManager.GetPlaylistName} method returns playlist name.
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(plman.GetPlaylistName(plman.ActivePlaylist));
    *  // >> My favourites
    * ```
@@ -369,7 +383,7 @@ export interface FbPlaylistManager {
 
   /**
    * @example
-   * ```ts
+   * ```js
    *  const selectedItems =
    *   plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
    * ```
@@ -383,7 +397,7 @@ export interface FbPlaylistManager {
    * the playlist at the specified `playlistIndex`
    *
    * @example
-   * ```ts
+   * ```js
    *  const ap = plman.ActivePlaylist;
    *
    *  plman.InsertPlaylistItems(ap, 0, fb.GetLibraryItems());
@@ -398,8 +412,11 @@ export interface FbPlaylistManager {
    * ```
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param index - Position in playlist.
+   *
    * @param handleList - Items to insert.
+   *
    * @param select - If `true` then inserted items will be selected. Default
    *   `false`.
    */
@@ -416,8 +433,11 @@ export interface FbPlaylistManager {
    * contained in `handleList` are removed.
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param base - Position in playlist.
+   *
    * @param handleList - items to insert.
+   *
    * @param select - If `true` then inserted items will be selected. Default
    *   `false`.
    */
@@ -439,6 +459,7 @@ export interface FbPlaylistManager {
    * `playlistIndex` is selected.
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param playlistItemIndex - The target item index.
    */
   IsPlaylistItemSelected(
@@ -451,7 +472,7 @@ export interface FbPlaylistManager {
    * playlist at specified `playlistIndex` is locked.
    *
    * @remarks
-   * Note: returns `true`, if the playlist is an auto-playlist. To determine if
+   *   Note: returns `true`, if the playlist is an auto-playlist. To determine if
    *   a playlist is not an auto-playlist, but locked with something like
    *   `foo_utils` or `foo_playlist_attributes`, use with conjunction of
    *   {@link FbPlaylistManager.IsAutoPlaylist}.
@@ -469,7 +490,7 @@ export interface FbPlaylistManager {
    * redo restore point is available for specified playlist.
    *
    * @remarks
-   * Related methods:
+   *   Related methods:
    *   {@link FbPlaylistManager.IsUndoAvailable},
    *   {@link FbPlaylistManager.Redo},
    *   {@link FbPlaylistManager.Undo},
@@ -484,7 +505,7 @@ export interface FbPlaylistManager {
    * undo restore point is available for specified playlist.
    *
    * @remarks
-   * Related methods:
+   *   Related methods:
    *   {@link FbPlaylistManager.IsUndoAvailable},
    *   {@link FbPlaylistManager.Redo},
    *   {@link FbPlaylistManager.Undo},
@@ -499,6 +520,7 @@ export interface FbPlaylistManager {
    * specified `playlistIndex` to the specified `toIndex`.
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param toIndex -
    *
    * @returns `true` if playlist was successfully moved.
@@ -507,7 +529,7 @@ export interface FbPlaylistManager {
 
   /**
    * @example
-   * ```ts
+   * ```js
    *  // Moves selected items to end of playlist.
    *  plman.MovePlaylistSelection(
    *    plman.ActivePlaylist,
@@ -516,6 +538,7 @@ export interface FbPlaylistManager {
    * ```
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param delta -
    */
   MovePlaylistSelection(playlistIndex: number, delta: number): boolean;
@@ -525,7 +548,7 @@ export interface FbPlaylistManager {
    * items in playlist at the specified `playlistIndex`
    *
    * @example
-   * ```ts
+   * ```js
    *  console.log(plman.PlaylistItemCount(plman.PlayingPlaylist));
    *  // >> 12
    * ```
@@ -539,16 +562,16 @@ export interface FbPlaylistManager {
    * the next redo restore point and generates an undo restore point.
    *
    * @remarks
-   * Note: revert operation may be not applied if the
-   * corresponding action is locked. Use
-   * {@link FbPlaylistManager.GetPlaylistLockedActions} to check if there are
-   * any locks present.
+   *   Note: revert operation may be not applied if the
+   *   corresponding action is locked. Use
+   *   {@link FbPlaylistManager.GetPlaylistLockedActions} to check if there are
+   *   any locks present.
    *
-   * Related methods:
-   *  - {@link FbPlaylistManager.IsRedoAvailable},
-   *  - {@link FbPlaylistManager.IsUndoAvailable},
-   *  - {@link FbPlaylistManager.Undo},
-   *  - {@link FbPlaylistManager.UndoBackup}
+   *   Related methods:
+   *   - {@link FbPlaylistManager.IsRedoAvailable},
+   *   - {@link FbPlaylistManager.IsUndoAvailable},
+   *   - {@link FbPlaylistManager.Undo},
+   *   - {@link FbPlaylistManager.UndoBackup}
    *
    * @param playlistIndex - The target playlist index.
    */
@@ -575,7 +598,7 @@ export interface FbPlaylistManager {
    * playlist.
    *
    * @remarks
-   * Note: If removing the active playlist, no playlist will be active after
+   *   Note: If removing the active playlist, no playlist will be active after
    *   using this. You'll need to set it manually or use
    *   {@link FbPlaylistManager.RemovePlaylistSwitch} instead.
    *
@@ -588,7 +611,7 @@ export interface FbPlaylistManager {
    * selected items from playlist at specified `playlistIndex`.
    *
    * @example
-   * ```ts
+   * ```js
    *  // Remove selected items from playlist
    *  plman.RemovePlaylistSelection(plman.ActivePlaylist);
    *
@@ -597,6 +620,7 @@ export interface FbPlaylistManager {
    * ```
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param crop - If `true`, then removes items that are NOT selected. Default
    *   `false`.
    */
@@ -607,7 +631,7 @@ export interface FbPlaylistManager {
    * specified playlist.
    *
    * @remarks
-   * This automatically sets another playlist as active if removing the active
+   *   This automatically sets another playlist as active if removing the active
    *   playlist.
    *
    * @param playlistIndex - The target playlist index.
@@ -619,6 +643,7 @@ export interface FbPlaylistManager {
    * specified `playlistIndex`.
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param name - The name
    *
    * @returns `true` if playlist was successfully renamed
@@ -632,7 +657,7 @@ export interface FbPlaylistManager {
    * a dedicated playlist viewer doesn't.
    *
    * @example
-   * ```ts
+   * ```js
    *  plman.SetActivePlaylistContext();
    *  // Once on startup
    *
@@ -651,11 +676,12 @@ export interface FbPlaylistManager {
    * to the specified item.
    *
    * @example
-   * ```ts
+   * ```js
    *  plman.SetPlaylistFocusItem(plman.ActivePlaylist, 0);
    * ```
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param playlistItemIndex - The target playlist item index.
    */
   SetPlaylistFocusItem(playlistIndex: number, playlistItemIndex: number): void;
@@ -665,7 +691,7 @@ export interface FbPlaylistManager {
    * to the specified track handle.
    *
    * @example
-   * ```ts
+   * ```js
    *  const ap = plman.ActivePlaylist;
    *  const handle = plman.GetPlaylistItems(ap)[1];
    *  // 2nd item in playlist
@@ -674,6 +700,7 @@ export interface FbPlaylistManager {
    * ```
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param handle -
    */
   SetPlaylistFocusItemByHandle(
@@ -686,12 +713,13 @@ export interface FbPlaylistManager {
    * requested actions.
    *
    * @remarks
-   * Note: the lock can be changed only if there is no lock or if it's owned by
+   *   Note: the lock can be changed only if there is no lock or if it's owned by
    *   `foo_spider_monkey_panel`. The owner of the lock can be checked via
    *   {@link FbPlaylistManager.GetPlaylistLockName}.
    *
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param lockedActions - The list of actions.
    */
   SetPlaylistLockedActions(
@@ -704,7 +732,7 @@ export interface FbPlaylistManager {
    * deselects playlist items.
    *
    * @example
-   * ```ts
+   * ```js
    *  const arr = [0, 2, 4];
    *
    *  plman.SetPlaylistSelection(plman.ActivePlaylist, arr, true);
@@ -713,7 +741,9 @@ export interface FbPlaylistManager {
    * ```
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param affectedItems - An array of item indexes
+   *
    * @param state -
    */
   SetPlaylistSelection(
@@ -727,14 +757,14 @@ export interface FbPlaylistManager {
    * deselects playlist item.
    *
    * @example
-   * ```ts
+   * ```js
    *  // Deselects first playlist item.
    *  // Only works when it is already selected!
    *  plman.SetPlaylistSelectionSingle(plman.ActivePlaylist, 0, false);
    * ```
    *
    * @example
-   * ```ts
+   * ```js
    *  // Selects last item in playlist.
    *  // This does not affect other selected items.
    *  plman.SetPlaylistSelectionSingle(
@@ -745,7 +775,9 @@ export interface FbPlaylistManager {
    * ```
    *
    * @param playlistIndex - The target playlist index.
+   *
    * @param playlistItemIndex - The target playlist item index.
+   *
    * @param state -
    */
   SetPlaylistSelectionSingle(
@@ -759,11 +791,11 @@ export interface FbPlaylistManager {
    * letting you edit certain auto-playlist properties.
    *
    * @remarks
-   * Note: Before using, check if your playlist is an auto-playlist by using
+   *   Note: Before using, check if your playlist is an auto-playlist by using
    *   {@link FbPlaylistManager.IsAutoPlaylist}.
    *
    * @example
-   * ```ts
+   * ```js
    *  fb.ShowAutoPlaylistUI(plman.ActivePlaylist);
    * ```
    *
@@ -776,8 +808,10 @@ export interface FbPlaylistManager {
    * playlist using the given title format expression.
    *
    * @param playlistIndex - The index of playlist to alter.
+   *
    * @param pattern - Title formatting pattern to sort by.
    *   Set to "" to randomise the order of items.
+   *
    * @param selectedItemsOnly - Default `false`.
    *
    * @returns `true` on success, `false` on failure (playlist locked etc.).
@@ -793,7 +827,9 @@ export interface FbPlaylistManager {
    * playlist using the given title format expression.
    *
    * @param playlistIndex - The index of playlist to alter.
+   *
    * @param pattern - Title formatting pattern to sort by.
+   *
    * @param direction - Sort direction.
    *   Default {@link PlaylistSortDirection.Asc}.
    */
@@ -817,11 +853,11 @@ export interface FbPlaylistManager {
    * the last undo restore point and generates a redo restore point.
    *
    * @remarks
-   * Note: revert operation may be not applied if the corresponding action is
+   *   Note: revert operation may be not applied if the corresponding action is
    *   locked. Use {@link FbPlaylistManager.GetPlaylistLockedActions} to check
    *   if there are any locks present.
    *
-   * Related methods:
+   *   Related methods:
    *   {@link FbPlaylistManager.IsRedoAvailable},
    *   {@link FbPlaylistManager.IsUndoAvailable},
    *   {@link FbPlaylistManager.Redo},
@@ -838,10 +874,10 @@ export interface FbPlaylistManager {
    * content.
    *
    * @remarks
-   * Note: this method should be called before performing modification to the
-   * playlist.
+   *   Note: this method should be called before performing modification to the
+   *   playlist.
    *
-   * Related methods:
+   *   Related methods:
    *   {@link FbPlaylistManager.IsRedoAvailable},
    *   {@link FbPlaylistManager.IsUndoAvailable},
    *   {@link FbPlaylistManager.Redo},

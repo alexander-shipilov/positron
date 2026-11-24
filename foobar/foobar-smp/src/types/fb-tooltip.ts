@@ -7,14 +7,14 @@ export interface FbTooltip {
   /**
    *
    * @remarks
-   * Note: this also updates text on the active tooltip i.e. there is no need
+   *   Note: this also updates text on the active tooltip i.e. there is no need
    *   to manually cycle {@link FbTooltip.Deactivate} /
    *   {@link FbTooltip.Activate} to update text.
    *
-   * Note: Use "\\n" if you want multi-line tooltips.
+   *   Note: Use "\\n" if you want multi-line tooltips.
    *
    * @example
-   * ```ts
+   * ```js
    *  const tooltip = window.Tooltip;
    *
    *  tooltip.Text = "Whoop";
@@ -31,10 +31,10 @@ export interface FbTooltip {
    * The {@link FbTooltip.Activate} method activates tooltip.
    *
    * @remarks
-   * Note: only do this when text has changed, otherwise it will flicker.
+   *   Note: only do this when text has changed, otherwise it will flicker.
    *
    * @example
-   * ```ts
+   * ```js
    *  const tooltip = window.Tooltip;
    *  const text = "...";
    *
@@ -63,6 +63,7 @@ export interface FbTooltip {
 
   /**
    * @param type -
+   *
    * @param time -
    */
   SetDelayTime(type: TooltipDelayTime, time: number): void;
@@ -71,7 +72,9 @@ export interface FbTooltip {
    * The {@link FbTooltip.SetFont} method sets tooltip's font.
    *
    * @param fontName -
+   *
    * @param fontSizePx - Default `12`.
+   *
    * @param fontStyle - Can be one or more of the {@link FontStyle}.
    *   Default `0`.
    */
@@ -83,7 +86,7 @@ export interface FbTooltip {
    * @param width -
    *
    * @example
-   * ```ts
+   * ```js
    *  const tooltip = window.Tooltip;
    *
    *  tooltip.SetMaxWidth(800);
@@ -94,13 +97,14 @@ export interface FbTooltip {
 
   /**
    * @remarks
-   * Note: check that `x`, `y` positions have changed from the last invocation,
+   *   Note: check that `x`, `y` positions have changed from the last invocation,
    *   otherwise it will flicker.
    *
-   * Note 2: ensure that the tooltip does not overlap the mouse pointer,
+   *   Note 2: ensure that the tooltip does not overlap the mouse pointer,
    *   otherwise it will glitch out.
    *
    * @param x - The x-position
+   *
    * @param y - The y-position
    */
   TrackPosition(x: number, y: number): void;

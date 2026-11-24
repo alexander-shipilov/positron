@@ -5,9 +5,9 @@ import type { FbMetadbHandleList } from "./fb-metadb-handle-list";
  * The {@link FbTitleFormat} interface represents title format object.
  *
  * @remarks
- * Performance note: if you use the same query frequently,
- * try caching {@link FbTitleFormat} object (by storing it somewhere),
- * instead of creating it every time.
+ *   Performance note: if you use the same query frequently,
+ *   try caching {@link FbTitleFormat} object (by storing it somewhere),
+ *   instead of creating it every time.
  *
  * @public
  */
@@ -17,13 +17,13 @@ export interface FbTitleFormat {
    * the current playing item.
    *
    * @remarks
-   * Note: Always use {@link FbTitleFormat.Eval} when you want dynamic info
+   *   Note: Always use {@link FbTitleFormat.Eval} when you want dynamic info
    *   such as "%playback_time%", "%bitrate%", etc.
    *   `FbTitleFormat.EvalWithMetadb(fb.GetNowPlaying())` will not give the
    *   results you want.
    *
    * @example
-   * ```ts
+   * ```js
    *  const tf = fb.TitleFormat("%artist%");
    *
    *  console.log(tf.Eval());
@@ -34,7 +34,6 @@ export interface FbTitleFormat {
    *   playing, you should always get a result. Default `false`.
    *
    * @example
-   *
    */
   Eval(force?: boolean): string;
 
@@ -43,11 +42,11 @@ export interface FbTitleFormat {
    * {@link FbTitleFormat} to the specified `handle`.
    *
    * @remarks
-   * Note: If possible, avoid using while looping a handle list. Using
+   *   Note: If possible, avoid using while looping a handle list. Using
    *   {@link FbTitleFormat.EvalWithMetadbs} below should be much faster.
    *
    * @example
-   * ```ts
+   * ```js
    *  const tf = fb.TitleFormat("%artist%");
    *  const artist = tf.EvalWithMetadb(fb.GetFocusItem());
    * ```
@@ -61,7 +60,7 @@ export interface FbTitleFormat {
    * {@link FbTitleFormat} to all items of the specified `handleList`.
    *
    * @example
-   * ```ts
+   * ```js
    *  const handleList = fb.GetLibraryItems();
    *  const tf = fb.TitleFormat("%artist%");
    *  const artists = tf.EvalWithMetadbs(handleList);

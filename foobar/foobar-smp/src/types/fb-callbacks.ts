@@ -32,7 +32,7 @@ export interface FbCallbacks {
    * user prints a char.
    *
    * @remarks
-   * Note: in order to use this callback, use {@link FbWindow.DlgCode} and
+   *   Note: in order to use this callback, use {@link FbWindow.DlgCode} and
    *   {@link DlgCode.WantChars}.
    *
    * @param code - UTF16 encoded char.
@@ -44,7 +44,7 @@ export interface FbCallbacks {
    * colours are changed via default UI / columns UI preferences.
    *
    * @remarks
-   * Note: Use {@link FbWindow.GetColourCUI} / {@link FbWindow.GetColourDUI} to
+   *   Note: Use {@link FbWindow.GetColourCUI} / {@link FbWindow.GetColourDUI} to
    *   get new colours.
    */
   on_colours_changed(this: void): undefined;
@@ -61,8 +61,11 @@ export interface FbCallbacks {
    * See {@link Fb.DoDragDrop} documentation.
    *
    * @param action -
+   *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -78,8 +81,11 @@ export interface FbCallbacks {
    * See {@link Fb.DoDragDrop} documentation.
    *
    * @param action -
+   *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -100,8 +106,11 @@ export interface FbCallbacks {
    * See {@link Fb.DoDragDrop} documentation.
    *
    * @param action -
+   *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -118,10 +127,10 @@ export interface FbCallbacks {
    * preset changes.
    *
    * @remarks
-   * Note: The {@link FbCallbacks.on_dsp_preset_changed} callback is only
+   *   Note: The {@link FbCallbacks.on_dsp_preset_changed} callback is only
    *   available in foobar2000 v1.4 and later.
    *
-   * Note: The {@link FbCallbacks.on_dsp_preset_changed} callback does not get
+   *   Note: The {@link FbCallbacks.on_dsp_preset_changed} callback does not get
    *   called when presets are added or removed.
    */
   on_dsp_preset_changed(this: void): undefined;
@@ -139,7 +148,7 @@ export interface FbCallbacks {
    * changed via default UI / columns UI preferences.
    *
    * @remarks
-   * Note: you can retrieve fonts using {@link FbWindow.GetFontDUI} /
+   *   Note: you can retrieve fonts using {@link FbWindow.GetFontDUI} /
    *   {@link FbWindow.GetFontCUI}
    */
   on_font_changed(this: void): undefined;
@@ -149,8 +158,11 @@ export interface FbCallbacks {
    * created by {@link FbUtils.GetAlbumArtAsync} is done.
    *
    * @param handle - Media file handle
+   *
    * @param artType - Album Art Type
+   *
    * @param image - {@link GdiBitmap} object or `null` on failure.
+   *
    * @param imagePath - Path to image file (or music file if image is
    *   embedded).
    */
@@ -167,8 +179,10 @@ export interface FbCallbacks {
    * focus has been changed.
    *
    * @param playlistIndex -
+   *
    * @param from - The index of the previous focused item or `-1` if there was
    *   no focused item.
+   *
    * @param to - The index of the new focused item.
    */
   on_item_focus_change(
@@ -192,10 +206,10 @@ export interface FbCallbacks {
    * down.
    *
    * @remarks
-   * Requires "Grab focus" enabled in the Configuration window. In order to use
+   *   Requires "Grab focus" enabled in the Configuration window. In order to use
    *   {@link DlgCode.WantArrows}.
    *
-   * Note: Keyboard shortcuts defined in the main preferences are always
+   *   Note: Keyboard shortcuts defined in the main preferences are always
    *   executed first and are not passed to the callback.
    *
    * @param vkey - Virtual key code.
@@ -207,7 +221,7 @@ export interface FbCallbacks {
    * up.
    *
    * @remarks
-   * Requires "Grab focus" enabled in the Configuration window. In order to use
+   *   Requires "Grab focus" enabled in the Configuration window. In order to use
    *   arrow keys, use {@link FbWindow.DlgCode} and {@link DlgCode.WantArrows}
    *
    * @param vkey - Virtual key code.
@@ -250,8 +264,10 @@ export interface FbCallbacks {
    *
    * @param cookie - The return value from the {@link GdiUtils.LoadImageAsync}
    *   call.
+   *
    * @param image - {@link GdiBitmap} object or `null` on failure (invalid
    *   path / not an image).
+   *
    * @param imagePath - The path that was originally supplied to
    *   {@link GdiUtils.LoadImageAsync}.
    */
@@ -267,21 +283,21 @@ export interface FbCallbacks {
    * selected.
    *
    * @remarks
-   * On the `Main menu > File > JSpider Monkey Panel`, there are 10 menu
+   *   On the `Main menu > File > JSpider Monkey Panel`, there are 10 menu
    *   items and whichever number is selected is sent as the `index` to this
    *   callback. Being main menu items now means you can bind them to global
    *   keyboard shortcuts, standard toolbar buttons, panel stack splitter
    *   buttons, etc.
    *
-   * Remember to think carefully about where you use this code as you probably
+   *   Remember to think carefully about where you use this code as you probably
    *   only want it to run once and so don't include it in common files and
    *   scripts where you might have multiple instances.
    *
-   * Important: you should avoid sharing scripts containing this code so as
+   *   Important: you should avoid sharing scripts containing this code so as
    *   not to conflict with what other users may already be using.
    *
    * @example
-   * ```ts
+   * ```js
    *  function on_main_menu(index) {
    *    switch (index) {
    *      case 1: // triggered when `File > JScript Panel > 1` is run
@@ -305,9 +321,9 @@ export interface FbCallbacks {
    * is executed.
    *
    * @remarks
-   * Related methods:
-   * {@link Fb.RegisterMainMenuCommand},
-   * {@link Fb.UnregisterMainMenuCommand}.
+   *   Related methods:
+   *   {@link Fb.RegisterMainMenuCommand},
+   *   {@link Fb.UnregisterMainMenuCommand}.
    *
    * @param commandId - Id of the associated command.
    */
@@ -319,6 +335,7 @@ export interface FbCallbacks {
    * `foo_playcount`, etc.
    *
    * @param handleList - Affected items.
+   *
    * @param fromHook - `true` if notification is not from tag update, but a
    *   component that provides tag-like data from a database. E.g.
    *   `foo_playcount` and {@link FbMetadbHandle.RefreshStats}
@@ -334,7 +351,9 @@ export interface FbCallbacks {
    * mouse button is double-clicked.
    *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -350,7 +369,9 @@ export interface FbCallbacks {
    * button is pressed.
    *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -361,7 +382,9 @@ export interface FbCallbacks {
    * button is released.
    *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -378,7 +401,9 @@ export interface FbCallbacks {
    * mouse button is double-clicked.
    *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -394,7 +419,9 @@ export interface FbCallbacks {
    * mouse button is pressed.
    *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -405,7 +432,9 @@ export interface FbCallbacks {
    * mouse button is released.
    *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -416,7 +445,9 @@ export interface FbCallbacks {
    * button is moved.
    *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -427,7 +458,9 @@ export interface FbCallbacks {
    * mouse button is double-clicked.
    *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -443,7 +476,9 @@ export interface FbCallbacks {
    * mouse button is pressed.
    *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -454,14 +489,16 @@ export interface FbCallbacks {
    * mouse button is released.
    *
    * @remarks
-   * Note: You must return `true` if you want to suppress the default context
+   *   Note: You must return `true` if you want to suppress the default context
    *   menu.
    *
-   * Note: Hold `left shift` + `left windows` key to bypass user code and open
+   *   Note: Hold `left shift` + `left windows` key to bypass user code and open
    *   default context menu.
    *
    * @param x - The x-coordinate.
+   *
    * @param y - The y-coordinate.
+   *
    * @param keys - Indicates whether various virtual keys are down.
    *   See {@link MouseKey}.
    */
@@ -489,13 +526,13 @@ export interface FbCallbacks {
    * {@link FbWindow.NotifyOthers} is executed.
    *
    * @remarks
-   * 1. Data from `info` argument is only accessible inside
+   *   1. Data from `info` argument is only accessible inside
    *   {@link FbCallbacks.on_notify_data} callback: if stored and accessed
    *   outside the callback it will throw JS error. This also applies to the
    *   data produced from that `info`: e.g. storing `info.Path` directly (if
    *   `info` is {@link FbMetadbHandle}).
    *
-   * 2. If you want to store the data from `info` you have to perform a deep
+   *   2. If you want to store the data from `info` you have to perform a deep
    *   copy:
    *
    *   - `String(info)` for strings;
@@ -506,10 +543,11 @@ export interface FbCallbacks {
    *   constructor
    *   available, e.g. `new GdiBitmap(info)` or `new FbMetadbHandleList(info)`.
    *
-   * 3. The `info` argument is shared between panels, so it should NOT be
+   *   3. The `info` argument is shared between panels, so it should NOT be
    *   modified in any way.
    *
    * @param name - The data name.
+   *
    * @param info - Info.
    */
   on_notify_data(this: void, name: string, info: unknown): undefined;
@@ -520,7 +558,7 @@ export interface FbCallbacks {
    * settings.
    *
    * @remarks
-   * Note: available only in foobar2000 v1.4 and later.
+   *   Note: available only in foobar2000 v1.4 and later.
    */
   on_output_device_changed(this: void): undefined;
 
@@ -610,9 +648,10 @@ export interface FbCallbacks {
    *
    * @remarks
    * {@link FbCallbacks.on_playback_new_track} should be called soon after this
-   * when first file is successfully opened for decoding.
+   *   when first file is successfully opened for decoding.
    *
    * @param command - The command that initiates playback.
+   *
    * @param isPaused - Current paused state.
    */
   on_playback_starting(
@@ -640,6 +679,7 @@ export interface FbCallbacks {
   /**
    *
    * @param playlistIndex - Playlist index.
+   *
    * @param playlistItemIndex - Playlist item index.
    */
   on_playlist_item_ensure_visible(
@@ -661,6 +701,7 @@ export interface FbCallbacks {
    * items removed from the playlist.
    *
    * @param playlistIndex - Playlist index.
+   *
    * @param newCount - Playlist length.
    */
   on_playlist_items_removed(
@@ -674,7 +715,7 @@ export interface FbCallbacks {
    * playlist items reordered.
    *
    * @remarks
-   * The {@link FbCallbacks.on_playlist_items_reordered} callback called when
+   *   The {@link FbCallbacks.on_playlist_items_reordered} callback called when
    *   selection changes too. Doesn't actually change the set of items that
    *   are selected or item having focus, just changes their order.
    *
@@ -719,7 +760,7 @@ export interface FbCallbacks {
    * replaygain mode changed.
    *
    * @remarks
-   * Note: available only in foobar2000 v1.4 and later.
+   *   Note: available only in foobar2000 v1.4 and later.
    *
    * @param mode - Current replaygain mode.
    */
@@ -730,7 +771,7 @@ export interface FbCallbacks {
    * unloaded.
    *
    * @remarks
-   * Called when:
+   *   Called when:
    *
    *   - Panel script is reloaded via `Context menu > Reload`,
    *
@@ -738,7 +779,7 @@ export interface FbCallbacks {
    *
    *   - fb2k is exiting normally.
    *
-   * Not called when:
+   *   Not called when:
    *
    *   - Script fails with error,
    *
@@ -759,12 +800,13 @@ export interface FbCallbacks {
    * resized.
    *
    * @remarks
-   * Note: width and height arguments have the same values as
-   * {@link FbWindow.Width} and {@link FbWindow.Height}.
+   *   Note: width and height arguments have the same values as
+   *   {@link FbWindow.Width} and {@link FbWindow.Height}.
    *
-   * IMPORTANT: do NOT call {@link FbWindow.Repaint} from this callback!
+   *   IMPORTANT: do NOT call {@link FbWindow.Repaint} from this callback!
    *
    * @param width -
+   *
    * @param height -
    */
   on_size(this: void, width: number, height: number): undefined;
